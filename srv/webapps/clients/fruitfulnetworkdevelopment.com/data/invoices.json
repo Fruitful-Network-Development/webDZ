@@ -29,27 +29,61 @@
       },
       { "local_id": "berlin_seeds", "product_id": "beauregard_slips", "taxonomy_id": "", "fiat_value": [{"dollars": "240.00"}], "unit_value": [{"count": [{"slips": "500"}]}], "timestamp_value": "01/082025",
         "batch_list": []
+      },
+      { "local_id": "holmes_seed", "product_id": "amish_paste_tomato", "taxonomy_id": "", "fiat_value": [{"dollars": "48.00"}], "unit_value": [{"mass_value": [{"oz": "0.5"}]}], "timestamp_value": "01/122025",
+        "batch_list": []
+      },
+      { "local_id": "holmes_seed", "product_id": "ca_wonder_pepper", "taxonomy_id": "", "fiat_value": [{"dollars": "18.00"}], "unit_value": [{"mass_value": [{"oz": "0.25"}]}], "timestamp_value": "01/122025",
+        "batch_list": []
+      },
+      { "local_id": "holmes_seed", "product_id": "golden_acre_cabbage", "taxonomy_id": "", "fiat_value": [{"dollars": "12.00"}], "unit_value": [{"mass_value": [{"oz": "1"}]}], "timestamp_value": "01/122025",
+        "batch_list": []
+      },
+      { "local_id": "holmes_seed", "product_id": "lacinato_kale", "taxonomy_id": "", "fiat_value": [{"dollars": "35.00"}], "unit_value": [{"mass_value": [{"lbs": "0.25"}]}], "timestamp_value": "01/122025",
+        "batch_list": []
+      },
+      { "local_id": "holmes_seed", "product_id": "nantes_coreless_carrot", "taxonomy_id": "", "fiat_value": [{"dollars": "58.00"}], "unit_value": [{"mass_value": [{"lbs": "1"}]}], "timestamp_value": "01/122025",
+        "batch_list": []
+      },
+      { "local_id": "holmes_seed", "product_id": "black_seeded_simpson", "taxonomy_id": "", "fiat_value": [{"dollars": "32.00"}], "unit_value": [{"mass_value": [{"lbs": "1"}]}], "timestamp_value": "01/122025",
+        "batch_list": []
+      },
+      { "local_id": "holmes_seed", "product_id": "bloomsdale_spinach", "taxonomy_id": "", "fiat_value": [{"dollars": "44.00"}], "unit_value": [{"mass_value": [{"lbs": "2"}]}], "timestamp_value": "01/122025",
+        "batch_list": []
+      },
+      { "local_id": "holmes_seed", "product_id": "genovese_basil", "taxonomy_id": "", "fiat_value": [{"dollars": "35.00"}], "unit_value": [{"mass_value": [{"oz": "4"}]}], "timestamp_value": "01/122025",
+        "batch_list": []
+      },
+      { "local_id": "holmes_seed", "product_id": "mammoth_grey_stripe_sunflower", "taxonomy_id": "", "fiat_value": [{"dollars": "14.00"}], "unit_value": [{"mass_value": [{"lbs": "1"}]}], "timestamp_value": "01/122025",
+        "batch_list": []
+      },
+      { "local_id": "middlefield_seed", "product_id": "field_corn_open_pollinated", "taxonomy_id": "", "fiat_value": [{"dollars": "65.00"}], "unit_value": [{"mass_value": [{"lbs": "50"}]}], "timestamp_value": "02/042025",
+        "batch_list": []
+      },
+      { "local_id": "middlefield_seed", "product_id": "oats_jerry_variety", "taxonomy_id": "", "fiat_value": [{"dollars": "48.00"}], "unit_value": [{"mass_value": [{"lbs": "100"}]}], "timestamp_value": "02/042025",
+        "batch_list": []
+      },
+      { "local_id": "middlefield_seed", "product_id": "buckwheat", "taxonomy_id": "", "fiat_value": [{"dollars": "110.00"}], "unit_value": [{"mass_value": [{"lbs": "100"}]}], "timestamp_value": "02/042025",
+        "batch_list": []
+      },
+      { "local_id": "middlefield_seed", "product_id": "mary_washington_asparagus", "taxonomy_id": "", "fiat_value": [{"dollars": "150.00"}], "unit_value": [{"count": [{"roots": "200"}]}], "timestamp_value": "02/042025",
+        "batch_list": []
+      },
+      { "local_id": "middlefield_seed", "product_id": "victoria_rhubarb", "taxonomy_id": "", "fiat_value": [{"dollars": "85.00"}], "unit_value": [{"count": [{"roots": "25"}]}], "timestamp_value": "02/042025",
+        "batch_list": []
+      },
+      { "local_id": "berlin_seeds", "product_id": "daikon_radish_driller", "taxonomy_id": "", "fiat_value": [{"dollars": "45.00"}], "unit_value": [{"mass_value": [{"lbs": "5"}]}], "timestamp_value": "06/152025",
+        "batch_list": []
+      },
+      { "local_id": "berlin_seeds", "product_id": "winter_rye", "taxonomy_id": "", "fiat_value": [{"dollars": "85.00"}], "unit_value": [{"mass_value": [{"lbs": "150"}]}], "timestamp_value": "06/152025",
+        "batch_list": []
+      },
+      { "local_id": "berlin_seeds", "product_id": "provider_bush_bean", "taxonomy_id": "", "fiat_value": [{"dollars": "42.00"}], "unit_value": [{"mass_value": [{"lbs": "10"}]}], "timestamp_value": "06/152025",
+        "batch_list": []
+      },
+      { "local_id": "berlin_seeds", "product_id": "winter_density_lettuce", "taxonomy_id": "", "fiat_value": [{"dollars": "22.00"}], "unit_value": [{"mass_value": [{"oz": "4"}]}], "timestamp_value": "06/152025",
+        "batch_list": []
       }
     ]
   }
 }
-
-Jan 12,Holmes Seed,Nightshades,Amish Paste Tomato,0.5 oz,$48.00
-Jan 12,Holmes Seed,Nightshades,CA Wonder Pepper,0.25 oz,$18.00
-Jan 12,Holmes Seed,Brassicas,Golden Acre Cabbage,1 oz,$12.00
-Jan 12,Holmes Seed,Brassicas,Lacinato Kale,0.25 lb,$35.00
-Jan 12,Holmes Seed,Umbellifers,Nantes Coreless Carrot,1 lb,$58.00
-Jan 12,Holmes Seed,Leafy Greens,Black Seeded Simpson,1 lb,$32.00
-Jan 12,Holmes Seed,Leafy Greens,Bloomsdale Spinach,2 lbs,$44.00
-Jan 12,Holmes Seed,Mint Family,Genovese Basil,4 oz,$35.00
-Jan 12,Holmes Seed,Composites,Mammoth Grey Stripe Sunflower,1 lb,$14.00
-Feb 04,Middlefield Seed,Grasses,Field Corn (Open Pollinated),50 lbs,$65.00
-Feb 04,Middlefield Seed,Grasses,Oats (Jerry Variety),100 lbs,$48.00
-Feb 04,Middlefield Seed,Other (Cover),Buckwheat,100 lbs,$110.00
-Feb 04,Middlefield Seed,Perennial,Mary Washington Asparagus,200 roots,$150.00
-Feb 04,Middlefield Seed,Perennial,Victoria Rhubarb,25 roots,$85.00
-Jun 15,Berlin Seeds,Brassicas,Daikon Radish (Forage/Cover),5 lbs,$45.00
-Jun 15,Berlin Seeds,Other (Cover),Winter Rye,150 lbs,$85.00
-Jun 15,Berlin Seeds,Legumes,Provider Bush Bean (Late crop),10 lbs,$42.00
-Jun 15,Berlin Seeds,Leafy Greens,Winter Density Lettuce,4 oz,$22.00
-Total,,,,,"$2,016.00"
