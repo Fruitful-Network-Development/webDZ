@@ -1,31 +1,30 @@
-# /etc/nginx/README.md
+# /etc/nginx
 
-## Ingress Layer
+## Ingress layer
 
-Explain NGINX’s role as the edge authority.
+NGINX is the single ingress point for the host. It terminates TLS, serves
+static sites directly, and proxies approved routes to backend services.
 
-### Should answer:
-  - How traffic enters the system
-  - How routing decisions are made
+## Purpose
 
-### Suggested contents
-  - Role
-    - TLS termination
-    - Static serving
-    - Reverse proxy
-  - Routing Model
-    - Domain-based separation
-    - No auth logic here
-  - Security Posture
-    - Localhost-only upstreams
-    - No direct container exposure
-  - What NGINX Must Not Do
-    - No authentication decisions
-    - No business logic
-    - No persistence
+Explain NGINX’s role as the edge authority and routing layer.
 
----
+## Responsibilities
 
-## Overview
+- TLS termination for all domains.
+- Static site delivery for client frontends.
+- Reverse-proxy routing to localhost-bound backends.
+- Maintaining shared snippets (`ssl_params.conf`, `proxy_common.conf`).
 
-HERE
+## Routing model
+
+- Domain-based separation for each client site.
+- Static sites are served directly from `/srv/webapps/clients/<domain>/frontend`.
+- API or auth traffic is proxied to backend services that bind only to
+  `127.0.0.1`.
+
+## Security posture
+
+- No direct exposure of container ports to the public internet.
+- No authentication or business logic inside NGINX.
+- Consistent headers and TLS configuration via shared snippets.

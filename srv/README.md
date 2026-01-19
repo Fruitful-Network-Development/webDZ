@@ -1,23 +1,30 @@
-# /srv/README.md
+# /srv
 
 ## Runtime domain
 
-Define /srv as the runtime and deployment surface.
+`/srv` is the runtime and deployment surface. It is where live web assets,
+platform code, and Compose stacks reside.
 
-### Suggested contents
-  - What lives here
-    - Static assets
-    - Platform code
-    - Compose stacks
-  - What does not
-    - Secrets (except mounted env)
-    - Host configuration
-  - Backup Expectations
-    - What must be backed up
-    - What can be rebuilt
+## Purpose
 
----
+Define what belongs on the runtime surface and how it should be managed.
 
-## Overview
+## What lives here
 
-HERE
+- Client static sites under `/srv/webapps/clients/`.
+- Shared platform code under `/srv/webapps/platform/`.
+- Container stacks under `/srv/compose/`.
+
+## What does not
+
+- Host configuration (belongs under `/etc`).
+- Secrets (only templates or examples may live in the repo).
+- One-off ad hoc data that should be stored elsewhere.
+
+## Backup expectations
+
+- **Must back up**: client frontends, manifest files, client data files, and
+  environment templates that document required variables.
+- **Can be rebuilt**: platform virtual environments and container images.
+- **External volumes**: container volumes are stored under `/var/lib/docker`
+  and should be backed up separately if persistence is required.
