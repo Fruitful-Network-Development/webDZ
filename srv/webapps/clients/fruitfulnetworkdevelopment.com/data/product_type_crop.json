@@ -517,13 +517,13 @@
    },
    { "product_id": "87", 
      "local_id": "787", 
-     "taxonomy_id": "3_3_8_8_11_1_750_70_2_2", 
+     "taxonomy_id": "3_3_8_8_11_1_750_70_1_2_2", 
      "title": "green_beans", 
-     "alias": ["green_beans"] 
+     "alias": ["green_beans", "green_beans"] 
    },
    { "product_id": "88", 
      "local_id": "788", 
-     "taxonomy_id": "3_3_8_8_11_1_750_70_3_1", 
+     "taxonomy_id": "3_3_8_8_11_1_750_70_1_3_1", 
      "title": "yellow_filet_beans", 
      "alias": ["green_yellow_and_purple_beans"] 
    },
@@ -565,9 +565,9 @@
    },
    { "product_id": "95", 
      "local_id": "795", 
-     "taxonomy_id": "3_3_8_8_11_1_750_70_4_1", 
+     "taxonomy_id": "3_3_8_8_11_1_750_70_2_0_0", 
      "title": "italian_dried_beans", 
-     "alias": [] 
+     "alias": [""] 
    },
    { "product_id": "96", 
      "local_id": "796", 
