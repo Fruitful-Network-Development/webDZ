@@ -115,11 +115,20 @@
                               "members": [
                                 { "taxa_id": "3_3_8_8_11_1_750_70", "title": "phaseolus_vulgaris", 
                                   "members": [
-                                    { "taxa_id": "3_3_8_8_11_1_750_70_1_1", "title": "phaseolus_vulgaris.flat_pod_cultivar_romano_beans"}, 
-                                    { "taxa_id": "3_3_8_8_11_1_750_70_2_1", "title": "phaseolus_vulgaris.wax_pod_cultivar_yellow_wax_beans"}, 
-                                    { "taxa_id": "3_3_8_8_11_1_750_70_2_2", "title": "phaseolus_vulgaris.wax_pod_cultivar_green_beans"}, 
-                                    { "taxa_id": "3_3_8_8_11_1_750_70_3_1", "title": "phaseolus_vulgaris.fine_pod_cultivar_yellow_filet_beans"}, 
-                                    { "taxa_id": "3_3_8_8_11_1_750_70_4_1", "title": "phaseolus_vulgaris.cultivar_italian_dried_beans"}
+                                    { "taxa_id": "3_3_8_8_11_1_750_70_1_1_1", "title": "phaseolus_vulgaris.snap_pod.flat.romano"}, 
+                                    { "taxa_id": "3_3_8_8_11_1_750_70_1_2_1", "title": "phaseolus_vulgaris.snap_pod.wax.yellow_wax"}, 
+                                    { "taxa_id": "3_3_8_8_11_1_750_70_1_2_2", "title": "phaseolus_vulgaris.snap_pod.wax.green_beans"}, 
+                                    { "taxa_id": "3_3_8_8_11_1_750_70_1_3_1", "title": "phaseolus_vulgaris.snap_pod.fine.yellow_filet"}, 
+                                    { "taxa_id": "3_3_8_8_11_1_750_70_2_1_1", "title": "phaseolus_vulgaris.bean.dry.italian"},
+                                    { "taxa_id": "3_3_8_8_11_1_750_70_2_1_2", "title": "phaseolus_vulgaris.bean.dry.kidney"},
+                                    { "taxa_id": "3_3_8_8_11_1_750_70_2_1_3", "title": "phaseolus_vulgaris.bean.dry.pinto"},
+                                    { "taxa_id": "3_3_8_8_11_1_750_70_2_1_4", "title": "phaseolus_vulgaris.bean.dry.black"},
+                                    { "taxa_id": "3_3_8_8_11_1_750_70_2_1_5", "title": "phaseolus_vulgaris.bean.dry.navy"},
+                                    { "taxa_id": "3_3_8_8_11_1_750_70_2_1_6", "title": "phaseolus_vulgaris.bean.dry.cannellini"},
+                                    { "taxa_id": "3_3_8_8_11_1_750_70_2_1_7", "title": "phaseolus_vulgaris.bean.dry.adzuki"},
+                                    { "taxa_id": "3_3_8_8_11_1_750_70_2_1_8", "title": "phaseolus_vulgaris.bean.dry.fava_broad"},
+                                    { "taxa_id": "3_3_8_8_11_1_750_70_2_2_1", "title": "phaseolus_vulgaris.bean.shell.borlotti_cranberry_bean"},
+                                    { "taxa_id": "3_3_8_8_11_1_750_70_2_2_2", "title": "phaseolus_vulgaris.bean.shell.lima_butter_bean"}
                                   ]
                                 }
                               ]
