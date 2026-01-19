@@ -1,54 +1,55 @@
-{ "domains": [
-    { "archaea": "1"},
-    { "bacteria": "2"},
-    { "eukaryotes": "3", 
-      "kingdoms": [
-        { "protista": "3_1"},
-        { "fungi": "3_2"},
-        { "plantae": "3_3", 
-          "divisions": [
-            { "thallophyta": "3_3_1"},
-            { "bryophyta": "3_3_2"},
-            { "pteridophyta": "3_3_3"},
-            { "cycadophyta_cycads": "3_3_4"},
-            { "ginkgophyta_ginkgo": "3_3_5"},
-            { "pinophyta_conifers": "3_3_6"},
-            { "gnetophyta_gnetophytes": "3_3_7"},
-            { "magnoliophyta_angiosperms": "3_3_8", 
-              "classes": [
-                { "amborella": "3_3_8_1"},
-                { "nymphaeales": "3_3_8_2"},
-                { "austrobaileyales": "3_3_8_3"},
-                { "chloranthales": "3_3_8_4"},
-                { "magnoliids": "3_3_8_5"},
-                { "monocots": "3_3_8_6", 
-                  "orders": [
-                    { "acorales": "3_3_8_6_1"},
-                    { "alismatales": "3_3_8_6_2"},
-                    { "petrosaviales": "3_3_8_6_3"},
-                    { "dioscoreales": "3_3_8_6_4"},
-                    { "pandanales": "3_3_8_6_5"},
-                    { "liliales": "3_3_8_6_6"},
-                    { "asparagales": "3_3_8_6_7",
-                      "families": [
-                        { "amaryllidaceae": "3_3_8_6_7_1", 
-                          "genuses": [
-                            { "allium": "3_3_8_6_7_1_73", 
-                              "species": [
-                                { "allium_ampeloprasum": "3_3_8_6_7_1_73_1"}, 
-                                { "allium_sativum": "3_3_8_6_7_1_73_2"}, 
-                                { "allium_tricoccum": "3_3_8_6_7_1_73_3"}, 
-                                { "allium_schoenoprasum": "3_3_8_6_7_1_73_699"}, 
-                                { "allium_cepa": "3_3_8_6_7_1_73_700", 
-                                  "cultivars": [
-                                    { "allium_cepa.wild_form_cultivar_ramps": "3_3_8_6_7_1_73_700_1_1"}, 
-                                    { "allium_cepa.fresh_used_cultivar_scallions": "3_3_8_6_7_1_73_700_2_1"}, 
-                                    { "allium_cepa.fresh_used_cultivar_scallops": "3_3_8_6_7_1_73_700_2_2"}, 
-                                    { "allium_cepa.fresh_used_cultivar_shallots": "3_3_8_6_7_1_73_700_2_3"}, 
-                                    { "allium_cepa.storage_onion_cultivar_yellow_onions": "3_3_8_6_7_1_73_700_3_1"}, 
-                                    { "allium_cepa.storage_onion_cultivar_red_onions": "3_3_8_6_7_1_73_700_3_2"}, 
-                                    { "allium_cepa.storage_onion_cultivar_white_onions": "3_3_8_6_7_1_73_700_3_3"}, 
-                                    { "allium_cepa.storage_onion_cultivar_sweet_spanish_onions": "3_3_8_6_7_1_73_700_3_4"}
+{ "archetecture": [{"domain": [{"kingdom": [{"divisions": [{"class": [{"order": [{"genus": [{"species":[{"cultivar_group": [{"cultivar": ["taxoid"]}]}, {"forma": [{"subforma": ["taxoid"]}]}, {"variety": [{"subvarietas": ["taxoid"]}]}, {"subspecies": ["taxoid"]}, {"nothotaxa": ["taxoid"]}, {"morph": ["taxoid"]}, {"cline": ["taxoid"]}, {"race": ["taxoid"]}, {"strain": ["taxoid"]} ]} ]} ]} ]} ]} ]} ]}],
+    "members": [
+    { "taxa_id": "1", "title": "archaea"},
+    { "taxa_id": "2", "title": "bacteria"},
+    { "taxa_id": "3", "title": "eukaryotes",
+      "members":
+        { "taxa_id": "3_1", "title": "protista"},
+        { "taxa_id": "3_2", "title": "fungi"},
+        { "taxa_id": "3_3", "title": "plantae",
+          "members": [
+            { "taxa_id": "3_3_1", "title": "thallophyta"},
+            { "taxa_id": "3_3_2", "title": "bryophyta"},
+            { "taxa_id": "3_3_3", "title": "pteridophyta"},
+            { "taxa_id": "3_3_4", "title": "cycadophyta_cycads"},
+            { "taxa_id": "3_3_5", "title": "ginkgophyta_ginkgo"},
+            { "taxa_id": "3_3_6", "title": "pinophyta_conifers"},
+            { "taxa_id": "3_3_7", "title": "gnetophyta_gnetophytes"},
+            { "taxa_id": "3_3_8", "title": "magnoliophyta_angiosperms",
+              "members": [
+                { "taxa_id": "3_3_8_1", "title": "amborella"},
+                { "taxa_id": "3_3_8_2", "title": "nymphaeales"},
+                { "taxa_id": "3_3_8_3", "title": "austrobaileyales"},
+                { "taxa_id": "3_3_8_4", "title": "chloranthales"},
+                { "taxa_id": "3_3_8_5", "title": "magnoliids"},
+                { "taxa_id": "3_3_8_6", "title": "monocots",
+                  "members": [
+                    { "taxa_id": "3_3_8_6_1", "title": "acorales"},
+                    { "taxa_id": "3_3_8_6_2", "title": "alismatales"},
+                    { "taxa_id": "3_3_8_6_3", "title": "petrosaviales"},
+                    { "taxa_id": "3_3_8_6_4", "title": "dioscoreales"},
+                    { "taxa_id": "3_3_8_6_5", "title": "pandanales"},
+                    { "taxa_id": "3_3_8_6_6", "title": "liliales"},
+                    { "taxa_id": "3_3_8_6_7", "title": "asparagales",
+                      "members": [
+                        { "taxa_id": "3_3_8_6_7_1",  "title": "amaryllidaceae",
+                          "members": [
+                            { "taxa_id": "3_3_8_6_7_1_73", "title": "allium",
+                              "members": [
+                                { "taxa_id": "3_3_8_6_7_1_73_1", "title": "allium_ampeloprasum"}, 
+                                { "taxa_id": "3_3_8_6_7_1_73_2", "title": "allium_sativum"}, 
+                                { "taxa_id": "3_3_8_6_7_1_73_3", "title": "allium_tricoccum"}, 
+                                { "taxa_id": "3_3_8_6_7_1_73_699", "title": "allium_schoenoprasum"}, 
+                                { "taxa_id": "3_3_8_6_7_1_73_700", "title": "allium_cepa",
+                                  "members": [
+                                    { "taxa_id": "3_3_8_6_7_1_73_700_1_1", "title": "allium_cepa.ramps"}, 
+                                    { "taxa_id": "3_3_8_6_7_1_73_700_2_1", "title": "allium_cepa.scallions"}, 
+                                    { "taxa_id": "3_3_8_6_7_1_73_700_2_2", "title": "allium_cepa.scallops"}, 
+                                    { "taxa_id": "3_3_8_6_7_1_73_700_2_3", "title": "allium_cepa.shallots"}, 
+                                    { "taxa_id": "3_3_8_6_7_1_73_700_3_1", "title": "allium_cepa.yellow"}, 
+                                    { "taxa_id": "3_3_8_6_7_1_73_700_3_2", "title": "allium_cepa.red"}, 
+                                    { "taxa_id": "3_3_8_6_7_1_73_700_3_3", "title": "allium_cepa.white"}, 
+                                    { "taxa_id": "3_3_8_6_7_1_73_700_3_4", "title": "allium_cepa.sweet_spanish"}
                                   ]
                                 }
                               ]
@@ -73,13 +74,13 @@
                     { "arecales": "3_3_8_6_8"}, 
                     { "commelinales": "3_3_8_6_9"},
                     { "poales": "3_3_8_6_10", 
-                      "families": [
+                      "members": [
                         { "poaceae": "3_3_8_6_10_1", 
-                          "genuses": [
+                          "members": [
                             { "zea": "3_3_8_6_10_1_1", 
-                              "species": [
+                              "members": [
                                 { "zea_mays": "3_3_8_6_10_1_1_1"
-                                  "cultivars": [
+                                  "members": [
                                     {"zea_mays.sweet_corn": "3_3_8_6_10_1_1_1_1"}, 
                                     {"zea_mays.everta": "3_3_8_6_10_1_1_1_2"}
                                   ]
@@ -107,13 +108,13 @@
                     { "malpighiales": "3_3_8_8_9"},
                     { "oxalidales": "3_3_8_8_10"},
                     { "fabales": "3_3_8_8_11", 
-                      "families": [
+                      "members": [
                         { "fabaceae_leguminosae": "3_3_8_8_11_1", 
-                          "genuses": [
+                          "members": [
                             { "phaseolus": "3_3_8_8_11_1_750", 
-                              "species": [
+                              "members": [
                                 { "phaseolus_vulgaris": "3_3_8_8_11_1_750_70", 
-                                  "cultivars": [
+                                  "members": [
                                     { "phaseolus_vulgaris.flat_pod_cultivar_romano_beans": "3_3_8_8_11_1_750_70_1_1"}, 
                                     { "phaseolus_vulgaris.wax_pod_cultivar_yellow_wax_beans": "3_3_8_8_11_1_750_70_2_1"}, 
                                     { "phaseolus_vulgaris.wax_pod_cultivar_green_beans": "3_3_8_8_11_1_750_70_2_2"}, 
@@ -131,21 +132,21 @@
                       ]
                     },
                     { "rosales": "3_3_8_8_12", 
-                      "families": [
+                      "members": [
                         {"rosaceae": "3_3_8_8_12_1", 
-                          "genuses": [
+                          "members": [
                             {"fragaria": "3_3_8_8_12_1_1", 
-                              "species": [
+                              "members": [
                                 {"fragaria_ananassa": "3_3_8_8_12_1_1_1"}
                               ]
                             }, 
                             {"sanguisorba": "3_3_8_8_12_1_2", 
-                              "species": [
+                              "members": [
                                 {"sanguisorba_minor": "3_3_8_8_12_1_2_1"}
                               ]
                             }, 
                             {"malus": "3_3_8_8_12_1_3", 
-                              "species": [
+                              "members": [
                                 {"malus_domestica": "3_3_8_8_12_1_3_1"}
                               ]
                             }
@@ -154,18 +155,18 @@
                       ]
                     },
                     { "cucurbitales": "3_3_8_8_13", 
-                      "families": [
+                      "members": [
                         { "anisophylleaceae": "3_3_8_8_13_1"},
                         { "apodanthaceae": "3_3_8_8_13_2"},
                         { "begoniaceae_begonia": "3_3_8_8_13_3"},
                         { "coriariaceae": "3_3_8_8_13_4"},
                         { "corynocarpaceae": "3_3_8_8_13_5"},
                         { "cucurbitaceae": "3_3_8_8_13_6", 
-                          "genuses": [
+                          "members": [
                             { "cucurbita": "3_3_8_8_13_6_1", 
-                              "species": [
+                              "members": [
                                 { "cucurbita_pepo": "3_3_8_8_13_6_1_1",
-                                  "cultivars": [
+                                  "members": [
                                     { "cucurbita_pepo.cultivar_acorn_squash": "3_3_8_8_13_6_1_1_1_1"}, 
                                     { "cucurbita_pepo.cultivar_delicata_squash": "3_3_8_8_13_6_1_1_1_2"}, 
                                     { "cucurbita_pepo.cultivar_spaghetti_squash": "3_3_8_8_13_6_1_1_1_3"}, 
@@ -181,7 +182,7 @@
                                   ]
                                 },
                                 { "cucurbita_maxima": "3_3_8_8_13_6_1_2",
-                                  "cultivars": [
+                                  "members": [
                                     {"cucurbita_maxima.cultivar_blue_hubbard_squash": "3_3_8_8_13_6_1_2_1"}, 
                                     {"cucurbita_maxima.cultivar_kabocha_squash": "3_3_8_8_13_6_1_2_2"}, 
                                     {"cucurbita_maxima.cultivar_golden_nugget_squash": "3_3_8_8_13_6_1_2_3"}, 
@@ -190,7 +191,7 @@
                                   ]
                                 },
                                 { "cucurbita_moschata": "3_3_8_8_13_6_1_3",
-                                  "cultivars": [
+                                  "members": [
                                     {"cucurbita_maxima.cultivar_butternut_squash": "3_3_8_8_13_6_1_3_1"}
                                     {"cucurbita_maxima.cultivar_sugar_pumpkin": "3_3_8_8_13_6_1_3_2"}
                                     {"cucurbita_maxima.cultivar_golden_nugget_sqaush": "3_3_8_8_13_6_1_3_3"}
@@ -199,12 +200,12 @@
                               ]
                             },
                             { "citrullus": "3_3_8_8_13_6_93", 
-                              "species": [
+                              "members": [
                                 { "citrullus_lanatus": "3_3_8_8_13_6_93_1"}
                               ]
                             }, 
                             { "cucumis": "3_3_8_8_13_6_94", 
-                              "species": [
+                              "members": [
                                 { "cucumis_melo": "3_3_8_8_13_6_95_31"}, 
                                 { "cucumis_sativus": "3_3_8_8_13_6_95_32", 
                                   "cultivar": [
@@ -227,37 +228,37 @@
                     { "sapindales": "3_3_8_8_19"},
                     { "huerteales": "3_3_8_8_20"},
                     { "brassicales": "3_3_8_8_21", 
-                      "families": [
+                      "members": [
                         { "akaniaceae": "3_3_8_8_21_1"},
                         { "bataceae": "3_3_8_8_21_2"},
                         { "borthwickiaceae": "3_3_8_8_21_3"},
                         { "brassicaceae": "3_3_8_8_21_4", 
-                          "genuses": [
+                          "members": [
                             { "raphanus": "3_3_8_8_21_4_1", 
-                              "species": [
+                              "members": [
                                 {"raphanus_sativus": "3_3_8_8_21_4_1_1", 
-                                  "cultivars": [
+                                  "members": [
                                     {"raphanus_sativus.icicle_radishes": "3_3_8_8_21_4_1_1_1"}
                                   ]
                                 }
                               ]
                             }, 
                             { "eruca": "3_3_8_8_21_4_348",
-                              "species": [
+                              "members": [
                                 {"eruca_sativa": "3_3_8_8_21_4_348_1"}, 
                               ]
                             },
                             { "barbarea": "3_3_8_8_21_4_349",
-                              "species": [
+                              "members": [
                                 {"barbarea_verna": "3_3_8_8_21_4_349_1"}, 
                               ]
                             }, 
                             { "brassica": "3_3_8_8_21_4_350", 
-                              "species": [
+                              "members": [
                                 {"brassica_napus": "3_3_8_8_21_4_350_1"}, 
                                 {"brassica_juncea": "3_3_8_8_21_4_350_98"}, 
                                 { "brassica_rapa": "3_3_8_8_21_4_350_99", 
-                                  "cultivars": [
+                                  "members": [
                                     {"brassica_rapa.chinese_cabbage": "3_3_8_8_21_4_350_99_1"}, 
                                     {"brassica_rapa.rapini_cabbage": "3_3_8_8_21_4_350_99_2"}, 
                                     {"brassica_rapa.tatsoi": "3_3_8_8_21_4_350_99_3"}, 
@@ -268,7 +269,7 @@
                                   ]
                                 }, 
                                 { "brassica_oleracea": "3_3_8_8_21_4_350_100", 
-                                  "cultivars": [
+                                  "members": [
                                     { "brassica_oleracea.broccoli": "3_3_8_8_21_4_350_100_1_1"}, 
                                     { "brassica_oleracea.brussels_sprouts": "3_3_8_8_21_4_350_100_1_2"}, 
                                     { "brassica_oleracea.cabbage": "3_3_8_8_21_4_350_100_1_3"}, 
@@ -302,15 +303,15 @@
                       ]
                     },
                     { "malvales": "3_3_8_8_22", 
-                      "families": [
+                      "members": [
                         { "Bixaceae": "3_3_8_8_22_1"},
                         { "Cistaceae": "3_3_8_8_22_2"},
                         { "Cytinaceae": "3_3_8_8_22_3"},
                         { "Dipterocarpaceae": "3_3_8_8_22_4"},
                         { "Malvaceae": "3_3_8_8_22_5", 
-                          "genuses": [
+                          "members": [
                             { "fbelmoschus": "3_3_8_8_22_5_1", 
-                              "species": [
+                              "members": [
                                 { "fbelmoschus_angulosus": "3_3_8_8_22_5_1_1"},
                                 { "fbelmoschus_caillei": "3_3_8_8_22_5_1_2"},
                                 { "fbelmoschus_crinitus": "3_3_8_8_22_5_1_3"},
@@ -329,7 +330,7 @@
                               ]
                             },
                             { "abelmoschus": "3_3_8_8_22_5_2", 
-                              "species": [
+                              "members": [
                                 { "abelmoschus_esculentus": "3_3_8_8_22_5_2_1"}
                               ]
                             }
@@ -344,11 +345,11 @@
                     },
                     { "gentianales": "3_3_8_8_23"},
                     { "boraginales": "3_3_8_8_24", 
-                      "families": [
+                      "members": [
                         { "boraginaceae": "3_3_8_8_24_1",
                           "genusees": [
                             { "borago": "3_3_8_8_24_1_1", 
-                              "species": [
+                              "members": [
                                 { "borago_officinalis": "3_3_8_8_24_1_1_1"}
                               ]
                             }
@@ -359,11 +360,11 @@
                     { "solanales": "3_3_8_8_25", 
                       "familes": [
                         { "solanaceae": "3_3_8_8_25_1", 
-                          "genuses": [
+                          "members": [
                             { "capsicum": "3_3_8_8_25_1_1", 
-                              "species": [
+                              "members": [
                                 { "capsicum_annuum": "3_3_8_8_25_1_1_1"
-                                  "cultivars": [
+                                  "members": [
                                     { "capsicum_annuum.cultivar_banana_peppers": "3_3_8_8_25_1_1_1_1"}, 
                                     { "capsicum_annuum.cultivar_cubanelle_pepper": "3_3_8_8_25_1_1_1_2"}, 
                                     { "capsicum_annuum.cultivar_golden_horn_peppers": "3_3_8_8_25_1_1_1_3"}, 
@@ -381,21 +382,21 @@
                                 }, 
                                 {
                                   "capsicum_chinense": "3_3_8_8_25_1_1_2"
-                                  "cultivars": [
+                                  "members": [
                                     {"capsicum_chinense.cultivar_habanero_pepper": "3_3_8_8_25_1_1_2_1"}
                                   ]
                                 }
                               ]
                             },
                             { "physalis": "3_3_8_8_25_1_89"
-                              "species": [
+                              "members": [
                                 { "physalis_philadelphica": "3_3_8_8_25_1_89_1"}
                               ]
                             }, 
                             { "solanum": "3_3_8_8_25_1_90", 
-                              "species": [
+                              "members": [
                                 { "solanum_lycopersicum": "3_3_8_8_21_4_90_1", 
-                                  "cultivars": [
+                                  "members": [
                                     { "solanum_lycopersicum.plum_cultivar_roma": "3_3_8_8_21_4_90_1_1_1"}, 
                                     { "solanum_lycopersicum.plum_cultivar_san_marzano": "3_3_8_8_21_4_90_1_1_2"}, 
                                     { "solanum_lycopersicum.plum_cultivar_roma_amish_paste": "3_3_8_8_21_4_90_1_1_3"}, 
@@ -419,12 +420,12 @@
                                   ]
                                 },
                                 { "solanum_melongena": "3_3_8_8_25_1_90_1239", 
-                                  "cultivars": [
+                                  "members": [
                                     { "solanum_tuberosum.eggplant_cultivar_asian_eggplant": "3_3_8_8_25_1_90_1239_1_1"}, 
                                   ]
                                 }, 
                                 { "solanum_tuberosum": "3_3_8_8_25_1_90_1240", 
-                                  "cultivars": [
+                                  "members": [
                                     { "solanum_tuberosum.yellow_cultivar_yukon_gold": "3_3_8_8_25_1_90_1240_1_1"}, 
                                     { "solanum_tuberosum.yellow_cultivar_german_butterball": "3_3_8_8_25_1_90_1240_1_2"}, 
                                     { "solanum_tuberosum.yellow_cultivar_yellow_finn": "3_3_8_8_25_1_90_1240_1_3"}, 
@@ -444,11 +445,11 @@
                           ]
                         },
                         { "convolvulaceae": "3_3_8_8_25_2",
-                          "genuses": [
+                          "members": [
                             { "ipomoea": "3_3_8_8_25_2_1",
-                              "species": [
+                              "members": [
                                 { "ipomoea_batatas": "3_3_8_8_25_2_1_1",
-                                  "cultivars": [
+                                  "members": [
                                     { "ipomoea_batatas.orange_cultivar_beauregard": "3_3_8_8_25_2_1_1_1_1"},
                                     { "ipomoea_batatas.orange_cultivar_covington": "3_3_8_8_25_2_1_1_1_2"}
                                     { "ipomoea_batatas.purple_cultivar_japanese": "3_3_8_8_25_2_1_1_2_1"}, 
@@ -467,24 +468,24 @@
                     { "lamiales": "3_3_8_8_26"
                       "familes": [
                         { "lamiaceae": "3_3_8_8_26_1",
-                          "genuses": [
+                          "members": [
                             { "salvia": "3_3_8_8_26_1_1"
-                              "species": [
+                              "members": [
                                 {"salvia_officinalis": "3_3_8_8_26_1_1_1"}, 
                                 {"salvia_rosmarinus": "3_3_8_8_26_1_1_2"}
                               ]
                             }, 
                             { "origanum": "3_3_8_8_26_1_2"
-                              "species": [ 
+                              "members": [ 
                                 {"origanum_vulgare": "3_3_8_8_26_1_2_1"}, 
                                 {"origanum_majorana": "3_3_8_8_26_1_2_2"}
                               ]
                             }, 
                             { "ocimum": "3_3_8_8_26_1_3"
-                              "species": [
+                              "members": [
                                 {"ocimum_africanum": "3_3_8_8_26_1_3_1"}
                                 {"ocimum_basilicum": "3_3_8_8_26_1_3_2", 
-                                  "cultivars": [
+                                  "members": [
                                     { "ocimum_basilicum.purple_basil": "3_3_8_8_26_1_3_2_1"}, 
                                     { "ocimum_basilicum.opal_basil": "3_3_8_8_26_1_3_2_2"}, 
                                     { "ocimum_basilicum.sweet_basil": "3_3_8_8_26_1_3_2_3"}
@@ -493,34 +494,34 @@
                               ]
                             }, 
                             { "pycnanthemum": "3_3_8_8_26_1_4"
-                              "species": [
+                              "members": [
                                 {"pycnanthemum_virginianum": "3_3_8_8_26_1_4_1"}, 
                                 {"pycnanthemum_muticum": "3_3_8_8_26_1_4_2"}
                               ]
                             }, 
                             { "mentha": "3_3_8_8_26_1_5", 
-                              "species": [
+                              "members": [
                                 {"mentha_spicata": "3_3_8_8_26_1_5_1"}
                               ]
                             }, 
                             { "coleus": "3_3_8_8_26_1_6", 
-                              "species": [
+                              "members": [
                                 {"coleus_amboinicus": "3_3_8_8_26_1_6_1"}
                               ]
                             },
                             { "melissa": "3_3_8_8_26_1_233"
-                              "species": [
+                              "members": [
                                 {"melissa_officinalis": "3_3_8_8_26_1_233_1"}
                               ]
                             }, 
                             { "satureja": "3_3_8_8_26_1_235"
-                              "species": [
+                              "members": [
                                 {"satureja_montana": "3_3_8_8_26_1_235_1"}
                                 {"satureja_hortensis": "3_3_8_8_26_1_235_2"}
                               ]
                             }, 
                             { "thymus": "3_3_8_8_26_1_236"
-                              "species": [
+                              "members": [
                                 {"thymus_vulgaris": "3_3_8_8_26_1_236_1"}
                               ]
                             }
@@ -537,9 +538,9 @@
                         { "alseuosmiaceae": "3_3_8_8_31_1"},
                         { "argophyllaceae": "3_3_8_8_31_2"},
                         { "asteraceae": "3_3_8_8_31_3", 
-                          "genuses": [
+                          "members": [
                             { "cynara": "3_3_8_8_31_3_1", 
-                              "species": [
+                              "members": [
                                 { "algarbiensis": "3_3_8_8_31_3_1_1"},
                                 { "auranitica": "3_3_8_8_31_3_1_2"},
                                 { "baetica": "3_3_8_8_31_3_1_3"},
@@ -553,7 +554,7 @@
                               ]
                             },
                             { "cichorium": "3_3_8_8_31_3_2", 
-                              "species": [
+                              "members": [
                                 { "cichorium_bottae": "3_3_8_8_31_3_2_1"},
                                 { "cichorium_calvum": "3_3_8_8_31_3_2_2"},
                                 { "cichorium_endivia": "3_3_8_8_31_3_2_3"},
@@ -564,19 +565,19 @@
                               ]
                             },
                             { "tagetes": "3_3_8_8_31_3_3", 
-                              "species": [
+                              "members": [
                                 { "tagetes_minuta": "3_3_8_8_31_3_3_1"},
                                 { "tagetes_erecta": "3_3_8_8_31_3_3_2"}
                               ]
                             },
                             { "artemisia": "3_3_8_8_31_3_4", 
-                              "species": [
+                              "members": [
                                 { "artemisia_dracunculus": "3_3_8_8_31_3_4_1"}, 
                                 { "artemisia_dracunculoides": "3_3_8_8_31_3_4_2"}
                               ]
                             },
                             { "lactuca": "3_3_8_8_31_3_32000", 
-                              "species": [
+                              "members": [
                                 { "lactuca_sativa": "3_3_8_8_31_3_32000_100",
                                   "subspecies": [
                                     { "lactuca_sativa.crispa_subsp_oakleaf_lettuce": "3_3_8_8_31_3_32000_100_1_1"}, 
@@ -603,48 +604,48 @@
                     { "escalloniales": "3_3_8_8_32"},
                     { "bruniales": "3_3_8_8_33"},
                     { "apiales": "3_3_8_8_34", 
-                      "families": [
+                      "members": [
                         { "apiaceae": "3_3_8_8_34_1", 
-                          "genuses": [
+                          "members": [
                             { "foeniculum": "3_3_8_8_34_1_1", 
-                              "species": [
+                              "members": [
                                 { "foeniculum_scoparium": "3_3_8_8_34_1_1_1"},
                                 { "foeniculum_subinodorum": "3_3_8_8_34_1_1_2"},
                                 { "foeniculum_vulgare": "3_3_8_8_34_1_1_3"}
                               ]
                             },
                             { "levisticum": "3_3_8_8_34_1_2", 
-                              "species": [
+                              "members": [
                                 { "levisticum_officinale": "3_3_8_8_34_1_2_1"}
                               ]
                             },
                             { "coriandrum": "3_3_8_8_34_1_3", 
-                              "species": [
+                              "members": [
                                 { "coriandrum_sativum": "3_3_8_8_34_1_3_1"}
                               ]
                             },
                             { "petroselinum": "3_3_8_8_34_1_4", 
-                              "species": [
+                              "members": [
                                 { "petroselinum_crispum": "3_3_8_8_34_1_4_1"}
                               ]
                             },
                             { "pastinaca": "3_3_8_8_34_1_431", 
-                              "species": [
+                              "members": [
                                 { "pastinaca_sativa": "3_3_8_8_34_1_431_1"}
                               ]
                             },
                             { "anethum": "3_3_8_8_34_1_432", 
-                              "species": [
+                              "members": [
                                 { "anethum_graveolens": "3_3_8_8_34_1_432_1"}
                               ]
                             },
                             { "apium": "3_3_8_8_34_1_433", 
-                              "species": [
+                              "members": [
                                 { "apium_graveolens": "3_3_8_8_34_1_433_1"}
                               ]
                             },
                             { "daucus": "3_3_8_8_34_1_434", 
-                              "species": [
+                              "members": [
                                 { "daucus_carota": "3_3_8_8_34_1_434_35"}
                               ]
                             }
@@ -661,20 +662,20 @@
                     { "dipsacales": "3_3_8_8_35"},
                     { "paracryphiales": "3_3_8_8_36"},
                     { "caryophyllales": "3_3_8_8_37", 
-                      "families": [
+                      "members": [
                         { "achatocarpaceae": "3_3_8_8_37_1"},
                         { "aizoaceae": "3_3_8_8_37_2"},
                         { "amaranthaceae": "3_3_8_8_37_3", 
                           "genues": [
                             { "spinacia": "3_3_8_8_37_3_164", 
-                              "species": [
+                              "members": [
                                 { "spinacia_oleracea": "3_3_8_8_37_3_164_3"}
                               ]
                             },
                             { "beta": "3_3_8_8_37_3_165", 
-                              "species": [
+                              "members": [
                                   { "beta_vulgaris": "3_3_8_8_37_3_165_11"
-                                    "cultivars": [
+                                    "members": [
                                       { "beta_vulgaris.chioggia_beets": "3_3_8_8_37_3_165_11_1_1"}, 
                                       { "beta_vulgaris.golden_beets": "3_3_8_8_37_3_165_11_1_2"}, 
                                       { "beta_vulgaris.purple_beets": "3_3_8_8_37_3_165_11_1_3"}, 
@@ -715,9 +716,9 @@
                         { "physenaceae": "3_3_8_8_37_30"},
                         { "plumbaginaceae": "3_3_8_8_37_31"},
                         { "polygonaceae": "3_3_8_8_37_32", 
-                          "genuses": [
+                          "members": [
                             { "rumex": "3_3_8_8_37_32_1"
-                              "species": [
+                              "members": [
                                 {"rumex_acetosa": "3_3_8_8_37_32_1_1"}
                               ]
                             }
@@ -741,24 +742,24 @@
         { "animalia": "3_4"
           "phylum": [
             { "chordata": "3_4_1"
-              "classes": [
+              "members": [
                 { "mammalia": "3_4_1_1"
-                  "orders": [
+                  "members": [
                     { "artiodactyla": "3_4_1_1_1"
-                      "families": [
+                      "members": [
                         { "bovidae": "3_4_1_1_1_1"
-                          "genuses": [
+                          "members": [
                             { "bos": "3_4_1_1_1_1_1"
-                              "species": [
+                              "members": [
                                 {"bos_taurus": "3_4_1_1_1_1_1_1"}
                               ]
                             }
                           ]
                         }, 
                         { "suidae": "3_4_1_1_1_2"
-                          "genuses": [
+                          "members": [
                             { "sus": "3_4_1_1_1_2_1"
-                              "species": [
+                              "members": [
                                 {"sus_domesticus": "3_4_1_1_1_2_1_1"}
                               ]
                             }
@@ -769,13 +770,13 @@
                   ]
                 }, 
                 { "aves": "3_4_1_2"
-                  "orders": [
+                  "members": [
                     { "galliformes": "3_4_1_2_1"
-                      "families": [
+                      "members": [
                         { "phasianidae": "3_4_1_2_1_1"
-                          "genuses": [
+                          "members": [
                             { "gallus": "3_4_1_2_1_1_1"
-                              "species": [
+                              "members": [
                                 {"gallus_gallus": "3_4_1_2_1_1_1_1"}
                               ]
                             }
