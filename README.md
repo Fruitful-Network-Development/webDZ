@@ -1,296 +1,79 @@
 # aws-box
 
-## Root README
-
-### Purpose:
-  - Explain what this repository represents, not how any single component works.
-
-### Should answer:
-  - What this server does at a high level
-  - What architectural philosophy is being followed
-  - What is in scope vs out of scope
-
-### Suggested contents
-  - System Overview
-    - Single-EC2, NGINX-fronted, static-first, API-backed architecture
-  - High-Level Architecture Diagram (textual is fine)
-    - DNS → NGINX → (static OR proxy) → Docker Compose services
-  - Design Principles
-    - Immutable-ish config via repo mirror
-    - Least privilege ingress
-    - Auth via centralized IdP
-  - What this repo is NOT
-    - Not application logic
-    - Not user data
-    - Not secrets (except templates)
-  - Deployment Philosophy
-    - Files staged → enabled explicitly
-    - No automatic side effects from rsync
-This README should never include port numbers or implementation details.
-
----
-
 ## Overview
 
-The EC2 instance serves two kinds of content:
+This repository is the **configuration mirror** for a single EC2 host that
+serves static client sites and a small shared API layer. It documents how the
+host is structured, what belongs where, and how changes are staged safely
+before they are activated.
 
-1. **Static frontends** for each client domain – delivered directly by Nginx
-   from `/srv/webapps/clients/<domain>/frontend`. These sites can function
-   entirely on their own.
-2. **Optional JSON APIs** provided by a shared Flask application. This app runs
-   under Gunicorn and only becomes part of a site when `/api` proxying is
-   enabled in the Nginx configuration.
+At a high level, the box hosts:
 
-Keeping these concerns separated means you can host simple brochure sites
-without running any Python code, while still having the option to expose
-structured data via the API when needed.
+- **Static frontends** per client domain, served directly by NGINX.
+- **Optional JSON APIs** provided by a shared Flask-based platform.
+- **A planned Auth/BFF stack** (Keycloak + BFF) that will be introduced via
+  Docker Compose while keeping NGINX as the only ingress.
 
----
+## Purpose
 
-## Environment overview
+Explain what this repository represents, not how any single component works.
 
-This infrastructure runs on a freshly rebuilt Debian-based EC2 instance.
+## Scope
 
-Key components:
+### In scope
+- Host configuration under `/etc` (NGINX, systemd units, TLS tooling).
+- Runtime deployment surface under `/srv` (static sites, platform code, compose
+  stacks).
+- Documentation of operational boundaries and change policies.
 
-- **Nginx**: virtual hosting, static file serving, and reverse-proxy for backend APIs
-- **Gunicorn**: application server for the Flask platform
-- **Flask**: shared backend platform serving multiple client sites
-- **Certbot / Let’s Encrypt**: automatic TLS certificate provisioning and renewal
+### Out of scope
+- Application business logic.
+- User data and secrets (except template examples).
+- Automated deployment or activation steps.
 
-This instance replaces an older degraded EC2 instance and incorporates
-additional recovery and access mechanisms not previously present.
+## Architectural philosophy
 
----
+- **Single-host, explicit activation.** Files can be staged without effect until
+  services are explicitly reloaded or enabled.
+- **Least-privilege ingress.** NGINX terminates TLS and proxies only to
+  localhost-bound services.
+- **Static-first.** Static sites do not require the API or any runtime backend
+  unless they opt into it.
+- **Immutable-ish config mirror.** This repo mirrors the live host layout and
+  supports idempotent syncs.
 
-## Structure
+## High-level architecture
 
-### README placement
 ```text
-aws/
-├── README.md                              ← TOP-LEVEL (system intent)
-│
-├── etc/
-│   ├── README.md                          ← Host OS configuration
+DNS → NGINX → (static site OR reverse-proxy) → platform services
+```
+
+## Repository layout
+
+```text
+aws-box/
+├── README.md                              ← Top-level intent
+├── etc/                                   ← Host OS configuration
+│   ├── README.md
 │   ├── nginx/
-│   │   ├── README.md                      ← Edge / ingress layer
+│   │   ├── README.md
 │   │   └── sites-available/
-│   │       └── README.md                  ← Virtual host patterns
+│   │       └── README.md
 │   └── systemd/
 │       └── system/
-│           └── README.md                  ← Service supervision model
-│
-├── srv/
-│   ├── README.md                          ← Runtime data & services
-│   ├── webapps/
-│   │   ├── README.md                      ← Static sites & platform code
-│   │   ├── clients/
-│   │   │   └── README.md                  ← Multi-tenant static sites
-│   │   └── platform/
-│   │       └── README.md                  ← Flask application (logical)
-│   │
-│   └── compose/
-│       ├── README.md                      ← Containerized services (why)
-│       └── platform/
-│           └── README.md                  ← Auth + BFF stack (how)
-
+│           └── README.md
+└── srv/                                   ← Runtime surface
+    ├── README.md
+    ├── webapps/
+    │   └── README.md
+    └── compose/
+        ├── README.md
+        └── platform/
+            └── README.md
 ```
 
-### Directory structure & ownership
+## Deployment philosophy
 
-Primary sources of truth and where this repo exists are on the server as:
-```text
-home/admin/srv/webapps/
-├── platform/
-│   ├── app.py
-│   ├── multi-tennant-data-access.py
-│   ├── client-data-acess.py
-│   ├── requirements.txt
-│   ├── venv/                  # Python virtual environment (NOT in git)
-│   └── platform.service       # systemd service (installed under /etc/systemd)
-├── clients/
-│   ├── fruitfulnetworkdevelopment.com/
-│   │   ├── frontend/
-│   │   └── data/
-│   └── cuyahogaterravita.com/
-│       ├── frontend/
-│       └── data/
-
-home/admin/etc/
-├── nginx/
-│   ├── nginx.conf
-│   ├── mime.types
-│   ├── sites-available/
-│   │   ├── fruitfulnetworkdevelopment.com.conf
-│   │   └── cuyahogaterravita.com.conf
-│   └── sites-enabled/
-│       └── (symlinks only — default site removed)
-└── systemd/system/
-    └── platform.service
-```
-
-Key points:
-
-- Each client gets its own directory under `/srv/webapps/clients/` and is
-  identified by its domain name. All static files live in that directory.
-- Manifests live at the root of each client directory (e.g. `msn_admin.json`),
-  not under `frontend/`. They define the client title, logo, and the
-  `backend_data` array listing which files in `data/` may be served by the API.
-- The `platform/venv/` directory is not stored in git and must be created on the
-  server. Use `python3 -m venv venv` to set it up.
-
-This repo is then mirrored by the live directories under:
-
-```text
-/etc/
-/srv/webapps/
-```
-
----
-
-## Python virtual environments (venv)
-
-All Python services are run inside explicit virtual environments.
-
-Create the venv and install requirements:
-```bash
-cd /srv/webapps/platform
-python3 -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
-```
-, then make sure Gunicorn exists:
-```bash
-which gunicorn
-```
-- We expect to see `/srv/webapps/platform/venv/bin/gunicorn`
-
-If sucessful, we can exit:
-```bash
-deactivate
-```
-, and then restart:
-```bash
-sudo systemctl restart platform.service
-sudo systemctl status platform.service --no-pager
-```
-
----
-
-## Access methods
-
-### SSH (primary)
-
-- Access is performed using a PEM key:
-
-  ```bash
-  ssh -i ~/.ssh/aws-main-key.pem admin@<Elastic-IP>
-  ```
-
-- The `admin` user’s `~/.ssh/authorized_keys` contains the public key material.
-
----
-
-## System services
-
-### Gunicorn (Flask platform)
-
-- Managed by systemd via `platform.service`.
-- Restart via:
-
-  ```bash
-  sudo systemctl restart platform.service
-  ```
-
-### Nginx
-
-- Managed by systemd.
-- Validate config with:
-
-  ```bash
-  sudo nginx -t
-  ```
-
-- Reload after config changes:
-
-  ```bash
-  sudo systemctl reload nginx
-  ```
-
-### Logging & disk safety
-
-- `journald` limits enforced:
-
-  ```text
-  SystemMaxUse=200M
-  RuntimeMaxUse=200M
-  ```
-
-- Prevents disk exhaustion from runaway logs.
-
----
-
-## SSL & DNS
-
-- DNS `A` records for all domains point to the Elastic IP of this instance.
-- Certificates are managed by Certbot using the nginx authenticator.
-- Renewal can be tested via:
-
-  ```bash
-  sudo certbot renew --dry-run
-  ```
-
-- Port 80 must remain open for HTTP-01 challenges.
-
----
-
-## Troubleshooting & differences from old instance
-
-- The original instance suffered SSH banner hangs due to system-level corruption.
-- Recovery was not possible without rebuilding.
-- This instance was rebuilt cleanly with:
-  - explicit systemd services
-  - enforced logging limits
-  - SSM access for recovery
-  - cleaner separation of platform vs client assets
-
----
-
-## Multi-tenant platform & manifests (MSN)
-
-At a high level, the platform follows a **manifest-first** design:
-
-- One manifest per client: `msn_<userId>.json` contains site configuration and
-  `backend_data` whitelists.
-- Nginx serves static frontends from `/srv/webapps/clients/<domain>/frontend`.
-- The shared Flask backend in `/srv/webapps/platform` discovers these manifests
-  and serves APIs and data according to each manifest.
-
-### Platform data access files
-
-The platform’s data-access logic is consolidated into two files:
-
-- `multi-tennant-data-access.py` handles host-based client detection, filesystem
-  path resolution, and manifest parsing.
-- `client-data-acess.py` handles dataset discovery, dataset resolution, and
-  backend data filename validation.
-
-The filenames contain hyphens, so the Flask app loads them using `importlib`
-when it starts.
-
-### Client-specific data access
-
-Each client directory contains a `data/` directory alongside `frontend/`. The
-`data/` directory holds client-specific JSON that the frontend can read through
-API routes. Files must be whitelisted in the manifest before Flask will read
-or write them.
-
-Flask behaves like a dataset registry rather than a generic file server:
-
-- It exposes a list of dataset IDs found in the allowed directory.
-- It provides a single dataset load endpoint by dataset ID.
-
-This prevents path traversal issues, accidental leakage of arbitrary server
-files, and tight coupling between frontend code and filesystem structure.
-
----
+- Files are staged first, activated explicitly later.
+- Enabling a vhost or starting a service is a deliberate, manual step.
+- No automatic side effects from `rsync` or repo sync.
