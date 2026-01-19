@@ -187,25 +187,25 @@ This shows what exists on the box after you deploy files, but before you:
   - Publish container ports only to localhost (not 0.0.0.0)
   - NGINX is the only public ingress
   #### For example:
-  - Keycloak container listens internally on 8080, published to 127.0.0.1:8081
-  - Flask container listens internally on 8000, published to 127.0.0.1:8001
+  - Keycloak container listens internally on 8080, published to `127.0.0.1:8081`
+  - Flask container listens internally on 8000, published to `127.0.0.1:8001`
   Then:
-  - auth.fruitfulnetworkdevelopment.com → NGINX → http://127.0.0.1:8081
-  - api.fruitfulnetworkdevelopment.com → NGINX → http://127.0.0.1:8001
+  - `auth.fruitfulnetworkdevelopment.com` → NGINX → `http://127.0.0.1:8081`
+  - `api.fruitfulnetworkdevelopment.com` → NGINX → `http://127.0.0.1:8001`
   This reduces exposed surface area and keeps the security model crisp.
 
 ### Lightweight production DB
   Run a small DB container inside the same Compose stack (Postgres). This does not mean your application “uses Postgres”; it means Keycloak’s state (users, sessions, config) is persisted safely.
 
 ### How BFF fits into the setup (what actually happens at runtime)
-  “client sites remain mostly static; all sign-ins are on fruitfulnetworkdevelopment.com using BFF.”
+  “client sites remain mostly static; all sign-ins are on `fruitfulnetworkdevelopment.com` using BFF.”
   #### A clean flow is:
   - User visits a static client site (served by NGINX).
   - User clicks “Sign in” → redirect to your BFF (Flask) at fruitfulnetworkdevelopment.com/login (or api.fruitfulnetworkdevelopment.com/login).
   - BFF initiates OIDC redirect to Keycloak (auth.*).
   - Keycloak authenticates user → redirects back to BFF callback endpoint.
   - BFF exchanges code for tokens server-to-server, then sets a secure session cookie.
-  - Static site JS calls https://api.fruitfulnetworkdevelopment.com/api/... (or the same domain via reverse-proxy) and the cookie authenticates the call.
+  - Static site JS calls `https://api.fruitfulnetworkdevelopment.com/api/`... (or the same domain via reverse-proxy) and the cookie authenticates the call.
   Key point: static sites never store tokens. The session lives in the BFF.
 
 ### NGINX config pattern
