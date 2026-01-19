@@ -1,0 +1,40 @@
+{ "archetecture": ["local_id", "product_id", "taxonomy_id", "fiat_value", "unit_value", "timestamp_value", "batch_list"]
+  {"members": }
+}
+{ "invoices": [
+  { "local_id": "HERE",
+    "product_id": "HERE",
+    "tax", ""
+  },
+]
+}
+Date,Supplier,Crop Group,Variety,Amount Bought,Cost (Est.)
+Jan 08,Berlin Seeds,Legumes,Blue Lake Bush 274,25 lbs,$95.00
+Jan 08,Berlin Seeds,Legumes,Sugar Snap Peas,10 lbs,$62.00
+Jan 08,Berlin Seeds,Cucurbits,Waltham Butternut Squash,1 lb,$28.00
+Jan 08,Berlin Seeds,Cucurbits,CT Field Pumpkin,2 lbs,$42.00
+Jan 08,Berlin Seeds,Chenopods,Detroit Dark Red Beet,2 lbs,$38.00
+Jan 08,Berlin Seeds,Alliums,Stuttgarter Onion Sets,100 lbs,$160.00
+Jan 08,Berlin Seeds,Grasses,Silver Queen Sweet Corn,15 lbs,$210.00
+Jan 08,Berlin Seeds,Mallow Family,Clemson Spineless Okra,0.5 lbs,$18.00
+Jan 08,Berlin Seeds,Other (Cover),Red Clover Seed,50 lbs,$175.00
+Jan 08,Berlin Seeds,Sweet Potato,Beauregard Slips (Pre-order),500 count,$240.00
+Jan 12,Holmes Seed,Nightshades,Amish Paste Tomato,0.5 oz,$48.00
+Jan 12,Holmes Seed,Nightshades,CA Wonder Pepper,0.25 oz,$18.00
+Jan 12,Holmes Seed,Brassicas,Golden Acre Cabbage,1 oz,$12.00
+Jan 12,Holmes Seed,Brassicas,Lacinato Kale,0.25 lb,$35.00
+Jan 12,Holmes Seed,Umbellifers,Nantes Coreless Carrot,1 lb,$58.00
+Jan 12,Holmes Seed,Leafy Greens,Black Seeded Simpson,1 lb,$32.00
+Jan 12,Holmes Seed,Leafy Greens,Bloomsdale Spinach,2 lbs,$44.00
+Jan 12,Holmes Seed,Mint Family,Genovese Basil,4 oz,$35.00
+Jan 12,Holmes Seed,Composites,Mammoth Grey Stripe Sunflower,1 lb,$14.00
+Feb 04,Middlefield Seed,Grasses,Field Corn (Open Pollinated),50 lbs,$65.00
+Feb 04,Middlefield Seed,Grasses,Oats (Jerry Variety),100 lbs,$48.00
+Feb 04,Middlefield Seed,Other (Cover),Buckwheat,100 lbs,$110.00
+Feb 04,Middlefield Seed,Perennial,Mary Washington Asparagus,200 roots,$150.00
+Feb 04,Middlefield Seed,Perennial,Victoria Rhubarb,25 roots,$85.00
+Jun 15,Berlin Seeds,Brassicas,Daikon Radish (Forage/Cover),5 lbs,$45.00
+Jun 15,Berlin Seeds,Other (Cover),Winter Rye,150 lbs,$85.00
+Jun 15,Berlin Seeds,Legumes,Provider Bush Bean (Late crop),10 lbs,$42.00
+Jun 15,Berlin Seeds,Leafy Greens,Winter Density Lettuce,4 oz,$22.00
+Total,,,,,"$2,016.00"
