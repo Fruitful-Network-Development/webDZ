@@ -1,1 +1,82 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: platform_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: keycloak
+      POSTGRES_USER: keycloak
+      POSTGRES_PASSWORD: ${KC_DB_PASSWORD}
+    volumes:
+      - platform_postgres_data:/var/lib/postgresql/data
+    networks:
+      - platform_net
 
+  keycloak:
+    image: quay.io/keycloak/keycloak:latest
+    container_name: platform_keycloak
+    restart: unless-stopped
+    depends_on:
+      - postgres
+    environment:
+      # Admin bootstrap
+      KEYCLOAK_ADMIN: ${KEYCLOAK_ADMIN}
+      KEYCLOAK_ADMIN_PASSWORD: ${KEYCLOAK_ADMIN_PASSWORD}
+
+      # DB
+      KC_DB: postgres
+      KC_DB_URL_HOST: postgres
+      KC_DB_URL_DATABASE: keycloak
+      KC_DB_USERNAME: keycloak
+      KC_DB_PASSWORD: ${KC_DB_PASSWORD}
+
+      # Run behind NGINX TLS termination
+      KC_HTTP_ENABLED: "true"
+      KC_PROXY: edge
+      KC_HOSTNAME: auth.fruitfulnetworkdevelopment.com
+      KC_HOSTNAME_STRICT: "true"
+      KC_PROXY_HEADERS: xforwarded
+
+      # Optional: if you later want health endpoints
+      # KC_HEALTH_ENABLED: "true"
+      # KC_METRICS_ENABLED: "true"
+    command:
+      - start
+    ports:
+      - "127.0.0.1:8081:8080"
+    volumes:
+      - platform_keycloak_data:/opt/keycloak/data
+    networks:
+      - platform_net
+
+  flask_bff:
+    # You will provide the Dockerfile under /srv/compose/platform/flask-bff/
+    build:
+      context: ./flask-bff
+    container_name: platform_flask_bff
+    restart: unless-stopped
+    depends_on:
+      - keycloak
+    environment:
+      # The BFF should use these to configure OIDC against Keycloak
+      OIDC_ISSUER: https://auth.fruitfulnetworkdevelopment.com/realms/${KC_REALM}
+      OIDC_CLIENT_ID: ${OIDC_CLIENT_ID}
+      OIDC_CLIENT_SECRET: ${OIDC_CLIENT_SECRET}
+
+      # Cookie/session security for BFF
+      SESSION_SECRET: ${SESSION_SECRET}
+
+      # If you want the BFF to know its public base URL
+      PUBLIC_BASE_URL: https://api.fruitfulnetworkdevelopment.com
+    ports:
+      - "127.0.0.1:8001:8000"
+    networks:
+      - platform_net
+
+volumes:
+  platform_postgres_data:
+  platform_keycloak_data:
+
+networks:
+  platform_net:
+    driver: bridge
