@@ -1,24 +1,39 @@
 { "archetecture": ["local_id", "product_id", "taxonomy_id", "fiat_value", "unit_value", "timestamp_value", "batch_list"]
-  {"members": }
+  { "members": [
+      { "local_id": "berlin_seeds", "product_id": "blue_lake_bush_274", "taxonomy_id": "", "fiat_value": [{"dollars": "95.00"}], "unit_value": [{"mass_value": [{"lbs": "25"}]}], "timestamp_value": "01/082025",
+        "batch_list": []
+      },
+      { "local_id": "berlin_seeds", "product_id": "sugar_snap_peas", "taxonomy_id": "", "fiat_value": [{"dollars": "62.00"}], "unit_value": [{"mass_value": [{"lbs": "10"}]}], "timestamp_value": "01/082025",
+        "batch_list": []
+      },
+      { "local_id": "berlin_seeds", "product_id": "waltham_butternut_squash", "taxonomy_id": "", "fiat_value": [{"dollars": "28.00"}], "unit_value": [{"mass_value": [{"lbs": "1"}]}], "timestamp_value": "01/082025",
+        "batch_list": []
+      },
+      { "local_id": "berlin_seeds", "product_id": "ct_field_pumpkin", "taxonomy_id": "", "fiat_value": [{"dollars": "42.00"}], "unit_value": [{"mass_value": [{"lbs": "2"}]}], "timestamp_value": "01/082025",
+        "batch_list": []
+      },  
+      { "local_id": "berlin_seeds", "product_id": "detroit_dark_red_beet", "taxonomy_id": "", "fiat_value": [{"dollars": "38.00"}], "unit_value": [{"mass_value": [{"lbs": "2"}]}], "timestamp_value": "01/082025",
+        "batch_list": []
+      },
+      { "local_id": "berlin_seeds", "product_id": "stuttg_zephyr_zoidisarter_onion_sets", "taxonomy_id": "", "fiat_value": [{"dollars": "160.00"}], "unit_value": [{"mass_value": [{"lbs": "100"}]}], "timestamp_value": "01/082025",
+        "batch_list": []
+      },
+      { "local_id": "berlin_seeds", "product_id": "silver_queen_sweet_corn", "taxonomy_id": "", "fiat_value": [{"dollars": "210.00"}], "unit_value": [{"mass_value": [{"lbs": "15"}]}], "timestamp_value": "01/082025",
+        "batch_list": []
+      },
+      { "local_id": "berlin_seeds", "product_id": "clemson_spineless_okra", "taxonomy_id": "", "fiat_value": [{"dollars": "18.00"}], "unit_value": [{"mass_value": [{"lbs": "0.5"}]}], "timestamp_value": "01/082025",
+        "batch_list": []
+      },
+      { "local_id": "berlin_seeds", "product_id": "red_clover_seed", "taxonomy_id": "", "fiat_value": [{"dollars": "175.00"}], "unit_value": [{"mass_value": [{"lbs": "50"}]}], "timestamp_value": "01/082025",
+        "batch_list": []
+      },
+      { "local_id": "berlin_seeds", "product_id": "beauregard_slips", "taxonomy_id": "", "fiat_value": [{"dollars": "240.00"}], "unit_value": [{"count": [{"slips": "500"}]}], "timestamp_value": "01/082025",
+        "batch_list": []
+      }
+    ]
+  }
 }
-{ "invoices": [
-  { "local_id": "HERE",
-    "product_id": "HERE",
-    "tax", ""
-  },
-]
-}
-Date,Supplier,Crop Group,Variety,Amount Bought,Cost (Est.)
-Jan 08,Berlin Seeds,Legumes,Blue Lake Bush 274,25 lbs,$95.00
-Jan 08,Berlin Seeds,Legumes,Sugar Snap Peas,10 lbs,$62.00
-Jan 08,Berlin Seeds,Cucurbits,Waltham Butternut Squash,1 lb,$28.00
-Jan 08,Berlin Seeds,Cucurbits,CT Field Pumpkin,2 lbs,$42.00
-Jan 08,Berlin Seeds,Chenopods,Detroit Dark Red Beet,2 lbs,$38.00
-Jan 08,Berlin Seeds,Alliums,Stuttgarter Onion Sets,100 lbs,$160.00
-Jan 08,Berlin Seeds,Grasses,Silver Queen Sweet Corn,15 lbs,$210.00
-Jan 08,Berlin Seeds,Mallow Family,Clemson Spineless Okra,0.5 lbs,$18.00
-Jan 08,Berlin Seeds,Other (Cover),Red Clover Seed,50 lbs,$175.00
-Jan 08,Berlin Seeds,Sweet Potato,Beauregard Slips (Pre-order),500 count,$240.00
+
 Jan 12,Holmes Seed,Nightshades,Amish Paste Tomato,0.5 oz,$48.00
 Jan 12,Holmes Seed,Nightshades,CA Wonder Pepper,0.25 oz,$18.00
 Jan 12,Holmes Seed,Brassicas,Golden Acre Cabbage,1 oz,$12.00
