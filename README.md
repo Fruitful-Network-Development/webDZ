@@ -1,9 +1,32 @@
 # aws-box
 
-This repository is the **infrastructure sandbox** for the EC2 instance that
-hosts the shared Flask platform and multiple client frontends. It mirrors key
-parts of `/etc/` and `/srv/webapps/` and provides scripts for auditing and
-deploying changes safely.
+## Root README
+
+### Purpose:
+  - Explain what this repository represents, not how any single component works.
+
+### Should answer:
+  - What this server does at a high level
+  - What architectural philosophy is being followed
+  - What is in scope vs out of scope
+
+### Suggested contents
+  - System Overview
+    - Single-EC2, NGINX-fronted, static-first, API-backed architecture
+  - High-Level Architecture Diagram (textual is fine)
+    - DNS → NGINX → (static OR proxy) → Docker Compose services
+  - Design Principles
+    - Immutable-ish config via repo mirror
+    - Least privilege ingress
+    - Auth via centralized IdP
+  - What this repo is NOT
+    - Not application logic
+    - Not user data
+    - Not secrets (except templates)
+  - Deployment Philosophy
+    - Files staged → enabled explicitly
+    - No automatic side effects from rsync
+This README should never include port numbers or implementation details.
 
 ---
 
@@ -40,10 +63,42 @@ additional recovery and access mechanisms not previously present.
 
 ---
 
-## Directory structure & ownership
+## Structure
+
+### README placement
+```text
+aws/
+├── README.md                              ← TOP-LEVEL (system intent)
+│
+├── etc/
+│   ├── README.md                          ← Host OS configuration
+│   ├── nginx/
+│   │   ├── README.md                      ← Edge / ingress layer
+│   │   └── sites-available/
+│   │       └── README.md                  ← Virtual host patterns
+│   └── systemd/
+│       └── system/
+│           └── README.md                  ← Service supervision model
+│
+├── srv/
+│   ├── README.md                          ← Runtime data & services
+│   ├── webapps/
+│   │   ├── README.md                      ← Static sites & platform code
+│   │   ├── clients/
+│   │   │   └── README.md                  ← Multi-tenant static sites
+│   │   └── platform/
+│   │       └── README.md                  ← Flask application (logical)
+│   │
+│   └── compose/
+│       ├── README.md                      ← Containerized services (why)
+│       └── platform/
+│           └── README.md                  ← Auth + BFF stack (how)
+
+```
+
+### Directory structure & ownership
 
 Primary sources of truth and where this repo exists are on the server as:
-
 ```text
 home/admin/srv/webapps/
 ├── platform/
