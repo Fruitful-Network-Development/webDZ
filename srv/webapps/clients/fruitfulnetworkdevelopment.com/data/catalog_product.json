@@ -18,10 +18,10 @@
       "alias": [],
       "typespecs": [{ "propagule": [{"roation_group": "grasses", "propigation": "seed", "generation": "f1", "ownership": "proprietary", "unit_density": "4.0"}]}]
     },
-    { "taxa_id": "3_3_8_6_10_1_1_1_2", 
-      "title": "popcorn", 
+    { "taxa_id": "3_3_8_6_10_1_1_1_3", 
+      "title": "field_corn_open_pollinated", 
       "alias": [],
-      "typespecs": [{}]
+      "typespecs": [{ "propagule": [{"roation_group": "grasses", "propigation": "seed", "generation": "op", "ownership": "common", "unit_density": "3.1"}]}]
     },
     { "taxa_id": "3_3_8_6_10_1_2_1_1", 
       "title": "winter_rye", 
@@ -628,10 +628,10 @@
       "alias": [""],
       "typespecs": [{ "propagule": [{"roation_group": "other", "propigation": "seed", "generation": "op", "ownership": "common", "unit_density": "44.0"}]}]
     },
-    { "taxa_id": "3_3_8_8_37_3_164_3", 
-      "title": "spinach", 
+    { "taxa_id": "3_3_8_8_37_3_164_3_1", 
+      "title": "bloomsdale_spinach", 
       "alias": [],
-      "typespecs": [{}]
+      "typespecs": [{ "propagule": [{"roation_group": "chenopods", "propigation": "seed", "generation": "heirloom", "ownership": "common", "unit_density": "88.0"}]}]
     },
     { "taxa_id": "3_3_8_8_37_3_165_11_0", 
       "title": "beets", 
