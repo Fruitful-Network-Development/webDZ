@@ -645,10 +645,11 @@
                               "members": [
                                 { "taxa_id": "3_3_8_8_31_3_32000_100", "title": "lactuca_sativa",
                                   "subspecies": [
-                                    { "taxa_id": "3_3_8_8_31_3_32000_100_1_1", "title": "lactuca_sativa.crispa_subsp_oakleaf_lettuce"}, 
-                                    { "taxa_id": "3_3_8_8_31_3_32000_100_2_1", "title": "lactuca_sativa.capitata_subsp_bibb_lettuce"}, 
-                                    { "taxa_id": "3_3_8_8_31_3_32000_100_2_2", "title": "lactuca_sativa.capitata_subsp_iceberg_lettuce"}, 
-                                    { "taxa_id": "3_3_8_8_31_3_32000_100_3_1", "title": "lactuca_sativa.longifolia_subsp_romaine_lettuce"}, 
+                                    { "taxa_id": "3_3_8_8_31_3_32000_100_1_1", "title": "lactuca_sativa.crispa.akleaf_lettuce"}, 
+                                    { "taxa_id": "3_3_8_8_31_3_32000_100_2_1", "title": "lactuca_sativa.capitata.bibb_lettuce"}, 
+                                    { "taxa_id": "3_3_8_8_31_3_32000_100_2_2", "title": "lactuca_sativa.capitata.iceberg_lettuce"}, 
+                                    { "taxa_id": "3_3_8_8_31_3_32000_100_3_1", "title": "lactuca_sativa.longifolia.romaine_lettuce"},
+                                    { "taxa_id": "3_3_8_8_31_3_32000_100_3_2", "title": "lactuca_sativa.longifolia.black_seeded_simpson"},
                                     { "taxa_id": "3_3_8_8_31_3_32000_100_4_1", "title": "lactuca_sativa.hybrid.winter_density_lettuce"}, 
                                     { "taxa_id": "3_3_8_8_31_3_32000_100_5", "title": "lactuca_sativa.angustana_subsp"}
                                   ]
