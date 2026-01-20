@@ -21,6 +21,23 @@ After files are staged, the repo should be complete but not activated. The struc
 - systemd is unchanged:
    - compose-platform.service exists but is not enabled or started.
 
+Dry run:
+```bash
+sudo rsync -av --delete --dry-run --exclude 'webapps/platform/venv' /home/admin/aws-box/srv/ /srv/
+```
+, and then:
+```bash
+sudo rsync -av --delete --dry-run --exclude 'sites-available/fruitfulnetworkdevelopment.com.conf' /home/admin/aws-box/etc/nginx/ /etc/nginx/
+```
+Check to make sure the correct files are being updated, then run:
+```bash
+sudo rsync -a --delete --exclude 'webapps/platform/venv' /home/admin/aws-box/srv/ /srv/
+```
+, and then:
+```bash
+sudo rsync -a --delete --exclude 'sites-available/fruitfulnetworkdevelopment.com.conf' /home/admin/aws-box/etc/nginx/ /etc/nginx/
+```
+
 ## Phase 1: Intermediate server state (after sync, before enablement)
 
 Once the repo is synced to the server, the system remains inert. This is a deliberate checkpoint that allows verification before any service activation.
