@@ -471,7 +471,8 @@
                                     { "taxa_id": "3_3_8_8_21_4_90_1_5_1", "title": "solanum_lycopersicum.cocktail_cultivar_campari"}, 
                                     { "taxa_id": "3_3_8_8_21_4_90_1_5_2", "title": "solanum_lycopersicum.cocktail_cultivar_mountain_magic"}, 
                                     { "taxa_id": "3_3_8_8_21_4_90_1_5_3", "title": "solanum_lycopersicum.cocktail_cultivar_cocktail_crush"}, 
-                                    { "taxa_id": "3_3_8_8_21_4_90_1_5_4", "title": "solanum_lycopersicum.cocktail_cultivar_kumato"}
+                                    { "taxa_id": "3_3_8_8_21_4_90_1_5_4", "title": "solanum_lycopersicum.cocktail_cultivar_kumato"},
+                                    { "taxa_id": "3_3_8_8_21_4_90_1_6_1", "title": "solanum_lycopersicum.amish_paste_tomato"}
                                   ]
                                 },
                                 { "taxa_id": "3_3_8_8_25_1_90_1239", "title": "solanum_melongena", 
