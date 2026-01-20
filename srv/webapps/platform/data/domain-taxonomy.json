@@ -725,7 +725,11 @@
                           "genues": [
                             { "taxa_id": "3_3_8_8_37_3_164", "title": "spinacia", 
                               "members": [
-                                { "taxa_id": "3_3_8_8_37_3_164_3", "title": "spinacia_oleracea"}
+                                { "taxa_id": "3_3_8_8_37_3_164_3", "title": "spinacia_oleracea"
+                                  "members": [
+                                    { "taxa_id": "3_3_8_8_37_3_164_3_1", "title": "spinacia_oleracea.bloomsdale_spinach"}
+                                  ]
+                                }
                               ]
                             },
                             { "taxa_id": "3_3_8_8_37_3_165", "title": "beta", 
