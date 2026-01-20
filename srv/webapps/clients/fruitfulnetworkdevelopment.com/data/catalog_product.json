@@ -518,7 +518,7 @@
       "alias": ["lettuce_bibb_head", "bibb_lettuce", "red_bibb_lettuce", "lettuce_bibb"],
       "typespecs": [{}]
     },
-    { "taxa_id": "3_3_8_8_31_3_32000_100_2_2", 
+    { "taxa_id": "3_3_8_8_31_3_32000_100_2_2",
       "title": "iceberg_lettuce", 
       "alias": [],
       "typespecs": [{}]
@@ -527,6 +527,11 @@
       "title": "romaine_lettuce", 
       "alias": ["romaine_lettuce_head", "romaine", "lettuce_red_romaine"],
       "typespecs": [{}]
+    },
+    { "taxa_id": "3_3_8_8_31_3_32000_100_3_2", 
+      "title": "black_seeded_simpson", 
+      "alias": [""],
+      "typespecs": [{ "propagule": [{"roation_group": "leafy_greens", "propigation": "seed", "generation": "heirloom", "ownership": "common", "unit_density": "880.0"}]}]
     },
     { "taxa_id": "3_3_8_8_31_3_32000_100_4_1", 
       "title": "winter_density_lettuce", 
