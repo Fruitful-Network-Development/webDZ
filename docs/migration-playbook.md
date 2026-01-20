@@ -130,6 +130,7 @@ Important: This does not take effect until you log out and log back in.
 
 After re-login, verify:
 ```bash
+groups
 docker ps
 ```
 (should work without `sudo`)
