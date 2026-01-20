@@ -431,7 +431,7 @@
                                     { "taxa_id": "3_3_8_8_25_1_1_1_8", "title": "capsicum_annuum.cultivar_sweet_peppers"}, 
                                     { "taxa_id": "3_3_8_8_25_1_1_1_9", "title": "capsicum_annuum.cultivar_santa_fe_peppers"}, 
                                     { "taxa_id": "3_3_8_8_25_1_1_1_10", "title": "capsicum_annuum.cultivar_thai_hot_chili_pepper"}, 
-                                    { "taxa_id": "3_3_8_8_25_1_1_1_11", "title": "capsicum_annuum.cultivar_bell_peppers"}, 
+                                    { "taxa_id": "3_3_8_8_25_1_1_1_11_1", "title": "capsicum_annuum.bell_pepper.ca_wonder"}, 
                                     { "taxa_id": "3_3_8_8_25_1_1_1_12", "title": "capsicum_annuum.cultivar_golden_horn_peppers"}, 
                                     { "taxa_id": "3_3_8_8_25_1_1_1_13", "title": "capsicum_annuum.cultivar_pasilla_bajio_peppers"}, 
                                   ]
@@ -714,7 +714,11 @@
                             },
                             { "taxa_id": "3_3_8_8_34_1_434", "title": "daucus", 
                               "members": [
-                                { "taxa_id": "3_3_8_8_34_1_434_35", "title": "daucus_carota"}
+                                { "taxa_id": "3_3_8_8_34_1_434_35", "title": "daucus_carota"
+                                  "members": [
+                                    { "taxa_id": "3_3_8_8_34_1_434_35_1", "title": "daucus_carota.nantes_coreless_carrot"}
+                                  ]
+                                }
                               ]
                             }
                           ]
