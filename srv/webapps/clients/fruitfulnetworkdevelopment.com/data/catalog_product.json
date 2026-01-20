@@ -343,60 +343,10 @@
       "alias": ["borage_greens", "borage_greens_bunch"],
       "typespecs": [{}]
     },
-    { "taxa_id": "3_3_8_8_25_1_1_1_1", 
-      "title": "banana_peppers", 
-      "alias": ["sweet_and_hot_banana_peppers", "sweet_&_hot_banana_peppers", "sweet_banana_pepper", "sweet_banana_peppers"],
-      "typespecs": [{}]
-    },
-    { "taxa_id": "3_3_8_8_25_1_1_1_1", 
-      "title": "pepers", 
-      "alias": ["mixed_peppers", "hot_pepper", "hot_peppers", "mixed_sweet_peppers", "mixed_hot_peppers", "mixed_sweet_&_hot_peppers"],
-      "typespecs": [{}]
-    },
-    { "taxa_id": "3_3_8_8_25_1_1_1_10", 
-      "title": "thai_hot_chili_peppers", 
-      "alias": ["thai_hot_chili_pepper"],
-      "typespecs": [{}]
-    },
-    { "taxa_id": "3_3_8_8_25_1_1_1_12", 
-      "title": "golden_horn_peppers", 
-      "alias": ["golden_horn_pepper"],
-      "typespecs": [{}]
-    },
-    { "taxa_id": "3_3_8_8_25_1_1_1_13", 
-      "title": "pasilla_bajio_peppers", 
-      "alias": ["pasilla_bajio_pepper", "pasilla_bajoi_pepper", "pasilla_bajio", "passila_bajio_peppers"],
-      "typespecs": [{}]
-    },
-    { "taxa_id": "3_3_8_8_25_1_1_1_2", 
-      "title": "cubanelle_pepper", 
-      "alias": [],
-      "typespecs": [{}]
-    },
-    { "taxa_id": "3_3_8_8_25_1_1_1_5", 
-      "title": "jalapeno_peppers", 
-      "alias": ["jalapeno_pepper", "jalapeno", "jalepeno_pepper", "jalepeno_peppers", "jalepeno_pepper"],
-      "typespecs": [{}]
-    },
-    { "taxa_id": "3_3_8_8_25_1_1_1_9", 
-      "title": "santa_fe_peppers", 
-      "alias": ["santa_fe_pepper"],
-      "typespecs": [{}]
-    },
-    { "taxa_id": "3_3_8_8_25_1_1_1_9", 
-      "title": "hungarian_wax_peppers", 
-      "alias": ["hungarian_wax_pepper"],
-      "typespecs": [{}]
-    },
-    { "taxa_id": "3_3_8_8_25_1_1_2_1", 
-      "title": "habanero_pepper", 
-      "alias": ["habanero_peppers"],
-      "typespecs": [{}]
-    },
-    { "taxa_id": "3_3_8_8_25_1_1_2_1", 
-      "title": "bell_peppers", 
-      "alias": ["purple_peppers", "purple_bell_peppers", "green_bell_pepper", "green_&_purple_bell_peppers", "sweet_peppers_green_bell_purple_and_mini_yellow", "bell_pepper", "sweet_peppers", "sweet_pepper", "green_peppers", "peppers", "green_pepper"],
-      "typespecs": [{}]
+    { "taxa_id": "3_3_8_8_25_1_1_1_11_1", 
+      "title": "ca_wonder_pepper", 
+      "alias": [""],
+      "typespecs": [{ "propagule": [{"roation_group": "nightshades", "propigation": "seed", "generation": "heirloom", "ownership": "common", "unit_density": "159.0"}]}]
     },
     { "taxa_id": "3_3_8_8_25_1_89_1", 
       "title": "tomatillos", 
@@ -603,10 +553,10 @@
       "alias": ["celery_greens_bunch", "celery_greens"],
       "typespecs": [{}]
     },
-    { "taxa_id": "3_3_8_8_34_1_434_35_0", 
-      "title": "carrots", 
-      "alias": ["carrots"],
-      "typespecs": [{}]
+    { "taxa_id": "3_3_8_8_34_1_434_35_1", 
+      "title": "nantes_coreless_carrot", 
+      "alias": [""],
+      "typespecs": [{ "propagule": [{"roation_group": "umbellifers", "propigation": "seed", "generation": "op", "ownership": "common", "unit_density": "99.0"}]}]
     },
     { "taxa_id": "3_3_8_8_34_1_4_1", 
       "title": "parsley", 
