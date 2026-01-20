@@ -63,6 +63,16 @@
       "alias": [],
       "typespecs": [{ "propagule": [{"roation_group": "alliums", "propigation": "root", "generation": "op", "ownership": "common", "unit_density": "0.26"}]}]
     },
+    { "taxa_id": "3_3_8_6_7_2_1_1_1", 
+      "title": "mary_washington_asparagus", 
+      "alias": [],
+      "typespecs": [{ "propagule": [{"roation_group": "other", "propigation": "root", "generation": "heirloom", "ownership": "common", "unit_density": "0.02"}]}]
+    },
+    { "taxa_id": "3_3_8_8_11_1_1_1", 
+      "title": "red_clover_seed", 
+      "alias": [],
+      "typespecs": [{ "propagule": [{"roation_group": "legume", "propigation": "seed", "generation": "op", "ownership": "common", "unit_density": "606.0"}]}]
+    },
     { "taxa_id": "3_3_8_8_11_1_750_70_1_4_1", 
       "title": "blue_lake_274", 
       "alias": ["blue_lake_beans", "bush_beans"],
