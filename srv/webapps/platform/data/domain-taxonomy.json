@@ -116,6 +116,7 @@
                                 { "taxa_id": "3_3_8_8_11_1_750_70", "title": "phaseolus_vulgaris", 
                                   "members": [
                                     { "taxa_id": "3_3_8_8_11_1_750_70_1_1_1", "title": "phaseolus_vulgaris.snap_pod.flat.romano"},
+                                    { "taxa_id": "3_3_8_8_11_1_750_70_1_1_2", "title": "phaseolus_vulgaris.snap_pod.flat.snow_pea"},
                                     { "taxa_id": "3_3_8_8_11_1_750_70_1_2_1", "title": "phaseolus_vulgaris.snap_pod.wax.yellow_wax"},
                                     { "taxa_id": "3_3_8_8_11_1_750_70_1_2_2", "title": "phaseolus_vulgaris.snap_pod.wax.green_beans"},
                                     { "taxa_id": "3_3_8_8_11_1_750_70_1_3_1", "title": "phaseolus_vulgaris.snap_pod.fine.yellow_filet"},
@@ -129,7 +130,8 @@
                                     { "taxa_id": "3_3_8_8_11_1_750_70_2_1_7", "title": "phaseolus_vulgaris.bean.dry.adzuki"},
                                     { "taxa_id": "3_3_8_8_11_1_750_70_2_1_8", "title": "phaseolus_vulgaris.bean.dry.fava_broad"},
                                     { "taxa_id": "3_3_8_8_11_1_750_70_2_2_1", "title": "phaseolus_vulgaris.bean.shell.borlotti_cranberry_bean"},
-                                    { "taxa_id": "3_3_8_8_11_1_750_70_2_2_2", "title": "phaseolus_vulgaris.bean.shell.lima_butter_bean"}
+                                    { "taxa_id": "3_3_8_8_11_1_750_70_2_2_2", "title": "phaseolus_vulgaris.bean.shell.lima_butter_bean"},
+                                    { "taxa_id": "3_3_8_8_11_1_750_70_3_1_1", "title": "phaseolus_vulgaris.bean.hybrid.sugar_snap_peas"}
                                   ]
                                 }
                               ]
@@ -177,18 +179,18 @@
                               "members": [
                                 { "taxa_id": "3_3_8_8_13_6_1_1", "title": "cucurbita_pepo",
                                   "members": [
-                                    { "taxa_id": "3_3_8_8_13_6_1_1_1_1", "title": "cucurbita_pepo.cultivar_acorn_squash"}, 
-                                    { "taxa_id": "3_3_8_8_13_6_1_1_1_2", "title": "cucurbita_pepo.cultivar_delicata_squash"}, 
-                                    { "taxa_id": "3_3_8_8_13_6_1_1_1_3", "title": "cucurbita_pepo.cultivar_spaghetti_squash"}, 
-                                    { "taxa_id": "3_3_8_8_13_6_1_1_1_4", "title": "cucurbita_pepo.cultivar_patty_pan_squash"}, 
-                                    { "taxa_id": "3_3_8_8_13_6_1_1_1_5", "title": "cucurbita_pepo.cultivar_festival_squash"}, 
-                                    { "taxa_id": "3_3_8_8_13_6_1_1_1_6", "title": "cucurbita_pepo.cultivar_sweet_dumpling_squash"}, 
-                                    { "taxa_id": "3_3_8_8_13_6_1_1_1_7", "title": "cucurbita_pepo.cultivar_zucchini"}, 
-                                    { "taxa_id": "3_3_8_8_13_6_1_1_1_8", "title": "cucurbita_pepo.cultivar_yellow_squash"}, 
-                                    { "taxa_id": "3_3_8_8_13_6_1_1_1_9", "title": "cucurbita_pepo.cultivar_summer_squash"}, 
-                                    { "taxa_id": "3_3_8_8_13_6_1_1_1_10", "title": "cucurbita_pepo.cultivar_buffy_winter_squash"}, 
-                                    { "taxa_id": "3_3_8_8_13_6_1_1_1_11", "title": "cucurbita_pepo.cultivar_delicata_squash"}, 
-                                    { "taxa_id": "3_3_8_8_13_6_1_1_2_1", "title": "cucurbita_pepo.moschata_hybrid_cultivar_butterkin_squash"}
+                                    { "taxa_id": "3_3_8_8_13_6_1_1_1_1", "title": "cucurbita_pepo.winter_squash.turbinata.acorn_squash"},
+                                    { "taxa_id": "3_3_8_8_13_6_1_1_1_2", "title": "cucurbita_pepo.winter_squash.delicata_squash"},
+                                    { "taxa_id": "3_3_8_8_13_6_1_1_1_3", "title": "cucurbita_pepo.winter_squash.intertexta.spaghetti_squash"},
+                                    { "taxa_id": "3_3_8_8_13_6_1_1_1_4", "title": "cucurbita_pepo.winter_squash.festival_squash"},
+                                    { "taxa_id": "3_3_8_8_13_6_1_1_1_5", "title": "cucurbita_pepo.winter_squash.buffy"},
+                                    { "taxa_id": "3_3_8_8_13_6_1_1_1_6", "title": "cucurbita_pepo.winter_squash.hubbard"},
+                                    { "taxa_id": "3_3_8_8_13_6_1_1_2_1", "title": "cucurbita_pepo.summer_squash.cylindrica.zucchini"},
+                                    { "taxa_id": "3_3_8_8_13_6_1_1_2_2", "title": "cucurbita_pepo.summer_squash.clypeata.patty_pan"},
+                                    { "taxa_id": "3_3_8_8_13_6_1_1_2_3", "title": "cucurbita_pepo.summer_squash.crookneck"},
+                                    { "taxa_id": "3_3_8_8_13_6_1_1_3_1", "title": "cucurbita_pepo.pumpkin.pie"},
+                                    { "taxa_id": "3_3_8_8_13_6_1_1_3_2", "title": "cucurbita_pepo.pumpkin.ct_field"},
+                                    { "taxa_id": "3_3_8_8_13_6_1_1_4_1", "title": "cucurbita_pepo.hybrid.moschata.butterkin_squash"}
                                   ]
                                 },
                                 { "taxa_id": "3_3_8_8_13_6_1_2", "title": "cucurbita_maxima",
@@ -202,9 +204,10 @@
                                 },
                                 { "taxa_id": "3_3_8_8_13_6_1_3", "title": "cucurbita_moschata",
                                   "members": [
-                                    { "taxa_id": "3_3_8_8_13_6_1_3_1", "title": "cucurbita_maxima.cultivar_butternut_squash"}
-                                    { "taxa_id": "3_3_8_8_13_6_1_3_2", "title": "cucurbita_maxima.cultivar_sugar_pumpkin"}
-                                    { "taxa_id": "3_3_8_8_13_6_1_3_3", "title": "cucurbita_maxima.cultivar_golden_nugget_sqaush"}
+                                    { "taxa_id": "3_3_8_8_13_6_1_3_1_1", "title": "cucurbita_maxima.butternut.waltham"},
+                                    { "taxa_id": "3_3_8_8_13_6_1_3_1_2", "title": "cucurbita_maxima.butternut.honeynut"},
+                                    { "taxa_id": "3_3_8_8_13_6_1_3_2_1", "title": "cucurbita_maxima.sugar_pumpkin"},
+                                    { "taxa_id": "3_3_8_8_13_6_1_3_3_1", "title": "cucurbita_maxima.golden_nugget_sqaush"}
                                   ]
                                 }
                               ]
