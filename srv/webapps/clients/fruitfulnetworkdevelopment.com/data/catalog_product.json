@@ -678,20 +678,10 @@
       "alias": ["beet_beet"],
       "typespecs": [{}]
     },
-    { "taxa_id": "3_3_8_8_37_3_165_11_1_1", 
-      "title": "chioggia_beets", 
+    { "taxa_id": "3_3_8_8_37_3_165_11_1_1_1", 
+      "title": "detroit_dark_red_beets",
       "alias": [],
-      "typespecs": [{}]
-    },
-    { "taxa_id": "3_3_8_8_37_3_165_11_1_2", 
-      "title": "golden_beets", 
-      "alias": [],
-      "typespecs": [{}]
-    },
-    { "taxa_id": "3_3_8_8_37_3_165_11_1_4", 
-      "title": "sugar_beets", 
-      "alias": [],
-      "typespecs": [{}]
+      "typespecs": [{ "propagule": [{"roation_group": "chenopods", "propigation": "seed", "generation": "heirloom", "ownership": "common", "unit_density": "77.0"}]}]
     },
     { "taxa_id": "3_3_8_8_37_3_165_11_2_1", 
       "title": "chard", 
