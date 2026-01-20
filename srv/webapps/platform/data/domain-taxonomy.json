@@ -109,6 +109,15 @@
                                 }
                               ]
                             },
+                            { "taxa_id": "3_3_8_6_10_1_3", "title": "avena", 
+                              "members": [
+                                { "taxa_id": "3_3_8_6_10_1_3_1", "title": "avena_sativa",
+                                  "members": [
+                                    { "taxa_id": "3_3_8_6_10_1_3_1_1", "title": "avena_sativa.oats_jerry_variety"}
+                                  ]
+                                }
+                              ]
+                            }
                           ]
                         }
                       ]
