@@ -503,6 +503,11 @@
       "alias": ["radicchio_head", "chicory", "radicchio_heads"],
       "typespecs": [{}]
     },
+    { "taxa_id": "3_3_8_8_31_3_5_1_1", 
+      "title": "mammoth_grey_stripe_sunflower", 
+      "alias": [""],
+      "typespecs": [{ "propagule": [{"roation_group": "composites", "propigation": "seed", "generation": "heirloom", "ownership": "common", "unit_density": "11.0"}]}]
+    },
     { "taxa_id": "3_3_8_8_31_3_32000_100_1_1", 
       "title": "oakleaf_lettuce", 
       "alias": ["red_oakleaf_lettuce", "oakleaf_lettuce_bunch", "lettuce_green_oakleaf"],
