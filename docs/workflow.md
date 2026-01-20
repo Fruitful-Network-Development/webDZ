@@ -33,7 +33,7 @@ This prevents the deletion of /srv/webapps/platform/venv because it’s not in g
 #### Dry run Test
 To check what files would be updated before deploying run:
 ```bash
-sudo rsync -av --delete --dry-run /home/admin/aws-box/srv/ /srv/
+sudo rsync -av --delete --dry-run --exclude 'webapps/platform/venv' /home/admin/aws-box/srv/ /srv/
 ```
 
 ### Deploy `/etc` payload (nginx, systemd, etc.)
