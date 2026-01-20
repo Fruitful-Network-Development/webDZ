@@ -363,10 +363,10 @@
       "alias": [],
       "typespecs": [{}]
     },
-    { "taxa_id": "3_3_8_8_25_1_90_1240_0_0", 
-      "title": "potatoes", 
-      "alias": ["potatoes"],
-      "typespecs": [{}]
+    { "taxa_id": "3_3_8_8_25_2_1_1_1_1", 
+      "title": "orange_cultivar_beauregard", 
+      "alias": [""],
+      "typespecs": [{ "propagule": [{"roation_group": "sweet_potato", "propigation": "slips", "generation": "op", "ownership": "common", "unit_density": "0.05"}]}]
     },
     { "taxa_id": "3_3_8_8_26_1_1_1", 
       "title": "sage", 
