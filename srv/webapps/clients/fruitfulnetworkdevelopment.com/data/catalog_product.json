@@ -14,14 +14,19 @@
   ]
   "members": [
     { "taxa_id": "3_3_8_6_10_1_1_1_1", 
-      "title": "sweet_corn", 
+      "title": "silver_queen_sweet_corn", 
       "alias": [],
-      "typespecs": [{}]
+      "typespecs": [{ "propagule": [{"roation_group": "grasses", "propigation": "seed", "generation": "f1", "ownership": "proprietary", "unit_density": "4.0"}]}]
     },
     { "taxa_id": "3_3_8_6_10_1_1_1_2", 
       "title": "popcorn", 
       "alias": [],
       "typespecs": [{}]
+    },
+    { "taxa_id": "3_3_8_6_10_1_2_1_1", 
+      "title": "winter_rye", 
+      "alias": [],
+      "typespecs": [{ "propagule": [{"roation_group": "grasses", "propigation": "seed", "generation": "op", "ownership": "common", "unit_density": "40.0"}]}]
     },
     { "taxa_id": "3_3_8_6_7_1_73_1", 
       "title": "leak_scapes", 
@@ -48,50 +53,25 @@
       "alias": [],
       "typespecs": [{}]
     },
-    { "taxa_id": "3_3_8_6_7_1_73_700_0_0", 
-      "title": "onions", 
-      "alias": ["onion", "bunching_onions", "sweet_bunching_onions", "bunching_onion", "sweet_onions"],
-      "typespecs": [{}]
-    },
-    { "taxa_id": "3_3_8_6_7_1_73_700_2_0", 
+    { "taxa_id": "3_3_8_6_7_1_73_700_2_2", 
       "title": "green_onions", 
       "alias": ["scallops", "shallots", "green_onion", "greeen_onions", "green_bunching_onions"],
       "typespecs": [{}]
     },
-    { "taxa_id": "3_3_8_6_7_1_73_700_2_1", 
-      "title": "scallions", 
-      "alias": ["red_scallions"],
-      "typespecs": [{}]
-    },
-    { "taxa_id": "3_3_8_6_7_1_73_700_3_1", 
-      "title": "yellow_onions", 
+    { "taxa_id": "3_3_8_6_7_1_73_700_3_1_1", 
+      "title": "stuttgarter_onion", 
       "alias": [],
-      "typespecs": [{}]
-    },
-    { "taxa_id": "3_3_8_6_7_1_73_700_3_1", 
-      "title": "japanese_onions", 
-      "alias": ["japanese_bunching_onions"],
-      "typespecs": [{}]
-    },
-    { "taxa_id": "3_3_8_6_7_1_73_700_3_2", 
-      "title": "red_onions", 
-      "alias": ["red_onion", "red_bunching_onions"],
-      "typespecs": [{}]
-    },
-    { "taxa_id": "3_3_8_6_7_1_73_700_3_3", 
-      "title": "white_onions", 
-      "alias": ["white_onions_onions", "sweet_white_onion"],
-      "typespecs": [{}]
-    },
-    { "taxa_id": "3_3_8_6_7_1_73_700_3_4", 
-      "title": "sweet_spanish_onions", 
-      "alias": [],
-      "typespecs": [{}]
+      "typespecs": [{ "propagule": [{"roation_group": "alliums", "propigation": "root", "generation": "op", "ownership": "common", "unit_density": "0.26"}]}]
     },
     { "taxa_id": "3_3_8_8_11_1_750_70_1_4_1", 
       "title": "blue_lake_274", 
       "alias": ["blue_lake_beans", "bush_beans"],
       "typespecs": [{ "propagule": [{"roation_group": "legume", "propigation": "seed", "generation": "heirloom", "ownership", "common", "unit_density": "3.5"}]}]
+    },
+    { "taxa_id": "3_3_8_8_11_1_750_70_1_4_2", 
+      "title": "provider_bush_bean", 
+      "alias": [],
+      "typespecs": [{ "propagule": [{"roation_group": "legume", "propigation": "seed", "generation": "op", "ownership": "common", "unit_density": "3.5"}]}]
     },
     { "taxa_id": "3_3_8_8_11_1_750_70_1_2_2", 
       "title": "green_beans", 
@@ -248,50 +228,15 @@
       "alias": [],
       "typespecs": [{}]
     },
-    { "taxa_id": "3_3_8_8_21_4_350_100", 
-      "title": "broccoli", 
-      "alias": ["sprouting_broccoli_greens", "sprouting_broccoli_greens", "sprouting_broccoli"],
-      "typespecs": [{}]
-    },
-    { "taxa_id": "3_3_8_8_21_4_350_100_0_0", 
-      "title": "kale", 
-      "alias": ["braising_brassica_greens_mix", "brassica_mix"],
-      "typespecs": [{}]
-    },
-    { "taxa_id": "3_3_8_8_21_4_350_100_1_10", 
-      "title": "kohlrabi", 
-      "alias": ["kohlrabi_bulb", "kohlrabi_greens"],
-      "typespecs": [{}]
-    },
-    { "taxa_id": "3_3_8_8_21_4_350_100_1_3", 
-      "title": "cabbage", 
-      "alias": ["cabbage_head", "mini_cabbage"],
-      "typespecs": [{}]
-    },
-    { "taxa_id": "3_3_8_8_21_4_350_100_1_6", 
-      "title": "collard", 
-      "alias": ["collard_greens", "collards"],
-      "typespecs": [{}]
-    },
-    { "taxa_id": "3_3_8_8_21_4_350_100_1_7", 
-      "title": "curcly_kale", 
+    { "taxa_id": "3_3_8_8_21_4_350_100_3_3", 
+      "title": "golden_acre_cabbage", 
       "alias": [],
-      "typespecs": [{}]
+      "typespecs": [{ "propagule": [{"roation_group": "brassicas", "propigation": "seed", "generation": "heirloom", "ownership": "common", "unit_density": "317.0"}]}]
     },
-    { "taxa_id": "3_3_8_8_21_4_350_100_1_7", 
-      "title": "curly_kale", 
-      "alias": ["purple_curly_kale"],
-      "typespecs": [{}]
-    },
-    { "taxa_id": "3_3_8_8_21_4_350_100_1_8", 
-      "title": "russian_kale", 
-      "alias": ["red_russian_kale", "red_russion_kale"],
-      "typespecs": [{}]
-    },
-    { "taxa_id": "3_3_8_8_21_4_350_100_1_9", 
-      "title": "toscano_kale", 
-      "alias": ["toscano_kale_bunch"],
-      "typespecs": [{}]
+    { "taxa_id": "3_3_8_8_21_4_350_100_5_4", 
+      "title": "lacinato_kale", 
+      "alias": ["dinosaur_kale", "tuscan_kale"],
+      "typespecs": [{ "propagule": [{"roation_group": "brassicas", "propigation": "seed", "generation": "heirloom", "ownership": "common", "unit_density": "317.0"}]}]
     },
     { "taxa_id": "3_3_8_8_21_4_350_98", 
       "title": "mustard_greens", 
@@ -368,10 +313,10 @@
       "alias": [],
       "typespecs": [{}]
     },
-    { "taxa_id": "3_3_8_8_22_5_2_1", 
-      "title": "okra", 
-      "alias": ["mixed_okra"],
-      "typespecs": [{}]
+    { "taxa_id": "3_3_8_8_22_5_2_1_1", 
+      "title": "clemson_spineless_okra", 
+      "alias": [""],
+      "typespecs": [{ "propagule": [{"roation_group": "mallow_family", "propigation": "seed", "generation": "heirloom", "ownership": "common", "unit_density": "17.6"}]}]
     },
     { "taxa_id": "3_3_8_8_24_1_1_1", 
       "title": "borage", 
@@ -563,11 +508,6 @@
       "alias": ["radicchio_head", "chicory", "radicchio_heads"],
       "typespecs": [{}]
     },
-    { "taxa_id": "3_3_8_8_31_3_32000_100_0_0", 
-      "title": "lettuce", 
-      "alias": ["leafy_lettuce_mix", "lettuce_heads", "loose_leaf_lettuce", "spring_greens_lettuce_mix", "head_lettuce", "lettuce_heads", "red_leaf_lettuce", "red_head_lettuce", "lettuce_red_head", "red_lettuce", "lettuce_bouquet_heads", "lettuce_mix", "lettuce_head", "salad_mix", "leafy_greens_mix"],
-      "typespecs": [{}]
-    },
     { "taxa_id": "3_3_8_8_31_3_32000_100_1_1", 
       "title": "oakleaf_lettuce", 
       "alias": ["red_oakleaf_lettuce", "oakleaf_lettuce_bunch", "lettuce_green_oakleaf"],
@@ -588,7 +528,12 @@
       "alias": ["romaine_lettuce_head", "romaine", "lettuce_red_romaine"],
       "typespecs": [{}]
     },
-    { "taxa_id": "3_3_8_8_31_3_32000_100_4", 
+    { "taxa_id": "3_3_8_8_31_3_32000_100_4_1", 
+      "title": "winter_density_lettuce", 
+      "alias": [],
+      "typespecs": [{ "propagule": [{"roation_group": "leafy_greens", "propigation": "seed", "generation": "op", "ownership": "common", "unit_density": "880.0"}]}]
+    },
+    { "taxa_id": "3_3_8_8_31_3_32000_100_5", 
       "title": "celtuce", 
       "alias": ["stem_lettuce", "celery_lettuce", "asparagus_lettuce", "chinese_lettuce"],
       "typespecs": [{}]
