@@ -31,10 +31,12 @@ sudo rsync -av --delete --dry-run --exclude 'sites-available/fruitfulnetworkdeve
 ```
 , and then:
 ```bash
-sudo rsync -av --delete --dry-run --exclude 'system/platform.service' /home/admin/aws-box/etc/systemd/ /etc/systemd/
+sudo rsync -av --dry-run /home/admin/aws-box/etc/systemd/system/ /etc/systemd/system/
 ```
+This last dry run is to varify only the unit files under /etc/systemd/system/ are updating, and that `/etc/systemd/system/multi-user.target.wants/` is not touched.
+No “activation” happens unless you explicitly enable or start.
 
-Check to make sure the correct files are being updated, then run:
+**Check to make sure the correct files are being updated, then run:**
 
 ```bash
 sudo rsync -a --delete --exclude 'webapps/platform/venv' /home/admin/aws-box/srv/ /srv/
@@ -45,7 +47,8 @@ sudo rsync -a --delete --exclude 'sites-available/fruitfulnetworkdevelopment.com
 ```
 , and then:
 ```bash
-sudo rsync -a --delete --exclude 'system/platform.service' /home/admin/aws-box/etc/systemd/ /etc/systemd/
+sudo rsync -av /home/admin/aws-box/etc/systemd/system/ /etc/systemd/system/
+sudo systemctl daemon-reload
 ```
 
 
