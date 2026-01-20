@@ -543,7 +543,8 @@
                                   "members": [
                                     { "taxa_id": "3_3_8_8_26_1_3_2_1", "title": "ocimum_basilicum.purple_basil"}, 
                                     { "taxa_id": "3_3_8_8_26_1_3_2_2", "title": "ocimum_basilicum.opal_basil"}, 
-                                    { "taxa_id": "3_3_8_8_26_1_3_2_3", "title": "ocimum_basilicum.sweet_basil"}
+                                    { "taxa_id": "3_3_8_8_26_1_3_2_3", "title": "ocimum_basilicum.sweet_basil"},
+                                    { "taxa_id": "3_3_8_8_26_1_3_2_4", "title": "ocimum_basilicum.genovese_basil"}
                                   ]
                                 }
                               ]
