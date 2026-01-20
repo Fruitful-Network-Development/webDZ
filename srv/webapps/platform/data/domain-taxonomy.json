@@ -780,6 +780,11 @@
                               "members": [
                                 { "taxa_id": "3_3_8_8_37_32_1_1", "title": "rumex_acetosa"}
                               ]
+                            },
+                            { "taxa_id": "3_3_8_8_37_32_2", "title": "fagopyrum",
+                              "members": [
+                                { "taxa_id": "3_3_8_8_37_32_2_1", "title": "fagopyrum_esculentum"}
+                              ]
                             }
                           ]
                         },
