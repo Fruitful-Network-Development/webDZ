@@ -623,10 +623,10 @@
       "alias": ["red_and_green_sorrel", "sorrel_greens_bunch", "sorrel_greens"],
       "typespecs": [{}]
     },
-    { "taxa_id": "3_3_8_8_37_32_1_1", 
-      "title": "sorrel", 
-      "alias": ["sorral"],
-      "typespecs": [{}]
+    { "taxa_id": "3_3_8_8_37_32_2_1", 
+      "title": "buckwheat", 
+      "alias": [""],
+      "typespecs": [{ "propagule": [{"roation_group": "other", "propigation": "seed", "generation": "op", "ownership": "common", "unit_density": "44.0"}]}]
     },
     { "taxa_id": "3_3_8_8_37_3_164_3", 
       "title": "spinach", 
