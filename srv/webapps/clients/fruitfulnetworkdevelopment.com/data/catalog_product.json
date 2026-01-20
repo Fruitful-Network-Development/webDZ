@@ -223,10 +223,10 @@
       "alias": ["long_english_cucumber_cucumber"],
       "typespecs": [{}]
     },
-    { "taxa_id": "3_3_8_8_21_4_1_1_0", 
-      "title": "radishes", 
-      "alias": ["radishes_bunch", "mixed_radishes", "radish_greens"],
-      "typespecs": [{}]
+    { "taxa_id": "3_3_8_8_21_4_1_1_1", 
+      "title": "daikon_radish_driller", 
+      "alias": [""],
+      "typespecs": [{ "propagule": [{"roation_group": "brassicas", "propigation": "seed", "generation": "op", "ownership": "common", "unit_density": "77.0"}]}]
     },
     { "taxa_id": "3_3_8_8_21_4_348_1", 
       "title": "arugula", 
