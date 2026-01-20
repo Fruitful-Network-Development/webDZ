@@ -51,6 +51,84 @@ sudo rsync -av /home/admin/aws-box/etc/systemd/system/ /etc/systemd/system/
 sudo systemctl daemon-reload
 ```
 
+#### Set Up Docker
+
+** 0.1) Confirm:**
+```bash
+docker --version || true
+docker compose version || true
+```
+
+** 0.2) Install prerequisites:**
+```bash
+sudo apt-get update
+sudo apt-get install -y \
+    ca-certificates \
+    curl \
+    gnupg \
+    lsb-release
+```
+
+** 0.3) Add Docker’s official GPG key**
+```bash
+sudo mkdir -p /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg \
+  | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+sudo chmod a+r /etc/apt/keyrings/docker.gpg
+```
+
+** 0.4) Add Docker’s official repository**
+```bash
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] \
+  https://download.docker.com/linux/ubuntu \
+  $(lsb_release -cs) stable" \
+| sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+```
+
+** 0.5) Install Docker Engine + Compose plugin**
+This installs:
+- docker
+- docker compose (v2 plugin, not the old docker-compose binary)
+```bash
+sudo apt-get update
+sudo apt-get install -y \
+  docker-ce \
+  docker-ce-cli \
+  containerd.io \
+  docker-buildx-plugin \
+  docker-compose-plugin
+```
+
+** 0.6) After install:**
+```bash
+sudo systemctl enable docker
+sudo systemctl start docker
+```
+
+** 0.7) Verify Docker is running**
+```bash
+docker --version
+docker compose version
+sudo systemctl status docker --no-pager
+docker ps
+ss -lntp | grep docker || true
+```
+
+#### (Optional, but recommended) Add admin to docker group
+This avoids needing sudo for every Docker command.
+```bash
+sudo usermod -aG docker admin
+```
+Important: This does not take effect until you log out and log back in.
+
+After re-login, verify:
+```bash
+docker ps
+```
+(should work without `sudo`)
+
+---
 
 ## Phase 1: Intermediate server state (after sync, before enablement)
 
