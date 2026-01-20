@@ -463,30 +463,10 @@
       "alias": ["marjoram", "margeran"],
       "typespecs": [{}]
     },
-    { "taxa_id": "3_3_8_8_26_1_3_1", 
-      "title": "lemon_basil", 
-      "alias": [],
-      "typespecs": [{}]
-    },
     { "taxa_id": "3_3_8_8_26_1_3_2", 
-      "title": "basil", 
+      "title": "genovese_basil", 
       "alias": [],
-      "typespecs": [{}]
-    },
-    { "taxa_id": "3_3_8_8_26_1_3_2_1", 
-      "title": "purple_basil", 
-      "alias": ["purple_basil_bunch"],
-      "typespecs": [{}]
-    },
-    { "taxa_id": "3_3_8_8_26_1_3_2_2", 
-      "title": "opal_basil", 
-      "alias": [],
-      "typespecs": [{}]
-    },
-    { "taxa_id": "3_3_8_8_26_1_3_2_3", 
-      "title": "sweet_basil", 
-      "alias": ["sweet_basil"],
-      "typespecs": [{}]
+      "typespecs": [{ "propagule": [{"roation_group": "mint_family", "propigation": "seed", "generation": "heirloom", "ownership": "common", "unit_density": "635.0"}]}]
     },
     { "taxa_id": "3_3_8_8_26_1_4_0", 
       "title": "mountain_mint", 
