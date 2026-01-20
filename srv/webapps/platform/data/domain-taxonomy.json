@@ -688,10 +688,15 @@
                               "members": [
                                   { "taxa_id": "3_3_8_8_37_3_165_11", "title": "beta_vulgaris",
                                     "members": [
-                                      { "taxa_id": "3_3_8_8_37_3_165_11_1_1", "title": "beta_vulgaris.chioggia_beets"}, 
-                                      { "taxa_id": "3_3_8_8_37_3_165_11_1_2", "title": "beta_vulgaris.golden_beets"}, 
-                                      { "taxa_id": "3_3_8_8_37_3_165_11_1_3", "title": "beta_vulgaris.purple_beets"}, 
-                                      { "taxa_id": "3_3_8_8_37_3_165_11_1_4", "title": "beta_vulgaris.sugar_beets"}, 
+                                      { "taxa_id": "3_3_8_8_37_3_165_11_1_1_1", "title": "beta_vulgaris.red.detroit_dark_red"},
+                                      { "taxa_id": "3_3_8_8_37_3_165_11_1_1_2", "title": "beta_vulgaris.red.ruby_queen"},
+                                      { "taxa_id": "3_3_8_8_37_3_165_11_1_1_3", "title": "beta_vulgaris.red.bulls_blood"},
+                                      { "taxa_id": "3_3_8_8_37_3_165_11_1_1_4", "title": "beta_vulgaris.red.formanova"},
+                                      { "taxa_id": "3_3_8_8_37_3_165_11_1_2_1", "title": "beta_vulgaris.golden.golden_detroit"},
+                                      { "taxa_id": "3_3_8_8_37_3_165_11_1_2_2", "title": "beta_vulgaris.golden.touchstone_gold"},
+                                      { "taxa_id": "3_3_8_8_37_3_165_11_1_3_1", "title": "beta_vulgaris.white.avalanche"},
+                                      { "taxa_id": "3_3_8_8_37_3_165_11_1_3_2", "title": "beta_vulgaris.white.sugar_beets"},
+                                      { "taxa_id": "3_3_8_8_37_3_165_11_1_4_1", "title": "beta_vulgaris.candy_striped.chioggia_beets"},
                                       { "taxa_id": "3_3_8_8_37_3_165_11_2_1", "title": "beta_vulgaris.swiss_chard"}
                                     ]
                                   }
