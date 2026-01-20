@@ -94,8 +94,10 @@
                               "members": [
                                 { "taxa_id": "3_3_8_6_10_1_1_1", "title": "zea_mays",
                                   "members": [
-                                    { "taxa_id": "3_3_8_6_10_1_1_1_1", "title": "zea_mays.silver_queen_sweet_corn"}, 
-                                    { "taxa_id": "3_3_8_6_10_1_1_1_2", "title": "zea_mays.everta"}
+                                    { "taxa_id": "3_3_8_6_10_1_1_1_1", "title": "zea_mays.silver_queen_sweet_corn"},
+                                    { "taxa_id": "3_3_8_6_10_1_1_1_2", "title": "zea_mays.everta"},
+                                    { "taxa_id": "3_3_8_6_10_1_1_1_3", "title": "zea_mays.indurata"},
+                                    { "taxa_id": "3_3_8_6_10_1_1_1_4", "title": "zea_mays.indentata"}
                                   ]
                                 }
                               ]
