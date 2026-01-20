@@ -29,7 +29,13 @@ sudo rsync -av --delete --dry-run --exclude 'webapps/platform/venv' /home/admin/
 ```bash
 sudo rsync -av --delete --dry-run --exclude 'sites-available/fruitfulnetworkdevelopment.com.conf' /home/admin/aws-box/etc/nginx/ /etc/nginx/
 ```
+, and then:
+```bash
+sudo rsync -av --delete --dry-run --exclude 'system/platform.service' /home/admin/aws-box/etc/systemd/ /etc/systemd/
+```
+
 Check to make sure the correct files are being updated, then run:
+
 ```bash
 sudo rsync -a --delete --exclude 'webapps/platform/venv' /home/admin/aws-box/srv/ /srv/
 ```
@@ -37,6 +43,11 @@ sudo rsync -a --delete --exclude 'webapps/platform/venv' /home/admin/aws-box/srv
 ```bash
 sudo rsync -a --delete --exclude 'sites-available/fruitfulnetworkdevelopment.com.conf' /home/admin/aws-box/etc/nginx/ /etc/nginx/
 ```
+, and then:
+```bash
+sudo rsync -a --delete --exclude 'system/platform.service' /home/admin/aws-box/etc/systemd/ /etc/systemd/
+```
+
 
 ## Phase 1: Intermediate server state (after sync, before enablement)
 
