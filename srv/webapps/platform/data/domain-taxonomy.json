@@ -803,6 +803,15 @@
                               "members": [
                                 { "taxa_id": "3_3_8_8_37_32_2_1", "title": "fagopyrum_esculentum"}
                               ]
+                            },
+                            { "taxa_id": "3_3_8_8_37_32_3", "title": "rheum",
+                              "members": [
+                                { "taxa_id": "3_3_8_8_37_32_3_1", "title": "rheum_hybridum"
+                                  "members": [
+                                    { "taxa_id": "3_3_8_8_37_32_3_1_1", "title": "rheum_hybridum.victoria_rhubarb"}
+                                  ]
+                                }
+                              ]
                             }
                           ]
                         },
