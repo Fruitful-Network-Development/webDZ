@@ -8,9 +8,18 @@ After files are staged, the repo should be complete but not activated. The struc
 
 **Characteristics**
 - All required directories and configuration files exist.
-- Service units, containers, or process configs are present but not enabled.
-- No post-sync hooks or auto-start commands are triggered.
-- Operators must explicitly enable or start each service.
+   - `/etc/nginx/sites-available/auth.fruitfulnetworkdevelopment.com.conf`
+   - `/etc/nginx/sites-available/api.fruitfulnetworkdevelopment.com.conf`
+   - `/etc/systemd/system/compose-platform.service`
+   - `/srv/compose/platform/docker-compose.yml`
+   - `/srv/compose/platform/env.example`
+- Docker and Compose are installed.
+- Docker is running, but no containers are started for this project.
+- NGINX is unchanged from current behavior:
+   - no `auth.*` or `api.*` symlinks in `sites-enabled`
+   - no certs requested for those domains yet
+- systemd is unchanged:
+   - compose-platform.service exists but is not enabled or started.
 
 ## Phase 1: Intermediate server state (after sync, before enablement)
 
