@@ -623,6 +623,11 @@
       "alias": [""],
       "typespecs": [{ "propagule": [{"roation_group": "other", "propigation": "seed", "generation": "op", "ownership": "common", "unit_density": "44.0"}]}]
     },
+    { "taxa_id": "3_3_8_8_37_32_3_1_1", 
+      "title": "victoria_rhubarb", 
+      "alias": [""],
+      "typespecs": [{ "propagule": [{"roation_group": "other", "propigation": "root", "generation": "heirloom", "ownership": "common", "unit_density": "0.006"}]}]
+    },
     { "taxa_id": "3_3_8_8_37_3_164_3_1", 
       "title": "bloomsdale_spinach", 
       "alias": [],
