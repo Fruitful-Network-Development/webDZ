@@ -328,6 +328,11 @@
       "alias": [],
       "typespecs": [{}]
     },
+    { "taxa_id": "3_3_8_8_21_4_90_1_6_1", 
+      "title": "amish_paste_tomato", 
+      "alias": [],
+      "typespecs": [{ "propagule": [{"roation_group": "nightshades", "propigation": "seed", "generation": "heirloom", "ownership": "common", "unit_density": "350.0"}]}]
+    },
     { "taxa_id": "3_3_8_8_22_5_2_1_1", 
       "title": "clemson_spineless_okra", 
       "alias": [""],
