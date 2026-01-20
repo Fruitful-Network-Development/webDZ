@@ -28,6 +28,11 @@
       "alias": [],
       "typespecs": [{ "propagule": [{"roation_group": "grasses", "propigation": "seed", "generation": "op", "ownership": "common", "unit_density": "40.0"}]}]
     },
+    { "taxa_id": "3_3_8_6_10_1_3_1_1", 
+      "title": "oats_jerry_variety", 
+      "alias": [],
+      "typespecs": [{ "propagule": [{"roation_group": "grasses", "propigation": "seed", "generation": "op", "ownership": "common", "unit_density": "31.0"}]}]
+    },
     { "taxa_id": "3_3_8_6_7_1_73_1", 
       "title": "leak_scapes", 
       "alias": [],
