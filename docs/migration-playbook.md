@@ -53,13 +53,13 @@ sudo systemctl daemon-reload
 
 #### Set Up Docker
 
-** 0.1) Confirm:**
+**0.1) Confirm:**
 ```bash
 docker --version || true
 docker compose version || true
 ```
 
-** 0.2) Install prerequisites:**
+**0.2) Install prerequisites:**
 ```bash
 sudo apt-get update
 sudo apt-get install -y \
@@ -69,7 +69,7 @@ sudo apt-get install -y \
     lsb-release
 ```
 
-** 0.3) Add Docker’s official GPG key**
+**0.3) Add Docker’s official GPG key**
 ```bash
 sudo mkdir -p /etc/apt/keyrings
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg \
@@ -77,7 +77,7 @@ curl -fsSL https://download.docker.com/linux/ubuntu/gpg \
 sudo chmod a+r /etc/apt/keyrings/docker.gpg
 ```
 
-** 0.4) Add Docker’s official repository**
+**0.4) Add Docker’s official repository**
 ```bash
 echo \
   "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] \
@@ -86,7 +86,7 @@ echo \
 | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 ```
 
-** 0.5) Install Docker Engine + Compose plugin**
+**0.5) Install Docker Engine + Compose plugin**
 This installs:
 - docker
 - docker compose (v2 plugin, not the old docker-compose binary)
@@ -100,13 +100,13 @@ sudo apt-get install -y \
   docker-compose-plugin
 ```
 
-** 0.6) After install:**
+**0.6) After install:**
 ```bash
 sudo systemctl enable docker
 sudo systemctl start docker
 ```
 
-** 0.7) Verify Docker is running**
+**0.7) Verify Docker is running**
 ```bash
 docker --version
 docker compose version
