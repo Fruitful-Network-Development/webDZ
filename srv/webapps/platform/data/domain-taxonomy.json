@@ -632,6 +632,15 @@
                                 { "taxa_id": "3_3_8_8_31_3_4_2", "title": "artemisia_dracunculoides"}
                               ]
                             },
+                            { "taxa_id": "3_3_8_8_31_3_5", "title": "helianthus", 
+                              "members": [
+                                { "taxa_id": "3_3_8_8_31_3_5_1", "title": "helianthus_annuus"
+                                  "members": [
+                                    { "taxa_id": "3_3_8_8_31_3_5_1_1", "title": "helianthus_annuus.mammoth_grey_stripe_sunflower"}
+                                  ]
+                                }    
+                              ]
+                            },
                             { "taxa_id": "3_3_8_8_31_3_32000", "title": "lactuca", 
                               "members": [
                                 { "taxa_id": "3_3_8_8_31_3_32000_100", "title": "lactuca_sativa",
