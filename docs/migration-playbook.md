@@ -237,9 +237,65 @@ Checkpoint
 - Data persistence established
 
 
+
 ### 1.2) Expose auth.fruitfulnetworkdevelopment.com with TLS
 > **Goal:** Make Keycloak publicly reachable only through NGINX + HTTPS.
 This phase answers: “Can the IdP exist independently and safely?”
+
+**Enable the NGINX vhost (still no cert yet)**
+```bash
+sudo ln -s /etc/nginx/sites-available/auth.fruitfulnetworkdevelopment.com.conf \
+           /etc/nginx/sites-enabled/auth.fruitfulnetworkdevelopment.com.conf
+```
+Validate:
+```bash
+sudo nginx -t
+```
+Reload:
+```bash
+sudo systemctl reload nginx
+```
+At this moment:
+- HTTP (port 80) should respond
+- HTTPS will fail until cert is issued
+
+**Obtain TLS certificate (Certbot)**
+```bash
+sudo certbot --nginx -d auth.fruitfulnetworkdevelopment.com
+```
+Certbot will:
+- perform ACME challenge
+- update the vhost
+- install cert paths
+
+**Verify Keycloak via browser**
+Visit:
+```bash
+https://auth.fruitfulnetworkdevelopment.com
+```
+You should see:
+  - Keycloak welcome or login screen
+
+Admin console:
+```bash
+https://auth.fruitfulnetworkdevelopment.com/admin
+```
+Login with:
+- `KEYCLOAK_ADMIN`
+- `KEYCLOAK_ADMIN_PASSWORD`
+
+**Verify reverse proxy correctness**
+Inside Keycloak admin:
+- Server info → should show correct hostname
+- No mixed-content warnings
+- Redirects remain HTTPS
+
+Checkpoint: Phase 2 complete
+- Keycloak publicly reachable
+- TLS enforced
+- Still no dependency on Flask BFF
+
+
 
 ### 1.3) Introduce Flask BFF authentication endpoints (DO NOT expose yet)
    - Enable and start the BFF after Keycloak is stable.
