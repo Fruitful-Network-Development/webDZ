@@ -147,21 +147,106 @@ Once the repo is synced to the server, the system remains inert. This is a delib
 - Only existing, pre-migration services remain active.
 - Manual validation can be performed safely.
 
-## Phase 2: Low-risk enablement sequence
+## Phase 2: Low-risk enablement sequence (soft launch planning
+
+Start development, the lowest-risk activation order remains:
+  - Start Postgres + Keycloak internally only (no NGINX enablement)
+  - Expose auth.* with TLS
+  - Introduce Flask BFF authentication endpoints and session model
+  - Expose api.* once the BFF is ready to answer something meaningful
 
 Activation follows a conservative, low-risk order. Enable foundational auth first, then downstream services.
+> **Reminder:** Activation is manual at every step. Nothing auto-runs.
 
-1. **Keycloak first**
-   - Enable and start Keycloak.
-   - Validate login, realm configuration, and token issuance.
-   - Confirm health checks and logs before proceeding.
+### 1.1) Start Postgres + Keycloak internally only
+- Enable and start Keycloak.
+- Validate login, realm configuration, and token issuance.
+- Confirm health checks and logs before proceeding.
 
-2. **BFF second**
+**Create the .env file (required before containers can start)**
+This does not expose anything.
+```bash
+sudo nano /srv/compose/platform/.env
+```
+Minimum viable contents (example — choose strong secrets):
+```bash
+# Keycloak admin bootstrap
+KEYCLOAK_ADMIN=admin
+KEYCLOAK_ADMIN_PASSWORD=STRONG_ADMIN_PASSWORD
+
+# Keycloak DB
+KC_DB_PASSWORD=STRONG_DB_PASSWORD
+
+# Placeholder for later phases
+KC_REALM=fruitful
+OIDC_CLIENT_ID=placeholder
+OIDC_CLIENT_SECRET=placeholder
+SESSION_SECRET=placeholder
+```
+Lock it down:
+```bash
+sudo chmod 600 /srv/compose/platform/.env
+sudo chown root:root /srv/compose/platform/.env
+```
+Checkpoint
+```bash
+ls -la /srv/compose/platform/.env
+```
+Expected: owned by root, readable only by root.
+
+**Start the Compose stack manually (NOT via systemd)**
+We deliberately avoid `compose-platform.service` for now so you stay in full control.
+```bash
+cd /srv/compose/platform
+sudo docker compose up -d
+```
+This will:
+- pull images if needed
+- start Postgres
+- start Keycloak
+- NOT start Flask BFF yet (it may start but is inert)- 
+
+**Verify containers are running**
+```bash
+docker ps
+```
+Expected:
+- `platform_postgres`
+- `platform_keycloak`
+(Flask BFF may be running but unreachable and unused)
+
+**Verify ports are bound only to localhost**
+```bash
+ss -lntp | egrep ':8081|:5432'
+```
+Expected:
+- `127.0.0.1:8081` → Keycloak
+- Postgres bound internally only (likely no host port)
+If you see `0.0.0.0:8081`, stop immediately — that would be a misconfiguration.
+
+**Verify Keycloak health locally (no browser yet)**
+From the server:
+```bash
+curl -I http://127.0.0.1:8081
+```
+Expected:
+- `HTTP 200` or `302`
+Checkpoint
+- Containers running
+- No public exposure
+- Data persistence established
+
+
+### 1.2) Expose auth.fruitfulnetworkdevelopment.com with TLS
+> **Goal:** Make Keycloak publicly reachable only through NGINX + HTTPS.
+This phase answers: “Can the IdP exist independently and safely?”
+
+### 1.3) Introduce Flask BFF authentication endpoints (DO NOT expose yet)
    - Enable and start the BFF after Keycloak is stable.
    - Verify authentication flow through Keycloak.
    - Confirm expected responses through the proxy layer.
 
-> **Reminder:** Activation is manual at every step. Nothing auto-runs.
+### 1.4) Expose api.fruitfulnetworkdevelopment.com
 
 ## Phase 3: Localhost-only bindings and NGINX proxy flow
 
