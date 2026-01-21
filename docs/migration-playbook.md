@@ -324,21 +324,76 @@ Later activation steps:
    - `/me`
    - authenticated response paths
 
+---
 
-## Phase 3: Localhost-only bindings and NGINX proxy flow
+## Phase 3: Introduce the Flask BFF (still internal-only)
+> **Goal:** Bring up a minimal Flask BFF that can authenticate users via Keycloak using OIDC, manage a server-side session cookie, and expose internal-only test endpoints — without any public API exposure or client-site coupling.
 
-All services bind to **localhost-only** ports. External access flows exclusively through NGINX.
+**Constraints (locked):**
+- Keycloak already live at auth.fruitfulnetworkdevelopment.com
+- Flask BFF bound to 127.0.0.1:8001 only
+- No NGINX vhost for api.* enabled yet
+- Testing via SSH port forwarding to localhost:8001
+- No client-site JavaScript changes
+(after its stable expose: api.fruitfulnetworkdevelopment.com - Phase 4)
 
-**Binding model**
-- Keycloak and BFF listen on `127.0.0.1` only.
-- No direct external exposure of service ports.
+ *See `~bffScrope.md` for more details.*
 
-**Proxy flow**
-1. Client requests reach NGINX.
-2. NGINX proxies to localhost-bound services.
-3. Responses return to NGINX, then to the client.
+### 3.1 Keycloak: create realm + OIDC client for internal test
+You’re going to test via SSH port forwarding, so Keycloak needs redirect URIs for `http://localhost:8001`.
 
-This setup preserves a controlled, manual activation process and reduces exposure risk during migration.
+#### Create a realm
+In Keycloak admin console:
+  - Create realm: `fruitful` (or match whatever you set as `KC_REALM`).
+
+#### Create OIDC client for BFF
+Create client with these settings:
+- Client ID: flask-bff
+- Client type: OpenID Connect
+- Client authentication: ON (confidential client)
+- Standard flow: ON
+- Implicit flow: OFF
+- Direct access grants: OFF
+**Valid redirect URIs:**
+`http://localhost:8001/callback`
+
+Web origins:
+
+http://localhost:8001
+
+Root URL / Home URL (optional):
+
+http://localhost:8001
+
+Then copy:
+
+Client Secret (you will put it into .env)
+
+Why HTTP not HTTPS here? Because your Phase 3 access path is your laptop → SSH tunnel → localhost, so HTTPS is not involved yet.
+
+
+
+
+
+
+
+
+
+
+
+
+
+### 3.2 Server: finalize .env for BFF
+
+
+### 3.3 Implement the minimal Flask BFF service
+
+
+### 3.4 Bring up the BFF container (still internal-only)
+
+### 3.5 Test from your laptop via SSH port forwarding
+
+---
 
 ## Manual activation checklist
 
