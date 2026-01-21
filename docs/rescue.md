@@ -11,9 +11,8 @@ In EC2 console → Instance → Actions → Monitor and troubleshoot:
   - Use an instance you can SSH into
 4. SSH into the Rescue Instance
 ```bash
-ssh -i ~/.ssh/aws-main-key.pem admin@54.172.16.165
+ssh -i ~/.ssh/aws-main-key-2026 admin@54.172.16.165
 ```
-, or maybe `aws-main-key-2026`
 
 5. Mount the volume
 ```bash
