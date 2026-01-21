@@ -2,7 +2,7 @@ services:
   postgres:
     image: postgres:16
     container_name: platform_postgres
-    restart: unless-stopped
+    restart: "no"
     environment:
       POSTGRES_DB: keycloak
       POSTGRES_USER: keycloak
@@ -15,10 +15,13 @@ services:
   keycloak:
     image: quay.io/keycloak/keycloak:latest
     container_name: platform_keycloak
-    restart: unless-stopped
+    restart: "no"
     depends_on:
       - postgres
     environment:
+      # Added to prevent issues with SSH in migration
+      JAVA_OPTS_APPEND: "-Xms128m -Xmx384m"
+
       # Admin bootstrap
       KEYCLOAK_ADMIN: ${KEYCLOAK_ADMIN}
       KEYCLOAK_ADMIN_PASSWORD: ${KEYCLOAK_ADMIN_PASSWORD}
@@ -31,11 +34,10 @@ services:
       KC_DB_PASSWORD: ${KC_DB_PASSWORD}
 
       # Run behind NGINX TLS termination
-      KC_HTTP_ENABLED: "true"
-      KC_PROXY: edge
+      KC_PROXY_HEADERS: xforwarded
       KC_HOSTNAME: auth.fruitfulnetworkdevelopment.com
       KC_HOSTNAME_STRICT: "true"
-      KC_PROXY_HEADERS: xforwarded
+      KC_HTTP_ENABLED: "true"
 
       # Optional: if you later want health endpoints
       # KC_HEALTH_ENABLED: "true"
@@ -49,12 +51,20 @@ services:
     networks:
       - platform_net
 
+    # deploy.resources.limits is fully enforced in Swarm mode; in plain docker compose, it may not be enforced depending on your Docker/Compose version.
+    # So the JVM cap (JAVA_OPTS_APPEND) is the truly essential protection. We include deploy: anyway because it’s harmless and may be honored in your environment.
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+          cpus: "0.75"
+
   flask_bff:
     # You will provide the Dockerfile under /srv/compose/platform/flask-bff/
     build:
       context: ./flask-bff
     container_name: platform_flask_bff
-    restart: unless-stopped
+    restart: "no"
     depends_on:
       - keycloak
     environment:
