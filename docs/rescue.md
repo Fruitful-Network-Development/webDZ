@@ -17,5 +17,5 @@ ssh -i ~/.ssh/aws-main-key-2026.pem admin@54.172.16.165
 5. Mount the volume
 ```bash
 sudo mkdir -p /mnt/rescue
-sudo mount /dev/xvdf1 /mnt/rescue   # partition name may vary
+sudo mount /dev/xvdbf1 /mnt/rescue   # partition name may vary
 ```
