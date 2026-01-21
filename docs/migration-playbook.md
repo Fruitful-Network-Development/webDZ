@@ -298,11 +298,32 @@ Checkpoint: Phase 2 complete
 
 
 ### 1.3) Introduce Flask BFF authentication endpoints (DO NOT expose yet)
-   - Enable and start the BFF after Keycloak is stable.
-   - Verify authentication flow through Keycloak.
-   - Confirm expected responses through the proxy layer.
+> **Goal:** Flask understands Keycloak, but is not public.
+**This phase is design-sensitive**, so we only outline actions.
+What you will do later:
+ 1. Create Keycloak realm (`fruitful`)
+ 2. Create OIDC client for Flask
+ 3. Implement in Flask:
+   - `/login`
+   - `/callback`
+   - `/logout`
+   - session cookie
+ 4. Test locally only via:
+   - SSH port-forward to `127.0.0.1:8001`
+   - or curl-based flow testing
+
+**You will not enable `api.*` yet.**
 
 ### 1.4) Expose api.fruitfulnetworkdevelopment.com
+> **Goal:** Only expose API when it answers something meaningful.
+Later activation steps:
+ 1. Enable NGINX vhost for api.*
+ 2. Obtain TLS cert
+ 3. Validate:
+   - `/health`
+   - `/me`
+   - authenticated response paths
+
 
 ## Phase 3: Localhost-only bindings and NGINX proxy flow
 
