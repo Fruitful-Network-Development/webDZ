@@ -59,6 +59,22 @@ services:
           memory: 512M
           cpus: "0.75"
 
+  platform_db:
+    image: postgres:16
+    container_name: platform_platform_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${PLATFORM_DB_NAME}
+      POSTGRES_USER: ${PLATFORM_DB_USER}
+      POSTGRES_PASSWORD: ${PLATFORM_DB_PASSWORD}
+    volumes:
+      - platform_db_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${PLATFORM_DB_USER} -d ${PLATFORM_DB_NAME}"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
   flask_bff:
     # You will provide the Dockerfile under /srv/compose/platform/flask-bff/
     build:
@@ -67,6 +83,9 @@ services:
     restart: "no"
     depends_on:
       - keycloak
+    depends_on:
+      platform_db:
+        condition: service_healthy
     environment:
       # The BFF should use these to configure OIDC against Keycloak
       OIDC_ISSUER: https://auth.fruitfulnetworkdevelopment.com/realms/${KC_REALM}
@@ -86,6 +105,7 @@ services:
 volumes:
   platform_postgres_data:
   platform_keycloak_data:
+  platform_db_data:
 
 networks:
   platform_net:
