@@ -108,7 +108,7 @@ At no point are tokens exposed to the browser.
 - Database lifecycle is tied to identity availability
 
 ### Platform Persistence (Phase 3+)
-A **separate platform database** may be introduced for identity resolution and
+A **separate platform database** “is introduced in Phase 3 for identity resolution and
 authorization metadata.
 
 This database is **not shared** with Keycloak.
