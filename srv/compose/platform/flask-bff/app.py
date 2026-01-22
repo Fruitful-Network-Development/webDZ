@@ -65,10 +65,10 @@ def create_app():
         session.clear()
         return {"status": "logged out"}
 
-    @app.get("/_set_test")
-    def set_test():
-        session["user"] = {"sub": "test", "preferred_username": "test"}
-        return redirect("/me")
+    # @app.get("/_set_test")
+    # def set_test():
+    #     session["user"] = {"sub": "test", "preferred_username": "test"}
+    #     return redirect("/me")
 
     return app
 
