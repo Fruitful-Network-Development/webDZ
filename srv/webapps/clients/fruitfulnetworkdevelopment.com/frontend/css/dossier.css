@@ -7,6 +7,17 @@
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 1.5rem 3rem;
+  --dossier-max-width: 72rem;
+}
+
+.dossier-page section,
+.dossier-page .dossier-editorial-grid {
+  width: min(var(--dossier-max-width), 100%);
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* ======================================
@@ -549,4 +560,50 @@
   bottom: 0;
   width: 0.35rem;
   background-color: var(--red);
+}
+
+/* ======================================
+   DOSSIER RESPONSIVE LAYOUT
+  ====================================== */
+@media (max-width: 960px) {
+  .section-dossier {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .dossier-sidebar {
+    order: 2;
+  }
+
+  .dossier-record {
+    order: 1;
+  }
+
+  .dossier-digression {
+    order: 3;
+  }
+
+  .dossier-editorial-grid,
+  .dossier-editorial-lead,
+  .dossier-editorial-details,
+  .dossier-editorial-columns,
+  .dossier-editorial-split,
+  .dossier-editorial-figure {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .dossier-editorial-figure img {
+    height: auto;
+  }
+}
+
+@media (max-width: 720px) {
+  .dossier-page {
+    padding: 0 1rem 2rem;
+  }
+
+  .dossier-graphic {
+    float: none;
+    margin: 0 auto 1rem;
+    width: min(100%, 320px);
+  }
 }
