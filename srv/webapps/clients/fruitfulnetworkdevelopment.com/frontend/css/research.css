@@ -196,15 +196,15 @@
  width: 100%;
  max-width: 680px;
  margin: 0 auto;
- padding: var(--space-lg) var(--space-md);
+ padding: 1.5rem 1rem;
 }
 
 .roadmap-grid {
  display: grid;
  grid-template-columns: 2rem 1fr;
  grid-auto-rows: auto;
- row-gap: var(--space-md);
- column-gap: var(--space-md);
+ row-gap: 1rem;
+ column-gap: 1rem;
  justify-items: start;
  position: relative;
 }
@@ -251,7 +251,7 @@
 .roadmap__card {
  background-color: var(--offwhite);
  border: 1px solid var(--silverback);
- border-radius: var(--space-2xs);
+ border-radius: 0.25rem;
  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
  display: flex;
  flex-direction: column;
@@ -272,11 +272,11 @@
   header; subsequent blocks contain the descriptive content. */
 .roadmap__card .roadmap_colorBlock:first-child {
  color: var(--offwhite);
- padding: var(--space-xs) var(--space-xs);
+ padding: 0.5rem 0.5rem;
  font-weight: 600;
 }
 .roadmap__card .roadmap_colorBlock:not(:first-child) {
- padding: var(--space-sm) var(--space-xs);
+ padding: 0.75rem 0.5rem;
  color: var(--nero);
  background-color: var(--offwhite);
  font-size: 0.85rem;
@@ -284,7 +284,7 @@
 
 /* Adjust list spacing inside cards */
 .roadmap__card ul {
- margin: var(--space-xs) 0 0 0;
+ margin: 0.5rem 0 0 0;
  padding-left: 1.25rem;
 }
 .roadmap__card li {
@@ -306,7 +306,7 @@
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: var(--space-lg) var(--space-md);
+  padding: 1.5rem 1rem;
 }
 
 /* Legend / key for timeline colours */
@@ -314,14 +314,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: var(--space-lg);
-  margin-bottom: var(--space-lg);
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .key-item {
   display: flex;
   align-items: center;
-  gap: var(--space-2xs);
+  gap: 0.25rem;
   font-size: 0.75rem;
 }
 
@@ -341,7 +341,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  gap: var(--space-md);
+  gap: 1rem;
 }
 
 /* Each year unit defines its own ring and month labels. */
@@ -349,7 +349,7 @@
   position: relative;
   width: 9rem;
   height: 9rem;
-  margin: var(--space-md) 0;
+  margin: 1rem 0;
 }
 
 /* The coloured ring itself.  A radial mask hollows out the centre
@@ -450,18 +450,18 @@
 .market-section {
   background-color: var(--offwhite);
   border: 1px solid var(--silverback);
-  border-radius: var(--space-2xs);
+  border-radius: 0.25rem;
   box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
-  padding: var(--space-lg);
+  padding: 1.5rem;
   display: flex;
   flex-direction: column;
-  gap: var(--space-md);
+  gap: 1rem;
 }
 
 .market-section__header {
   display: flex;
   flex-direction: column;
-  gap: var(--space-2xs);
+  gap: 0.25rem;
 }
 
 .market-section__eyebrow {
@@ -481,7 +481,7 @@
 .market-text-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: var(--space-md);
+  gap: 1rem;
   color: var(--nero);
   line-height: 1.65;
 }
@@ -489,17 +489,17 @@
 .market-feature-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: var(--space-md);
+  gap: 1rem;
 }
 
 .market-feature-card {
   background-color: var(--mosswash);
   border: 1px solid var(--silverback);
-  border-radius: var(--space-2xs);
-  padding: var(--space-md);
+  border-radius: 0.25rem;
+  padding: 1rem;
   display: flex;
   flex-direction: column;
-  gap: var(--space-sm);
+  gap: 0.75rem;
   height: 100%;
 }
 
@@ -512,8 +512,8 @@
   border: 1px dashed var(--silverback);
   background-color: var(--offwhite);
   color: var(--nero-light);
-  border-radius: var(--space-2xs);
-  padding: var(--space-md);
+  border-radius: 0.25rem;
+  padding: 1rem;
   text-align: center;
   min-height: 9rem;
   display: flex;
@@ -528,20 +528,20 @@
 
 .market-list {
   margin: 0;
-  padding-left: var(--space-lg);
+  padding-left: 1.5rem;
   display: grid;
-  gap: var(--space-sm);
+  gap: 0.75rem;
   color: var(--nero);
 }
 
 .market-cta {
   display: flex;
   flex-direction: column;
-  gap: var(--space-sm);
+  gap: 0.75rem;
 }
 
 .market-cta__actions {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-sm);
+  gap: 1rem;
 }

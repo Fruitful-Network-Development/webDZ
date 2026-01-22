@@ -42,9 +42,9 @@
       <!-- ======================================
           HERO - SECTION
       ====================================== -->
-      <section class="hero hero--home">
+      <section class="hero">
         <div class="hero__logo"><img src="favicon.png" alt="FND"/></div>
-        <div class="hero__text">
+        <div class="hero__text box">
           <h1>FRUITFUL NETWORK DEVELOPMENT</h1>
           <p id="tagline">Empowering What's Better, To Out Compete What's Worse</p>
         </div>
@@ -58,97 +58,83 @@
       ====================================== -->
       <section class="section-target">
         <!-- COLUMN 1 -->
-        <div class="target__card">
-          <div class="target__graphic img-container"><img src="assets/graphics/graphic-agriculture.png"/></div>
+        <article>
+          <div class="target__graphic"><img src="assets/graphics/graphic-agriculture.png"/></div>
           <h2>AGRICULTURE</h2>
-          <div class="target__message">
+          <div class="message">
             <p>Every year, the US economy loses out on $70B in output that small farm could have output. Meanwhile, monocrop agriculture and harmful practices costs the US $2.2T</p>
             <p>Our mission is to eliminate these damages and these losses. Allowing local economies to be the center of communities again.</p>
           </div>
-        </div>
+        </article>
 
         <!-- COLUMN 2 -->
-        <div class="target__card">
-          <div class="target__graphic img-container"><img src="assets/graphics/graphic-farmers.png"/></div>
+        <article>
+          <div class="target__graphic"><img src="assets/graphics/graphic-farmers.png"/></div>
           <h2>FARMERS</h2>
-          <div class="target__message">
+          <div class="message">
             <p>Small farms make up 90% of the US farmland and simultaneously profit 10% less/per acre than industrial farms; even despite less waste.</p>
             <p>Farmers can't plan to produce what they don't know they'll be able to sell.</p>
             <p>The demand, the people, and the product are all there; it's the coordination that's broken.</p>
           </div>
-        </div>
+        </article>
 
         <!-- COLUMN 3 -->
-        <div class="target__card">
-          <div class="target__graphic img-container"><img src="assets/graphics/graphic-consumers.png"/></div>
+        <article>
+          <div class="target__graphic"><img src="assets/graphics/graphic-consumers.png"/></div>
           <h2>CONSUMERS</h2>
-          <div class="target__message">
+          <div class="message">
             <p>Since local farms can't capitalize on their full potential, our food system can only stock products affordably from industrial farms.</p>
             <p>We're building a world where individuals aren't barred from buying healthy local produce in logistics or cost.</p>
           </div>
-        </div>
+        </article>
       </section>
-
-      <!-- DIVIDER LINE -->
-      <hr class="divider" />
 
       <!-- ======================================
           ASIDE SECTION (OPERATE)
       ====================================== -->
-      <div class="section-aside"><p class="aside__text">We offer customers technology investment: hire us for web services at their current provider's price. We integrate 3rd parties with customer development for free; only charging for cloud hosting, as our ultimate goal is to provide free, open-source tools.</p></div>
-
-      <!-- DIVIDER LINE -->
-      <hr class="divider" />
+      <div class="section-aside">
+        <hr/>
+        <p class="aside__text">We offer customers technology investment: hire us for web services at their current provider's price. We integrate 3rd parties with customer development for free; only charging for cloud hosting, as our ultimate goal is to provide free, open-source tools.</p>
+        <hr/>
+      </div>
 
       <!-- ======================================
           PROCESS - SECTION
       ====================================== -->
       <section class="section-process">
-        <div class="process-shell">
-          <div class="process-grid">
-            <article class="process-card stack-sm">
-              <div class="process-card__media img-container">
-                <img src="assets/graphics/graphic-consult.png" alt="Consult"/>
-              </div>
-              <div class="process-card__content">
-                <h3>CONSULT</h3>
-                <p>We work with clients to understand the nuance of their business and develop the tools their website uses Integrate what they have, and never pay for what they don't.</p>
-              </div>
-            </article>
-            
-            <article class="process-card stack-sm">
-              <div class="process-card__media img-container">
-                <img src="assets/graphics/graphic-demo.png" alt="Demo"/>
-              </div>
-              <div class="process-card__content">
-                <h3>DEMO</h3>
-                <p>This centralized application reduces logistical workload by syncing online sales, farm plans, and CSA fulfillment with supply invoices, inventory, weather data, and work calendars—eliminating duplicate data entry.</p>
-              </div>
-            </article>
-            
-            <article class="process-card stack-sm">
-              <div class="process-card__media img-container">
-                <img src="assets/graphics/graphic-dev.png" alt="Development"/>
-              </div>
-              <div class="process-card__content">
-                <h3>DEV</h3>
-                <p>FND uses this new Application Framework to be flexible and customizable to create visual ontologies of a business and its operations and what a customer may want.</p>
-              </div>
-            </article>
-          </div>
+        <div class="process-row">
+          <img class="img-container icon-box box" src="assets/graphics/graphic-consult.png" alt="Consult"/>
+          <span class="content-stack">
+            <h3 class="box">CONSULT</h3>
+            <p class="box">We work with clients to understand the nuance of their business and develop the tools their website uses Integrate what they have, and never pay for what they don't.</p>
+          </span>
+        </div>
+      
+        <div class="process-row">
+          <img class="img-container icon-box box" src="assets/graphics/graphic-demo.png" alt="Demo"/>
+          <span class="content-stack">
+            <h3 class="box">DEMO</h3>
+            <p class="box">This centralized application reduces logistical workload by syncing online sales, farm plans, and CSA fulfillment with supply invoices, inventory, weather data, and work calendars—eliminating duplicate data entry.</p>
+          </span>
+        </div>
+      
+        <div class="process-row">
+          <img class="img-container icon-box box" src="assets/graphics/graphic-dev.png" alt="Development"/>
+          <span class="content-stack">
+            <h3 class="box">DEV</h3>
+            <p class="box">FND uses this new Application Framework to be flexible and customizable to create visual ontologies of a business and its operations and what a customer may want.</p>
+          </span>
         </div>
       </section>
-
-      <!-- DIVIDER LINE -->
-      <hr class="divider" />
 
       <!-- ======================================
           ASIDE SECTION (OPERATE)
       ====================================== -->
-      <div class="section-aside"><p class="aside__text">We are developing a digital system for local producers to list current/projected supply using farm management data. This shared data infrastructure mimics the efficiency of big agriculture. FND currently funds the project by offering basic hosting at market price, contributing to a decentralized network. Our 2-year goal is to deploy across 12 NE Ohio counties, aiming to recover $28 million in estimated local economic losses.</p></div>
-
-      <!-- DIVIDER LINE -->
-      <hr class="divider" />
+      <div class="section-aside">
+        <hr/>
+        <p class="aside__text">We are developing a digital system for local producers to list current/projected supply using farm management data. This shared data infrastructure mimics the efficiency of big agriculture. FND currently funds the project by offering basic hosting at market price, contributing to a decentralized network. Our 2-year goal is to deploy across 12 NE Ohio counties, aiming to recover $28 million in estimated local economic losses.</p>
+        <hr/>
+      </div>
 
       <!-- ======================================
           PERSONNEL - SECTION
@@ -166,9 +152,9 @@
             </div>
             <div class="box biography__quote"><p>"Tend to the part of the garden you can touch," - Jack Kornfield</p></div>
             <div class="box biography__message">
-              <p>I'm a Computer Engineering and Applied Mathematics student at the University of Akron, with a passion for building technology that empowers local communities and small organizations to thrive. Whether through data frameworks for agricultural networks, custom hardware interfaces, or applied mathematical models, my work is driven by one goal: making complex systems accessible and useful for real people.</p>,
-              <p>My projects have ranged from modular ECU dashboards to salable ETL pipelines, but the common thread has always been bridging the gap between technical depth and practical application. I've spent the last few years exploring how open-source tools and semantic frameworks can help local agriculture operate with the same efficiency as large corporations; without sacrificing independence, transparency, or values.</p>,
-              <p>I am the creator and CEO of FRUITFUL NETWORK DEVELOPMENT LLC, a Computer Engineering Contract firm that provides server and data framework services. Currently the company's aim to employ a newly created data framework to assist small to midsize farms and agricultural communities compete to provide their products to US, with out changing who's in charge or how they stay individual businesses. This is being accomplish by providing the FND sweet of tools that use a single source of data for updating and for informing. No subscriptions, only a new paradigm that we hope to allow for a new paradigm of food brokerage that utilizes local agriculture. At the same price as what is offered with harmful chemicals and no return to local economies. Out competing harmful practices in the private sector.</p>,
+              <p>I'm a Computer Engineering and Applied Mathematics student at the University of Akron, with a passion for building technology that empowers local communities and small organizations to thrive. Whether through data frameworks for agricultural networks, custom hardware interfaces, or applied mathematical models, my work is driven by one goal: making complex systems accessible and useful for real people.</p>
+              <p>My projects have ranged from modular ECU dashboards to salable ETL pipelines, but the common thread has always been bridging the gap between technical depth and practical application. I've spent the last few years exploring how open-source tools and semantic frameworks can help local agriculture operate with the same efficiency as large corporations; without sacrificing independence, transparency, or values.</p>
+              <p>I am the creator and CEO of Fruitful Network Development, a Computer Engineering Contract firm that provides server and data framework services. Currently the company's aim to employ a newly created data framework to assist small to midsize farms and agricultural communities compete to provide their products to US, with out changing who's in charge or how they stay individual businesses. This is being accomplish by providing the FND sweet of tools that use a single source of data for updating and for informing. No subscriptions, only a new paradigm that we hope to allow for a new paradigm of food brokerage that utilizes local agriculture. At the same price as what is offered with harmful chemicals and no return to local economies. Out competing harmful practices in the private sector.</p>
               <p>I like to think my most unique/particular work skill is being able to see the potential in change and being able to bring that potential to life. Accomplishing that is always a challenge because the path is always uncertain, but the key to success is finding joy in the process. If you can do that, anything is possible.</p>
             </div>
           </div>

@@ -43,11 +43,11 @@
 /* Demo page overrides: larger "application window" layout */
 .section-dossier {
   grid-template-columns: 1fr;
-  padding: var(--space-md);
+  padding: 1rem;
 }
 
 .section-dossier .dossier-digression {
-  padding: var(--space-md);
+  padding: 1rem;
   border: 1px solid var(--silverback);
   background-color: var(--offwhite);
   text-align: left;
@@ -60,7 +60,7 @@
 
 .section-dossier .widget--map .widget__section {
   min-height: 420px;
-  padding: var(--space-sm);
+  padding: 0.75rem;
 }
 
 .section-dossier .map-widget__svg {

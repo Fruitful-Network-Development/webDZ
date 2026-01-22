@@ -5,16 +5,16 @@
 /* Service Cards Section */
 .section-service_cards {
    border: 1px solid var(--silverback);
-   padding: calc(var(--space-md) + var(--space-2xs));
+   padding: 1.25rem;
    display: flex;
    flex-direction: column;
-   gap: var(--space-md);
+   gap: 1rem;
 }
 
 .section-service_cards > div:first-child {
    display: flex;
    flex-direction: column;
-   gap: var(--space-2xs);
+   gap: 0.25rem;
 }
 
 .section-service_cards > div:first-child h2 {
@@ -31,19 +31,19 @@
 .service_cards-grid {
    display: grid;
    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-   gap: var(--space-md);
+   gap: 1rem;
 }
 
 .service_info_card {
    position: relative;
-   padding: var(--space-md) var(--space-md) calc(var(--space-xl) + var(--space-md));
+   padding: 1rem 1rem calc(1.5rem + 1rem);
    display: flex;
    flex-direction: column;
-   gap: var(--space-sm);
+   gap: 0.75rem;
    transition: transform 0.2s ease, box-shadow 0.2s ease;
    border: 1px solid var(--silverback);
    background: var(--offwhite);
-   border-radius: var(--space-2xs);
+   border-radius: 0.25rem;
    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
 
@@ -60,11 +60,11 @@
 .service_info_card p,
 .service_info_card ul {
    margin: 0;
-   margin-bottom: var(--space-md);
+   margin-bottom: 1rem;
 }
 
 .service_info_card ul {
-   padding-left: var(--space-md);
+   padding-left: 1rem;
    display: flex;
    flex-direction: column;
    gap: 0.35rem;
@@ -72,12 +72,12 @@
 
 .service_info_card__footer {
    position: absolute;
-   left: var(--space-md);
-   right: var(--space-md);
-   bottom: var(--space-md);
+   left: 1rem;
+   right: 1rem;
+   bottom: 1rem;
    display: flex;
    align-items: center;
-   gap: var(--space-sm);
+   gap: 0.75rem;
 }
 
 .service_info_card__icons {
@@ -103,16 +103,16 @@
 
 .services-section {
    border: 1px solid var(--silverback);
-   padding: calc(var(--space-md) + var(--space-2xs));
+   padding: 1.25rem;
    display: flex;
    flex-direction: column;
-   gap: var(--space-sm);
+   gap: 0.75rem;
 }
 
 .services-section > div:first-child {
    display: flex;
    flex-direction: column;
-   gap: var(--space-2xs);
+   gap: 0.25rem;
 }
 
 .services-section > div:first-child h2 {
