@@ -57,3 +57,16 @@ register them in `app.py`. Keep these constraints:
 - Avoid arbitrary filesystem access; always scope reads to safe directories.
 - Use the manifest to toggle per-client behavior.
 - Keep the core app minimal; move complex logic to separate services if needed.
+
+### Migration To New Set Up Details
+  - Realm: fruitful
+  - Client ID: flask-bff
+  - Redirect URI (Phase 3): http://localhost:8001/callback
+  - Web origin (Phase 3): http://localhost:8001
+  - Flows enabled: Standard flow ON, Implicit OFF, Direct grants OFF
+
+  [x] `GET` `/health` returns 200
+  [x] `GET` `/me` returns 401 when logged out
+  [x] Login sets a session cookie (HttpOnly, SameSite=Lax)
+  [x] `GET` `/me` returns identity after login
+  [x] Logout clears the session
