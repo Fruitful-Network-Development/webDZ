@@ -1,130 +1,109 @@
 services:
-  postgres:
+  keycloak_db:
     image: postgres:16
-    container_name: platform_postgres
+    container_name: keycloak_db
     # While still in Phase 3 of Migration
     # restart: unless-stopped
     restart: "no"
     environment:
       POSTGRES_DB: keycloak
       POSTGRES_USER: keycloak
-      POSTGRES_PASSWORD: ${KC_DB_PASSWORD}
+      POSTGRES_PASSWORD: ${KEYCLOAK_DB_PASSWORD}
     volumes:
-      - platform_postgres_data:/var/lib/postgresql/data
-    networks:
-      - platform_net
+      - keycloak_db_data:/var/lib/postgresql/data
+    networks: [platform_net]
 
   keycloak:
-    # Possibly pin Keycloak to a stable tag (avoid surprise changes):
-    # image: quay.io/keycloak/keycloak:25.x.y
     image: quay.io/keycloak/keycloak:latest
-    container_name: platform_keycloak
+    container_name: keycloak
     # While still in Phase 3 of Migration
     # restart: unless-stopped
     restart: "no"
-    depends_on:
-      - postgres
+    depends_on: [keycloak_db]
     environment:
-      # Added to prevent issues with SSH in migration
-      JAVA_OPTS_APPEND: "-Xms128m -Xmx384m"
-
-      # Admin bootstrap
       KEYCLOAK_ADMIN: ${KEYCLOAK_ADMIN}
       KEYCLOAK_ADMIN_PASSWORD: ${KEYCLOAK_ADMIN_PASSWORD}
 
-      # DB
       KC_DB: postgres
-      KC_DB_URL_HOST: postgres
+      KC_DB_URL_HOST: keycloak_db
       KC_DB_URL_DATABASE: keycloak
       KC_DB_USERNAME: keycloak
-      KC_DB_PASSWORD: ${KC_DB_PASSWORD}
+      KC_DB_PASSWORD: ${KEYCLOAK_DB_PASSWORD}
 
-      # Run behind NGINX TLS termination
-      KC_PROXY_HEADERS: xforwarded
+      KC_HTTP_ENABLED: "true"
+      KC_PROXY: edge
       KC_HOSTNAME: auth.fruitfulnetworkdevelopment.com
       KC_HOSTNAME_STRICT: "true"
-      KC_HTTP_ENABLED: "true"
-
-      # Optional: if you later want health endpoints
-      # KC_HEALTH_ENABLED: "true"
-      # KC_METRICS_ENABLED: "true"
-    command:
-      - start
+      KC_PROXY_HEADERS: xforwarded
+    command: ["start"]
     ports:
       - "127.0.0.1:8081:8080"
     volumes:
-      - platform_keycloak_data:/opt/keycloak/data
-    networks:
-      - platform_net
-
-    # deploy.resources.limits is fully enforced in Swarm mode; in plain docker compose, it may not be enforced depending on your Docker/Compose version.
-    # So the JVM cap (JAVA_OPTS_APPEND) is the truly essential protection. We include deploy: anyway because it’s harmless and may be honored in your environment.
-    deploy:
-      resources:
-        limits:
-          memory: 512M
-          cpus: "0.75"
+      - keycloak_data:/opt/keycloak/data
+    networks: [platform_net]
 
   platform_db:
     image: postgres:16
-    container_name: platform_platform_db
+    container_name: platform_db
     # While still in Phase 3 of Migration
     # restart: unless-stopped
     restart: "no"
     environment:
-      POSTGRES_DB: ${PLATFORM_DB_NAME}
-      POSTGRES_USER: ${PLATFORM_DB_USER}
+      POSTGRES_DB: platform
+      POSTGRES_USER: platform
       POSTGRES_PASSWORD: ${PLATFORM_DB_PASSWORD}
     volumes:
       - platform_db_data:/var/lib/postgresql/data
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${PLATFORM_DB_USER} -d ${PLATFORM_DB_NAME}"]
-      interval: 10s
-      timeout: 5s
-      retries: 10
-    networks:
-      - platform_net
+    networks: [platform_net]
+
+  # One-time schema init job (best-practice early stage)
+  platform_schema:
+    image: postgres:16
+    container_name: platform_schema
+    depends_on: [platform_db]
+    environment:
+      PGPASSWORD: ${PLATFORM_DB_PASSWORD}
+    volumes:
+      - ./platform-schema:/schema:ro
+    entrypoint: ["/bin/bash","-lc"]
+    command: >
+      "psql -h platform_db -U platform -d platform -f /schema/001_init.sql
+       && echo 'platform schema ok'"
+    # While still in Phase 3 of Migration
+    # restart: unless-stopped
+    restart: "no"
+    networks: [platform_net]
 
   flask_bff:
     build:
       context: ./flask-bff
-    container_name: platform_flask_bff
+    container_name: flask_bff
     # While still in Phase 3 of Migration
     # restart: unless-stopped
     restart: "no"
     depends_on:
-      keycloak:
-        condition: service_started
-      platform_db:
-        condition: service_healthy
+      - keycloak
+      - platform_db
+      - platform_schema
     environment:
-      # OIDC against Keycloak
+      DATABASE_URL: postgresql+psycopg://platform:${PLATFORM_DB_PASSWORD}@platform_db:5432/platform
       OIDC_ISSUER: https://auth.fruitfulnetworkdevelopment.com/realms/${KC_REALM}
       OIDC_CLIENT_ID: ${OIDC_CLIENT_ID}
       OIDC_CLIENT_SECRET: ${OIDC_CLIENT_SECRET}
-
-      # Session signing
       SESSION_SECRET: ${SESSION_SECRET}
-
-      # Platform DB connection (BFF-only)
-      PLATFORM_DB_HOST: platform_db
-      PLATFORM_DB_PORT: "5432"
-      PLATFORM_DB_NAME: ${PLATFORM_DB_NAME}
-      PLATFORM_DB_USER: ${PLATFORM_DB_USER}
-      PLATFORM_DB_PASSWORD: ${PLATFORM_DB_PASSWORD}
-
-      # Optional for Phase 3: keep consistent with your localhost tunnel testing
-      # PUBLIC_BASE_URL: http://localhost:8001
+      PUBLIC_BASE_URL: http://localhost:8001
     ports:
       - "127.0.0.1:8001:8000"
-    networks:
-      - platform_net
+    networks: [platform_net]
 
 volumes:
-  platform_postgres_data:
-  platform_keycloak_data:
+  keycloak_db_data:
+  keycloak_data:
   platform_db_data:
 
+networks:
+  platform_net:
+    driver: bridge
 networks:
   platform_net:
     driver: bridge
