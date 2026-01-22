@@ -86,12 +86,20 @@ services:
       - platform_db
       - platform_schema
     environment:
-      DATABASE_URL: postgresql+psycopg://platform:${PLATFORM_DB_PASSWORD}@platform_db:5432/platform
+      # Platform DB connection (matches app.py expectations)
+      PLATFORM_DB_HOST: platform_db
+      PLATFORM_DB_PORT: "5432"
+      PLATFORM_DB_NAME: platform
+      PLATFORM_DB_USER: platform
+      PLATFORM_DB_PASSWORD: ${PLATFORM_DB_PASSWORD}
+    
+      # OIDC
       OIDC_ISSUER: https://auth.fruitfulnetworkdevelopment.com/realms/${KC_REALM}
       OIDC_CLIENT_ID: ${OIDC_CLIENT_ID}
       OIDC_CLIENT_SECRET: ${OIDC_CLIENT_SECRET}
+    
+      # Session signing
       SESSION_SECRET: ${SESSION_SECRET}
-      PUBLIC_BASE_URL: http://localhost:8001
     ports:
       - "127.0.0.1:8001:8000"
     networks: [platform_net]
@@ -101,9 +109,6 @@ volumes:
   keycloak_data:
   platform_db_data:
 
-networks:
-  platform_net:
-    driver: bridge
 networks:
   platform_net:
     driver: bridge
