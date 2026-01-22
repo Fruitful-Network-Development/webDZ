@@ -37,6 +37,7 @@ def _require_env(name: str) -> str:
         raise RuntimeError(f"Missing required environment variable: {name}")
     return val
 
+
 OIDC_ISSUER = _require_env("OIDC_ISSUER").rstrip("/")
 OIDC_CLIENT_ID = _require_env("OIDC_CLIENT_ID")
 OIDC_CLIENT_SECRET = _require_env("OIDC_CLIENT_SECRET")
@@ -49,8 +50,8 @@ PLATFORM_DB_NAME = os.getenv("PLATFORM_DB_NAME", "platform")
 PLATFORM_DB_USER = os.getenv("PLATFORM_DB_USER", "platform")
 PLATFORM_DB_PASSWORD = _require_env("PLATFORM_DB_PASSWORD")
 
-# Optional: explicit external base URL. For Phase 3 you typically browse via:
-# http://localhost:8001 (SSH port forward)
+# Optional: explicit external base URL.
+# For Phase 3 you typically browse via http://localhost:8001 (SSH port forward)
 PUBLIC_BASE_URL = os.getenv("PUBLIC_BASE_URL", "").rstrip("/")
 
 
@@ -62,8 +63,8 @@ app = Flask(__name__)
 app.secret_key = SESSION_SECRET
 
 # Session cookie policy:
-# - Phase 3 internal-only testing likely uses http://localhost:8001 via SSH tunnel,
-#   so Secure=False is necessary to allow cookies on http.
+# - Phase 3 internal-only testing uses http://localhost:8001 via SSH tunnel,
+#   so Secure=False is necessary for cookies on http.
 # - In Phase 4 (public HTTPS), set Secure=True.
 app.config.update(
     SESSION_COOKIE_HTTPONLY=True,
@@ -159,8 +160,7 @@ def _get_user_profile(user_id: str) -> Optional[Dict[str, Any]]:
 
 def _audit(action: str, actor_user_id: Optional[str] = None, detail: Optional[Dict[str, Any]] = None) -> None:
     """
-    Minimal audit log. If the audit table doesn't exist yet, you can safely no-op
-    by removing this call, but recommended to keep.
+    Minimal audit log.
     """
     sql = """
     INSERT INTO platform.audit_log (at, actor_user_id, action, detail)
@@ -196,8 +196,7 @@ def login():
     discovery = _get_discovery()
     authorization_endpoint = discovery["authorization_endpoint"]
 
-    # Minimal state (anti-CSRF). For Phase 3, simple random is OK; in Phase 4,
-    # you can harden with nonce/state libraries if desired.
+    # Minimal state (anti-CSRF).
     state = os.urandom(16).hex()
     session["oidc_state"] = state
 
@@ -231,6 +230,9 @@ def callback():
         return jsonify({"error": "missing_code"}), 400
     if not state or not expected_state or state != expected_state:
         return jsonify({"error": "invalid_state"}), 400
+
+    # One-time use state
+    session.pop("oidc_state", None)
 
     discovery = _get_discovery()
     token_endpoint = discovery["token_endpoint"]
@@ -266,14 +268,12 @@ def callback():
         ui.raise_for_status()
         claims = ui.json()
     else:
-        # Fallback: store token response minimal info
         claims = {"sub": None}
 
     user_id = claims.get("sub")
     if not user_id:
         return jsonify({"error": "missing_sub_in_claims"}), 500
 
-    # Choose a display name without storing identifiers
     display_name = (
         claims.get("preferred_username")
         or claims.get("name")
@@ -281,18 +281,17 @@ def callback():
         or None
     )
 
-    # Store only what we need in session (no tokens in browser storage; session is server-side)
+    # Store only what we need in session
     session["user"] = {
         "user_id": user_id,
         "display_name": display_name,
     }
 
-    # Upsert platform user profile
+    # Upsert platform user profile + audit
     try:
         _upsert_user_profile(user_id=user_id, display_name=display_name)
         _audit(action="login_success", actor_user_id=user_id, detail={"issuer": OIDC_ISSUER})
     except Exception as e:
-        # Keep error explicit for internal-only phase; in Phase 4, you may want less detail.
         return jsonify({"error": "db_upsert_failed", "detail": str(e)}), 500
 
     return redirect(url_for("me"))
@@ -301,18 +300,17 @@ def callback():
 @app.get("/me")
 def me():
     """
-    Returns current user identity from session.
+    Returns current user identity from session (convenience view).
     """
     u = session.get("user")
     if not u:
         return jsonify({"authenticated": False}), 401
 
-    # Optionally include profile row from DB
+    # Convenience: include DB profile if available; do not fail if DB read errors.
     profile = None
     try:
         profile = _get_user_profile(u["user_id"])
     except Exception:
-        # For Phase 3, don't fail /me due to DB read issues; return session identity.
         profile = None
 
     return jsonify(
@@ -322,6 +320,23 @@ def me():
             "profile": profile,
         }
     ), 200
+
+
+@app.get("/db/me")
+def db_me():
+    """
+    Proof endpoint: returns current user identity as recorded in platform DB.
+    This is the A.5 "prove persistence" surface (strict).
+    """
+    u = session.get("user")
+    if not u or not u.get("user_id"):
+        return jsonify({"error": "not_authenticated"}), 401
+
+    profile = _get_user_profile(u["user_id"])
+    if profile is None:
+        return jsonify({"error": "profile_missing"}), 404
+
+    return jsonify({"profile": profile}), 200
 
 
 @app.get("/logout")
