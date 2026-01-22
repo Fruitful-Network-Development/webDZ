@@ -65,8 +65,8 @@ register them in `app.py`. Keep these constraints:
   - Web origin (Phase 3): http://localhost:8001
   - Flows enabled: Standard flow ON, Implicit OFF, Direct grants OFF
 
-[] `GET` `/health` returns 200
-[] `GET` `/me` returns 401 when logged out
-[] Login sets a session cookie (HttpOnly, SameSite=Lax)
-[] `GET` `/me` returns identity after login
-[] Logout clears the session
+- `GET` `/health` returns 200
+- `GET` `/me` returns 401 when logged out
+- Login sets a session cookie (HttpOnly, SameSite=Lax)
+- `GET` `/me` returns identity after login
+- Logout clears the session
