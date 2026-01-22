@@ -34,7 +34,7 @@ def create_app():
         with db_conn() as conn:
             with conn.cursor() as cur:
                 cur.execute("""
-                    CREATE TABLE IF NOT EXISTS user_profiles (
+                    CREATE TABLE IF NOT EXISTS platform_user_profiles (
                         user_id TEXT PRIMARY KEY,
                         preferred_username TEXT,
                         email TEXT,
@@ -85,7 +85,7 @@ def create_app():
         with db_conn() as conn:
             with conn.cursor() as cur:
                 cur.execute("""
-                    INSERT INTO user_profiles (user_id, preferred_username, email)
+                    INSERT INTO platform_user_profiles (user_id, preferred_username, email)
                     VALUES (%s, %s, %s)
                     ON CONFLICT (user_id)
                     DO UPDATE SET
@@ -104,7 +104,7 @@ def create_app():
             return {"error": "not authenticated"}, 401
         with db_conn() as conn:
             with conn.cursor() as cur:
-                cur.execute("SELECT * FROM user_profiles WHERE user_id = %s", (user["sub"],))
+                cur.execute("SELECT * FROM platform_user_profiles WHERE user_id = %s", (user["sub"],))
                 row = cur.fetchone()
         return row or {"error": "not found"}, (200 if row else 404)
 
