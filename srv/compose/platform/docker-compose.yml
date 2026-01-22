@@ -15,9 +15,9 @@ services:
       - platform_net
 
   keycloak:
-    # Pin Keycloak to a stable tag (avoid surprise changes)
-    # image: quay.io/keycloak/keycloak:latest
-    image: quay.io/keycloak/keycloak:25.x.y
+    # Possibly pin Keycloak to a stable tag (avoid surprise changes):
+    # image: quay.io/keycloak/keycloak:25.x.y
+    image: quay.io/keycloak/keycloak:latest
     container_name: platform_keycloak
     # While still in Phase 3 of Migration
     # restart: unless-stopped
