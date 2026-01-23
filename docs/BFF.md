@@ -1,8 +1,8 @@
-# BFF Scope & Platform Decisions
+# BFF Scope & Platform
 
 ---
 
-## 1.) BFF Mutating Tasks
+### 1.) BFF Mutating Tasks
 
 The BFF **may perform mutating actions** via the admin UI **only when those actions are constrained**:
 - narrow scope
@@ -10,21 +10,21 @@ The BFF **may perform mutating actions** via the admin UI **only when those acti
 - reversible
 - auditable
 
-### Identity / Access (via Keycloak Admin API)
+#### Identity / Access (via Keycloak Admin API)
 - Create user
 - Disable / enable user
 - Assign roles and tenant membership
 - Force logout
 - Reset credentials
 
-### Content & Configuration Changes
+#### Content & Configuration Changes
 - Upload and validate client JSON content files
 - Toggle feature flags per client
 - Publish a new content revision by:
   - promoting validated files from a `staging/` directory to `live/`
   - **or** creating a controlled Git commit / PR
 
-### Deploy Latest From GitHub
+#### Deploy Latest From GitHub
 Allowed **only** under strict constraints:
 - only approved repositories
 - only trusted branches
@@ -33,7 +33,7 @@ Allowed **only** under strict constraints:
 - dry-run → apply workflow
 - **no arbitrary shell commands**
 
-### Database Writes
+#### Database Writes
 Allowed if:
 - schema is controlled
 - writes occur only through validated API calls
@@ -50,14 +50,14 @@ These remain **infrastructure workflows**, not UI actions.
 
 ---
 
-## 2.) Global User Accounts with BFF-Only Auth
+### 2.) Global User Accounts with BFF-Only Auth
 
-### Auth Model
+#### Auth Model
 - **Keycloak** = Identity Provider (users, login, MFA later)
 - **BFF** = Only component that interacts with Keycloak
 - **Client sites** = Mostly static; never store tokens
 
-### Browser Authentication Flow (High-Level)
+#### Browser Authentication Flow (High-Level)
 1. User visits a client site and needs authentication  
 2. Client links to  
    `https://api.fruitfulnetworkdevelopment.com/login?return_to=...`
@@ -73,7 +73,7 @@ These remain **infrastructure workflows**, not UI actions.
    - `/clients`
    - `/profiles/{id}`
 
-### Global User Model (Platform-Owned)
+#### Global User Model (Platform-Owned)
 This forms the **unified customer profile layer** and **lives in a database**:
 - `user_profiles` (keyed by stable `user_id`)
 - `user_contact_methods` (optional)
@@ -85,7 +85,7 @@ This data must be **queryable, consistent, and authoritative**.
 
 ---
 
-## 3.) Platform-Owned Identity Resolution
+### 3.) Platform-Owned Identity Resolution
 
 Client systems may store operational data, but **identity resolution belongs to the platform**.
 
@@ -101,9 +101,9 @@ This avoids identity drift across clients.
 
 ---
 
-## 4.) Data Staging Strategy
+### 4.) Data Staging Strategy
 
-### Stage 1 (Now): Minimal Platform Database
+#### Stage 1 (Now): Minimal Platform Database
 A small Postgres database (separate from Keycloak DB).
 
 Tables:
@@ -117,7 +117,7 @@ Only identity, authorization, and auditing.
 
 ---
 
-### Stage 2: UI-Managed Content Publishing
+#### Stage 2: UI-Managed Content Publishing
 Admin UI may:
 - upload content files to a `staging/` area
 - validate against schemas
@@ -128,7 +128,7 @@ This enables safe mutation without infrastructure risk.
 
 ---
 
-### Stage 3: Optional Ingestion Pipelines
+#### Stage 3: Optional Ingestion Pipelines
 Future ingestion of:
 - PayPal / Zettle exports
 - Newsletter lists
@@ -139,7 +139,7 @@ Storage options:
 
 ---
 
-## 5.) Cookie Scope & Multi-Domain Reality
+### 5.) Cookie Scope & Multi-Domain Reality
 
 If client sites live on many domains (e.g. `example.com`, `example.org`):
 - cookies scoped to `*.fruitfulnetworkdevelopment.com` **will not be sent**
@@ -159,7 +159,7 @@ This is solvable, but **global identity across many TLDs is non-trivial** and mu
 
 ---
 
-## Final Locked-In Decisions
+### Final Locked-In Decisions
 
 - Mutating tasks are allowed **only via constrained, audited APIs**
 - Infrastructure surgery is excluded from the UI
