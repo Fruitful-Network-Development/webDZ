@@ -17,6 +17,11 @@ Compose stacks live here when a service benefits from isolation, portability, or
 - Environment files live alongside stack definitions; templates are committed
   while secrets are not.
 
+### Strucure
+```text
+HERE
+```
+
 ---
 
 ## Auth & BFF Stack
