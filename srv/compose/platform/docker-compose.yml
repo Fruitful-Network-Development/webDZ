@@ -42,24 +42,6 @@ services:
       - keycloak_data:/opt/keycloak/data
     networks: [platform_net]
 
-  # One-time schema init job (best-practice early stage)
-  platform_schema:
-    image: postgres:16
-    container_name: platform_schema
-    depends_on: [platform_db]
-    environment:
-      PGPASSWORD: ${PLATFORM_DB_PASSWORD}
-    volumes:
-      - ./platform-schema:/schema:ro
-    entrypoint: ["/bin/bash","-lc"]
-    command: >
-      "psql -h platform_db -U platform -d platform -f /schema/001_init.sql
-       && echo 'platform schema ok'"
-    # While still in Phase 3 of Migration
-    # restart: unless-stopped
-    restart: "no"
-    networks: [platform_net]
-
   flask_bff:
     build:
       context: ./flask-bff
