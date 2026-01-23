@@ -1,171 +1,209 @@
-# BFF Scope & Platform
+# BFF Scope & Platform (Updated)
+
+This document reflects the **current, consolidated state** of the platform after successful
+Phase 3 completion and partial Phase 4 readiness.
+
+It supersedes earlier drafts by **removing the platform Postgres database** and clarifying that
+the BFF currently operates with **Keycloak as the sole stateful dependency**, using **server-side
+sessions only**.
+
+This document describes **what exists now**, not the historical migration process.
+(Migration steps remain documented separately.)
 
 ---
 
-### 1.) BFF Mutating Tasks
+## 1. Role of the BFF (Authoritative)
 
-The BFF **may perform mutating actions** via the admin UI **only when those actions are constrained**:
-- narrow scope
-- validated inputs
-- reversible
-- auditable
+The Backend-for-Frontend (BFF) is the **only application-layer service** that:
 
-#### Identity / Access (via Keycloak Admin API)
-- Create user
-- Disable / enable user
-- Assign roles and tenant membership
-- Force logout
-- Reset credentials
+- Initiates authentication flows
+- Interacts with Keycloak
+- Holds authenticated user state
+- Enforces authorization
+- Serves platform-owned UI surfaces (admin + future user UI)
 
-#### Content & Configuration Changes
-- Upload and validate client JSON content files
-- Toggle feature flags per client
-- Publish a new content revision by:
-  - promoting validated files from a `staging/` directory to `live/`
-  - **or** creating a controlled Git commit / PR
-
-#### Deploy Latest From GitHub
-Allowed **only** under strict constraints:
-- only approved repositories
-- only trusted branches
-- fast-forward or verified merges only
-- preflight checks (linting, schema validation)
-- dry-run → apply workflow
-- **no arbitrary shell commands**
-
-#### Database Writes
-Allowed if:
-- schema is controlled
-- writes occur only through validated API calls
-- tenant boundaries are enforced
-- all mutations are audit-logged
-
-> **Explicitly excluded from the UI**  
-> - Editing NGINX configs directly  
-> - Arbitrary shell execution  
-> - systemd / firewall / kernel changes  
-> - TLS issuance and renewal logic  
-
-These remain **infrastructure workflows**, not UI actions.
+Client sites:
+- Remain static
+- Never store tokens
+- Never communicate with Keycloak directly
+- Communicate only with the BFF over HTTPS (Phase 4)
 
 ---
 
-### 2.) Global User Accounts with BFF-Only Auth
+## 2. Authentication Model (Locked In)
 
-#### Auth Model
-- **Keycloak** = Identity Provider (users, login, MFA later)
-- **BFF** = Only component that interacts with Keycloak
-- **Client sites** = Mostly static; never store tokens
+### Identity Provider
+- **Keycloak** is the single Identity Provider (IdP)
+- Owns:
+  - Credentials
+  - Login UI
+  - Password resets
+  - MFA (future)
+  - Realm roles
 
-#### Browser Authentication Flow (High-Level)
-1. User visits a client site and needs authentication  
-2. Client links to  
-   `https://api.fruitfulnetworkdevelopment.com/login?return_to=...`
-3. BFF redirects to Keycloak
-4. User authenticates in Keycloak
-5. Keycloak redirects back to BFF `/callback`
-6. BFF exchanges authorization code server-side
-7. BFF:
-   - stores session server-side (or minimal signed session)
-   - sets `HttpOnly; Secure; SameSite=Lax` cookie
-8. Browser accesses BFF endpoints using cookie auth:
-   - `/me`
-   - `/clients`
-   - `/profiles/{id}`
+### BFF Responsibilities
+- Redirects users to Keycloak
+- Exchanges authorization codes server-side
+- Establishes a **server-managed session**
+- Issues a cookie:
+  - `HttpOnly`
+  - `SameSite=Lax`
+  - `Secure` (when served over HTTPS)
 
-#### Global User Model (Platform-Owned)
-This forms the **unified customer profile layer** and **lives in a database**:
-- `user_profiles` (keyed by stable `user_id`)
-- `user_contact_methods` (optional)
-- `client_memberships` (user ↔ client ↔ role)
-- `global_preferences`
-- `profile_links` (external identities)
-
-This data must be **queryable, consistent, and authoritative**.
+### Explicit Exclusions
+- No access tokens in browser storage
+- No refresh tokens in browser storage
+- No direct Keycloak access from client sites
 
 ---
 
-### 3.) Platform-Owned Identity Resolution
+## 3. Session Model (Current)
 
-Client systems may store operational data, but **identity resolution belongs to the platform**.
+- Session data is held **by the BFF**
+- Implemented using Flask sessions
+- Cookie contains only a session identifier / signed payload
+- Identity claims stored server-side:
+  - `user_id` (Keycloak `sub`)
+  - `display_name` (best-effort)
+  - `realm_roles`
 
-Platform DB owns:
-- `user_id` (Keycloak UUID)
-- normalized contact identifiers (email hash, phone hash, etc.)
-
-Client systems may reference:
-- `user_id` (preferred)
-- raw email / phone (resolved to `user_id` by BFF on ingestion)
-
-This avoids identity drift across clients.
+There is **no application database** at this stage.
 
 ---
 
-### 4.) Data Staging Strategy
+## 4. Authorization Model
 
-#### Stage 1 (Now): Minimal Platform Database
-A small Postgres database (separate from Keycloak DB).
+### Roles
+Authorization is driven by **Keycloak realm roles**, for example:
 
-Tables:
-- `user_profiles (user_id, display_name, created_at, updated_at)`
-- `user_identifiers (user_id, type, value_normalized, value_hash, verified_at)`
-- `client_memberships (client_id, user_id, role)`
-- `audit_log (actor_user_id, action, target, metadata, timestamp)`
+- `root_admin`
+- `tenant_admin`
+- `user`
 
-**No client operational data is stored here yet.**  
-Only identity, authorization, and auditing.
+The BFF:
+- Extracts roles from the OIDC access token
+- Enforces authorization at route boundaries
 
----
-
-#### Stage 2: UI-Managed Content Publishing
-Admin UI may:
-- upload content files to a `staging/` area
-- validate against schemas
-- show diffs
-- promote content to `live/`
-
-This enables safe mutation without infrastructure risk.
+Example (conceptual):
+```python
+@require_realm_role("root_admin")
+def admin_route():
+    ...
+```
 
 ---
 
-#### Stage 3: Optional Ingestion Pipelines
-Future ingestion of:
-- PayPal / Zettle exports
-- Newsletter lists
+## 5. Mutating Actions (Constrained by Design)
 
-Storage options:
-- tenant-local filesystem (with platform identity resolution)
-- tenant schemas in DB (stronger guarantees, more complexity)
+The BFF **may perform mutating actions only if all conditions are met**:
 
----
+- Narrow, explicit scope
+- Validated inputs
+- Reversible operation
+- Audit-capable
 
-### 5.) Cookie Scope & Multi-Domain Reality
+### Allowed (Future, Explicit)
+- Upload validated JSON content files
+- Promote content from `staging/` → `live/`
+- Toggle feature flags
+- Trigger controlled deploy actions (Git pull / fast-forward only)
 
-If client sites live on many domains (e.g. `example.com`, `example.org`):
-- cookies scoped to `*.fruitfulnetworkdevelopment.com` **will not be sent**
+### Explicitly Excluded
+- Editing NGINX configs
+- systemd manipulation
+- Firewall or kernel changes
+- TLS issuance or renewal
+- Arbitrary shell execution
 
-Therefore:
-- client sites use JS to call the BFF at  
-  `api.fruitfulnetworkdevelopment.com`
-- cookies are scoped to the BFF domain
-- CORS + `SameSite` policy must be configured correctly
-
-### Seamless Login Across Domains
-Possible via:
-- centralized login on `fruitfulnetworkdevelopment.com`
-- redirect or embed flow to establish BFF session
-
-This is solvable, but **global identity across many TLDs is non-trivial** and must be handled intentionally.
+These remain **infrastructure workflows**.
 
 ---
 
-### Final Locked-In Decisions
+## 6. Runtime Architecture (Current)
 
-- Mutating tasks are allowed **only via constrained, audited APIs**
-- Infrastructure surgery is excluded from the UI
-- Global user accounts are platform-level
+```
+Browser
+  ↓
+NGINX (host)
+  ↓
+Flask BFF (container, localhost-only in Phase 3)
+  ↓
+Keycloak (container, proxied via NGINX)
+```
+
+Keycloak is exposed publicly at:
+
+```
+https://auth.fruitfulnetworkdevelopment.com
+```
+
+The BFF is currently accessed via:
+- SSH port forwarding (`localhost:8001`) in Phase 3
+- `https://api.fruitfulnetworkdevelopment.com` in Phase 4
+
+---
+
+## 7. Operational Commands (Reference)
+
+### BFF lifecycle
+```bash
+cd /srv/compose/platform
+docker compose up -d flask_bff
+docker compose restart flask_bff
+docker compose logs -f flask_bff
+```
+
+### Keycloak lifecycle
+```bash
+docker compose logs -f keycloak
+```
+
+### Local testing (Phase 3)
+```bash
+ssh -L 8001:127.0.0.1:8001 admin@<ec2-ip>
+```
+
+Then browse:
+```
+http://localhost:8001/login
+http://localhost:8001/me
+```
+
+---
+
+## 8. Public Exposure Rules
+
+- **auth.*** is public and TLS-terminated
+- **api.*** remains disabled until:
+  - `/health` responds
+  - `/me` works reliably
+  - Session cookies are `Secure`
+  - NGINX proxy is validated
+
+No service becomes public by accident.
+
+---
+
+## 9. Future Extensions (Non-Binding)
+
+The following remain optional and deferred:
+
+- Platform-owned database for identity resolution
+- Audit persistence beyond logs
+- Admin UI for content publishing
+- Tenant-level authorization models
+
+Their absence does **not** block current operation.
+
+---
+
+## 10. Final Invariants
+
 - Authentication is **BFF-only**
-- `user_id` = Keycloak UUID (canonical identity)
-- Client-specific operational data may remain filesystem-based initially
-- Platform owns identity resolution and authorization logic
-- Migration path to richer DB-backed tenant data remains open
+- Keycloak is the only IdP
+- Client sites remain static
+- Infrastructure remains manually operated
+- Activation is always explicit
+- Security boundaries are preserved
+
+This document defines the **current operating contract** of the BFF.
