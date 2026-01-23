@@ -92,14 +92,15 @@ services:
       PLATFORM_DB_NAME: platform
       PLATFORM_DB_USER: platform
       PLATFORM_DB_PASSWORD: ${PLATFORM_DB_PASSWORD}
-    
+
       # OIDC
       OIDC_ISSUER: https://auth.fruitfulnetworkdevelopment.com/realms/${KC_REALM}
       OIDC_CLIENT_ID: ${OIDC_CLIENT_ID}
       OIDC_CLIENT_SECRET: ${OIDC_CLIENT_SECRET}
-    
+
       # Session signing
       SESSION_SECRET: ${SESSION_SECRET}
+      PUBLIC_BASE_URL: https://api.fruitfulnetworkdevelopment.com
     ports:
       - "127.0.0.1:8001:8000"
     networks: [platform_net]
