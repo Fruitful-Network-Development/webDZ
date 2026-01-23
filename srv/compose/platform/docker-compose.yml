@@ -2,9 +2,7 @@ services:
   keycloak_db:
     image: postgres:16
     container_name: keycloak_db
-    # While still in Phase 3 of Migration
-    # restart: unless-stopped
-    restart: "no"
+    restart: unless-stopped
     environment:
       POSTGRES_DB: keycloak
       POSTGRES_USER: keycloak
@@ -16,9 +14,7 @@ services:
   keycloak:
     image: quay.io/keycloak/keycloak:latest
     container_name: keycloak
-    # While still in Phase 3 of Migration
-    # restart: unless-stopped
-    restart: "no"
+    restart: unless-stopped
     depends_on: [keycloak_db]
     environment:
       KEYCLOAK_ADMIN: ${KEYCLOAK_ADMIN}
@@ -38,29 +34,16 @@ services:
     command: ["start"]
     ports:
       - "127.0.0.1:8081:8080"
-    volumes:
-      - keycloak_data:/opt/keycloak/data
     networks: [platform_net]
 
   flask_bff:
     build:
       context: ./flask-bff
     container_name: flask_bff
-    # While still in Phase 3 of Migration
-    # restart: unless-stopped
-    restart: "no"
+    restart: unless-stopped
     depends_on:
       - keycloak
-      - platform_db
-      - platform_schema
     environment:
-      # Platform DB connection (matches app.py expectations)
-      PLATFORM_DB_HOST: platform_db
-      PLATFORM_DB_PORT: "5432"
-      PLATFORM_DB_NAME: platform
-      PLATFORM_DB_USER: platform
-      PLATFORM_DB_PASSWORD: ${PLATFORM_DB_PASSWORD}
-
       # OIDC
       OIDC_ISSUER: https://auth.fruitfulnetworkdevelopment.com/realms/${KC_REALM}
       OIDC_CLIENT_ID: ${OIDC_CLIENT_ID}
@@ -68,6 +51,8 @@ services:
 
       # Session signing
       SESSION_SECRET: ${SESSION_SECRET}
+
+      # Public base URL (used for redirects/callback URLs)
       PUBLIC_BASE_URL: https://api.fruitfulnetworkdevelopment.com
     ports:
       - "127.0.0.1:8001:8000"
@@ -75,8 +60,6 @@ services:
 
 volumes:
   keycloak_db_data:
-  keycloak_data:
-  platform_db_data:
 
 networks:
   platform_net:
