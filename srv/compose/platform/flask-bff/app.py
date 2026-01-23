@@ -28,7 +28,7 @@ from urllib.parse import urlencode
 
 import psycopg
 import requests
-from flask import Flask, abort, jsonify, redirect, request, session, url_for
+from flask import Flask, abort, jsonify, redirect, request, session, url_for, render_template
 
 # ----------------------------
 # Configuration
@@ -134,6 +134,27 @@ def jwt_payload(jwt_token: str) -> Dict[str, Any]:
         return json.loads(_b64url_decode(parts[1]))
     except Exception:
         return {}
+
+
+# ----------------------------
+# Session / auth helpers
+# ----------------------------
+
+def _current_user() -> Optional[Dict[str, Any]]:
+    return session.get("user")
+
+
+def _require_login():
+    """
+    Phase 3 UI guard: if not authenticated, redirect to /login.
+    If a 'next' param is present on /login, you can later wire it to return users
+    to the target route after callback; for now this is sufficient for the skeleton UI.
+    """
+    if not _current_user():
+        nxt = request.path
+        # Preserve target for future use; harmless if /login ignores it for now.
+        return redirect(f"/login?next={nxt}")
+    return None
 
 
 # ----------------------------
@@ -243,6 +264,19 @@ def health():
     return jsonify({"status": "ok"}), 200
 
 
+@app.get("/admin")
+def admin_index():
+    """
+    Phase 3 UI skeleton: render an admin dashboard page.
+    Internal-only access via SSH tunnel (http://localhost:8001).
+    """
+    guard = _require_login()
+    if guard:
+        return guard
+    user = _current_user()
+    return render_template("admin/index.html", title="Admin", user=user)
+
+
 @app.get("/login")
 def login():
     """
@@ -345,6 +379,7 @@ def callback():
         "user_id": user_id,
         "display_name": display_name,
         "realm_roles": realm_roles,
+        "issuer": OIDC_ISSUER,
     }
 
     # Upsert platform user profile + audit
@@ -400,12 +435,15 @@ def db_me():
 
 
 @app.get("/admin/ping")
-@require_realm_role("root_admin")
 def admin_ping():
     """
-    Admin-only proof endpoint. Requires Keycloak realm role 'root_admin'.
+    Phase 3 proof endpoint for the UI skeleton.
+    Requirement: authenticated session only (no role gating yet).
     """
-    return jsonify({"status": "ok", "admin": True}), 200
+    guard = _require_login()
+    if guard:
+        return guard
+    return jsonify({"status": "ok"}), 200
 
 
 @app.get("/logout")
