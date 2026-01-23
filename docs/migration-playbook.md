@@ -379,6 +379,18 @@ cd /srv/compose/platform
 sudo docker exec -it keycloak bash
 ```
 
+Reset any existing kcadm config (avoids stale state)
+```bash
+rm -f ~/.keycloak/kcadm.config
+```
+
+Create local testing SSH Tunnel:
+```bash
+ssh -i ~/.ssh/aws-main-key -N \
+  -L 8001:127.0.0.1:8001 \
+  admin@52.70.228.90
+```
+
 How to verify Keycloak sees a user correctly
 ```bash
 sudo docker exec -it keycloak \
