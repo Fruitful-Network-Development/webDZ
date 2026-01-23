@@ -27,6 +27,7 @@ from typing import Any, Dict, Optional
 from urllib.parse import urlencode
 
 import psycopg
+from psycopg.types.json import Json as PgJson
 import requests
 from flask import Flask, abort, jsonify, redirect, request, session, url_for, render_template
 
@@ -249,7 +250,8 @@ def _audit(action: str, actor_user_id: Optional[str] = None, detail: Optional[Di
                 {
                     "actor_user_id": actor_user_id,
                     "action": action,
-                    "detail": detail if detail is not None else None,
+                    # psycopg v3 requires explicit JSON adaptation for dicts
+                    "detail": (PgJson(detail) if detail is not None else None),
                 },
             )
         conn.commit()
