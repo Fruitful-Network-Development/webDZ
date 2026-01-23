@@ -379,6 +379,21 @@ cd /srv/compose/platform
 sudo docker exec -it keycloak bash
 ```
 
+How to verify Keycloak sees a user correctly
+```bash
+sudo docker exec -it keycloak \
+  /opt/keycloak/bin/kcadm.sh get users -r fruitful -q username=dylan
+```
+Expect to see a JSON object with:
+   `"username": "dylan"`
+   `"enabled": true`
+
+If `enabled` is false, enable it:
+```bash
+sudo docker exec -it keycloak \
+  /opt/keycloak/bin/kcadm.sh update users/dylan -r fruitful -s enabled=true
+```
+(Replace `<USER_ID>` with the id of interest, similarly for `<REALM>`)
 
 ## Manual activation checklist
 
