@@ -358,42 +358,27 @@ Create client with these settings:
 `http://localhost:8001/callback`
 
 Web origins:
-
-http://localhost:8001
-
+   `http://localhost:8001`
 Root URL / Home URL (optional):
-
-http://localhost:8001
-
-Then copy:
-
-Client Secret (you will put it into .env)
-
-Why HTTP not HTTPS here? Because your Phase 3 access path is your laptop → SSH tunnel → localhost, so HTTPS is not involved yet.
-
-
-
-
-
-
-
-
-
-
-
-
+   `http://localhost:8001`
 
 ### 3.2 Server: finalize .env for BFF
 
-
 ### 3.3 Implement the minimal Flask BFF service
-
 
 ### 3.4 Bring up the BFF container (still internal-only)
 
 ### 3.5 Test from your laptop via SSH port forwarding
 
 ---
+
+## Container Workflow
+Enter the Keycloak container
+```bash
+cd /srv/compose/platform
+sudo docker exec -it keycloak bash
+```
+
 
 ## Manual activation checklist
 
