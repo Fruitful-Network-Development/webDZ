@@ -1,29 +1,60 @@
 # /srv/compose/platform
 
-### /srv/compose
-**Containerization rationale**
-Compose stacks live here when a service benefits from isolation, portability, or when upstream tooling expects container boundaries.
-**Why these services are containerized**
-- Isolation of third-party services (e.g., Keycloak).
-- Safer upgrades and rollbacks via image pinning.
-- Clear separation between host-native services (NGINX) and app services.
-**Why others are not**
-- NGINX remains on the host for direct TLS termination and lowest-latency
-  ingress control.
-- Static files remain on the host for simple, direct serving.
-**Operational model**
-- One Compose stack per responsibility group.
-- Stacks are supervised by systemd units (e.g., `compose-platform.service`).
-- Environment files live alongside stack definitions; templates are committed
-  while secrets are not.
+This directory defines the **platform identity and control plane** for Fruitful Network Development.
+It introduces centralized authentication, a Backend-for-Frontend (BFF), and platform-owned identity
+persistence **without altering existing static client sites**.
 
-### Strucure
+This README reflects the state after successful Phase 3 bring-up:
+- Keycloak IdP running and reachable
+- Flask BFF handling OIDC login and sessions
+- Platform Postgres persisting platform-owned identity records
+- Realm roles (e.g. `root_admin`) in active use
+
+---
+
+## Directory Purpose
+
+`/srv/compose/platform` contains one Docker Compose stack that is responsible for:
+
+- Identity and authentication (Keycloak)
+- Server-side session management (Flask BFF)
+- Platform-level identity resolution (Postgres, `platform` schema)
+- Future admin and user UIs (served by the BFF)
+
+This stack **does not** serve static client sites and **does not** manage infrastructure services
+such as NGINX or TLS certificates.
+
+---
+
+## Containerization Rationale
+
+Compose stacks live under `/srv/compose` when a service benefits from isolation,
+portability, or well-defined lifecycle management.
+
+### Why these services are containerized
+- Third-party services (Keycloak) are isolated from the host.
+- Safer upgrades and rollbacks via image pinning.
+- Clear separation between host-native services and application logic.
+- Predictable networking and dependency boundaries.
+
+### Why other services are not
+- **NGINX** remains on the host for TLS termination and lowest-latency ingress.
+- **Static client sites** remain on the host filesystem for direct serving.
+
+### Operational model
+- One Compose stack per responsibility group.
+- Stacks are supervised by systemd units (e.g. `compose-platform.service`).
+- Environment templates are committed; secrets are not.
+
+---
+
+## Structure
 ```text
 /srv/compose/platform/
 ├── README.md
 ├── .env
 ├── docker-compose.yml
-├── flask-bff
+├── flask-bff/
 │   ├── app.py
 │   ├── Dockerfile
 │   ├── entrypoint.sh
@@ -35,80 +66,73 @@ Compose stacks live here when a service benefits from isolation, portability, or
 │   │       └── index.html
 │   └── admin/
 │       └── admin.css
-└── platform-schema/001_init.sql
-
+├── keycloak/
+│   └── (realm exports, if any)
+└── platform-schema/
+    └── 001_init.sql
 ```
-
----
-
-## Auth & BFF Stack
-
-This stack introduces authentication and a Backend-for-Frontend (BFF) layer
-while keeping the host’s static client sites unchanged.
-
-It is the **platform control plane** for identity, authorization, and
-authenticated application access. All components in this directory are
-containerized and supervised together via Docker Compose.
-
----
-
-## Purpose
-
-This stack exists to:
-
-- Provide a centralized identity provider (IdP) for all users
-- Establish a BFF that is the **only component allowed to interact with the IdP**
-- Issue secure, server-managed sessions for browser clients
-- Serve as the foundation for future platform and admin UIs
-- Maintain strict separation between:
-  - infrastructure
-  - identity
-  - platform control logic
-  - client-specific operational data
-
-This stack intentionally does **not** replace or modify existing static client
-sites.
 
 ---
 
 ## Services
 
-### Keycloak (IdP)
-- Handles authentication, login flows, and identity lifecycle
-- Owns credentials, MFA, password resets, and session issuance
-- Exposed publicly via `auth.<domain>` through an NGINX proxy
+### Keycloak (Identity Provider)
+- Centralized IdP for all users
+- Owns credentials, MFA, password resets, and login flows
+- Exposed publicly via `auth.<domain>` through NGINX
 - Never accessed directly by client sites
-
-### Postgres (Keycloak-only)
-- Dedicated persistence for Keycloak state
-- Stores users, realms, clients, sessions, and IdP configuration
-- Data is stored in Docker volumes
-- Loss of this database implies re-provisioning identity state
 
 ### Flask BFF
 - Platform-owned Backend-for-Frontend
 - Initiates OIDC login flows against Keycloak
 - Exchanges authorization codes server-side
-- Issues secure session cookies (`HttpOnly; Secure; SameSite=Lax`)
-- Enforces authorization and tenant boundaries
-- Acts as the future home of:
-  - platform admin UI
-  - authenticated user portal
-  - controlled mutation endpoints
+- Issues secure, server-managed session cookies
+- Enforces authorization and role checks
+- Serves the platform admin UI and future user UI
+
+### Postgres (Platform + Keycloak)
+- Keycloak uses its own dedicated database
+- Platform uses a **separate** database and schema
+- Platform DB stores identity resolution and audit data only
 
 ---
 
 ## Public Interfaces
 
 - `auth.<domain>` → Keycloak (pure proxy vhost)
-- `api.<domain>` → Flask BFF (pure proxy vhost; **not enabled initially**)
+- `api.<domain>` → Flask BFF (pure proxy vhost; enabled in later phases)
 
-Primary client domains:
-- remain static
-- are served directly from the filesystem
-- may optionally link or redirect users to the BFF for authentication
+Client domains:
+- Remain static
+- Are served directly from the filesystem
+- May redirect users to the BFF for authentication
 
 No client domain ever proxies directly to Keycloak.
+
+---
+
+## Trust Boundaries
+
+- NGINX is the only public ingress
+- All containers bind to localhost only
+- NGINX explicitly proxies to container ports
+- Static sites never store tokens or credentials
+- All authentication state lives in the BFF session layer
+
+---
+
+## Runtime Authentication Flow
+
+1. User visits a static client site.
+2. User selects “Sign in” → redirected to the BFF.
+3. BFF redirects to Keycloak (OIDC).
+4. Keycloak authenticates the user.
+5. Keycloak redirects back to BFF `/callback`.
+6. BFF exchanges the code server-side.
+7. BFF establishes a secure session cookie.
+8. User is redirected to `/admin` or another UI route.
+
+At no point are access or refresh tokens exposed to the browser.
 
 ---
 
@@ -141,50 +165,27 @@ At no point are tokens exposed to the browser.
 
 ---
 
-## Persistence
-
-### Identity Persistence
-- Keycloak state is persisted in its dedicated Postgres database
-- Backed by Docker volumes
-- Database lifecycle is tied to identity availability
-
-### Platform Persistence (Phase 3+)
-A **separate platform database** “is introduced in Phase 3 for identity resolution and
-authorization metadata.
-
-This database is **not shared** with Keycloak.
-
----
-
-## Table Naming & Semantics (Platform DB)
+## Platform Persistence
 
 ### `platform.user_profiles`
 
-**Platform-owned identity resolution table.**
+Platform-owned identity resolution table.
 
-- Stores canonical user records keyed by Keycloak UUID (`user_id`)
-- Represents a stable, system-wide identity across all clients
-- Is authoritative for:
-  - identity resolution
-  - platform-level user presence
-  - cross-client linkage
+- Primary key: Keycloak UUID (`user_id`)
+- Canonical user presence across the platform
+- Written on first successful login
 
-**Explicitly does NOT store:**
-- passwords or credentials
-- authentication or MFA state
-- session tokens
-- client-specific operational data
+Explicitly does **not** store:
+- Passwords or credentials
+- MFA state
+- Tokens or sessions
+- Client-specific business data
 
-This table exists to resolve “who is this person” across systems, not “how do
-they authenticate” or “what data do they own in a given client.”
+### Other platform tables
+- `platform.audit_log` — security and mutation events
+- Future tables for memberships and authorization metadata
 
-### Companion Tables (Phase 3+)
-- `platform.user_identifiers` (normalized email/phone hashes)
-- `platform.client_memberships` (user ↔ client ↔ role)
-- `platform.audit_log` (security and mutation events)
-
-All platform tables live under the `platform` schema to avoid name pollution and
-to keep table names clean and unprefixed.
+All platform tables live under the `platform` schema.
 
 ---
 
@@ -213,27 +214,21 @@ This directory defines a **control plane**, not a general-purpose backend.
 
 ## Keycloak realm exports
 
-Place exported Keycloak realm JSON files in this directory for local development.
-Avoid committing secrets or credentials in realm exports.
+Realm exports (JSON) may be placed here for development or recovery.
+Do not commit secrets or credentials.
 
 ### Export a realm
 
 From a running Keycloak container, you can export a realm file:
-
 ```bash
-/opt/keycloak/bin/kc.sh export \
-  --dir /opt/keycloak/data/import \
-  --realm <realm-name> \
-  --users realm_file
+/opt/keycloak/bin/kc.sh export   --dir /opt/keycloak/data/import   --realm <realm-name>   --users realm_file
 ```
-
 Copy the exported JSON into this directory (for example,
 `my-realm-export.json`).
 
 ### Import a realm
 
-Keycloak will import realm files from `/opt/keycloak/data/import` at startup.
-Mount this directory into the container and ensure the file is present.
+Realm JSON files placed in `/opt/keycloak/data/import` will be imported at startup.
 
 ### Keep secrets out of Git
 
