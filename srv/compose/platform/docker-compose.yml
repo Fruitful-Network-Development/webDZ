@@ -42,20 +42,6 @@ services:
       - keycloak_data:/opt/keycloak/data
     networks: [platform_net]
 
-  platform_db:
-    image: postgres:16
-    container_name: platform_db
-    # While still in Phase 3 of Migration
-    # restart: unless-stopped
-    restart: "no"
-    environment:
-      POSTGRES_DB: platform
-      POSTGRES_USER: platform
-      POSTGRES_PASSWORD: ${PLATFORM_DB_PASSWORD}
-    volumes:
-      - platform_db_data:/var/lib/postgresql/data
-    networks: [platform_net]
-
   # One-time schema init job (best-practice early stage)
   platform_schema:
     image: postgres:16
