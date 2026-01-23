@@ -384,6 +384,11 @@ Reset any existing kcadm config (avoids stale state)
 rm -f ~/.keycloak/kcadm.config
 ```
 
+Stop the breaking for use of `!`:
+```bash
+set +H
+```
+
 Create local testing SSH Tunnel:
 ```bash
 ssh -i ~/.ssh/aws-main-key -N \
