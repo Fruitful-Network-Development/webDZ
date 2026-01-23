@@ -19,7 +19,24 @@ Compose stacks live here when a service benefits from isolation, portability, or
 
 ### Strucure
 ```text
-HERE
+/srv/compose/platform/
+├── README.md
+├── .env
+├── docker-compose.yml
+├── flask-bff
+│   ├── app.py
+│   ├── Dockerfile
+│   ├── entrypoint.sh
+│   ├── gunicorn.conf.py
+│   ├── requirements.txt
+│   ├── templates/
+│   │   ├── base.html
+│   │   └── admin/
+│   │       └── index.html
+│   └── admin/
+│       └── admin.css
+└── platform-schema/001_init.sql
+
 ```
 
 ---
@@ -193,3 +210,35 @@ These remain **infrastructure responsibilities**, not platform UI actions.
 - Failure in this stack should not break static client sites
 
 This directory defines a **control plane**, not a general-purpose backend.
+
+## Keycloak realm exports
+
+Place exported Keycloak realm JSON files in this directory for local development.
+Avoid committing secrets or credentials in realm exports.
+
+### Export a realm
+
+From a running Keycloak container, you can export a realm file:
+
+```bash
+/opt/keycloak/bin/kc.sh export \
+  --dir /opt/keycloak/data/import \
+  --realm <realm-name> \
+  --users realm_file
+```
+
+Copy the exported JSON into this directory (for example,
+`my-realm-export.json`).
+
+### Import a realm
+
+Keycloak will import realm files from `/opt/keycloak/data/import` at startup.
+Mount this directory into the container and ensure the file is present.
+
+### Keep secrets out of Git
+
+- Remove or redact user passwords, client secrets, and external identity
+  provider credentials before committing.
+- Prefer environment variables or secret management for sensitive values.
+
+ ---
