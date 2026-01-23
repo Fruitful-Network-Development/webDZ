@@ -18,14 +18,17 @@ Data model intent:
 
 from __future__ import annotations
 
+import base64
+import json
 import os
 import time
+from functools import wraps
 from typing import Any, Dict, Optional
 from urllib.parse import urlencode
 
 import psycopg
 import requests
-from flask import Flask, jsonify, redirect, request, session, url_for
+from flask import Flask, abort, jsonify, redirect, request, session, url_for
 
 # ----------------------------
 # Configuration
@@ -102,6 +105,58 @@ def _callback_url() -> str:
     if PUBLIC_BASE_URL:
         return f"{PUBLIC_BASE_URL}/callback"
     return url_for("callback", _external=True)
+
+
+# ----------------------------
+# JWT helpers (Phase 3 scaffold)
+# ----------------------------
+
+def _b64url_decode(s: str) -> bytes:
+    # Base64url without padding
+    s += "=" * (-len(s) % 4)
+    return base64.urlsafe_b64decode(s.encode("utf-8"))
+
+
+def jwt_payload(jwt_token: str) -> Dict[str, Any]:
+    """
+    Parse JWT payload without verifying signature.
+
+    Phase 3 rationale:
+    - BFF receives tokens directly from Keycloak over TLS, server-to-server.
+    - We only need role scaffolding to unblock admin-gating.
+    Phase 4:
+    - Replace with verified decoding using Keycloak JWKS.
+    """
+    parts = jwt_token.split(".")
+    if len(parts) != 3:
+        return {}
+    try:
+        return json.loads(_b64url_decode(parts[1]))
+    except Exception:
+        return {}
+
+
+# ----------------------------
+# Authorization helpers
+# ----------------------------
+
+def require_realm_role(role: str):
+    """
+    Require that the authenticated user has the specified Keycloak realm role.
+    Roles are captured from access_token realm_access.roles during /callback.
+    """
+    def deco(fn):
+        @wraps(fn)
+        def wrapper(*args, **kwargs):
+            u = session.get("user")
+            if not u:
+                return jsonify({"error": "not_authenticated"}), 401
+            roles = u.get("realm_roles") or []
+            if role not in roles:
+                return jsonify({"error": "forbidden", "missing_role": role}), 403
+            return fn(*args, **kwargs)
+        return wrapper
+    return deco
 
 
 # ----------------------------
@@ -257,6 +312,10 @@ def callback():
     if not access_token:
         return jsonify({"error": "no_access_token"}), 500
 
+    # Capture realm roles from the access token (Keycloak convention)
+    access_claims = jwt_payload(access_token)
+    realm_roles = ((access_claims.get("realm_access") or {}).get("roles")) or []
+
     # Fetch userinfo for stable 'sub' and display fields
     claims: Dict[str, Any] = {}
     if userinfo_endpoint:
@@ -285,6 +344,7 @@ def callback():
     session["user"] = {
         "user_id": user_id,
         "display_name": display_name,
+        "realm_roles": realm_roles,
     }
 
     # Upsert platform user profile + audit
@@ -337,6 +397,15 @@ def db_me():
         return jsonify({"error": "profile_missing"}), 404
 
     return jsonify({"profile": profile}), 200
+
+
+@app.get("/admin/ping")
+@require_realm_role("root_admin")
+def admin_ping():
+    """
+    Admin-only proof endpoint. Requires Keycloak realm role 'root_admin'.
+    """
+    return jsonify({"status": "ok", "admin": True}), 200
 
 
 @app.get("/logout")
