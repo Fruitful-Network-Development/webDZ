@@ -52,22 +52,15 @@ DNS → NGINX → (static site OR reverse-proxy) → platform services
 
 ```text
 aws-box/
-├── README.md                              ← Top-level intent
-├── etc/                                   ← Host OS configuration (host config, nginx, systemd)
-│   ├── README.md
+├── README.md
+├── etc/
 │   ├── nginx/
-│   │   ├── README.md
-│   │   └── sites-available/
-│   │       └── README.md
 │   └── systemd/
-│       └── system/
-│           └── README.md
-└── srv/                                   ← Runtime surface
-    ├── webapps/                           ← Static Hosting Tree (manifests, client assets)
-    └── compose/
-        ├── README.md
-        └── platform/
-            └── README.md                  ← Compose Stack
+└── srv/
+    ├── webapps/
+    ├── README.md
+    └── compose/platform/
+        └── README.md
 ```
 
 ## Deployment philosophy
