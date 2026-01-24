@@ -279,16 +279,29 @@ def admin_tenant_detail(tenant_id: str):
 
 
 @app.get("/t/<tenant_id>/console")
-@require_login
 def tenant_console(tenant_id: str):
     tenant_cfg = _load_tenant_or_abort(tenant_id)
     user = get_current_user()
+    if not user:
+        next_path = request.full_path
+        if next_path.endswith("?"):
+            next_path = next_path[:-1]
+        login_url = f"/login?{urlencode({'tenant': tenant_id, 'next': next_path})}"
+        return redirect(login_url)
     if not (is_root_admin(user) or is_tenant_admin(user, tenant_id)):
         abort(403)
+
+    modules = tenant_cfg.get("console_modules") or {}
+    if isinstance(modules, dict):
+        enabled_modules = [name for name, enabled in modules.items() if enabled]
+    else:
+        enabled_modules = list(modules)
+
     return render_template(
         "tenant/console.html",
         tenant_id=tenant_id,
         tenant_cfg=tenant_cfg,
+        enabled_modules=enabled_modules,
     ), 200
 
 
