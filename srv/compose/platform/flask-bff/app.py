@@ -32,8 +32,9 @@ from typing import Any, Dict, Optional
 from urllib.parse import urlencode
 
 import requests
-from flask import Flask, jsonify, redirect, request, session, url_for
+from flask import Flask, abort, jsonify, redirect, render_template, request, session, url_for
 
+from authz import get_current_user, is_root_admin, is_tenant_admin, require_root_admin
 from tenant_registry import (
     TenantNotFoundError,
     TenantRegistryError,
@@ -143,7 +144,7 @@ def jwt_payload(jwt_token: str) -> Dict[str, Any]:
 # ----------------------------
 
 def _current_user() -> Optional[Dict[str, Any]]:
-    return session.get("user")
+    return get_current_user()
 
 
 def _load_tenant_or_error(tenant_id: str):
@@ -153,6 +154,15 @@ def _load_tenant_or_error(tenant_id: str):
         return None, (jsonify({"error": exc.code, "message": exc.message}), 404)
     except (TenantValidationError, TenantRegistryError) as exc:
         return None, (jsonify({"error": exc.code, "message": exc.message}), 400)
+
+
+def _load_tenant_or_abort(tenant_id: str):
+    try:
+        return load_tenant(tenant_id)
+    except TenantNotFoundError as exc:
+        abort(404, exc.message)
+    except (TenantValidationError, TenantRegistryError) as exc:
+        abort(400, exc.message)
 
 
 def require_login(fn):
@@ -194,13 +204,12 @@ def require_realm_role(role: str):
 
 
 def require_tenant_access(tenant_id: str):
-    u = session.get("user")
+    u = get_current_user()
     if not u:
         return jsonify({"error": "not_authenticated"}), 401
-    roles = u.get("realm_roles") or []
-    if "root_admin" in roles:
+    if is_root_admin(u):
         return None
-    if f"tenant_admin:{tenant_id}" in roles:
+    if is_tenant_admin(u, tenant_id):
         return None
     return jsonify({"error": "forbidden"}), 403
 
@@ -209,16 +218,25 @@ def require_tenant_access(tenant_id: str):
 # Routes
 # ----------------------------
 
+@app.context_processor
+def inject_template_context():
+    user = get_current_user()
+    return {
+        "current_user": user,
+        "is_root_admin": is_root_admin(user) if user else False,
+    }
+
+
 @app.get("/health")
 def health():
     return jsonify({"status": "ok"}), 200
 
 
 @app.get("/admin")
-@require_login
+@require_root_admin
 def admin_index():
-    """Minimal admin surface placeholder (UI can be added later)."""
-    return jsonify({"ok": True, "user": _current_user()}), 200
+    user = get_current_user() or {}
+    return render_template("admin/index.html", user=user), 200
 
 
 @app.get("/_tenants")
@@ -238,6 +256,40 @@ def tenant_detail(tenant_id: str):
     if error:
         return error
     return jsonify({"tenant": tenant_public_view(tenant_cfg)}), 200
+
+
+@app.get("/admin/tenants")
+@require_root_admin
+def admin_tenants():
+    try:
+        tenants = list_tenants()
+    except TenantRegistryError as exc:
+        abort(500, exc.message)
+    return render_template("admin/tenants.html", tenants=tenants), 200
+
+
+@app.get("/admin/tenants/<tenant_id>")
+@require_root_admin
+def admin_tenant_detail(tenant_id: str):
+    tenant_cfg = _load_tenant_or_abort(tenant_id)
+    return render_template(
+        "admin/tenant_detail.html",
+        tenant=tenant_public_view(tenant_cfg),
+    ), 200
+
+
+@app.get("/t/<tenant_id>/console")
+@require_login
+def tenant_console(tenant_id: str):
+    tenant_cfg = _load_tenant_or_abort(tenant_id)
+    user = get_current_user()
+    if not (is_root_admin(user) or is_tenant_admin(user, tenant_id)):
+        abort(403)
+    return render_template(
+        "tenant/console.html",
+        tenant_id=tenant_id,
+        tenant_cfg=tenant_cfg,
+    ), 200
 
 
 @app.get("/login")

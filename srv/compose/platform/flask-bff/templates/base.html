@@ -1,29 +1,100 @@
-cat > templates/base.html <<'EOF'
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>{{ title or "Fruitful Platform" }}</title>
-    <link rel="stylesheet" href="/static/admin/admin.css" />
-  </head>
-  <body>
-    <header class="topbar">
-      <div class="brand">Fruitful Platform</div>
-      <nav class="nav">
-        <a href="/admin">Admin</a>
-        <a href="/me">Me</a>
-        <a href="/logout">Logout</a>
-      </nav>
-    </header>
-
-    <main class="wrap">
-      {% block content %}{% endblock %}
-    </main>
-
-    <footer class="footer">
-      <div class="muted">Phase 3 (internal-only). Rendered by BFF.</div>
-    </footer>
-  </body>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{% block title %}Admin Console{% endblock %}</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+      color: #1f2933;
+      background: #f5f7fa;
+    }
+    header {
+      background: #111827;
+      color: #f9fafb;
+      padding: 16px 24px;
+    }
+    header h1 {
+      margin: 0 0 4px 0;
+      font-size: 20px;
+    }
+    header p {
+      margin: 0;
+      opacity: 0.8;
+      font-size: 14px;
+    }
+    main {
+      padding: 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    nav a {
+      margin-right: 12px;
+      color: #2563eb;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    .card {
+      background: #ffffff;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 2px 8px rgba(16, 24, 40, 0.08);
+      margin-bottom: 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      text-align: left;
+      padding: 10px 12px;
+      border-bottom: 1px solid #e5e7eb;
+      vertical-align: top;
+    }
+    th {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      color: #6b7280;
+    }
+    .pill {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: #e0f2fe;
+      color: #075985;
+      font-size: 12px;
+      margin-right: 6px;
+      margin-bottom: 6px;
+    }
+    .muted {
+      color: #6b7280;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>{% block header_title %}Admin Console{% endblock %}</h1>
+    <p>{% block header_subtitle %}Fruitful Network Development BFF{% endblock %}</p>
+  </header>
+  <main>
+    <nav>
+      {% if is_root_admin %}
+        <a href="/admin">Admin Home</a>
+        <a href="/admin/tenants">Tenants</a>
+      {% endif %}
+      {% if current_user %}
+        <span class="muted">Signed in as {{ current_user.display_name or current_user.user_id }}</span>
+      {% else %}
+        <span class="muted">Not signed in</span>
+      {% endif %}
+    </nav>
+    {% block content %}{% endblock %}
+  </main>
+</body>
 </html>
-EOF

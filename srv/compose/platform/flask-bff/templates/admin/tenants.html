@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Admin Console · Tenants{% endblock %}
+{% block header_title %}Tenants{% endblock %}
+{% block header_subtitle %}Tenant registry overview{% endblock %}
+
+{% block content %}
+  <div class="card">
+    <h2>Tenant registry</h2>
+    {% if tenants %}
+      <table>
+        <thead>
+          <tr>
+            <th>Tenant ID</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for tenant_id in tenants %}
+            <tr>
+              <td>{{ tenant_id }}</td>
+              <td>
+                <a href="/admin/tenants/{{ tenant_id }}">View config</a>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <p class="muted">No tenants found in the registry.</p>
+    {% endif %}
+  </div>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Tenant Console · {{ tenant_id }}{% endblock %}
+{% block header_title %}Tenant Console{% endblock %}
+{% block header_subtitle %}{{ tenant_id }} · {{ tenant_cfg.client_domain }}{% endblock %}
+
+{% block content %}
+  <div class="card">
+    <h2>Modules</h2>
+    {% if tenant_cfg.console_modules %}
+      {% for module in tenant_cfg.console_modules %}
+        <span class="pill">{{ module }}</span>
+      {% endfor %}
+    {% else %}
+      <p class="muted">No modules configured for this tenant yet.</p>
+    {% endif %}
+  </div>
+
+  <div class="card">
+    <h2>Workspace</h2>
+    <p class="muted">Placeholder content area for Admin Console v0.</p>
+  </div>
+{% endblock %}
