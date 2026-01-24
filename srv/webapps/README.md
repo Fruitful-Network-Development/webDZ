@@ -68,5 +68,7 @@ register them in `app.py`. Keep these constraints:
 - `GET` `/health` returns 200
 - `GET` `/me` returns 401 when logged out
 - Login sets a session cookie (HttpOnly, SameSite=Lax)
+- Login requires `tenant=<tenant_id>` and can accept `return_to=<url>` (validated against `RETURN_TO_ALLOWLIST`)
 - `GET` `/me` returns identity after login
+- `GET` `/t/<tenant_id>/ping` returns tenant-scoped JSON when authorized
 - Logout clears the session
