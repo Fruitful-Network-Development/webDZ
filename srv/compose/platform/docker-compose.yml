@@ -57,10 +57,10 @@ services:
       SESSION_SECRET: ${SESSION_SECRET}
 
       # Public base URL (used for redirects/callback URLs)
-      PUBLIC_BASE_URL: ${PUBLIC_BASE_URL:-https://api.fruitfulnetworkdevelopment.com}
+      PUBLIC_BASE_URL: ${PUBLIC_BASE_URL}
 
       # Cookie policy: MUST be true when api.* is served over HTTPS (Phase 4)
-      COOKIE_SECURE: ${COOKIE_SECURE:-true}
+      COOKIE_SECURE: ${COOKIE_SECURE}
     ports:
       - "127.0.0.1:8001:8000"
     networks: [platform_net]
