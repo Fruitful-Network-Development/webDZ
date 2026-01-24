@@ -19,7 +19,6 @@ Optional env:
                              If not set, computed from X-Forwarded-* headers.
 - COOKIE_SECURE              true|false (default: false)
                              Set true when served over HTTPS (Phase 4).
-- RETURN_TO_ALLOWLIST        Comma-separated list of allowed return_to URL prefixes.
 """
 
 from __future__ import annotations
@@ -34,6 +33,16 @@ from urllib.parse import urlencode
 
 import requests
 from flask import Flask, jsonify, redirect, request, session, url_for
+
+from tenant_registry import (
+    TenantNotFoundError,
+    TenantRegistryError,
+    TenantValidationError,
+    list_tenants,
+    load_tenant,
+    tenant_public_view,
+    validate_return_to,
+)
 
 
 # ----------------------------
@@ -54,11 +63,6 @@ SESSION_SECRET = _require_env("SESSION_SECRET")
 
 PUBLIC_BASE_URL = os.getenv("PUBLIC_BASE_URL", "").rstrip("/")
 COOKIE_SECURE = os.getenv("COOKIE_SECURE", "false").lower() == "true"
-RETURN_TO_ALLOWLIST = [
-    item.strip()
-    for item in os.getenv("RETURN_TO_ALLOWLIST", "").split(",")
-    if item.strip()
-]
 
 
 # ----------------------------
@@ -142,8 +146,13 @@ def _current_user() -> Optional[Dict[str, Any]]:
     return session.get("user")
 
 
-def _return_to_allowed(return_to: str) -> bool:
-    return any(return_to.startswith(prefix) for prefix in RETURN_TO_ALLOWLIST)
+def _load_tenant_or_error(tenant_id: str):
+    try:
+        return load_tenant(tenant_id), None
+    except TenantNotFoundError as exc:
+        return None, (jsonify({"error": exc.code, "message": exc.message}), 404)
+    except (TenantValidationError, TenantRegistryError) as exc:
+        return None, (jsonify({"error": exc.code, "message": exc.message}), 400)
 
 
 def require_login(fn):
@@ -212,6 +221,25 @@ def admin_index():
     return jsonify({"ok": True, "user": _current_user()}), 200
 
 
+@app.get("/_tenants")
+@require_realm_role("root_admin")
+def tenants_index():
+    try:
+        tenants = list_tenants()
+    except TenantRegistryError as exc:
+        return jsonify({"error": exc.code, "message": exc.message}), 500
+    return jsonify({"tenants": tenants}), 200
+
+
+@app.get("/_tenants/<tenant_id>")
+@require_realm_role("root_admin")
+def tenant_detail(tenant_id: str):
+    tenant_cfg, error = _load_tenant_or_error(tenant_id)
+    if error:
+        return error
+    return jsonify({"tenant": tenant_public_view(tenant_cfg)}), 200
+
+
 @app.get("/login")
 def login():
     """Initiate OIDC Authorization Code flow."""
@@ -220,7 +248,11 @@ def login():
 
     if not tenant_id:
         return jsonify({"error": "missing_tenant"}), 400
-    if return_to and not _return_to_allowed(return_to):
+
+    tenant_cfg, error = _load_tenant_or_error(tenant_id)
+    if error:
+        return error
+    if return_to and not validate_return_to(tenant_cfg, return_to):
         return jsonify({"error": "invalid_return_to"}), 400
 
     session["tenant_id"] = tenant_id
