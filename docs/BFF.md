@@ -1,209 +1,230 @@
-# BFF Scope & Platform (Updated)
+# BFF Scope & Platform – Phase 5 (Admin & User Console Enablement)
 
-This document reflects the **current, consolidated state** of the platform after successful
-Phase 3 completion and partial Phase 4 readiness.
+This document supersedes earlier BFF scope notes and reflects the **current operational posture**
+and the **next planned phase (Phase 5)**. It incorporates decisions already made and extends them
+to cover tenant routing, UI surfaces, and data scope **without assuming a finalized data model**.
 
-It supersedes earlier drafts by **removing the platform Postgres database** and clarifying that
-the BFF currently operates with **Keycloak as the sole stateful dependency**, using **server-side
-sessions only**.
-
-This document describes **what exists now**, not the historical migration process.
-(Migration steps remain documented separately.)
+This document defines **responsibilities, boundaries, and intent**, not final schemas.
 
 ---
 
-## 1. Role of the BFF (Authoritative)
+## 1. BFF Role (Unchanged, Reinforced)
 
-The Backend-for-Frontend (BFF) is the **only application-layer service** that:
+There is **one deployed BFF service**.
+
+The BFF is the **only application-layer service** that:
 
 - Initiates authentication flows
 - Interacts with Keycloak
-- Holds authenticated user state
-- Enforces authorization
-- Serves platform-owned UI surfaces (admin + future user UI)
+- Holds authenticated user session state
+- Enforces authorization and tenant boundaries
+- Serves platform-owned UI surfaces (admin + user consoles)
+- Mediates all reads and writes to application data sources
 
 Client sites:
 - Remain static
 - Never store tokens
 - Never communicate with Keycloak directly
-- Communicate only with the BFF over HTTPS (Phase 4)
+- Initiate authentication only by redirecting to the BFF
 
 ---
 
-## 2. Authentication Model (Locked In)
+## 2. Multi-Tenant Routing Model (Locked)
 
-### Identity Provider
-- **Keycloak** is the single Identity Provider (IdP)
-- Owns:
-  - Credentials
-  - Login UI
-  - Password resets
-  - MFA (future)
-  - Realm roles
+### Entry Point
+All authentication begins at the BFF:
 
-### BFF Responsibilities
-- Redirects users to Keycloak
-- Exchanges authorization codes server-side
-- Establishes a **server-managed session**
-- Issues a cookie:
-  - `HttpOnly`
-  - `SameSite=Lax`
-  - `Secure` (when served over HTTPS)
-
-### Explicit Exclusions
-- No access tokens in browser storage
-- No refresh tokens in browser storage
-- No direct Keycloak access from client sites
-
----
-
-## 3. Session Model (Current)
-
-- Session data is held **by the BFF**
-- Implemented using Flask sessions
-- Cookie contains only a session identifier / signed payload
-- Identity claims stored server-side:
-  - `user_id` (Keycloak `sub`)
-  - `display_name` (best-effort)
-  - `realm_roles`
-
-There is **no application database** at this stage.
-
----
-
-## 4. Authorization Model
-
-### Roles
-Authorization is driven by **Keycloak realm roles**, for example:
-
-- `root_admin`
-- `tenant_admin`
-- `user`
+```
+https://api.fruitfulnetworkdevelopment.com/login?tenant=<tenant_id>&return_to=<url>
+```
 
 The BFF:
-- Extracts roles from the OIDC access token
-- Enforces authorization at route boundaries
+- Records the requested tenant context
+- Performs OIDC login via Keycloak
+- Establishes a session cookie scoped to `api.*`
+- Resolves tenant access from identity + role information
+- Redirects the user into the appropriate UI surface
 
-Example (conceptual):
-```python
-@require_realm_role("root_admin")
-def admin_route():
-    ...
-```
+### Tenant Resolution
+Tenant context is derived from:
+- Explicit `tenant` parameter at login
+- User membership and roles (from Keycloak)
+- Platform-side authorization logic
+
+There is **no separate BFF per tenant**.
+Tenant isolation is logical, not infrastructural.
 
 ---
 
-## 5. Mutating Actions (Constrained by Design)
+## 3. Identity & Authorization Model
 
-The BFF **may perform mutating actions only if all conditions are met**:
+### Identity Provider
+- Keycloak remains the single IdP
+- Users are global to the platform
+- Credentials, MFA, and login UX live in Keycloak
 
-- Narrow, explicit scope
-- Validated inputs
-- Reversible operation
-- Audit-capable
+### Authorization
+The BFF decides:
+- Which tenants a user may access
+- Which UI modules are visible
+- Which operations are permitted
 
-### Allowed (Future, Explicit)
-- Upload validated JSON content files
-- Promote content from `staging/` → `live/`
-- Toggle feature flags
-- Trigger controlled deploy actions (Git pull / fast-forward only)
+Authorization inputs:
+- Keycloak realm roles
+- Keycloak client roles (per-tenant OIDC clients)
+- Platform-side authorization rules
+
+---
+
+## 4. Keycloak Client Strategy (Adopted)
+
+- Each tenant is modeled as **its own OIDC client** in Keycloak
+- All clients authenticate against the same realm
+- One BFF codebase supports all tenants
+
+This allows:
+- Tenant-specific redirect URIs
+- Tenant-scoped roles
+- Clean separation of access without duplicating services
+
+---
+
+## 5. UI Surfaces (Phase 5 Goal)
+
+### Admin Console
+Served by the BFF.
+
+Accessible only to:
+- Platform root administrators
+- Tenant administrators (within their tenant scope)
+
+Responsibilities:
+- Tenant visibility and membership management
+- Configuration and data inspection
+- Controlled mutation workflows (see Section 8)
+
+### User Console
+Also served by the BFF.
+
+Accessible to:
+- Authenticated users with tenant membership
+
+Responsibilities:
+- Viewing and interacting with tenant-scoped data
+- No infrastructure or cross-tenant visibility
+
+Both consoles:
+- Use a shared core UI
+- Vary behavior and available modules through configuration and authorization
+- Do not require separate frontend builds per tenant
+
+---
+
+## 6. Data Scope & Authority (Clarified)
+
+### Principal Data Source
+The platform recognizes a **principal data authority** that defines:
+
+- Domains of meaning (namespaces)
+- Identifier types
+- Structural constraints
+- Valid relationships between data
+
+This authority **informs how data is read, written, validated, and interpreted**,
+regardless of storage backend.
+
+### Data Scope Categories
+
+#### Global Domains
+- Exist outside any single tenant
+- Provide shared reference data
+- Are read-only for most users
+
+Examples (non-exhaustive):
+- Taxonomic domains
+- Statonomic domains
+- Other MNF-governed namespaces
+
+#### Tenant-Local Domains
+- Exist within a tenant boundary
+- Govern tenant-created groupings and records
+- Are mutable by authorized tenant users
+
+### Platform-Owned Data
+The platform owns:
+- Identity resolution
+- Authorization metadata
+- Audit records
+
+This data is **not client business data** and is not exposed directly.
+
+---
+
+## 7. Schema as Data (Intent)
+
+The platform treats **schemas themselves as data**.
+
+This means:
+- Users may define groupings and fields through the UI
+- Definitions are persisted and versionable
+- Operational data must conform to the active definitions
+
+The BFF:
+- Validates all writes against current definitions
+- Mediates references across domains (e.g., ID-based linkage)
+- Does not permit arbitrary or implicit structure changes
+
+No assumption is made here about:
+- Exact storage format
+- Relational vs document representation
+- Final migration path from filesystem to database
+
+---
+
+## 8. Mutating Operations (Strict)
+
+The BFF may perform mutating actions **only when all conditions are met**:
+
+- Explicit scope
+- Authorization verified
+- Inputs validated
+- Operation auditable
+- Tenant boundaries enforced
+
+### Allowed Categories
+- Identity and membership management (via Keycloak APIs)
+- Schema definition and update (within tenant scope)
+- Data creation and update conforming to schema
+- Controlled content promotion workflows
 
 ### Explicitly Excluded
-- Editing NGINX configs
-- systemd manipulation
-- Firewall or kernel changes
-- TLS issuance or renewal
-- Arbitrary shell execution
-
-These remain **infrastructure workflows**.
+- Infrastructure modification
+- Arbitrary command execution
+- Direct filesystem or service manipulation outside defined workflows
 
 ---
 
-## 6. Runtime Architecture (Current)
+## 9. Operational Invariants
 
-```
-Browser
-  ↓
-NGINX (host)
-  ↓
-Flask BFF (container, localhost-only in Phase 3)
-  ↓
-Keycloak (container, proxied via NGINX)
-```
-
-Keycloak is exposed publicly at:
-
-```
-https://auth.fruitfulnetworkdevelopment.com
-```
-
-The BFF is currently accessed via:
-- SSH port forwarding (`localhost:8001`) in Phase 3
-- `https://api.fruitfulnetworkdevelopment.com` in Phase 4
-
----
-
-## 7. Operational Commands (Reference)
-
-### BFF lifecycle
-```bash
-cd /srv/compose/platform
-docker compose up -d flask_bff
-docker compose restart flask_bff
-docker compose logs -f flask_bff
-```
-
-### Keycloak lifecycle
-```bash
-docker compose logs -f keycloak
-```
-
-### Local testing (Phase 3)
-```bash
-ssh -L 8001:127.0.0.1:8001 admin@<ec2-ip>
-```
-
-Then browse:
-```
-http://localhost:8001/login
-http://localhost:8001/me
-```
-
----
-
-## 8. Public Exposure Rules
-
-- **auth.*** is public and TLS-terminated
-- **api.*** remains disabled until:
-  - `/health` responds
-  - `/me` works reliably
-  - Session cookies are `Secure`
-  - NGINX proxy is validated
-
-No service becomes public by accident.
-
----
-
-## 9. Future Extensions (Non-Binding)
-
-The following remain optional and deferred:
-
-- Platform-owned database for identity resolution
-- Audit persistence beyond logs
-- Admin UI for content publishing
-- Tenant-level authorization models
-
-Their absence does **not** block current operation.
-
----
-
-## 10. Final Invariants
-
-- Authentication is **BFF-only**
-- Keycloak is the only IdP
-- Client sites remain static
+- One BFF service
+- One Keycloak realm
+- Many tenants
+- Static client sites remain static
+- All authentication flows through the BFF
+- All application data access flows through the BFF
 - Infrastructure remains manually operated
-- Activation is always explicit
-- Security boundaries are preserved
 
-This document defines the **current operating contract** of the BFF.
+---
+
+## 10. Phase 5 Outcome
+
+Completion of Phase 5 means:
+
+- A functional admin console
+- A functional demo user console
+- Tenant routing is live
+- Schema-driven data interaction is possible
+- No additional services are introduced
+- No assumptions are locked prematurely about long-term data storage
+
+This establishes a stable foundation for future refinement without architectural reversal.
