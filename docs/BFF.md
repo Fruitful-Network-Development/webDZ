@@ -40,6 +40,8 @@ https://api.fruitfulnetworkdevelopment.com/login?tenant=<tenant_id>&return_to=<u
 
 The BFF:
 - Records the requested tenant context
+- Stores `tenant_id` and optional `return_to` in the server-side session
+- Validates `return_to` against the `RETURN_TO_ALLOWLIST` environment variable
 - Performs OIDC login via Keycloak
 - Establishes a session cookie scoped to `api.*`
 - Resolves tenant access from identity + role information
@@ -73,6 +75,18 @@ Authorization inputs:
 - Keycloak realm roles
 - Keycloak client roles (per-tenant OIDC clients)
 - Platform-side authorization rules
+
+Authorization guards (JSON responses only):
+- `require_login` returns `401 {"error":"not_authenticated"}` when unauthenticated
+- `require_tenant_context` returns `400 {"error":"missing_tenant"}` when tenant context is absent
+- `require_realm_role` returns `403 {"error":"forbidden"}` when roles are missing
+
+Tenant access (Phase 5 scaffolding):
+- `root_admin` has global access
+- `tenant_admin:<tenant_id>` grants access to a specific tenant
+
+Example tenant probe endpoint:
+- `GET /t/<tenant_id>/ping` (requires login + tenant access)
 
 ---
 

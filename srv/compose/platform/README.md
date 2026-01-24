@@ -88,6 +88,7 @@ portability, or well-defined lifecycle management.
 - Exchanges authorization codes server-side
 - Issues secure, server-managed session cookies
 - Enforces authorization and role checks
+- Stores tenant context from `/login?tenant=<tenant_id>` and validates `return_to`
 - Serves the platform admin UI and future user UI
 
 ### Postgres (Platform + Keycloak)
@@ -124,7 +125,7 @@ No client domain ever proxies directly to Keycloak.
 ## Runtime Authentication Flow
 
 1. User visits a static client site.
-2. User selects “Sign in” → redirected to the BFF.
+2. User selects “Sign in” → redirected to the BFF (`/login?tenant=<tenant_id>&return_to=<url>`).
 3. BFF redirects to Keycloak (OIDC).
 4. Keycloak authenticates the user.
 5. Keycloak redirects back to BFF `/callback`.
@@ -152,7 +153,7 @@ At no point are access or refresh tokens exposed to the browser.
 ## Runtime Flow (BFF)
 
 1. User visits a static client site (served by NGINX).
-2. User selects “Sign in” → redirected to the BFF login route.
+2. User selects “Sign in” → redirected to the BFF login route with tenant context.
 3. BFF initiates an OIDC redirect to Keycloak.
 4. Keycloak authenticates the user.
 5. Keycloak redirects back to the BFF callback endpoint.

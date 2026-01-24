@@ -19,6 +19,7 @@ Optional env:
                              If not set, computed from X-Forwarded-* headers.
 - COOKIE_SECURE              true|false (default: false)
                              Set true when served over HTTPS (Phase 4).
+- RETURN_TO_ALLOWLIST        Comma-separated list of allowed return_to URL prefixes.
 """
 
 from __future__ import annotations
@@ -53,6 +54,11 @@ SESSION_SECRET = _require_env("SESSION_SECRET")
 
 PUBLIC_BASE_URL = os.getenv("PUBLIC_BASE_URL", "").rstrip("/")
 COOKIE_SECURE = os.getenv("COOKIE_SECURE", "false").lower() == "true"
+RETURN_TO_ALLOWLIST = [
+    item.strip()
+    for item in os.getenv("RETURN_TO_ALLOWLIST", "").split(",")
+    if item.strip()
+]
 
 
 # ----------------------------
@@ -136,11 +142,26 @@ def _current_user() -> Optional[Dict[str, Any]]:
     return session.get("user")
 
 
-def _require_login():
-    if not _current_user():
-        nxt = request.path
-        return redirect(f"/login?next={nxt}")
-    return None
+def _return_to_allowed(return_to: str) -> bool:
+    return any(return_to.startswith(prefix) for prefix in RETURN_TO_ALLOWLIST)
+
+
+def require_login(fn):
+    @wraps(fn)
+    def wrapper(*args, **kwargs):
+        if not _current_user():
+            return jsonify({"error": "not_authenticated"}), 401
+        return fn(*args, **kwargs)
+    return wrapper
+
+
+def require_tenant_context(fn):
+    @wraps(fn)
+    def wrapper(*args, **kwargs):
+        if not session.get("tenant_id"):
+            return jsonify({"error": "missing_tenant"}), 400
+        return fn(*args, **kwargs)
+    return wrapper
 
 
 # ----------------------------
@@ -163,6 +184,18 @@ def require_realm_role(role: str):
     return deco
 
 
+def require_tenant_access(tenant_id: str):
+    u = session.get("user")
+    if not u:
+        return jsonify({"error": "not_authenticated"}), 401
+    roles = u.get("realm_roles") or []
+    if "root_admin" in roles:
+        return None
+    if f"tenant_admin:{tenant_id}" in roles:
+        return None
+    return jsonify({"error": "forbidden"}), 403
+
+
 # ----------------------------
 # Routes
 # ----------------------------
@@ -173,17 +206,29 @@ def health():
 
 
 @app.get("/admin")
+@require_login
 def admin_index():
     """Minimal admin surface placeholder (UI can be added later)."""
-    guard = _require_login()
-    if guard:
-        return guard
     return jsonify({"ok": True, "user": _current_user()}), 200
 
 
 @app.get("/login")
 def login():
     """Initiate OIDC Authorization Code flow."""
+    tenant_id = request.args.get("tenant")
+    return_to = request.args.get("return_to")
+
+    if not tenant_id:
+        return jsonify({"error": "missing_tenant"}), 400
+    if return_to and not _return_to_allowed(return_to):
+        return jsonify({"error": "invalid_return_to"}), 400
+
+    session["tenant_id"] = tenant_id
+    if return_to:
+        session["return_to"] = return_to
+    else:
+        session.pop("return_to", None)
+
     discovery = _get_discovery()
     authorization_endpoint = discovery["authorization_endpoint"]
 
@@ -284,13 +329,36 @@ def me():
     u = session.get("user")
     if not u:
         return jsonify({"authenticated": False}), 401
-    return jsonify({"authenticated": True, "user": u}), 200
+    payload = {"authenticated": True, "user": u}
+    tenant_id = session.get("tenant_id")
+    if tenant_id:
+        payload["tenant_id"] = tenant_id
+    return jsonify(payload), 200
 
 
 @app.get("/logout")
 def logout():
     session.clear()
     return jsonify({"ok": True}), 200
+
+
+@app.get("/t/<tenant_id>/ping")
+@require_login
+@require_tenant_context
+def tenant_ping(tenant_id: str):
+    guard = require_tenant_access(tenant_id)
+    if guard:
+        return guard
+    user = session.get("user") or {}
+    return jsonify({
+        "ok": True,
+        "tenant": tenant_id,
+        "user": {
+            "user_id": user.get("user_id"),
+            "display_name": user.get("display_name"),
+            "email": user.get("email"),
+        },
+    }), 200
 
 
 if __name__ == "__main__":
