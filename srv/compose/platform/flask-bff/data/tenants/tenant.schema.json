@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TenantConfig",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "tenant_id",
+    "client_domain",
+    "allowed_return_to",
+    "oidc_client_id",
+    "oidc_client_secret_env",
+    "console_modules"
+  ],
+  "properties": {
+    "tenant_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "client_domain": {
+      "type": "string",
+      "minLength": 1
+    },
+    "allowed_return_to": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^https://"
+      }
+    },
+    "oidc_client_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "oidc_client_secret_env": {
+      "type": "string",
+      "minLength": 1
+    },
+    "console_modules": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "boolean"
+      }
+    }
+  }
+}

@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block title %}Tenant Console · {{ tenant_id }}{% endblock %}
+{% block header_title %}Tenant Console{% endblock %}
+{% block header_subtitle %}
+  {{ tenant_id }}{% if tenant_cfg.client_domain %} · {{ tenant_cfg.client_domain }}{% endif %}
+{% endblock %}
+
+{% block content %}
+  <style>
+    .console-shell {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 24px;
+      margin-top: 24px;
+    }
+    .console-nav {
+      background: #ffffff;
+      border-radius: 8px;
+      padding: 16px;
+      box-shadow: 0 2px 8px rgba(16, 24, 40, 0.08);
+    }
+    .console-nav h2 {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin: 0 0 12px 0;
+      color: #6b7280;
+    }
+    .console-nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .console-nav li {
+      padding: 8px 0;
+      font-weight: 600;
+    }
+    .console-nav a {
+      color: inherit;
+      text-decoration: none;
+    }
+    .console-nav a:hover {
+      text-decoration: underline;
+    }
+    .console-main .card {
+      margin-bottom: 0;
+    }
+    @media (max-width: 900px) {
+      .console-shell {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+
+  <div class="card">
+    <h2>Tenant Overview</h2>
+    <p><strong>Tenant ID:</strong> {{ tenant_id }}</p>
+    {% if tenant_cfg.client_domain %}
+      <p><strong>Client domain:</strong> {{ tenant_cfg.client_domain }}</p>
+    {% endif %}
+  </div>
+
+  <div class="console-shell">
+    <aside class="console-nav">
+      <h2>Modules</h2>
+      {% if enabled_modules %}
+        <ul>
+          {% for module in enabled_modules %}
+            <li>
+              <a href="/t/{{ tenant_id }}/console/{{ module }}">
+                {{ module.replace("_", " ")|title }}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p class="muted">No modules enabled.</p>
+      {% endif %}
+    </aside>
+
+    <section class="console-main">
+      <div class="card">
+        <h2>Console v0</h2>
+        <p class="muted">Console v0: coming soon.</p>
+      </div>
+    </section>
+  </div>
+{% endblock %}

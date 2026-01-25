@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+
+{% block title %}Animals Console · {{ tenant_id }}{% endblock %}
+{% block header_title %}Animals Console{% endblock %}
+{% block header_subtitle %}
+  {{ tenant_id }}{% if tenant_cfg.client_domain %} · {{ tenant_cfg.client_domain }}{% endif %}
+{% endblock %}
+
+{% block content %}
+  <style>
+    .console-shell {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 24px;
+      margin-top: 24px;
+    }
+    .console-nav {
+      background: #ffffff;
+      border-radius: 8px;
+      padding: 16px;
+      box-shadow: 0 2px 8px rgba(16, 24, 40, 0.08);
+    }
+    .console-nav h2 {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin: 0 0 12px 0;
+      color: #6b7280;
+    }
+    .console-nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .console-nav li {
+      padding: 8px 0;
+      font-weight: 600;
+    }
+    .console-nav a {
+      color: inherit;
+      text-decoration: none;
+    }
+    .console-nav a:hover {
+      text-decoration: underline;
+    }
+    .console-main .card {
+      margin-bottom: 16px;
+    }
+    .api-list code {
+      background: #f3f4f6;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+    @media (max-width: 900px) {
+      .console-shell {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+
+  <div class="card">
+    <h2>Animals Module</h2>
+    <p class="muted">Use these APIs to explore companion animal records.</p>
+  </div>
+
+  <div class="console-shell">
+    <aside class="console-nav">
+      <h2>Modules</h2>
+      {% if enabled_modules %}
+        <ul>
+          {% for item in enabled_modules %}
+            <li>
+              <a href="/t/{{ tenant_id }}/console/{{ item }}">
+                {{ item.replace("_", " ")|title }}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p class="muted">No modules enabled.</p>
+      {% endif %}
+    </aside>
+
+    <section class="console-main">
+      <div class="card">
+        <h3>Companion Animals Table</h3>
+        <p>Table ID: <code>{{ demo_table_id }}</code></p>
+        <ul class="api-list">
+          <li>List records: <code>GET /api/t/{{ tenant_id }}/tables/{{ demo_table_id }}</code></li>
+          <li>Create record: <code>POST /api/t/{{ tenant_id }}/tables/{{ demo_table_id }}</code></li>
+          <li>Fetch record: <code>GET /api/t/{{ tenant_id }}/tables/{{ demo_table_id }}/&lt;record_id&gt;</code></li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Suggested payload</h3>
+        <pre>{
+  "name": "Luna",
+  "taxa_ref": "SAMRAS:CANIS_LUPUS_FAMILIARIS"
+}</pre>
+      </div>
+    </section>
+  </div>
+{% endblock %}

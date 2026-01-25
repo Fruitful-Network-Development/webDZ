@@ -56,10 +56,20 @@ portability, or well-defined lifecycle management.
 ├── docker-compose.yml
 ├── flask-bff/
 │   ├── app.py
+│   ├── config.py
 │   ├── Dockerfile
 │   ├── entrypoint.sh
 │   ├── gunicorn.conf.py
 │   ├── requirements.txt
+│   ├── routes/
+│   │   ├── admin.py
+│   │   ├── auth.py
+│   │   ├── tables.py
+│   │   ├── tenant.py
+│   │   └── user.py
+│   ├── utils/
+│   │   ├── mss.py
+│   │   └── samras.py
 │   ├── templates/
 │   │   ├── base.html
 │   │   └── admin/
@@ -88,6 +98,7 @@ portability, or well-defined lifecycle management.
 - Exchanges authorization codes server-side
 - Issues secure, server-managed session cookies
 - Enforces authorization and role checks
+- Stores tenant context from `/login?tenant=<tenant_id>` and validates `return_to`
 - Serves the platform admin UI and future user UI
 
 ### Postgres (Platform + Keycloak)
@@ -124,7 +135,7 @@ No client domain ever proxies directly to Keycloak.
 ## Runtime Authentication Flow
 
 1. User visits a static client site.
-2. User selects “Sign in” → redirected to the BFF.
+2. User selects “Sign in” → redirected to the BFF (`/login?tenant=<tenant_id>&return_to=<url>`).
 3. BFF redirects to Keycloak (OIDC).
 4. Keycloak authenticates the user.
 5. Keycloak redirects back to BFF `/callback`.
@@ -152,7 +163,7 @@ At no point are access or refresh tokens exposed to the browser.
 ## Runtime Flow (BFF)
 
 1. User visits a static client site (served by NGINX).
-2. User selects “Sign in” → redirected to the BFF login route.
+2. User selects “Sign in” → redirected to the BFF login route with tenant context.
 3. BFF initiates an OIDC redirect to Keycloak.
 4. Keycloak authenticates the user.
 5. Keycloak redirects back to the BFF callback endpoint.
@@ -186,6 +197,60 @@ Explicitly does **not** store:
 - Future tables for memberships and authorization metadata
 
 All platform tables live under the `platform` schema.
+
+---
+
+## MSS + SAMRAS Features
+
+The platform DB now supports MSS + SAMRAS schema registry and hierarchy management:
+
+- `platform.local_domain` — local domain registry (per-tenant semantic domains).
+- `platform.archetype` and `platform.archetype_field` — archetype definitions and field constraints.
+- `platform.manifest` — table bindings between local domains and archetypes.
+- `platform.samras_layout` and `platform.samras_archetype` — SAMRAS layouts and archetype metadata.
+- `platform.mss_profile` — MSS hierarchy mapping of Keycloak user IDs to MSN IDs and roles.
+
+Together these tables power:
+- Dynamic tenant tables (`/api/t/<tenant_id>/tables/<table_id>`) based on manifest/archetype definitions.
+- SAMRAS validation for reference fields.
+- MSS hierarchy lookups attached to sessions (`/me`) and used to resolve dynamic table names.
+
+---
+
+## Flask BFF Modules
+
+The BFF has been split into smaller modules/blueprints:
+
+- `app.py` — app factory, blueprint registration, and lifecycle hooks.
+- `config.py` — environment configuration (OIDC + cookie settings).
+- `routes/auth.py` — login/callback/logout and session APIs (`/me`).
+- `routes/admin.py` — admin UI + schema registry APIs (`/api/admin/*`).
+- `routes/user.py` — MSS profile and user hierarchy management APIs.
+- `routes/tables.py` — tenant table CRUD + SAMRAS lookup APIs.
+- `routes/tenant.py` — tenant console and ping endpoints.
+- `utils/samras.py` — SAMRAS parsing and validation helpers.
+- `utils/mss.py` — MSS profile lookup helpers.
+
+---
+
+## Testing
+
+Integration tests live under `flask-bff/tests/` and exercise API + DB flows and the mocked OIDC login flow.
+
+### Prerequisites
+- A Postgres database for testing.
+- Set `PLATFORM_DB_URL` to a test database URL (must be writable).
+- OIDC env vars for test startup:
+  - `OIDC_ISSUER`
+  - `OIDC_CLIENT_ID`
+  - `OIDC_CLIENT_SECRET`
+  - `SESSION_SECRET`
+
+### Run
+```bash
+cd /srv/compose/platform/flask-bff
+pytest -q tests/
+```
 
 ---
 

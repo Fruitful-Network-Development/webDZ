@@ -1,0 +1,15 @@
+{
+  "tenant_id": "cuyahogaterravita",
+  "client_domain": "cuyahogaterravita.com",
+  "allowed_return_to": [
+    "https://cuyahogaterravita.com/",
+    "https://app.cuyahogaterravita.com/"
+  ],
+  "oidc_client_id": "flask-bff",
+  "oidc_client_secret_env": "CUYAHOGATERRAVITA_OIDC_CLIENT_SECRET",
+  "console_modules": {
+    "schema_builder": true,
+    "data_entry": true,
+    "animals": true
+  }
+}

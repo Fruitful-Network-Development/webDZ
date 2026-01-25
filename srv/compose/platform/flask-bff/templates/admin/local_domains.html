@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% block title %}Admin Console · Local Domains{% endblock %}
+{% block header_title %}Local Domains{% endblock %}
+{% block header_subtitle %}MSS local domain registry{% endblock %}
+
+{% block content %}
+  <div class="card">
+    <h2>Registered local domains</h2>
+    {% if local_domains %}
+      <table>
+        <thead>
+          <tr>
+            <th>Local ID</th>
+            <th>Title</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for domain in local_domains %}
+            <tr>
+              <td>{{ domain.local_id }}</td>
+              <td>{{ domain.title }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <p class="muted">No local domains have been registered yet.</p>
+    {% endif %}
+  </div>
+
+  <div class="card">
+    <h3>Add a local domain</h3>
+    <form id="local-domain-form">
+      <table>
+        <tr>
+          <th><label for="local_id">Local ID (UUID)</label></th>
+          <td><input id="local_id" name="local_id" type="text" required /></td>
+        </tr>
+        <tr>
+          <th><label for="title">Title</label></th>
+          <td><input id="title" name="title" type="text" required /></td>
+        </tr>
+      </table>
+      <p>
+        <button type="submit">Create local domain</button>
+      </p>
+      <p class="muted" id="local-domain-status"></p>
+    </form>
+  </div>
+
+  <script>
+    const localDomainForm = document.getElementById("local-domain-form");
+    const localDomainStatus = document.getElementById("local-domain-status");
+
+    localDomainForm.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      localDomainStatus.textContent = "";
+
+      const payload = {
+        local_id: localDomainForm.local_id.value.trim(),
+        title: localDomainForm.title.value.trim(),
+      };
+
+      const response = await fetch("/api/admin/local-domain", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      if (response.ok) {
+        window.location.reload();
+        return;
+      }
+
+      const error = await response.json().catch(() => ({ error: "unknown_error" }));
+      localDomainStatus.textContent = `Error: ${error.error || "unknown_error"}`;
+    });
+  </script>
+{% endblock %}

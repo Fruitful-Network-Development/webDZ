@@ -1,39 +1,54 @@
-cat > templates/admin/index.html <<'EOF'
 {% extends "base.html" %}
+
+{% block title %}Admin Console · Overview{% endblock %}
+{% block header_title %}Admin Console{% endblock %}
+{% block header_subtitle %}Root admin overview{% endblock %}
+
 {% block content %}
-
-<section class="card">
-  <h1>Admin Dashboard (Skeleton)</h1>
-  <p class="muted">
-    This UI is served by the Flask BFF and protected by the BFF session cookie.
-    No client-site coupling. Internal-only access via SSH tunnel.
-  </p>
-</section>
-
-<section class="grid">
   <div class="card">
-    <h2>Session</h2>
-    {% if user %}
-      <div class="kv">
-        <div class="k">user_id</div><div class="v">{{ user.user_id }}</div>
-        <div class="k">display_name</div><div class="v">{{ user.display_name or "" }}</div>
-        <div class="k">issuer</div><div class="v">{{ user.issuer or "" }}</div>
-      </div>
-    {% else %}
-      <p>Not logged in.</p>
-      <a class="btn" href="/login">Login</a>
-    {% endif %}
+    <h2>Welcome, {{ user.display_name or user.user_id }}</h2>
+    <p class="muted">Use the navigation to manage tenants and review configuration.</p>
   </div>
 
   <div class="card">
-    <h2>Quick Checks</h2>
+    <h3>Current identity</h3>
+    <table>
+      <tr>
+        <th>Subject</th>
+        <td>{{ user.user_id }}</td>
+      </tr>
+      <tr>
+        <th>Display name</th>
+        <td>{{ user.display_name or "(none)" }}</td>
+      </tr>
+      <tr>
+        <th>Email</th>
+        <td>{{ user.email or "(none)" }}</td>
+      </tr>
+      <tr>
+        <th>Realm roles</th>
+        <td>
+          {% if user.realm_roles %}
+            {% for role in user.realm_roles %}
+              <span class="pill">{{ role }}</span>
+            {% endfor %}
+          {% else %}
+            <span class="muted">No realm roles in session.</span>
+          {% endif %}
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Quick links</h3>
     <ul>
-      <li><a href="/admin/ping">/admin/ping</a> (should be 200 when logged in)</li>
-      <li><a href="/health">/health</a></li>
-      <li><a href="/me">/me</a></li>
+      <li><a href="/admin/tenants">View tenants</a></li>
+      <li><a href="/admin/local-domains">Manage local domains</a></li>
+      <li><a href="/admin/archetypes">Manage archetypes</a></li>
+      <li><a href="/admin/manifest">Manage manifest</a></li>
+      <li><a href="/admin/samras-layouts">Manage SAMRAS layouts</a></li>
+      <li><a href="/admin/users">Manage MSS user profiles</a></li>
     </ul>
   </div>
-</section>
-
 {% endblock %}
-EOF
