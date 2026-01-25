@@ -27,6 +27,7 @@ import base64
 import binascii
 import json
 import os
+import re
 import time
 import uuid
 from functools import wraps
@@ -275,7 +276,7 @@ def _seed_demo_data() -> None:
                 "taxa_ref",
                 "string",
                 "SAMRAS",
-                json.dumps({"mode": "exact"}),
+                json.dumps({"samras_mode": "exact"}),
             ),
         )
 
@@ -318,6 +319,190 @@ def _load_archetype_fields(archetype_id: str) -> list[Dict[str, Any]]:
         if isinstance(constraints, str):
             field["constraints"] = json.loads(constraints)
     return fields
+
+
+SAMRAS_MODES = {"exact", "group", "existential"}
+
+
+def _is_samras_domain(ref_domain: Optional[str]) -> bool:
+    if not ref_domain:
+        return False
+    return ref_domain.strip().upper().startswith("SAMRAS")
+
+
+def _parse_samras_ref_domain(ref_domain: str) -> tuple[Optional[str], Optional[int]]:
+    ref_domain = ref_domain.strip()
+    if not _is_samras_domain(ref_domain):
+        return None, None
+    suffix = ref_domain[len("SAMRAS"):]
+    if not suffix:
+        return None, None
+    suffix = suffix.lstrip(":/")
+    if not suffix:
+        return None, None
+    parts = [part for part in re.split(r"[:/]", suffix) if part]
+    if len(parts) < 2:
+        return None, None
+    domain = parts[0].strip()
+    if not domain:
+        return None, None
+    try:
+        version = int(parts[1])
+    except ValueError:
+        return None, None
+    return domain, version
+
+
+def _samras_layout_lookup(domain: str, version: int) -> Optional[Dict[str, Any]]:
+    row = db.fetchone(
+        """
+        SELECT domain, version, count_stream, traversal_spec
+        FROM platform.samras_layout
+        WHERE domain = %s AND version = %s
+        """,
+        (domain, version),
+    )
+    if not row:
+        return None
+    count_stream = row.get("count_stream")
+    if count_stream is None:
+        count_bytes = b""
+    else:
+        count_bytes = bytes(count_stream)
+    row["count_stream"] = [byte for byte in count_bytes]
+    return row
+
+
+def _parse_samras_address(address: str) -> Optional[list[int]]:
+    if not isinstance(address, str):
+        return None
+    address = address.strip()
+    if not address:
+        return None
+    parts = re.split(r"[./-]", address)
+    parsed = []
+    for part in parts:
+        if not part.isdigit():
+            return None
+        parsed.append(int(part))
+    return parsed if parsed else None
+
+
+def _samras_address_in_stream(address: list[int], count_stream: list[int]) -> bool:
+    if not address:
+        return False
+    if len(address) > len(count_stream):
+        return False
+    for idx, count in zip(address, count_stream):
+        if idx < 0 or idx >= count:
+            return False
+    return True
+
+
+def _samras_node_key(address: list[int]) -> str:
+    return ".".join(str(part) for part in address)
+
+
+def _samras_find_node(traversal_spec: Any, address: list[int]) -> Optional[Any]:
+    if traversal_spec is None:
+        return None
+    if isinstance(traversal_spec, dict):
+        nodes = traversal_spec.get("nodes")
+        if isinstance(nodes, dict):
+            return nodes.get(_samras_node_key(address))
+    current = traversal_spec
+    for idx in address:
+        if isinstance(current, dict):
+            children = current.get("children")
+        elif isinstance(current, list):
+            children = current
+        else:
+            return None
+        if not isinstance(children, list) or idx >= len(children):
+            return None
+        current = children[idx]
+    return current
+
+
+def _resolve_samras_context(field: Dict[str, Any]) -> tuple[Optional[dict], Optional[str]]:
+    constraints = field.get("constraints") or {}
+    ref_domain = field.get("ref_domain")
+    domain, version = _parse_samras_ref_domain(ref_domain or "")
+    if not domain:
+        domain = constraints.get("samras_domain") or constraints.get("domain")
+    if version is None:
+        version_value = constraints.get("samras_version", constraints.get("version"))
+        if isinstance(version_value, int):
+            version = version_value
+        elif isinstance(version_value, str) and version_value.isdigit():
+            version = int(version_value)
+    if not domain or version is None:
+        return None, "missing_samras_layout"
+    layout = _samras_layout_lookup(domain, version)
+    if not layout:
+        return None, "missing_samras_layout"
+    return layout, None
+
+
+def _resolve_samras_mode(constraints: Dict[str, Any]) -> tuple[Optional[str], Optional[str]]:
+    mode = constraints.get("samras_mode") or constraints.get("mode")
+    if mode is None:
+        return "exact", None
+    if not isinstance(mode, str):
+        return None, "invalid_samras_mode"
+    mode = mode.strip().lower()
+    if mode not in SAMRAS_MODES:
+        return None, "invalid_samras_mode"
+    return mode, None
+
+
+def _validate_samras_reference(
+    field: Dict[str, Any],
+    value: Dict[str, Any],
+    has_system_id: bool,
+    has_system_value: bool,
+) -> Optional[str]:
+    constraints = field.get("constraints") or {}
+    mode, error = _resolve_samras_mode(constraints)
+    if error:
+        return error
+    if mode == "exact":
+        if not has_system_id:
+            return "missing_system_id"
+        if has_system_value:
+            return "system_value_not_allowed"
+    address_value = value.get("system_id") if has_system_id else value.get("system_value")
+    if not isinstance(address_value, str):
+        return "invalid_samras_address"
+    address = _parse_samras_address(address_value)
+    if not address:
+        return "invalid_samras_address"
+    layout, error = _resolve_samras_context(field)
+    if error:
+        return error
+    if not _samras_address_in_stream(address, layout["count_stream"]):
+        return "invalid_samras_address"
+    return None
+
+
+def _validate_archetype_field_constraints(
+    ref_domain: Optional[str],
+    constraints: Optional[Dict[str, Any]],
+) -> Optional[str]:
+    if constraints is None:
+        return None
+    if not isinstance(constraints, dict):
+        return "invalid_constraints"
+    if _is_samras_domain(ref_domain):
+        mode, error = _resolve_samras_mode(constraints)
+        if error:
+            return error
+        if mode:
+            constraints["samras_mode"] = mode
+        return None
+    if "samras_mode" in constraints:
+        return "samras_mode_not_allowed"
+    return None
 
 
 def _load_local_domain(local_id: str):
@@ -414,6 +599,9 @@ def _validate_field_value(field: Dict[str, Any], value: Any) -> Optional[str]:
             return "ambiguous_reference"
         if not has_system_id and not has_system_value:
             return "missing_reference"
+        ref_domain = field.get("ref_domain")
+        if _is_samras_domain(ref_domain):
+            return _validate_samras_reference(field, value, has_system_id, has_system_value)
         constraints = field.get("constraints") or {}
         if constraints.get("mode") == "exact" and not has_system_id:
             return "missing_system_id"
@@ -1106,6 +1294,27 @@ def tenant_table_delete_record(tenant_id: str, table_id: str, record_id: str):
     return jsonify({"deleted": True, "record_id": record_id}), 200
 
 
+@app.get("/api/samras/<domain>/<int:version>/node/<address>")
+def samras_node(domain: str, version: int, address: str):
+    layout = _samras_layout_lookup(domain, version)
+    if not layout:
+        return jsonify({"error": "samras_layout_not_found"}), 404
+
+    address_parts = _parse_samras_address(address)
+    if not address_parts:
+        return jsonify({"error": "invalid_address"}), 400
+    if not _samras_address_in_stream(address_parts, layout["count_stream"]):
+        return jsonify({"error": "address_not_found"}), 404
+
+    node = _samras_find_node(layout.get("traversal_spec"), address_parts)
+    return jsonify({
+        "domain": domain,
+        "version": version,
+        "address": _samras_node_key(address_parts),
+        "node": node,
+    }), 200
+
+
 @app.get("/api/admin/local-domain")
 @require_root_admin
 def admin_local_domains():
@@ -1265,6 +1474,9 @@ def admin_archetypes_create():
             return jsonify({"error": "invalid_ref_domain"}), 400
         if constraints is not None and not isinstance(constraints, dict):
             return jsonify({"error": "invalid_constraints"}), 400
+        constraint_error = _validate_archetype_field_constraints(ref_domain, constraints)
+        if constraint_error:
+            return jsonify({"error": constraint_error}), 400
 
         db.execute(
             """
