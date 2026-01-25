@@ -24,9 +24,11 @@ Optional env:
 from __future__ import annotations
 
 import base64
+import binascii
 import json
 import os
 import time
+import uuid
 from functools import wraps
 from typing import Any, Dict, Optional
 from urllib.parse import urlencode
@@ -192,6 +194,31 @@ def require_tenant_context(fn):
             return jsonify({"error": "missing_tenant"}), 400
         return fn(*args, **kwargs)
     return wrapper
+
+
+def _json_body() -> tuple[Optional[Dict[str, Any]], Optional[tuple[Any, int]]]:
+    data = request.get_json(silent=True)
+    if data is None:
+        return None, (jsonify({"error": "invalid_json"}), 400)
+    if not isinstance(data, dict):
+        return None, (jsonify({"error": "invalid_json"}), 400)
+    return data, None
+
+
+def _require_fields(payload: Dict[str, Any], fields: list[str]) -> Optional[tuple[Any, int]]:
+    missing = [field for field in fields if field not in payload]
+    if missing:
+        return jsonify({"error": "missing_fields", "fields": missing}), 400
+    return None
+
+
+def _require_tenant_admin(tenant_id: str) -> Optional[tuple[Any, int]]:
+    user = get_current_user()
+    if not user:
+        return jsonify({"error": "not_authenticated"}), 401
+    if is_root_admin(user) or is_tenant_admin(user, tenant_id):
+        return None
+    return jsonify({"error": "forbidden"}), 403
 
 
 # ----------------------------
@@ -467,6 +494,303 @@ def tenant_ping(tenant_id: str):
             "email": user.get("email"),
         },
     }), 200
+
+
+@app.get("/api/admin/local-domain")
+@require_root_admin
+def admin_local_domains():
+    domains = db.fetchall(
+        "SELECT local_id, title FROM platform.local_domain ORDER BY title"
+    )
+    return jsonify({"local_domains": domains}), 200
+
+
+@app.post("/api/admin/local-domain")
+@require_root_admin
+def admin_local_domain_create():
+    payload, error = _json_body()
+    if error:
+        return error
+    error = _require_fields(payload, ["local_id", "title"])
+    if error:
+        return error
+
+    local_id = payload["local_id"]
+    title = payload["title"]
+    if not isinstance(local_id, str) or not local_id.strip():
+        return jsonify({"error": "invalid_local_id"}), 400
+    if not isinstance(title, str) or not title.strip():
+        return jsonify({"error": "invalid_title"}), 400
+    try:
+        uuid.UUID(local_id)
+    except ValueError:
+        return jsonify({"error": "invalid_local_id"}), 400
+
+    db.execute(
+        "INSERT INTO platform.local_domain (local_id, title) VALUES (%s, %s)",
+        (local_id, title.strip()),
+    )
+    return jsonify({"local_id": local_id, "title": title.strip()}), 201
+
+
+@app.get("/api/admin/archetypes")
+def admin_archetypes():
+    user = get_current_user()
+    if not user:
+        return jsonify({"error": "not_authenticated"}), 401
+
+    tenant_id = request.args.get("tenant_id")
+    if tenant_id:
+        guard = _require_tenant_admin(tenant_id)
+        if guard:
+            return guard
+        archetypes = db.fetchall(
+            """
+            SELECT id, tenant_id, name, version, created_at
+            FROM platform.archetype
+            WHERE tenant_id = %s
+            ORDER BY created_at DESC
+            """,
+            (tenant_id,),
+        )
+    else:
+        if not is_root_admin(user):
+            return jsonify({"error": "missing_tenant"}), 400
+        archetypes = db.fetchall(
+            """
+            SELECT id, tenant_id, name, version, created_at
+            FROM platform.archetype
+            ORDER BY created_at DESC
+            """
+        )
+
+    ids = [row["id"] for row in archetypes]
+    fields_by_archetype: Dict[str, list[Dict[str, Any]]] = {}
+    if ids:
+        field_rows = db.fetchall(
+            """
+            SELECT archetype_id, position, name, type, ref_domain, constraints
+            FROM platform.archetype_field
+            WHERE archetype_id = ANY(%s)
+            ORDER BY archetype_id, position
+            """,
+            (ids,),
+        )
+        for row in field_rows:
+            fields_by_archetype.setdefault(str(row["archetype_id"]), []).append({
+                "position": row["position"],
+                "name": row["name"],
+                "type": row["type"],
+                "ref_domain": row["ref_domain"],
+                "constraints": row["constraints"],
+            })
+
+    response = []
+    for archetype in archetypes:
+        archetype_id = str(archetype["id"])
+        response.append({
+            "id": archetype_id,
+            "tenant_id": archetype["tenant_id"],
+            "name": archetype["name"],
+            "version": archetype["version"],
+            "created_at": archetype["created_at"],
+            "fields": fields_by_archetype.get(archetype_id, []),
+        })
+    return jsonify({"archetypes": response}), 200
+
+
+@app.post("/api/admin/archetypes")
+def admin_archetypes_create():
+    payload, error = _json_body()
+    if error:
+        return error
+    error = _require_fields(payload, ["tenant_id", "name", "fields"])
+    if error:
+        return error
+
+    tenant_id = payload["tenant_id"]
+    name = payload["name"]
+    fields = payload["fields"]
+    if not isinstance(tenant_id, str) or not tenant_id.strip():
+        return jsonify({"error": "invalid_tenant_id"}), 400
+    if not isinstance(name, str) or not name.strip():
+        return jsonify({"error": "invalid_name"}), 400
+    if not isinstance(fields, list) or not fields:
+        return jsonify({"error": "invalid_fields"}), 400
+
+    guard = _require_tenant_admin(tenant_id)
+    if guard:
+        return guard
+
+    archetype_id = str(uuid.uuid4())
+    version = 1
+    db.execute(
+        """
+        INSERT INTO platform.archetype (id, tenant_id, name, version)
+        VALUES (%s, %s, %s, %s)
+        """,
+        (archetype_id, tenant_id.strip(), name.strip(), version),
+    )
+
+    field_rows = []
+    for field in fields:
+        if not isinstance(field, dict):
+            return jsonify({"error": "invalid_field"}), 400
+        error = _require_fields(field, ["position", "name", "type"])
+        if error:
+            return error
+        position = field["position"]
+        field_name = field["name"]
+        field_type = field["type"]
+        ref_domain = field.get("ref_domain")
+        constraints = field.get("constraints")
+
+        if not isinstance(position, int):
+            return jsonify({"error": "invalid_position"}), 400
+        if not isinstance(field_name, str) or not field_name.strip():
+            return jsonify({"error": "invalid_field_name"}), 400
+        if not isinstance(field_type, str) or not field_type.strip():
+            return jsonify({"error": "invalid_field_type"}), 400
+        if ref_domain is not None and not isinstance(ref_domain, str):
+            return jsonify({"error": "invalid_ref_domain"}), 400
+        if constraints is not None and not isinstance(constraints, dict):
+            return jsonify({"error": "invalid_constraints"}), 400
+
+        db.execute(
+            """
+            INSERT INTO platform.archetype_field
+            (archetype_id, position, name, type, ref_domain, constraints)
+            VALUES (%s, %s, %s, %s, %s, %s)
+            """,
+            (
+                archetype_id,
+                position,
+                field_name.strip(),
+                field_type.strip(),
+                ref_domain,
+                json.dumps(constraints) if constraints is not None else None,
+            ),
+        )
+        field_rows.append({
+            "position": position,
+            "name": field_name.strip(),
+            "type": field_type.strip(),
+            "ref_domain": ref_domain,
+            "constraints": constraints,
+        })
+
+    return jsonify({
+        "id": archetype_id,
+        "tenant_id": tenant_id.strip(),
+        "name": name.strip(),
+        "version": version,
+        "fields": field_rows,
+    }), 201
+
+
+@app.post("/api/admin/manifest")
+def admin_manifest_create():
+    payload, error = _json_body()
+    if error:
+        return error
+    error = _require_fields(payload, ["tenant_id", "table_id", "archetype_id"])
+    if error:
+        return error
+
+    tenant_id = payload["tenant_id"]
+    table_id = payload["table_id"]
+    archetype_id = payload["archetype_id"]
+    if not isinstance(tenant_id, str) or not tenant_id.strip():
+        return jsonify({"error": "invalid_tenant_id"}), 400
+    if not isinstance(table_id, str) or not table_id.strip():
+        return jsonify({"error": "invalid_table_id"}), 400
+    if not isinstance(archetype_id, str) or not archetype_id.strip():
+        return jsonify({"error": "invalid_archetype_id"}), 400
+
+    guard = _require_tenant_admin(tenant_id)
+    if guard:
+        return guard
+
+    db.execute(
+        """
+        INSERT INTO platform.manifest (table_id, tenant_id, archetype_id)
+        VALUES (%s, %s, %s)
+        """,
+        (table_id.strip(), tenant_id.strip(), archetype_id.strip()),
+    )
+    return jsonify({
+        "table_id": table_id.strip(),
+        "tenant_id": tenant_id.strip(),
+        "archetype_id": archetype_id.strip(),
+    }), 201
+
+
+@app.get("/api/admin/samras-layouts")
+@require_root_admin
+def admin_samras_layouts():
+    layouts = db.fetchall(
+        """
+        SELECT domain, version, count_stream, traversal_spec
+        FROM platform.samras_layout
+        ORDER BY domain, version
+        """
+    )
+    response = []
+    for row in layouts:
+        count_stream = row["count_stream"]
+        if count_stream is not None:
+            count_stream = base64.b64encode(bytes(count_stream)).decode("utf-8")
+        response.append({
+            "domain": row["domain"],
+            "version": row["version"],
+            "count_stream": count_stream,
+            "traversal_spec": row["traversal_spec"],
+        })
+    return jsonify({"samras_layouts": response}), 200
+
+
+@app.post("/api/admin/samras-layouts")
+@require_root_admin
+def admin_samras_layouts_create():
+    payload, error = _json_body()
+    if error:
+        return error
+    error = _require_fields(payload, ["domain", "version", "count_stream", "traversal_spec"])
+    if error:
+        return error
+
+    domain = payload["domain"]
+    version = payload["version"]
+    count_stream = payload["count_stream"]
+    traversal_spec = payload["traversal_spec"]
+
+    if not isinstance(domain, str) or not domain.strip():
+        return jsonify({"error": "invalid_domain"}), 400
+    if not isinstance(version, int):
+        return jsonify({"error": "invalid_version"}), 400
+    if not isinstance(count_stream, str):
+        return jsonify({"error": "invalid_count_stream"}), 400
+    if not isinstance(traversal_spec, dict):
+        return jsonify({"error": "invalid_traversal_spec"}), 400
+
+    try:
+        count_bytes = base64.b64decode(count_stream.encode("utf-8"), validate=True)
+    except (ValueError, binascii.Error):
+        return jsonify({"error": "invalid_count_stream"}), 400
+
+    db.execute(
+        """
+        INSERT INTO platform.samras_layout (domain, version, count_stream, traversal_spec)
+        VALUES (%s, %s, %s, %s)
+        """,
+        (domain.strip(), version, count_bytes, json.dumps(traversal_spec)),
+    )
+    return jsonify({
+        "domain": domain.strip(),
+        "version": version,
+        "count_stream": count_stream,
+        "traversal_spec": traversal_spec,
+    }), 201
 
 
 if __name__ == "__main__":
