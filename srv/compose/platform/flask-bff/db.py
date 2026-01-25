@@ -38,6 +38,14 @@ def fetchall(query: str, params: Optional[Iterable[Any]] = None):
         return cur.fetchall()
 
 
+def fetchone(query: str, params: Optional[Iterable[Any]] = None):
+    """Execute a query and return a single row as a dict."""
+    conn = get_conn()
+    with conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor) as cur:
+        cur.execute(query, params)
+        return cur.fetchone()
+
+
 def close_conn() -> None:
     """Close the shared connection if it exists."""
     global _CONN
