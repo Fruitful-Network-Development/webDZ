@@ -1,0 +1,134 @@
+{% extends "base.html" %}
+
+{% block title %}Admin Console · Archetypes{% endblock %}
+{% block header_title %}Archetypes{% endblock %}
+{% block header_subtitle %}MSS archetype catalog{% endblock %}
+
+{% block content %}
+  <div class="card">
+    <h2>Archetype catalog</h2>
+    <form method="get">
+      <table>
+        <tr>
+          <th><label for="tenant_id">Filter by tenant</label></th>
+          <td>
+            <input id="tenant_id" name="tenant_id" type="text" value="{{ tenant_id }}" />
+            <button type="submit">Filter</button>
+          </td>
+        </tr>
+      </table>
+    </form>
+
+    {% if archetypes %}
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Tenant</th>
+            <th>Name</th>
+            <th>Version</th>
+            <th>Created</th>
+            <th>Fields</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for archetype in archetypes %}
+            <tr>
+              <td>{{ archetype.id }}</td>
+              <td>{{ archetype.tenant_id }}</td>
+              <td>{{ archetype.name }}</td>
+              <td>{{ archetype.version }}</td>
+              <td>{{ archetype.created_at }}</td>
+              <td>
+                {% if archetype.fields %}
+                  <ul>
+                    {% for field in archetype.fields %}
+                      <li>
+                        #{{ field.position }} · {{ field.name }} ({{ field.type }})
+                        {% if field.ref_domain %}
+                          <span class="muted">ref: {{ field.ref_domain }}</span>
+                        {% endif %}
+                        {% if field.constraints %}
+                          <div class="muted">constraints: {{ field.constraints }}</div>
+                        {% endif %}
+                      </li>
+                    {% endfor %}
+                  </ul>
+                {% else %}
+                  <span class="muted">No fields defined.</span>
+                {% endif %}
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <p class="muted">No archetypes found for the selected filter.</p>
+    {% endif %}
+  </div>
+
+  <div class="card">
+    <h3>Create archetype</h3>
+    <form id="archetype-form">
+      <table>
+        <tr>
+          <th><label for="archetype_tenant_id">Tenant ID</label></th>
+          <td><input id="archetype_tenant_id" name="tenant_id" type="text" required /></td>
+        </tr>
+        <tr>
+          <th><label for="archetype_name">Name</label></th>
+          <td><input id="archetype_name" name="name" type="text" required /></td>
+        </tr>
+        <tr>
+          <th><label for="archetype_fields">Fields JSON</label></th>
+          <td>
+            <textarea id="archetype_fields" name="fields" rows="6" required
+              placeholder='[{"position": 1, "name": "Field", "type": "text"}]'></textarea>
+          </td>
+        </tr>
+      </table>
+      <p>
+        <button type="submit">Create archetype</button>
+      </p>
+      <p class="muted" id="archetype-status"></p>
+    </form>
+  </div>
+
+  <script>
+    const archetypeForm = document.getElementById("archetype-form");
+    const archetypeStatus = document.getElementById("archetype-status");
+
+    archetypeForm.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      archetypeStatus.textContent = "";
+
+      let fields;
+      try {
+        fields = JSON.parse(archetypeForm.fields.value || "[]");
+      } catch (error) {
+        archetypeStatus.textContent = "Error: fields JSON is invalid.";
+        return;
+      }
+
+      const payload = {
+        tenant_id: archetypeForm.tenant_id.value.trim(),
+        name: archetypeForm.name.value.trim(),
+        fields,
+      };
+
+      const response = await fetch("/api/admin/archetypes", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      if (response.ok) {
+        window.location.reload();
+        return;
+      }
+
+      const error = await response.json().catch(() => ({ error: "unknown_error" }));
+      archetypeStatus.textContent = `Error: ${error.error || "unknown_error"}`;
+    });
+  </script>
+{% endblock %}

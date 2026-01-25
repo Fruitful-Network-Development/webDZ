@@ -87,6 +87,11 @@
       {% if is_root_admin %}
         <a href="/admin">Admin Home</a>
         <a href="/admin/tenants">Tenants</a>
+        <a href="/admin/local-domains">Local Domains</a>
+        <a href="/admin/archetypes">Archetypes</a>
+        <a href="/admin/manifest">Manifest</a>
+        <a href="/admin/samras-layouts">SAMRAS Layouts</a>
+        <a href="/admin/users">User Management</a>
       {% endif %}
       {% if current_user %}
         <span class="muted">Signed in as {{ current_user.display_name or current_user.user_id }}</span>

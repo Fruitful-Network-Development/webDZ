@@ -252,6 +252,16 @@ def require_tenant_access(tenant_id: str):
     return jsonify({"error": "forbidden"}), 403
 
 
+def _unwrap_api_response(result: Any) -> tuple[dict[str, Any], int]:
+    if isinstance(result, tuple):
+        response, status = result
+    else:
+        response = result
+        status = response.status_code
+    payload = response.get_json() if hasattr(response, "get_json") else {}
+    return payload or {}, status
+
+
 # ----------------------------
 # Routes
 # ----------------------------
@@ -313,6 +323,68 @@ def admin_tenant_detail(tenant_id: str):
     return render_template(
         "admin/tenant_detail.html",
         tenant=tenant_public_view(tenant_cfg),
+    ), 200
+
+
+@app.get("/admin/local-domains")
+@require_root_admin
+def admin_local_domains_page():
+    payload, status = _unwrap_api_response(admin_local_domains())
+    if status != 200:
+        abort(status)
+    return render_template(
+        "admin/local_domains.html",
+        local_domains=payload.get("local_domains", []),
+    ), 200
+
+
+@app.get("/admin/archetypes")
+@require_root_admin
+def admin_archetypes_page():
+    payload, status = _unwrap_api_response(admin_archetypes())
+    if status != 200:
+        abort(status)
+    return render_template(
+        "admin/archetypes.html",
+        archetypes=payload.get("archetypes", []),
+        tenant_id=request.args.get("tenant_id", ""),
+    ), 200
+
+
+@app.get("/admin/manifest")
+@require_root_admin
+def admin_manifest_page():
+    payload, status = _unwrap_api_response(admin_manifest())
+    if status != 200:
+        abort(status)
+    return render_template(
+        "admin/manifest.html",
+        manifest_rows=payload.get("manifest", []),
+        tenant_id=request.args.get("tenant_id", ""),
+    ), 200
+
+
+@app.get("/admin/samras-layouts")
+@require_root_admin
+def admin_samras_layouts_page():
+    payload, status = _unwrap_api_response(admin_samras_layouts())
+    if status != 200:
+        abort(status)
+    return render_template(
+        "admin/samras_layouts.html",
+        samras_layouts=payload.get("samras_layouts", []),
+    ), 200
+
+
+@app.get("/admin/users")
+@require_root_admin
+def admin_user_management_page():
+    payload, status = _unwrap_api_response(admin_mss_profiles())
+    if status != 200:
+        abort(status)
+    return render_template(
+        "admin/user_management.html",
+        mss_profiles=payload.get("mss_profiles", []),
     ), 200
 
 
@@ -688,6 +760,40 @@ def admin_archetypes_create():
     }), 201
 
 
+@app.get("/api/admin/manifest")
+def admin_manifest():
+    user = get_current_user()
+    if not user:
+        return jsonify({"error": "not_authenticated"}), 401
+
+    tenant_id = request.args.get("tenant_id")
+    if tenant_id:
+        guard = _require_tenant_admin(tenant_id)
+        if guard:
+            return guard
+        rows = db.fetchall(
+            """
+            SELECT table_id, tenant_id, archetype_id
+            FROM platform.manifest
+            WHERE tenant_id = %s
+            ORDER BY table_id
+            """,
+            (tenant_id,),
+        )
+    else:
+        if not is_root_admin(user):
+            return jsonify({"error": "missing_tenant"}), 400
+        rows = db.fetchall(
+            """
+            SELECT table_id, tenant_id, archetype_id
+            FROM platform.manifest
+            ORDER BY tenant_id, table_id
+            """
+        )
+
+    return jsonify({"manifest": rows}), 200
+
+
 @app.post("/api/admin/manifest")
 def admin_manifest_create():
     payload, error = _json_body()
@@ -722,6 +828,75 @@ def admin_manifest_create():
         "table_id": table_id.strip(),
         "tenant_id": tenant_id.strip(),
         "archetype_id": archetype_id.strip(),
+    }), 201
+
+
+@app.get("/api/admin/mss-profiles")
+@require_root_admin
+def admin_mss_profiles():
+    profiles = db.fetchall(
+        """
+        SELECT msn_id, user_id, parent_msn_id, display_name, role, created_at, updated_at
+        FROM platform.mss_profile
+        ORDER BY created_at DESC
+        """
+    )
+    return jsonify({"mss_profiles": profiles}), 200
+
+
+@app.post("/api/admin/mss-profiles")
+@require_root_admin
+def admin_mss_profiles_create():
+    payload, error = _json_body()
+    if error:
+        return error
+    error = _require_fields(payload, ["user_id", "display_name", "role"])
+    if error:
+        return error
+
+    user_id = payload["user_id"]
+    display_name = payload["display_name"]
+    role = payload["role"]
+    parent_msn_id = payload.get("parent_msn_id")
+
+    if not isinstance(user_id, str) or not user_id.strip():
+        return jsonify({"error": "invalid_user_id"}), 400
+    if not isinstance(display_name, str) or not display_name.strip():
+        return jsonify({"error": "invalid_display_name"}), 400
+    if not isinstance(role, str) or not role.strip():
+        return jsonify({"error": "invalid_role"}), 400
+    if parent_msn_id is not None and not isinstance(parent_msn_id, str):
+        return jsonify({"error": "invalid_parent_msn_id"}), 400
+
+    try:
+        uuid.UUID(user_id)
+    except ValueError:
+        return jsonify({"error": "invalid_user_id"}), 400
+
+    parent_id = None
+    if parent_msn_id:
+        try:
+            uuid.UUID(parent_msn_id)
+        except ValueError:
+            return jsonify({"error": "invalid_parent_msn_id"}), 400
+        parent_id = parent_msn_id
+
+    msn_id = str(uuid.uuid4())
+    db.execute(
+        """
+        INSERT INTO platform.mss_profile
+        (msn_id, user_id, parent_msn_id, display_name, role)
+        VALUES (%s, %s, %s, %s, %s)
+        """,
+        (msn_id, user_id.strip(), parent_id, display_name.strip(), role.strip()),
+    )
+
+    return jsonify({
+        "msn_id": msn_id,
+        "user_id": user_id.strip(),
+        "parent_msn_id": parent_id,
+        "display_name": display_name.strip(),
+        "role": role.strip(),
     }), 201
 
 
