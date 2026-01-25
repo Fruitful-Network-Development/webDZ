@@ -37,6 +37,7 @@ import requests
 from psycopg2 import sql
 from psycopg2.extras import Json
 from flask import Flask, abort, jsonify, redirect, render_template, request, session, url_for
+from jinja2 import TemplateNotFound
 
 import db
 from authz import get_current_user, is_root_admin, is_tenant_admin, require_root_admin
@@ -539,6 +540,27 @@ def _unwrap_api_response(result: Any) -> tuple[dict[str, Any], int]:
     return payload or {}, status
 
 
+def _enabled_console_modules(tenant_cfg: dict[str, Any]) -> list[str]:
+    modules = tenant_cfg.get("console_modules") or {}
+    if isinstance(modules, dict):
+        return [name for name, enabled in modules.items() if enabled]
+    return list(modules)
+
+
+def _require_tenant_console_access(tenant_id: str) -> tuple[dict[str, Any], Optional[Any]]:
+    tenant_cfg = _load_tenant_or_abort(tenant_id)
+    user = get_current_user()
+    if not user:
+        next_path = request.full_path
+        if next_path.endswith("?"):
+            next_path = next_path[:-1]
+        login_url = f"/login?{urlencode({'tenant': tenant_id, 'next': next_path})}"
+        return tenant_cfg, redirect(login_url)
+    if not (is_root_admin(user) or is_tenant_admin(user, tenant_id)):
+        abort(403)
+    return tenant_cfg, None
+
+
 # ----------------------------
 # Routes
 # ----------------------------
@@ -667,22 +689,10 @@ def admin_user_management_page():
 
 @app.get("/t/<tenant_id>/console")
 def tenant_console(tenant_id: str):
-    tenant_cfg = _load_tenant_or_abort(tenant_id)
-    user = get_current_user()
-    if not user:
-        next_path = request.full_path
-        if next_path.endswith("?"):
-            next_path = next_path[:-1]
-        login_url = f"/login?{urlencode({'tenant': tenant_id, 'next': next_path})}"
-        return redirect(login_url)
-    if not (is_root_admin(user) or is_tenant_admin(user, tenant_id)):
-        abort(403)
-
-    modules = tenant_cfg.get("console_modules") or {}
-    if isinstance(modules, dict):
-        enabled_modules = [name for name, enabled in modules.items() if enabled]
-    else:
-        enabled_modules = list(modules)
+    tenant_cfg, error = _require_tenant_console_access(tenant_id)
+    if error:
+        return error
+    enabled_modules = _enabled_console_modules(tenant_cfg)
 
     return render_template(
         "tenant/console.html",
@@ -690,6 +700,30 @@ def tenant_console(tenant_id: str):
         tenant_cfg=tenant_cfg,
         enabled_modules=enabled_modules,
     ), 200
+
+
+@app.get("/t/<tenant_id>/console/<module>")
+def tenant_console_module(tenant_id: str, module: str):
+    tenant_cfg, error = _require_tenant_console_access(tenant_id)
+    if error:
+        return error
+
+    enabled_modules = _enabled_console_modules(tenant_cfg)
+    if module not in enabled_modules:
+        abort(404)
+
+    template_name = f"tenant/console_{module}.html"
+    try:
+        return render_template(
+            template_name,
+            tenant_id=tenant_id,
+            tenant_cfg=tenant_cfg,
+            module=module,
+            enabled_modules=enabled_modules,
+            demo_table_id=DEMO_TABLE_ID,
+        ), 200
+    except TemplateNotFound:
+        abort(404)
 
 
 @app.get("/login")

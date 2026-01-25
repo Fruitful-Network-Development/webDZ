@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
-{% block title %}Tenant Console · {{ tenant_id }}{% endblock %}
-{% block header_title %}Tenant Console{% endblock %}
+{% block title %}Animals Console · {{ tenant_id }}{% endblock %}
+{% block header_title %}Animals Console{% endblock %}
 {% block header_subtitle %}
   {{ tenant_id }}{% if tenant_cfg.client_domain %} · {{ tenant_cfg.client_domain }}{% endif %}
 {% endblock %}
@@ -44,7 +44,12 @@
       text-decoration: underline;
     }
     .console-main .card {
-      margin-bottom: 0;
+      margin-bottom: 16px;
+    }
+    .api-list code {
+      background: #f3f4f6;
+      padding: 2px 6px;
+      border-radius: 4px;
     }
     @media (max-width: 900px) {
       .console-shell {
@@ -54,11 +59,8 @@
   </style>
 
   <div class="card">
-    <h2>Tenant Overview</h2>
-    <p><strong>Tenant ID:</strong> {{ tenant_id }}</p>
-    {% if tenant_cfg.client_domain %}
-      <p><strong>Client domain:</strong> {{ tenant_cfg.client_domain }}</p>
-    {% endif %}
+    <h2>Animals Module</h2>
+    <p class="muted">Use these APIs to explore companion animal records.</p>
   </div>
 
   <div class="console-shell">
@@ -66,10 +68,10 @@
       <h2>Modules</h2>
       {% if enabled_modules %}
         <ul>
-          {% for module in enabled_modules %}
+          {% for item in enabled_modules %}
             <li>
-              <a href="/t/{{ tenant_id }}/console/{{ module }}">
-                {{ module.replace("_", " ")|title }}
+              <a href="/t/{{ tenant_id }}/console/{{ item }}">
+                {{ item.replace("_", " ")|title }}
               </a>
             </li>
           {% endfor %}
@@ -81,8 +83,21 @@
 
     <section class="console-main">
       <div class="card">
-        <h2>Console v0</h2>
-        <p class="muted">Console v0: coming soon.</p>
+        <h3>Companion Animals Table</h3>
+        <p>Table ID: <code>{{ demo_table_id }}</code></p>
+        <ul class="api-list">
+          <li>List records: <code>GET /api/t/{{ tenant_id }}/tables/{{ demo_table_id }}</code></li>
+          <li>Create record: <code>POST /api/t/{{ tenant_id }}/tables/{{ demo_table_id }}</code></li>
+          <li>Fetch record: <code>GET /api/t/{{ tenant_id }}/tables/{{ demo_table_id }}/&lt;record_id&gt;</code></li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Suggested payload</h3>
+        <pre>{
+  "name": "Luna",
+  "taxa_ref": "SAMRAS:CANIS_LUPUS_FAMILIARIS"
+}</pre>
       </div>
     </section>
   </div>
