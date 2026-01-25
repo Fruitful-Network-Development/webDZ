@@ -10,12 +10,11 @@ def _load_app(monkeypatch):
     monkeypatch.setenv("OIDC_CLIENT_SECRET", "secret")
     monkeypatch.setenv("SESSION_SECRET", "test-secret")
 
-    if "requests" not in sys.modules:
-        requests_stub = types.SimpleNamespace(
-            get=lambda *args, **kwargs: (_ for _ in ()).throw(RuntimeError("requests not available")),
-            post=lambda *args, **kwargs: (_ for _ in ()).throw(RuntimeError("requests not available")),
-        )
-        sys.modules["requests"] = requests_stub
+    requests_stub = types.SimpleNamespace(
+        get=lambda *args, **kwargs: (_ for _ in ()).throw(RuntimeError("requests not available")),
+        post=lambda *args, **kwargs: (_ for _ in ()).throw(RuntimeError("requests not available")),
+    )
+    monkeypatch.setitem(sys.modules, "requests", requests_stub)
 
     app_dir = Path(__file__).resolve().parents[1]
     if str(app_dir) not in sys.path:
@@ -138,7 +137,9 @@ def test_tenant_detail_strips_secret(monkeypatch):
             "console_modules": {"schema_builder": True},
         }
 
-    monkeypatch.setattr(app_module, "load_tenant", _fake_load_tenant)
+    import routes.common as common
+
+    monkeypatch.setattr(common, "load_tenant", _fake_load_tenant)
 
     with app_module.app.test_client() as client:
         with client.session_transaction() as sess:
