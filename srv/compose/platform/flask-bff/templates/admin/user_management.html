@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+
+{% block title %}Admin Console · User Management{% endblock %}
+{% block header_title %}User Management{% endblock %}
+{% block header_subtitle %}MSS profile registry{% endblock %}
+
+{% block content %}
+  <div class="card">
+    <h2>MSS user profiles</h2>
+    {% if mss_profiles %}
+      <table>
+        <thead>
+          <tr>
+            <th>MSN ID</th>
+            <th>User ID</th>
+            <th>Parent MSN</th>
+            <th>Display Name</th>
+            <th>Role</th>
+            <th>Created</th>
+            <th>Updated</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for profile in mss_profiles %}
+            <tr>
+              <td>{{ profile.msn_id }}</td>
+              <td>{{ profile.user_id }}</td>
+              <td>{{ profile.parent_msn_id or "(none)" }}</td>
+              <td>{{ profile.display_name }}</td>
+              <td>{{ profile.role }}</td>
+              <td>{{ profile.created_at }}</td>
+              <td>{{ profile.updated_at }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <p class="muted">No MSS profiles found yet.</p>
+    {% endif %}
+  </div>
+
+  <div class="card">
+    <h3>Create MSS profile</h3>
+    <form id="mss-profile-form">
+      <table>
+        <tr>
+          <th><label for="mss_user_id">User ID (UUID)</label></th>
+          <td><input id="mss_user_id" name="user_id" type="text" required /></td>
+        </tr>
+        <tr>
+          <th><label for="mss_display_name">Display name</label></th>
+          <td><input id="mss_display_name" name="display_name" type="text" required /></td>
+        </tr>
+        <tr>
+          <th><label for="mss_role">Role</label></th>
+          <td><input id="mss_role" name="role" type="text" required /></td>
+        </tr>
+        <tr>
+          <th><label for="mss_parent">Parent MSN ID (optional)</label></th>
+          <td><input id="mss_parent" name="parent_msn_id" type="text" /></td>
+        </tr>
+      </table>
+      <p>
+        <button type="submit">Create profile</button>
+      </p>
+      <p class="muted" id="mss-profile-status"></p>
+    </form>
+  </div>
+
+  <script>
+    const mssForm = document.getElementById("mss-profile-form");
+    const mssStatus = document.getElementById("mss-profile-status");
+
+    mssForm.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      mssStatus.textContent = "";
+
+      const payload = {
+        user_id: mssForm.user_id.value.trim(),
+        display_name: mssForm.display_name.value.trim(),
+        role: mssForm.role.value.trim(),
+        parent_msn_id: mssForm.parent_msn_id.value.trim() || null,
+      };
+
+      const response = await fetch("/api/admin/mss-profiles", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      if (response.ok) {
+        window.location.reload();
+        return;
+      }
+
+      const error = await response.json().catch(() => ({ error: "unknown_error" }));
+      mssStatus.textContent = `Error: ${error.error || "unknown_error"}`;
+    });
+  </script>
+{% endblock %}
