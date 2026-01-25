@@ -61,6 +61,7 @@ services:
 
       # Cookie policy: MUST be true when api.* is served over HTTPS (Phase 4)
       COOKIE_SECURE: ${COOKIE_SECURE}
+      PLATFORM_DB_URL: ${PLATFORM_DB_URL}
     ports:
       - "127.0.0.1:8001:8000"
     networks: [platform_net]
