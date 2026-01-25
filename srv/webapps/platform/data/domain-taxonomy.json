@@ -1,4 +1,4 @@
-{ "archetecture": [{"domain": [{"kingdom": [{"divisions": [{"class": [{"order": [{"genus": [{"species":[{"cultivar_group": [{"cultivar": ["taxoid"]}]}, {"forma": [{"subforma": ["taxoid"]}]}, {"variety": [{"subvarietas": ["taxoid"]}]}, {"subspecies": ["taxoid"]}, {"nothotaxa": ["taxoid"]}, {"morph": ["taxoid"]}, {"cline": ["taxoid"]}, {"race": ["taxoid"]}, {"strain": ["taxoid"]} ]} ]} ]} ]} ]} ]} ]}],
+{ "archetecture": [{"domain": [{"kingdom": [{"divisions": [{"class": [{"order": [{"family" : [{"genus": [{"species":[{"cultivar_group": [{"cultivar": ["taxoid"]}]}, {"forma": [{"subforma": ["taxoid"]}]}, {"variety": [{"subvarietas": ["taxoid"]}]}, {"subspecies": ["taxoid"]}, {"nothotaxa": ["taxoid"]}, {"morph": ["taxoid"]}, {"cline": ["taxoid"]}, {"race": ["taxoid"]}, {"strain": ["taxoid"]} ]} ]} ]} ]} ]} ]} ]} ]}],
     "members": [
     { "taxa_id": "1", "title": "archaea"},
     { "taxa_id": "2", "title": "bacteria"},
