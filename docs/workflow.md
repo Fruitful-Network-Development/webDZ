@@ -74,3 +74,17 @@ curl -I https://fruitfulnetworkdevelopment.com | head -10
 curl -I https://cuyahogaterravita.com | head -10
 sudo certbot renew --dry-run
 ```
+
+---
+
+Good hygene in a deployment like this includes excludes that just always stay safe with:
+```bash
+sudo rsync -a --delete --dry-run \
+  --exclude '__pycache__/' --exclude '*.pyc' --exclude '.pytest_cache/' \
+  /home/admin/aws-box/srv/compose/platform/flask-bff/ \
+  /srv/compose/platform/flask-bff/
+
+sudo rsync -a --delete --dry-run \
+  /home/admin/aws-box/srv/compose/platform/platform-schema/ \
+  /srv/compose/platform/platform-schema/
+```
