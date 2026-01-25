@@ -78,6 +78,7 @@ services:
       POSTGRES_DB: platform
     volumes:
       - platform_db_data:/var/lib/postgresql/data
+    networks: [platform_net]
     healthcheck:
       test: ["CMD", "pg_isready", "-U", "platform"]
       interval: 5s
