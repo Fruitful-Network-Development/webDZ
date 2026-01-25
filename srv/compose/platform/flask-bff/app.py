@@ -341,6 +341,24 @@ def _current_msn_id() -> Optional[str]:
     return str(row["msn_id"])
 
 
+def _load_user_hierarchy(user_id: str) -> Optional[Dict[str, Any]]:
+    row = db.fetchone(
+        """
+        SELECT msn_id, parent_msn_id, role
+        FROM platform.mss_profile
+        WHERE user_id = %s
+        """,
+        (user_id,),
+    )
+    if not row:
+        return None
+    return {
+        "msn_id": str(row["msn_id"]),
+        "parent_msn_id": str(row["parent_msn_id"]) if row["parent_msn_id"] else None,
+        "role": row["role"],
+    }
+
+
 def _dynamic_table_identifier(msn_id: str, local_id: str) -> sql.Identifier:
     table_name = f"{msn_id}{local_id}"
     return sql.Identifier(table_name)
@@ -838,6 +856,12 @@ def callback():
         "realm_roles": realm_roles,
         "issuer": OIDC_ISSUER,
     }
+    hierarchy = _load_user_hierarchy(user_id)
+    session["user"].update({
+        "msn_id": hierarchy["msn_id"] if hierarchy else None,
+        "parent_msn_id": hierarchy["parent_msn_id"] if hierarchy else None,
+        "role": hierarchy["role"] if hierarchy else None,
+    })
 
     return redirect(url_for("me"))
 
@@ -847,7 +871,15 @@ def me():
     u = session.get("user")
     if not u:
         return jsonify({"authenticated": False}), 401
-    payload = {"authenticated": True, "user": u}
+    payload = {
+        "authenticated": True,
+        "user": u,
+        "hierarchy": {
+            "msn_id": u.get("msn_id"),
+            "parent_msn_id": u.get("parent_msn_id"),
+            "role": u.get("role"),
+        },
+    }
     tenant_id = session.get("tenant_id")
     if tenant_id:
         payload["tenant_id"] = tenant_id
@@ -1348,6 +1380,208 @@ def admin_mss_profiles():
         """
     )
     return jsonify({"mss_profiles": profiles}), 200
+
+
+@app.get("/api/admin/user-hierarchy")
+@require_root_admin
+def admin_user_hierarchy():
+    user_id = request.args.get("user_id")
+    msn_id = request.args.get("msn_id")
+
+    if user_id:
+        try:
+            uuid.UUID(user_id)
+        except ValueError:
+            return jsonify({"error": "invalid_user_id"}), 400
+        row = db.fetchone(
+            """
+            SELECT msn_id, user_id, parent_msn_id, display_name, role, created_at, updated_at
+            FROM platform.mss_profile
+            WHERE user_id = %s
+            """,
+            (user_id,),
+        )
+        if not row:
+            return jsonify({"error": "profile_not_found"}), 404
+        return jsonify({"profile": row}), 200
+
+    if msn_id:
+        try:
+            uuid.UUID(msn_id)
+        except ValueError:
+            return jsonify({"error": "invalid_msn_id"}), 400
+        row = db.fetchone(
+            """
+            SELECT msn_id, user_id, parent_msn_id, display_name, role, created_at, updated_at
+            FROM platform.mss_profile
+            WHERE msn_id = %s
+            """,
+            (msn_id,),
+        )
+        if not row:
+            return jsonify({"error": "profile_not_found"}), 404
+        return jsonify({"profile": row}), 200
+
+    profiles = db.fetchall(
+        """
+        SELECT msn_id, user_id, parent_msn_id, display_name, role, created_at, updated_at
+        FROM platform.mss_profile
+        ORDER BY created_at DESC
+        """
+    )
+    return jsonify({"profiles": profiles}), 200
+
+
+@app.post("/api/admin/user-hierarchy")
+@require_root_admin
+def admin_user_hierarchy_create():
+    payload, error = _json_body()
+    if error:
+        return error
+    error = _require_fields(payload, ["user_id", "display_name", "role"])
+    if error:
+        return error
+
+    user_id = payload["user_id"]
+    display_name = payload["display_name"]
+    role = payload["role"]
+    parent_msn_id = payload.get("parent_msn_id")
+
+    if not isinstance(user_id, str) or not user_id.strip():
+        return jsonify({"error": "invalid_user_id"}), 400
+    if not isinstance(display_name, str) or not display_name.strip():
+        return jsonify({"error": "invalid_display_name"}), 400
+    if not isinstance(role, str) or not role.strip():
+        return jsonify({"error": "invalid_role"}), 400
+    if parent_msn_id is not None and not isinstance(parent_msn_id, str):
+        return jsonify({"error": "invalid_parent_msn_id"}), 400
+
+    try:
+        uuid.UUID(user_id)
+    except ValueError:
+        return jsonify({"error": "invalid_user_id"}), 400
+
+    parent_id = None
+    if parent_msn_id:
+        try:
+            uuid.UUID(parent_msn_id)
+        except ValueError:
+            return jsonify({"error": "invalid_parent_msn_id"}), 400
+        parent_id = parent_msn_id
+
+    msn_id = str(uuid.uuid4())
+    row = db.fetchone(
+        """
+        INSERT INTO platform.mss_profile
+        (msn_id, user_id, parent_msn_id, display_name, role)
+        VALUES (%s, %s, %s, %s, %s)
+        RETURNING msn_id, user_id, parent_msn_id, display_name, role, created_at, updated_at
+        """,
+        (msn_id, user_id.strip(), parent_id, display_name.strip(), role.strip()),
+    )
+    return jsonify({"profile": row}), 201
+
+
+@app.put("/api/admin/user-hierarchy")
+@require_root_admin
+def admin_user_hierarchy_update():
+    payload, error = _json_body()
+    if error:
+        return error
+    error = _require_fields(payload, ["msn_id"])
+    if error:
+        return error
+
+    msn_id = payload["msn_id"]
+    if not isinstance(msn_id, str) or not msn_id.strip():
+        return jsonify({"error": "invalid_msn_id"}), 400
+    try:
+        uuid.UUID(msn_id)
+    except ValueError:
+        return jsonify({"error": "invalid_msn_id"}), 400
+
+    updates: Dict[str, Any] = {}
+    if "user_id" in payload:
+        user_id = payload["user_id"]
+        if not isinstance(user_id, str) or not user_id.strip():
+            return jsonify({"error": "invalid_user_id"}), 400
+        try:
+            uuid.UUID(user_id)
+        except ValueError:
+            return jsonify({"error": "invalid_user_id"}), 400
+        updates["user_id"] = user_id.strip()
+    if "display_name" in payload:
+        display_name = payload["display_name"]
+        if not isinstance(display_name, str) or not display_name.strip():
+            return jsonify({"error": "invalid_display_name"}), 400
+        updates["display_name"] = display_name.strip()
+    if "role" in payload:
+        role = payload["role"]
+        if not isinstance(role, str) or not role.strip():
+            return jsonify({"error": "invalid_role"}), 400
+        updates["role"] = role.strip()
+    if "parent_msn_id" in payload:
+        parent_msn_id = payload["parent_msn_id"]
+        if parent_msn_id in (None, ""):
+            updates["parent_msn_id"] = None
+        elif not isinstance(parent_msn_id, str):
+            return jsonify({"error": "invalid_parent_msn_id"}), 400
+        else:
+            try:
+                uuid.UUID(parent_msn_id)
+            except ValueError:
+                return jsonify({"error": "invalid_parent_msn_id"}), 400
+            updates["parent_msn_id"] = parent_msn_id
+
+    if not updates:
+        return jsonify({"error": "missing_fields"}), 400
+
+    update_clause = sql.SQL(", ").join(
+        sql.SQL("{field} = %s").format(field=sql.Identifier(field))
+        for field in updates.keys()
+    )
+    values = list(updates.values()) + [msn_id]
+    row = db.fetchone(
+        sql.SQL(
+            """
+            UPDATE platform.mss_profile
+            SET {updates}, updated_at = now()
+            WHERE msn_id = %s
+            RETURNING msn_id, user_id, parent_msn_id, display_name, role, created_at, updated_at
+            """
+        ).format(updates=update_clause),
+        values,
+    )
+    if not row:
+        return jsonify({"error": "profile_not_found"}), 404
+    return jsonify({"profile": row}), 200
+
+
+@app.delete("/api/admin/user-hierarchy")
+@require_root_admin
+def admin_user_hierarchy_delete():
+    payload, error = _json_body()
+    if error:
+        return error
+    error = _require_fields(payload, ["msn_id"])
+    if error:
+        return error
+
+    msn_id = payload["msn_id"]
+    if not isinstance(msn_id, str) or not msn_id.strip():
+        return jsonify({"error": "invalid_msn_id"}), 400
+    try:
+        uuid.UUID(msn_id)
+    except ValueError:
+        return jsonify({"error": "invalid_msn_id"}), 400
+
+    row = db.fetchone(
+        "DELETE FROM platform.mss_profile WHERE msn_id = %s RETURNING msn_id",
+        (msn_id,),
+    )
+    if not row:
+        return jsonify({"error": "profile_not_found"}), 404
+    return jsonify({"deleted": True, "msn_id": row["msn_id"]}), 200
 
 
 @app.post("/api/admin/mss-profiles")
