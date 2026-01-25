@@ -1,3 +1,4 @@
+  GNU nano 8.4                                                                                     docker-compose.yml                                                                                              
 services:
   keycloak_db:
     image: postgres:16
@@ -72,3 +73,4 @@ volumes:
 networks:
   platform_net:
     driver: bridge
+
