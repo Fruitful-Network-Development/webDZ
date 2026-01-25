@@ -34,6 +34,7 @@ from urllib.parse import urlencode
 import requests
 from flask import Flask, abort, jsonify, redirect, render_template, request, session, url_for
 
+import db
 from authz import get_current_user, is_root_admin, is_tenant_admin, require_root_admin
 from tenant_registry import (
     TenantNotFoundError,
@@ -81,6 +82,16 @@ app.config.update(
     SESSION_COOKIE_SAMESITE="Lax",
     SESSION_COOKIE_SECURE=COOKIE_SECURE,
 )
+
+
+@app.before_serving
+def _init_db() -> None:
+    db.get_conn()
+
+
+@app.after_serving
+def _close_db() -> None:
+    db.close_conn()
 
 
 # ----------------------------
