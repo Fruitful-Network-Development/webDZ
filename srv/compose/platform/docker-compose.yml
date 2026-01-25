@@ -62,15 +62,36 @@ services:
 
       # Cookie policy: MUST be true when api.* is served over HTTPS (Phase 4)
       COOKIE_SECURE: ${COOKIE_SECURE}
-      PLATFORM_DB_URL: ${PLATFORM_DB_URL}
+      
     ports:
       - "127.0.0.1:8001:8000"
     networks: [platform_net]
 
+  platform_db:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: platform
+      POSTGRES_PASSWORD: platform
+      POSTGRES_DB: platform
+    volumes:
+      - platform_db_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "platform"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    restart: unless-stopped
+  flask_bff:
+    depends_on:
+      platform_db:
+        condition: service_healthy
+    environment:
+      PLATFORM_DB_URL: postgresql://platform:platform@platform_db:5432/platform
+
 volumes:
   keycloak_db_data:
+  platform_db_data:
 
 networks:
   platform_net:
     driver: bridge
-
