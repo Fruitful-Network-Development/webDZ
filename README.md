@@ -60,7 +60,6 @@ aws-box/
     ├── webapps/
     ├── README.md
     └── compose/platform/
-        └── README.md
 ```
 
 ## Deployment philosophy
