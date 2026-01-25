@@ -27,13 +27,21 @@ def create_app() -> Flask:
         SESSION_COOKIE_SECURE=COOKIE_SECURE,
     )
 
-    @app.before_serving
-    def _init_db() -> None:
+    # Flask versions differ on lifecycle hooks; avoid before_serving/after_serving.
+    # Initialize lazily once per Gunicorn worker, before the first request is handled.
+    _init_state = {"done": False}
+
+    @app.before_request
+    def _init_once() -> None:
+        if _init_state["done"]:
+            return
+        _init_state["done"] = True
         db.get_conn()
         seed_demo_data()
 
-    @app.after_serving
-    def _close_db() -> None:
+    # Ensure DB cleanup when the application context tears down.
+    @app.teardown_appcontext
+    def _close_db(_exc) -> None:
         db.close_conn()
 
     @app.context_processor
