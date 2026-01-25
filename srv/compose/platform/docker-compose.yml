@@ -46,7 +46,8 @@ services:
     container_name: flask_bff
     restart: unless-stopped
     depends_on:
-      - keycloak
+      platform_db:
+        condition: service_healthy
     environment:
       # OIDC
       OIDC_ISSUER: https://auth.fruitfulnetworkdevelopment.com/realms/${KC_REALM}
@@ -61,7 +62,9 @@ services:
 
       # Cookie policy: MUST be true when api.* is served over HTTPS (Phase 4)
       COOKIE_SECURE: ${COOKIE_SECURE}
-      
+
+      PLATFORM_DB_URL: ${PLATFORM_DB_URL}
+
     ports:
       - "127.0.0.1:8001:8000"
     networks: [platform_net]
@@ -80,12 +83,6 @@ services:
       timeout: 5s
       retries: 10
     restart: unless-stopped
-  flask_bff:
-    depends_on:
-      platform_db:
-        condition: service_healthy
-    environment:
-      PLATFORM_DB_URL: postgresql://platform:platform@platform_db:5432/platform
 
 volumes:
   keycloak_db_data:
