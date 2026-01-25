@@ -70,6 +70,7 @@ services:
     networks: [platform_net]
 
   platform_db:
+    container_name: platform_db
     image: postgres:16
     environment:
       POSTGRES_USER: platform
