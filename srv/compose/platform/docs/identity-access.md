@@ -76,7 +76,7 @@ Authorization guards (JSON responses):
 - `require_tenant_context` returns `400 {"error":"missing_tenant"}` when tenant context is absent
 - `require_realm_role` returns `403 {"error":"forbidden"}` when roles are missing
 
-Tenant access (Phase 5 scaffolding):
+Tenant access (current scaffolding):
 
 - `root_admin` has global access
 - `tenant_admin:<tenant_id>` grants access to a specific tenant
