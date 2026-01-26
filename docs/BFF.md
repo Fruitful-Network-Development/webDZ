@@ -4,7 +4,15 @@ This document supersedes earlier BFF scope notes and reflects the **current oper
 and the **next planned phase (Phase 5)**. It incorporates decisions already made and extends them
 to cover tenant routing, UI surfaces, and data scope **without assuming a finalized data model**.
 
-This document defines **responsibilities, boundaries, and intent**, not final schemas.
+### Operational Invariants
+
+- One BFF service
+- One Keycloak realm
+- Many tenants
+- Static client sites remain static
+- All authentication flows through the BFF
+- All application data access flows through the BFF
+- Infrastructure remains manually operated
 
 ---
 
@@ -175,17 +183,5 @@ The BFF may perform mutating actions **only when all conditions are met**:
 - Infrastructure modification
 - Arbitrary command execution
 - Direct filesystem or service manipulation outside defined workflows
-
----
-
-## 9. Operational Invariants
-
-- One BFF service
-- One Keycloak realm
-- Many tenants
-- Static client sites remain static
-- All authentication flows through the BFF
-- All application data access flows through the BFF
-- Infrastructure remains manually operated
 
 ---
