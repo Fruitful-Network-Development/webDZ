@@ -2,21 +2,17 @@
 
 {% block title %}Admin Console · Archetypes{% endblock %}
 {% block header_title %}Archetypes{% endblock %}
-{% block header_subtitle %}MSS archetype catalog{% endblock %}
+{% block header_subtitle %}Shape contracts for JSON data{% endblock %}
 
 {% block content %}
   <div class="card">
     <h2>Archetype catalog</h2>
-    <form method="get">
-      <table>
-        <tr>
-          <th><label for="tenant_id">Filter by tenant</label></th>
-          <td>
-            <input id="tenant_id" name="tenant_id" type="text" value="{{ tenant_id }}" />
-            <button type="submit">Filter</button>
-          </td>
-        </tr>
-      </table>
+    <form method="get" class="form-grid">
+      <div class="field">
+        <label for="tenant_id">Filter by tenant</label>
+        <input id="tenant_id" name="tenant_id" type="text" value="{{ tenant_id }}" />
+      </div>
+      <button class="btn secondary" type="submit">Filter</button>
     </form>
 
     {% if archetypes %}
@@ -63,33 +59,52 @@
         </tbody>
       </table>
     {% else %}
-      <p class="muted">No archetypes found for the selected filter.</p>
+      <div class="empty-state">No archetypes found for the selected filter.</div>
     {% endif %}
   </div>
 
   <div class="card">
     <h3>Create archetype</h3>
-    <form id="archetype-form">
-      <table>
-        <tr>
-          <th><label for="archetype_tenant_id">Tenant ID</label></th>
-          <td><input id="archetype_tenant_id" name="tenant_id" type="text" required /></td>
-        </tr>
-        <tr>
-          <th><label for="archetype_name">Name</label></th>
-          <td><input id="archetype_name" name="name" type="text" required /></td>
-        </tr>
-        <tr>
-          <th><label for="archetype_fields">Fields JSON</label></th>
-          <td>
-            <textarea id="archetype_fields" name="fields" rows="6" required
-              placeholder='[{"position": 1, "name": "Field", "type": "text"}]'></textarea>
-          </td>
-        </tr>
-      </table>
-      <p>
-        <button type="submit">Create archetype</button>
-      </p>
+    <form id="archetype-form" class="form-grid">
+      <div class="field">
+        <label for="archetype_tenant_id">Tenant ID</label>
+        <input id="archetype_tenant_id" name="tenant_id" type="text" required />
+      </div>
+      <div class="field">
+        <label for="archetype_name">Name</label>
+        <input id="archetype_name" name="name" type="text" required />
+      </div>
+      <div class="field">
+        <label>Fields (repeatable)</label>
+        <div id="fields-container" class="grid">
+          <div class="card field-row">
+            <div class="form-grid">
+              <div class="field">
+                <label>Position</label>
+                <input type="number" name="position" value="1" min="1" />
+              </div>
+              <div class="field">
+                <label>Name</label>
+                <input type="text" name="field_name" placeholder="field_name" />
+              </div>
+              <div class="field">
+                <label>Type</label>
+                <input type="text" name="field_type" placeholder="text | number | ref" />
+              </div>
+              <div class="field">
+                <label>Ref domain (optional)</label>
+                <input type="text" name="ref_domain" placeholder="local | taxonomy | samras" />
+              </div>
+              <div class="field">
+                <label>Constraints JSON (optional)</label>
+                <input type="text" name="constraints" placeholder='{"min": 1}' />
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="btn secondary" type="button" id="add-field">Add field</button>
+      </div>
+      <button class="btn" type="submit">Create archetype</button>
       <p class="muted" id="archetype-status"></p>
     </form>
   </div>
@@ -97,17 +112,78 @@
   <script>
     const archetypeForm = document.getElementById("archetype-form");
     const archetypeStatus = document.getElementById("archetype-status");
+    const addFieldButton = document.getElementById("add-field");
+    const fieldsContainer = document.getElementById("fields-container");
 
-    archetypeForm.addEventListener("submit", async (event) => {
+    function buildFieldRow(position) {
+      return `
+        <div class="card field-row">
+          <div class="form-grid">
+            <div class="field">
+              <label>Position</label>
+              <input type="number" name="position" value="${position}" min="1" />
+            </div>
+            <div class="field">
+              <label>Name</label>
+              <input type="text" name="field_name" placeholder="field_name" />
+            </div>
+            <div class="field">
+              <label>Type</label>
+              <input type="text" name="field_type" placeholder="text | number | ref" />
+            </div>
+            <div class="field">
+              <label>Ref domain (optional)</label>
+              <input type="text" name="ref_domain" placeholder="local | taxonomy | samras" />
+            </div>
+            <div class="field">
+              <label>Constraints JSON (optional)</label>
+              <input type="text" name="constraints" placeholder='{"min": 1}' />
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    addFieldButton?.addEventListener("click", () => {
+      const nextPosition = fieldsContainer.querySelectorAll(".field-row").length + 1;
+      fieldsContainer.insertAdjacentHTML("beforeend", buildFieldRow(nextPosition));
+    });
+
+    archetypeForm?.addEventListener("submit", async (event) => {
       event.preventDefault();
       archetypeStatus.textContent = "";
 
-      let fields;
-      try {
-        fields = JSON.parse(archetypeForm.fields.value || "[]");
-      } catch (error) {
-        archetypeStatus.textContent = "Error: fields JSON is invalid.";
-        return;
+      const fieldRows = fieldsContainer.querySelectorAll(".field-row");
+      const fields = [];
+      for (const row of fieldRows) {
+        const position = Number.parseInt(row.querySelector("input[name=position]").value, 10);
+        const name = row.querySelector("input[name=field_name]").value.trim();
+        const type = row.querySelector("input[name=field_type]").value.trim();
+        const refDomain = row.querySelector("input[name=ref_domain]").value.trim();
+        const constraintsText = row.querySelector("input[name=constraints]").value.trim();
+
+        if (!name || !type || Number.isNaN(position)) {
+          archetypeStatus.textContent = "Each field needs a position, name, and type.";
+          return;
+        }
+
+        let constraints = null;
+        if (constraintsText) {
+          try {
+            constraints = JSON.parse(constraintsText);
+          } catch (error) {
+            archetypeStatus.textContent = "Constraints JSON is invalid.";
+            return;
+          }
+        }
+
+        fields.push({
+          position,
+          name,
+          type,
+          ref_domain: refDomain || null,
+          constraints,
+        });
       }
 
       const payload = {
@@ -122,13 +198,12 @@
         body: JSON.stringify(payload),
       });
 
-      if (response.ok) {
-        window.location.reload();
+      if (!response.ok) {
+        archetypeStatus.innerHTML = adminApiMessage(response.status);
         return;
       }
 
-      const error = await response.json().catch(() => ({ error: "unknown_error" }));
-      archetypeStatus.textContent = `Error: ${error.error || "unknown_error"}`;
+      window.location.reload();
     });
   </script>
 {% endblock %}

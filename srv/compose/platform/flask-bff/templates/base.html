@@ -5,14 +5,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{% block title %}Admin Console{% endblock %}</title>
   <style>
+    :root {
+      color-scheme: light;
+      --bg: #f5f7fa;
+      --card: #ffffff;
+      --ink: #1f2933;
+      --muted: #6b7280;
+      --nav: #111827;
+      --primary: #2563eb;
+      --border: #e5e7eb;
+      --success: #16a34a;
+      --warning: #f59e0b;
+      --danger: #dc2626;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
-      color: #1f2933;
-      background: #f5f7fa;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.5;
     }
     header {
-      background: #111827;
+      background: var(--nav);
       color: #f9fafb;
       padding: 16px 24px;
     }
@@ -27,12 +46,14 @@
     }
     main {
       padding: 24px;
-      max-width: 1100px;
+      max-width: 1200px;
       margin: 0 auto;
     }
+    nav {
+      margin-bottom: 16px;
+    }
     nav a {
-      margin-right: 12px;
-      color: #2563eb;
+      color: var(--primary);
       text-decoration: none;
       font-weight: 600;
     }
@@ -40,27 +61,42 @@
       text-decoration: underline;
     }
     .card {
-      background: #ffffff;
-      border-radius: 8px;
+      background: var(--card);
+      border-radius: 10px;
       padding: 20px;
       box-shadow: 0 2px 8px rgba(16, 24, 40, 0.08);
       margin-bottom: 20px;
+    }
+    .card h2,
+    .card h3 {
+      margin-top: 0;
+    }
+    .grid {
+      display: grid;
+      gap: 16px;
+    }
+    .grid-2 {
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+    .grid-3 {
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     }
     table {
       width: 100%;
       border-collapse: collapse;
     }
-    th, td {
+    th,
+    td {
       text-align: left;
       padding: 10px 12px;
-      border-bottom: 1px solid #e5e7eb;
+      border-bottom: 1px solid var(--border);
       vertical-align: top;
     }
     th {
-      font-size: 13px;
+      font-size: 12px;
       text-transform: uppercase;
-      letter-spacing: 0.03em;
-      color: #6b7280;
+      letter-spacing: 0.04em;
+      color: var(--muted);
     }
     .pill {
       display: inline-block;
@@ -72,8 +108,157 @@
       margin-right: 6px;
       margin-bottom: 6px;
     }
+    .pill.success {
+      background: #dcfce7;
+      color: #166534;
+    }
+    .pill.warning {
+      background: #fef3c7;
+      color: #92400e;
+    }
+    .pill.danger {
+      background: #fee2e2;
+      color: #991b1b;
+    }
     .muted {
-      color: #6b7280;
+      color: var(--muted);
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 14px;
+      border-radius: 8px;
+      border: 1px solid transparent;
+      background: var(--primary);
+      color: #fff;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      font-size: 14px;
+    }
+    .btn.secondary {
+      background: #fff;
+      border-color: var(--border);
+      color: var(--ink);
+    }
+    .btn.danger {
+      background: #fee2e2;
+      border-color: #fecaca;
+      color: #991b1b;
+    }
+    .btn-link {
+      background: none;
+      border: none;
+      color: var(--primary);
+      cursor: pointer;
+      padding: 0;
+      font-weight: 600;
+      text-decoration: underline;
+    }
+    .form-grid {
+      display: grid;
+      gap: 12px;
+    }
+    .field label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .field input,
+    .field textarea,
+    .field select {
+      width: 100%;
+      padding: 8px 10px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      font-size: 14px;
+      font-family: inherit;
+    }
+    .status-list {
+      margin: 8px 0 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+    .context-banner {
+      background: #0f172a;
+      color: #e2e8f0;
+      padding: 10px 24px;
+      font-size: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .context-banner a {
+      color: #93c5fd;
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .context-banner a:hover {
+      text-decoration: underline;
+    }
+    .nav-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+    .nav-tabs a {
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: #e5e7eb;
+      color: var(--ink);
+      font-weight: 600;
+    }
+    .nav-tabs a.active {
+      background: var(--primary);
+      color: #fff;
+    }
+    .nav-sub {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .nav-sub a {
+      font-size: 13px;
+    }
+    .inline-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .empty-state {
+      padding: 20px;
+      border: 1px dashed var(--border);
+      border-radius: 10px;
+      color: var(--muted);
+      background: #f9fafb;
+    }
+    .callout {
+      border-left: 4px solid var(--primary);
+      padding-left: 12px;
+      margin: 12px 0;
+      color: var(--muted);
+    }
+    .section-title {
+      margin-bottom: 12px;
+      font-size: 18px;
+    }
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      background: #f3f4f6;
+      padding: 4px 8px;
+      border-radius: 999px;
+      color: var(--muted);
+    }
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin: 16px 0;
     }
   </style>
 </head>
@@ -82,18 +267,27 @@
     <h1>{% block header_title %}Admin Console{% endblock %}</h1>
     <p>{% block header_subtitle %}Fruitful Network Development BFF{% endblock %}</p>
   </header>
+  {% block context_banner %}{% endblock %}
   <main>
     <nav>
       {% if is_root_admin %}
-        <a href="/admin">Admin Home</a>
-        <a href="/admin/tenants">Tenants</a>
-        <a href="/admin/local-domains">Local Domains</a>
-        <a href="/admin/archetypes">Archetypes</a>
-        <a href="/admin/manifest">Manifest</a>
-        <a href="/admin/tables">Tables</a>
-        <a href="/admin/lists">Lists</a>
-        <a href="/admin/samras-layouts">SAMRAS Layouts</a>
-        <a href="/admin/users">User Management</a>
+        <div class="nav-tabs">
+          <a href="/admin" class="{% if request.path == '/admin' %}active{% endif %}">Overview</a>
+          <a href="/admin/tenants" class="{% if request.path.startswith('/admin/tenants') %}active{% endif %}">Clients</a>
+          <a href="/admin/tables?tenant_id=platform" class="{% if request.path.startswith('/admin/tables') or request.path.startswith('/admin/lists') %}active{% endif %}">My Data</a>
+          <a href="/admin/local-domains" class="{% if request.path.startswith('/admin/local-domains') or request.path.startswith('/admin/archetypes') or request.path.startswith('/admin/manifest') %}active{% endif %}">Registry</a>
+          <a href="/admin/samras-layouts" class="{% if request.path.startswith('/admin/samras-layouts') %}active{% endif %}">SAMRAS</a>
+          <a href="/admin/users" class="{% if request.path.startswith('/admin/users') %}active{% endif %}">Users</a>
+        </div>
+        <div class="nav-sub">
+          <a href="/admin/tables?tenant_id=platform">Platform Tables</a>
+          <a href="/admin/lists?tenant_id=platform">Platform Lists</a>
+          <a href="/admin/local-domains">Local Domains</a>
+          <a href="/admin/archetypes">Archetypes</a>
+          <a href="/admin/manifest">Manifest</a>
+          <a href="/admin/samras-layouts">SAMRAS Layouts</a>
+          <a href="/admin/users">MSS Profiles</a>
+        </div>
       {% endif %}
       {% if current_user %}
         <span class="muted">Signed in as {{ current_user.display_name or current_user.user_id }}</span>
@@ -103,5 +297,32 @@
     </nav>
     {% block content %}{% endblock %}
   </main>
+  <script>
+    const adminReturnTo = encodeURIComponent(window.location.pathname + window.location.search);
+
+    function adminApiMessage(status) {
+      if (status === 401) {
+        return `Not authenticated. <a href="/login?tenant=platform&return_to=${adminReturnTo}">Sign in</a>.`;
+      }
+      if (status === 403) {
+        return "Forbidden / not provisioned.";
+      }
+      if (status === 404) {
+        return "Endpoint not wired yet.";
+      }
+      if (status >= 500) {
+        return "Server error.";
+      }
+      return "Unexpected response from server.";
+    }
+
+    async function adminParseJson(response) {
+      try {
+        return await response.json();
+      } catch (error) {
+        return {};
+      }
+    }
+  </script>
 </body>
 </html>

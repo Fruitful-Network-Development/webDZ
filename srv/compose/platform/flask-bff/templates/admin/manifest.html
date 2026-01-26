@@ -2,21 +2,17 @@
 
 {% block title %}Admin Console · Manifest{% endblock %}
 {% block header_title %}Manifest{% endblock %}
-{% block header_subtitle %}MSS manifest registrations{% endblock %}
+{% block header_subtitle %}Bind tables to archetype contracts{% endblock %}
 
 {% block content %}
   <div class="card">
     <h2>Manifest entries</h2>
-    <form method="get">
-      <table>
-        <tr>
-          <th><label for="tenant_id">Filter by tenant</label></th>
-          <td>
-            <input id="tenant_id" name="tenant_id" type="text" value="{{ tenant_id }}" />
-            <button type="submit">Filter</button>
-          </td>
-        </tr>
-      </table>
+    <form method="get" class="form-grid">
+      <div class="field">
+        <label for="tenant_id">Filter by tenant</label>
+        <input id="tenant_id" name="tenant_id" type="text" value="{{ tenant_id }}" />
+      </div>
+      <button class="btn secondary" type="submit">Filter</button>
     </form>
 
     {% if manifest_rows %}
@@ -39,30 +35,26 @@
         </tbody>
       </table>
     {% else %}
-      <p class="muted">No manifest entries found for the selected filter.</p>
+      <div class="empty-state">No manifest entries found for the selected filter.</div>
     {% endif %}
   </div>
 
   <div class="card">
     <h3>Create manifest entry</h3>
-    <form id="manifest-form">
-      <table>
-        <tr>
-          <th><label for="manifest_tenant_id">Tenant ID</label></th>
-          <td><input id="manifest_tenant_id" name="tenant_id" type="text" required /></td>
-        </tr>
-        <tr>
-          <th><label for="manifest_table_id">Table ID (UUID)</label></th>
-          <td><input id="manifest_table_id" name="table_id" type="text" required /></td>
-        </tr>
-        <tr>
-          <th><label for="manifest_archetype_id">Archetype ID (UUID)</label></th>
-          <td><input id="manifest_archetype_id" name="archetype_id" type="text" required /></td>
-        </tr>
-      </table>
-      <p>
-        <button type="submit">Create manifest entry</button>
-      </p>
+    <form id="manifest-form" class="form-grid">
+      <div class="field">
+        <label for="manifest_tenant_id">Tenant ID</label>
+        <input id="manifest_tenant_id" name="tenant_id" type="text" required />
+      </div>
+      <div class="field">
+        <label for="manifest_table_id">Table ID (UUID)</label>
+        <input id="manifest_table_id" name="table_id" type="text" required />
+      </div>
+      <div class="field">
+        <label for="manifest_archetype_id">Archetype ID (UUID)</label>
+        <input id="manifest_archetype_id" name="archetype_id" type="text" required />
+      </div>
+      <button class="btn" type="submit">Create manifest entry</button>
       <p class="muted" id="manifest-status"></p>
     </form>
   </div>
@@ -71,7 +63,7 @@
     const manifestForm = document.getElementById("manifest-form");
     const manifestStatus = document.getElementById("manifest-status");
 
-    manifestForm.addEventListener("submit", async (event) => {
+    manifestForm?.addEventListener("submit", async (event) => {
       event.preventDefault();
       manifestStatus.textContent = "";
 
@@ -87,13 +79,12 @@
         body: JSON.stringify(payload),
       });
 
-      if (response.ok) {
-        window.location.reload();
+      if (!response.ok) {
+        manifestStatus.innerHTML = adminApiMessage(response.status);
         return;
       }
 
-      const error = await response.json().catch(() => ({ error: "unknown_error" }));
-      manifestStatus.textContent = `Error: ${error.error || "unknown_error"}`;
+      window.location.reload();
     });
   </script>
 {% endblock %}

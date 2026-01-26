@@ -6,6 +6,13 @@
   {{ tenant_id }}{% if tenant_cfg.client_domain %} · {{ tenant_cfg.client_domain }}{% endif %}
 {% endblock %}
 
+{% block context_banner %}
+  <div class="context-banner">
+    <span>Admin Context: fruitful-admin → Tenant: {{ tenant_id }}</span>
+    <a href="/admin">Return to Admin Overview</a>
+  </div>
+{% endblock %}
+
 {% block content %}
   <style>
     .console-shell {
