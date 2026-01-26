@@ -12,6 +12,8 @@ from authz import (
     is_root_admin,
     is_tenant_admin,
     log_authz_decision,
+    not_authenticated_response,
+    forbidden_response,
     not_provisioned_response,
 )
 from tenant_registry import (
@@ -48,7 +50,7 @@ def require_login(fn):
     @wraps(fn)
     def wrapper(*args, **kwargs):
         if not current_user():
-            return jsonify({"error": "not_authenticated"}), 401
+            return not_authenticated_response()
         return fn(*args, **kwargs)
 
     return wrapper
@@ -83,10 +85,10 @@ def require_fields(payload: Dict[str, Any], fields: list[str]) -> Optional[tuple
 def require_tenant_admin(tenant_id: str) -> Optional[tuple[Any, int]]:
     user = current_user()
     if not user:
-        return jsonify({"error": "not_authenticated"}), 401
+        return not_authenticated_response()
     if is_root_admin(user) or is_tenant_admin(user, tenant_id):
         return None
-    return jsonify({"error": "forbidden"}), 403
+    return forbidden_response()
 
 
 def require_realm_role(role: str):
@@ -97,10 +99,14 @@ def require_realm_role(role: str):
         def wrapper(*args, **kwargs):
             u = session.get("user")
             if not u:
-                return jsonify({"error": "not_authenticated"}), 401
+                return not_authenticated_response()
             roles = u.get("realm_roles") or []
             if role not in roles:
-                return jsonify({"error": "forbidden", "missing_role": role}), 403
+                return jsonify({
+                    "error": "forbidden",
+                    "message": "Access forbidden.",
+                    "missing_role": role,
+                }), 403
             return fn(*args, **kwargs)
 
         return wrapper
@@ -111,14 +117,14 @@ def require_realm_role(role: str):
 def require_tenant_access(tenant_id: str):
     u = current_user()
     if not u:
-        return jsonify({"error": "not_authenticated"}), 401
+        return not_authenticated_response()
     if not u.get("msn_id"):
         return not_provisioned_response()
     if is_root_admin(u):
         return None
     if is_tenant_admin(u, tenant_id):
         return None
-    return jsonify({"error": "forbidden"}), 403
+    return forbidden_response()
 
 
 def unwrap_api_response(result: Any) -> tuple[dict[str, Any], int]:
@@ -171,7 +177,7 @@ def require_tenant_console_access(tenant_id: str) -> tuple[dict[str, Any], Optio
             reason="missing_tenant_access",
             checks=["root_admin_role", "tenant_admin_role", "mss_role"],
         )
-        abort(403)
+        return tenant_cfg, forbidden_response()
     log_authz_decision(
         action="tenant_console_access",
         tenant_id=tenant_id,

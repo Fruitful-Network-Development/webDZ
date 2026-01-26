@@ -53,7 +53,10 @@ def test_ping_requires_login(monkeypatch):
     with app_module.app.test_client() as client:
         resp = client.get("/t/x/ping")
         assert resp.status_code == 401
-        assert resp.get_json() == {"error": "not_authenticated"}
+        assert resp.get_json() == {
+            "error": "not_authenticated",
+            "message": "Authentication required.",
+        }
 
 
 def test_ping_allows_tenant_admin(monkeypatch):
@@ -87,7 +90,7 @@ def test_ping_blocks_wrong_tenant_admin(monkeypatch):
             }
         resp = client.get("/t/x/ping")
         assert resp.status_code == 403
-        assert resp.get_json() == {"error": "forbidden"}
+        assert resp.get_json() == {"error": "forbidden", "message": "Access forbidden."}
 
 
 def test_tenants_requires_auth(monkeypatch):
@@ -97,7 +100,10 @@ def test_tenants_requires_auth(monkeypatch):
     with app_module.app.test_client() as client:
         resp = client.get("/_tenants")
         assert resp.status_code == 401
-        assert resp.get_json() == {"error": "not_authenticated"}
+        assert resp.get_json() == {
+            "error": "not_authenticated",
+            "message": "Authentication required.",
+        }
 
 
 def test_tenants_forbidden_without_root_admin(monkeypatch):
@@ -109,7 +115,30 @@ def test_tenants_forbidden_without_root_admin(monkeypatch):
             sess["user"] = {"user_id": "u-1", "realm_roles": ["tenant_admin:x"]}
         resp = client.get("/_tenants")
         assert resp.status_code == 403
-        assert resp.get_json() == {"error": "forbidden", "missing_role": "root_admin"}
+        assert resp.get_json() == {
+            "error": "forbidden",
+            "message": "Access forbidden.",
+            "missing_role": "root_admin",
+        }
+
+def test_root_renders_landing_when_unauth(monkeypatch):
+    app_module = _load_app(monkeypatch)
+    app_module.app.config.update(TESTING=True)
+
+    with app_module.app.test_client() as client:
+        resp = client.get("/")
+        assert resp.status_code == 200
+        assert b"Sign in" in resp.data
+
+
+def test_admin_redirects_to_login_when_unauth(monkeypatch):
+    app_module = _load_app(monkeypatch)
+    app_module.app.config.update(TESTING=True)
+
+    with app_module.app.test_client() as client:
+        resp = client.get("/admin", follow_redirects=False)
+        assert resp.status_code == 302
+        assert resp.headers["Location"] == "/login?tenant=platform&return_to=/admin"
 
 
 def test_tenants_allows_root_admin(monkeypatch):
@@ -122,6 +151,30 @@ def test_tenants_allows_root_admin(monkeypatch):
         resp = client.get("/_tenants")
         assert resp.status_code == 200
         assert "cuyahogaterravita" in resp.get_json()["tenants"]
+
+
+def test_admin_overview_renders(monkeypatch):
+    app_module = _load_app(monkeypatch)
+    app_module.app.config.update(TESTING=True)
+
+    with app_module.app.test_client() as client:
+        with client.session_transaction() as sess:
+            sess["user"] = {"user_id": "u-1", "realm_roles": ["root_admin"]}
+        resp = client.get("/admin")
+        assert resp.status_code == 200
+        assert b"Admin Console" in resp.data
+
+
+def test_admin_tenants_api(monkeypatch):
+    app_module = _load_app(monkeypatch)
+    app_module.app.config.update(TESTING=True)
+
+    with app_module.app.test_client() as client:
+        with client.session_transaction() as sess:
+            sess["user"] = {"user_id": "u-1", "realm_roles": ["root_admin"]}
+        resp = client.get("/api/admin/tenants")
+        assert resp.status_code == 200
+        assert "platform" in resp.get_json()["tenants"]
 
 
 def test_tenant_detail_strips_secret(monkeypatch):

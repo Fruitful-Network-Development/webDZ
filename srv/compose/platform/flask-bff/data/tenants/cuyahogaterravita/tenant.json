@@ -10,6 +10,7 @@
   "console_modules": {
     "schema_builder": true,
     "data_entry": true,
-    "animals": true
+    "animals": true,
+    "network": true
   }
 }

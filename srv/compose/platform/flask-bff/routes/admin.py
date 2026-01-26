@@ -7,7 +7,7 @@ import json
 import uuid
 from typing import Any, Dict
 
-from flask import Blueprint, abort, current_app, jsonify, render_template, request
+from flask import Blueprint, abort, current_app, jsonify, redirect, render_template, request
 from psycopg2 import sql
 
 import db
@@ -21,7 +21,20 @@ from routes.common import (
     require_tenant_admin,
     unwrap_api_response,
 )
-from tenant_registry import TenantRegistryError, list_tenants, tenant_public_view
+from tenant_registry import (
+    TenantExistsError,
+    TenantIdError,
+    TenantIndexError,
+    TenantNotFoundError,
+    TenantRegistryError,
+    TenantValidationError,
+    create_tenant,
+    delete_tenant,
+    list_tenants,
+    load_tenant,
+    tenant_public_view,
+    update_tenant,
+)
 from utils.general_tables import general_table_name
 from utils.mss import current_msn_id
 from utils.samras import validate_archetype_field_constraints
@@ -39,6 +52,22 @@ def _log_admin_event(action: str, payload: Dict[str, Any]) -> None:
         current_app.logger.info(json.dumps(data, separators=(",", ":")))
     except RuntimeError:
         pass
+
+
+def _tenant_error_response(exc: TenantRegistryError):
+    status = 500
+    if isinstance(exc, TenantNotFoundError):
+        status = 404
+    elif isinstance(exc, (TenantValidationError, TenantIdError)):
+        status = 400
+    elif isinstance(exc, TenantExistsError):
+        status = 409
+    elif isinstance(exc, TenantIndexError):
+        status = 500
+    payload: Dict[str, Any] = {"error": exc.code, "message": exc.message}
+    if exc.details:
+        payload["details"] = exc.details
+    return jsonify(payload), status
 
 
 def _load_manifest_entry(tenant_id: str, table_local_id: str):
@@ -120,6 +149,12 @@ def admin_index():
     return render_template("admin/index.html", user=user), 200
 
 
+@admin_bp.get("/admin/overview")
+@require_root_admin
+def admin_overview():
+    return redirect("/admin")
+
+
 @admin_bp.get("/_tenants")
 @require_realm_role("root_admin")
 def tenants_index():
@@ -128,6 +163,65 @@ def tenants_index():
     except TenantRegistryError as exc:
         return jsonify({"error": exc.code, "message": exc.message}), 500
     return jsonify({"tenants": tenants}), 200
+
+
+@admin_bp.get("/api/admin/tenants")
+@require_root_admin
+def admin_tenants_api():
+    try:
+        tenants = list_tenants()
+    except TenantRegistryError as exc:
+        return jsonify({"error": exc.code, "message": exc.message}), 500
+    return jsonify({"tenants": tenants}), 200
+
+
+@admin_bp.post("/api/admin/tenants")
+@require_root_admin
+def admin_tenant_create():
+    payload, error = json_body()
+    if error:
+        return error
+    try:
+        tenant_cfg = create_tenant(payload)
+    except TenantRegistryError as exc:
+        return _tenant_error_response(exc)
+    return jsonify({"tenant": tenant_public_view(tenant_cfg)}), 201
+
+
+@admin_bp.get("/api/admin/tenants/<tenant_id>")
+@require_root_admin
+def admin_tenant_get(tenant_id: str):
+    try:
+        tenant_cfg = load_tenant(tenant_id)
+    except TenantRegistryError as exc:
+        return _tenant_error_response(exc)
+    return jsonify({"tenant": tenant_public_view(tenant_cfg)}), 200
+
+
+@admin_bp.put("/api/admin/tenants/<tenant_id>")
+@require_root_admin
+def admin_tenant_update(tenant_id: str):
+    payload, error = json_body()
+    if error:
+        return error
+    try:
+        tenant_cfg = update_tenant(tenant_id, payload)
+    except TenantRegistryError as exc:
+        return _tenant_error_response(exc)
+    return jsonify({"tenant": tenant_public_view(tenant_cfg)}), 200
+
+
+@admin_bp.delete("/api/admin/tenants/<tenant_id>")
+@require_root_admin
+def admin_tenant_delete(tenant_id: str):
+    hard = request.args.get("hard") == "1"
+    try:
+        result = delete_tenant(tenant_id, hard=hard)
+    except TenantRegistryError as exc:
+        return _tenant_error_response(exc)
+    if hard:
+        return jsonify({"tenant": result}), 200
+    return jsonify({"tenant": tenant_public_view(result)}), 200
 
 
 @admin_bp.get("/_tenants/<tenant_id>")
@@ -159,6 +253,12 @@ def admin_tenant_detail(tenant_id: str):
     ), 200
 
 
+@admin_bp.get("/admin/tenant/<tenant_id>")
+@require_root_admin
+def admin_tenant_detail_alias(tenant_id: str):
+    return redirect(f"/admin/tenants/{tenant_id}")
+
+
 @admin_bp.get("/admin/local-domains")
 @require_root_admin
 def admin_local_domains_page():
@@ -169,6 +269,14 @@ def admin_local_domains_page():
         "admin/local_domains.html",
         local_domains=payload.get("local_domains", []),
     ), 200
+
+
+@admin_bp.get("/admin/local-domain")
+@require_root_admin
+def admin_local_domains_page_alias():
+    qs = request.query_string.decode("utf-8")
+    suffix = f"?{qs}" if qs else ""
+    return redirect(f"/admin/local-domains{suffix}")
 
 
 @admin_bp.get("/admin/archetypes")
@@ -209,6 +317,14 @@ def admin_samras_layouts_page():
     ), 200
 
 
+@admin_bp.get("/admin/samras")
+@require_root_admin
+def admin_samras_layouts_page_alias():
+    qs = request.query_string.decode("utf-8")
+    suffix = f"?{qs}" if qs else ""
+    return redirect(f"/admin/samras-layouts{suffix}")
+
+
 @admin_bp.get("/admin/users")
 @require_root_admin
 def admin_user_management_page():
@@ -219,6 +335,12 @@ def admin_user_management_page():
         "admin/user_management.html",
         mss_profiles=payload.get("mss_profiles", []),
     ), 200
+
+
+@admin_bp.get("/admin/services")
+@require_root_admin
+def admin_services_page():
+    return render_template("admin/services.html"), 200
 
 
 @admin_bp.get("/admin/tables")

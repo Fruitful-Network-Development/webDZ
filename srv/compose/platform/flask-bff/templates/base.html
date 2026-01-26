@@ -4,6 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{% block title %}Admin Console{% endblock %}</title>
+  <link rel="icon" href="/favicon.ico" />
   <style>
     :root {
       color-scheme: light;
@@ -275,9 +276,10 @@
           <a href="/admin" class="{% if request.path == '/admin' %}active{% endif %}">Overview</a>
           <a href="/admin/tenants" class="{% if request.path.startswith('/admin/tenants') %}active{% endif %}">Clients</a>
           <a href="/admin/tables?tenant_id=platform" class="{% if request.path.startswith('/admin/tables') or request.path.startswith('/admin/lists') %}active{% endif %}">My Data</a>
-          <a href="/admin/local-domains" class="{% if request.path.startswith('/admin/local-domains') or request.path.startswith('/admin/archetypes') or request.path.startswith('/admin/manifest') %}active{% endif %}">Registry</a>
-          <a href="/admin/samras-layouts" class="{% if request.path.startswith('/admin/samras-layouts') %}active{% endif %}">SAMRAS</a>
+          <a href="/admin/local-domains" class="{% if request.path.startswith('/admin/local-domains') or request.path.startswith('/admin/local-domain') or request.path.startswith('/admin/archetypes') or request.path.startswith('/admin/manifest') %}active{% endif %}">Registry</a>
+          <a href="/admin/samras-layouts" class="{% if request.path.startswith('/admin/samras-layouts') or request.path.startswith('/admin/samras') %}active{% endif %}">SAMRAS</a>
           <a href="/admin/users" class="{% if request.path.startswith('/admin/users') %}active{% endif %}">Users</a>
+          <a href="/admin/services" class="{% if request.path.startswith('/admin/services') %}active{% endif %}">Services</a>
         </div>
         <div class="nav-sub">
           <a href="/admin/tables?tenant_id=platform">Platform Tables</a>
@@ -297,16 +299,44 @@
     </nav>
     {% block content %}{% endblock %}
   </main>
+  <datalist id="tenant-ids"></datalist>
   <script>
     const adminReturnTo = encodeURIComponent(window.location.pathname + window.location.search);
 
-    function adminApiMessage(status) {
+    async function adminParseJson(response) {
+      try {
+        return await response.json();
+      } catch (error) {
+        return {};
+      }
+    }
+
+    async function adminApiMessage(responseOrStatus) {
+      const status = typeof responseOrStatus === "number"
+        ? responseOrStatus
+        : (responseOrStatus && responseOrStatus.status) || 0;
+
       if (status === 401) {
         return `Not authenticated. <a href="/login?tenant=platform&return_to=${adminReturnTo}">Sign in</a>.`;
       }
       if (status === 403) {
-        return "Forbidden / not provisioned.";
+        const payload = await adminParseJson(responseOrStatus);
+        if (payload.message) {
+          return payload.message;
+        }
+        return "Access forbidden.";
       }
+
+      if (responseOrStatus && typeof responseOrStatus.status === "number") {
+        const payload = await adminParseJson(responseOrStatus);
+        if (payload.message) {
+          return `Error: ${payload.message}`;
+        }
+        if (payload.error) {
+          return `Error: ${payload.error}`;
+        }
+      }
+
       if (status === 404) {
         return "Endpoint not wired yet.";
       }
@@ -316,13 +346,40 @@
       return "Unexpected response from server.";
     }
 
-    async function adminParseJson(response) {
-      try {
-        return await response.json();
-      } catch (error) {
-        return {};
+    function adminFetch(url, options = {}) {
+      const headers = Object.assign({}, options.headers || {});
+      if (options.body && !headers["Content-Type"]) {
+        headers["Content-Type"] = "application/json";
       }
+      return fetch(url, {
+        credentials: "include",
+        ...options,
+        headers,
+      });
     }
+
+    function adminBanner(el, message, kind) {
+      if (!el) return;
+      el.classList.remove("pill", "success", "warning", "danger");
+      el.classList.add("pill");
+      el.classList.add(kind === "success" ? "success" : "danger");
+      el.innerHTML = message;
+    }
+
+    async function loadTenantList() {
+      const datalist = document.getElementById("tenant-ids");
+      if (!datalist) return;
+      const resp = await adminFetch("/api/admin/tenants");
+      if (!resp.ok) return;
+      const payload = await adminParseJson(resp);
+      const tenants = payload.tenants || [];
+      datalist.innerHTML = tenants.map((tenant) => `<option value="${tenant}"></option>`).join("");
+      document.querySelectorAll("input[data-tenant-input]").forEach((input) => {
+        input.setAttribute("list", "tenant-ids");
+      });
+    }
+
+    window.addEventListener("DOMContentLoaded", loadTenantList);
   </script>
 </body>
 </html>

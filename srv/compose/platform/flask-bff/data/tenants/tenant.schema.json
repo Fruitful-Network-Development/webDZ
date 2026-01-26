@@ -48,6 +48,9 @@
       "additionalProperties": {
         "type": "boolean"
       }
+    },
+    "disabled": {
+      "type": "boolean"
     }
   }
 }

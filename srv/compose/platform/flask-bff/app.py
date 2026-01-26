@@ -1,7 +1,7 @@
 """Flask BFF (Keycloak-only, DB-free)."""
 from __future__ import annotations
 
-from flask import Flask, jsonify, session
+from flask import Flask, jsonify, redirect, render_template, session
 
 import db
 from authz import get_current_user, is_root_admin
@@ -51,6 +51,17 @@ def create_app() -> Flask:
             "current_user": user,
             "is_root_admin": is_root_admin(user) if user else False,
         }
+
+    @app.get("/")
+    def root():
+        user = get_current_user()
+        if user and is_root_admin(user):
+            return redirect("/admin")
+        return render_template("landing.html"), 200
+
+    @app.get("/favicon.ico")
+    def favicon():
+        return "", 204
 
     @app.get("/health")
     def health():

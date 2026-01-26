@@ -104,3 +104,7 @@ def test_login_flow_and_console_render(monkeypatch, db_conn, db_url, db_cleanup)
         from config import DEMO_TABLE_ID
 
         assert f"GET /api/t/{tenant_id}/tables/{DEMO_TABLE_ID}".encode("utf-8") in animals_resp.data
+
+        network_resp = client.get(f"/t/{tenant_id}/console/network")
+        assert network_resp.status_code == 200
+        assert b"Participant Farms" in network_resp.data

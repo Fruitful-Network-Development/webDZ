@@ -212,7 +212,6 @@ def callback():
 
     tenant_id = session.get("tenant_id")
     return_to = session.pop("return_to", None)
-    redirect_target = None
 
     if tenant_id:
         try:
@@ -222,9 +221,9 @@ def callback():
             else:
                 redirect_target = f"/t/{tenant_id}/console"
         except TenantRegistryError:
-            redirect_target = f"/t/{tenant_id}/console"
+            redirect_target = return_to or f"/t/{tenant_id}/console"
     else:
-        redirect_target = url_for("auth.me")
+        redirect_target = return_to or "/admin"
 
     return redirect(redirect_target)
 

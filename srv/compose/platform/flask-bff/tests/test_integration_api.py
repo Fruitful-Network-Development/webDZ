@@ -47,6 +47,56 @@ def _seed_admin_workflow(db_conn, tenant_id: str):
     }
 
 
+def _seed_network_workflow(db_conn, tenant_id: str):
+    table_local_id = str(uuid.uuid4())
+    archetype_id = str(uuid.uuid4())
+    root_user_id = str(uuid.uuid4())
+    root_msn_id = f"ROOT-{uuid.uuid4()}"
+
+    with db_conn.cursor() as cur:
+        cur.execute(
+            "INSERT INTO platform.mss_profile (msn_id, user_id, display_name, role) VALUES (%s, %s, %s, %s)",
+            (root_msn_id, root_user_id, "Root Admin", "root-admin"),
+        )
+        cur.execute(
+            "INSERT INTO platform.local_domain (local_id, title) VALUES (%s, %s)",
+            (table_local_id, "Participant Farms"),
+        )
+        cur.execute(
+            "INSERT INTO platform.archetype (id, tenant_id, name, version) VALUES (%s, %s, %s, %s)",
+            (archetype_id, tenant_id, "participant_farms", 1),
+        )
+        fields = [
+            (1, "msn_id", "string"),
+            (2, "local_id", "string"),
+            (3, "logo", "string"),
+            (4, "images", "array"),
+            (5, "bio", "string"),
+            (6, "sources", "array"),
+        ]
+        for position, name, field_type in fields:
+            cur.execute(
+                """
+                INSERT INTO platform.archetype_field
+                (archetype_id, position, name, type, ref_domain, constraints)
+                VALUES (%s, %s, %s, %s, %s, %s)
+                """,
+                (archetype_id, position, name, field_type, None, None),
+            )
+        cur.execute(
+            "INSERT INTO platform.manifest (table_id, tenant_id, archetype_id) VALUES (%s, %s, %s)",
+            (table_local_id, tenant_id, archetype_id),
+        )
+
+    return {
+        "tenant_id": tenant_id,
+        "table_local_id": table_local_id,
+        "archetype_id": archetype_id,
+        "root_user_id": root_user_id,
+        "root_msn_id": root_msn_id,
+    }
+
+
 @pytest.mark.usefixtures("db_cleanup")
 def test_schema_registry_endpoints(monkeypatch, db_conn, db_url):
     app_module = load_app(monkeypatch, db_url=db_url)
@@ -175,6 +225,79 @@ def test_admin_general_table_create(monkeypatch, db_conn, db_url):
         assert payload["archetype_id"] == archetype_id
 
     drop_dynamic_table(db_conn, payload["table_name"])
+
+
+@pytest.mark.usefixtures("db_cleanup")
+def test_network_records_list(monkeypatch, db_conn, db_url):
+    app_module = load_app(monkeypatch, db_url=db_url)
+    app_module.app.config.update(TESTING=True)
+
+    seeded = _seed_network_workflow(db_conn, "tenant-network")
+
+    with app_module.app.test_client() as client:
+        with client.session_transaction() as sess:
+            sess["user"] = {
+                "user_id": seeded["root_user_id"],
+                "realm_roles": ["root_admin"],
+            }
+        provision_resp = client.post(
+            "/api/admin/tables",
+            json={
+                "tenant_id": seeded["tenant_id"],
+                "table_local_id": seeded["table_local_id"],
+                "mode": "general",
+            },
+        )
+        assert provision_resp.status_code == 201
+        table_name = provision_resp.get_json()["table_name"]
+
+    record_one = {
+        "msn_id": "SAMRAS:cvcc/participant_farms/001",
+        "local_id": str(uuid.uuid4()),
+        "logo": "heritage-hollow.png",
+        "images": ["heritage-hollow-1.jpg", "heritage-hollow-2.jpg"],
+        "bio": "Heritage Hollow Farm raises pasture poultry and grows heirloom produce.",
+        "sources": ["https://example.com/heritage-hollow"],
+    }
+    record_two = {
+        "msn_id": "SAMRAS:cvcc/participant_farms/002",
+        "local_id": str(uuid.uuid4()),
+        "logo": "riverbend-acres.png",
+        "images": ["riverbend-1.jpg"],
+        "bio": "Riverbend Acres focuses on regenerative grazing and community CSA programs.",
+        "sources": ["https://example.com/riverbend", "https://example.com/riverbend/story"],
+    }
+
+    with app_module.app.test_client() as client:
+        with client.session_transaction() as sess:
+            sess["user"] = {
+                "user_id": seeded["root_user_id"],
+                "msn_id": seeded["root_msn_id"],
+                "realm_roles": ["root_admin"],
+            }
+
+        create_one = client.post(
+            f"/api/t/{seeded['tenant_id']}/tables/{seeded['table_local_id']}",
+            json=record_one,
+        )
+        assert create_one.status_code == 201
+
+        create_two = client.post(
+            f"/api/t/{seeded['tenant_id']}/tables/{seeded['table_local_id']}",
+            json=record_two,
+        )
+        assert create_two.status_code == 201
+
+        list_resp = client.get(
+            f"/api/t/{seeded['tenant_id']}/tables/{seeded['table_local_id']}"
+        )
+        assert list_resp.status_code == 200
+        records = list_resp.get_json()["records"]
+        local_ids = {row["data"]["local_id"] for row in records}
+        assert record_one["local_id"] in local_ids
+        assert record_two["local_id"] in local_ids
+
+    drop_dynamic_table(db_conn, table_name)
 
 
 @pytest.mark.usefixtures("db_cleanup")

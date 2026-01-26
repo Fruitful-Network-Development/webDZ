@@ -6,7 +6,9 @@ import logging
 from functools import wraps
 from typing import Any, Dict, Iterable, Optional
 
-from flask import abort, current_app, jsonify, render_template, request, session
+from urllib.parse import urlencode
+
+from flask import current_app, jsonify, redirect, render_template, request, session
 
 
 _LOGGER = logging.getLogger("authz")
@@ -97,9 +99,40 @@ def log_authz_decision(
 
 
 def not_provisioned_response():
-    if request.accept_mimetypes.accept_html and not request.accept_mimetypes.accept_json:
-        return render_template("not_provisioned.html"), 403
-    return jsonify({"error": "not_provisioned"}), 403
+    if _is_api_request():
+        return jsonify({
+            "error": "not_provisioned",
+            "message": "Account not provisioned.",
+        }), 403
+    return render_template("not_provisioned.html"), 403
+
+
+def forbidden_response(message: str | None = None):
+    payload = {
+        "error": "forbidden",
+        "message": message or "Access forbidden.",
+    }
+    if _is_api_request():
+        return jsonify(payload), 403
+    return render_template("forbidden.html", message=payload["message"]), 403
+
+
+def not_authenticated_response():
+    return jsonify({
+        "error": "not_authenticated",
+        "message": "Authentication required.",
+    }), 401
+
+
+def _is_api_request() -> bool:
+    if request.path.startswith("/api/") or request.path.startswith("/_"):
+        return True
+    return request.path.endswith("/ping")
+
+
+def _login_redirect(return_to: str) -> Any:
+    login_url = f"/login?{urlencode({'tenant': 'platform', 'return_to': return_to})}"
+    return redirect(login_url)
 
 
 def require_root_admin(fn):
@@ -114,7 +147,12 @@ def require_root_admin(fn):
                 reason="missing_user",
                 checks=["session_user"],
             )
-            abort(401)
+            if _is_api_request():
+                return not_authenticated_response()
+            next_path = request.full_path
+            if next_path.endswith("?"):
+                next_path = next_path[:-1]
+            return _login_redirect(next_path)
         if not is_root_admin(user):
             if not user.get("msn_id"):
                 log_authz_decision(
@@ -132,7 +170,7 @@ def require_root_admin(fn):
                 reason="missing_root_admin",
                 checks=["root_admin_role", "mss_role"],
             )
-            abort(403)
+            return forbidden_response("Root admin access required.")
         log_authz_decision(
             action="admin_access",
             tenant_id=None,
