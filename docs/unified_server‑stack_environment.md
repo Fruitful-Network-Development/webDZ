@@ -137,53 +137,6 @@ ClientContextShell
 
 ---
 
-## 3. Data Discipline
-
-### Overview of the MSS & SAMRAS requirements
-* **MSS profile table:** A single table per database containing one or more `msn_id` values; it defines the primary authority, sub-users and hierarchical relationships `github.com`. Only system administrators can edit this table. BFF uses it to map Keycloak identities to a canonical `msn_id`, determine sub-user scopes and influence UI behaviour.
-* **Local domain table:** Contains every `local_id` and its human-readable title `github.com`. All tables reference `local_id` here.
-* **Manifest table:** Binds each table (`local_id`) to an archetype (`local_id`) `github.com`, declaring which archetype governs which table.
-* **General tables:** Named `<msn_id><local_id>` and store actual data; structure is dictated by the manifest and archetype tables `github.com`. They must not self-define schema semantics.
-* **SAMRAS tables:** Store count-streams and traversal rules; used to validate hierarchical addresses `github.com`.
-
-These structures establish authority boundaries and deterministic interpretation of data. They require a dedicated schema (created via migrations) and environment variables for DB connection, plus initial seeding of the MSS profile. 
-
-> The SAMRAS specification is domain-agnostic. In the Fruitful Network context, it is used for the **taxonomic domain**, the **statonomic domain**, and any hierarchical namespaces like geographic divisions. However, the same addressing rules apply whether the domain is biology, geography or organizational structure.
-
-#### Manifest-Structured Schema (MSS)
-MSS organizes all tables into seven **table classes** to ensure schema consistency, authority separation, and lossless nested structure.
-**system_id vs. system_value**
-* **system_id** – An opaque, domain-typed identifier such as `taxonomy_id`, `msn_id` (mixed-space number for people/orgs), or `local_id`. These IDs are authoritative and globally unique within their domain.
-* **system_value** – A primitive value (natural number, mass, timestamp, coordinate, currency) that may *reduce* to an identifier via a lookup list. For example, the `dependents` column may store an ordinal whose meaning comes from a dependents list; resolving the ordinal yields the corresponding `msn_id`.
-**Table Classes**
-1.  **MSS Profile Table** – A single table per database that defines the principal user(s) of the database, their `msn_id`, sub-users, hierarchical relations, and permission scopes. This table anchors governance: only system administrators can modify it. In the unified environment, this table becomes the backbone for managing client UIs and their user hierarchies. It maps Keycloak user identities to the platform's own `msn_id` and defines which sub-users exist and what permissions they have.
-2.  **Local Domain Table** – Holds every `local_id` and its title. It functions as the dictionary of tenant-scoped terms. Titles are stored only here; other tables reference `local_id` values to avoid duplication.
-3.  **Manifest Table** – Associates a table (`local_id`) with the archetype (`local_id`) that governs it. This table determines how many rows an archetype table has and which archetype applies to each general table.
-4.  **Archetype Tables** – Contain one column of `local_id` values; the number of rows is dictated by the manifest. They describe the *structure* (fields, references, constraints) of a data table but store no data themselves.
-5.  **General Tables** – Hold actual data values. Their names are formed by concatenating the user's `msn_id` with a `local_id` describing the table. Columns are typed either as `system_value` or `system_id` and may reference lists or SAMRAS addresses. The manifest and archetype tables determine which columns exist and how they should be interpreted.
-6.  **SAMRAS Tables** – Specialized tables used when a new namespace employs shape-addressed hierarchy. They store the count-stream, traversal specification and layout version for a SAMRAS domain.
-7.  **SAMRAS Archetype Tables** – Define valid reference modes (exact, group, existential descendant) for SAMRAS addresses. These constrain how SAMRAS addresses may be used in general tables.
-
-**Authority Boundaries**
-Authority over each table class is enforced to protect system integrity:
-* **System administrators** manage the MSS Profile, SAMRAS and SAMRAS archetype tables.
-* **Tenants** manage local domains, manifests, archetypes, and general tables within their scope.
-
-**Hierarchical Addressing: SAMRAS**
-SAMRAS provides a domain-independent way to address nodes in hierarchical structures using mixed-radix ordinals.
-
-**Shape vs. Meaning**
-SAMRAS cleanly separates the *shape* of a hierarchy from any semantic labels attached to nodes. The shape is authoritative and is represented as a count-stream—a list of natural numbers where each number specifies the number of children for a node .
-
-**Address Space**
-A SAMRAS address is written as `a1_a2_..._an`, where each `ai` is the ordinal position among siblings. There is no fixed radix; the maximum allowed value of each `ai` is determined by the parent's child count. Parent addresses are obtained by dropping the last segment. Children are allocated sequentially in append-only fashion so existing addresses never change.
-Not every address has to be materialized. SAMRAS allows **ghost positions**—addressable slots that lack any attached metadata. References may also include existential placeholders (suffix segments of `0`) to indicate an unknown descendant rather than a specific node. Because SAMRAS is a structural addressing scheme, reference semantics (exact, group, existential descendant) must be declared explicitly when using an address.
-
-**Versioning**
-If reordering is needed or if the shape evolves in non-append ways, a new layout version must be published. Existing addresses remain valid under their layout version; no silent remapping is permitted. SAMRAS tables in MSS store these layout versions and the count-streams that define them.
-
----
-
 ### Unifying the Data and BFF
 
 The **Unified Server-Stack Environment** harmonizes identity management, schema discipline and hierarchical addressing into a consistent architecture. **BFF** ensures secure and centralized authentication and serves UI surfaces. **MSS** structures data tables declaratively and enforces type and authority boundaries. **SAMRAS** provides a principled way to address hierarchical data without embedding meaning into identifiers. Together, these components enable multi-tenant applications where users can define their own schemas, link to global domains like taxonomies, and interact with data through dynamic UIs, all while maintaining strong governance and extensibility.
