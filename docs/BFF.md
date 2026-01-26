@@ -134,46 +134,6 @@ Both consoles:
 
 ---
 
-## 6. Data Scope & Authority (Clarified)
-
-### Principal Data Source
-The platform recognizes a **principal data authority** that defines:
-
-- Domains of meaning (namespaces)
-- Identifier types
-- Structural constraints
-- Valid relationships between data
-
-This authority **informs how data is read, written, validated, and interpreted**,
-regardless of storage backend.
-
-### Data Scope Categories
-
-#### Global Domains
-- Exist outside any single tenant
-- Provide shared reference data
-- Are read-only for most users
-
-Examples (non-exhaustive):
-- Taxonomic domains
-- Statonomic domains
-- Other MNF-governed namespaces
-
-#### Tenant-Local Domains
-- Exist within a tenant boundary
-- Govern tenant-created groupings and records
-- Are mutable by authorized tenant users
-
-### Platform-Owned Data
-The platform owns:
-- Identity resolution
-- Authorization metadata
-- Audit records
-
-This data is **not client business data** and is not exposed directly.
-
----
-
 ## 7. Schema as Data (Intent)
 
 The platform treats **schemas themselves as data**.
