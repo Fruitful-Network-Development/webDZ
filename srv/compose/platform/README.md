@@ -39,8 +39,7 @@ orthogonal and composable.
 - `docs/data-discipline.md` — MSS table classes, schema-as-data, invariants.
 - `docs/samras.md` — SAMRAS addressing, reference semantics, versioning.
 - `docs/console-experience.md` — admin/tenant console concepts and modules.
-- `docs/operations.md` — Phase 5 runbook, migrations, provisioning.
-- `docs/demo-cvcc.md` — CVCC demo workflow.
+- `docs/operations.md` — runbook, migrations, provisioning.
 - `keycloak/realm/README.md` — realm export/import guidance.
 
 ## Quick pointers
