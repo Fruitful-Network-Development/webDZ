@@ -19,9 +19,6 @@ The server stack is composed of **Keycloak**, **Flask BFF**, and **PostgreSQL**,
 
 ### Structured UI Outline
 
-#### Control Plane Boundaries
-This stack intentionally omits serving static client frontends or controlling infrastructure services `github.com`. It is a *control plane* for identity and data access; external business logic must call through the BFF to reach the data.
-
 #### Admin Console Root
 The **admin console** is restricted to platform administrators and tenant administrators. It provides tools for tenant management, membership, and schema definition. The **user console** is available to authenticated users and exposes tenant-specific data according to the schemas defined by tenants. Both consoles use a shared UI but are configured at runtime based on roles and manifests.
 
@@ -87,16 +84,6 @@ The **admin console** is restricted to platform administrators and tenant admini
   **Admin CANNOT (by default):**
   > Modify or browse client business data outside provisioned admin modules
   > Collapse structure with content or bypass shape constraints
-
-**PLATFORM DATA**
-  *shaping the space, not filling it.*
-Tables:
-  - Registry-backed
-  - Archetype-validated
-  - Not tenant-scoped unless explicitly bound
-Lists:
-  - Ordered references (not categories)
-  - Used to resolve ordinals and structural linkage
 
 #### Component Hierarchy (Conceptual)
 ```
