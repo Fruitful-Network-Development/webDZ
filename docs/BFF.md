@@ -90,7 +90,7 @@ Example tenant probe endpoint:
 
 ---
 
-## 4. Keycloak Client Strategy (Adopted)
+## 4. Keycloak Client Strategy
 
 - Each tenant is modeled as **its own OIDC client** in Keycloak
 - All clients authenticate against the same realm
@@ -103,7 +103,7 @@ This allows:
 
 ---
 
-## 5. UI Surfaces (Phase 5 Goal)
+## 5. UI Surfaces
 
 ### Admin Console
 Served by the BFF.
@@ -229,16 +229,3 @@ The BFF may perform mutating actions **only when all conditions are met**:
 - Infrastructure remains manually operated
 
 ---
-
-## 10. Phase 5 Outcome
-
-Completion of Phase 5 means:
-
-- A functional admin console
-- A functional demo user console
-- Tenant routing is live
-- Schema-driven data interaction is possible
-- No additional services are introduced
-- No assumptions are locked prematurely about long-term data storage
-
-This establishes a stable foundation for future refinement without architectural reversal.
