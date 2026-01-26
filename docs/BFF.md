@@ -4,8 +4,7 @@ This document supersedes earlier BFF scope notes and reflects the **current oper
 and the **next planned phase (Phase 5)**. It incorporates decisions already made and extends them
 to cover tenant routing, UI surfaces, and data scope **without assuming a finalized data model**.
 
-### Operational Invariants
-
+**Operational Invariants**
 - One BFF service
 - One Keycloak realm
 - Many tenants
@@ -16,7 +15,7 @@ to cover tenant routing, UI surfaces, and data scope **without assuming a finali
 
 ---
 
-## 1. BFF Role (Unchanged, Reinforced)
+## 1. BFF Role
 
 There is **one deployed BFF service**.
 
@@ -37,16 +36,14 @@ Client sites:
 
 ---
 
-## 2. Multi-Tenant Routing Model (Locked)
+### 1.1 Multi-Tenant Routing Model (Locked)
 
-### Entry Point
+**Entry Point**
 All authentication begins at the BFF:
 
 ```
 https://api.fruitfulnetworkdevelopment.com/login?tenant=<tenant_id>&return_to=<url>
 ```
-
-The BFF:
 - Records the requested tenant context
 - Stores `tenant_id` and optional `return_to` in the server-side session
 - Validates `return_to` against the `RETURN_TO_ALLOWLIST` environment variable
@@ -55,7 +52,7 @@ The BFF:
 - Resolves tenant access from identity + role information
 - Redirects the user into the appropriate UI surface
 
-### Tenant Resolution
+**Tenant Resolution**
 Tenant context is derived from:
 - Explicit `tenant` parameter at login
 - User membership and roles (from Keycloak)
@@ -64,16 +61,14 @@ Tenant context is derived from:
 There is **no separate BFF per tenant**.
 Tenant isolation is logical, not infrastructural.
 
----
+### 1.2 Identity & Authorization Model
 
-## 3. Identity & Authorization Model
-
-### Identity Provider
+**Identity Provider**
 - Keycloak remains the single IdP
 - Users are global to the platform
 - Credentials, MFA, and login UX live in Keycloak
 
-### Authorization
+**Authorization**
 The BFF decides:
 - Which tenants a user may access
 - Which UI modules are visible
@@ -96,9 +91,7 @@ Tenant access (Phase 5 scaffolding):
 Example tenant probe endpoint:
 - `GET /t/<tenant_id>/ping` (requires login + tenant access)
 
----
-
-## 4. Keycloak Client Strategy
+### 1.3 Keycloak Client Strategy
 
 - Each tenant is modeled as **its own OIDC client** in Keycloak
 - All clients authenticate against the same realm
@@ -111,38 +104,13 @@ This allows:
 
 ---
 
-## 5. UI Surfaces
-
-### Admin Console
-Served by the BFF.
-
-Accessible only to:
-- Platform root administrators
-- Tenant administrators (within their tenant scope)
-
-Responsibilities:
-- Tenant visibility and membership management
-- Configuration and data inspection
-- Controlled mutation workflows (see Section 8)
-
-### User Console
-Also served by the BFF.
-
-Accessible to:
-- Authenticated users with tenant membership
-
-Responsibilities:
-- Viewing and interacting with tenant-scoped data
-- No infrastructure or cross-tenant visibility
-
-Both consoles:
-- Use a shared core UI
-- Vary behavior and available modules through configuration and authorization
-- Do not require separate frontend builds per tenant
+## 2.0 Console Ontology
 
 ---
 
-## 7. Schema as Data (Intent)
+## 3.0 Data Interplay
+
+### 3.1 Schema as Data (Intent)
 
 The platform treats **schemas themselves as data**.
 
@@ -161,9 +129,7 @@ No assumption is made here about:
 - Relational vs document representation
 - Final migration path from filesystem to database
 
----
-
-## 8. Mutating Operations (Strict)
+### 3.2 Mutating Operations (Strict)
 
 The BFF may perform mutating actions **only when all conditions are met**:
 
