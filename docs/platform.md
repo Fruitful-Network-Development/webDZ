@@ -2,6 +2,7 @@
 
 ## Architecture
 
+```mermaid
 flowchart TD
   IdentityAccess[IdentityAccessPlane]
   DataDiscipline[DataDisciplinePlane]
@@ -14,6 +15,7 @@ flowchart TD
   DataDiscipline --> Experience
   Operations --> IdentityAccess
   Operations --> DataDiscipline
+```
 
 The server stack is composed of **Keycloak**, **Flask BFF**, and **PostgreSQL**, deployed via Docker Compose under the `/srv/compose/platform` directory. NGINX remains on the host to terminate TLS and proxy traffic. Client sites are static and are served directly from the filesystem.
 1.  **Keycloak** – The single identity provider (IdP) for all users. It handles login, multi-factor authentication and credential management. The platform never exposes Keycloak tokens directly to browsers.
