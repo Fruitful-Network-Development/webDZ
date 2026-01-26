@@ -42,6 +42,7 @@ def admin_mss_profiles_create():
     display_name = payload["display_name"]
     role = payload["role"]
     parent_msn_id = payload.get("parent_msn_id")
+    msn_id = payload.get("msn_id")
 
     if not isinstance(user_id, str) or not user_id.strip():
         return jsonify({"error": "invalid_user_id"}), 400
@@ -51,6 +52,8 @@ def admin_mss_profiles_create():
         return jsonify({"error": "invalid_role"}), 400
     if parent_msn_id is not None and not isinstance(parent_msn_id, str):
         return jsonify({"error": "invalid_parent_msn_id"}), 400
+    if msn_id is not None and (not isinstance(msn_id, str) or not msn_id.strip()):
+        return jsonify({"error": "invalid_msn_id"}), 400
 
     try:
         uuid.UUID(user_id)
@@ -59,13 +62,12 @@ def admin_mss_profiles_create():
 
     parent_id = None
     if parent_msn_id:
-        try:
-            uuid.UUID(parent_msn_id)
-        except ValueError:
-            return jsonify({"error": "invalid_parent_msn_id"}), 400
-        parent_id = parent_msn_id
+        parent_id = parent_msn_id.strip()
 
-    msn_id = str(uuid.uuid4())
+    if msn_id is None:
+        msn_id = f"msn-{uuid.uuid4()}"
+    else:
+        msn_id = msn_id.strip()
     db.execute(
         """
         INSERT INTO platform.mss_profile
@@ -108,9 +110,7 @@ def admin_user_hierarchy():
         return jsonify({"profile": row}), 200
 
     if msn_id:
-        try:
-            uuid.UUID(msn_id)
-        except ValueError:
+        if not isinstance(msn_id, str) or not msn_id.strip():
             return jsonify({"error": "invalid_msn_id"}), 400
         row = db.fetchone(
             """
@@ -148,6 +148,7 @@ def admin_user_hierarchy_create():
     display_name = payload["display_name"]
     role = payload["role"]
     parent_msn_id = payload.get("parent_msn_id")
+    msn_id = payload.get("msn_id")
 
     if not isinstance(user_id, str) or not user_id.strip():
         return jsonify({"error": "invalid_user_id"}), 400
@@ -157,6 +158,8 @@ def admin_user_hierarchy_create():
         return jsonify({"error": "invalid_role"}), 400
     if parent_msn_id is not None and not isinstance(parent_msn_id, str):
         return jsonify({"error": "invalid_parent_msn_id"}), 400
+    if msn_id is not None and (not isinstance(msn_id, str) or not msn_id.strip()):
+        return jsonify({"error": "invalid_msn_id"}), 400
 
     try:
         uuid.UUID(user_id)
@@ -165,13 +168,12 @@ def admin_user_hierarchy_create():
 
     parent_id = None
     if parent_msn_id:
-        try:
-            uuid.UUID(parent_msn_id)
-        except ValueError:
-            return jsonify({"error": "invalid_parent_msn_id"}), 400
-        parent_id = parent_msn_id
+        parent_id = parent_msn_id.strip()
 
-    msn_id = str(uuid.uuid4())
+    if msn_id is None:
+        msn_id = f"msn-{uuid.uuid4()}"
+    else:
+        msn_id = msn_id.strip()
     row = db.fetchone(
         """
         INSERT INTO platform.mss_profile
@@ -196,10 +198,6 @@ def admin_user_hierarchy_update():
 
     msn_id = payload["msn_id"]
     if not isinstance(msn_id, str) or not msn_id.strip():
-        return jsonify({"error": "invalid_msn_id"}), 400
-    try:
-        uuid.UUID(msn_id)
-    except ValueError:
         return jsonify({"error": "invalid_msn_id"}), 400
 
     updates: Dict[str, Any] = {}
@@ -229,11 +227,7 @@ def admin_user_hierarchy_update():
         elif not isinstance(parent_msn_id, str):
             return jsonify({"error": "invalid_parent_msn_id"}), 400
         else:
-            try:
-                uuid.UUID(parent_msn_id)
-            except ValueError:
-                return jsonify({"error": "invalid_parent_msn_id"}), 400
-            updates["parent_msn_id"] = parent_msn_id
+            updates["parent_msn_id"] = parent_msn_id.strip()
 
     if not updates:
         return jsonify({"error": "missing_fields"}), 400
@@ -271,10 +265,6 @@ def admin_user_hierarchy_delete():
 
     msn_id = payload["msn_id"]
     if not isinstance(msn_id, str) or not msn_id.strip():
-        return jsonify({"error": "invalid_msn_id"}), 400
-    try:
-        uuid.UUID(msn_id)
-    except ValueError:
         return jsonify({"error": "invalid_msn_id"}), 400
 
     row = db.fetchone(

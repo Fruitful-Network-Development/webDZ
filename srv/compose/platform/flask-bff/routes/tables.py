@@ -5,14 +5,13 @@ import json
 import uuid
 from typing import Any, Dict, Optional
 
-from flask import Blueprint, jsonify
+from flask import Blueprint, current_app, jsonify
 from psycopg2 import sql
 from psycopg2.extras import Json
 
 import db
 from config import DEMO_ARCHETYPE_ID, DEMO_LOCAL_DOMAIN_ID, DEMO_TABLE_ID, DEMO_TENANT_ID
 from routes.common import json_body, require_login, require_tenant_access
-from utils.mss import current_msn_id
 from utils.samras import (
     is_samras_domain,
     parse_samras_address,
@@ -27,8 +26,23 @@ from utils.samras import (
 tables_bp = Blueprint("tables", __name__)
 
 
+def _log_table_event(action: str, payload: Dict[str, Any]) -> None:
+    data = {"event": action}
+    data.update(payload)
+    try:
+        current_app.logger.info(json.dumps(data, separators=(",", ":")))
+    except RuntimeError:
+        pass
+
+
+def _log_validation_failure(tenant_id: str, table_id: str, detail: Dict[str, Any]) -> None:
+    payload = {"tenant_id": tenant_id, "table_id": table_id}
+    payload.update(detail)
+    _log_table_event("table_validation_failed", payload)
+
+
 # ----------------------------
-# Dynamic table helpers
+# General table helpers
 # ----------------------------
 
 def seed_demo_data() -> None:
@@ -124,49 +138,18 @@ def _load_local_domain(local_id: str):
     )
 
 
-def _dynamic_table_identifier(msn_id: str, local_id: str) -> sql.Identifier:
-    table_name = f"{msn_id}{local_id}"
-    return sql.Identifier(table_name)
-
-
-def _field_sql_type(field: Dict[str, Any]) -> sql.SQL:
-    if field.get("ref_domain"):
-        return sql.SQL("JSONB")
-    field_type = (field.get("type") or "").lower()
-    if field_type == "string":
-        return sql.SQL("TEXT")
-    if field_type in {"int", "integer"}:
-        return sql.SQL("INTEGER")
-    if field_type in {"float", "number", "decimal"}:
-        return sql.SQL("DOUBLE PRECISION")
-    if field_type in {"bool", "boolean"}:
-        return sql.SQL("BOOLEAN")
-    if field_type in {"json", "object"}:
-        return sql.SQL("JSONB")
-    return sql.SQL("TEXT")
-
-
-def _ensure_dynamic_table(table_identifier: sql.Identifier, fields: list[Dict[str, Any]]) -> None:
-    base_query = sql.SQL(
+def _ensure_general_table(table_identifier: sql.Identifier) -> None:
+    query = sql.SQL(
         """
         CREATE TABLE IF NOT EXISTS {table} (
-            record_id UUID PRIMARY KEY,
+            id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
             created_at TIMESTAMPTZ DEFAULT now(),
-            updated_at TIMESTAMPTZ DEFAULT now()
+            updated_at TIMESTAMPTZ DEFAULT now(),
+            data JSONB NOT NULL
         )
         """
     ).format(table=table_identifier)
-    db.execute(base_query)
-
-    for field in fields:
-        alter_query = sql.SQL(
-            "ALTER TABLE {table} ADD COLUMN IF NOT EXISTS {column} {col_type}"
-        ).format(
-            table=table_identifier,
-            column=sql.Identifier(field["name"]),
-            col_type=_field_sql_type(field),
-        )
-        db.execute(alter_query)
+    db.execute(query)
 
 
 def _validate_field_value(field: Dict[str, Any], value: Any) -> Optional[str]:
@@ -242,13 +225,15 @@ def _validate_record_payload(
     return cleaned, None
 
 
-def _serialize_field_value(field: Dict[str, Any], value: Any) -> Any:
-    if field.get("ref_domain"):
-        return Json(value)
-    field_type = (field.get("type") or "").lower()
-    if field_type in {"json", "object"} and isinstance(value, dict):
-        return Json(value)
-    return value
+def _load_general_table_entry(tenant_id: str, table_id: str):
+    return db.fetchone(
+        """
+        SELECT table_name, mode, enabled, archetype_id
+        FROM platform.general_table
+        WHERE tenant_id = %s AND table_local_id = %s
+        """,
+        (tenant_id, table_id),
+    )
 
 
 def _resolve_table_context(
@@ -268,21 +253,34 @@ def _resolve_table_context(
     if not local_domain:
         return None, (jsonify({"error": "local_domain_not_found"}), 404)
 
+    general_table = _load_general_table_entry(tenant_id, table_id)
+    if not general_table:
+        return None, (
+            jsonify({
+                "error": "table_not_provisioned",
+                "message": "Provision table via /api/admin/tables before using tenant CRUD.",
+            }),
+            409,
+        )
+    if not general_table.get("enabled", True):
+        return None, (jsonify({"error": "table_disabled"}), 400)
+    if general_table.get("mode") != "general":
+        return None, (jsonify({"error": "unsupported_table_mode"}), 400)
+
     archetype_id = str(manifest_entry["archetype_id"])
+    if str(general_table["archetype_id"]) != archetype_id:
+        return None, (jsonify({"error": "manifest_archetype_mismatch"}), 409)
+
     fields = _load_archetype_fields(archetype_id)
     if not fields:
         return None, (jsonify({"error": "archetype_fields_not_found"}), 404)
-
-    msn_id = current_msn_id()
-    if not msn_id:
-        return None, (jsonify({"error": "missing_msn_profile"}), 400)
 
     return {
         "archetype_id": archetype_id,
         "fields": fields,
         "local_domain": local_domain,
-        "msn_id": msn_id,
-        "table_identifier": _dynamic_table_identifier(msn_id, table_id),
+        "table_identifier": sql.Identifier(general_table["table_name"]),
+        "table_name": general_table["table_name"],
     }, None
 
 
@@ -302,23 +300,20 @@ def tenant_table_list(tenant_id: str, table_id: str):
         return error
 
     table_identifier = context["table_identifier"]
-    fields = context["fields"]
-    _ensure_dynamic_table(table_identifier, fields)
+    _ensure_general_table(table_identifier)
 
-    column_names = [
-        sql.Identifier("record_id"),
-        sql.Identifier("created_at"),
-        sql.Identifier("updated_at"),
-    ] + [sql.Identifier(field["name"]) for field in fields]
-    query = sql.SQL("SELECT {columns} FROM {table} ORDER BY created_at DESC").format(
-        columns=sql.SQL(", ").join(column_names),
-        table=table_identifier,
-    )
+    query = sql.SQL(
+        "SELECT id, created_at, updated_at, data FROM {table} ORDER BY created_at DESC"
+    ).format(table=table_identifier)
     rows = db.fetchall(query)
-    return jsonify({
+    for row in rows:
+        row["record_id"] = row.get("id")
+    _log_table_event("table_records_listed", {
+        "tenant_id": tenant_id,
         "table_id": table_id,
-        "records": rows,
-    }), 200
+        "record_count": len(rows),
+    })
+    return jsonify({"table_id": table_id, "records": rows}), 200
 
 
 @tables_bp.post("/api/t/<tenant_id>/tables/<table_id>")
@@ -339,27 +334,24 @@ def tenant_table_create_record(tenant_id: str, table_id: str):
     fields = context["fields"]
     cleaned, error = _validate_record_payload(payload, fields)
     if error:
+        detail = error[0].get_json() if hasattr(error[0], "get_json") else {}
+        _log_validation_failure(tenant_id, table_id, detail or {"error": "invalid_payload"})
         return error
 
     table_identifier = context["table_identifier"]
-    _ensure_dynamic_table(table_identifier, fields)
+    _ensure_general_table(table_identifier)
 
-    record_id = str(uuid.uuid4())
-    column_names = [sql.Identifier("record_id")] + [
-        sql.Identifier(field["name"]) for field in fields
-    ]
-    values = [record_id] + [
-        _serialize_field_value(field, cleaned[field["name"]]) for field in fields
-    ]
-    placeholders = sql.SQL(", ").join(sql.Placeholder() for _ in values)
     query = sql.SQL(
-        "INSERT INTO {table} ({columns}) VALUES ({placeholders}) RETURNING {columns}"
-    ).format(
-        table=table_identifier,
-        columns=sql.SQL(", ").join(column_names),
-        placeholders=placeholders,
-    )
-    row = db.fetchone(query, values)
+        "INSERT INTO {table} (data) VALUES (%s) RETURNING id, created_at, updated_at, data"
+    ).format(table=table_identifier)
+    row = db.fetchone(query, (Json(cleaned),))
+    if row:
+        row["record_id"] = row.get("id")
+    _log_table_event("table_record_created", {
+        "tenant_id": tenant_id,
+        "table_id": table_id,
+        "record_id": row.get("id") if row else None,
+    })
     return jsonify({"record": row}), 201
 
 
@@ -373,30 +365,31 @@ def tenant_table_get_record(tenant_id: str, table_id: str, record_id: str):
     try:
         uuid.UUID(record_id)
     except ValueError:
+        _log_validation_failure(tenant_id, table_id, {
+            "error": "invalid_record_id",
+            "record_id": record_id,
+        })
         return jsonify({"error": "invalid_record_id"}), 400
 
     context, error = _resolve_table_context(tenant_id, table_id)
     if error:
         return error
 
-    fields = context["fields"]
     table_identifier = context["table_identifier"]
-    _ensure_dynamic_table(table_identifier, fields)
+    _ensure_general_table(table_identifier)
 
-    column_names = [
-        sql.Identifier("record_id"),
-        sql.Identifier("created_at"),
-        sql.Identifier("updated_at"),
-    ] + [sql.Identifier(field["name"]) for field in fields]
     query = sql.SQL(
-        "SELECT {columns} FROM {table} WHERE record_id = %s"
-    ).format(
-        columns=sql.SQL(", ").join(column_names),
-        table=table_identifier,
-    )
+        "SELECT id, created_at, updated_at, data FROM {table} WHERE id = %s"
+    ).format(table=table_identifier)
     row = db.fetchone(query, (record_id,))
     if not row:
         return jsonify({"error": "record_not_found"}), 404
+    row["record_id"] = row.get("id")
+    _log_table_event("table_record_read", {
+        "tenant_id": tenant_id,
+        "table_id": table_id,
+        "record_id": row.get("id"),
+    })
     return jsonify({"record": row}), 200
 
 
@@ -410,6 +403,10 @@ def tenant_table_update_record(tenant_id: str, table_id: str, record_id: str):
     try:
         uuid.UUID(record_id)
     except ValueError:
+        _log_validation_failure(tenant_id, table_id, {
+            "error": "invalid_record_id",
+            "record_id": record_id,
+        })
         return jsonify({"error": "invalid_record_id"}), 400
 
     payload, error = json_body()
@@ -423,37 +420,30 @@ def tenant_table_update_record(tenant_id: str, table_id: str, record_id: str):
     fields = context["fields"]
     cleaned, error = _validate_record_payload(payload, fields)
     if error:
+        detail = error[0].get_json() if hasattr(error[0], "get_json") else {}
+        _log_validation_failure(tenant_id, table_id, detail or {"error": "invalid_payload"})
         return error
 
     table_identifier = context["table_identifier"]
-    _ensure_dynamic_table(table_identifier, fields)
+    _ensure_general_table(table_identifier)
 
-    assignments = sql.SQL(", ").join(
-        sql.SQL("{column} = %s").format(column=sql.Identifier(field["name"]))
-        for field in fields
-    )
-    values = [
-        _serialize_field_value(field, cleaned[field["name"]]) for field in fields
-    ]
-    values.append(record_id)
     query = sql.SQL(
         """
         UPDATE {table}
-        SET {assignments}, updated_at = now()
-        WHERE record_id = %s
-        RETURNING {columns}
+        SET data = %s, updated_at = now()
+        WHERE id = %s
+        RETURNING id, created_at, updated_at, data
         """
-    ).format(
-        table=table_identifier,
-        assignments=assignments,
-        columns=sql.SQL(", ").join(
-            [sql.Identifier("record_id"), sql.Identifier("created_at"), sql.Identifier("updated_at")]
-            + [sql.Identifier(field["name"]) for field in fields]
-        ),
-    )
-    row = db.fetchone(query, values)
+    ).format(table=table_identifier)
+    row = db.fetchone(query, (Json(cleaned), record_id))
     if not row:
         return jsonify({"error": "record_not_found"}), 404
+    row["record_id"] = row.get("id")
+    _log_table_event("table_record_updated", {
+        "tenant_id": tenant_id,
+        "table_id": table_id,
+        "record_id": row.get("id"),
+    })
     return jsonify({"record": row}), 200
 
 
@@ -467,6 +457,10 @@ def tenant_table_delete_record(tenant_id: str, table_id: str, record_id: str):
     try:
         uuid.UUID(record_id)
     except ValueError:
+        _log_validation_failure(tenant_id, table_id, {
+            "error": "invalid_record_id",
+            "record_id": record_id,
+        })
         return jsonify({"error": "invalid_record_id"}), 400
 
     context, error = _resolve_table_context(tenant_id, table_id)
@@ -474,14 +468,19 @@ def tenant_table_delete_record(tenant_id: str, table_id: str, record_id: str):
         return error
 
     table_identifier = context["table_identifier"]
-    _ensure_dynamic_table(table_identifier, context["fields"])
+    _ensure_general_table(table_identifier)
 
     query = sql.SQL(
-        "DELETE FROM {table} WHERE record_id = %s RETURNING record_id"
+        "DELETE FROM {table} WHERE id = %s RETURNING id"
     ).format(table=table_identifier)
     row = db.fetchone(query, (record_id,))
     if not row:
         return jsonify({"error": "record_not_found"}), 404
+    _log_table_event("table_record_deleted", {
+        "tenant_id": tenant_id,
+        "table_id": table_id,
+        "record_id": record_id,
+    })
     return jsonify({"deleted": True, "record_id": record_id}), 200
 
 

@@ -23,8 +23,16 @@
     "allowed_return_to": {
       "type": "array",
       "items": {
-        "type": "string",
-        "pattern": "^https://"
+        "anyOf": [
+          {
+            "type": "string",
+            "pattern": "^https://"
+          },
+          {
+            "type": "string",
+            "pattern": "^/"
+          }
+        ]
       }
     },
     "oidc_client_id": {

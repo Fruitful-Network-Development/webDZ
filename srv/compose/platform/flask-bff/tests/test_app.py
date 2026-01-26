@@ -65,6 +65,7 @@ def test_ping_allows_tenant_admin(monkeypatch):
             sess["tenant_id"] = "x"
             sess["user"] = {
                 "user_id": "u-1",
+                "msn_id": "TEST-MSN-1",
                 "realm_roles": ["tenant_admin:x"],
             }
         resp = client.get("/t/x/ping")
@@ -81,6 +82,7 @@ def test_ping_blocks_wrong_tenant_admin(monkeypatch):
             sess["tenant_id"] = "x"
             sess["user"] = {
                 "user_id": "u-1",
+                "msn_id": "TEST-MSN-2",
                 "realm_roles": ["tenant_admin:y"],
             }
         resp = client.get("/t/x/ping")

@@ -42,7 +42,8 @@ services:
 
   flask_bff:
     build:
-      context: ./flask-bff
+      context: .
+      dockerfile: flask-bff/Dockerfile
     container_name: flask_bff
     restart: unless-stopped
     depends_on:

@@ -7,7 +7,13 @@ from urllib.parse import urlencode
 
 from flask import abort, jsonify, redirect, request, session
 
-from authz import get_current_user, is_root_admin, is_tenant_admin
+from authz import (
+    get_current_user,
+    is_root_admin,
+    is_tenant_admin,
+    log_authz_decision,
+    not_provisioned_response,
+)
 from tenant_registry import (
     TenantNotFoundError,
     TenantRegistryError,
@@ -106,6 +112,8 @@ def require_tenant_access(tenant_id: str):
     u = current_user()
     if not u:
         return jsonify({"error": "not_authenticated"}), 401
+    if not u.get("msn_id"):
+        return not_provisioned_response()
     if is_root_admin(u):
         return None
     if is_tenant_admin(u, tenant_id):
@@ -137,8 +145,38 @@ def require_tenant_console_access(tenant_id: str) -> tuple[dict[str, Any], Optio
         next_path = request.full_path
         if next_path.endswith("?"):
             next_path = next_path[:-1]
-        login_url = f"/login?{urlencode({'tenant': tenant_id, 'next': next_path})}"
+        log_authz_decision(
+            action="tenant_console_access",
+            tenant_id=tenant_id,
+            decision="deny",
+            reason="missing_user",
+            checks=["session_user"],
+        )
+        login_url = f"/login?{urlencode({'tenant': tenant_id, 'return_to': next_path})}"
         return tenant_cfg, redirect(login_url)
+    if not user.get("msn_id"):
+        log_authz_decision(
+            action="tenant_console_access",
+            tenant_id=tenant_id,
+            decision="deny",
+            reason="not_provisioned",
+            checks=["root_admin_role", "tenant_admin_role", "mss_role"],
+        )
+        return tenant_cfg, not_provisioned_response()
     if not (is_root_admin(user) or is_tenant_admin(user, tenant_id)):
+        log_authz_decision(
+            action="tenant_console_access",
+            tenant_id=tenant_id,
+            decision="deny",
+            reason="missing_tenant_access",
+            checks=["root_admin_role", "tenant_admin_role", "mss_role"],
+        )
         abort(403)
+    log_authz_decision(
+        action="tenant_console_access",
+        tenant_id=tenant_id,
+        decision="allow",
+        reason="authorized",
+        checks=["root_admin_role", "tenant_admin_role", "mss_role"],
+    )
     return tenant_cfg, None

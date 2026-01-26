@@ -1,0 +1,29 @@
+cat > templates/base.html <<'EOF'
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>{{ title or "Fruitful Platform" }}</title>
+    <link rel="stylesheet" href="/static/admin/admin.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">Fruitful Platform</div>
+      <nav class="nav">
+        <a href="/admin">Admin</a>
+        <a href="/me">Me</a>
+        <a href="/logout">Logout</a>
+      </nav>
+    </header>
+
+    <main class="wrap">
+      {% block content %}{% endblock %}
+    </main>
+
+    <footer class="footer">
+      <div class="muted">Phase 3 (internal-only). Rendered by BFF.</div>
+    </footer>
+  </body>
+</html>
+EOF

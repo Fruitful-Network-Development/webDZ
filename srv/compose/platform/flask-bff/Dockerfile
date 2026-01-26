@@ -8,14 +8,16 @@ WORKDIR /app
 # RUN addgroup --system app && adduser --system --ingroup app app ~ v0
 
 # Install Python dependencies
-COPY requirements.txt .
+COPY flask-bff/requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 # COPY requirements.txt ./ ~ v0
 # RUN pip install --no-cache-dir --upgrade pip \ ~ v0
 #     && pip install --no-cache-dir -r requirements.txt ~ v0
 
 # Copy application code (full tree)
-COPY . /app
+COPY flask-bff/ /app
+# Copy platform schema files for integration tests
+COPY platform-schema/ /platform-schema
 # COPY app.py . ~ v1
 # COPY gunicorn.conf.py . ~ v1
 # COPY entrypoint.sh . ~ v1

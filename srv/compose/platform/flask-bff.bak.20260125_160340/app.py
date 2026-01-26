@@ -1,35 +1,84 @@
-"""Authentication and session routes."""
+"""Flask BFF (Keycloak-only, DB-free)
+
+This version reflects the **current consolidated platform state**:
+
+- Keycloak is the sole stateful dependency (no platform Postgres / no separate DB).
+- OIDC Authorization Code flow against Keycloak.
+- Server-side token exchange.
+- Session cookie handled by the BFF (no tokens stored in browser storage).
+- Designed for Phase 3 (internal-only via SSH tunnel) and Phase 4 (public HTTPS) via env toggles.
+
+Required env:
+- OIDC_ISSUER                e.g. https://auth.fruitfulnetworkdevelopment.com/realms/fruitful
+- OIDC_CLIENT_ID             e.g. flask-bff
+- OIDC_CLIENT_SECRET         (Keycloak client secret)
+- SESSION_SECRET             (Flask session secret)
+
+Optional env:
+- PUBLIC_BASE_URL            e.g. https://api.fruitfulnetworkdevelopment.com
+                             If not set, computed from X-Forwarded-* headers.
+- COOKIE_SECURE              true|false (default: false)
+                             Set true when served over HTTPS (Phase 4).
+"""
+
 from __future__ import annotations
 
 import base64
 import json
 import os
 import time
-from typing import Any, Dict
+from functools import wraps
+from typing import Any, Dict, Optional
 from urllib.parse import urlencode
 
 import requests
-from flask import Blueprint, jsonify, redirect, request, session, url_for
-
-from config import OIDC_CLIENT_ID, OIDC_CLIENT_SECRET, OIDC_ISSUER, PUBLIC_BASE_URL
-from routes.common import load_tenant_or_error
-from tenant_registry import TenantRegistryError, load_tenant, validate_return_to
-from utils.mss import load_user_hierarchy
+from flask import Flask, jsonify, redirect, request, session, url_for
 
 
-auth_bp = Blueprint("auth", __name__)
+# ----------------------------
+# Configuration
+# ----------------------------
 
+def _require_env(name: str) -> str:
+    val = os.getenv(name)
+    if not val:
+        raise RuntimeError(f"Missing required environment variable: {name}")
+    return val
+
+
+OIDC_ISSUER = _require_env("OIDC_ISSUER").rstrip("/")
+OIDC_CLIENT_ID = _require_env("OIDC_CLIENT_ID")
+OIDC_CLIENT_SECRET = _require_env("OIDC_CLIENT_SECRET")
+SESSION_SECRET = _require_env("SESSION_SECRET")
+
+PUBLIC_BASE_URL = os.getenv("PUBLIC_BASE_URL", "").rstrip("/")
+COOKIE_SECURE = os.getenv("COOKIE_SECURE", "false").lower() == "true"
+
+
+# ----------------------------
+# Flask app
+# ----------------------------
+
+app = Flask(__name__)
+app.secret_key = SESSION_SECRET
+
+# Session cookie policy:
+# - Phase 3 (SSH tunnel via http://localhost:8001): COOKIE_SECURE=false
+# - Phase 4 (public HTTPS): COOKIE_SECURE=true
+app.config.update(
+    SESSION_COOKIE_HTTPONLY=True,
+    SESSION_COOKIE_SAMESITE="Lax",
+    SESSION_COOKIE_SECURE=COOKIE_SECURE,
+)
+
+
+# ----------------------------
+# OIDC discovery (cached)
+# ----------------------------
 
 _discovery_cache: Dict[str, Any] = {}
 _discovery_cache_at: float = 0.0
 _DISCOVERY_TTL_SECONDS = 300
-
-
-def _call_requests(method: str, *args, **kwargs):
-    fn = getattr(requests, method)
-    if getattr(fn, "__self__", None) is not None:
-        return fn.__func__(*args, **kwargs)
-    return fn(*args, **kwargs)
 
 
 def _get_discovery() -> Dict[str, Any]:
@@ -39,7 +88,7 @@ def _get_discovery() -> Dict[str, Any]:
         return _discovery_cache
 
     url = f"{OIDC_ISSUER}/.well-known/openid-configuration"
-    resp = _call_requests("get", url, timeout=10)
+    resp = requests.get(url, timeout=10)
     resp.raise_for_status()
     _discovery_cache = resp.json()
     _discovery_cache_at = now
@@ -57,8 +106,7 @@ def _public_base_url() -> str:
 
 
 def _callback_url() -> str:
-    return f"{_public_base_url()}{url_for('auth.callback')}"
-
+    return f"{_public_base_url()}{url_for('callback')}"
 
 # ----------------------------
 # JWT helpers (no signature verification)
@@ -80,27 +128,62 @@ def jwt_payload(jwt_token: str) -> Dict[str, Any]:
         return {}
 
 
-@auth_bp.get("/login", endpoint="login")
+# ----------------------------
+# Session / auth helpers
+# ----------------------------
+
+def _current_user() -> Optional[Dict[str, Any]]:
+    return session.get("user")
+
+
+def _require_login():
+    if not _current_user():
+        nxt = request.path
+        return redirect(f"/login?next={nxt}")
+    return None
+
+
+# ----------------------------
+# Authorization helpers
+# ----------------------------
+
+def require_realm_role(role: str):
+    """Require a Keycloak realm role captured during /callback."""
+    def deco(fn):
+        @wraps(fn)
+        def wrapper(*args, **kwargs):
+            u = session.get("user")
+            if not u:
+                return jsonify({"error": "not_authenticated"}), 401
+            roles = u.get("realm_roles") or []
+            if role not in roles:
+                return jsonify({"error": "forbidden", "missing_role": role}), 403
+            return fn(*args, **kwargs)
+        return wrapper
+    return deco
+
+
+# ----------------------------
+# Routes
+# ----------------------------
+
+@app.get("/health")
+def health():
+    return jsonify({"status": "ok"}), 200
+
+
+@app.get("/admin")
+def admin_index():
+    """Minimal admin surface placeholder (UI can be added later)."""
+    guard = _require_login()
+    if guard:
+        return guard
+    return jsonify({"ok": True, "user": _current_user()}), 200
+
+
+@app.get("/login")
 def login():
     """Initiate OIDC Authorization Code flow."""
-    tenant_id = request.args.get("tenant")
-    return_to = request.args.get("return_to")
-
-    if not tenant_id:
-        return jsonify({"error": "missing_tenant"}), 400
-
-    tenant_cfg, error = load_tenant_or_error(tenant_id)
-    if error:
-        return error
-    if return_to and not validate_return_to(tenant_cfg, return_to):
-        return jsonify({"error": "invalid_return_to"}), 400
-
-    session["tenant_id"] = tenant_id
-    if return_to:
-        session["return_to"] = return_to
-    else:
-        session.pop("return_to", None)
-
     discovery = _get_discovery()
     authorization_endpoint = discovery["authorization_endpoint"]
 
@@ -117,14 +200,14 @@ def login():
     return redirect(f"{authorization_endpoint}?{urlencode(params)}")
 
 
-@auth_bp.get("/callback", endpoint="callback")
+@app.get("/callback")
 def callback():
     """Handle callback, exchange code for tokens, store minimal identity in session."""
     err = request.args.get("error")
     if err:
         return jsonify({
             "error": err,
-            "error_description": request.args.get("error_description"),
+            "error_description": request.args.get("error_description")
         }), 400
 
     code = request.args.get("code")
@@ -142,8 +225,7 @@ def callback():
     token_endpoint = discovery["token_endpoint"]
     userinfo_endpoint = discovery.get("userinfo_endpoint")
 
-    token_resp = _call_requests(
-        "post",
+    token_resp = requests.post(
         token_endpoint,
         data={
             "grant_type": "authorization_code",
@@ -161,19 +243,13 @@ def callback():
     if not access_token:
         return jsonify({"error": "no_access_token"}), 500
 
-    # Capture roles and groups from access token (Keycloak conventions)
+    # Capture realm roles from access token (Keycloak convention)
     access_claims = jwt_payload(access_token)
     realm_roles = ((access_claims.get("realm_access") or {}).get("roles")) or []
-    client_roles = (
-        ((access_claims.get("resource_access") or {}).get(OIDC_CLIENT_ID) or {}).get("roles")
-        or []
-    )
-    groups = access_claims.get("groups") or []
 
     claims: Dict[str, Any] = {}
     if userinfo_endpoint:
-        ui = _call_requests(
-            "get",
+        ui = requests.get(
             userinfo_endpoint,
             headers={"Authorization": f"Bearer {access_token}"},
             timeout=10,
@@ -191,65 +267,31 @@ def callback():
         or claims.get("given_name")
         or None
     )
-    username = claims.get("preferred_username") or claims.get("name")
 
     session["user"] = {
         "user_id": user_id,
-        "username": username,
         "display_name": display_name,
         "email": claims.get("email"),
         "realm_roles": realm_roles,
-        "client_roles": client_roles,
-        "groups": groups,
         "issuer": OIDC_ISSUER,
     }
-    hierarchy = load_user_hierarchy(user_id)
-    session["user"].update({
-        "msn_id": hierarchy["msn_id"] if hierarchy else None,
-        "parent_msn_id": hierarchy["parent_msn_id"] if hierarchy else None,
-        "role": hierarchy["role"] if hierarchy else None,
-    })
 
-    tenant_id = session.get("tenant_id")
-    return_to = session.pop("return_to", None)
-    redirect_target = None
-
-    if tenant_id:
-        try:
-            tenant_cfg = load_tenant(tenant_id)
-            if return_to and validate_return_to(tenant_cfg, return_to):
-                redirect_target = return_to
-            else:
-                redirect_target = f"/t/{tenant_id}/console"
-        except TenantRegistryError:
-            redirect_target = f"/t/{tenant_id}/console"
-    else:
-        redirect_target = url_for("auth.me")
-
-    return redirect(redirect_target)
+    return redirect(url_for("me"))
 
 
-@auth_bp.get("/me", endpoint="me")
+@app.get("/me")
 def me():
     u = session.get("user")
     if not u:
         return jsonify({"authenticated": False}), 401
-    payload = {
-        "authenticated": True,
-        "user": u,
-        "hierarchy": {
-            "msn_id": u.get("msn_id"),
-            "parent_msn_id": u.get("parent_msn_id"),
-            "role": u.get("role"),
-        },
-    }
-    tenant_id = session.get("tenant_id")
-    if tenant_id:
-        payload["tenant_id"] = tenant_id
-    return jsonify(payload), 200
+    return jsonify({"authenticated": True, "user": u}), 200
 
 
-@auth_bp.get("/logout", endpoint="logout")
+@app.get("/logout")
 def logout():
     session.clear()
     return jsonify({"ok": True}), 200
+
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=8000, debug=True)

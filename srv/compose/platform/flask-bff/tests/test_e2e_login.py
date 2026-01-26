@@ -28,7 +28,7 @@ def test_login_flow_and_console_render(monkeypatch, db_conn, db_url, db_cleanup)
     app_module.app.config.update(TESTING=True)
 
     user_id = str(uuid.uuid4())
-    msn_id = str(uuid.uuid4())
+    msn_id = "SAMRAS-TEST-LOGIN"
     with db_conn.cursor() as cur:
         cur.execute(
             "INSERT INTO platform.mss_profile (msn_id, user_id, display_name, role) VALUES (%s, %s, %s, %s)",
@@ -81,10 +81,14 @@ def test_login_flow_and_console_render(monkeypatch, db_conn, db_url, db_cleanup)
 
         callback_resp = client.get(
             f"/callback?code=demo-code&state={state}",
-            follow_redirects=True,
+            follow_redirects=False,
         )
-        assert callback_resp.status_code == 200
-        payload = callback_resp.get_json()
+        assert callback_resp.status_code == 302
+        assert callback_resp.headers["Location"] == return_to
+
+        me_resp = client.get("/me")
+        assert me_resp.status_code == 200
+        payload = me_resp.get_json()
         assert payload["authenticated"] is True
         assert payload["hierarchy"]["msn_id"] == msn_id
 

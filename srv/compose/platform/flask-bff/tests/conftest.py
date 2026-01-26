@@ -52,7 +52,11 @@ def db_conn(db_url):
         pytest.skip("psycopg2 is required for integration tests")
     conn = psycopg2.connect(db_url)
     conn.autocommit = True
-    schema_files = [SCHEMA_DIR / "001_init.sql", SCHEMA_DIR / "002_mss_init.sql"]
+    schema_files = [
+        SCHEMA_DIR / "001_init.sql",
+        SCHEMA_DIR / "002_mss_init.sql",
+        SCHEMA_DIR / "003_mss_profile_msn_id_text.sql",
+    ]
     with conn.cursor() as cur:
         for schema_file in schema_files:
             cur.execute(schema_file.read_text(encoding="utf-8"))
@@ -66,7 +70,8 @@ def db_cleanup(db_conn):
         cur.execute(
             "TRUNCATE platform.mss_profile, platform.local_domain, platform.archetype, "
             "platform.archetype_field, platform.manifest, platform.samras_layout, "
-            "platform.samras_archetype RESTART IDENTITY CASCADE"
+            "platform.samras_archetype, platform.general_table, platform.local_list, "
+            "platform.local_list_member RESTART IDENTITY CASCADE"
         )
     yield
 

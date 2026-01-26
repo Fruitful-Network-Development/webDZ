@@ -1,7 +1,7 @@
 """Tenant console and health routes."""
 from __future__ import annotations
 
-from flask import Blueprint, abort, render_template
+from flask import Blueprint, abort, redirect, render_template, request
 from jinja2 import TemplateNotFound
 
 from config import DEMO_TABLE_ID
@@ -26,6 +26,13 @@ def tenant_console(tenant_id: str):
     ), 200
 
 
+@tenant_bp.get("/t/<tenant_id>/console/")
+def tenant_console_slash(tenant_id: str):
+    qs = request.query_string.decode("utf-8")
+    suffix = f"?{qs}" if qs else ""
+    return redirect(f"/t/{tenant_id}/console{suffix}")
+
+
 @tenant_bp.get("/t/<tenant_id>/console/<module>")
 def tenant_console_module(tenant_id: str, module: str):
     tenant_cfg, error = require_tenant_console_access(tenant_id)
@@ -48,4 +55,11 @@ def tenant_console_module(tenant_id: str, module: str):
         ), 200
     except TemplateNotFound:
         abort(404)
+
+
+@tenant_bp.get("/t/<tenant_id>/console/<module>/")
+def tenant_console_module_slash(tenant_id: str, module: str):
+    qs = request.query_string.decode("utf-8")
+    suffix = f"?{qs}" if qs else ""
+    return redirect(f"/t/{tenant_id}/console/{module}{suffix}")
 

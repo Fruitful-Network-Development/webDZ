@@ -43,7 +43,9 @@ def fetchone(query: str, params: Optional[Iterable[Any]] = None):
     conn = get_conn()
     with conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor) as cur:
         cur.execute(query, params)
-        return cur.fetchone()
+        row = cur.fetchone()
+    conn.commit()
+    return row
 
 
 def close_conn() -> None:

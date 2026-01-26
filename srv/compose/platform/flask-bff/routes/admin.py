@@ -7,7 +7,8 @@ import json
 import uuid
 from typing import Any, Dict
 
-from flask import Blueprint, abort, jsonify, render_template, request
+from flask import Blueprint, abort, current_app, jsonify, render_template, request
+from psycopg2 import sql
 
 import db
 from authz import get_current_user, is_root_admin, require_root_admin
@@ -21,12 +22,95 @@ from routes.common import (
     unwrap_api_response,
 )
 from tenant_registry import TenantRegistryError, list_tenants, tenant_public_view
+from utils.general_tables import general_table_name
+from utils.mss import current_msn_id
 from utils.samras import validate_archetype_field_constraints
 
 from routes.user import admin_mss_profiles
 
 
 admin_bp = Blueprint("admin", __name__)
+
+
+def _log_admin_event(action: str, payload: Dict[str, Any]) -> None:
+    data = {"event": action}
+    data.update(payload)
+    try:
+        current_app.logger.info(json.dumps(data, separators=(",", ":")))
+    except RuntimeError:
+        pass
+
+
+def _load_manifest_entry(tenant_id: str, table_local_id: str):
+    return db.fetchone(
+        """
+        SELECT table_id, archetype_id
+        FROM platform.manifest
+        WHERE tenant_id = %s AND table_id = %s
+        """,
+        (tenant_id, table_local_id),
+    )
+
+
+def _load_archetype_fields(archetype_id: str) -> list[Dict[str, Any]]:
+    fields = db.fetchall(
+        """
+        SELECT position, name, type, ref_domain, constraints
+        FROM platform.archetype_field
+        WHERE archetype_id = %s
+        ORDER BY position
+        """,
+        (archetype_id,),
+    )
+    for field in fields:
+        constraints = field.get("constraints")
+        if isinstance(constraints, str):
+            field["constraints"] = json.loads(constraints)
+    return fields
+
+
+def _load_local_domain(table_local_id: str):
+    return db.fetchone(
+        "SELECT local_id, title FROM platform.local_domain WHERE local_id = %s",
+        (table_local_id,),
+    )
+
+
+def _load_archetype(archetype_id: str):
+    return db.fetchone(
+        """
+        SELECT id, tenant_id, name, version
+        FROM platform.archetype
+        WHERE id = %s
+        """,
+        (archetype_id,),
+    )
+
+
+def _load_general_table_entry(tenant_id: str, table_local_id: str):
+    return db.fetchone(
+        """
+        SELECT tenant_id, table_local_id, mode, table_name, archetype_id, msn_id, enabled,
+               created_at, updated_at
+        FROM platform.general_table
+        WHERE tenant_id = %s AND table_local_id = %s
+        """,
+        (tenant_id, table_local_id),
+    )
+
+
+def _ensure_general_table(table_name: str) -> None:
+    query = sql.SQL(
+        """
+        CREATE TABLE IF NOT EXISTS {table} (
+            id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+            created_at TIMESTAMPTZ DEFAULT now(),
+            updated_at TIMESTAMPTZ DEFAULT now(),
+            data JSONB NOT NULL
+        )
+        """
+    ).format(table=sql.Identifier(table_name))
+    db.execute(query)
 
 
 @admin_bp.get("/admin")
@@ -137,6 +221,51 @@ def admin_user_management_page():
     ), 200
 
 
+@admin_bp.get("/admin/tables")
+@require_root_admin
+def admin_tables_page():
+    tenant_id = request.args.get("tenant_id", "")
+    payload, status = unwrap_api_response(admin_tables_list())
+    if status != 200:
+        abort(status)
+    return render_template(
+        "admin/tables.html",
+        tables=payload.get("tables", []),
+        tenant_id=tenant_id,
+    ), 200
+
+
+@admin_bp.get("/admin/tables/<table_local_id>/records")
+@require_root_admin
+def admin_table_records_page(table_local_id: str):
+    tenant_id = request.args.get("tenant_id")
+    if not tenant_id:
+        abort(400, "missing tenant_id")
+
+    manifest_entry = _load_manifest_entry(tenant_id, table_local_id)
+    if not manifest_entry:
+        abort(404, "manifest not found")
+    archetype_id = str(manifest_entry["archetype_id"])
+    archetype = _load_archetype(archetype_id)
+    fields = _load_archetype_fields(archetype_id)
+    table_entry = _load_general_table_entry(tenant_id, table_local_id)
+
+    return render_template(
+        "admin/table_records.html",
+        tenant_id=tenant_id,
+        table_local_id=table_local_id,
+        archetype=archetype,
+        archetype_fields=fields,
+        table_entry=table_entry,
+    ), 200
+
+
+@admin_bp.get("/admin/lists")
+@require_root_admin
+def admin_lists_page():
+    return render_template("admin/lists.html"), 200
+
+
 @admin_bp.get("/api/admin/local-domain")
 @require_root_admin
 def admin_local_domains():
@@ -205,14 +334,14 @@ def admin_archetypes():
             """
         )
 
-    ids = [row["id"] for row in archetypes]
+    ids = [str(row["id"]) for row in archetypes]
     fields_by_archetype: Dict[str, list[Dict[str, Any]]] = {}
     if ids:
         field_rows = db.fetchall(
             """
             SELECT archetype_id, position, name, type, ref_domain, constraints
             FROM platform.archetype_field
-            WHERE archetype_id = ANY(%s)
+            WHERE archetype_id = ANY(%s::uuid[])
             ORDER BY archetype_id, position
             """,
             (ids,),
@@ -401,6 +530,334 @@ def admin_manifest_create():
         "tenant_id": tenant_id.strip(),
         "archetype_id": archetype_id.strip(),
     }), 201
+
+
+@admin_bp.post("/api/admin/tables")
+@require_root_admin
+def admin_tables_create():
+    payload, error = json_body()
+    if error:
+        return error
+    error = require_fields(payload, ["tenant_id", "table_local_id", "mode"])
+    if error:
+        return error
+
+    tenant_id = payload["tenant_id"]
+    table_local_id = payload["table_local_id"]
+    mode = payload["mode"]
+
+    if not isinstance(tenant_id, str) or not tenant_id.strip():
+        return jsonify({"error": "invalid_tenant_id"}), 400
+    if not isinstance(table_local_id, str) or not table_local_id.strip():
+        return jsonify({"error": "invalid_table_local_id"}), 400
+    if not isinstance(mode, str) or not mode.strip():
+        return jsonify({"error": "invalid_mode"}), 400
+    if mode.strip() != "general":
+        return jsonify({"error": "unsupported_table_mode"}), 400
+
+    try:
+        uuid.UUID(table_local_id)
+    except ValueError:
+        return jsonify({"error": "invalid_table_local_id"}), 400
+
+    manifest_entry = _load_manifest_entry(tenant_id.strip(), table_local_id.strip())
+    if not manifest_entry:
+        return jsonify({
+            "error": "manifest_not_found",
+            "message": "Manifest binding is required before provisioning.",
+        }), 409
+
+    local_domain = _load_local_domain(table_local_id.strip())
+    if not local_domain:
+        return jsonify({
+            "error": "local_domain_not_found",
+            "message": "Local domain entry is required before provisioning.",
+        }), 409
+
+    archetype_id = str(manifest_entry["archetype_id"])
+    archetype = _load_archetype(archetype_id)
+    if not archetype:
+        return jsonify({
+            "error": "archetype_not_found",
+            "message": "Archetype is missing for manifest binding.",
+        }), 409
+
+    fields = _load_archetype_fields(archetype_id)
+    if not fields:
+        return jsonify({
+            "error": "archetype_fields_not_found",
+            "message": "Archetype fields are required before provisioning.",
+        }), 409
+
+    msn_id = current_msn_id()
+    if not msn_id:
+        return jsonify({"error": "missing_msn_profile"}), 400
+
+    existing = _load_general_table_entry(tenant_id.strip(), table_local_id.strip())
+    if existing:
+        _ensure_general_table(existing["table_name"])
+        if not existing.get("enabled", True):
+            db.execute(
+                """
+                UPDATE platform.general_table
+                SET enabled = TRUE, updated_at = now()
+                WHERE tenant_id = %s AND table_local_id = %s
+                """,
+                (tenant_id.strip(), table_local_id.strip()),
+            )
+        _log_admin_event("admin_table_provisioned", {
+            "tenant_id": tenant_id.strip(),
+            "table_local_id": table_local_id.strip(),
+            "table_name": existing["table_name"],
+            "mode": existing["mode"],
+            "archetype_id": str(existing["archetype_id"]),
+            "status": "existing",
+        })
+        return jsonify({
+            "tenant_id": tenant_id.strip(),
+            "table_local_id": table_local_id.strip(),
+            "mode": existing["mode"],
+            "table_name": existing["table_name"],
+            "archetype_id": str(existing["archetype_id"]),
+            "local_domain": local_domain,
+            "archetype": archetype,
+            "archetype_fields": fields,
+            "status": "already_provisioned",
+        }), 200
+
+    table_name = general_table_name(msn_id, table_local_id.strip())
+    _ensure_general_table(table_name)
+
+    db.execute(
+        """
+        INSERT INTO platform.general_table
+        (tenant_id, table_local_id, mode, table_name, archetype_id, msn_id, enabled)
+        VALUES (%s, %s, %s, %s, %s, %s, TRUE)
+        """,
+        (
+            tenant_id.strip(),
+            table_local_id.strip(),
+            mode.strip(),
+            table_name,
+            archetype_id,
+            msn_id,
+        ),
+    )
+
+    _log_admin_event("admin_table_provisioned", {
+        "tenant_id": tenant_id.strip(),
+        "table_local_id": table_local_id.strip(),
+        "table_name": table_name,
+        "mode": mode.strip(),
+        "archetype_id": archetype_id,
+        "status": "created",
+    })
+
+    return jsonify({
+        "tenant_id": tenant_id.strip(),
+        "table_local_id": table_local_id.strip(),
+        "mode": mode.strip(),
+        "table_name": table_name,
+        "archetype_id": archetype_id,
+        "local_domain": local_domain,
+        "archetype": archetype,
+        "archetype_fields": fields,
+    }), 201
+
+
+@admin_bp.get("/api/admin/tables")
+@require_root_admin
+def admin_tables_list():
+    tenant_id = request.args.get("tenant_id")
+    if tenant_id:
+        rows = db.fetchall(
+            """
+            SELECT gt.tenant_id, gt.table_local_id, gt.mode, gt.table_name, gt.archetype_id,
+                   gt.msn_id, gt.enabled, gt.created_at, gt.updated_at, ld.title,
+                   a.name AS archetype_name, a.version AS archetype_version
+            FROM platform.general_table gt
+            LEFT JOIN platform.local_domain ld ON ld.local_id = gt.table_local_id
+            LEFT JOIN platform.archetype a ON a.id = gt.archetype_id
+            WHERE gt.tenant_id = %s
+            ORDER BY gt.created_at DESC
+            """,
+            (tenant_id,),
+        )
+    else:
+        rows = db.fetchall(
+            """
+            SELECT gt.tenant_id, gt.table_local_id, gt.mode, gt.table_name, gt.archetype_id,
+                   gt.msn_id, gt.enabled, gt.created_at, gt.updated_at, ld.title,
+                   a.name AS archetype_name, a.version AS archetype_version
+            FROM platform.general_table gt
+            LEFT JOIN platform.local_domain ld ON ld.local_id = gt.table_local_id
+            LEFT JOIN platform.archetype a ON a.id = gt.archetype_id
+            ORDER BY gt.created_at DESC
+            """
+        )
+    return jsonify({"tables": rows}), 200
+
+
+@admin_bp.delete("/api/admin/tables/<table_local_id>")
+@require_root_admin
+def admin_tables_delete(table_local_id: str):
+    tenant_id = request.args.get("tenant_id")
+    if not tenant_id or not isinstance(tenant_id, str):
+        return jsonify({"error": "missing_tenant_id"}), 400
+    try:
+        uuid.UUID(table_local_id)
+    except ValueError:
+        return jsonify({"error": "invalid_table_local_id"}), 400
+
+    row = db.fetchone(
+        """
+        UPDATE platform.general_table
+        SET enabled = FALSE, updated_at = now()
+        WHERE tenant_id = %s AND table_local_id = %s
+        RETURNING table_name, enabled
+        """,
+        (tenant_id, table_local_id),
+    )
+    if not row:
+        return jsonify({"error": "table_not_found"}), 404
+    _log_admin_event("admin_table_disabled", {
+        "tenant_id": tenant_id,
+        "table_local_id": table_local_id,
+        "table_name": row["table_name"],
+    })
+    return jsonify({
+        "table_local_id": table_local_id,
+        "tenant_id": tenant_id,
+        "table_name": row["table_name"],
+        "disabled": True,
+    }), 200
+
+
+@admin_bp.post("/api/admin/lists")
+@require_root_admin
+def admin_lists_create():
+    payload, error = json_body()
+    if error:
+        return error
+    error = require_fields(payload, ["tenant_id", "list_local_id", "members"])
+    if error:
+        return error
+
+    tenant_id = payload["tenant_id"]
+    list_local_id = payload["list_local_id"]
+    members = payload["members"]
+    name = payload.get("name")
+
+    if not isinstance(tenant_id, str) or not tenant_id.strip():
+        return jsonify({"error": "invalid_tenant_id"}), 400
+    if not isinstance(list_local_id, str) or not list_local_id.strip():
+        return jsonify({"error": "invalid_list_local_id"}), 400
+    if not isinstance(members, list):
+        return jsonify({"error": "invalid_members"}), 400
+    if name is not None and not isinstance(name, str):
+        return jsonify({"error": "invalid_name"}), 400
+
+    try:
+        uuid.UUID(list_local_id)
+    except ValueError:
+        return jsonify({"error": "invalid_list_local_id"}), 400
+
+    cleaned_members = []
+    for member in members:
+        if not isinstance(member, str) or not member.strip():
+            return jsonify({"error": "invalid_member"}), 400
+        try:
+            uuid.UUID(member)
+        except ValueError:
+            return jsonify({"error": "invalid_member"}), 400
+        cleaned_members.append(member.strip())
+
+    if db.fetchone(
+        "SELECT 1 FROM platform.local_list WHERE list_local_id = %s",
+        (list_local_id.strip(),),
+    ):
+        return jsonify({"error": "list_exists"}), 409
+
+    existing = set()
+    if cleaned_members:
+        rows = db.fetchall(
+            "SELECT local_id FROM platform.local_domain WHERE local_id = ANY(%s::uuid[])",
+            (cleaned_members,),
+        )
+        existing = {str(row["local_id"]) for row in rows}
+    missing = [member for member in cleaned_members if member not in existing]
+    if missing:
+        return jsonify({
+            "error": "local_domain_not_found",
+            "message": "All list members must exist in local_domain.",
+            "missing": missing,
+        }), 409
+
+    conn = db.get_conn()
+    with conn.cursor() as cur:
+        cur.execute(
+            """
+            INSERT INTO platform.local_list (list_local_id, tenant_id, name)
+            VALUES (%s, %s, %s)
+            """,
+            (list_local_id.strip(), tenant_id.strip(), name.strip() if isinstance(name, str) else None),
+        )
+        for ordinal, local_id in enumerate(cleaned_members):
+            cur.execute(
+                """
+                INSERT INTO platform.local_list_member (list_local_id, ordinal, local_id)
+                VALUES (%s, %s, %s)
+                """,
+                (list_local_id.strip(), ordinal, local_id),
+            )
+    conn.commit()
+
+    _log_admin_event("admin_list_created", {
+        "tenant_id": tenant_id.strip(),
+        "list_local_id": list_local_id.strip(),
+        "member_count": len(cleaned_members),
+    })
+
+    return jsonify({
+        "list_local_id": list_local_id.strip(),
+        "tenant_id": tenant_id.strip(),
+        "name": name.strip() if isinstance(name, str) else None,
+        "members": cleaned_members,
+    }), 201
+
+
+@admin_bp.get("/api/admin/lists/<list_local_id>")
+@require_root_admin
+def admin_lists_get(list_local_id: str):
+    try:
+        uuid.UUID(list_local_id)
+    except ValueError:
+        return jsonify({"error": "invalid_list_local_id"}), 400
+
+    list_row = db.fetchone(
+        """
+        SELECT list_local_id, tenant_id, name, created_at, updated_at
+        FROM platform.local_list
+        WHERE list_local_id = %s
+        """,
+        (list_local_id,),
+    )
+    if not list_row:
+        return jsonify({"error": "list_not_found"}), 404
+
+    members = db.fetchall(
+        """
+        SELECT m.ordinal, m.local_id, d.title
+        FROM platform.local_list_member m
+        JOIN platform.local_domain d ON d.local_id = m.local_id
+        WHERE m.list_local_id = %s
+        ORDER BY m.ordinal
+        """,
+        (list_local_id,),
+    )
+
+    list_row["members"] = members
+    return jsonify({"list": list_row}), 200
 
 
 @admin_bp.get("/api/admin/samras-layouts")

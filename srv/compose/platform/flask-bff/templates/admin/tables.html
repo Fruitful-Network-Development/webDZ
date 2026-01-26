@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+
+{% block title %}Admin Console · Tables{% endblock %}
+{% block header_title %}Provisioned Tables{% endblock %}
+{% block header_subtitle %}General table registry{% endblock %}
+
+{% block content %}
+  <div class="card">
+    <h2>Provision a table</h2>
+    <p class="muted">Requires manifest + archetype + local domain to exist first.</p>
+    <form id="provision-form">
+      <label>Tenant ID</label><br />
+      <input type="text" id="tenant_id" value="{{ tenant_id }}" placeholder="tenant id" />
+      <br /><br />
+      <label>Table Local ID (UUID)</label><br />
+      <input type="text" id="table_local_id" placeholder="uuid" />
+      <br /><br />
+      <button type="submit">Provision Table</button>
+    </form>
+    <pre id="provision-result" class="muted"></pre>
+  </div>
+
+  <div class="card">
+    <h2>Provisioned tables</h2>
+    {% if tables %}
+      <table>
+        <thead>
+          <tr>
+            <th>Tenant</th>
+            <th>Table Local ID</th>
+            <th>Local Domain</th>
+            <th>Archetype</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for row in tables %}
+            <tr>
+              <td>{{ row.tenant_id }}</td>
+              <td>{{ row.table_local_id }}</td>
+              <td>{{ row.title or "(missing local domain)" }}</td>
+              <td>
+                {{ row.archetype_name or "(missing)" }}
+                {% if row.archetype_version is not none %}
+                  v{{ row.archetype_version }}
+                {% endif %}
+              </td>
+              <td>
+                {% if row.enabled %}
+                  <span class="pill">enabled</span>
+                {% else %}
+                  <span class="pill">disabled</span>
+                {% endif %}
+              </td>
+              <td>
+                <a href="/admin/tables/{{ row.table_local_id }}/records?tenant_id={{ row.tenant_id }}">Records</a>
+                {% if row.enabled %}
+                  <button class="disable-btn" data-tenant="{{ row.tenant_id }}" data-table="{{ row.table_local_id }}">
+                    Disable
+                  </button>
+                {% endif %}
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <p class="muted">No tables provisioned yet.</p>
+    {% endif %}
+  </div>
+
+  <script>
+    const provisionForm = document.getElementById("provision-form");
+    const provisionResult = document.getElementById("provision-result");
+
+    provisionForm?.addEventListener("submit", async (evt) => {
+      evt.preventDefault();
+      provisionResult.textContent = "Provisioning...";
+      const tenantId = document.getElementById("tenant_id").value.trim();
+      const tableLocalId = document.getElementById("table_local_id").value.trim();
+      const resp = await fetch("/api/admin/tables", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({tenant_id: tenantId, table_local_id: tableLocalId, mode: "general"})
+      });
+      const payload = await resp.json().catch(() => ({}));
+      provisionResult.textContent = JSON.stringify(payload, null, 2);
+      if (resp.ok) {
+        window.location.reload();
+      }
+    });
+
+    document.querySelectorAll(".disable-btn").forEach((btn) => {
+      btn.addEventListener("click", async () => {
+        const tenantId = btn.getAttribute("data-tenant");
+        const tableId = btn.getAttribute("data-table");
+        const resp = await fetch(`/api/admin/tables/${tableId}?tenant_id=${tenantId}`, {
+          method: "DELETE"
+        });
+        if (resp.ok) {
+          window.location.reload();
+        } else {
+          const payload = await resp.json().catch(() => ({}));
+          alert(JSON.stringify(payload));
+        }
+      });
+    });
+  </script>
+{% endblock %}

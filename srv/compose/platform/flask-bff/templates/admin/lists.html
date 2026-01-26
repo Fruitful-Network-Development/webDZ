@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block title %}Admin Console · Lists{% endblock %}
+{% block header_title %}Lists{% endblock %}
+{% block header_subtitle %}Ordered local domain lists{% endblock %}
+
+{% block content %}
+  <div class="card">
+    <h2>Create list</h2>
+    <form id="list-form">
+      <label>Tenant ID</label><br />
+      <input type="text" id="tenant_id" placeholder="tenant id" />
+      <br /><br />
+      <label>List Local ID (UUID)</label><br />
+      <input type="text" id="list_local_id" placeholder="uuid" />
+      <br /><br />
+      <label>Name (optional)</label><br />
+      <input type="text" id="list_name" placeholder="List name" />
+      <br /><br />
+      <label>Members (one local_id per line)</label><br />
+      <textarea id="members" rows="6" style="width: 100%;"></textarea>
+      <br /><br />
+      <button type="submit">Create List</button>
+    </form>
+    <pre id="list-result" class="muted"></pre>
+  </div>
+
+  <div class="card">
+    <h2>List resolution</h2>
+    <p class="muted">After creation, the list members and titles will appear here.</p>
+    <pre id="list-resolution" class="muted"></pre>
+  </div>
+
+  <script>
+    const form = document.getElementById("list-form");
+    const listResult = document.getElementById("list-result");
+    const listResolution = document.getElementById("list-resolution");
+
+    form?.addEventListener("submit", async (evt) => {
+      evt.preventDefault();
+      listResult.textContent = "Creating list...";
+      const tenantId = document.getElementById("tenant_id").value.trim();
+      const listLocalId = document.getElementById("list_local_id").value.trim();
+      const name = document.getElementById("list_name").value.trim();
+      const members = document.getElementById("members").value
+        .split("\n")
+        .map((row) => row.trim())
+        .filter(Boolean);
+      const resp = await fetch("/api/admin/lists", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({
+          tenant_id: tenantId,
+          list_local_id: listLocalId,
+          name: name || null,
+          members: members
+        })
+      });
+      const payload = await resp.json().catch(() => ({}));
+      listResult.textContent = JSON.stringify(payload, null, 2);
+      if (!resp.ok) {
+        return;
+      }
+      const resolutionResp = await fetch(`/api/admin/lists/${listLocalId}`);
+      const resolutionPayload = await resolutionResp.json().catch(() => ({}));
+      listResolution.textContent = JSON.stringify(resolutionPayload, null, 2);
+    });
+  </script>
+{% endblock %}

@@ -6,6 +6,47 @@ import pytest
 from conftest import drop_dynamic_table, load_app
 
 
+def _seed_admin_workflow(db_conn, tenant_id: str):
+    local_id = str(uuid.uuid4())
+    archetype_id = str(uuid.uuid4())
+    root_user_id = str(uuid.uuid4())
+    root_msn_id = f"ROOT-{uuid.uuid4()}"
+
+    with db_conn.cursor() as cur:
+        cur.execute(
+            "INSERT INTO platform.mss_profile (msn_id, user_id, display_name, role) VALUES (%s, %s, %s, %s)",
+            (root_msn_id, root_user_id, "Root Admin", "root-admin"),
+        )
+        cur.execute(
+            "INSERT INTO platform.local_domain (local_id, title) VALUES (%s, %s)",
+            (local_id, "Companion Animals"),
+        )
+        cur.execute(
+            "INSERT INTO platform.archetype (id, tenant_id, name, version) VALUES (%s, %s, %s, %s)",
+            (archetype_id, tenant_id, "companion_animals", 1),
+        )
+        cur.execute(
+            """
+            INSERT INTO platform.archetype_field
+            (archetype_id, position, name, type, ref_domain, constraints)
+            VALUES (%s, %s, %s, %s, %s, %s)
+            """,
+            (archetype_id, 1, "name", "string", None, None),
+        )
+        cur.execute(
+            "INSERT INTO platform.manifest (table_id, tenant_id, archetype_id) VALUES (%s, %s, %s)",
+            (local_id, tenant_id, archetype_id),
+        )
+
+    return {
+        "tenant_id": tenant_id,
+        "local_id": local_id,
+        "archetype_id": archetype_id,
+        "root_user_id": root_user_id,
+        "root_msn_id": root_msn_id,
+    }
+
+
 @pytest.mark.usefixtures("db_cleanup")
 def test_schema_registry_endpoints(monkeypatch, db_conn, db_url):
     app_module = load_app(monkeypatch, db_url=db_url)
@@ -77,6 +118,206 @@ def test_schema_registry_endpoints(monkeypatch, db_conn, db_url):
 
 
 @pytest.mark.usefixtures("db_cleanup")
+def test_admin_general_table_create(monkeypatch, db_conn, db_url):
+    app_module = load_app(monkeypatch, db_url=db_url)
+    app_module.app.config.update(TESTING=True)
+
+    tenant_id = "tenant-test"
+    local_id = str(uuid.uuid4())
+    archetype_id = str(uuid.uuid4())
+    root_user_id = str(uuid.uuid4())
+    root_msn_id = "ROOT-ADMIN-001"
+
+    with db_conn.cursor() as cur:
+        cur.execute(
+            "INSERT INTO platform.mss_profile (msn_id, user_id, display_name, role) VALUES (%s, %s, %s, %s)",
+            (root_msn_id, root_user_id, "Root Admin", "root-admin"),
+        )
+        cur.execute(
+            "INSERT INTO platform.local_domain (local_id, title) VALUES (%s, %s)",
+            (local_id, "Companion Animals"),
+        )
+        cur.execute(
+            "INSERT INTO platform.archetype (id, tenant_id, name, version) VALUES (%s, %s, %s, %s)",
+            (archetype_id, tenant_id, "companion_animals", 1),
+        )
+        cur.execute(
+            """
+            INSERT INTO platform.archetype_field
+            (archetype_id, position, name, type, ref_domain, constraints)
+            VALUES (%s, %s, %s, %s, %s, %s)
+            """,
+            (archetype_id, 1, "name", "string", None, None),
+        )
+        cur.execute(
+            "INSERT INTO platform.manifest (table_id, tenant_id, archetype_id) VALUES (%s, %s, %s)",
+            (local_id, tenant_id, archetype_id),
+        )
+
+    with app_module.app.test_client() as client:
+        with client.session_transaction() as sess:
+            sess["user"] = {
+                "user_id": root_user_id,
+                "realm_roles": ["root_admin"],
+            }
+
+        create_resp = client.post(
+            "/api/admin/tables",
+            json={
+                "tenant_id": tenant_id,
+                "table_local_id": local_id,
+                "mode": "general",
+            },
+        )
+        assert create_resp.status_code == 201
+        payload = create_resp.get_json()
+        assert payload["table_name"]
+        assert payload["archetype_id"] == archetype_id
+
+    drop_dynamic_table(db_conn, payload["table_name"])
+
+
+@pytest.mark.usefixtures("db_cleanup")
+def test_admin_workflow_provision(monkeypatch, db_conn, db_url):
+    app_module = load_app(monkeypatch, db_url=db_url)
+    app_module.app.config.update(TESTING=True)
+
+    seeded = _seed_admin_workflow(db_conn, "tenant-workflow")
+
+    with app_module.app.test_client() as client:
+        with client.session_transaction() as sess:
+            sess["user"] = {
+                "user_id": seeded["root_user_id"],
+                "realm_roles": ["root_admin"],
+            }
+
+        resp = client.post(
+            "/api/admin/tables",
+            json={
+                "tenant_id": seeded["tenant_id"],
+                "table_local_id": seeded["local_id"],
+                "mode": "general",
+            },
+        )
+        assert resp.status_code == 201
+        payload = resp.get_json()
+        assert payload["table_name"]
+        assert payload["archetype_id"] == seeded["archetype_id"]
+
+        second_resp = client.post(
+            "/api/admin/tables",
+            json={
+                "tenant_id": seeded["tenant_id"],
+                "table_local_id": seeded["local_id"],
+                "mode": "general",
+            },
+        )
+        assert second_resp.status_code == 200
+        assert second_resp.get_json()["status"] == "already_provisioned"
+
+    drop_dynamic_table(db_conn, payload["table_name"])
+
+
+@pytest.mark.usefixtures("db_cleanup")
+def test_root_admin_record_round_trip(monkeypatch, db_conn, db_url):
+    app_module = load_app(monkeypatch, db_url=db_url)
+    app_module.app.config.update(TESTING=True)
+
+    seeded = _seed_admin_workflow(db_conn, "tenant-records")
+
+    with app_module.app.test_client() as client:
+        with client.session_transaction() as sess:
+            sess["user"] = {
+                "user_id": seeded["root_user_id"],
+                "realm_roles": ["root_admin"],
+            }
+        provision_resp = client.post(
+            "/api/admin/tables",
+            json={
+                "tenant_id": seeded["tenant_id"],
+                "table_local_id": seeded["local_id"],
+                "mode": "general",
+            },
+        )
+        assert provision_resp.status_code == 201
+        table_name = provision_resp.get_json()["table_name"]
+
+    with app_module.app.test_client() as client:
+        with client.session_transaction() as sess:
+            sess["user"] = {
+                "user_id": seeded["root_user_id"],
+                "msn_id": seeded["root_msn_id"],
+                "realm_roles": ["root_admin"],
+            }
+
+        create_resp = client.post(
+            f"/api/t/{seeded['tenant_id']}/tables/{seeded['local_id']}",
+            json={"name": "Luna"},
+        )
+        assert create_resp.status_code == 201
+        record_id = create_resp.get_json()["record"]["record_id"]
+
+        list_resp = client.get(
+            f"/api/t/{seeded['tenant_id']}/tables/{seeded['local_id']}"
+        )
+        assert list_resp.status_code == 200
+        assert any(row["record_id"] == record_id for row in list_resp.get_json()["records"])
+
+        fetch_resp = client.get(
+            f"/api/t/{seeded['tenant_id']}/tables/{seeded['local_id']}/{record_id}"
+        )
+        assert fetch_resp.status_code == 200
+        assert fetch_resp.get_json()["record"]["data"]["name"] == "Luna"
+
+    drop_dynamic_table(db_conn, table_name)
+
+
+@pytest.mark.usefixtures("db_cleanup")
+def test_admin_list_resolution_workflow(monkeypatch, db_conn, db_url):
+    app_module = load_app(monkeypatch, db_url=db_url)
+    app_module.app.config.update(TESTING=True)
+
+    tenant_id = "tenant-lists"
+    list_local_id = str(uuid.uuid4())
+    member_one = str(uuid.uuid4())
+    member_two = str(uuid.uuid4())
+
+    with db_conn.cursor() as cur:
+        cur.execute(
+            "INSERT INTO platform.local_domain (local_id, title) VALUES (%s, %s)",
+            (member_one, "Canine"),
+        )
+        cur.execute(
+            "INSERT INTO platform.local_domain (local_id, title) VALUES (%s, %s)",
+            (member_two, "Feline"),
+        )
+
+    with app_module.app.test_client() as client:
+        with client.session_transaction() as sess:
+            sess["user"] = {
+                "user_id": str(uuid.uuid4()),
+                "realm_roles": ["root_admin"],
+            }
+
+        create_resp = client.post(
+            "/api/admin/lists",
+            json={
+                "tenant_id": tenant_id,
+                "list_local_id": list_local_id,
+                "members": [member_one, member_two],
+                "name": "Pets",
+            },
+        )
+        assert create_resp.status_code == 201
+
+        get_resp = client.get(f"/api/admin/lists/{list_local_id}")
+        assert get_resp.status_code == 200
+        members = get_resp.get_json()["list"]["members"]
+        assert members[0]["title"] == "Canine"
+        assert members[1]["title"] == "Feline"
+
+
+@pytest.mark.usefixtures("db_cleanup")
 def test_table_crud_and_samras_validation(monkeypatch, db_conn, db_url):
     app_module = load_app(monkeypatch, db_url=db_url)
     app_module.app.config.update(TESTING=True)
@@ -84,13 +325,19 @@ def test_table_crud_and_samras_validation(monkeypatch, db_conn, db_url):
     tenant_id = "tenant-test"
     local_id = str(uuid.uuid4())
     archetype_id = str(uuid.uuid4())
-    user_id = str(uuid.uuid4())
-    msn_id = str(uuid.uuid4())
+    root_user_id = str(uuid.uuid4())
+    root_msn_id = "ROOT-ADMIN-002"
+    tenant_user_id = str(uuid.uuid4())
+    tenant_msn_id = "TENANT-ADMIN-001"
 
     with db_conn.cursor() as cur:
         cur.execute(
             "INSERT INTO platform.mss_profile (msn_id, user_id, display_name, role) VALUES (%s, %s, %s, %s)",
-            (msn_id, user_id, "Test User", "member"),
+            (root_msn_id, root_user_id, "Root Admin", "root-admin"),
+        )
+        cur.execute(
+            "INSERT INTO platform.mss_profile (msn_id, user_id, display_name, role) VALUES (%s, %s, %s, %s)",
+            (tenant_msn_id, tenant_user_id, "Tenant Admin", "admin"),
         )
         cur.execute(
             "INSERT INTO platform.local_domain (local_id, title) VALUES (%s, %s)",
@@ -125,12 +372,28 @@ def test_table_crud_and_samras_validation(monkeypatch, db_conn, db_url):
             ("animals", 1, bytes([2, 2]), '{"nodes": {"0.1": {"label": "Canine"}}}'),
         )
 
-    table_name = f"{msn_id}{local_id}"
+    with app_module.app.test_client() as client:
+        with client.session_transaction() as sess:
+            sess["user"] = {
+                "user_id": root_user_id,
+                "realm_roles": ["root_admin"],
+            }
+        create_resp = client.post(
+            "/api/admin/tables",
+            json={
+                "tenant_id": tenant_id,
+                "table_local_id": local_id,
+                "mode": "general",
+            },
+        )
+        assert create_resp.status_code == 201
+        table_name = create_resp.get_json()["table_name"]
 
     with app_module.app.test_client() as client:
         with client.session_transaction() as sess:
             sess["user"] = {
-                "user_id": user_id,
+                "user_id": tenant_user_id,
+                "msn_id": tenant_msn_id,
                 "realm_roles": [f"tenant_admin:{tenant_id}"],
             }
 
@@ -146,7 +409,9 @@ def test_table_crud_and_samras_validation(monkeypatch, db_conn, db_url):
             json={"name": "Luna", "taxa_ref": {"system_id": "0.1"}},
         )
         assert create_resp.status_code == 201
-        record_id = create_resp.get_json()["record"]["record_id"]
+        record = create_resp.get_json()["record"]
+        record_id = record["record_id"]
+        assert record["data"]["name"] == "Luna"
 
         list_resp = client.get(f"/api/t/{tenant_id}/tables/{local_id}")
         assert list_resp.status_code == 200
@@ -154,14 +419,14 @@ def test_table_crud_and_samras_validation(monkeypatch, db_conn, db_url):
 
         fetch_resp = client.get(f"/api/t/{tenant_id}/tables/{local_id}/{record_id}")
         assert fetch_resp.status_code == 200
-        assert fetch_resp.get_json()["record"]["name"] == "Luna"
+        assert fetch_resp.get_json()["record"]["data"]["name"] == "Luna"
 
         update_resp = client.put(
             f"/api/t/{tenant_id}/tables/{local_id}/{record_id}",
             json={"name": "Nova", "taxa_ref": {"system_id": "0.1"}},
         )
         assert update_resp.status_code == 200
-        assert update_resp.get_json()["record"]["name"] == "Nova"
+        assert update_resp.get_json()["record"]["data"]["name"] == "Nova"
 
         delete_resp = client.delete(
             f"/api/t/{tenant_id}/tables/{local_id}/{record_id}"
@@ -172,6 +437,51 @@ def test_table_crud_and_samras_validation(monkeypatch, db_conn, db_url):
         assert missing_resp.status_code == 404
 
     drop_dynamic_table(db_conn, table_name)
+
+
+@pytest.mark.usefixtures("db_cleanup")
+def test_list_resolution(monkeypatch, db_conn, db_url):
+    app_module = load_app(monkeypatch, db_url=db_url)
+    app_module.app.config.update(TESTING=True)
+
+    tenant_id = "tenant-test"
+    list_local_id = str(uuid.uuid4())
+    member_one = str(uuid.uuid4())
+    member_two = str(uuid.uuid4())
+
+    with db_conn.cursor() as cur:
+        cur.execute(
+            "INSERT INTO platform.local_domain (local_id, title) VALUES (%s, %s)",
+            (member_one, "Canine"),
+        )
+        cur.execute(
+            "INSERT INTO platform.local_domain (local_id, title) VALUES (%s, %s)",
+            (member_two, "Feline"),
+        )
+
+    with app_module.app.test_client() as client:
+        with client.session_transaction() as sess:
+            sess["user"] = {
+                "user_id": str(uuid.uuid4()),
+                "realm_roles": ["root_admin"],
+            }
+
+        create_resp = client.post(
+            "/api/admin/lists",
+            json={
+                "tenant_id": tenant_id,
+                "list_local_id": list_local_id,
+                "members": [member_one, member_two],
+                "name": "Pets",
+            },
+        )
+        assert create_resp.status_code == 201
+
+        get_resp = client.get(f"/api/admin/lists/{list_local_id}")
+        assert get_resp.status_code == 200
+        members = get_resp.get_json()["list"]["members"]
+        assert members[0]["title"] == "Canine"
+        assert members[1]["title"] == "Feline"
 
 
 @pytest.mark.usefixtures("db_cleanup")
