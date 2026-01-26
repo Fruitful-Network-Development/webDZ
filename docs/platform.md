@@ -2,6 +2,19 @@
 
 ## Architecture
 
+flowchart TD
+  IdentityAccess[IdentityAccessPlane]
+  DataDiscipline[DataDisciplinePlane]
+  StructureAddressing[StructureAddressingPlane]
+  Experience[ExperiencePlane]
+  Operations[OperationsPlane]
+  IdentityAccess --> DataDiscipline
+  StructureAddressing --> DataDiscipline
+  IdentityAccess --> Experience
+  DataDiscipline --> Experience
+  Operations --> IdentityAccess
+  Operations --> DataDiscipline
+
 The server stack is composed of **Keycloak**, **Flask BFF**, and **PostgreSQL**, deployed via Docker Compose under the `/srv/compose/platform` directory. NGINX remains on the host to terminate TLS and proxy traffic. Client sites are static and are served directly from the filesystem.
 1.  **Keycloak** – The single identity provider (IdP) for all users. It handles login, multi-factor authentication and credential management. The platform never exposes Keycloak tokens directly to browsers.
 2.  **Flask BFF** – A platform-owned backend-for-frontend that initiates OpenID Connect (OIDC) flows, exchanges codes with Keycloak on the server side, enforces tenant boundaries, and holds the user's session state in a secure cookie. It serves both the admin console and the user console.
