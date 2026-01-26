@@ -2,11 +2,12 @@
 
 {% block title %}Admin Console · SAMRAS Layouts{% endblock %}
 {% block header_title %}SAMRAS Layouts{% endblock %}
-{% block header_subtitle %}SAMRAS traversal configuration{% endblock %}
+{% block header_subtitle %}Traversal layouts and count streams{% endblock %}
 
 {% block content %}
   <div class="card">
     <h2>Registered layouts</h2>
+    <p class="muted">SAMRAS paths are navigational coordinates, not human labels.</p>
     {% if samras_layouts %}
       <table>
         <thead>
@@ -29,34 +30,30 @@
         </tbody>
       </table>
     {% else %}
-      <p class="muted">No SAMRAS layouts have been registered yet.</p>
+      <div class="empty-state">No SAMRAS layouts have been registered yet.</div>
     {% endif %}
   </div>
 
   <div class="card">
     <h3>Add SAMRAS layout</h3>
-    <form id="samras-layout-form">
-      <table>
-        <tr>
-          <th><label for="samras_domain">Domain</label></th>
-          <td><input id="samras_domain" name="domain" type="text" required /></td>
-        </tr>
-        <tr>
-          <th><label for="samras_version">Version</label></th>
-          <td><input id="samras_version" name="version" type="number" required /></td>
-        </tr>
-        <tr>
-          <th><label for="samras_count_stream">Count stream (base64)</label></th>
-          <td><textarea id="samras_count_stream" name="count_stream" rows="4" required></textarea></td>
-        </tr>
-        <tr>
-          <th><label for="samras_traversal">Traversal spec JSON</label></th>
-          <td><textarea id="samras_traversal" name="traversal_spec" rows="6" required></textarea></td>
-        </tr>
-      </table>
-      <p>
-        <button type="submit">Create SAMRAS layout</button>
-      </p>
+    <form id="samras-layout-form" class="form-grid">
+      <div class="field">
+        <label for="samras_domain">Domain</label>
+        <input id="samras_domain" name="domain" type="text" required />
+      </div>
+      <div class="field">
+        <label for="samras_version">Version</label>
+        <input id="samras_version" name="version" type="number" required />
+      </div>
+      <div class="field">
+        <label for="samras_count_stream">Count stream (base64)</label>
+        <textarea id="samras_count_stream" name="count_stream" rows="4" required></textarea>
+      </div>
+      <div class="field">
+        <label for="samras_traversal">Traversal spec JSON</label>
+        <textarea id="samras_traversal" name="traversal_spec" rows="6" required></textarea>
+      </div>
+      <button class="btn" type="submit">Create SAMRAS layout</button>
       <p class="muted" id="samras-layout-status"></p>
     </form>
   </div>
@@ -65,7 +62,7 @@
     const samrasForm = document.getElementById("samras-layout-form");
     const samrasStatus = document.getElementById("samras-layout-status");
 
-    samrasForm.addEventListener("submit", async (event) => {
+    samrasForm?.addEventListener("submit", async (event) => {
       event.preventDefault();
       samrasStatus.textContent = "";
 
@@ -90,13 +87,12 @@
         body: JSON.stringify(payload),
       });
 
-      if (response.ok) {
-        window.location.reload();
+      if (!response.ok) {
+        samrasStatus.innerHTML = adminApiMessage(response.status);
         return;
       }
 
-      const error = await response.json().catch(() => ({ error: "unknown_error" }));
-      samrasStatus.textContent = `Error: ${error.error || "unknown_error"}`;
+      window.location.reload();
     });
   </script>
 {% endblock %}

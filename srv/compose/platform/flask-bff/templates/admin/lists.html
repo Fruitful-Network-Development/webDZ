@@ -2,39 +2,103 @@
 
 {% block title %}Admin Console · Lists{% endblock %}
 {% block header_title %}Lists{% endblock %}
-{% block header_subtitle %}Ordered local domain lists{% endblock %}
+{% block header_subtitle %}Ordered reference lists (SAMRAS ordinals){% endblock %}
 
 {% block content %}
   <div class="card">
     <h2>Create list</h2>
-    <form id="list-form">
-      <label>Tenant ID</label><br />
-      <input type="text" id="tenant_id" placeholder="tenant id" />
-      <br /><br />
-      <label>List Local ID (UUID)</label><br />
-      <input type="text" id="list_local_id" placeholder="uuid" />
-      <br /><br />
-      <label>Name (optional)</label><br />
-      <input type="text" id="list_name" placeholder="List name" />
-      <br /><br />
-      <label>Members (one local_id per line)</label><br />
-      <textarea id="members" rows="6" style="width: 100%;"></textarea>
-      <br /><br />
-      <button type="submit">Create List</button>
+    <p class="muted">Lists are ordered references, not categories. Ghost positions are allowed.</p>
+    <form id="list-form" class="form-grid">
+      <div class="field">
+        <label for="tenant_id">Tenant ID</label>
+        <input type="text" id="tenant_id" placeholder="tenant id" value="{{ request.args.get('tenant_id', 'platform') }}" />
+      </div>
+      <div class="field">
+        <label for="list_local_id">List Local ID (UUID)</label>
+        <input type="text" id="list_local_id" placeholder="uuid" />
+      </div>
+      <div class="field">
+        <label for="list_name">Name (optional)</label>
+        <input type="text" id="list_name" placeholder="List name" />
+      </div>
+      <div class="field">
+        <label for="members">Members (one local_id per line)</label>
+        <textarea id="members" rows="6"></textarea>
+      </div>
+      <button class="btn" type="submit">Create List</button>
+      <div class="muted" id="list-result"></div>
     </form>
-    <pre id="list-result" class="muted"></pre>
   </div>
 
   <div class="card">
-    <h2>List resolution</h2>
-    <p class="muted">After creation, the list members and titles will appear here.</p>
-    <pre id="list-resolution" class="muted"></pre>
+    <h2>Resolve members</h2>
+    <p class="muted">Resolve ordinal ordering to local IDs and titles (read-only).</p>
+    <form id="resolve-form" class="form-grid">
+      <div class="field">
+        <label for="resolve_list_id">List Local ID</label>
+        <input type="text" id="resolve_list_id" placeholder="uuid" />
+      </div>
+      <button class="btn secondary" type="submit">Resolve list</button>
+      <div class="muted" id="resolve-status"></div>
+    </form>
+    <table>
+      <thead>
+        <tr>
+          <th>Ordinal</th>
+          <th>Local ID</th>
+          <th>Title</th>
+        </tr>
+      </thead>
+      <tbody id="list-resolution">
+        <tr>
+          <td colspan="3">
+            <div class="empty-state">No list resolved yet.</div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 
   <script>
     const form = document.getElementById("list-form");
     const listResult = document.getElementById("list-result");
-    const listResolution = document.getElementById("list-resolution");
+    const resolveForm = document.getElementById("resolve-form");
+    const resolveStatus = document.getElementById("resolve-status");
+    const resolutionBody = document.getElementById("list-resolution");
+
+    function renderResolution(list) {
+      if (!list || !list.members || !list.members.length) {
+        resolutionBody.innerHTML = `
+          <tr>
+            <td colspan="3">
+              <div class="empty-state">No members resolved for this list.</div>
+            </td>
+          </tr>
+        `;
+        return;
+      }
+      resolutionBody.innerHTML = list.members.map((member) => {
+        return `
+          <tr>
+            <td>${member.ordinal}</td>
+            <td>${member.local_id}</td>
+            <td>${member.title || "(untitled)"}</td>
+          </tr>
+        `;
+      }).join("");
+    }
+
+    async function resolveList(listId) {
+      resolveStatus.textContent = "Resolving list...";
+      const resolutionResp = await fetch(`/api/admin/lists/${listId}`);
+      if (!resolutionResp.ok) {
+        resolveStatus.innerHTML = adminApiMessage(resolutionResp.status);
+        return;
+      }
+      const resolutionPayload = await adminParseJson(resolutionResp);
+      resolveStatus.textContent = "Resolved list.";
+      renderResolution(resolutionPayload.list);
+    }
 
     form?.addEventListener("submit", async (evt) => {
       evt.preventDefault();
@@ -48,7 +112,7 @@
         .filter(Boolean);
       const resp = await fetch("/api/admin/lists", {
         method: "POST",
-        headers: {"Content-Type": "application/json"},
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           tenant_id: tenantId,
           list_local_id: listLocalId,
@@ -56,14 +120,24 @@
           members: members
         })
       });
-      const payload = await resp.json().catch(() => ({}));
-      listResult.textContent = JSON.stringify(payload, null, 2);
       if (!resp.ok) {
+        listResult.innerHTML = adminApiMessage(resp.status);
         return;
       }
-      const resolutionResp = await fetch(`/api/admin/lists/${listLocalId}`);
-      const resolutionPayload = await resolutionResp.json().catch(() => ({}));
-      listResolution.textContent = JSON.stringify(resolutionPayload, null, 2);
+      const payload = await adminParseJson(resp);
+      listResult.textContent = `Created list ${payload.list_local_id}`;
+      document.getElementById("resolve_list_id").value = listLocalId;
+      await resolveList(listLocalId);
+    });
+
+    resolveForm?.addEventListener("submit", async (evt) => {
+      evt.preventDefault();
+      const listId = document.getElementById("resolve_list_id").value.trim();
+      if (!listId) {
+        resolveStatus.textContent = "Provide a list local ID.";
+        return;
+      }
+      await resolveList(listId);
     });
   </script>
 {% endblock %}

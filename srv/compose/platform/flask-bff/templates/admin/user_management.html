@@ -1,12 +1,13 @@
 {% extends "base.html" %}
 
-{% block title %}Admin Console · User Management{% endblock %}
-{% block header_title %}User Management{% endblock %}
-{% block header_subtitle %}MSS profile registry{% endblock %}
+{% block title %}Admin Console · Users{% endblock %}
+{% block header_title %}Users & MSS Profiles{% endblock %}
+{% block header_subtitle %}Identity anchors and hierarchy{% endblock %}
 
 {% block content %}
   <div class="card">
-    <h2>MSS user profiles</h2>
+    <h2>MSS profiles</h2>
+    <p class="muted">MSS profiles anchor Keycloak users to msn_id and hierarchy roles.</p>
     {% if mss_profiles %}
       <table>
         <thead>
@@ -35,43 +36,59 @@
         </tbody>
       </table>
     {% else %}
-      <p class="muted">No MSS profiles found yet.</p>
+      <div class="empty-state">No MSS profiles found yet.</div>
     {% endif %}
   </div>
 
   <div class="card">
     <h3>Create MSS profile</h3>
-    <form id="mss-profile-form">
-      <table>
-        <tr>
-          <th><label for="mss_user_id">User ID (UUID)</label></th>
-          <td><input id="mss_user_id" name="user_id" type="text" required /></td>
-        </tr>
-        <tr>
-          <th><label for="mss_display_name">Display name</label></th>
-          <td><input id="mss_display_name" name="display_name" type="text" required /></td>
-        </tr>
-        <tr>
-          <th><label for="mss_role">Role</label></th>
-          <td><input id="mss_role" name="role" type="text" required /></td>
-        </tr>
-        <tr>
-          <th><label for="mss_parent">Parent MSN ID (optional)</label></th>
-          <td><input id="mss_parent" name="parent_msn_id" type="text" /></td>
-        </tr>
-      </table>
-      <p>
-        <button type="submit">Create profile</button>
-      </p>
+    <form id="mss-profile-form" class="form-grid">
+      <div class="field">
+        <label for="mss_user_id">User ID (UUID)</label>
+        <input id="mss_user_id" name="user_id" type="text" required />
+      </div>
+      <div class="field">
+        <label for="mss_display_name">Display name</label>
+        <input id="mss_display_name" name="display_name" type="text" required />
+      </div>
+      <div class="field">
+        <label for="mss_role">Role</label>
+        <input id="mss_role" name="role" type="text" required />
+      </div>
+      <div class="field">
+        <label for="mss_parent">Parent MSN ID (optional)</label>
+        <input id="mss_parent" name="parent_msn_id" type="text" />
+      </div>
+      <button class="btn" type="submit">Create profile</button>
       <p class="muted" id="mss-profile-status"></p>
     </form>
+  </div>
+
+  <div class="card">
+    <h3>Hierarchy lookup (read-only)</h3>
+    <form id="hierarchy-form" class="form-grid">
+      <div class="field">
+        <label for="hierarchy_msn">Lookup by MSN ID</label>
+        <input id="hierarchy_msn" name="msn_id" type="text" placeholder="msn-..." />
+      </div>
+      <div class="field">
+        <label for="hierarchy_user_id">Lookup by User ID</label>
+        <input id="hierarchy_user_id" name="user_id" type="text" placeholder="uuid" />
+      </div>
+      <button class="btn secondary" type="submit">Resolve profile</button>
+      <div class="muted" id="hierarchy-status"></div>
+    </form>
+    <pre id="hierarchy-result" class="muted"></pre>
   </div>
 
   <script>
     const mssForm = document.getElementById("mss-profile-form");
     const mssStatus = document.getElementById("mss-profile-status");
+    const hierarchyForm = document.getElementById("hierarchy-form");
+    const hierarchyStatus = document.getElementById("hierarchy-status");
+    const hierarchyResult = document.getElementById("hierarchy-result");
 
-    mssForm.addEventListener("submit", async (event) => {
+    mssForm?.addEventListener("submit", async (event) => {
       event.preventDefault();
       mssStatus.textContent = "";
 
@@ -88,13 +105,37 @@
         body: JSON.stringify(payload),
       });
 
-      if (response.ok) {
-        window.location.reload();
+      if (!response.ok) {
+        mssStatus.innerHTML = adminApiMessage(response.status);
         return;
       }
 
-      const error = await response.json().catch(() => ({ error: "unknown_error" }));
-      mssStatus.textContent = `Error: ${error.error || "unknown_error"}`;
+      window.location.reload();
+    });
+
+    hierarchyForm?.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      hierarchyStatus.textContent = "";
+      hierarchyResult.textContent = "";
+
+      const msnId = hierarchyForm.msn_id.value.trim();
+      const userId = hierarchyForm.user_id.value.trim();
+      const params = new URLSearchParams();
+      if (msnId) {
+        params.set("msn_id", msnId);
+      }
+      if (userId) {
+        params.set("user_id", userId);
+      }
+
+      const response = await fetch(`/api/admin/user-hierarchy?${params.toString()}`);
+      if (!response.ok) {
+        hierarchyStatus.innerHTML = adminApiMessage(response.status);
+        return;
+      }
+      const payload = await adminParseJson(response);
+      hierarchyStatus.textContent = "Resolved.";
+      hierarchyResult.textContent = JSON.stringify(payload, null, 2);
     });
   </script>
 {% endblock %}
