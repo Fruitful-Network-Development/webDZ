@@ -39,6 +39,26 @@ Lists:
 - Ordered references (not categories)
 - Used to resolve ordinals and structural linkage
 
+### Data runtime plane (generic CRUD)
+
+- General table provisioning and JSONB storage.
+- Generic tenant data endpoints:
+  - validate against archetype
+  - store JSONB data
+  - resolve ordinals via lists/local domain
+  - enforce ref domains (taxonomy/SAMRAS/local)
+
+Core contract: any module can store and query domain data through the same
+validated CRUD mechanism.
+
+### UI shell
+
+- Admin console shell (navigation, tenant selection, status cards)
+- Tenant console shell (module menu, consistent layout, `/me`)
+
+Core contract: modules plug into the shell; the shell does not embed business
+logic.
+
 ## Module taxonomy
 
 **Platform modules**
@@ -52,6 +72,90 @@ uses core identity + data contracts; it does not redefine them.
 Tenant modules are use cases for a specific type of tenant. They are often thin
 UI + workflows on top of core and platform modules. They are not universally
 reusable but are built using the same core and platform components.
+
+## Core vs module classifier
+
+When deciding "core vs module," ask:
+
+1. Does every tenant require it to exist at all? If yes → core. If no → module.
+2. Does it change the meaning of the canonical data model? If yes → core. If it
+   just adds new archetypes/tables/workflows → module.
+3. Would breaking it take down the platform? If yes → core. If it only disables
+   one capability → module.
+4. Is it reusable across different tenant types? If yes → platform module. If
+   specific to one tenant type → tenant module.
+5. Does it require privileged infrastructure actions (AWS, DNS, SES)? Usually
+   module (integration), but the authz + audit primitives it needs belong in
+   core.
+
+## Example platform modules
+
+**Email management**
+
+- Manages email domains, mailboxes/aliases, forwarding rules, mailing lists, and
+  role-based access.
+- Depends on:
+  - MSS profile hierarchy (board member vs farm contact)
+  - Tenant context and authz
+  - Local domain/list primitives for groups and subscriptions
+  - Generic data CRUD for configuration state
+- Should not:
+  - be baked into tenant routing or base admin pages
+  - change how archetypes or general tables work
+
+**Billing**
+
+- Tracks subscriptions, invoices, and entitlements (modules enabled often driven
+  by billing state).
+- Often admin-only with minimal tenant user exposure.
+
+**Integrations (Square/Zettle/PayPal)**
+
+- Stores API credentials, webhooks, device inventories.
+- Publishes events to other modules (orders, payments).
+
+Platform module contract: it uses core identity + data contracts; it does not
+redefine them.
+
+## Example tenant modules (business apps)
+
+Tenant modules are tenant-type specific:
+
+- Industry network (participant farms, board members, programs)
+- Email domains + board mailing lists
+- Donor/contact CRM
+- Customer subscriptions + newsletter
+- POS device inventory
+- Payment integration dashboards
+
+Tenant modules differ from platform modules because they are not universally
+reusable. They can still be built using the same core + platform components.
+
+## Structured modules pattern (intended)
+
+Core:
+
+- `routes/common.py` (tenant context, current user, error responses)
+- `routes/auth.py` (login/callback)
+- `routes/admin.py` (core admin: tenants, MSS profiles, archetypes, manifest, SAMRAS)
+- `routes/tables.py` (generic CRUD)
+- `tenant_registry.py`, `db.py`, `authz.py`
+
+Platform modules:
+
+- `routes/modules/email.py`
+- `routes/modules/billing.py`
+- `routes/modules/integrations_paypal.py` (or `routes/integrations/paypal/...`)
+- `templates/modules/email/*.html`
+- `templates/modules/billing/*.html`
+- `static/modules/email/*.js`
+
+Tenant console routing:
+
+- `/t/<tenant_id>/console/<module>` loads the module template + API endpoints.
+
+Prefer module data in archetypes/manifests wherever possible so the module is
+mostly UI + orchestration.
 
 ## Admin console root
 
