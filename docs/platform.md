@@ -1,4 +1,4 @@
-# Unified Server-Stack Environment 
+# System Conceptual Ontology
 
 ## Architecture
 
