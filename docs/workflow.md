@@ -88,3 +88,17 @@ sudo rsync -a --delete --dry-run \
   /home/admin/aws-box/srv/compose/platform/platform-schema/ \
   /srv/compose/platform/platform-schema/
 ```
+
+Here are the direct links to test:
+  Login → admin console
+    `https://api.fruitfulnetworkdevelopment.com/login?tenant=platform&return_to=/admin`
+  Admin home (after login)
+    `https://api.fruitfulnetworkdevelopment.com/admin`
+  Tables admin
+    `https://api.fruitfulnetworkdevelopment.com/admin/tables`
+  Lists admin
+    `https://api.fruitfulnetworkdevelopment.com/admin/lists`
+  Record browser (example, replace IDs)
+    `https://api.fruitfulnetworkdevelopment.com/admin/tables/<table_local_id>/records?tenant_id=platform`
+  If you want the tenant console too:
+    `https://api.fruitfulnetworkdevelopment.com/t/platform/console`
