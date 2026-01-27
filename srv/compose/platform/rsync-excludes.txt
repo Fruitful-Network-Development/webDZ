@@ -1,9 +1,0 @@
-.env
-.env.*
-**/__pycache__/
-**/*.pyc
-**/.pytest_cache/
-webapps/platform/venv/
-rsync-excludes.txt
-flask-bff/templates/admin/***
-flask-bff/templates/tenant/***
