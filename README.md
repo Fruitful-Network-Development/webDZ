@@ -48,12 +48,10 @@ Explain what this repository represents, not how any single component works.
 DNS → NGINX → (static site OR reverse-proxy) → platform services
 ```
 
-## Repository layout
+## Server Deployed layout
 
 ```text
-aws-box/
 ├── etc/
-│   ├── README.md
 │   ├── nginx/
 │   │   ├── mime.types
 │   │   ├── nginx.conf
@@ -83,7 +81,6 @@ aws-box/
     └── compose/
         └── platform/
             ├── .env
-            ├── README.md
             ├── docker-compose.yml
             ├── flask-bff/
             │   ├── .dockerignore
