@@ -52,11 +52,6 @@ DNS → NGINX → (static site OR reverse-proxy) → platform services
 
 ```text
 aws-box/
-├── README.md
-├── docs/
-│   ├── deploy.md
-│   ├── rescue.md
-│   └── workflow.md
 ├── etc/
 │   ├── README.md
 │   ├── nginx/
@@ -66,15 +61,111 @@ aws-box/
 │   │   └── sites-enabled/
 │   └── systemd/
 │       ├── logrotate.d/
-│       └── system/
-├── .gitignore
+│       └── system/systemd
 └── srv/
-    ├── compose/
-    │   └── platform/
     ├── webapps/
     │   ├── clients/
-    │   ├── platform/
-    │   └── README.md
+    |   │   ├── fruitfulnetworkdevelopment.com/
+    |   |   │   ├── data/
+    |   |   │   └── frontend/index.html
+    |   │   ├── cuyahogavalleycountrysideconservancy.org/
+    |   |   │   ├── data/
+    |   |   │   └── frontend/index.html
+    |   │   ├── trappfamilyfarm.com/
+    |   |   │   ├── data/
+    |   |   │   └── frontend/index.html
+    |   │   └── cuyahogaterravita.com/
+    |   |       ├── data/
+    |   |       └── frontend/index.html
+    │   └── platform/
+    |       ├── app.py
+    |       └── modules/
+    └── compose/
+        └── platform/
+            ├── .env
+            ├── README.md
+            ├── docker-compose.yml
+            ├── flask-bff/
+            │   ├── .dockerignore
+            │   ├── Dockerfile
+            │   ├── __pycache__/
+            │   │   └── tenant_registry.cpython-313.pyc
+            │   ├── app.py
+            │   ├── authz.py
+            │   ├── config.py
+            │   ├── data/
+            │   │   └── tenants/
+            │   │       ├── cuyahogaterravita/
+            │   │       │   └── tenant.json
+            │   │       ├── index.json
+            │   │       ├── platform/
+            │   │       │   └── tenant.json
+            │   │       └── tenant.schema.json
+            │   ├── db.py
+            │   ├── entrypoint.sh
+            │   ├── gunicorn.conf.py
+            │   ├── requirements.txt
+            │   ├── routes/
+            │   │   ├── __init__.py
+            │   │   ├── admin.py
+            │   │   ├── auth.py
+            │   │   ├── common.py
+            │   │   ├── tables.py
+            │   │   ├── tenant.py
+            │   │   └── user.py
+            │   ├── static/
+            │   │   └── admin/
+            │   │       └── admin.css
+            │   ├── templates/
+            │   │   ├── admin/
+            │   │   │   ├── archetypes.html
+            │   │   │   ├── index.html
+            │   │   │   ├── lists.html
+            │   │   │   ├── local_domains.html
+            │   │   │   ├── manifest.html
+            │   │   │   ├── samras_layouts.html
+            │   │   │   ├── services.html
+            │   │   │   ├── table_records.html
+            │   │   │   ├── tables.html
+            │   │   │   ├── tenant_detail.html
+            │   │   │   ├── tenants.html
+            │   │   │   └── user_management.html
+            │   │   ├── base.html
+            │   │   ├── forbidden.html
+            │   │   ├── landing.html
+            │   │   ├── not_provisioned.html
+            │   │   └── tenant/
+            │   │       ├── console.html
+            │   │       ├── console_animals.html
+            │   │       └── console_network.html
+            │   ├── tenant_registry.py
+            │   ├── tests/
+            │   └── utils/
+            │       ├── __init__.py
+            │       ├── general_tables.py
+            │       ├── mss.py
+            │       └── samras.py
+            ├── flask-bff.bak.20260125_160340/
+            │   ├── Dockerfile
+            │   ├── app.py
+            │   ├── entrypoint.sh
+            │   ├── gunicorn.conf.py
+            │   ├── requirements.txt
+            │   ├── static/
+            │   │   └── admin/
+            │   │       └── admin.css
+            │   └── templates/
+            │       ├── admin/
+            │       │   └── index.html
+            │       └── base.html
+            ├── keycloak/realm/
+            ├── platform-schema/
+            │   ├── 001_init.sql
+            │   ├── 002_mss_init.sql
+            │   └── 003_mss_profile_msn_id_text.sql
+            ├── platform-schema.bak.20260125_160340/
+                └── 001_init.sql
+
 ```
 
 ## Deployment philosophy
