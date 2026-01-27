@@ -72,7 +72,7 @@ erDiagram
   %% ---------------------------
   ARCHETYPE_ROWSET {
     uuid archetype_id FK
-    int  position "row ordinal"
+    int position "row ordinal"
     uuid row_local_id FK "local_id that names the row/entity"
   }
 
@@ -105,7 +105,7 @@ erDiagram
   %% ---------------------------
   SAMRAS_LAYOUT {
     text domain PK
-    int  version PK
+    int version PK
     bytea count_stream
     jsonb traversal_spec
   }
