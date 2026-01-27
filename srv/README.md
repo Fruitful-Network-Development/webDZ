@@ -22,38 +22,6 @@ orthogonal and composable.
   or data contracts.
 - **Operations Plane**: Runbooks, migrations, provisioning, and demo workflows.
 
-## Layout
-```text
-aws-box/
-├── README.md
-├── docs/
-│   ├── runbook.md
-│   └── etc-documentation/etc.md
-└── srv/
-    ├── webapps/
-    │   └── clients/
-    │       ├── fruitfulnetworkdevelopment.com/
-    │       ├── cuyahogavalleycountrysideconservancy.org/
-    │       ├── trappfamilyfarm.com/
-    │       └── cuyahogaterravita.com/
-    └── compose/
-        └── platform/
-            ├── docker-compose.yml
-            ├── .env
-            ├── rsync.filter
-            ├── platform-schema/
-            ├── scripts/
-            ├── keycloak/realm/
-            └── flask-bff/
-                ├── Dockerfile
-                ├── data/tenants/
-                ├── routes/
-                ├── templates/
-                ├── static/
-                ├── utils/
-                └── tests/
-```
-
 ## Architecture at a glance
 
 - **Services**: Keycloak (IdP), Flask BFF, Postgres (platform schema + Keycloak).
