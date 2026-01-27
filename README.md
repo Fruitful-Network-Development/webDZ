@@ -53,13 +53,28 @@ DNS → NGINX → (static site OR reverse-proxy) → platform services
 ```text
 aws-box/
 ├── README.md
+├── docs/
+│   ├── deploy.md
+│   ├── rescue.md
+│   └── workflow.md
 ├── etc/
+│   ├── README.md
 │   ├── nginx/
+│   │   ├── mime.types
+│   │   ├── nginx.conf
+│   │   ├── sites-available/
+│   │   └── sites-enabled/
 │   └── systemd/
+│       ├── logrotate.d/
+│       └── system/
+├── .gitignore
 └── srv/
+    ├── compose/
+    │   └── platform/
     ├── webapps/
-    ├── README.md
-    └── compose/platform/
+    │   ├── clients/
+    │   ├── platform/
+    │   └── README.md
 ```
 
 ## Deployment philosophy
