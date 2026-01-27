@@ -96,7 +96,7 @@ Define what belongs on the runtime surface and how it should be managed.
 ### What lives here
 
 - Client static sites under `/srv/webapps/clients/`.
-- Shared platform code under `/srv/webapps/platform/`.
+- Platform stack under `/srv/compose/platform/`.
 - Container stacks under `/srv/compose/`.
 
 ### What does not

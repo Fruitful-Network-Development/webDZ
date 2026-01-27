@@ -5,7 +5,6 @@ P .env.*
 P **/__pycache__/
 P **/*.pyc
 P **/.pytest_cache/
-P webapps/platform/venv/***
 P flask-bff/templates/admin/***
 P flask-bff/templates/tenant/***
 P rsync-excludes.txt
@@ -18,7 +17,6 @@ P rsync.filter
 - **/__pycache__/
 - **/*.pyc
 - **/.pytest_cache/
-- webapps/platform/venv/
 - rsync-excludes.txt
 - flask-bff/templates/admin/***
 - flask-bff/templates/tenant/***

@@ -17,23 +17,18 @@ git pull --ff-only
 If `git pull --ff-only` fails, stop (it means local drift). Don’t “fix” it in
 prod. Reset to origin (see the drift section below).
 
-### Deploy `/srv` payload (static sites + platform code)
+### Deploy `/srv` payload (static sites + platform stack)
 
 For the initial commit that only includes changes under `srv/`:
 ```bash
 sudo rsync -a --delete /home/admin/aws-box/srv/ /srv/
-sudo chown -R admin:admin /srv/webapps
+sudo chown -R admin:admin /srv/webapps /srv/compose
 ```
-, otherwise run:
-```bash
-sudo rsync -a --delete --exclude 'webapps/platform/venv' /home/admin/aws-box/srv/ /srv/
-```
-This prevents the deletion of /srv/webapps/platform/venv because it’s not in git.
 
 #### Dry run Test
 To check what files would be updated before deploying run:
 ```bash
-sudo rsync -av --delete --dry-run --exclude 'webapps/platform/venv' /home/admin/aws-box/srv/ /srv/
+sudo rsync -av --delete --dry-run /home/admin/aws-box/srv/ /srv/
 ```
 
 ### Deploy `/etc` payload (nginx, systemd, etc.)
@@ -63,8 +58,8 @@ systemd units (only if you changed `etc/systemd/system/*.service`):
 
 ```bash
 sudo systemctl daemon-reload
-sudo systemctl restart platform.service
-sudo systemctl status platform.service --no-pager
+sudo systemctl restart compose-platform.service
+sudo systemctl status compose-platform.service --no-pager
 ```
 
 ### Sanity checks
@@ -216,8 +211,8 @@ sudo systemctl enable --now nginx
 ```
 Create live app directories:
 ```
-sudo mkdir -p /srv/webapps/platform /srv/webapps/clients
-sudo chown -R admin:admin /srv/webapps
+sudo mkdir -p /srv/webapps/clients /srv/compose/platform
+sudo chown -R admin:admin /srv/webapps /srv/compose
 ```
 
 ### 2) Set up GitHub access from the server
@@ -277,40 +272,21 @@ sudo rsync -a /home/admin/aws-box/srv/webapps/clients/ /srv/webapps/clients/
 sudo chown -R admin:admin /srv/webapps/clients
 ```
 
-### 5) Deploy platform backend code (separately)
-Platform skeleton comes from aws-box
-If `/home/admin/aws-box/srv/webapps/platform/... exists`:
+### 5) Deploy platform stack (Compose)
+Platform stack comes from aws-box:
 ```bash
-sudo rsync -a --delete /home/admin/aws-box/srv/webapps/platform/ /srv/webapps/platform/
+sudo rsync -a --delete /home/admin/aws-box/srv/compose/platform/ /srv/compose/platform/
+sudo chown -R admin:admin /srv/compose/platform
 ```
 
-### 6) Create the platform venv and install requirements
-Platform skeleton comes from aws-box
-If `/home/admin/aws-box/srv/webapps/platform/... exists`:
+### 6) Start the platform services (Compose)
 ```bash
-cd /srv/webapps/platform
-python3 -m venv venv
-source venv/bin/activate
-pip install --upgrade pip
-pip install -r requirements.txt || true
-deactivate
-```
-If you don’t have `requirements.txt`, you must add one. As a stopgap you can install minimums:
-```bash
-source /srv/webapps/platform/venv/bin/activate
-pip install flask gunicorn requests
-deactivate
-```
-
-### 7) Start systemd services (platform + nginx)
-If you have `platform.service` deployed already and `ExecStart` points to `/srv/webapps/platform/venv/bin/gunicorn`:
-```bash
-sudo systemctl enable --now platform.service
-sudo systemctl status platform.service --no-pager
+cd /srv/compose/platform
+docker compose up -d
 ```
 Verify local backend:
 ```bash
-curl -sS -I http://127.0.0.1:8000/ | head
+curl -sS -I http://127.0.0.1:8001/health | head
 ```
 
 ### 8) TLS (certbot) after DNS and port 80 are correct
@@ -412,20 +388,19 @@ If repo has srv/webapps/clients/...:
 sudo rsync -a --delete /home/admin/aws-box/srv/webapps/clients/ /srv/webapps/clients/
 sudo chown -R admin:admin /srv/webapps/clients
 ```
-#### Deploy platform skeleton (only if you keep platform code in aws-box)
-If repo has srv/webapps/platform/... and you intend to deploy it:
+#### Deploy platform stack (Compose)
+If repo has srv/compose/platform/...:
 ```bash
-sudo rsync -a --delete /home/admin/aws-box/srv/webapps/platform/ /srv/webapps/platform/
-sudo chown -R admin:admin /srv/webapps/platform
-sudo systemctl restart platform.service
-
+sudo rsync -a --delete /home/admin/aws-box/srv/compose/platform/ /srv/compose/platform/
+sudo chown -R admin:admin /srv/compose/platform
+cd /srv/compose/platform
+docker compose up -d
 ```
-If your platform code lives in a separate repo, do not overwrite /srv/webapps/platform from aws-box.
 
 ### Quick end-to-end checks
 Local (on the server):
 ```bash
-curl -sS -I http://127.0.0.1:8000/ | head -20
+curl -sS -I http://127.0.0.1:8001/health | head -20
 curl -sS -I http://localhost/ | head -20
 ```
 From your laptop:
