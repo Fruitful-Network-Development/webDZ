@@ -27,14 +27,6 @@ seeding of the MSS profile.
 
 ```mermaid
 erDiagram
-  %% ============================================================
-  %% 7 TABLE TYPES (MSS) — ERD VIEW
-  %% Example: legal_entity + natural_entity
-  %% ============================================================
-
-  %% ---------------------------
-  %% (1) MSS Profile Table
-  %% ---------------------------
   MSS_PROFILE {
     uuid user_id PK "Keycloak principal (UUID)"
     text msn_id "SAMRAS/MSN entity id (TEXT)"
@@ -45,42 +37,23 @@ erDiagram
     timestamptz updated_at
   }
 
-  %% ---------------------------
-  %% (2) Local Domain Table
-  %% "All local_id titles live here"
-  %% ---------------------------
   LOCAL_DOMAIN {
     uuid local_id PK
     text title
   }
 
-  %% ---------------------------
-  %% (3) Manifest Table
-  %% binds a local table id to an archetype
-  %% ---------------------------
   MANIFEST {
     uuid table_id PK "local_id of the table name"
     text tenant_id
     uuid archetype_id FK
   }
 
-  %% ---------------------------
-  %% (4) Archetype Tables (lists of row-local_ids)
-  %% For each archetype, define which local_ids are valid rows
-  %% NOTE: physically this may be a provisioned table per archetype
-  %% or a generic table keyed by archetype_id.
-  %% ---------------------------
   ARCHETYPE_ROWSET {
     uuid archetype_id FK
     int position "row ordinal"
     uuid row_local_id FK "local_id that names the row/entity"
   }
 
-  %% ---------------------------
-  %% (5) General Tables
-  %% provisioned, per tenant: <msn_id><table_local_id>
-  %% records store canonical nested JSON as JSONB
-  %% ---------------------------
   GENERAL_TABLE_REGISTRY {
     uuid id PK
     text tenant_id
@@ -99,10 +72,6 @@ erDiagram
     timestamptz updated_at
   }
 
-  %% ---------------------------
-  %% (6) SAMRAS Tables
-  %% domain layouts/count-streams; validates SAMRAS addresses
-  %% ---------------------------
   SAMRAS_LAYOUT {
     text domain PK
     int version PK
@@ -110,10 +79,6 @@ erDiagram
     jsonb traversal_spec
   }
 
-  %% ---------------------------
-  %% (7) SAMRAS Archetype Tables
-  %% archetypes for SAMRAS domains + allowed modes
-  %% ---------------------------
   SAMRAS_ARCHETYPE {
     uuid id PK
     text domain
@@ -121,9 +86,6 @@ erDiagram
     text description
   }
 
-  %% ---------------------------
-  %% Archetype definitions (core registry)
-  %% ---------------------------
   ARCHETYPE {
     uuid id PK
     text tenant_id
@@ -141,61 +103,32 @@ erDiagram
     jsonb constraints
   }
 
-  %% ------------------------------------------------------------
   %% RELATIONSHIPS
-  %% ------------------------------------------------------------
 
-  %% MSS profile informs which msn_id "owns" the local namespace
-  %% and drives table name prefixing + console scoping
   MSS_PROFILE ||--o{ GENERAL_TABLE_REGISTRY : "owner msn_id scopes"
   MSS_PROFILE ||--o{ GENERAL_RECORD : "author/actor via session msn_id"
 
-  %% Local Domain is the naming layer for local identifiers
   LOCAL_DOMAIN ||--o{ MANIFEST : "table_id (local_id)"
   LOCAL_DOMAIN ||--o{ GENERAL_TABLE_REGISTRY : "table_local_id"
   LOCAL_DOMAIN ||--o{ GENERAL_RECORD : "table_local_id"
   LOCAL_DOMAIN ||--o{ ARCHETYPE_ROWSET : "row_local_id"
 
-  %% Archetype registry + fields
   ARCHETYPE ||--o{ ARCHETYPE_FIELD : "defines fields"
   ARCHETYPE ||--o{ ARCHETYPE_ROWSET : "row membership"
   ARCHETYPE ||--o{ MANIFEST : "bound by"
 
-  %% Manifest binds a provisioned general table to an archetype
   MANIFEST }o--|| ARCHETYPE : "archetype_id"
 
-  %% SAMRAS constraints used by archetype fields & validation
   SAMRAS_LAYOUT ||--o{ SAMRAS_ARCHETYPE : "domain policies"
 
-  %% ============================================================
-  %% EXAMPLE INSTANTIATION (conceptual notes)
-  %% ============================================================
-  %% - LOCAL_DOMAIN contains local_ids for:
-  %%   "legal_entity" table name, "natural_entity" table name,
-  %%   row titles like "Cuyahoga Valley Countryside Conservancy",
-  %%   "Marilyn Wotowiec", etc.
-  %%
-  %% - ARCHETYPE rows:
-  %%   ARCHETYPE(name="legal_entity") + fields like:
-  %%     msn_id (system_id ref_domain="msn")
-  %%     local_id (system_id ref_domain="local")
-  %%     aliases (array[text])
-  %%     meta (json)
-  %%
-  %%   ARCHETYPE(name="natural_entity") + similar fields.
-  %%
-  %% - ARCHETYPE_ROWSET lists which row_local_id values are valid
-  %%   entities for each archetype (your "archetype table" concept).
-  %%
-  %% - MANIFEST binds:
-  %%   table_id=<local_id for 'legal_entity_table'> -> archetype_id (legal_entity)
-  %%   table_id=<local_id for 'natural_entity_table'> -> archetype_id (natural_entity)
-  %%
-  %% - GENERAL_TABLE_REGISTRY provisions each table for tenant_id.
-  %% - GENERAL_RECORD stores each entity instance as JSONB.
-  %%
-  %% - SAMRAS_LAYOUT + SAMRAS_ARCHETYPE validate msn_id/taxa_id
-  %%   fields when ref_domain is samras-based.
+  %% EXAMPLE INSTANTIATION NOTES
+  %% - LOCAL_DOMAIN contains local_ids for legal_entity, natural_entity, etc.
+  %% - ARCHETYPE rows define fields like msn_id, local_id, aliases.
+  %% - ARCHETYPE_ROWSET lists valid entities for each archetype.
+  %% - MANIFEST binds table_ids to archetypes.
+  %% - GENERAL_TABLE_REGISTRY provisions tables per tenant.
+  %% - GENERAL_RECORD stores entity instances.
+  %% - SAMRAS_LAYOUT validates msn_id fields.
 ```
 
 ## Schema as data
