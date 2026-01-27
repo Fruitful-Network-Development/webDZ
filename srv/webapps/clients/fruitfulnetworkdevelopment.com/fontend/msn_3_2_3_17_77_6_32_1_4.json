@@ -1,0 +1,9 @@
+{
+  "MSS": {
+    "frontend_root": "frontend",
+    "default_entry": "index.html",
+    "backend_data": [
+      "3_2_3_17_77_19_10_1_1.json"
+    ]
+  }
+}

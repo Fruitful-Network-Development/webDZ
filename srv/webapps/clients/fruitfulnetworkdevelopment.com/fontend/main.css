@@ -1,0 +1,242 @@
+/* ======================================
+   IMPORTS
+  ====================================== */
+@import "css/utilities.css";
+@import "css/home.css";
+@import "css/webservices.css";
+@import "css/research.css";
+@import "css/dossier.css";
+
+@import "css/sections/header.css";
+@import "css/sections/hero.css";
+@import "css/sections/target.css";
+@import "css/sections/process.css";
+@import "css/sections/personnel.css";
+@import "css/sections/technology.css";
+@import "css/sections/footer.css";
+
+/* ======================================
+   RESET & BASE STYLES
+   ====================================== */
+html, body, h1, h2, p, ul, ol {
+   margin: 0;
+   padding: 0;
+}
+*,
+*::before,
+*::after {
+   box-sizing: border-box;
+}
+
+body {
+   margin: 0;
+   font-family: "Lato", sans-serif;
+   background-color: var(--mosswash);
+   color: var(--nero);
+   --font-size-base: 100%;
+   --line-height-base: 1.5;
+   font-weight: normal;
+}
+
+/* ======================================
+   CSS VARIABLES
+   ====================================== */
+:root {
+   /* Color Tokens */
+   --nero: #353535;
+   --nero-light: #464646;
+   --silverback: #afafaa;
+   --mosswash: #f3f2e5;
+   --offwhite: #f0eedc;
+   --pattens: #cfe2f3;
+   --mutedpattens: #e4f5ff;
+   --gray: #717171;
+   --cadet: #8ea3af;
+
+   --blue-sour: #1e6c93;
+
+   --camel: #8f6448;
+   --walnut: #644332;
+   --appleseed: #a67c52;
+   --collard: #8b6500;
+
+   --red: #a32023;
+   --terracottaroof: #a34547;
+   --Kuwazome: #532728;
+
+   --yellow: #d89c1f;
+   --leather: #c8a255;
+   --riverpanned: #ac7e1e;
+
+   --green: #115f45;
+   --verdant: #364640;
+   --camo: #7c8f4b;
+   --unakite: #71a34b;
+
+   --blue: #1d3a65;
+   --incremental: #113056;
+   --kakitsubata: #3d67a5;
+
+   --purple: #3f1f4a;
+   --royale: #490072;
+   --lilac: #7b4b8c;
+   --portage: #8f86d8;
+}
+
+/* ======================================
+   LAYOUT ELEMENTS
+   ====================================== */
+main {
+   width: 100vw;
+   margin: 0 auto;
+   display: flex;
+   flex-direction: column;
+   gap: 2rem;
+}
+
+section {
+   --section-width: min(60rem, 100%);
+   width: var(--section-width);
+   margin: 0 auto;
+   padding: 0.95 * var(--section-width);
+   background-color: transparent;
+}
+
+@media (max-width: 768px) {
+   section {
+      width: 100%;
+   }
+}
+
+/* ======================================
+   TYPOGRAPHY
+   ====================================== */
+h1 {
+   text-align: center;
+   font-size: 1.75rem;
+   margin: 0 1rem 0 0;
+}
+
+h2 {
+   text-align: center;
+   margin-top: 0;
+   margin-bottom: 1rem;
+   font-size: 1.5rem;
+}
+
+h3 {
+   font-size: 1.1rem;
+   font-weight: 700;
+   text-transform: uppercase;
+   letter-spacing: 0.05em;
+   margin-top: 0;
+}
+
+p {
+   margin: 0 1.25rem 0 0;
+   font-size: 0.95rem;
+}
+
+a {
+   color: inherit;
+   text-decoration: none;
+}
+
+a:hover {
+   text-decoration: underline;
+}
+
+.muted {
+   color: var(--gray);
+   font-style: italic;
+}
+
+/* ======================================
+   IMAGES
+   ====================================== */
+img {
+   width: 100%;
+   height: 100%;
+   object-fit: contain;
+   display: block;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   overflow: hidden;
+}
+
+.img-container {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   overflow: hidden;
+}
+   
+img .cover {
+   object-fit: cover;
+}
+
+/* ======================================
+   BUTTONS
+   ====================================== */
+.btn {
+   display: inline-flex;
+   align-items: center;
+   justify-content: center;
+   gap: 0.25rem;
+   padding: 0.5rem 0.75rem;
+   border-radius: 0.25rem;
+   border: 1px solid transparent;
+   text-decoration: none;
+   font-weight: 600;
+   line-height: 1.2;
+}
+
+.btn:hover {
+   text-decoration: none;
+   filter: brightness(1.05);
+}
+
+.btn--primary {
+   background-color: var(--blue);
+   border-color: var(--incremental);
+   color: var(--offwhite);
+}
+
+.btn--secondary {
+   background-color: var(--yellow);
+   border-color: var(--riverpanned);
+   color: var(--nero);
+}
+
+/* ======================================
+      OTHER COMPONENTS
+====================================== */
+
+.section-aside {
+   margin: 0;
+   width: 100vw;
+}
+
+.aside__text {
+   font-style: italic;
+   text-align: center;
+   margin: 0 auto;
+   width: 85vw;
+   padding: 0 1rem;
+}
+
+.section-aside hr {
+   border-top: 1px solid var(--silverback);
+}
+
+.divider {
+   border-top: 1px solid var(--silverback);
+   margin: 0 auto;
+   width: 90vw;
+}
+
+.box {
+   border: 1px solid var(--silverback);
+
+}
