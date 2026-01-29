@@ -7,23 +7,23 @@
     "entity_type": "legal_entity"
 },
 {
-    "msn_id": "HERE",
     "title": "fnd.conspectus.facilitator.3_2_3_17_77_6_32_1_4.json",
 
     "platform_membership": "platform_facilitator",
-    "platform_confiquration": "fnd.muniment.facilitator.3_2_3_17_77_6_32_1_4",
+    "platform_confiquration": "fnd.garland.facilitator.3_2_3_17_77_6_32_1_4",
     "dns_id": "fruitfulnetworkdevelopment.com",
     "root": "frontend",
     "root_entry": "index.html",
 }
 { 
-    "msn_id": "HERE",
-    "title": "fnd.florilegium.facilitator.3_2_3_17_77_6_32_1_4"
+    "title": "mss.florilegium.3_2_3_17_77_6_32_1_4"
+    
     {"title": "mss.compendium.3_2_3_17_77_6_32_1_4", "archetype": "schema", "muniment": "meta"},
-    {"title": "mss.compendium.3_2_3_17_77_6_32_1_4", "archetype": "schema", "muniment": "meta"},
-
-    {"title": "fnd.body.conspectus_collectanea", "table": "HERE", "archetype_manifest": "HERE", "muniment": "conservative"},
-    {"title": "fnd.body.comendium_collectanea", "table": "HERE", "archetype_manifest": "HERE", "muniment": "conservative"},
+    {"title": "mss.anthology.3_2_3_17_77_6_32_1_4", "archetype": "schema", "muniment": "meta"},
+    {"title": "fnd.conspectus.facilitator.3_2_3_17_77_6_32_1_4", "archetype": "schema", "muniment": "meta"},
+    {"title": "fnd.garland.facilitator.3_2_3_17_77_6_32_1_4", "archetype": "schema", "muniment": "meta"},
+    {"title": "fnd.conspectus_collectanea.facilitator", "table": "HERE", "archetype_manifest": "HERE", "muniment": "conservative"},
+    {"title": "fnd.comendium_collectanea.facilitator", "table": "HERE", "archetype_manifest": "HERE", "muniment": "conservative"},
     {"title": "crops", "table": "2_11_2", "archetype_manifest": "2_11_1", "muniment": "restrictive"},
     {"title": "natural_entity", "table": "4_1_2", "archetype_manifest": "4_1_1", "muniment": "hermeneutic"},
     {"title": "legal_entity", "table": "4_2_2", "archetype_manifest": "4_2_1", "muniment": "hermeneutic"},
