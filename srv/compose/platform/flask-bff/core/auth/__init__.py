@@ -1,2 +1,0 @@
-"""Auth interfaces and helpers."""
-
