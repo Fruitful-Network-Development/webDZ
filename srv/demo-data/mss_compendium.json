@@ -1,13 +1,8 @@
 { 
     "title": "fruitful_network_development",
     "msn_id": "3_2_3_17_77_6_32_1_4",
-    "local_id": "3_2_3_17_77_6_32_1_4_1",
-    "title": "Fruitful Network Development LLC",
-    "root": "frontend",
-    "root_entry": "index.html"
-    "dns_id": "fruitfulnetworkdevelopment.com",
     "exposed": ["3_2_3_17_77_6_32_1_4_5_2", "3_2_3_17_77_6_32_1_4_6_2"],
-    "mss_compendium": "3_2_3_17_77_6_32_1_4_1_1",
-    "platform_manifest": "3_2_3_17_77_6_32_1_4_1_3",
-    "platform_local": "3_2_3_17_77_6_32_1_4_1_1_4"
+    "conditionally_exose_table": "HERE",
+    "unconditionaly_expose_table": "HERE",
+    "restricted_expose_table": "HERE",
 }
