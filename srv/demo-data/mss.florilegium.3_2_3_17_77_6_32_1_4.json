@@ -1,0 +1,14 @@
+{ 
+    {"title": "mss.compendium.3_2_3_17_77_6_32_1_4", "archetype": "schema", "muniment": "meta"},
+    {"title": "mss.anthology.3_2_3_17_77_6_32_1_4", "archetype": "schema", "muniment": "meta"},
+    {"title": "fnd.conspectus.facilitator.3_2_3_17_77_6_32_1_4", "archetype": "schema", "muniment": "meta"},
+    {"title": "fnd.garland.facilitator.3_2_3_17_77_6_32_1_4", "archetype": "schema", "muniment": "meta"},
+    {"title": "fnd.conspectus_collectanea.facilitator", "table": "HERE", "archetype_manifest": "HERE", "muniment": "conservative"},
+    {"title": "fnd.comendium_collectanea.facilitator", "table": "HERE", "archetype_manifest": "HERE", "muniment": "conservative"},
+    {"title": "crops", "table": "2_11_2", "archetype_manifest": "2_11_1", "muniment": "restrictive"},
+    {"title": "natural_entity", "table": "4_1_2", "archetype_manifest": "4_1_1", "muniment": "hermeneutic"},
+    {"title": "legal_entity", "table": "4_2_2", "archetype_manifest": "4_2_1", "muniment": "hermeneutic"},
+    {"title": "administrative_entity", "table": "4_3_2", "archetype_manifest": "4_3_1", "muniment": "hermeneutic"},
+    {"title": "administrative_division", "table": "5_2", "archetype_manifest": "5_1", "muniment": "libral"},
+    {"title": "taxonomy", "table": "6_1_2", "archetype_manifest": "6_1_1", "muniment": "libral"}
+}
