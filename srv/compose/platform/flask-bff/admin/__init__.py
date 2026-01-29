@@ -1,4 +1,4 @@
-"""Compatibility shim for admin routes."""
+"""Admin UI and API routes."""
 from admin.routes import admin_bp
 
 __all__ = ["admin_bp"]

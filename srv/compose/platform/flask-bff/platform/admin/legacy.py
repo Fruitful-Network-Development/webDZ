@@ -1,5 +1,4 @@
-"""Compatibility imports for legacy admin routes."""
-from routes.admin import admin_bp
+"""Compatibility shim for admin blueprint."""
+from admin.routes import admin_bp
 
 __all__ = ["admin_bp"]
-

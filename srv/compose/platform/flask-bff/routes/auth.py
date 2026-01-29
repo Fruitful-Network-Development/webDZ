@@ -12,9 +12,9 @@ import requests
 from flask import Blueprint, jsonify, redirect, request, session, url_for
 
 from config import OIDC_CLIENT_ID, OIDC_CLIENT_SECRET, OIDC_ISSUER, PUBLIC_BASE_URL
+from core.mss_profile import load_user_hierarchy
 from routes.common import load_tenant_or_error
-from tenant_registry import TenantRegistryError, load_tenant, validate_return_to
-from utils.mss import load_user_hierarchy
+from tenants.registry import TenantRegistryError, load_tenant, validate_return_to
 
 
 auth_bp = Blueprint("auth", __name__)
@@ -63,6 +63,7 @@ def _callback_url() -> str:
 # ----------------------------
 # JWT helpers (no signature verification)
 # ----------------------------
+
 
 def _b64url_decode(s: str) -> bytes:
     s += "=" * (-len(s) % 4)
