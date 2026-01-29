@@ -5,7 +5,8 @@ from flask import Blueprint, abort, redirect, render_template, request
 from jinja2 import TemplateNotFound
 
 from config import DEMO_TABLE_ID
-from routes.common import enabled_console_modules, require_tenant_console_access
+from tenants.access import require_tenant_console_access
+from tenants.console_modules import enabled_console_modules
 
 
 tenant_bp = Blueprint("tenant", __name__)
@@ -62,4 +63,3 @@ def tenant_console_module_slash(tenant_id: str, module: str):
     qs = request.query_string.decode("utf-8")
     suffix = f"?{qs}" if qs else ""
     return redirect(f"/t/{tenant_id}/console/{module}{suffix}")
-

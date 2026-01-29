@@ -6,16 +6,18 @@ from pathlib import Path
 from flask import Flask, jsonify, redirect, render_template, session
 
 import db
-from authz import get_current_user, is_root_admin
+from admin import admin_bp
+from core.policy import get_current_user, is_root_admin
 from config import COOKIE_SECURE, SESSION_SECRET
 from core.config.data_env import DATA_ENV_ROOT
 from adapters.filesystem_json.repository import FilesystemJsonDataEnvRepository
-from platform.admin import admin_bp, admin_data_env_bp
+from platform.admin import admin_data_env_bp
 from routes.auth import auth_bp
-from routes.common import require_login, require_tenant_access, require_tenant_context
+from routes.common import require_login, require_tenant_context
 from routes.tables import seed_demo_data, tables_bp
 from routes.tenant import tenant_bp
 from routes.user import user_bp
+from tenants.access import require_tenant_access
 
 
 def create_app() -> Flask:

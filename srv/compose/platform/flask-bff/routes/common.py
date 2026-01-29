@@ -3,20 +3,21 @@ from __future__ import annotations
 
 from functools import wraps
 from typing import Any, Dict, Optional
-from urllib.parse import urlencode
 
-from flask import abort, jsonify, redirect, request, session
+from flask import abort, jsonify, request, session
 
-from authz import (
+from core.policy import (
+    forbidden_response,
     get_current_user,
     is_root_admin,
     is_tenant_admin,
     log_authz_decision,
     not_authenticated_response,
-    forbidden_response,
     not_provisioned_response,
 )
-from tenant_registry import (
+from tenants.access import require_tenant_access, require_tenant_console_access
+from tenants.console_modules import enabled_console_modules
+from tenants.registry import (
     TenantNotFoundError,
     TenantRegistryError,
     TenantValidationError,
@@ -114,19 +115,6 @@ def require_realm_role(role: str):
     return deco
 
 
-def require_tenant_access(tenant_id: str):
-    u = current_user()
-    if not u:
-        return not_authenticated_response()
-    if not u.get("msn_id"):
-        return not_provisioned_response()
-    if is_root_admin(u):
-        return None
-    if is_tenant_admin(u, tenant_id):
-        return None
-    return forbidden_response()
-
-
 def unwrap_api_response(result: Any) -> tuple[dict[str, Any], int]:
     if isinstance(result, tuple):
         response, status = result
@@ -137,52 +125,25 @@ def unwrap_api_response(result: Any) -> tuple[dict[str, Any], int]:
     return payload or {}, status
 
 
-def enabled_console_modules(tenant_cfg: dict[str, Any]) -> list[str]:
-    modules = tenant_cfg.get("console_modules") or {}
-    if isinstance(modules, dict):
-        return [name for name, enabled in modules.items() if enabled]
-    return list(modules)
-
-
-def require_tenant_console_access(tenant_id: str) -> tuple[dict[str, Any], Optional[Any]]:
-    tenant_cfg = load_tenant_or_abort(tenant_id)
-    user = current_user()
-    if not user:
-        next_path = request.full_path
-        if next_path.endswith("?"):
-            next_path = next_path[:-1]
-        log_authz_decision(
-            action="tenant_console_access",
-            tenant_id=tenant_id,
-            decision="deny",
-            reason="missing_user",
-            checks=["session_user"],
-        )
-        login_url = f"/login?{urlencode({'tenant': tenant_id, 'return_to': next_path})}"
-        return tenant_cfg, redirect(login_url)
-    if not user.get("msn_id"):
-        log_authz_decision(
-            action="tenant_console_access",
-            tenant_id=tenant_id,
-            decision="deny",
-            reason="not_provisioned",
-            checks=["root_admin_role", "tenant_admin_role", "mss_role"],
-        )
-        return tenant_cfg, not_provisioned_response()
-    if not (is_root_admin(user) or is_tenant_admin(user, tenant_id)):
-        log_authz_decision(
-            action="tenant_console_access",
-            tenant_id=tenant_id,
-            decision="deny",
-            reason="missing_tenant_access",
-            checks=["root_admin_role", "tenant_admin_role", "mss_role"],
-        )
-        return tenant_cfg, forbidden_response()
-    log_authz_decision(
-        action="tenant_console_access",
-        tenant_id=tenant_id,
-        decision="allow",
-        reason="authorized",
-        checks=["root_admin_role", "tenant_admin_role", "mss_role"],
-    )
-    return tenant_cfg, None
+__all__ = [
+    "current_user",
+    "enabled_console_modules",
+    "forbidden_response",
+    "get_current_user",
+    "is_root_admin",
+    "is_tenant_admin",
+    "load_tenant_or_abort",
+    "load_tenant_or_error",
+    "log_authz_decision",
+    "not_authenticated_response",
+    "not_provisioned_response",
+    "json_body",
+    "require_fields",
+    "require_login",
+    "require_realm_role",
+    "require_tenant_access",
+    "require_tenant_admin",
+    "require_tenant_console_access",
+    "require_tenant_context",
+    "unwrap_api_response",
+]
