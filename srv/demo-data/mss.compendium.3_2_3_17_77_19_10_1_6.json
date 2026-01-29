@@ -1,0 +1,18 @@
+{ 
+    "msn_id": "3_2_3_17_77_19_10_1_6",
+    "title": "trapp_family_farm",
+    "florilegium": "fnd.florilegium.tenant.3_2_3_17_77_19_10_1_6",
+    "anthology": "mss.anthology.3_2_3_17_77_19_10_1_6",
+    "standardization": "fnd.tenant.ten.3_2_3_17_77_19_10_1_6.json",
+    "entity_type": "legal_entity"
+},
+{
+    "msn_id": "HERE",
+    "title": "fnd.conspectus.tenant.3_2_3_17_77_19_10_1_6.json",
+
+    "platform_membership": "platform_tenant",
+    "platform_confiquration": "fnd.muniment.tenant.3_2_3_17_77_6_32_1_4",
+    "dns_id": "trappfamilyfarm.com",
+    "root_path": "/srv/webapps/clients/trappfamilyfarm.com/frontend/",
+    "root_entry": "index.html",
+}
