@@ -1,12 +1,16 @@
 """Flask BFF (Keycloak-only, DB-free)."""
 from __future__ import annotations
 
+from pathlib import Path
+
 from flask import Flask, jsonify, redirect, render_template, session
 
 import db
 from authz import get_current_user, is_root_admin
 from config import COOKIE_SECURE, SESSION_SECRET
-from routes.admin import admin_bp
+from core.config.data_env import DATA_ENV_ROOT
+from adapters.filesystem_json.repository import FilesystemJsonDataEnvRepository
+from platform.admin import admin_bp, admin_data_env_bp
 from routes.auth import auth_bp
 from routes.common import require_login, require_tenant_access, require_tenant_context
 from routes.tables import seed_demo_data, tables_bp
@@ -25,6 +29,10 @@ def create_app() -> Flask:
         SESSION_COOKIE_HTTPONLY=True,
         SESSION_COOKIE_SAMESITE="Lax",
         SESSION_COOKIE_SECURE=COOKIE_SECURE,
+    )
+
+    app.extensions["data_env"] = FilesystemJsonDataEnvRepository(
+        Path(DATA_ENV_ROOT)
     )
 
     # Flask versions differ on lifecycle hooks; avoid before_serving/after_serving.
@@ -87,6 +95,7 @@ def create_app() -> Flask:
 
     app.register_blueprint(auth_bp)
     app.register_blueprint(admin_bp)
+    app.register_blueprint(admin_data_env_bp)
     app.register_blueprint(tables_bp)
     app.register_blueprint(user_bp)
     app.register_blueprint(tenant_bp)

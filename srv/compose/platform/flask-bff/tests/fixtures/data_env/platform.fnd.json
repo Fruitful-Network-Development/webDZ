@@ -1,0 +1,7 @@
+{
+  "platform.fnd": {
+    "msn_id": "platform",
+    "root": "frontend",
+    "root_entry": "index.html"
+  }
+}

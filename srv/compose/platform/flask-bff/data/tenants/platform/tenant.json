@@ -9,6 +9,7 @@
   "oidc_client_id": "flask-bff",
   "oidc_client_secret_env": "OIDC_CLIENT_SECRET",
   "console_modules": {
-    "animals": true
+    "animals": true,
+    "visualizations": true
   }
 }

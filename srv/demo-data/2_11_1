@@ -1,0 +1,7 @@
+{ 
+  "3_2_3_17_77_6_32_1_4_2_11_1": [
+    { "system_id": "local", "value_type": "text", "depth": "4"},
+    { "system_id": "nominal", "value_type": "text", "depth": "2048"},
+    { "system_id": "array", "value_type": "256_char", "depth": "16"}
+    ]
+}

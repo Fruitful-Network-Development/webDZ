@@ -19,7 +19,16 @@ SCHEMA_DIR = APP_DIR.parent / "platform-schema"
 
 def _purge_modules():
     for name in list(sys.modules.keys()):
-        if name in {"app", "db", "config"} or name.startswith("routes") or name.startswith("utils"):
+        if (
+            name in {"app", "db", "config"}
+            or name.startswith("routes")
+            or name.startswith("utils")
+            or name.startswith("core")
+            or name.startswith("adapters")
+            or name.startswith("platform")
+            or name.startswith("tenant")
+            or name.startswith("services")
+        ):
             sys.modules.pop(name, None)
 
 
@@ -28,6 +37,10 @@ def load_app(monkeypatch, db_url=None):
     monkeypatch.setenv("OIDC_CLIENT_ID", "flask-bff")
     monkeypatch.setenv("OIDC_CLIENT_SECRET", "secret")
     monkeypatch.setenv("SESSION_SECRET", "test-secret")
+    monkeypatch.setenv(
+        "DATA_ENV_ROOT",
+        str(Path(__file__).resolve().parent / "fixtures" / "data_env"),
+    )
     if db_url:
         monkeypatch.setenv("PLATFORM_DB_URL", db_url)
 

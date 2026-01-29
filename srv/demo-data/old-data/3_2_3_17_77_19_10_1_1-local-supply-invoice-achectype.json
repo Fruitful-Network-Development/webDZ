@@ -1,0 +1,12 @@
+{
+    "3_2_3_17_77_19_10_1_1-local-supply-invoice-achectype": [
+        { "system_id": "statonomy", "value_type": "text", "depth": "HERE", "name": "msn_id"},
+        { "system_id": "local", "value_type": "text", "depth": "HERE", "name": "local_id"},
+        { "system_id": "local", "value_type": "text", "depth": "HERE", "name": "product_id"},
+        { "system_id": "taxonomy", "value_type": "text", "depth": "HERE", "name": "taxonomy_id"},
+        { "system_value": "fiat_currency", "value_type": "text", "depth": "16", "name": "price"},
+        { "system_value": "mass", "value_type": "text", "depth": "16", "name": "quantity"},
+        { "system_value": "timestamp_value", "value_type": "text", "depth": "16", "name": "date"},
+        { "system_value": "array", "value_type": "text", "depth": "256, 256", "name": "batch_list"}
+    ]
+}

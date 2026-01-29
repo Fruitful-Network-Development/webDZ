@@ -1,0 +1,9 @@
+{
+    "3_2_3_17_77_19_10_1_1-local-propagule-archetype": [
+        { "system_value": "local", "value_type": "text", "depth": "HERE", "name": "roation_group"},
+        { "system_value": "local", "value_type": "text", "depth": "HERE", "name": "propigation"},
+        { "system_value": "local", "value_type": "text", "depth": "HERE", "name": "generation"},
+        { "system_value": "local", "value_type": "text", "depth": "HERE", "name": "ownership"},
+        { "system_value": "local", "value_type": "text", "depth": "HERE", "name": "unit_density"}
+    ]
+}

@@ -9,6 +9,10 @@ def _load_app(monkeypatch):
     monkeypatch.setenv("OIDC_CLIENT_ID", "flask-bff")
     monkeypatch.setenv("OIDC_CLIENT_SECRET", "secret")
     monkeypatch.setenv("SESSION_SECRET", "test-secret")
+    monkeypatch.setenv(
+        "DATA_ENV_ROOT",
+        str(Path(__file__).resolve().parent / "fixtures" / "data_env"),
+    )
 
     requests_stub = types.SimpleNamespace(
         get=lambda *args, **kwargs: (_ for _ in ()).throw(RuntimeError("requests not available")),

@@ -11,6 +11,7 @@
     "schema_builder": true,
     "data_entry": true,
     "animals": true,
-    "network": true
+    "network": true,
+    "visualizations": true
   }
 }
