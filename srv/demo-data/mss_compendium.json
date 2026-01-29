@@ -8,7 +8,6 @@
     "dns_id": "fruitfulnetworkdevelopment.com",
     "exposed": ["3_2_3_17_77_6_32_1_4_5_2", "3_2_3_17_77_6_32_1_4_6_2"],
     "mss_compendium": "3_2_3_17_77_6_32_1_4_1_1",
-    "fnd_compendium": "3_2_3_17_77_6_32_1_4_1_2",
     "platform_manifest": "3_2_3_17_77_6_32_1_4_1_3",
     "platform_local": "3_2_3_17_77_6_32_1_4_1_1_4"
 }
