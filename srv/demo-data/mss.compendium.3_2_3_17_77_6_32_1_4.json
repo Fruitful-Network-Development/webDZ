@@ -1,50 +1,33 @@
 { 
     "msn_id": "3_2_3_17_77_6_32_1_4",
     "title": "fruitful_network_development",
-    "exposed": ["3_2_3_17_77_6_32_1_4_5_2", "3_2_3_17_77_6_32_1_4_6_2"],
-    "data_api_muniment_libral": "mss.muniment_libral.3_2_3_17_77_6_32_1_4",
-    "data_api_muniment_conservative": "mss.muniment_conservative.3_2_3_17_77_6_32_1_4",
-    "local_domain_anthology": "mss.anthology.3_2_3_17_77_6_32_1_4"
+    "florilegium": "fnd.florilegium.facilitator.3_2_3_17_77_6_32_1_4",
+    "anthology": "mss.anthology.3_2_3_17_77_6_32_1_4",
+    "standardization": "fnd.conspectus.facilitator.3_2_3_17_77_6_32_1_4.json",
+    "entity_type": "legal_entity"
 },
 {
     "msn_id": "HERE",
     "title": "fnd.conspectus.facilitator.3_2_3_17_77_6_32_1_4.json",
-    
-    "keycloak_admin_user_id": "HERE",
-    "keycloak_principle_user_id": "",
-    "platform_membership": "admin_platform",
-    "platform_confiquration": "fnd.muniment.admin.3_2_3_17_77_6_32_1_4",
-    "archetype_manifest": "fnd.manifest.3_2_3_17_77_6_32_1_4"
+
+    "platform_membership": "platform_facilitator",
+    "platform_confiquration": "fnd.muniment.facilitator.3_2_3_17_77_6_32_1_4",
     "dns_id": "fruitfulnetworkdevelopment.com",
     "root": "frontend",
     "root_entry": "index.html",
 }
-{
-    "msn_id": "HERE",
-    "title": "fnd.conspectus.tenant.HERE.json",
-    
-    "keycloak_admin_user_id": "HERE",
-    "keycloak_principle_user_id": "HERE",
-    "platform_membership": "tenant_platform",
-    "platform_confiquration": "fnd.muniment.tenant.HERE",
-    "archetype_manifest": "fnd.manifest.HERE"
-    "dns_id": "trappfamilyfarm.com",
-    "root_path": "/srv/webapps/clients/trappfamilyfarm.com/frontend/",
-    "root_entry": "index.html",
-}
 { 
     "msn_id": "HERE",
-    {"title": "fnd.muniment.tenant.HERE", "dns_id": "trappfamilyfarm.com", "root": , "root_entry": "index.html""
-},
-{ 
-    "msn_id": "HERE",
-    {"title": "fnd.florilegium.admin.3_2_3_17_77_6_32_1_4"},
-    {"title": "fnd.body.conspectus_collectanea"},
-    {"title": "fnd.body.comendium_collectanea", "table": "HERE", "archetype": "HERE"},
-    {"title": "crops", "table": "2_11_2", "archetype": "2_11_1"},
-    {"title": "natural_entity", "table": "4_1_2", "archetype": "4_1_1"},
-    {"title": "legal_entity", "table": "4_2_2", "archetype": "4_2_1"},
-    {"title": "administrative_entity", "table": "4_3_2", "archetype": "4_3_1"},
-    {"title": "administrative_division", "table": "5_2", "archetype": "5_1"},
-    {"title": "taxonomy", "table": "6_1_2", "archetype": "6_1_1"}
+    "title": "fnd.florilegium.facilitator.3_2_3_17_77_6_32_1_4"
+    {"title": "mss.compendium.3_2_3_17_77_6_32_1_4", "archetype": "schema", "muniment": "meta"},
+    {"title": "mss.compendium.3_2_3_17_77_6_32_1_4", "archetype": "schema", "muniment": "meta"},
+
+    {"title": "fnd.body.conspectus_collectanea", "table": "HERE", "archetype_manifest": "HERE", "muniment": "conservative"},
+    {"title": "fnd.body.comendium_collectanea", "table": "HERE", "archetype_manifest": "HERE", "muniment": "conservative"},
+    {"title": "crops", "table": "2_11_2", "archetype_manifest": "2_11_1", "muniment": "restrictive"},
+    {"title": "natural_entity", "table": "4_1_2", "archetype_manifest": "4_1_1", "muniment": "hermeneutic"},
+    {"title": "legal_entity", "table": "4_2_2", "archetype_manifest": "4_2_1", "muniment": "hermeneutic"},
+    {"title": "administrative_entity", "table": "4_3_2", "archetype_manifest": "4_3_1", "muniment": "hermeneutic"},
+    {"title": "administrative_division", "table": "5_2", "archetype_manifest": "5_1", "muniment": "libral"},
+    {"title": "taxonomy", "table": "6_1_2", "archetype_manifest": "6_1_1", "muniment": "libral"}
 }
