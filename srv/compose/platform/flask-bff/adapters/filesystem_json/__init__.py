@@ -1,2 +1,0 @@
-"""Filesystem JSON adapters."""
-
