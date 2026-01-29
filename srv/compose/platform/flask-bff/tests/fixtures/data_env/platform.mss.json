@@ -1,8 +1,0 @@
-{
-  "platform.mss": {
-    "msn_id": "platform",
-    "entity_type": "legal_entity",
-    "exposed": ["5_2"],
-    "title": "Platform"
-  }
-}
