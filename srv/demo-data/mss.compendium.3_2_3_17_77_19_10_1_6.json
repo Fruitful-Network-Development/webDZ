@@ -1,8 +1,8 @@
 { 
     "msn_id": "3_2_3_17_77_19_10_1_6",
     "title": "trapp_family_farm",
-    "florilegium": "fnd.florilegium.tenant.3_2_3_17_77_19_10_1_6",
+    "florilegium": "mss.florilegium.tenant.3_2_3_17_77_19_10_1_6",
     "anthology": "mss.anthology.3_2_3_17_77_19_10_1_6",
-    "standardization": "fnd.tenant.ten.3_2_3_17_77_19_10_1_6.json",
+    "standardization": "platform.tenant.3_2_3_17_77_19_10_1_6.json",
     "entity_type": "legal_entity"
 }
