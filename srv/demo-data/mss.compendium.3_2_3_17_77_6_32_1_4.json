@@ -1,8 +1,8 @@
 { 
     "msn_id": "3_2_3_17_77_6_32_1_4",
     "title": "fruitful_network_development",
-    "florilegium": "fnd.florilegium.facilitator.3_2_3_17_77_6_32_1_4",
+    "florilegium": "mss.florilegium.facilitator.3_2_3_17_77_6_32_1_4",
     "anthology": "mss.anthology.3_2_3_17_77_6_32_1_4",
-    "standardization": "fnd.conspectus.facilitator.3_2_3_17_77_6_32_1_4.json",
+    "standardization": "platform.conspectus.facilitator.3_2_3_17_77_6_32_1_4.json",
     "entity_type": "legal_entity"
 }
