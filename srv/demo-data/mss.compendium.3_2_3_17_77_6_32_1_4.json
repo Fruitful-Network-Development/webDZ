@@ -5,13 +5,4 @@
     "anthology": "mss.anthology.3_2_3_17_77_6_32_1_4",
     "standardization": "fnd.conspectus.facilitator.3_2_3_17_77_6_32_1_4.json",
     "entity_type": "legal_entity"
-},
-{
-    "title": "fnd.conspectus.facilitator.3_2_3_17_77_6_32_1_4.json",
-
-    "platform_membership": "platform_facilitator",
-    "platform_confiquration": "fnd.garland.facilitator.3_2_3_17_77_6_32_1_4",
-    "dns_id": "fruitfulnetworkdevelopment.com",
-    "root": "frontend",
-    "root_entry": "index.html",
 }
