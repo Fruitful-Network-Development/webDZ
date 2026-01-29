@@ -1,0 +1,48 @@
+{ 
+    "msn_id": "3_2_3_17_77_6_32_1_4",
+    "title": "fruitful_network_development",
+    "exposed": ["3_2_3_17_77_6_32_1_4_5_2", "3_2_3_17_77_6_32_1_4_6_2"],
+    "data_api_muniment_libral": "mss.muniment_libral.3_2_3_17_77_6_32_1_4",
+    "data_api_muniment_conservative": "mss.muniment_conservative.3_2_3_17_77_6_32_1_4",
+    "local_domain_anthology": "mss.anthology.3_2_3_17_77_6_32_1_4"
+},
+{
+    "msn_id": "HERE",
+    "title": "fnd.conspectus.admin.3_2_3_17_77_6_32_1_4.json",
+    "keycloak_admin_user_id": "HERE",
+    "keycloak_principle_user_id": "",
+    "platform_membership": "admin_platform",
+    "platform_confiquration": "fnd.muniment.admin.3_2_3_17_77_6_32_1_4",
+    "archetype_manifest": "fnd.manifest.3_2_3_17_77_6_32_1_4"
+    "dns_id": "fruitfulnetworkdevelopment.com",
+    "root": "frontend",
+    "root_entry": "index.html",
+
+}
+{
+    "msn_id": "HERE",
+    "title": "fnd.manifest.3_2_3_17_77_6_32_1_4",
+    { "archetype": "2_11_1", "colummn_count": "HERE", "table": "2_11_2"},
+    { "archetype": "4_1_1", "colummn_count": "6", "table": "4_1_2"},
+    { "archetype": "4_2_1", "colummn_count": "HERE", "table": "4_2_2"},
+    { "archetype": "4_3_1", "colummn_count": "HERE", "table": "4_3_2"},
+    { "archetype": "5_1", "colummn_count": "HERE", "table": "5_2"},
+    { "archetype": "6_1_1", "colummn_count": "HERE", "table": "6_1_2"}
+}
+{ 
+    "msn_id": "HERE",
+    {"title": "fnd.muniment.tenant.HERE", "dns_id": "trappfamilyfarm.com", "root": "/srv/webapps/clients/trappfamilyfarm.com/frontend/", "root_entry": "index.html" "conditionally_exose_table": "HERE",
+    "unconditionaly_expose_table": "supply", "demmands",
+    "ed _expose_table": "HERE",
+},
+{ 
+    "msn_id": "HERE",
+    "title": "fnd.florilegium.admin.3_2_3_17_77_6_32_1_4",
+    
+    {"title": "HERE", "table": ""},
+    {"title": "HERE", "table": ""},
+    {"title": "HERE", "table": ""},
+    {"title": "HERE", "table": ""},
+    {"title": "HERE", "table": ""},
+    {"title": "HERE", "table": ""},
+}
