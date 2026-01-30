@@ -25,3 +25,7 @@ aws-box/srv/compose/platform/flask-bff/
    |  └── admin/
    └── services/
 ```
+
+There are no uses of in-memory state (temporary, per worker). Rather, the configuration exists inside Postgres and is treated it as the authoritative source (dictated by the schema).
+
+The webapp directory is for later development of services that involve api calls, that are verified by the portal apllication.
