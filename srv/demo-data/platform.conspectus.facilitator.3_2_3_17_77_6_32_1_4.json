@@ -4,4 +4,10 @@
     "dns_id": "fruitfulnetworkdevelopment.com",
     "root": "frontend",
     "root_entry": "index.html",
+    "precis_type_count", "4"
+}
+{
+    "tenant": "trapp_family_farm",
+    "admin": "fruitfulnetworkdevelopment.com",
+    "tenant_user": "index.html",
 }
