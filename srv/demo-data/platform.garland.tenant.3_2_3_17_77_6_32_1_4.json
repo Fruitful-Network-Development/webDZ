@@ -1,1 +1,11 @@
+{
+  "portal_id": "HERE"
+  "status": "true"
+  "keycloak_principle_user_id": "HERE",
+  "admin_msn_id": "3_2_3_17_77_6_32_1_4",
+  "console_configuration_path": "srv/compose/platform/flask-bff/portal/UI/facilitator/styles.css",
+  "last_login_at": "HERE",
+  "created_at": "HERE"
+}
+
 
