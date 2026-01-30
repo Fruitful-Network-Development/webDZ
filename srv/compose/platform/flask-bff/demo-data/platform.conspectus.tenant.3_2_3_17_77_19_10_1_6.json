@@ -1,0 +1,7 @@
+{
+    "platform_membership": "platform_tenant",
+    "platform_confiquration": "platform.garland.tenant.3_2_3_17_77_6_32_1_4",
+    "dns_id": "trappfamilyfarm.com",
+    "root_path": "/srv/webapps/clients/trappfamilyfarm.com/frontend/",
+    "root_entry": "index.html"
+}

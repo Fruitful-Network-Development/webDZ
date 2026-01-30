@@ -1,0 +1,13 @@
+{
+    "platform_membership": "platform_facilitator",
+    "platform_confiquration": "platform.garland.facilitator.3_2_3_17_77_6_32_1_4",
+    "dns_id": "fruitfulnetworkdevelopment.com",
+    "root": "frontend",
+    "root_entry": "index.html",
+    "precis_type_count", "4"
+}
+{
+    "tenant": "trapp_family_farm",
+    "admin": "fruitfulnetworkdevelopment.com",
+    "tenant_user": "index.html",
+}
