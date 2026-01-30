@@ -1,4 +1,4 @@
-# main.py
+# app.py
 from flask import Flask
 
 from portal import register_portal_routes
