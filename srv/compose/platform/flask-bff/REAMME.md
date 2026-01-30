@@ -10,21 +10,18 @@ aws-box/srv/compose/platform/flask-bff/
 ├── Dockerfile
 ├── gunicorn.conf.py
 ├── requirements.txt
-├── main.py
+├── app.py
 ├── auth/
-  ├── authz.py
-  ├── entrypoint.sh
+|  ├── authz.py
+|  ├── entrypoint.sh
+|  └── __init__.py
 ├── webapp/
-  ├── web-app.py
+|  ├── web-app.py
+|  └── __init__.py
 └── portal/
-  ├── portal-app.py
-  ├── UI/
-  ├── services/
-
-
-├── portal.py
-├── websites.py
-└── __init__.py
+   ├── portal-app.py
+   ├── UI/
+   |  ├── tenant/
+   |  └── admin/
+   └── services/
 ```
-
-There are no uses of in-memory state (temporary, per worker). Rather, the configuration exists inside Postgres and is treated it as the authoritative source (dictated by the schema).
