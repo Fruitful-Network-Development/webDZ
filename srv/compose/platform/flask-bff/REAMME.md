@@ -52,6 +52,10 @@ The webapp directory is for later development of services that involve api calls
 
 The facilitator is the beneficiary profile that is used as the admin console, and the principle user of which is considered the admin user.
 
+We always find the facilitator information deffined at the beggining of the file, `HERE`.
+For the given positions:
+   - 
+
 
 ---
 
