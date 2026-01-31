@@ -50,26 +50,14 @@ There are no uses of in-memory state (temporary, per worker). Rather, the config
 
 The webapp directory is for later development of services that involve api calls, that are verified by the portal apllication.
 
-You are working inside this repository clone ONLY. Do not modify anything outside:
-  /srv/compose/platform/
+The facilitator is the beneficiary profile that is used as the admin console, and the principle user of which is considered the admin user.
 
-PRIMARY TARGET FILE
-- /srv/compose/platform/flask-bff/app.py
-
-REFERENCE CONTEXT (read-only, do not assume correctness; use to align intent)
-- /srv/compose/platform/flask-bff/README.md
-- /srv/compose/platform/flask-bff/ (existing modules, routes, templates, utils)
-- /srv/compose/platform/platform-schema/ (current DB migrations)
 
 ---
 
 ## SCHEMA AGNOSTICS
 
-============================================================
-SECTION A — Desired Runtime Shape (fill later)
-============================================================
-
-A1) Portal responsibility boundaries
+### Portal responsibility boundaries
 - [FILL] What is “portal” vs “console” vs “website API”?
 - [FILL] What is the canonical entry-point object (“compendium”)?
 
