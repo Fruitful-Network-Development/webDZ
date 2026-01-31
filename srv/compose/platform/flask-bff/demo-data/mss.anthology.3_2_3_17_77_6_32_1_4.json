@@ -29,6 +29,13 @@
     {"local_id": "4_1_15", "title": "erin_molnar"},
     {"local_id": "4_1_16", "title": "greg_peckham"},
     {"local_id": "4_1_17", "title": "sarah_brewer"},
+    {"local_id": "4_1_18", "title": "dylan_montgomery"},
+    {"local_id": "4_1_19", "title": "eliszabeth_brake"},
+    {"local_id": "4_1_20", "title": "susan_schmidt"},
+    {"local_id": "4_1_21", "title": "jennifer_gray"},
+    {"local_id": "4_1_22", "title": "kalyani_sapkal"},
+    {"local_id": "4_1_23", "title": "sara_steele"},
+
 
     {"local_id": "4_2", "title": "legal_entity"},
     {"local_id": "4_2_1", "title": "trapp_family_farm"},
@@ -64,5 +71,6 @@
     {"local_id": "4_2_31", "title": "ramseyer_farms"},
     {"local_id": "4_2_32", "title": "maize_valley"},
     {"local_id": "4_2_33", "title": "hudson_farmers_market"},
+    {"local_id": "4_2_34", "title": "fruitful_network_development"}
     {"local_id": "4_3", "title": "adminitrative_entity"},
 }
