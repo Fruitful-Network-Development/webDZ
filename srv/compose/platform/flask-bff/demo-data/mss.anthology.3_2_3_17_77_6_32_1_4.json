@@ -1,5 +1,7 @@
 {
-    {"local_id": "1", "title": "self"},
+    {"local_id": "1", "title": "mss.conspectus.3_2_3_17_77_6_32_1_4"},
+    {"local_id": "2", "title": "platform.conspectus.3_2_3_17_77_6_32_1_4"},
+
     {"local_id": "1_2_1", "title": "opus.taxnonomy_namespace"},
     {"local_id": "1_2_2", "title": "opus.statonomy_namespace"},
     {"local_id": "1_3_1", "title": "industry_peer_profile"},
