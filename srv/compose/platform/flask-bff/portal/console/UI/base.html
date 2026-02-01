@@ -275,20 +275,7 @@
         <div class="nav-tabs">
           <a href="/admin" class="{% if request.path == '/admin' %}active{% endif %}">Overview</a>
           <a href="/admin/tenants" class="{% if request.path.startswith('/admin/tenants') %}active{% endif %}">Clients</a>
-          <a href="/admin/tables?tenant_id=platform" class="{% if request.path.startswith('/admin/tables') or request.path.startswith('/admin/lists') %}active{% endif %}">My Data</a>
-          <a href="/admin/local-domains" class="{% if request.path.startswith('/admin/local-domains') or request.path.startswith('/admin/local-domain') or request.path.startswith('/admin/archetypes') or request.path.startswith('/admin/manifest') %}active{% endif %}">Registry</a>
-          <a href="/admin/samras-layouts" class="{% if request.path.startswith('/admin/samras-layouts') or request.path.startswith('/admin/samras') %}active{% endif %}">SAMRAS</a>
-          <a href="/admin/users" class="{% if request.path.startswith('/admin/users') %}active{% endif %}">Users</a>
-          <a href="/admin/services" class="{% if request.path.startswith('/admin/services') %}active{% endif %}">Services</a>
-        </div>
-        <div class="nav-sub">
-          <a href="/admin/tables?tenant_id=platform">Platform Tables</a>
-          <a href="/admin/lists?tenant_id=platform">Platform Lists</a>
-          <a href="/admin/local-domains">Local Domains</a>
-          <a href="/admin/archetypes">Archetypes</a>
-          <a href="/admin/manifest">Manifest</a>
-          <a href="/admin/samras-layouts">SAMRAS Layouts</a>
-          <a href="/admin/users">MSS Profiles</a>
+          <a href="/admin/registry" class="{% if request.path.startswith('/admin/registry') %}active{% endif %}">Registry</a>
         </div>
       {% endif %}
       {% if current_user %}
