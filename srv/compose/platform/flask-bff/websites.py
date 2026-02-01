@@ -20,9 +20,24 @@ def _enforce_muniment_rules(msn_id: str, resource: str) -> None:
         abort(403, description="Resource not published by muniment rules.")
 
 
+def _is_access_tier_public(msn_id: str, resource: str) -> bool:
+    configured = current_app.config.get("ACCESS_TIER_PUBLIC_RESOURCES", {})
+    public_resources = configured.get(msn_id)
+    if public_resources is None:
+        default_public = current_app.config.get("ACCESS_TIER_DEFAULT_PUBLIC", set())
+        return resource in default_public
+    return resource in public_resources
+
+
+def _enforce_access_tier_rules(msn_id: str, resource: str) -> None:
+    if not _is_access_tier_public(msn_id, resource):
+        abort(403, description="Resource unavailable for public access tier.")
+
+
 @websites_blueprint.route("/api/<msn_id>/<resource>")
 def public_resource(msn_id: str, resource: str):
     _enforce_muniment_rules(msn_id, resource)
+    _enforce_access_tier_rules(msn_id, resource)
     return jsonify({
         "msn_id": msn_id,
         "resource": resource,
