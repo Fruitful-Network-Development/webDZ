@@ -165,6 +165,117 @@ class PortalStore:
             for row in rows
         ]
 
+    def fetch_compendium_entries(self, msn_id: str | None = None) -> list[dict]:
+        return self._fetch_rows(
+            schema="mss",
+            table="compendium",
+            columns=(
+                "msn_id",
+                "title",
+                "anthology_ref",
+                "standardization_ref",
+                "entity_type",
+                "payload",
+            ),
+            where={"msn_id": msn_id} if msn_id else None,
+            order_by=("msn_id",),
+        )
+
+    def fetch_anthology_entries(self, msn_id: str) -> list[dict]:
+        return self._fetch_rows(
+            schema="mss",
+            table="anthology_entry",
+            columns=("msn_id", "local_id", "title", "payload"),
+            where={"msn_id": msn_id},
+            order_by=("local_id",),
+        )
+
+    def fetch_taxonomy_local_map(self, source_msn_id: str) -> list[dict]:
+        return self._fetch_rows(
+            schema="mss",
+            table="taxonomy_local_map",
+            columns=("source_msn_id", "taxonomy_id", "local_id", "title", "payload"),
+            where={"source_msn_id": source_msn_id},
+            order_by=("taxonomy_id",),
+        )
+
+    def fetch_msn_local_map(self, source_msn_id: str) -> list[dict]:
+        return self._fetch_rows(
+            schema="mss",
+            table="msn_local_map",
+            columns=("source_msn_id", "msn_id", "local_id", "title", "payload"),
+            where={"source_msn_id": source_msn_id},
+            order_by=("msn_id",),
+        )
+
+    def fetch_muniment_entries(self, msn_id: str) -> list[dict]:
+        return self._fetch_rows(
+            schema="mss",
+            table="muniment",
+            columns=("msn_id", "opus_local_id", "title", "muniment", "payload"),
+            where={"msn_id": msn_id},
+            order_by=("opus_local_id",),
+        )
+
+    def fetch_all_muniment_entries(self) -> list[dict]:
+        return self._fetch_rows(
+            schema="mss",
+            table="muniment",
+            columns=("msn_id", "opus_local_id", "title", "muniment", "payload"),
+            order_by=("msn_id", "opus_local_id"),
+        )
+
+    def _fetch_rows(
+        self,
+        *,
+        schema: str,
+        table: str,
+        columns: tuple[str, ...],
+        where: dict[str, str] | None = None,
+        order_by: tuple[str, ...] | None = None,
+    ) -> list[dict]:
+        _validate_identifier(schema)
+        _validate_identifier(table)
+        for column in columns:
+            _validate_identifier(column)
+
+        where = where or {}
+        for column in where:
+            _validate_identifier(column)
+
+        order_by = order_by or ()
+        for column in order_by:
+            _validate_identifier(column)
+
+        table_ref = sql.Identifier(schema, table)
+        query = sql.SQL("SELECT {fields} FROM {table}").format(
+            fields=sql.SQL(", ").join(sql.Identifier(column) for column in columns),
+            table=table_ref,
+        )
+
+        values: list[str] = []
+        if where:
+            where_clauses = [
+                sql.SQL("{} = %s").format(sql.Identifier(column)) for column in where
+            ]
+            values = [where[column] for column in where]
+            query = query + sql.SQL(" WHERE ") + sql.SQL(" AND ").join(where_clauses)
+
+        if order_by:
+            query = query + sql.SQL(" ORDER BY ") + sql.SQL(", ").join(
+                sql.Identifier(column) for column in order_by
+            )
+
+        with self._get_pool().getconn() as connection:
+            try:
+                with connection.cursor(cursor_factory=RealDictCursor) as cursor:
+                    cursor.execute(query, values)
+                    rows = cursor.fetchall() or []
+            finally:
+                self._get_pool().putconn(connection)
+
+        return [dict(row) for row in rows]
+
     @staticmethod
     def match_payloads_by_value(payloads: Iterable[ContractPayload], value: str) -> list[ContractPayload]:
         matched: list[ContractPayload] = []
