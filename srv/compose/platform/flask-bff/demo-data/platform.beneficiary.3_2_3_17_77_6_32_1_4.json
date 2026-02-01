@@ -1,0 +1,5 @@
+{
+    {"@.lcl.txt.4.beneficiary_local_id", "3_1_2_34", "#.nominal.txt.36.keycloak_user_id": "########-####-####-####-############", "@.lcl.txt.4.principle_user_local_id": "3_1_1_18"},
+    {"@.lcl.txt.4.beneficiary_local_id", "3_1_2_10", "#.nominal.txt.36.keycloak_user_id": "########-####-####-####-############", "@.lcl.txt.4.principle_user_local_id": "3_1_1_12"},
+    {"@.lcl.txt.4.beneficiary_local_id", "3_1_2_1", "#.nominal.txt.36.keycloak_user_id": "########-####-####-####-############", "@.lcl.txt.4.principle_user_local_id": "3_1_1_7"}
+}
