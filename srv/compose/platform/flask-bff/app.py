@@ -1,8 +1,8 @@
 # app.py
 from flask import Flask
 
-from portal import register_portal_routes
-from websites import register_website_routes
+from portal import portal_blueprint
+from websites import websites_blueprint
 
 
 def create_app() -> Flask:
@@ -10,14 +10,11 @@ def create_app() -> Flask:
 
     # Core configuration (placeholder)
     app.config["APP_NAME"] = "platform"
+    app.config.setdefault("MUNIMENT_PUBLIC_RESOURCES", {})
+    app.config.setdefault("MUNIMENT_DEFAULT_PUBLIC", {"here"})
 
     # Register route groups
-    register_portal_routes(app)
-    register_website_routes(app)
+    app.register_blueprint(portal_blueprint)
+    app.register_blueprint(websites_blueprint)
 
     return app
-
-
-if __name__ == "__main__":
-    app = create_app()
-    app.run(host="0.0.0.0", port=8000, debug=True)
