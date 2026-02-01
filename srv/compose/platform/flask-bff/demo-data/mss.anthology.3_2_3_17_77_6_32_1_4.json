@@ -1,7 +1,7 @@
 {
     {"@.lcl.txt.5.local_id": "1", "#.nominal.txt.256.title": "mss.anthology.3_2_3_17_77_6_32_1_4"},
     {"@.lcl.txt.5.local_id": "1_1_1", "#.nominal.txt.256.title": "mss.conspectus.3_2_3_17_77_6_32_1_4"},
-    {"@.lcl.txt.5.local_id": "1_1_2", "#.nominal.txt.256.title": "platform.conspectus.3_2_3_17_77_6_32_1_4"},
+    {"@.lcl.txt.5.local_id": "1_2_1", "#.nominal.txt.256.title": "platform.conspectus.3_2_3_17_77_6_32_1_4"},
 
     {"@.lcl.txt.5.local_id": "2_1", "#.nominal.txt.256.title": "group_analects"},
     {"@.lcl.txt.5.local_id": "2_2", "#.nominal.txt.256.title": "individual_analects"},
