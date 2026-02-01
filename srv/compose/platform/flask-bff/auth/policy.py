@@ -6,7 +6,7 @@ from typing import Any, Mapping, Tuple
 from flask import g, request
 
 from auth.keycloak.client import KeycloakAuthError, decode_token
-from auth.keycloak.user_mapping import UserMappingError, fetch_user_profile
+from auth.keycloak.user_mapping import UserMappingError, fetch_identity_access
 
 
 def get_current_user() -> Any | None:
@@ -22,13 +22,13 @@ def get_current_user() -> Any | None:
         except KeycloakAuthError:
             return None
         user_id = claims.get("sub")
-        profile = None
+        identity = None
         if user_id:
             try:
-                profile = fetch_user_profile(user_id)
+                identity = fetch_identity_access(user_id)
             except UserMappingError:
-                profile = None
-        user = {"user_id": user_id, "claims": claims, "profile": profile}
+                identity = None
+        user = {"user_id": user_id, "claims": claims, "identity": identity}
         g.current_user = user
         return user
 
@@ -46,9 +46,6 @@ def is_root_admin(user: Any | None) -> bool:
     """Return whether the provided user has root-level administrative privileges."""
     if not user:
         return False
-    profile = (user or {}).get("profile") if isinstance(user, Mapping) else None
-    if profile and profile.get("role") == "root-admin":
-        return True
     claims = (user or {}).get("claims") if isinstance(user, Mapping) else {}
     roles = (claims or {}).get("realm_access", {}).get("roles", [])
     return "root-admin" in roles
@@ -58,9 +55,6 @@ def is_tenant_admin(user: Any | None) -> bool:
     """Return whether the provided user has tenant-level administrative privileges."""
     if not user:
         return False
-    profile = (user or {}).get("profile") if isinstance(user, Mapping) else None
-    if profile and profile.get("role") == "tenant-admin":
-        return True
     claims = (user or {}).get("claims") if isinstance(user, Mapping) else {}
     roles = (claims or {}).get("realm_access", {}).get("roles", [])
     return "tenant-admin" in roles
