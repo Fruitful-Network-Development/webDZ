@@ -12,6 +12,7 @@ There are those with aleading `platform.` in their names. These are used to info
 `platform.muniment.<msn_id>` identify tables in a given `msn_id` namespace as freely acessed for API's to read out, and then those that are interfacible via authorized/authenticated API operations.
 
 ### column naming convention:
+indicating sections are seperated by a peroid, `.`. The first section notates weather it is a system id, `@`, (applies for msn_id, local_id, or other sub-domain namespace ID's like taxonomy) or a system value, `#`, (nominal:txt, ordinal:tbl.plc, initiger count/natural:int, cardinal:, mass:, time_stamp:, coordinate:, length:, fiat:)
 
 
 The portal aplication is provided the entrypoint, as a core organizing file, by `mss.comendium.<msn_id>`.
