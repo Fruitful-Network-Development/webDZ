@@ -1,5 +1,5 @@
 """Authorization helpers for the Flask BFF."""
-from core.policy import (  # noqa: F401
+from auth.policy import (  # noqa: F401
     forbidden_response,
     get_current_user,
     is_root_admin,
