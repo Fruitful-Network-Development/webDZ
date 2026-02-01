@@ -5,6 +5,15 @@ At this aplications core, there is `main.py`. IT employs two secondary principal
 There is not meant to be any JSON in Postgres, therefore there needs to be developed scripts to ingest this demo data. 
 Also another script to remove the old data, if context is ever needed merely add a comment inside the script file and include 'beta' in the file name.
 
+### table naming convention:
+There are tables that have the leading `mss.` in their names. These are pertanent to the core mss schema and have an expected structure that is deffined by the schema itsself.
+
+There are those with aleading `platform.` in their names. These are used to inform how the console works.
+`platform.muniment.<msn_id>` identify tables in a given `msn_id` namespace as freely acessed for API's to read out, and then those that are interfacible via authorized/authenticated API operations.
+
+### column naming convention:
+
+
 The portal aplication is provided the entrypoint, as a core organizing file, by `mss.comendium.<msn_id>`.
 Also providing other context.
 Deffined via the MSS schema, being the principle scheama of the data enviorment.
