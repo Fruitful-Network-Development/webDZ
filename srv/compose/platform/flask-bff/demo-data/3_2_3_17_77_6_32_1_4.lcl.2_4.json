@@ -1,0 +1,45 @@
+[
+    {
+      "@.lcl.txt.16.local_id": "3_1_3_1",
+      "@.msn.txt.9.msn_id": "3_3_3_2_3_17_18_1_1_1",
+      "#.nominal.txt.256.community_incorporation": "village",
+      "@.msn.txt.9.administrative_division": "3_3_3_2_3_17_18_1_1_"
+  
+    },
+    {
+      "@.lcl.txt.16.local_id": "3_1_3_2",
+      "@.msn.txt.9.msn_id": "3_2_3_17_18_2_1_1",
+      "#.nominal.txt.256.community_incorporation": "city",
+      "@.msn.txt.9.administrative_division": "3_2_3_17_18_2"
+    },
+    {
+      "@.lcl.txt.16.local_id": "3_1_3_3",
+      "@.msn.txt.9.msn_id": "3_2_3_17_18_3_1_1",
+      "#.nominal.txt.256.community_incorporation": "city",
+      "@.msn.txt.9.administrative_division": "3_2_3_17_18_3"
+    },
+    {
+      "@.lcl.txt.16.local_id": "3_1_3_4",
+      "@.msn.txt.9.msn_id": "3_2_3_17_77_1_1_1",
+      "#.nominal.txt.256.community_incorporation": "city",
+      "@.msn.txt.9.administrative_division": "3_2_3_17_77_1"
+    },
+    {
+      "@.lcl.txt.16.local_id": "3_1_3_5",
+      "@.msn.txt.9.msn_id": "3_2_3_17_77_3_1_1",
+      "#.nominal.txt.256.community_incorporation": "city",
+      "@.msn.txt.9.administrative_division": "3_2_3_17_77_3"
+    },
+    {
+        "@.lcl.txt.16.local_id": "3_1_3_6",
+        "@.msn.txt.9.msn_id": "3_2_3_17_77_6_1_1",
+        "#.nominal.txt.256.community_incorporation": "city",
+        "@.msn.txt.9.administrative_division": "3_2_3_17_77_6"
+      },
+    {
+      "@.lcl.txt.16.local_id": "3_1_3_7",
+      "@.msn.txt.9.msn_id": "3_2_3_17_77_19_1_1",
+      "#.nominal.txt.256.community_incorporation": "village",
+      "@.msn.txt.9.administrative_division": "3_2_3_17_77_19"
+    }
+  ]

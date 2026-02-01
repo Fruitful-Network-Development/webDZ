@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+  <section class="card">
+    <h2>Platform Admin Console</h2>
+    {% if current_user %}
+      <p>Signed in as {{ current_user.display_name or current_user.user_id }}.</p>
+      <p>
+        Use the admin console if you have access.
+        <a class="btn" href="/admin">Go to admin</a>
+      </p>
+    {% else %}
+      <p>Sign in to access the platform administration console.</p>
+      <a class="btn" href="/login?tenant=platform&return_to=/admin">Sign in</a>
+    {% endif %}
+  </section>
+{% endblock %}
