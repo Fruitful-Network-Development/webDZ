@@ -79,6 +79,7 @@
     {"local_id": "4_2_31", "title": "ramseyer_farms"},
     {"local_id": "4_2_32", "title": "maize_valley"},
     {"local_id": "4_2_33", "title": "hudson_farmers_market"},
-    {"local_id": "4_2_34", "title": "fruitful_network_development"}
-    {"local_id": "4_3", "title": "adminitrative_entity"},
+    {"local_id": "4_2_34", "title": "fruitful_network_development"},
+    {"local_id": "4_2_35", "title": "till_family_farm"},
+    {"local_id": "4_3", "title": "adminitrative_entity"}
 }
