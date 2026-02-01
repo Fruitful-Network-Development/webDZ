@@ -2,12 +2,14 @@
     {"local_id": "1", "title": "mss.conspectus.3_2_3_17_77_6_32_1_4"},
     {"local_id": "2", "title": "platform.conspectus.3_2_3_17_77_6_32_1_4"},
 
-    {"local_id": "1_2_1", "title": "opus.taxnonomy_namespace"},
-    {"local_id": "1_2_2", "title": "opus.statonomy_namespace"},
+    {"local_id": "1_2_1", "title": "taxnonomy_namespace"},
+    {"local_id": "1_2_2", "title": "statonomy_namespace"},
     {"local_id": "1_3_1", "title": "industry_peer_profile"},
     {"local_id": "1_3_2", "title": "user_profile"},
     {"local_id": "2_1", "title": "beneficiaries"},
+
     {"local_id": "3", "title": "object"},
+
     {"local_id": "4", "title": "entity"},
     {"local_id": "4_1", "title": "natural_entity"},
     {"local_id": "4_1_1", "title": "mark_trapp"},
