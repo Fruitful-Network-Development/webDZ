@@ -1,8 +1,9 @@
 {
     {"@.lcl.txt.5.local_id": "1", "#.nominal.txt.256.title": "mss.anthology.3_2_3_17_77_19_10_1_6"},
     {"@.lcl.txt.5.local_id": "1_1_1", "#.nominal.txt.256.title": "mss.compendium.3_2_3_17_77_19_10_1_6"},
-    {"@.lcl.txt.5.local_id": "2_1", "#.nominal.txt.256.title": "invoices"},
+    {"@.lcl.txt.5.local_id": "2_1", "#.nominal.txt.256.title": "propagules"},
     {"@.lcl.txt.5.local_id": "2_2", "#.nominal.txt.256.title": "products"},
+    {"@.lcl.txt.5.local_id": "2_3", "#.nominal.txt.256.title": "invoices"},
     {"@.lcl.txt.5.local_id": "3", "#.nominal.txt.256.title": "namespace"},
     {"@.lcl.txt.5.local_id": "3_1", "#.nominal.txt.256.title": "lcl"},
     {"@.lcl.txt.5.local_id": "3_1_1", "#.nominal.txt.256.title": "natural_entity"},
