@@ -13,6 +13,7 @@ There are those with aleading `platform.` in their names. These are used to info
 
 ### column naming convention:
 indicating sections are seperated by a peroid, `.`. The first section notates weather it is a system id, `@`, (applies for msn_id, local_id, or other sub-domain namespace ID's like taxonomy) or a system value, `#`, (nominal:txt, ordinal:tbl.plc, initiger count/natural:int, cardinal:, mass:, time_stamp:, coordinate:, length:, fiat:)
+This is then followed by the value type. E.g. 'text', 'int', etc.
 
 
 The portal aplication is provided the entrypoint, as a core organizing file, by `mss.comendium.<msn_id>`.
