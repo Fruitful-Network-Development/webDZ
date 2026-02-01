@@ -2,9 +2,3 @@
     "platform_facilitator.platform_beneficiary.local_id": "4_2_34",
     "platform_facilitator_realm": "fruitful"
 }
-{
-    "label": "platform.beneficiary.3_2_3_17_77_6_32_1_4",
-    {"platform.beneficiary_id.local_id", "4_2_34", "platform.keycloak_user_id.text_36": "########-####-####-####-############", "platform.principle_user.local_id": "4_1_18"},
-    {"platform.beneficiary_id.local_id", "4_2_10", "platform.keycloak_user_id.text_36": "########-####-####-####-############", "platform.principle_use.local_id": "4_1_12"},
-    {"platform.beneficiary_id.local_id", "4_2_1", "platform.keycloak_user_id.text_36": "########-####-####-####-############", "platform.principle_user.local_id": "4_1_7"}
-}
