@@ -1,0 +1,2 @@
+-- Legacy MSS/SAMRAS tables removed to prevent schema drift.
+-- This file is intentionally a no-op placeholder for historical ordering.
