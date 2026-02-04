@@ -1,0 +1,54 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT_DIR="/srv/compose/platform"
+SERVICE="flask_bff"
+
+usage() {
+  cat <<'EOF'
+Usage: restart [command]
+
+Commands:
+  restart   Recreate and start the flask_bff container (default)
+  rebuild   Build the image, then recreate the container
+  stop      Stop the flask_bff container
+  start     Start the flask_bff container
+  status    Show compose status
+  logs      Tail flask_bff logs
+  help      Show this help
+EOF
+}
+
+cmd="${1:-restart}"
+
+cd "$ROOT_DIR"
+
+case "$cmd" in
+  restart)
+    docker compose up -d --force-recreate "$SERVICE"
+    ;;
+  rebuild)
+    docker compose build "$SERVICE"
+    docker compose up -d --force-recreate "$SERVICE"
+    ;;
+  stop)
+    docker compose stop "$SERVICE"
+    ;;
+  start)
+    docker compose start "$SERVICE"
+    ;;
+  status)
+    docker compose ps
+    ;;
+  logs)
+    docker compose logs --tail=200 -f "$SERVICE"
+    ;;
+  help|-h|--help)
+    usage
+    ;;
+  *)
+    echo "Unknown command: $cmd" >&2
+    usage >&2
+    exit 1
+    ;;
+esac
