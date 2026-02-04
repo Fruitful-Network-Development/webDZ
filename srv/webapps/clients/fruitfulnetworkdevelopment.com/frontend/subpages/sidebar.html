@@ -1,0 +1,41 @@
+<aside class="sidebar-overlay" id="sidebar-overlay" aria-hidden="true">
+  <div class="sidebar" role="dialog" aria-modal="true" aria-labelledby="sidebar-title">
+    <div class="sidebar__header">
+      <div>
+        <p class="sidebar__title" id="sidebar-title">Fruitful Network Development</p>
+        <p class="sidebar__tagline">Empowering Local Roots</p>
+      </div>
+      <button class="sidebar__close" type="button" aria-label="Close sidebar">x</button>
+    </div>
+
+    <div class="sidebar__content">
+      <div class="sidebar__section">
+        <p class="sidebar__section-title">Primary</p>
+        <ul class="sidebar__list">
+          <li><a href="/index.html">Home</a></li>
+          <li><a href="/webservices.html">Services</a></li>
+          <li><a href="/research.html">Research</a></li>
+        </ul>
+      </div>
+
+      <div class="sidebar__section">
+        <p class="sidebar__section-title">Subpages</p>
+        <ul class="sidebar__list sidebar__list--secondary">
+          <li><a href="/subpages/history.html">History</a></li>
+          <li><a href="/subpages/pos.html">POS Hardware</a></li>
+          <li><a href="/subpages/payment-processing.html">Payment Processing</a></li>
+          <li><a href="/subpages/proposal.html">Proposal</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sidebar__floating-divider"></div>
+                         <!-- Tenent: https://auth.fruitfulnetworkdevelopment.com/realms/fruitful/protocol/openid-connect/auth?client_id=flask-bff&redirect_uri=https%3A%2F%2Fapi.fruitfulnetworkdevelopment.com%2Fconsole%2F<MSN_ID>&response_type=code&scope=openid-->
+    <a class="sidebar__sign-in" href="https://auth.fruitfulnetworkdevelopment.com/realms/fruitful/protocol/openid-connect/auth?client_id=flask-bff&redirect_uri=https%3A%2F%2Fapi.fruitfulnetworkdevelopment.com%2Fcallback&response_type=code&scope=openid&state=%2Fadmin">
+      <span class="sidebar__sign-in-icon">
+        <img src="/assets/icons/icon-sign_in.png" alt="Sign in icon" />
+      </span>
+      <span>Sign In</span>
+    </a>
+  </div>
+</aside>

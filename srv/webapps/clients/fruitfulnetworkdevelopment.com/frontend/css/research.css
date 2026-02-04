@@ -1,0 +1,547 @@
+/* ======================================
+    CALENDAR - SECTION
+  ====================================== */
+
+/* Root variables for sizing */
+.section-calendar {
+  --offset-unit: 1.5rem; /* horizontal/vertical indentation per offset unit */
+  --circle-size: 1.1rem; /* diameter of each day cell */
+  font-family: "Lato", sans-serif;
+  color: var(--nero);
+}
+
+/* Ensure tables have no inherent spacing */
+.section-calendar table {
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+}
+
+/* Assign offsets for each month; the value applies both horizontally (desktop)
+  and vertically (mobile) to align the month relative to the day-of-week. */
+.section-calendar .month.january   { --offset: 5; }
+.section-calendar .month.february  { --offset: 1; }
+.section-calendar .month.march     { --offset: 3; }
+.section-calendar .month.april     { --offset: 6; }
+.section-calendar .month.may       { --offset: 1; }
+.section-calendar .month.june      { --offset: 6; }
+.section-calendar .month.july      { --offset: 7; }
+.section-calendar .month.august    { --offset: 1; }
+.section-calendar .month.september { --offset: 5; }
+.section-calendar .month.october   { --offset: 0; }
+.section-calendar .month.november  { --offset: 3; }
+.section-calendar .month.december  { --offset: 3; }
+
+/*
+* The weekday header rows (the first and last tables in the calendar) need to
+* align with the first day of January.  To achieve this the header is given
+* its own offset of 5, matching the offset assigned to January.  This
+* variable is subsequently used by the responsive rules to shift the
+* header rightward on desktop and downward on mobile.
+*/
+.section-calendar .month.weekdays {
+--offset: 3.375;
+}
+
+/* Style weekday header cells.  Weight and case are common to both layouts. */
+.section-calendar .month.weekdays td {
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  /* padding and white-space will be overridden in responsive rules */
+}
+ 
+/* Style weekday header cells.  Weight and case are common to both layouts. */
+.section-calendar .month.weekdays td {
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  /* padding and white-space will be overridden in responsive rules */
+}
+
+
+.section-calendar .calendar-blocks {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  overflow-x: auto;
+}
+
+.section-calendar .month.weekdays {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-shrink: 0;
+  /* reserve horizontal space roughly equal to the day cell width
+    plus a little extra for legibility */
+  width: calc(var(--circle-size) * 1.8);
+  /* push the weekday list downward so that its first entry aligns with
+    the first day of January (offset of 5).  The vertical offset
+    uses the same unit as month offsets. */
+  margin-top: calc(var(--offset) * var(--offset-unit));
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+.section-calendar .calendar-blocks table.month.weekdays:last-child {
+  margin-top: 0.75rem;
+}
+
+.section-calendar .month.weekdays tr {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+}
+.section-calendar .month.weekdays td {
+  display: block;
+  padding: 0;
+  margin: 0;
+  /* space between weekday labels to align with the circle gap */
+  margin-bottom: 0.3rem;
+  width: 100%;
+  white-space: nowrap;
+  text-align: left;
+  /* capitalize so that Sun/MON look consistent */
+  text-transform: capitalize;
+}
+
+/* Style month tables for horizontal flow */
+.section-calendar .calendar-blocks table.month:not(.weekdays) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 0.75rem;
+  margin-top: calc(var(--offset) * var(--offset-unit));
+}
+/* Rotate and stack the month heading vertically.  The text flows top-to-bottom
+  without being flipped so the first letter appears at the top. */
+  .section-calendar .calendar-blocks table.month:not(.weekdays) thead th {
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    /* remove the 180deg rotation so letters are not upside down */
+    transform: none;
+    font-size: 0.7rem;
+    margin-bottom: 0.5rem;
+    white-space: nowrap;
+    /* center the rotated text relative to its column */
+    align-self: center;
+  }
+/* Month heading (e.g., JANUARY).  Reduce the width and padding so that
+    the label sits closer to its row of circles. */
+.section-calendar .calendar-blocks table.month:not(.weekdays) thead {
+  flex: 0 0 5rem;
+}
+.section-calendar .calendar-blocks table.month:not(.weekdays) thead th {
+  text-align: left;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  padding-right: 0.25rem;
+  white-space: nowrap;
+}
+/* Days row: break out of table layout */
+.section-calendar .calendar-blocks table.month:not(.weekdays) tbody {
+  flex: 1;
+}
+/* Days column: show each day as its own row */
+.section-calendar .calendar-blocks table.month:not(.weekdays) tbody tr {
+  display: flex;
+  flex-direction: column;
+}
+.section-calendar .calendar-blocks table.month:not(.weekdays) tbody td {
+  display: block;
+  width: var(--circle-size);
+  height: var(--circle-size);
+  border-radius: 50%;
+  background-color: var(--nero);
+  color: var(--offwhite);
+  line-height: var(--circle-size);
+  margin-bottom: 0.3rem;
+  font-size: 0.55rem;
+}
+.section-calendar .calendar-blocks table.month:not(.weekdays) tbody td.roadmap-1 {
+  background-color: var(--purple);
+  color: var(--nero);
+  border: 1px solid var(--silverback);
+  font-weight: 600;
+}
+.section-calendar .calendar-blocks table.month:not(.weekdays) tbody td.roadmap-2 {
+  background-color: var(--blue);
+  color: var(--nero);
+  border: 1px solid var(--silverback);
+  font-weight: 600;
+}
+.section-calendar .calendar-blocks table.month:not(.weekdays) tbody td.roadmap-3 {
+  background-color: var(--green);
+  color: var(--nero);
+  border: 1px solid var(--silverback);
+  font-weight: 600;
+}
+.section-calendar .calendar-blocks table.month:not(.weekdays) tbody td.roadmap-4 {
+  background-color: var(--yellow);
+  color: var(--nero);
+  border: 1px solid var(--silverback);
+  font-weight: 600;
+}
+.section-calendar .calendar-blocks table.month:not(.weekdays) tbody td.roadmap-5 {
+  background-color: var(--red);
+  color: var(--nero);
+  border: 1px solid var(--silverback);
+  font-weight: 600;
+}
+
+/* ======================================
+  ROADMAP - SECTION
+ ====================================== */
+.section-roadmap {
+ width: 100%;
+ max-width: 680px;
+ margin: 0 auto;
+ padding: 1.5rem 1rem;
+}
+
+.roadmap-grid {
+ display: grid;
+ grid-template-columns: 2rem 1fr;
+ grid-auto-rows: auto;
+ row-gap: 1rem;
+ column-gap: 1rem;
+ justify-items: start;
+ position: relative;
+}
+
+.roadmap-grid::before {
+ content: "";
+ position: absolute;
+ top: 0;
+ bottom: 0;
+ left: calc(1rem - 1px);
+ width: 2px;
+ background-color: var(--silverback);
+ z-index: 0;
+}
+
+/* Timeline cell houses a single coloured node. */
+.timeline-cell {
+  grid-column: 1;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ /* ensure the cell stretches to the height of its row */
+ height: 100%;
+ position: relative;
+ z-index: 1;
+}
+
+/* Individual nodes used in the timeline.  Each node colour is
+  defined via additional classes. */
+.timeline-cell .node {
+ display: block;
+ width: 0.75rem;
+ height: 0.75rem;
+ border-radius: 50%;
+}
+
+.purple-node { background-color: var(--purple); }
+.blue-node   { background-color: var(--blue); }
+.green-node  { background-color: var(--green); }
+.yellow-node { background-color: var(--yellow); color: var(--nero); }
+.red-node    { background-color: var(--red); }
+
+/* Base styling for all roadmap cards */
+.roadmap__card {
+ background-color: var(--offwhite);
+ border: 1px solid var(--silverback);
+ border-radius: 0.25rem;
+ box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+ display: flex;
+ flex-direction: column;
+ overflow: hidden;
+ max-width: 440px;
+ width: 100%;
+}
+
+/* Place cards in the left or right column on wide screens */
+.roadmap__card.left  { grid-column: 2; }
+.roadmap__card.right { grid-column: 2; }
+.roadmap__card.full  { grid-column: 2; }
+
+.roadmap__card h3 {
+  margin: 0;
+}
+/* Colour blocks within each card.  The first child is the coloured
+  header; subsequent blocks contain the descriptive content. */
+.roadmap__card .roadmap_colorBlock:first-child {
+ color: var(--offwhite);
+ padding: 0.5rem 0.5rem;
+ font-weight: 600;
+}
+.roadmap__card .roadmap_colorBlock:not(:first-child) {
+ padding: 0.75rem 0.5rem;
+ color: var(--nero);
+ background-color: var(--offwhite);
+ font-size: 0.85rem;
+}
+
+/* Adjust list spacing inside cards */
+.roadmap__card ul {
+ margin: 0.5rem 0 0 0;
+ padding-left: 1.25rem;
+}
+.roadmap__card li {
+ margin-bottom: 0.25rem;
+}
+
+/* Assign bespoke header colours to each milestone */
+#milestone-1 .roadmap_colorBlock:first-child { background-color: var(--purple); }
+#milestone-2 .roadmap_colorBlock:first-child { background-color: var(--blue); }
+#milestone-3 .roadmap_colorBlock:first-child { background-color: var(--green); }
+#milestone-4 .roadmap_colorBlock:first-child { background-color: var(--yellow); color: var(--nero); }
+#milestone-5 .roadmap_colorBlock:first-child { background-color: var(--red); }
+
+/* ======================================
+   TIMELINE - SECTION
+  ====================================== */
+/* Container for the timeline section */
+.section-timeline {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem;
+}
+
+/* Legend / key for timeline colours */
+.timeline-key {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.key-item {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.75rem;
+}
+
+.pill {
+  display: inline-block;
+  width: 1rem;
+  height: 0.5rem;
+  border-radius: 0.25rem;
+}
+.open-period { background-color: var(--green); }
+.phase-i     { background-color: var(--yellow); }
+.phase-ii    { background-color: var(--red); }
+
+/* Container for all year rings.  Wraps them with spacing and
+   allows them to flow onto multiple lines. */
+.timeline-years {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+/* Each year unit defines its own ring and month labels. */
+.year-unit {
+  position: relative;
+  width: 9rem;
+  height: 9rem;
+  margin: 1rem 0;
+}
+
+/* The coloured ring itself.  A radial mask hollows out the centre
+   to create a donut shape.  The background is defined by a
+   conic-gradient on each year via additional classes. */
+.year-unit .ring {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  /* Create the hole in the middle */
+  -webkit-mask: radial-gradient(closest-side, transparent 65%, #000 66%);
+  mask: radial-gradient(closest-side, transparent 65%, #000 66%);
+  background: var(--ring-gradient);
+}
+
+/* Centre label showing the year */
+.year-unit .year-label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+/* Month labels positioned around the ring.  Each label uses a
+   custom CSS variable --angle to determine its rotation.  The
+   translate moves the label outward beyond the ring’s radius, and
+   the counter-rotation keeps the text upright. */
+.month-label {
+  position: absolute;
+  top: 46%;
+  left: 44%;
+  transform-origin: 0 0;
+  font-size: 0.6rem;
+  white-space: nowrap;
+  /* Use trigonometric positioning via rotate and translate.  The
+     outer translation distance (5.0rem) equals half the ring size
+     (4.5rem) plus a small offset to clear the ring. */
+  transform: rotate(var(--angle)) translateX(5.25rem) rotate(calc(-1 * var(--angle)));
+}
+
+/* Gradient definitions for each year’s ring.  Colours correspond
+   to the SBIR/STTR calendar: gray for dormant months, green for
+   open periods (Phase 0), yellow for Phase I and red for Phase II. */
+.year-2026 {
+  --ring-gradient: conic-gradient(
+    var(--gray) 0deg 120deg,
+    var(--green) 120deg 210deg,
+    var(--gray) 210deg 300deg,
+    var(--yellow) 300deg 360deg
+  );
+}
+.year-2027 {
+  --ring-gradient: conic-gradient(
+    var(--yellow) 0deg 120deg,
+    var(--red)    120deg 330deg,
+    var(--yellow) 330deg 360deg
+  );
+}
+.year-2028 {
+  --ring-gradient: conic-gradient(
+    var(--red) 0deg 360deg
+  );
+}
+.year-2029 {
+  --ring-gradient: conic-gradient(
+    var(--red) 0deg 180deg,
+    var(--gray) 180deg 330deg,
+    var(--red) 330deg 360deg
+  );
+}
+
+/* Responsive adjustments for very narrow devices: stack the rings
+   vertically and reduce their size slightly. */
+@media (max-width: 600px) {
+  .timeline-years {
+    flex-direction: column;
+    align-items: center;
+  }
+  .year-unit {
+    width: 8rem;
+    height: 8rem;
+  }
+  /* Adjust label radius for smaller rings */
+  .month-label {
+    transform: rotate(var(--angle)) translateX(4.5rem) rotate(calc(-1 * var(--angle)));
+    font-size: 0.55rem;
+  }
+}
+
+/* ======================================
+   MARKET - SECTION
+  ====================================== */
+.market-section {
+  background-color: var(--offwhite);
+  border: 1px solid var(--silverback);
+  border-radius: 0.25rem;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.market-section__header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.market-section__eyebrow {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--nero-light);
+  font-size: 0.9rem;
+}
+
+.market-section__lede {
+  max-width: 70ch;
+  color: var(--nero);
+  line-height: 1.6;
+}
+
+.market-text-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+  color: var(--nero);
+  line-height: 1.65;
+}
+
+.market-feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+}
+
+.market-feature-card {
+  background-color: var(--mosswash);
+  border: 1px solid var(--silverback);
+  border-radius: 0.25rem;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  height: 100%;
+}
+
+.market-feature-card h3 {
+  margin: 0;
+  color: var(--nero);
+}
+
+.market-placeholder {
+  border: 1px dashed var(--silverback);
+  background-color: var(--offwhite);
+  color: var(--nero-light);
+  border-radius: 0.25rem;
+  padding: 1rem;
+  text-align: center;
+  min-height: 9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+}
+
+.market-placeholder--wide {
+  min-height: 12rem;
+}
+
+.market-list {
+  margin: 0;
+  padding-left: 1.5rem;
+  display: grid;
+  gap: 0.75rem;
+  color: var(--nero);
+}
+
+.market-cta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.market-cta__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
