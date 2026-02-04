@@ -54,6 +54,7 @@ services:
       OIDC_ISSUER: https://auth.fruitfulnetworkdevelopment.com/realms/${KC_REALM}
       OIDC_CLIENT_ID: ${OIDC_CLIENT_ID}
       OIDC_CLIENT_SECRET: ${OIDC_CLIENT_SECRET}
+      OIDC_CALLBACK_URL: ${OIDC_CALLBACK_URL}
 
       # Session signing
       SESSION_SECRET: ${SESSION_SECRET}
