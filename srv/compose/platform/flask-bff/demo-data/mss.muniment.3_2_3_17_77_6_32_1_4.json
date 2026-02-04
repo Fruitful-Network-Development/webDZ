@@ -1,0 +1,42 @@
+[
+    {
+      "@.lcl.txt.16.opus_local_id": "3_3",
+      "@.nominal.txt.32.title": "namespace.msn",
+      "@.nominal.txt.32.muniment": "open"
+    },
+    {
+        "@.lcl.txt.16.opus_local_id": "3_2",
+        "@.nominal.txt.32.title": "namespace.txa",
+        "@.nominal.txt.32.muniment": "open"
+    },
+    {
+        "@.lcl.txt.16.opus_local_id": "2_1",
+        "@.nominal.txt.32.title": "opus.group_analects",
+        "@.nominal.txt.32.muniment": "conditional"
+    },
+    {
+        "@.lcl.txt.16.opus_local_id": "2_2",
+        "@.nominal.txt.32.title": "opus.individual_analects",
+        "@.nominal.txt.32.muniment": "conditional"
+    },
+    {
+        "@.lcl.txt.16.opus_local_id": "2_4",
+        "@.nominal.txt.32.title": "opus.governing_body_analects",
+        "@.nominal.txt.32.muniment": "conditional"
+    },
+    {
+        "@.lcl.txt.16.opus_local_id": "3_1_1",
+        "@.nominal.txt.32.title": "natural_entity",
+        "@.nominal.txt.32.muniment": "conditional"
+    },
+    {
+        "@.lcl.txt.16.opus_local_id": "3_1_2",
+        "@.nominal.txt.32.title": "legal_entity",
+        "@.nominal.txt.32.muniment": "conditional"
+    },
+    {
+        "@.lcl.txt.16.opus_local_id": "3_1_3",
+        "@.nominal.txt.32.title": "adminitrative_entity",
+        "@.nominal.txt.32.muniment": "conditional"
+    }
+]

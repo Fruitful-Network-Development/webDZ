@@ -1,0 +1,7 @@
+[
+  {
+    "config_ref": "platform.correspondence_payload.fnd_primary.json",
+    "label": "FND primary email control-plane",
+    "owner_email": "dcmontgomery@fruitfulnetworkdevelopment.com"
+  }
+]

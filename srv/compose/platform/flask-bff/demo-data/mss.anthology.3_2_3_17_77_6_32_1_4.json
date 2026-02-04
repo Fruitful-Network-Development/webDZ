@@ -1,0 +1,77 @@
+[
+  {
+    "#.nominal.txt.256.title": "mss.compendium.3_2_3_17_77_6_32_1_4",
+    "@.lcl.txt.16.local_id": "1_1"
+  },
+  {
+    "#.nominal.txt.256.title": "mss.anthology.3_2_3_17_77_6_32_1_4",
+    "@.lcl.txt.16.local_id": "1_2"
+  },
+  {
+    "#.nominal.txt.256.title": "platform.conspectus.3_2_3_17_77_6_32_1_4",
+    "@.lcl.txt.16.local_id": "1_3"
+  },
+  {
+    "#.nominal.txt.256.title": "opus.group_analects",
+    "@.lcl.txt.16.local_id": "2_1"
+  },
+  {
+    "#.nominal.txt.256.title": "opus.individual_analects",
+    "@.lcl.txt.16.local_id": "2_2"
+  },
+  {
+    "#.nominal.txt.256.title": "opus.beneficiaries",
+    "@.lcl.txt.16.local_id": "2_3"
+  },
+  {
+    "#.nominal.txt.256.title": "opus.governing_body_analects",
+    "@.lcl.txt.16.local_id": "2_4"
+  },
+  {
+    "#.nominal.txt.256.title": "opus.correspondence",
+    "@.lcl.txt.16.local_id": "2_5"
+  },
+  {
+    "#.nominal.txt.256.title": "namespace.lcl",
+    "@.lcl.txt.16.local_id": "3_1"
+  },
+  {
+    "#.nominal.txt.256.title": "lcl.natural_entity",
+    "@.lcl.txt.16.local_id": "3_1_1"
+  },
+  {
+    "#.nominal.txt.256.title": "lcl.legal_entity",
+    "@.lcl.txt.16.local_id": "3_1_2"
+  },
+  {
+    "#.nominal.txt.256.title": "lcl.adminitrative_entity",
+    "@.lcl.txt.16.local_id": "3_1_3"
+  },
+  {
+    "#.nominal.txt.256.title": "objects",
+    "@.lcl.txt.16.local_id": "3_1_4"
+  },
+  {
+    "#.nominal.txt.256.title": "namespace.txa",
+    "@.lcl.txt.16.local_id": "3_2"
+  },
+  {
+    "#.nominal.txt.256.title": "namespace.msn",
+    "@.lcl.txt.16.local_id": "3_3"
+  },
+  {
+    "refactor-prototype": [
+      {"char": ["2", "9", "16", "63", "64", "256", "4096", "16384", "1048576"]},
+      {"email": ["char.256","char.63"]},
+      {"title": ["char.256"]},
+      {"first_name": ["char.64"]},
+      {"last_name": ["char.64"]},
+      {"msn_id": ["char.9"]},
+      {"keycloak_uuid": ["char.36"]},
+
+      {"dns-1": []},
+      {"dns-2": []},
+      {"dns-3": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]}
+    ]
+  }
+]

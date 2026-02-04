@@ -1,0 +1,245 @@
+[
+  {
+    "#.natural.cnt.16.batches": "2000",
+    "#.natural.cnt.16.units": "39689",
+    "#.natural.fiat.6.cost": "95.00",
+    "#.periodic.tmstp.10.date": "01_08_2025",
+    "@.lcl.txt.4.local_id": "3_1_2_8",
+    "@.lcl.txt.5.product_id": "blue_lake_bush_274",
+    "@.txa.txt.11.taxonomy_id": "HERE"
+  },
+  {
+    "#.natural.cnt.16.batches": "500",
+    "#.natural.cnt.16.units": "19958",
+    "#.natural.fiat.6.cost": "62.00",
+    "#.periodic.tmstp.10.date": "01_08_2025",
+    "@.lcl.txt.4.local_id": "3_1_2_8",
+    "@.lcl.txt.5.product_id": "sugar_snap_peas",
+    "@.txa.txt.11.taxonomy_id": "HERE"
+  },
+  {
+    "#.natural.cnt.16.batches": "5000",
+    "#.natural.cnt.16.units": "4989",
+    "#.natural.fiat.6.cost": "28.00",
+    "#.periodic.tmstp.10.date": "01_08_2025",
+    "@.lcl.txt.4.local_id": "3_1_2_8",
+    "@.lcl.txt.5.product_id": "waltham_butternut_squash",
+    "@.txa.txt.11.taxonomy_id": "HERE"
+  },
+  {
+    "#.natural.cnt.16.batches": "11200",
+    "#.natural.cnt.16.units": "5624",
+    "#.natural.fiat.6.cost": "42.00",
+    "#.periodic.tmstp.10.date": "01_08_2025",
+    "@.lcl.txt.4.local_id": "3_1_2_8",
+    "@.lcl.txt.5.product_id": "ct_field_pumpkin",
+    "@.txa.txt.11.taxonomy_id": "HERE"
+  },
+  {
+    "#.natural.cnt.16.batches": "1400",
+    "#.natural.cnt.16.units": "69853",
+    "#.natural.fiat.6.cost": "38.00",
+    "#.periodic.tmstp.10.date": "01_08_2025",
+    "@.lcl.txt.4.local_id": "3_1_2_8",
+    "@.lcl.txt.5.product_id": "detroit_dark_red_beet",
+    "@.txa.txt.11.taxonomy_id": "HERE"
+  },
+  {
+    "#.natural.cnt.16.batches": "171",
+    "#.natural.cnt.16.units": "11793",
+    "#.natural.fiat.6.cost": "160.00",
+    "#.periodic.tmstp.10.date": "01_08_2025",
+    "@.lcl.txt.4.local_id": "3_1_2_8",
+    "@.lcl.txt.5.product_id": "stuttg_zephyr_zoidisarter_onion_sets",
+    "@.txa.txt.11.taxonomy_id": "HERE"
+  },
+  {
+    "#.natural.cnt.16.batches": "3857",
+    "#.natural.cnt.16.units": "27215",
+    "#.natural.fiat.6.cost": "210.00",
+    "#.periodic.tmstp.10.date": "01_08_2025",
+    "@.lcl.txt.4.local_id": "3_1_2_8",
+    "@.lcl.txt.5.product_id": "silver_queen_sweet_corn",
+    "@.txa.txt.11.taxonomy_id": "HERE"
+  },
+  {
+    "#.natural.cnt.16.batches": "1000",
+    "#.natural.cnt.16.units": "3991",
+    "#.natural.fiat.6.cost": "18.00",
+    "#.periodic.tmstp.10.date": "01_08_2025",
+    "@.lcl.txt.4.local_id": "3_1_2_8",
+    "@.lcl.txt.5.product_id": "clemson_spineless_okra",
+    "@.txa.txt.11.taxonomy_id": "HERE"
+  },
+  {
+    "#.natural.cnt.16.batches": "15120",
+    "#.natural.cnt.16.units": "13743848",
+    "#.natural.fiat.6.cost": "175.00",
+    "#.periodic.tmstp.10.date": "01_08_2025",
+    "@.lcl.txt.4.local_id": "3_1_2_8",
+    "@.lcl.txt.5.product_id": "red_clover_seed",
+    "@.txa.txt.11.taxonomy_id": "HERE"
+  },
+  {
+    "#.natural.cnt.16.batches": "142",
+    "#.natural.cnt.16.units": "500",
+    "#.natural.fiat.6.cost": "240.00",
+    "#.periodic.tmstp.10.date": "01_08_2025",
+    "@.lcl.txt.4.local_id": "3_1_2_8",
+    "@.lcl.txt.5.product_id": "beauregard_slips",
+    "@.txa.txt.11.taxonomy_id": "HERE"
+  },
+  {
+    "#.natural.cnt.16.batches": "2000",
+    "#.natural.cnt.16.units": "4961",
+    "#.natural.fiat.6.cost": "48.00",
+    "#.periodic.tmstp.10.date": "01_12_2025",
+    "@.lcl.txt.4.local_id": "3_1_2_10",
+    "@.lcl.txt.5.product_id": "amish_paste_tomato",
+    "@.txa.txt.11.taxonomy_id": "HERE"
+  },
+  {
+    "#.natural.cnt.16.batches": "187",
+    "#.natural.cnt.16.units": "1126",
+    "#.natural.fiat.6.cost": "18.00",
+    "#.periodic.tmstp.10.date": "01_12_2025",
+    "@.lcl.txt.4.local_id": "3_1_2_10",
+    "@.lcl.txt.5.product_id": "ca_wonder_pepper",
+    "@.txa.txt.11.taxonomy_id": "HERE"
+  },
+  {
+    "#.natural.cnt.16.batches": "1800",
+    "#.natural.cnt.16.units": "898",
+    "#.natural.fiat.6.cost": "12.00",
+    "#.periodic.tmstp.10.date": "01_12_2025",
+    "@.lcl.txt.4.local_id": "3_1_2_10",
+    "@.lcl.txt.5.product_id": "golden_acre_cabbage",
+    "@.txa.txt.11.taxonomy_id": "HERE"
+  },
+  {
+    "#.natural.cnt.16.batches": "5142",
+    "#.natural.cnt.16.units": "35947",
+    "#.natural.fiat.6.cost": "35.00",
+    "#.periodic.tmstp.10.date": "01_12_2025",
+    "@.lcl.txt.4.local_id": "3_1_2_10",
+    "@.lcl.txt.5.product_id": "lacinato_kale",
+    "@.txa.txt.11.taxonomy_id": "HERE"
+  },
+  {
+    "#.natural.cnt.16.batches": "300",
+    "#.natural.cnt.16.units": "44905",
+    "#.natural.fiat.6.cost": "58.00",
+    "#.periodic.tmstp.10.date": "01_12_2025",
+    "@.lcl.txt.4.local_id": "3_1_2_10",
+    "@.lcl.txt.5.product_id": "nantes_coreless_carrot",
+    "@.txa.txt.11.taxonomy_id": "HERE"
+  },
+  {
+    "#.natural.cnt.16.batches": "33333",
+    "#.natural.cnt.16.units": "399161",
+    "#.natural.fiat.6.cost": "32.00",
+    "#.periodic.tmstp.10.date": "01_12_2025",
+    "@.lcl.txt.4.local_id": "3_1_2_10",
+    "@.lcl.txt.5.product_id": "black_seeded_simpson",
+    "@.txa.txt.11.taxonomy_id": "HERE"
+  },
+  {
+    "#.natural.cnt.16.batches": "1777",
+    "#.natural.cnt.16.units": "79832",
+    "#.natural.fiat.6.cost": "44.00",
+    "#.periodic.tmstp.10.date": "01_12_2025",
+    "@.lcl.txt.4.local_id": "3_1_2_10",
+    "@.lcl.txt.5.product_id": "bloomsdale_spinach",
+    "@.txa.txt.11.taxonomy_id": "HERE"
+  },
+  {
+    "#.natural.cnt.16.batches": "7200",
+    "#.natural.cnt.16.units": "72007",
+    "#.natural.fiat.6.cost": "35.00",
+    "#.periodic.tmstp.10.date": "01_12_2025",
+    "@.lcl.txt.4.local_id": "3_1_2_10",
+    "@.lcl.txt.5.product_id": "genovese_basil",
+    "@.txa.txt.11.taxonomy_id": "HERE"
+  },
+  {
+    "#.natural.cnt.16.batches": "1000",
+    "#.natural.cnt.16.units": "4989",
+    "#.natural.fiat.6.cost": "14.00",
+    "#.periodic.tmstp.10.date": "01_12_2025",
+    "@.lcl.txt.4.local_id": "3_1_2_10",
+    "@.lcl.txt.5.product_id": "mammoth_grey_stripe_sunflower",
+    "@.txa.txt.11.taxonomy_id": "HERE"
+  },
+  {
+    "#.natural.cnt.16.batches": "10000",
+    "#.natural.cnt.16.units": "70306",
+    "#.natural.fiat.6.cost": "65.00",
+    "#.periodic.tmstp.10.date": "02_04_2025",
+    "@.lcl.txt.4.local_id": "3_1_2_9",
+    "@.lcl.txt.5.product_id": "field_corn_open_pollinated",
+    "@.txa.txt.11.taxonomy_id": "HERE"
+  },
+  {
+    "#.natural.cnt.16.batches": "4535",
+    "#.natural.cnt.16.units": "1406136",
+    "#.natural.fiat.6.cost": "48.00",
+    "#.periodic.tmstp.10.date": "02_04_2025",
+    "@.lcl.txt.4.local_id": "3_1_2_9",
+    "@.lcl.txt.5.product_id": "oats_jerry_variety",
+    "@.txa.txt.11.taxonomy_id": "HERE"
+  },
+  {
+    "#.natural.cnt.16.batches": "6480",
+    "#.natural.cnt.16.units": "1995806",
+    "#.natural.fiat.6.cost": "110.00",
+    "#.periodic.tmstp.10.date": "02_04_2025",
+    "@.lcl.txt.4.local_id": "3_1_2_9",
+    "@.lcl.txt.5.product_id": "buckwheat",
+    "@.txa.txt.11.taxonomy_id": "HERE"
+  },
+  {
+    "#.natural.cnt.16.batches": "44",
+    "#.natural.cnt.16.units": "200",
+    "#.natural.fiat.6.cost": "150.00",
+    "#.periodic.tmstp.10.date": "02_04_2025",
+    "@.lcl.txt.4.local_id": "3_1_2_9",
+    "@.lcl.txt.5.product_id": "mary_washington_asparagus",
+    "@.txa.txt.11.taxonomy_id": "HERE"
+  },
+  {
+    "#.natural.cnt.16.batches": "16",
+    "#.natural.cnt.16.units": "25",
+    "#.natural.fiat.6.cost": "85.00",
+    "#.periodic.tmstp.10.date": "02_04_2025",
+    "@.lcl.txt.4.local_id": "3_1_2_9",
+    "@.lcl.txt.5.product_id": "victoria_rhubarb",
+    "@.txa.txt.11.taxonomy_id": "HERE"
+  },
+  {
+    "#.natural.cnt.16.batches": "2267",
+    "#.natural.cnt.16.units": "174633",
+    "#.natural.fiat.6.cost": "45.00",
+    "#.periodic.tmstp.10.date": "06_15_2025",
+    "@.lcl.txt.4.local_id": "3_1_2_8",
+    "@.lcl.txt.5.product_id": "daikon_radish_driller",
+    "@.txa.txt.11.taxonomy_id": "HERE"
+  },
+  {
+    "#.natural.cnt.16.batches": "5669",
+    "#.natural.cnt.16.units": "2721554",
+    "#.natural.fiat.6.cost": "85.00",
+    "#.periodic.tmstp.10.date": "06_15_2025",
+    "@.lcl.txt.4.local_id": "3_1_2_8",
+    "@.lcl.txt.5.product_id": "winter_rye",
+    "@.txa.txt.11.taxonomy_id": "HERE"
+  },
+  {
+    "#.natural.cnt.16.batches": "800",
+    "#.natural.cnt.16.units": "15875",
+    "#.natural.fiat.6.cost": "42.00",
+    "#.periodic.tmstp.10.date": "06_15_2025",
+    "@.lcl.txt.4.local_id": "3_1_2_8",
+    "@.lcl.txt.5.product_id": "provider_bush_bean",
+    "@.txa.txt.11.taxonomy_id": "HERE"
+  }
+]

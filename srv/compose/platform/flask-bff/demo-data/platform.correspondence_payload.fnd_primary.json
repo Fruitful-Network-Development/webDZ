@@ -1,0 +1,94 @@
+{
+  "schema_version": "1.0",
+  "msn_id": "3_2_3_17_77_6_32_1_4",
+  "domain": "fruitfulnetworkdevelopment.com",
+  "tenant_label": "fruitful_network_development",
+  "aws": {
+    "account_id": "065948377733",
+    "account_alias": "primary",
+    "region": "us-east-1",
+    "assume_role_arn": "arn:aws:iam::065948377733:role/fnd-email-controlplane",
+    "external_id_secret_ref": "secretsmanager://fnd/prod/controlplane/external_id"
+  },
+  "dns": {
+    "provider": "route53",
+    "hosted_zone_id": "Z123EXAMPLE",
+    "required_records": {
+      "mx": [
+        { "name": "@", "type": "MX", "value": "10 inbound-smtp.us-east-1.amazonaws.com" }
+      ],
+      "dkim_cname": [
+        { "name": "abc._domainkey", "type": "CNAME", "value": "abc.dkim.amazonses.com" },
+        { "name": "def._domainkey", "type": "CNAME", "value": "def.dkim.amazonses.com" },
+        { "name": "ghi._domainkey", "type": "CNAME", "value": "ghi.dkim.amazonses.com" }
+      ],
+      "spf_txt": [
+        { "name": "@", "type": "TXT", "value": "v=spf1 include:amazonses.com ~all" }
+      ],
+      "dmarc_txt": [
+        { "name": "_dmarc", "type": "TXT", "value": "v=DMARC1; p=none; rua=mailto:dmarc@fruitfulnetworkdevelopment.com" }
+      ]
+    }
+  },
+  "ses_identity": {
+    "identity_arn": "arn:aws:ses:us-east-1:065948377733:identity/fruitfulnetworkdevelopment.com",
+    "verified": true,
+    "dkim_enabled": true
+  },
+  "inbound": {
+    "route_id": "inbound_fnd_default",
+    "receipt_rule_set": {
+      "name": "default-receive",
+      "arn": "arn:aws:ses:us-east-1:065948377733:receipt-rule-set/default-receive"
+    },
+    "receipt_rule": {
+      "name": "to-s3-then-lambda",
+      "enabled": true,
+      "actions": [
+        { "type": "s3", "bucket": "ses-inbound-fnd-mail", "prefix": "inbox/" },
+        { "type": "lambda", "function_arn": "arn:aws:lambda:us-east-1:065948377733:function:ses-forwarder" }
+      ]
+    },
+    "forwarding": {
+      "primary_address": "dcmontgomery@fruitfulnetworkdevelopment.com",
+      "forward_to": ["dylancarsonmontgomery@gmail.com"]
+    }
+  },
+  "outbound": {
+    "mode": "ses_api",
+    "from_addresses": [
+      "dcmontgomery@fruitfulnetworkdevelopment.com",
+      "newsletter@fruitfulnetworkdevelopment.com"
+    ],
+    "configuration_set": {
+      "name": "fnd-default",
+      "event_destinations": [
+        { "type": "cloudwatch", "namespace": "FND/Email" },
+        { "type": "sns", "topic_arn": "arn:aws:sns:us-east-1:065948377733:fnd-ses-events" }
+      ]
+    },
+    "iam_role_arn": "arn:aws:iam::065948377733:role/fnd-email-sender",
+    "smtp_secret_ref": "secretsmanager://fnd/prod/ses/smtp_credentials"
+  },
+  "newsletters": [
+    {
+      "newsletter_id": "nl_fnd_monthly",
+      "name": "FND Monthly",
+      "from": "newsletter@fruitfulnetworkdevelopment.com",
+      "reply_to": "dcmontgomery@fruitfulnetworkdevelopment.com",
+      "audience": {
+        "list_ref": "db://platform.opus_subscribers?list=fnd_monthly",
+        "subscribed_field": "subscribed"
+      },
+      "delivery": {
+        "schedule": "FREQ=MONTHLY;BYDAY=MO,TU,WE,TH,FR;BYSETPOS=1;BYHOUR=9;BYMINUTE=0",
+        "rate_limit_per_second": 1
+      },
+      "compliance": {
+        "list_unsubscribe": true,
+        "footer_ref": "tpl_footer_can_spam",
+        "physical_address_ref": "org_profile://fnd/postal_address"
+      }
+    }
+  ]
+}

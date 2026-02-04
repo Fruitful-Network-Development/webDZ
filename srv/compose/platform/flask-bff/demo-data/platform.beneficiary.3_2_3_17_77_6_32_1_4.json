@@ -1,0 +1,27 @@
+[
+  {
+    "#.nominal.txt.36.keycloak_user_id": "be4063e1-3655-49da-9cff-ba50cc942e67",
+    "@.msn.txt.9.msn_id": "3_2_3_17_77_6_32_1_4",
+    "@.lcl.txt.4.beneficiary_local_id": "3_1_2_34",
+    "@.lcl.txt.4.principle_user_local_id": "3_1_1_18",
+    "meta.platform_correspondence_service": "true",
+    "meta.platform_opus_correspondence": "platform.correspondence.3_2_3_17_77_6_32_1_4"
+
+  },
+  {
+    "#.nominal.txt.36.keycloak_user_id": "d26a4fcc-a1c0-4c7c-8104-a2d783c2419d",
+    "@.msn.txt.9.msn_id": "3_2_3_17_77_19_1_1_2",
+    "@.lcl.txt.4.beneficiary_local_id": "3_1_2_10",
+    "@.lcl.txt.4.principle_user_local_id": "3_1_1_12",
+    "meta.platform_correspondence_service": "false",
+    "meta.platform_opus_correspondence": "~"
+  },
+  {
+    "#.nominal.txt.36.keycloak_user_id": "bcfb6b25-698b-4650-91ce-318aebca1e25",
+    "@.msn.txt.9.msn_id": "3_2_3_17_77_19_10_1_6",
+    "@.lcl.txt.4.beneficiary_local_id": "3_1_2_1",
+    "@.lcl.txt.4.principle_user_local_id": "3_1_1_7",
+    "meta.platform_correspondence_service": "false",
+    "meta.platform_opus_correspondence": "~"
+  }
+]

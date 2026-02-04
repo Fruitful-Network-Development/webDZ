@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+{% block title %}Admin Console · Email Service{% endblock %}
+{% block header_title %}Admin Console{% endblock %}
+{% block header_subtitle %}Email domain management (correspondence){% endblock %}
+
+{% block content %}
+  <section class="card">
+    <h2 class="section-title">Correspondence registry</h2>
+    <p class="muted">Admin-only records for SES/Route53 references and forwarding rules.</p>
+    {% if payload.correspondence %}
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>MSN ID</th>
+            <th>Source File</th>
+            <th>Payload</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for row in payload.correspondence %}
+            <tr>
+              <td>{{ row.id }}</td>
+              <td><span class="pill">{{ row.msn_id }}</span></td>
+              <td class="muted">{{ row.source_file }}</td>
+              <td><pre>{{ row.payload | tojson(indent=2) }}</pre></td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <div class="empty-state">No correspondence entries yet.</div>
+    {% endif %}
+  </section>
+
+  <section class="card">
+    <h2 class="section-title">Create correspondence entry</h2>
+    <p class="muted">Provide msn_id, source_file, and payload JSON.</p>
+    <div class="form-grid">
+      <div class="field">
+        <label for="email-msn-id">MSN ID</label>
+        <input id="email-msn-id" data-tenant-input type="text" placeholder="3_2_3_..." />
+      </div>
+      <div class="field">
+        <label for="email-source-file">Source File</label>
+        <input id="email-source-file" type="text" placeholder="platform.correspondence.<msn_id>.json" />
+      </div>
+      <div class="field">
+        <label for="email-payload">Payload JSON</label>
+        <textarea id="email-payload" rows="6">{}</textarea>
+      </div>
+      <div class="inline-actions">
+        <button class="btn" type="button" onclick="createCorrespondence()">Create</button>
+      </div>
+      <div id="email-create-status" class="pill"></div>
+    </div>
+  </section>
+
+  <script>
+    async function createCorrespondence() {
+      const msnId = document.getElementById("email-msn-id").value.trim();
+      const sourceFile = document.getElementById("email-source-file").value.trim();
+      const payloadText = document.getElementById("email-payload").value.trim();
+      const statusEl = document.getElementById("email-create-status");
+
+      if (!msnId || !sourceFile) {
+        adminBanner(statusEl, "MSN ID and source file are required.", "danger");
+        return;
+      }
+
+      let payloadObj = {};
+      try {
+        payloadObj = payloadText ? JSON.parse(payloadText) : {};
+      } catch (error) {
+        adminBanner(statusEl, "Payload must be valid JSON.", "danger");
+        return;
+      }
+
+      const resp = await adminFetch("/api/admin/correspondence", {
+        method: "POST",
+        body: JSON.stringify({
+          msn_id: msnId,
+          source_file: sourceFile,
+          payload: payloadObj,
+        }),
+      });
+
+      if (!resp.ok) {
+        const msg = await adminApiMessage(resp);
+        adminBanner(statusEl, msg, "danger");
+        return;
+      }
+
+      adminBanner(statusEl, "Created. Refresh to see the new entry.", "success");
+    }
+  </script>
+{% endblock %}
