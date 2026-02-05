@@ -83,7 +83,17 @@ sudo rsync -a --delete --dry-run \
   /home/admin/aws-box/srv/compose/platform/platform-schema/ \
   /srv/compose/platform/platform-schema/
 ```
+New:
+Fruitful realm: 
+```
+https://auth.fruitfulnetworkdevelopment.com/admin/fruitful/console/
+```
+Master realm: 
+```
+https://auth.fruitfulnetworkdevelopment.com/admin/master/console/
+```
 
+old:
 Here are the direct links to test:
   Login → admin console
     `https://api.fruitfulnetworkdevelopment.com/login?tenant=platform&return_to=/admin`
@@ -97,7 +107,6 @@ Here are the direct links to test:
     `https://api.fruitfulnetworkdevelopment.com/admin/tables/<table_local_id>/records?tenant_id=platform`
   If you want the tenant console too:
     `https://api.fruitfulnetworkdevelopment.com/t/platform/console`
-
 
 ---
 
