@@ -83,12 +83,14 @@ sudo rsync -a --delete --dry-run \
   /home/admin/aws-box/srv/compose/platform/platform-schema/ \
   /srv/compose/platform/platform-schema/
 ```
+
 New:
-Fruitful realm: 
+
+* Fruitful realm: 
 ```
 https://auth.fruitfulnetworkdevelopment.com/admin/fruitful/console/
 ```
-Master realm: 
+* Master realm: 
 ```
 https://auth.fruitfulnetworkdevelopment.com/admin/master/console/
 ```
