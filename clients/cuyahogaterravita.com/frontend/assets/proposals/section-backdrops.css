@@ -1,0 +1,46 @@
+/* sections/section-backdrops.css
+   Backdrop variants for section bands.
+   Uses REM exclusively — page-level rhythm.
+   ─────────────────────────────────────────────────────────────── */
+
+/* ── Two-tone split background ─────────────────────────── */
+.ui-section--split {
+  --ui-split-a: var(--ui-color-surface, #ffffff);
+  --ui-split-b: var(--ui-color-surface-muted, #f3f2ef);
+  --ui-split-pos: 50%;
+  background: linear-gradient(
+    90deg,
+    var(--ui-split-a) 0%,
+    var(--ui-split-a) var(--ui-split-pos),
+    var(--ui-split-b) var(--ui-split-pos),
+    var(--ui-split-b) 100%
+  );
+}
+
+/* ── Subtle diagonal stripe overlay (opt-in) ───────────── */
+.ui-section--stripes {
+  position: relative;
+  overflow: hidden;
+}
+
+.ui-section--stripes::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: var(--ui-stripe-opacity, 0.12);
+  background-image: repeating-linear-gradient(
+    -35deg,
+    rgba(0, 0, 0, 0.08) 0,
+    rgba(0, 0, 0, 0.08) 0.125rem,
+    transparent 0.125rem,
+    transparent 1.25rem
+  );
+  mix-blend-mode: multiply;
+}
+
+.ui-section--stripes > * {
+  position: relative;
+  z-index: 1;
+}
+

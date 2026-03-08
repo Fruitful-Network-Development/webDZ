@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./main.css" />
+  <title>Contact | Fruitful Network Development</title>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar__inner">
+      <button class="topbar__icon topbar__menu header__button--sidebar" type="button" aria-label="Index">
+        <img src="/assets/icon/icon-menu.png" alt="" />
+      </button>
+      <a class="topbar__mark" href="./index.html">FND</a>
+      <nav class="topbar__nav" aria-label="Primary">
+        <a class="topbar__link" href="./index.html">Home</a>
+        <a class="topbar__link" href="./services.html">Services</a>
+        <a class="topbar__link" href="./research.html">Research</a>
+        <a class="topbar__link" href="./about.html">About</a>
+        <a class="topbar__link is-current" href="./contact.html">Contact</a>
+      </nav>
+      <button class="topbar__icon" type="button" aria-label="Search">
+        <img src="/assets/icon/icon-search.png" alt="" />
+      </button>
+    </div>
+  </header>
+
+  <main class="edition">
+    <section class="lead-band lead-band--contact">
+      <section class="lead lead--page lead--parent lead--accent-purple">
+        <div class="lead__content">
+          <p class="lead__kicker">Get In Touch</p>
+          <h1 class="lead__title">Contact Us</h1>
+          <p class="lead__deck">Start with a free consultation — we'll assess your current site, payments, and ops workflow.</p>
+        </div>
+      </section>
+    </section>
+
+    <!-- DIVIDER LINE -->
+    <hr class="divider" />
+
+    <section class="contact-page accent-band--purple">
+      <div class="contact-page__main">
+        <div class="contact-page__form-card contact-page__form-card--accent">
+          <h2>Send a Message</h2>
+          <form class="field-form" action="#" method="post">
+            <label>
+              <span class="field-label ui-label-with-icon"><span class="field-label__icon ui-icon-box ui-icon-box--sm"><img src="/assets/icon/icon-personnel.png" alt="" /></span>Name</span>
+              <input type="text" name="name" placeholder="Your full name" required />
+            </label>
+            <label>
+              <span class="field-label ui-label-with-icon"><span class="field-label__icon ui-icon-box ui-icon-box--sm"><img src="/assets/icon/icon-mail.png" alt="" /></span>Email</span>
+              <input type="email" name="email" placeholder="you@example.com" required />
+            </label>
+            <label>
+              <span class="field-label ui-label-with-icon"><span class="field-label__icon ui-icon-box ui-icon-box--sm"><img src="/assets/icon/icon-organization.png" alt="" /></span>Organization <span class="muted">(optional)</span></span>
+              <input type="text" name="organization" placeholder="Farm, market, nonprofit, or company" />
+            </label>
+            <label>
+              <span class="field-label ui-label-with-icon"><span class="field-label__icon ui-icon-box ui-icon-box--sm"><img src="/assets/icon/icon-tag.png" alt="" /></span>Subject</span>
+              <input type="text" name="subject" placeholder="What is this regarding?" />
+            </label>
+            <label>
+              <span class="field-label ui-label-with-icon"><span class="field-label__icon ui-icon-box ui-icon-box--sm"><img src="/assets/icon/icon-thread.png" alt="" /></span>Message</span>
+              <textarea name="message" rows="8" placeholder="Tell us about your project, needs, or questions."></textarea>
+            </label>
+            <label style="display:flex;align-items:center;gap:.5rem;margin-top:.5rem;">
+              <input type="checkbox" id="subscribe-toggle" name="subscribe" />
+              <span class="field-label" style="font-size:.9rem;">Also subscribe me to the newsletter</span>
+            </label>
+            <p id="contact-msg" style="font-size:.85rem;margin:.25rem 0 0;"></p>
+            <button class="button" type="submit">Send Message</button>
+          </form>
+        </div>
+
+        <div class="contact-page__sidebar">
+          <div class="contact-page__info-card contact-page__info-card--direct">
+            <h3>Direct Contact</h3>
+            <div class="contact-page__info-row">
+              <img src="/assets/icon/icon-personnel.png" alt="" class="contact-page__info-icon" />
+              <p>Dylan Montgomery — Founder</p>
+            </div>
+            <div class="contact-page__info-row">
+              <img src="/assets/icon/icon-mail.png" alt="" class="contact-page__info-icon" />
+              <p><a href="mailto:dcmontgomery@fruitfulnetworkdevelopment.com">dcmontgomery@fruitfulnetworkdevelopment.com</a></p>
+            </div>
+            <div class="contact-page__info-row">
+              <img src="/assets/icon/icon-location.png" alt="" class="contact-page__info-icon" />
+              <p>Cuyahoga Valley, Ohio</p>
+            </div>
+          </div>
+
+          <div class="contact-page__info-card contact-page__info-card--expect">
+            <h3>What to Expect</h3>
+            <ul>
+              <li>Free initial consultation to assess your needs</li>
+              <li>We can match or beat typical hosting/provider pricing</li>
+              <li>No forced platform migration — incremental improvements</li>
+              <li>Response within 1–2 business days</li>
+            </ul>
+          </div>
+
+          <div class="contact-page__info-card contact-page__info-card--cta">
+            <p>Interested in our research pilot?</p>
+            <a class="internal-nav-btn internal-nav-btn--yellow" href="./research.html">Learn More</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DIVIDER LINE -->
+    <hr class="divider" />
+  </main>
+  <script src="./js/site-search.js" defer></script>
+  <script src="./js/sidebar.js" defer></script>
+  <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var form = document.querySelector('.field-form');
+    if (!form) return;
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var msg = document.getElementById('contact-msg');
+      var toggle = document.getElementById('subscribe-toggle');
+      var emailInput = form.querySelector('input[name="email"]');
+      var email = emailInput ? emailInput.value.trim() : '';
+      if (toggle && toggle.checked && email) {
+        msg.textContent = 'Subscribing…';
+        fetch('/newsletter/subscribe', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: email })
+        }).then(function (r) { return r.json(); }).then(function (d) {
+          msg.textContent = d.ok ? 'Subscribed! Message noted.' : (d.error || 'Subscribe failed, but message noted.');
+        }).catch(function () { msg.textContent = 'Network error on subscribe, but message noted.'; });
+      } else {
+        msg.textContent = 'Message noted — thank you!';
+      }
+    });
+  });
+  </script>
+</body>
+</html>

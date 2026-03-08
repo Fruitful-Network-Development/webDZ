@@ -1,0 +1,174 @@
+/* ======================================
+   LEDGER FOOTER (home page only)
+   Full-width bar — sits outside <main>,
+   matches editorial box border style.
+  ====================================== */
+.ledger-footer {
+  border-top: 1px solid var(--mosswash);
+  border-bottom: 1px solid var(--mosswash);
+  padding: 2rem clamp(1rem, 3vw, 3rem);
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  background-color: var(--verdant);
+  color: var(--mosswash);
+}
+
+/* ---- Social icons row — centered ---- */
+.ledger-footer__social {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.45rem;
+  max-width: 72rem;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 0.15rem;
+}
+
+.ledger-footer__social a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.6rem;
+  height: 1.6rem;
+  flex-shrink: 0;
+  opacity: 0.95;
+  transition: opacity 160ms ease, transform 160ms ease, border-color 160ms ease;
+  border: 1px solid var(--mosswash);
+  background-color: transparent;
+}
+
+.ledger-footer__social a:hover {
+  opacity: 1;
+  transform: translateY(-1px);
+  border-color: var(--offwhite);
+}
+
+.ledger-footer__social a[aria-label="Instagram"] {
+  background-color: var(--accent-red);
+}
+
+.ledger-footer__social a[aria-label="LinkedIn"] {
+  background-color: var(--accent-yellow);
+}
+
+.ledger-footer__social a[aria-label="GitHub"] {
+  background-color: var(--royale);
+}
+
+.ledger-footer__social img {
+  width: 0.85rem;
+  height: 0.85rem;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+
+/* ---- Three-column content grid ---- */
+.ledger-footer__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+  max-width: 72rem;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.ledger-footer__grid section {
+  width: auto;
+  margin: 0;
+  padding: 1.25rem;
+  border: 1px solid var(--mosswash);
+  background-color: rgba(237, 232, 218, 0.06);
+}
+
+.ledger-footer__grid h2 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  text-align: left;
+  color: var(--mosswash);
+  margin: 0 0 0.5rem 0;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.ledger-footer__grid p {
+  margin: 0.25rem 0;
+  color: var(--mosswash);
+}
+
+.ledger-footer__grid a,
+.ledger-footer__grid a:visited {
+  color: var(--mosswash);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.ledger-footer__grid a:hover {
+  color: var(--offwhite);
+}
+
+/* ---- CTA column ---- */
+.ledger-footer__cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 0.75rem;
+  background-color: var(--incremental) !important;
+  border-color: var(--mosswash) !important;
+  /* boarder-radius: 0.25rem; */
+}
+
+.ledger-footer__cta p {
+  font-style: italic;
+  color: var(--mosswash);
+}
+
+/* ======================================
+   BUTTON (global — used by bridge, footer, etc.)
+  ====================================== */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  border: 1px solid transparent;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: filter 140ms ease;
+  background-color: var(--blue);
+  color: var(--offwhite);
+}
+
+.button:hover {
+  filter: brightness(1.1);
+  text-decoration: none;
+  color: var(--offwhite);
+}
+
+.button--light {
+  background-color: transparent;
+  border: 1px solid var(--accent-green);
+  color: var(--mosswash);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border-radius: 0;
+  min-width: 11.25rem;
+}
+
+.button--light:hover {
+  background-color: var(--accent-green);
+  color: var(--offwhite);
+}
+
+/* ---- Mobile layout ---- */
+@media (max-width: 768px) {
+  .ledger-footer__grid {
+    grid-template-columns: 1fr;
+  }
+}

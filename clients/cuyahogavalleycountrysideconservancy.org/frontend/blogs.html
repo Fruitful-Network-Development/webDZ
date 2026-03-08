@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog | Cuyahoga Valley Countryside Conservancy</title>
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="masthead">
+    <div class="masthead__wordmark">Countryside Conservancy</div>
+    <nav class="masthead__nav">
+      <a href="index.html">Home</a>
+      <a href="the_farms.html">The Farms</a>
+      <a href="history.html">History</a>
+      <a href="happenings.html">Happenings</a>
+      <a href="donate.html">Donate</a>
+      <a href="../index.html">Gallery</a>
+    </nav>
+  </header>
+
+  <main class="page">
+    <section class="section section--hero">
+      <div class="kicker">Field Journal</div>
+      <h1 class="headline-lg">Blog</h1>
+      <p>Stories, recipes, seasonal guides, and updates from the Countryside community.</p>
+    </section>
+
+    <section class="section">
+      <div class="divider-film-strip">Posts</div>
+      <article id="blogReader" class="blog-reader" aria-live="polite"></article>
+      <div id="blogGallery" class="blog-gallery grid-4" aria-label="Blog post gallery"></div>
+      <noscript>
+        <p>This page requires JavaScript to load and render the blog posts.</p>
+      </noscript>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__grid">
+      <div>
+        <figure class="figure">
+          <img class="figure__img" src="assets/logo/logo-stock-farm.png" alt="Cuyahoga Valley Countryside Conservancy" />
+          <figcaption class="figure__cap sr-only">Cuyahoga Valley Countryside Conservancy</figcaption>
+        </figure>
+        <p>Preserving farmland and supporting local agriculture in the Cuyahoga Valley.</p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="the_farms.html">The Farms</a></li>
+          <li><a href="history.html">History</a></li>
+          <li><a href="happenings.html">Happenings</a></li>
+          <li><a href="donate.html">Donate</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <p>Email: info@cuyahogavalleycountrysideconservancy.org</p>
+        <p>Phone: (330) 555-0100</p>
+      </div>
+    </div>
+    <div>&copy; 2024 Cuyahoga Valley Countryside Conservancy. All rights reserved.</div>
+  </footer>
+
+  <script src="JS/marked.min.js" defer></script>
+  <script src="JS/blogs.js" defer></script>
+</body>
+</html>

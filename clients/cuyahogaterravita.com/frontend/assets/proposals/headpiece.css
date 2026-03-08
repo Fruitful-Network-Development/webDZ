@@ -1,0 +1,86 @@
+/* subsections/leadin/headpiece.css
+   Vintage headpiece / feature patterns.
+   Extracted from FND .vintage-headpiece, .readmore-feature.
+   Uses em units.
+   ──────────────────────────────────────────────────────── */
+
+/* ── Headpiece banner ────────────────────────────────── */
+.ui-headpiece {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2em 1.5em;
+  background-color: var(--ui-nero);
+  color: var(--ui-offwhite);
+  position: relative;
+  overflow: hidden;
+}
+
+.ui-headpiece__inner {
+  max-width: 42em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75em;
+}
+
+.ui-headpiece__title {
+  font-family: var(--ui-font-display);
+  font-size: 1.5em;
+  text-transform: uppercase;
+  letter-spacing: var(--ui-ls-wide);
+  line-height: var(--ui-lh-snug);
+  margin: 0;
+}
+
+.ui-headpiece__subtitle {
+  font-size: 0.95em;
+  font-style: italic;
+  opacity: 0.85;
+  margin: 0;
+}
+
+/* ── Readmore feature (article teaser) ───────────────── */
+.ui-readmore {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5em;
+  align-items: center;
+  padding: 1.5em;
+  background-color: var(--ui-offwhite);
+  border-radius: var(--ui-radius-5);
+  overflow: hidden;
+}
+
+.ui-readmore__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--ui-radius-3);
+}
+
+.ui-readmore__body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+.ui-readmore__title {
+  font-size: 1.15em;
+  font-weight: 700;
+  margin: 0;
+}
+
+.ui-readmore__text {
+  font-size: 0.9em;
+  color: var(--ui-text-light);
+  line-height: var(--ui-lh-relaxed);
+  margin: 0;
+}
+
+@media (max-width: 40em) {
+  .ui-readmore {
+    grid-template-columns: 1fr;
+  }
+}

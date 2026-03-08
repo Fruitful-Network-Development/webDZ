@@ -1,0 +1,462 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
+  <title>Email Management | Fruitful Network Development</title>
+  <link rel="icon" type="image/png" href="../favicon.png">
+  <link rel="stylesheet" href="../main.css">
+</head>
+<body>
+  <!-- ======================================
+      HEADER
+  ====================================== -->
+  <header class="topbar">
+    <div class="topbar__inner">
+      <button class="topbar__icon topbar__menu header__button--sidebar" type="button" aria-label="Index">
+        <img src="/assets/icon/icon-menu.png" alt="" />
+      </button>
+      <a class="topbar__mark" href="../index.html">FND</a>
+      <nav class="topbar__nav" aria-label="Primary">
+        <a class="topbar__link" href="../index.html">Home</a>
+        <a class="topbar__link is-current" href="../services.html">Services</a>
+        <a class="topbar__link" href="../research.html">Research</a>
+        <a class="topbar__link" href="../about.html">About</a>
+        <a class="topbar__link" href="../contact.html">Contact</a>
+      </nav>
+      <button class="topbar__icon" type="button" aria-label="Search">
+        <img src="/assets/icon/icon-search.png" alt="" />
+      </button>
+    </div>
+  </header>
+
+  <main class="edition">
+    <section class="lead--home-full lead--graphic-home subpage-lunette-shell">
+      <div class="subpage-lunette-shell__inner">
+        <section class="lunette-hero-wrap" aria-label="Decorative headpiece">
+          <div class="lunette-hero lunette-hero--maplegrove" role="img" aria-label="Maple grove park entrance from Valley View Road headpiece"></div>
+        </section>
+        <p class="lunette-caption">Maple grove park entrance from Valley View Road</p>
+      </div>
+    </section>
+
+    <section class="lead-floating">
+      <p class="lead__kicker">Communications</p>
+      <h1 class="lead__title">Email Management</h1>
+      <p class="lead__deck">Role-based inboxes, forwarding, listservs, and newsletters — configured for reliability and low admin overhead.</p>
+    </section>
+
+    <section class="editorial editorial--linear">
+      <p class="editorial-label" id="email-overview">Program Overview</p>
+      <p>Email is the operational backbone for sign-ups, receipts, announcements, support requests, and internal coordination. We set up a clean, maintainable email structure so your organization can grow without inbox chaos, lost messages, or “who owns this account?” problems.</p>
+      <div class="internal-nav-row">
+        <a class="internal-nav-btn internal-nav-btn--green" href="../services.html">Back to Services</a>
+      </div>
+
+      <section class="editorial-box subsection-block" id="inboxes-aliases">
+        <h3>Inboxes, Aliases, and Role Addresses</h3>
+        <p>We avoid putting operations on personal accounts. Instead, we create role-based addresses (like <strong>info@</strong>, <strong>orders@</strong>, <strong>support@</strong>) that forward to the right people and can be reassigned cleanly as staffing changes.</p>
+        <ul>
+          <li><strong>Shared visibility:</strong> use group inboxes when multiple people need to see and respond.</li>
+          <li><strong>Clear ownership:</strong> keep domain + admin accounts controlled by the client.</li>
+          <li><strong>Operational continuity:</strong> preserve history when staff turns over.</li>
+        </ul>
+      </section>
+
+      <section class="editorial-box subsection-block" id="broadcast-newsletters">
+        <h3>Broadcasting, Newsletters, and Consent</h3>
+        <p>For bulk announcements and newsletters, we recommend using a dedicated sending platform (instead of sending from a normal inbox) to protect deliverability and keep unsubscribe handling automatic.</p>
+        <ul>
+          <li><strong>List hygiene:</strong> manage bounces and unsubscribes automatically.</li>
+          <li><strong>Segmentation:</strong> target audiences (customers, volunteers, donors) without duplicate lists.</li>
+          <li><strong>Compliance:</strong> ensure opt-in, footer requirements, and suppression lists.</li>
+        </ul>
+      </section>
+
+      <section class="editorial-box subsection-block" id="dns-deliverability">
+        <h3>DNS and Deliverability</h3>
+        <p>Email reliability depends on correct DNS. We configure the essentials (SPF, DKIM, DMARC) and align sending sources so messages land in inboxes instead of spam folders.</p>
+        <p class="subsection-actions">
+          <a class="article-link-btn" href="./articles.html?doc=interoperability_in_socio-technical_networks.md">Further Reading: Interoperability</a>
+        </p>
+      </section>
+    </section>
+
+    <!-- ======================================
+        EMAIL OPTIONS TABLE — SECTION
+    ====================================== -->
+    <section class="services-section" id="email-options-table">
+      <div>
+        <h2>Email Management Options</h2>
+        <p>Forwarding, shared inboxes, listservs, and outbound newsletter platforms</p>
+        <p class="muted">Comparative table across typical plans, operational limits, and admin overhead.</p>
+        <p class="muted"><strong>Google Groups note:</strong> Google Groups (included with Google Workspace) functions as a traditional listserv. It doesn’t belong in the “marketing email” category because it lacks core CRM features: you can’t build drag-and-drop graphic templates, you can’t track who opened an email or clicked a link, and you can’t set up automated welcome sequences.</p>
+      </div>
+	  
+	    <div class="table-card">
+	      <div class="table-scroll">
+	        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Provider</th>
+              <th>Plan</th>
+              <th>Monthly Fee</th>
+              <th>Sending Limits</th>
+              <th>Seat/Member Limit</th>
+              <th>Storage</th>
+              <th>Custom Domain</th>
+              <th>Internal Routing</th>
+              <th>Auto-Unsub</th>
+              <th>Setup Effort</th>
+              <th>Key Features</th>
+            </tr>
+          </thead>
+  
+	          <tbody>
+	            <tr>
+	              <td><img src="../assets/logo/logo-google.jpg" alt="Google Workspace" /></td>
+	              <td>Business Starter</td>
+	              <td>$7.00 / user</td>
+	              <td>Standard Google limits</td>
+	              <td>Unlimited</td>
+	              <td>30 GB / user</td>
+              <td>Yes</td>
+              <td>Full</td>
+              <td>Yes (Groups)</td>
+              <td>High</td>
+	              <td>All-in-one suite; advanced admin console; Drive & Meet</td>
+	            </tr>
+	  
+	            <tr>
+	              <td><img src="../assets/logo/logo-google.jpg" alt="Google Workspace" /></td>
+	              <td>Nonprofits (501c3)</td>
+	              <td>$0</td>
+	              <td>Standard Google limits</td>
+	              <td>2,000 users</td>
+              <td>30 GB / user</td>
+              <td>Yes</td>
+              <td>Full</td>
+              <td>Yes (Groups)</td>
+              <td>High</td>
+	              <td>Requires official verification; full suite access</td>
+	            </tr>
+	  
+	            <tr>
+	              <td><img src="../assets/logo/logo-groups_io.jpg" alt="Groups.io" /></td>
+	              <td>Premium</td>
+	              <td>$20.00+</td>
+	              <td>Unlimited</td>
+	              <td>400 (scales up)</td>
+              <td>2 GB</td>
+              <td>Subdomain</td>
+              <td>Full</td>
+              <td>Yes</td>
+              <td>Low</td>
+	              <td>Modern listserv; daily digests; wiki & calendar features</td>
+	            </tr>
+	  
+	            <tr>
+	              <td><img src="../assets/logo/logo-groups_io.jpg" alt="Groups.io" /></td>
+	              <td>Free Tier</td>
+	              <td>$0</td>
+	              <td>Standard</td>
+	              <td>100</td>
+              <td>Basic</td>
+              <td>Subdomain</td>
+              <td>Full</td>
+              <td>Yes</td>
+              <td>Low</td>
+	              <td>Embeddable sign-up snippets; basic list management</td>
+	            </tr>
+	  
+	            <tr>
+	              <td><img src="../assets/logo/logo-brevo.jpg" alt="Brevo" /></td>
+	              <td>Starter</td>
+	              <td>$9.00+</td>
+	              <td>5,000 / mo</td>
+	              <td>Unlimited contacts</td>
+              <td>N/A</td>
+              <td>Yes</td>
+              <td>No</td>
+              <td>Yes</td>
+              <td>Medium</td>
+	              <td>Drag-and-drop newsletter builder; API access; no daily limits</td>
+	            </tr>
+	  
+	            <tr>
+	              <td><img src="../assets/logo/logo-brevo.jpg" alt="Brevo" /></td>
+	              <td>Free Tier</td>
+	              <td>$0</td>
+	              <td>300 / day</td>
+	              <td>Unlimited contacts</td>
+              <td>N/A</td>
+              <td>Yes</td>
+              <td>No</td>
+              <td>Yes</td>
+              <td>Medium</td>
+	              <td>Customizable website forms; marketing analytics</td>
+	            </tr>
+	  
+	            <tr>
+	              <td><img src="../assets/logo/logo-gaggle_mail.jpg" alt="Gaggle Mail" /></td>
+	              <td>Pro</td>
+	              <td>~$2.50 / user</td>
+	              <td>Unlimited</td>
+	              <td>Unlimited (scales)</td>
+              <td>N/A</td>
+              <td>Yes</td>
+              <td>Full</td>
+              <td>Yes</td>
+              <td>Low</td>
+	              <td>Streamlined group inbox; customized message templates</td>
+	            </tr>
+	  
+	            <tr>
+	              <td><img src="../assets/logo/logo-gaggle_mail.jpg" alt="Gaggle Mail" /></td>
+	              <td>Free Tier</td>
+	              <td>$0</td>
+	              <td>Unlimited</td>
+	              <td>20</td>
+              <td>N/A</td>
+              <td>Yes</td>
+              <td>Full</td>
+              <td>Yes</td>
+              <td>Low</td>
+	              <td>Great for small core teams; simple interface</td>
+	            </tr>
+	  
+	            <tr>
+	              <td>AWS SES</td>
+	              <td>Custom Cloud</td>
+	              <td>Pay-as-you-go</td>
+	              <td>Infinite (Scalable)</td>
+	              <td>Unlimited</td>
+              <td>S3 Dependent</td>
+              <td>Yes</td>
+              <td>Custom</td>
+              <td>Programmatic</td>
+              <td>Very High</td>
+	              <td>$0.10 per 1k emails; complete control over routing rules</td>
+	            </tr>
+	            
+	            <tr>
+	              <td><img src="../assets/logo/logo-cloudflare.jpg" alt="Cloudflare" /></td>
+	              <td>Email Routing</td>
+	              <td>$0</td>
+	              <td>Unlimited</td>
+	              <td>Unlimited aliases</td>
+              <td>N/A</td>
+              <td>Yes</td>
+              <td>Forward Only</td>
+              <td>No</td>
+              <td>Medium</td>
+	              <td>Best paired with Brevo/AWS for outbound; totally free forwarding</td>
+	            </tr>
+  
+          </tbody>
+        </table>
+      </div>
+  
+      <p class="table-footnote muted">Images represent platform branding only. Prices reflect base tiers as of 2026.</p>
+    </div>
+  </section>
+
+  <!-- ======================================
+      MARKETING & CAMPAIGNS TABLE — SECTION
+  ====================================== -->
+  <section class="services-section" id="marketing-email-table">
+    <div>
+      <h2>Marketing &amp; Campaigns</h2>
+      <p>Dedicated Newsletter and CRM Platforms</p>
+      <p class="muted">Comparative table across outbound marketing platforms. Pricing for these services typically scales strictly by the total number of contacts/subscribers on your list.</p>
+      <p class="muted"><strong>Officially:</strong> Google Groups belongs firmly in the first table because Google Workspace acts as a traditional listserv. It doesn’t belong in this marketing table because it lacks core CRM features: you can’t build drag-and-drop graphic templates, you can’t track who opened the email or clicked a link, and you can’t set up automated welcome sequences.</p>
+    </div>
+
+    <div class="table-card">
+      <div class="table-scroll">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Provider</th>
+              <th>Plan</th>
+              <th>Starting Fee</th>
+              <th>Contact Limit</th>
+              <th>Monthly Email Limit</th>
+              <th>Template Builder</th>
+              <th>Automations</th>
+              <th>E-commerce Sync</th>
+              <th>Vendor Lock-in</th>
+              <th>Key Features</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td><img src="../assets/logo/logo-mailchimp.jpg" alt="Mailchimp" /></td>
+              <td>Essentials</td>
+              <td>$13.00/mo</td>
+              <td>500 (scales up)</td>
+              <td>5,000</td>
+              <td>Advanced</td>
+              <td>Basic</td>
+              <td>Yes</td>
+              <td>High</td>
+              <td>Industry standard; integrates with almost everything; A/B testing</td>
+            </tr>
+
+            <tr>
+              <td><img src="../assets/logo/logo-mailchimp.jpg" alt="Mailchimp" /></td>
+              <td>Free Tier</td>
+              <td>$0</td>
+              <td>500</td>
+              <td>1,000</td>
+              <td>Basic</td>
+              <td>No</td>
+              <td>Limited</td>
+              <td>High</td>
+              <td>Good for starting out, but branding is forced on emails</td>
+            </tr>
+
+            <tr>
+              <td><img src="../assets/logo/logo-constant_contact.jpg" alt="Constant Contact" /></td>
+              <td>Core</td>
+              <td>$12.00/mo</td>
+              <td>500 (scales up)</td>
+              <td>12,000</td>
+              <td>Standard</td>
+              <td>Basic</td>
+              <td>Yes</td>
+              <td>High</td>
+              <td>Excellent customer support; strong event management features</td>
+            </tr>
+
+            <tr>
+              <td><img src="../assets/logo/logo-mailer_lite.jpg" alt="MailerLite" /></td>
+              <td>Advanced</td>
+              <td>$18.00/mo</td>
+              <td>500 (scales up)</td>
+              <td>Unlimited</td>
+              <td>Advanced</td>
+              <td>Advanced</td>
+              <td>Yes</td>
+              <td>Medium</td>
+              <td>Very cost-effective as list grows; modern drag-and-drop builder</td>
+            </tr>
+
+            <tr>
+              <td><img src="../assets/logo/logo-mailer_lite.jpg" alt="MailerLite" /></td>
+              <td>Free Tier</td>
+              <td>$0</td>
+              <td>1,000</td>
+              <td>12,000</td>
+              <td>Standard</td>
+              <td>Basic</td>
+              <td>No</td>
+              <td>Medium</td>
+              <td>One of the most generous free tiers for growing community lists</td>
+            </tr>
+
+            <tr>
+              <td><img src="../assets/logo/logo-flodesk.jpg" alt="Flodesk" /></td>
+              <td>Flat Rate</td>
+              <td>$38.00/mo</td>
+              <td>Unlimited</td>
+              <td>Unlimited</td>
+              <td>Premium/Design</td>
+              <td>Standard</td>
+              <td>Shopify only</td>
+              <td>Medium</td>
+              <td>Never penalizes for list growth; highly aesthetic templates</td>
+            </tr>
+
+            <tr>
+              <td><img src="../assets/logo/logo-convert_kit.jpg" alt="ConvertKit" /></td>
+              <td>Creator</td>
+              <td>$15.00/mo</td>
+              <td>300 (scales up)</td>
+              <td>Unlimited</td>
+              <td>Text-focused</td>
+              <td>Advanced</td>
+              <td>Yes</td>
+              <td>Medium</td>
+              <td>Built for content creators; excellent visual automation builder</td>
+            </tr>
+
+            <tr>
+              <td><img src="../assets/logo/logo-beehiiv.jpg" alt="Beehiiv" /></td>
+              <td>Launch (Free)</td>
+              <td>$0</td>
+              <td>2,500</td>
+              <td>Unlimited</td>
+              <td>Modern/Clean</td>
+              <td>No</td>
+              <td>No</td>
+              <td>Low</td>
+              <td>Best for pure newsletters; web-hosting included; very generous free tier</td>
+            </tr>
+
+            <tr>
+              <td><img src="../assets/logo/logo-substack.jpg" alt="Substack" /></td>
+              <td>Standard</td>
+              <td>$0 (Takes 10% of paid subs)</td>
+              <td>Unlimited</td>
+              <td>Unlimited</td>
+              <td>Text-focused</td>
+              <td>No</td>
+              <td>No</td>
+              <td>Low</td>
+              <td>Incredibly simple; acts as both a blog and an email blast; no CRM features</td>
+            </tr>
+
+            <tr>
+              <td><img src="../assets/logo/logo-klaviyo.jpg" alt="Klaviyo" /></td>
+              <td>Standard</td>
+              <td>$20.00/mo</td>
+              <td>500 (scales up)</td>
+              <td>5,000</td>
+              <td>Advanced</td>
+              <td>Advanced</td>
+              <td>Deep Integration</td>
+              <td>High</td>
+              <td>Industry standard for e-commerce; tracks highly specific purchasing behaviors</td>
+            </tr>
+
+            <tr>
+              <td><img src="../assets/logo/logo-klaviyo.jpg" alt="Klaviyo" /></td>
+              <td>Free Tier</td>
+              <td>$0</td>
+              <td>250</td>
+              <td>500</td>
+              <td>Advanced</td>
+              <td>Advanced</td>
+              <td>Deep Integration</td>
+              <td>High</td>
+              <td>Allows testing complex store automations before committing</td>
+            </tr>
+
+            <tr>
+              <td><img src="../assets/logo/logo-active_campaign.jpg" alt="ActiveCampaign" /></td>
+              <td>Lite</td>
+              <td>$15.00/mo</td>
+              <td>500 (scales up)</td>
+              <td>Unlimited</td>
+              <td>Advanced</td>
+              <td>Enterprise-grade</td>
+              <td>Yes</td>
+              <td>High</td>
+              <td>Incredibly powerful conditional logic; visual automation builder; high learning curve</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="table-footnote muted">Prices reflect starting tiers based on minimum subscriber counts as of 2026.</p>
+    </div>
+  </section>
+  <hr class="divider" />
+</main>
+<script src="../js/tables.js" defer></script>
+<script src="../js/site-search.js" defer></script>
+<script src="../js/sidebar.js" defer></script>
+</body>
+</html>

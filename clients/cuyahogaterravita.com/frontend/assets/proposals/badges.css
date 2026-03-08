@@ -1,0 +1,109 @@
+/* artifacts/badges.css
+   Pill / badge / tag / meta-label patterns.
+   Extracted from FND pill, pill-row, tag-item, tag-list, ui-icon-box, meta-label.
+   Maps to guide manifest: HexBadge, AppliedFilterChip.
+   Uses em units.
+   ──────────────────────────────────────────────────────────────────── */
+
+/* ── Badge (inline label) ────────────────────────────── */
+.ui-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3em;
+  padding: 0.15em 0.5em;
+  font-size: var(--ui-fs-xs);
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: var(--ui-ls-normal);
+  text-transform: uppercase;
+  color: var(--ui-nero);
+  background-color: var(--ui-offwhite);
+  border-radius: var(--ui-radius-pill);
+  border: 1px solid var(--ui-border);
+}
+
+/* Color variants */
+.ui-badge--green  { background-color: rgba(31, 111, 67, 0.12); color: var(--ui-accent-green); border-color: transparent; }
+.ui-badge--blue   { background-color: rgba(30, 108, 147, 0.12); color: var(--ui-accent-blue); border-color: transparent; }
+.ui-badge--red    { background-color: rgba(163, 32, 35, 0.12);  color: var(--ui-red); border-color: transparent; }
+.ui-badge--yellow { background-color: rgba(216, 156, 31, 0.12); color: var(--ui-collard); border-color: transparent; }
+
+/* ── Tag (removable chip — AppliedFilterChip) ────────── */
+.ui-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3em;
+  padding: 0.2em 0.55em;
+  border-radius: var(--ui-radius-pill);
+  border: 1px solid var(--ui-silverback);
+  font-size: 0.78em;
+  color: var(--ui-nero-light);
+  background: transparent;
+  cursor: default;
+}
+
+.ui-tag__remove {
+  cursor: pointer;
+  font-size: 0.8em;
+  line-height: 1;
+  opacity: 0.6;
+}
+
+.ui-tag__remove:hover {
+  opacity: 1;
+}
+
+/* ── Tag list container ──────────────────────────────── */
+.ui-tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35em;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* ── Icon box (FND ui-icon-box) ──────────────────────── */
+.ui-icon-box {
+  width: 2em;
+  height: 2em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85em;
+  font-weight: 700;
+  background-color: var(--ui-nero);
+  color: var(--ui-offwhite);
+  border-radius: var(--ui-radius-2);
+  box-shadow: var(--ui-shadow-icon);
+  flex-shrink: 0;
+}
+
+/* ── Meta label (small descriptive label) ────────────── */
+.ui-meta {
+  font-size: 0.8em;
+  font-family: var(--ui-font-mono);
+  text-transform: uppercase;
+  letter-spacing: var(--ui-ls-caps);
+  color: var(--ui-gray);
+  line-height: 1.3;
+}
+
+.ui-meta--accent {
+  color: var(--ui-accent-blue);
+}
+
+/* ── Hex badge (guide manifest: HexBadge) ────────────── */
+.ui-hex-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3em;
+  height: 3em;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  background-color: var(--ui-nero);
+  color: var(--ui-offwhite);
+  font-size: 0.85em;
+  font-weight: 700;
+  text-align: center;
+}

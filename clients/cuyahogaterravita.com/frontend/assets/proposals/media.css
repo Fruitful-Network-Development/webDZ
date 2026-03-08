@@ -1,0 +1,108 @@
+/* artifacts/media.css
+   Image/figure containers, aspect-ratio frames.
+   Merged from FND .img-container, CTV .figure/.dossier-graphic,
+   .editorial-figure, CVCC img defaults.
+   Uses em units.
+   ──────────────────────────────────────────────────────── */
+
+/* ── Figure container ────────────────────────────────── */
+.ui-figure {
+  margin: 0;
+  position: relative;
+  display: block;
+}
+
+.ui-figure__img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  border-radius: var(--ui-radius-3);
+}
+
+.ui-figure__cap {
+  font-size: 0.82em;
+  color: var(--ui-gray);
+  margin-top: 0.5em;
+  line-height: var(--ui-lh-normal);
+  font-style: italic;
+}
+
+/* ── Aspect-ratio frames ─────────────────────────────── */
+.ui-frame {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--ui-radius-3);
+}
+
+.ui-frame img,
+.ui-frame video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.ui-frame--16x9 { aspect-ratio: 16 / 9; }
+.ui-frame--4x3  { aspect-ratio: 4 / 3; }
+.ui-frame--1x1  { aspect-ratio: 1; }
+.ui-frame--3x4  { aspect-ratio: 3 / 4; }
+.ui-frame--2x1  { aspect-ratio: 2; }
+
+/* ── Image container with overlay (FND img-container) ─── */
+.ui-img-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--ui-radius-5);
+}
+
+.ui-img-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform var(--ui-transition-medium);
+}
+
+.ui-img-container:hover img {
+  transform: scale(1.03);
+}
+
+/* ── Vintage film frame (CTV figure border) ──────────── */
+.ui-frame--vintage {
+  border: 1px solid var(--ui-parchment);
+  border-radius: 0;
+  box-shadow: var(--ui-shadow-offset);
+}
+
+/* ── Circle / avatar frame ───────────────────────────── */
+.ui-frame--circle {
+  border-radius: var(--ui-radius-circle);
+  aspect-ratio: 1;
+}
+
+/* ── Full-bleed (no border-radius) ───────────────────── */
+.ui-frame--bleed {
+  border-radius: 0;
+}
+
+/* ── Editorial figure (inline with caption) ──────────── */
+.ui-editorial-figure {
+  margin: 1.5em 0;
+  overflow: hidden;
+  border-radius: var(--ui-radius-3);
+}
+
+.ui-editorial-figure img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.ui-editorial-figure figcaption {
+  font-size: 0.82em;
+  color: var(--ui-gray);
+  padding: 0.5em 0.25em;
+  font-style: italic;
+  line-height: var(--ui-lh-normal);
+}

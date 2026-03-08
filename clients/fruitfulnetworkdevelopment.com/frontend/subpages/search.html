@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="../favicon.png">
+  <link rel="stylesheet" href="../main.css" />
+  <title>Search | Fruitful Network Development</title>
+</head>
+<body id="site-search-page">
+  <header class="topbar">
+    <div class="topbar__inner">
+      <button class="topbar__icon topbar__menu header__button--sidebar" type="button" aria-label="Index">
+        <img src="/assets/icon/icon-menu.png" alt="" />
+      </button>
+      <a class="topbar__mark" href="../index.html">FND</a>
+      <nav class="topbar__nav" aria-label="Primary">
+        <a class="topbar__link" href="../index.html">Home</a>
+        <a class="topbar__link" href="../services.html">Services</a>
+        <a class="topbar__link" href="../research.html">Research</a>
+        <a class="topbar__link" href="../about.html">About</a>
+        <a class="topbar__link" href="../contact.html">Contact</a>
+      </nav>
+      <button class="topbar__icon" type="button" aria-label="Search">
+        <img src="/assets/icon/icon-search.png" alt="" />
+      </button>
+    </div>
+  </header>
+
+  <main class="edition">
+    <section class="lead-band lead-band--research">
+      <section class="lead lead--page lead--parent lead--accent-blue">
+        <div class="lead__content">
+          <p class="lead__kicker">Fruitful Network Development</p>
+          <h1 class="lead__title">Search</h1>
+          <p class="lead__deck">Find matching pages and article references across the site.</p>
+        </div>
+      </section>
+    </section>
+
+    <section class="search-shell search-shell--legacy">
+      <p class="search-shell__legacy">
+        <span class="ui-icon-box ui-icon-box--sm ui-icon-box--muted" aria-hidden="true"><img src="/assets/icon/icon-search.png" alt="" /></span>
+        Legacy search mirror page. Primary search opens as an in-page overlay from the header.
+      </p>
+      <form id="site-search-form" class="search-form" role="search" aria-label="Site Search">
+        <label class="search-form__label ui-label-with-icon" for="site-search-input">
+          <span class="ui-icon-box ui-icon-box--sm ui-icon-box--muted" aria-hidden="true"><img src="/assets/icon/icon-tag.png" alt="" /></span>
+          Search keywords
+        </label>
+        <div class="search-form__row">
+          <input id="site-search-input" class="search-form__input" type="search" placeholder="Try: fiscal sponsorship, volatility, POS, hosting" autocomplete="off" />
+          <button class="button" type="submit">Search</button>
+        </div>
+      </form>
+
+      <p id="site-search-summary" class="search-summary"></p>
+
+      <section id="site-search-results" class="search-results" aria-live="polite"></section>
+
+      <div id="site-search-more-wrap" class="search-more-wrap" hidden>
+        <button id="site-search-more" class="button" type="button">See More</button>
+      </div>
+    </section>
+
+    <hr class="divider" />
+  </main>
+
+  <script src="../js/site-search.js" defer></script>
+  <script src="../js/sidebar.js" defer></script>
+</body>
+</html>

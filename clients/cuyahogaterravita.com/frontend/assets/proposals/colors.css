@@ -1,0 +1,108 @@
+/* families/colors.css
+   Unified color tokens merged from all client sites.
+   Grouped by semantic role.  Site-agnostic — no brand-specific naming.
+   ------------------------------------------------------------------ */
+
+:root {
+  /* ── Neutrals ─────────────────────────────────────────────────── */
+  --ui-nero:            #353535;
+  --ui-nero-light:      #464646;
+  --ui-gray:            #717171;
+  --ui-silverback:      #afafaa;
+  --ui-cadet:           #8ea3af;
+  --ui-border:          #cfd6e0;
+
+  /* ── Paper / Background tones ─────────────────────────────────── */
+  --ui-mosswash:        #ede8da;
+  --ui-offwhite:        #f6f2e8;
+  --ui-pattens:         #cfe2f3;
+  --ui-mutedpattens:    #e4f5ff;
+  --ui-bg:              #f5f7f9;
+  --ui-bg-light:        #ffffff;
+  --ui-muted:           #f5f7f2;
+
+  /* ── Vintage / film palette (CTV-cvcc) ────────────────────────── */
+  --ui-parchment:       #D6C89A;
+  --ui-paper:           #F9F8F3;
+  --ui-canvas:          #FBF2ED;
+  --ui-beige:           #CFC8B8;
+  --ui-mist:            #D9D6CE;
+  --ui-film:            #2F2D26;
+  --ui-ink:             #332E28;
+  --ui-bark:            #302C1E;
+  --ui-olive:           #6D6B56;
+  --ui-sage-vintage:    #9AA38A;
+  --ui-mustard:         #BFA23A;
+  --ui-ochre:           #A8872D;
+  --ui-warm-olive:      #6B6F5B;
+  --ui-forest:          #3C4A30;
+
+  /* ── Nature / greenfield palette (CTV-greenfield) ─────────────── */
+  --ui-spruce:          #1b352d;
+  --ui-pine:            #2f5b4f;
+  --ui-sage:            #6d8f74;
+  --ui-fern:            #9db59b;
+  --ui-wheat:           #f7f3eb;
+  --ui-sun:             #d9a441;
+  --ui-clay:            #8f4d35;
+  --ui-ink-nature:      #11241d;
+  --ui-shadow-nature:   rgba(0, 0, 0, 0.12);
+  --ui-card-white:      #ffffff;
+
+  /* ── Earth tones (FND) ────────────────────────────────────────── */
+  --ui-camel:           #8f6448;
+  --ui-walnut:          #644332;
+  --ui-appleseed:       #a67c52;
+  --ui-collard:         #8b6500;
+
+  /* ── Reds ─────────────────────────────────────────────────────── */
+  --ui-red:             #a32023;
+  --ui-terracottaroof:  #a34547;
+  --ui-kuwazome:        #532728;
+
+  /* ── Yellows / golds ──────────────────────────────────────────── */
+  --ui-yellow:          #d89c1f;
+  --ui-leather:         #c8a255;
+  --ui-riverpanned:     #ac7e1e;
+
+  /* ── Greens ───────────────────────────────────────────────────── */
+  --ui-green:           #115f45;
+  --ui-verdant:         #364640;
+  --ui-camo:            #7c8f4b;
+  --ui-unakite:         #71a34b;
+  --ui-primary:         #1f6f43;
+  --ui-primary-dark:    #165030;
+  --ui-accent-nature:   #2f6236;
+
+  /* ── Blues ─────────────────────────────────────────────────────── */
+  --ui-blue:            #1d3a65;
+  --ui-incremental:     #113056;
+  --ui-kakitsubata:     #3d67a5;
+  --ui-blue-sour:       #1e6c93;
+  --ui-secondary:       #2f3c56;
+
+  /* ── Purples ──────────────────────────────────────────────────── */
+  --ui-purple:          #3f1f4a;
+  --ui-royale:          #490072;
+  --ui-lilac:           #7b4b8c;
+  --ui-portage:         #8f86d8;
+
+  /* ── Semantic accent system (brand-neutral references) ─────────  */
+  --ui-accent-blue:     var(--ui-blue-sour);
+  --ui-accent-green:    var(--ui-green);
+  --ui-accent-yellow:   var(--ui-yellow);
+  --ui-accent-red:      var(--ui-red);
+  --ui-accent-purple:   var(--ui-royale);
+
+  --ui-accent-gradient: linear-gradient(
+    90deg,
+    var(--ui-accent-blue)   0%,
+    var(--ui-accent-green)  34%,
+    var(--ui-accent-yellow) 68%,
+    var(--ui-accent-red)    100%
+  );
+
+  /* ── Foreground / text ────────────────────────────────────────── */
+  --ui-text:            #1f2a44;
+  --ui-text-light:      #56627a;
+}

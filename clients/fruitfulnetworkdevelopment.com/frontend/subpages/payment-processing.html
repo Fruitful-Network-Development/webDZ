@@ -1,0 +1,639 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
+  <title>Payment Processing | Fruitful Network Development</title>
+  <link rel="icon" type="image/png" href="../favicon.png">
+  <link rel="stylesheet" href="../main.css">
+</head>
+<body>
+  <!-- ======================================
+      HEADER
+  ====================================== -->
+  <header class="topbar">
+    <div class="topbar__inner">
+      <button class="topbar__icon topbar__menu header__button--sidebar" type="button" aria-label="Index">
+        <img src="/assets/icon/icon-menu.png" alt="" />
+      </button>
+      <a class="topbar__mark" href="../index.html">FND</a>
+      <nav class="topbar__nav" aria-label="Primary">
+        <a class="topbar__link" href="../index.html">Home</a>
+        <a class="topbar__link is-current" href="../services.html">Services</a>
+        <a class="topbar__link" href="../research.html">Research</a>
+        <a class="topbar__link" href="../about.html">About</a>
+        <a class="topbar__link" href="../contact.html">Contact</a>
+      </nav>
+      <button class="topbar__icon" type="button" aria-label="Search">
+        <img src="/assets/icon/icon-search.png" alt="" />
+      </button>
+    </div>
+  </header>
+
+  <main class="edition">
+    <section class="lead--home-full lead--graphic-home subpage-lunette-shell">
+      <div class="subpage-lunette-shell__inner">
+        <section class="lunette-hero-wrap" aria-label="Decorative headpiece">
+          <div class="lunette-hero lunette-hero--shawnee" role="img" aria-label="Shawnee Trail Tree Farm headpiece"></div>
+        </section>
+        <p class="lunette-caption">Shawnee Trail Tree Farm headpiece.</p>
+      </div>
+    </section>
+
+    <section class="lead-floating">
+      <p class="lead__kicker">Fruitful Network Development</p>
+      <h1 class="lead__title">Payment Processing & Web Hosting</h1>
+      <p class="lead__deck">A practical digital foundation for hosting, payments, and integrations.</p>
+    </section>
+
+    <section class="editorial editorial--linear">
+      <p class="editorial-label" id="payment-overview">Program Overview</p>
+      <p>At Fruitful Network Development, we provide a simple, reliable payment foundation for community-driven enterprises. Whether you're raising funds under fiscal sponsorship or selling produce at market, our system keeps online donations, designated giving, and point-of-sale transactions coordinated under one operational framework.</p>
+      <div class="internal-nav-row">
+        <a class="internal-nav-btn internal-nav-btn--green" href="../services.html">Back to Services</a>
+      </div>
+
+      <section class="editorial-box subsection-block" id="fiscal-sponsorship">
+        <h3>Fiscal Sponsorship and Donation Types</h3>
+        <p>Fiscal sponsorship is an arrangement where a recognized 501(c)(3) accepts donations and manages funds for mission-aligned projects that are not standalone charities. Donations are legally made to the sponsor, and the sponsor retains governance responsibility.</p>
+        <p>Donation handling generally includes unrestricted support, designated/restricted support, and conditional gifts tied to milestones. This structure allows projects to fundraise with accountability while sponsors maintain audit-ready controls and disbursement policy compliance.</p>
+        <p class="subsection-actions">
+          <a class="article-link-btn" href="./articles.html?doc=fiscal_sponsorship_programs_taxes.md">Further Reading: Fiscal Sponsorship</a>
+        </p>
+      </section>
+
+      <section class="editorial-box subsection-block" id="donation-types">
+        <h3>Donation Operations</h3>
+        <p>We recommend PayPal for most small organizations because it balances low-friction setup, donor familiarity, and strong transaction reporting. A single account can support multiple designated projects while maintaining clear internal separation.</p>
+        <p>The donation box module captures donor metadata (designation, comments, contact), automates receipt workflows, and keeps exports ready for bookkeeping, sponsor reporting, and review cycles.</p>
+        <p class="subsection-actions">
+          <a class="article-link-btn" href="./articles.html?doc=market_transparency.md">Further Reading: Market Transparency</a>
+        </p>
+      </section>
+
+      <section class="editorial-box subsection-block" id="pos-flexibility">
+        <h3>POS &amp; In-Person Integration</h3>
+        <p>Our approach can integrate in-person market-day payments with online donations, creating unified reporting while preserving correct separation between retail and charitable flows when required.</p>
+        <ul>
+          <li><strong>Unified reporting:</strong> align market transactions with online contributions.</li>
+          <li><strong>Scalable workflows:</strong> use consistent operations across farms, events, and projects.</li>
+          <li><strong>Clear separation:</strong> keep retail and charitable channels distinct for governance and accounting.</li>
+        </ul>
+        <p class="subsection-actions">
+          <a class="article-link-btn" href="./articles.html?doc=modern_models_in_local_agriculture.md">Further Reading: Local Models</a>
+        </p>
+      </section>
+    </section>
+
+    <!-- ======================================
+        ALTERNATIVES TABLE — SECTION
+    ====================================== -->
+    <section class="services-section" id="alternatives-table">
+      <div class="services-section__lead lead--accent-blue">
+        <p class="lead__kicker">Alternatives Table</p>
+        <h2 class="lead__title">Payment Processing &amp; Web Hosting</h2>
+        <p class="lead__deck">Comparative table for payment processing and web hosting providers across plans, transaction fees, and integration constraints.</p>
+      </div>
+      <div class="services-section__prose">
+        <p>See device-specific options and lock-in differences on the POS comparison subpage.</p>
+        <a class="internal-nav-btn internal-nav-btn--green" href="./pos.html">View POS Subpage</a>
+      </div>
+      <div class="table-card">
+        <div class="table-scroll">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Provider</th>
+                <th>Plan</th>
+                <th>Monthly Fee</th>
+                <th>In-Person Fee</th>
+                <th>Online Fee</th>
+                <th>Storage</th>
+                <th>Profiles</th>
+                <th>Public API</th>
+                <th>Webhooks</th>
+                <th>Vendor Exit Cost</th>
+                <th>Key Features</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td><img src="../assets/logo/logo-wix.png" alt="Wix" /></td>
+                <td>Business Elite</td>
+                <td>$99/mo</td>
+                <td>N/A</td>
+                <td>2.9% + $0.28</td>
+                <td>Unlimited</td>
+                <td>100</td>
+                <td>Limited</td>
+                <td>No</td>
+                <td>Medium</td>
+                <td>Advanced dev tools; analytics; multiple gateways</td>
+              </tr>
+
+              <tr>
+                <td><img src="../assets/logo/logo-wix.png" alt="Wix" /></td>
+                <td>Business</td>
+                <td>$39/mo</td>
+                <td>N/A</td>
+                <td>2.9% + $0.29</td>
+                <td>100 GB</td>
+                <td>10</td>
+                <td>Limited</td>
+                <td>No</td>
+                <td>Medium</td>
+                <td>Tax tools; coupons; product mgmt</td>
+              </tr>
+
+              <tr>
+                <td><img src="../assets/logo/logo-wix.png" alt="Wix" /></td>
+                <td>Core</td>
+                <td>$23/mo</td>
+                <td>N/A</td>
+                <td>2.9% + $0.30</td>
+                <td>50 GB</td>
+                <td>5</td>
+                <td>Limited</td>
+                <td>No</td>
+                <td>Medium</td>
+                <td>Scheduling; accepts payments</td>
+              </tr>
+
+              <tr>
+                <td><img src="../assets/logo/logo-wix.png" alt="Wix" /></td>
+                <td>Light</td>
+                <td>$16/mo</td>
+                <td>N/A</td>
+                <td>No payments</td>
+                <td>2 GB</td>
+                <td>2</td>
+                <td>No</td>
+                <td>No</td>
+                <td>Medium</td>
+                <td>Basic store only</td>
+              </tr>
+
+              <tr>
+                <td><img src="../assets/logo/logo-squarespace.png" alt="Squarespace" /></td>
+                <td>Business Elite</td>
+                <td>$99/mo</td>
+                <td>N/A</td>
+                <td>2.5% + $0.30 (Starting)</td>
+                <td>Unlimited</td>
+                <td>Unlimited</td>
+                <td>Limited</td>
+                <td>No</td>
+                <td>Medium</td>
+                <td>Subscriptions; advanced shipping</td>
+              </tr>
+
+              <tr>
+                <td><img src="../assets/logo/logo-squarespace.png" alt="Squarespace" /></td>
+                <td>Business</td>
+                <td>$39/mo</td>
+                <td>N/A</td>
+                <td>2.5% + $0.30 + 1%</td>
+                <td>100 GB</td>
+                <td>Unlimited</td>
+                <td>Limited</td>
+                <td>No</td>
+                <td>Medium</td>
+                <td>Customer accounts; merchandising</td>
+              </tr>
+
+              <tr>
+                <td><img src="../assets/logo/logo-squarespace.png" alt="Squarespace" /></td>
+                <td>Core</td>
+                <td>$23/mo</td>
+                <td>N/A</td>
+                <td>2.9% + fees</td>
+                <td>50 GB</td>
+                <td>Unlimited</td>
+                <td>Limited</td>
+                <td>No</td>
+                <td>Medium</td>
+                <td>CSS/JS customization</td>
+              </tr>
+
+              <tr>
+                <td><img src="../assets/logo/logo-squarespace.png" alt="Squarespace" /></td>
+                <td>Light</td>
+                <td>$16/mo</td>
+                <td>N/A</td>
+                <td>2.9% + fees</td>
+                <td>2 GB</td>
+                <td>2</td>
+                <td>No</td>
+                <td>No</td>
+                <td>Medium</td>
+                <td>Templates; AI assistant</td>
+              </tr>
+
+              <tr>
+                <td><img src="../assets/logo/logo-shopify.png" alt="Shopify" /></td>
+                <td>Plus</td>
+                <td>$2,500+/mo</td>
+                <td>2.4% + $0.10</td>
+                <td>2.5% + $0.30</td>
+                <td>Unlimited</td>
+                <td>Unlimited</td>
+                <td>Full</td>
+                <td>Yes</td>
+                <td>Low</td>
+                <td>Enterprise, multi-currency</td>
+              </tr>
+
+              <tr>
+                <td><img src="../assets/logo/logo-shopify.png" alt="Shopify" /></td>
+                <td>Advanced</td>
+                <td>$299/mo</td>
+                <td>2.4% + $0.10</td>
+                <td>2.5% + $0.30</td>
+                <td>Platform-managed</td>
+                <td>Platform</td>
+                <td>Full</td>
+                <td>Yes</td>
+                <td>Low</td>
+                <td>Advanced analytics</td>
+              </tr>
+
+              <tr>
+                <td><img src="../assets/logo/logo-shopify.png" alt="Shopify" /></td>
+                <td>Retail</td>
+                <td>$89/mo</td>
+                <td>No payments</td>
+                <td>Online only</td>
+                <td>Platform</td>
+                <td>Platform</td>
+                <td>Full</td>
+                <td>Yes</td>
+                <td>Medium</td>
+                <td>Proprietary POS</td>
+              </tr>
+
+              <tr>
+                <td><img src="../assets/logo/logo-shopify.png" alt="Shopify" /></td>
+                <td>Basic</td>
+                <td>$29/mo</td>
+                <td>No payments</td>
+                <td>No payments</td>
+                <td>Platform</td>
+                <td>Platform</td>
+                <td>Full</td>
+                <td>Yes</td>
+                <td>Low</td>
+                <td>SSL; analytics</td>
+              </tr>
+
+              <tr>
+                <td><img src="../assets/logo/logo-shopify.png" alt="Shopify" /></td>
+                <td>Starter</td>
+                <td>$5/mo</td>
+                <td>No payments</td>
+                <td>No payments</td>
+                <td>Platform</td>
+                <td>None</td>
+                <td>Limited</td>
+                <td>No</td>
+                <td>Low</td>
+                <td>Social sales</td>
+              </tr>
+
+              <tr>
+                <td><img src="../assets/logo/logo-paypal.png" alt="PayPal" /></td>
+                <td>N/A</td>
+                <td>$0</td>
+                <td>N/A</td>
+                <td>2.9% + $0.29</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td></td>
+              </tr>
+
+              <tr>
+                <td><img src="../assets/logo/logo-stripe.png" alt="Stripe" /></td>
+                <td>N/A</td>
+                <td>$0</td>
+                <td>N/A</td>
+                <td>2.9% + $0.30</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>Supports many integrations, custom workflows. Extras for international cards/currency conversion.</td>
+              </tr>
+
+              <tr>
+                <td><img src="../assets/logo/logo-donation-box.png" alt="Donation box" /></td>
+                <td>N/A</td>
+                <td>$0</td>
+                <td>N/A</td>
+                <td>2.2% + $0.30</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>Free to start, then pay % per donation.</td>
+              </tr>
+
+              <tr>
+                <td><img src="../assets/logo/logo-clover.png" alt="Clover" /></td>
+                <td>Full-Service Starter</td>
+                <td>$89.95+</td>
+                <td>2.6% + $0.10</td>
+                <td>3.5% + $0.10</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>Limited</td>
+                <td>No</td>
+                <td>High</td>
+                <td>Table mapping, split checks, KDS integration</td>
+              </tr>
+
+              <tr>
+                <td><img src="../assets/logo/logo-clover.png" alt="Clover" /></td>
+                <td>Full-Service Advanced</td>
+                <td>$129.85</td>
+                <td>2.3% + $0.10</td>
+                <td>3.5% + $0.11</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>Limited</td>
+                <td>No</td>
+                <td>High</td>
+                <td>Table mapping, split checks, KDS integration</td>
+              </tr>
+
+              <tr>
+                <td><img src="../assets/logo/logo-clover.png" alt="Clover" /></td>
+                <td>Quick-Service Starter</td>
+                <td>$59.95+</td>
+                <td>2.6% + $0.10</td>
+                <td>3.5% + $0.12</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>Limited</td>
+                <td>No</td>
+                <td>High</td>
+                <td>Online ordering, menu management, fast checkout</td>
+              </tr>
+
+              <tr>
+                <td><img src="../assets/logo/logo-clover.png" alt="Clover" /></td>
+                <td>Quick-Service Advanced</td>
+                <td>$109.90</td>
+                <td>2.3% + $0.10</td>
+                <td>3.5% + $0.13</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>Limited</td>
+                <td>No</td>
+                <td>High</td>
+                <td>Online ordering, menu management, fast checkout</td>
+              </tr>
+
+              <tr>
+                <td><img src="../assets/logo/logo-clover.png" alt="Clover" /></td>
+                <td>Retail Starter</td>
+                <td>$14.95</td>
+                <td>2.6% + $0.10</td>
+                <td>3.5% + $0.14</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>Limited</td>
+                <td>No</td>
+                <td>High</td>
+                <td>Barcode scanning, item variants, exchanges</td>
+              </tr>
+
+              <tr>
+                <td><img src="../assets/logo/logo-clover.png" alt="Clover" /></td>
+                <td>Retail Advanced</td>
+                <td>$104.90</td>
+                <td>2.3% + $0.10</td>
+                <td>3.5% + $0.15</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>Limited</td>
+                <td>No</td>
+                <td>High</td>
+                <td>Barcode scanning, item variants, exchanges</td>
+              </tr>
+
+              <tr>
+                <td><img src="../assets/logo/logo-clover.png" alt="Clover" /></td>
+                <td>Professional Starter</td>
+                <td>$14.95</td>
+                <td>2.6% + $0.10</td>
+                <td>3.5% + $0.16</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>Limited</td>
+                <td>No</td>
+                <td>High</td>
+                <td>Invoicing, virtual terminal, recurring payments</td>
+              </tr>
+
+              <tr>
+                <td><img src="../assets/logo/logo-clover.png" alt="Clover" /></td>
+                <td>Professional Advanced</td>
+                <td>$84.95</td>
+                <td>2.3% + $0.10</td>
+                <td>3.5% + $0.17</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>Limited</td>
+                <td>No</td>
+                <td>High</td>
+                <td>Invoicing, virtual terminal, recurring payments</td>
+              </tr>
+
+              <tr>
+                <td><img src="../assets/logo/logo-clover.png" alt="Clover" /></td>
+                <td>Personal Starter</td>
+                <td>$0</td>
+                <td>2.6% + $0.10</td>
+                <td>3.5% + $0.18</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>Limited</td>
+                <td>No</td>
+                <td>High</td>
+                <td>Appointment booking (higher tiers), customer database</td>
+              </tr>
+
+              <tr>
+                <td><img src="../assets/logo/logo-clover.png" alt="Clover" /></td>
+                <td>Personal Advanced</td>
+                <td>$84.95</td>
+                <td>2.3% + $0.10</td>
+                <td>3.5% + $0.19</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>Limited</td>
+                <td>No</td>
+                <td>High</td>
+                <td>Appointment booking (higher tiers), customer database</td>
+              </tr>
+
+              <tr>
+                <td><img src="../assets/logo/logo-clover.png" alt="Clover" /></td>
+                <td>Home &amp; Field Starter</td>
+                <td>$14.95</td>
+                <td>2.6% + $0.10</td>
+                <td>3.5% + $0.20</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>Limited</td>
+                <td>No</td>
+                <td>High</td>
+                <td>Mobile payments, paperless receipts, remote processing</td>
+              </tr>
+
+              <tr>
+                <td><img src="../assets/logo/logo-clover.png" alt="Clover" /></td>
+                <td>Home &amp; Field Advanced</td>
+                <td>$84.95</td>
+                <td>2.3% + $0.10</td>
+                <td>3.5% + $0.21</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>Limited</td>
+                <td>No</td>
+                <td>High</td>
+                <td>Mobile payments, paperless receipts, remote processing</td>
+              </tr>
+
+              <tr>
+                <td><img src="../assets/logo/logo-square.png" alt="Square" /></td>
+                <td>Free Tier</td>
+                <td>$0</td>
+                <td>2.6% + 15&cent;</td>
+                <td>3.3% + 30&cent;</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>Full</td>
+                <td>Yes</td>
+                <td>Medium</td>
+                <td>Core POS</td>
+              </tr>
+
+              <tr>
+                <td><img src="../assets/logo/logo-square.png" alt="Square" /></td>
+                <td>Plus</td>
+                <td>$49</td>
+                <td>2.5% + 15&cent;</td>
+                <td>2.9% + 30&cent;</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>Full</td>
+                <td>Yes</td>
+                <td>Medium</td>
+                <td>Loyalty, inventory</td>
+              </tr>
+
+              <tr>
+                <td><img src="../assets/logo/logo-square.png" alt="Square" /></td>
+                <td>Premium</td>
+                <td>$149</td>
+                <td>2.4% + 15&cent;</td>
+                <td>2.9% + 30&cent;</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>Full</td>
+                <td>Yes</td>
+                <td>Medium</td>
+                <td>Reporting, support</td>
+              </tr>
+
+              <tr>
+                <td><img src="../assets/logo/logo-godaddy.png" alt="GoDaddy" /></td>
+                <td>Website Builder — Basic</td>
+                <td>$9.99/mo*</td>
+                <td>2.3% + 0&cent; (GoDaddy Payments)</td>
+                <td>2.8% + 30&cent; (Pay Links/Invoicing)</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>Limited</td>
+                <td>No</td>
+                <td>Medium</td>
+                <td>Site builder + marketing dashboard; payment links/QR; invoicing; donations (no full store)</td>
+              </tr>
+              
+              <tr>
+                <td><img src="../assets/logo/logo-godaddy.png" alt="GoDaddy" /></td>
+                <td>Website Builder — Premium</td>
+                <td>$14.99/mo*</td>
+                <td>2.3% + 0&cent; (GoDaddy Payments)</td>
+                <td>2.8% + 30&cent; (Pay Links/Invoicing)</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>Limited</td>
+                <td>No</td>
+                <td>Medium</td>
+                <td>Builder + advanced marketing; online booking; take deposits/payments for services</td>
+              </tr>
+              
+              <tr>
+                <td><img src="../assets/logo/logo-godaddy.png" alt="GoDaddy" /></td>
+                <td>Website Builder — Commerce</td>
+                <td>$20.99/mo*</td>
+                <td>2.3% + 0&cent; (GoDaddy Payments)</td>
+                <td>2.7% + 30&cent; (eCommerce)</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>Limited</td>
+                <td>No</td>
+                <td>Medium</td>
+                <td>Integrated online store; “0% online store transaction fee” (no extra platform cut beyond processing)</td>
+              </tr>
+              
+              <tr>
+                <td><img src="../assets/logo/logo-godaddy.png" alt="GoDaddy" /></td>
+                <td>GoDaddy Payments (standalone)</td>
+                <td>$0</td>
+                <td>2.3% + 0&cent;</td>
+                <td>2.7% + 30&cent; (eCommerce) / 2.8% + 30&cent; (Pay Links/Invoicing)</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>Limited</td>
+                <td>No</td>
+                <td>Low</td>
+                <td>In-person + online acceptance; keyed-in 3.5% + 0&cent;; ACH available (varies by method)</td>
+              </tr>
+              
+              <!-- Optional: GoDaddy “low lock-in” hosting path -->
+              <tr>
+                <td><img src="../assets/logo/logo-godaddy.png" alt="GoDaddy" /></td>
+                <td>Managed WordPress Hosting (for WooCommerce)</td>
+                <td>From $6.99/mo*</td>
+                <td>Varies (depends on gateway)</td>
+                <td>Varies (depends on gateway)</td>
+                <td>Varies</td>
+                <td>Varies</td>
+                <td>Full (WordPress REST)</td>
+                <td>Yes (app-level)</td>
+                <td>Low</td>
+                <td>Standard WordPress stack; easier export/migration than proprietary site builders</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p class="table-footnote muted">Images represent platform branding only.</p>
+      </div>
+    </section>
+
+    <hr class="divider" />
+  </main>
+  <script src="../js/tables.js" defer></script>
+  <script src="../js/site-search.js" defer></script>
+  <script src="../js/sidebar.js" defer></script>
+</body>
+</html>

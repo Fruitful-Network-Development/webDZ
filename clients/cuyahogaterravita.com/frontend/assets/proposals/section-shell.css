@@ -1,0 +1,63 @@
+/* sections/section-shell.css
+   Standardized section padding/margins.
+   Uses REM exclusively — page-level rhythm.
+   Enhanced with additional variants observed across all sites.
+   ──────────────────────────────────────────────────────────── */
+
+/* ── Base section ────────────────────────────────────── */
+.ui-section {
+  padding-block: 4rem;
+  padding-inline: 1.5rem;
+}
+
+/* ── Block-padding variants ──────────────────────────── */
+.ui-section--tight    { padding-block: 2rem; }
+.ui-section--snug     { padding-block: 3rem; }
+.ui-section--loose    { padding-block: 6rem; }
+
+/* ── Inline-padding variants ─────────────────────────── */
+.ui-section--narrow   { padding-inline: 1rem; }
+.ui-section--wide     { padding-inline: 3rem; }
+
+/* ── Section inner (centered container) ──────────────── */
+.ui-section__inner {
+  max-width: var(--ui-container-md, 60rem);
+  margin-inline: auto;
+  width: 100%;
+}
+
+.ui-section__inner--sm  { max-width: var(--ui-container-sm, 52rem); }
+.ui-section__inner--lg  { max-width: var(--ui-container-lg, 68rem); }
+.ui-section__inner--xl  { max-width: var(--ui-container-xl, 72rem); }
+.ui-section__inner--max { max-width: var(--ui-container-max, 75rem); }
+
+/* ── Background variants ─────────────────────────────── */
+.ui-section--alt {
+  background-color: var(--ui-offwhite);
+}
+
+.ui-section--dark {
+  background-color: var(--ui-nero);
+  color: var(--ui-offwhite);
+}
+
+.ui-section--muted {
+  background-color: var(--ui-muted);
+}
+
+/* ── Accent top border (FND technology-style) ────────── */
+.ui-section--accent-top {
+  border-top: 3px solid var(--ui-accent-blue);
+}
+
+/* ── Responsive ──────────────────────────────────────── */
+@media (max-width: 48rem) {
+  .ui-section {
+    padding-block: 2.5rem;
+    padding-inline: 1rem;
+  }
+
+  .ui-section--loose {
+    padding-block: 3.5rem;
+  }
+}

@@ -1,0 +1,147 @@
+/* ======================================
+    TARGET — SECTION
+    Three-card grid with text wrapping around images
+   ====================================== */
+
+.section-target {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 0 clamp(1rem, 3vw, 3rem);
+}
+
+.section-target.accent-band--blue,
+.section-target.accent-band--green,
+.section-target.accent-band--yellow,
+.section-target.accent-band--red,
+.section-target.accent-band--purple {
+  padding: 1rem;
+}
+
+/* --- Individual card --- */
+.target-card {
+  border: 1px solid var(--silverback);
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--offwhite);
+  border-top: 3px solid var(--accent-blue);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+.target-card:nth-child(2) {
+  border-top-color: var(--accent-green);
+}
+
+.target-card:nth-child(3) {
+  border-top-color: var(--accent-yellow);
+}
+
+.target-card__title {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--nero);
+  letter-spacing: 0.01em;
+}
+
+.target-card__rule {
+  border: none;
+  border-top: 1px solid var(--silverback);
+  margin: 0.75rem 0;
+}
+
+/* Text block — wraps around the floated graphic */
+.target-card__body {
+  flex: 1;
+  text-align: justify;
+  line-height: 1.55;
+  font-size: 0.95rem;
+  color: var(--nero);
+  overflow: hidden;            /* establish BFC so float is contained */
+}
+
+.target-card__body p {
+  margin: 0 0 0.6rem 0;
+  text-indent: 1.5em;
+}
+
+.target-card__body p:last-child {
+  margin-bottom: 0;
+}
+
+/* Graphic floated inside the text block — text wraps around it */
+.target-card__graphic {
+  float: right;
+  clear: right;
+  width: clamp(5rem, 40%, 8rem);
+  height: auto;
+  margin: 0.5rem 0 0.25rem 0.75rem;   /* top right bottom left spacing */
+  shape-outside: margin-box;           /* text flows along the margin box */
+}
+
+/* ======================================
+    ASIDE — italic tagline below target
+   ====================================== */
+.section-aside {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 0 clamp(1rem, 3vw, 3rem);
+  text-align: center;
+}
+
+.section-aside hr {
+  border: none;
+  border-top: 1px solid var(--nero);
+  margin: 0;
+}
+
+.aside__text {
+  margin: 1.25rem 0;
+  font-style: italic;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--nero);
+  max-width: 60rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ======================================
+    RESPONSIVE
+   ====================================== */
+@media (max-width: 960px) {
+  .section-target {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* --- Readability variant: linear text flow, no wrapped floats --- */
+.section-target--readable .target-card__body {
+  text-align: left;
+}
+
+.section-target--readable .target-card__body p {
+  text-indent: 0;
+}
+
+.section-target--readable .target-card__graphic {
+  float: none;
+  clear: none;
+  display: block;
+  width: clamp(7rem, 42%, 10rem);
+  margin: 0.25rem auto 0.8rem;
+}
+
+@media (max-width: 600px) {
+  .section-target {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .target-card__graphic {
+    width: clamp(4rem, 35%, 7rem);
+  }
+}

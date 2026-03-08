@@ -1,0 +1,206 @@
+/* ======================================
+    PERSONNEL - SECTION
+====================================== */
+.section-personnel {
+    padding: clamp(0.75rem, 2vw, 1.5rem);
+  }
+
+.about-page .section-personnel {
+  width: min(68rem, 100%);
+  margin: 0 auto;
+}
+  
+  .section-personnel__inner {
+    width: min(100%, 1100px);
+    margin-inline: auto;
+  
+    --gap: clamp(0.75rem, 2vw, 1.5rem);
+    --edge: clamp(0.75rem, 2vw, 1.25rem);
+  
+    display: grid;
+    gap: var(--gap);
+  
+    /* Top row + body row */
+    grid-template-rows: auto 1fr;
+  
+    /* Left biography wider than right profile */
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+  
+    grid-template-areas:
+      "top top"
+      "bio profile";
+  }
+
+  .personnel__top.box {
+    background: var(--offwhite);
+    border-left: 0.4rem solid var(--accent-blue);
+  }
+
+  .personnel__top h2 {
+    color: var(--blue-sour);
+    text-align: center;
+  }
+
+  .personnel__top {
+    grid-area: top;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .personnel_biography { grid-area: bio; }
+  .profile { grid-area: profile; }
+
+  
+  /* Your existing box borders */
+  .box {
+    border: 1px solid var(--silverback);
+    padding: var(--edge);
+    background-color: var(--offwhite);
+  }
+  .personnel_biography {
+    display: grid;
+    gap: var(--gap);
+  
+    /* Title, quote, message (message grows) */
+    grid-template-rows: auto auto 1fr;
+  }
+  
+  /* Title row: icon block + name */
+  .biography__title {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: 0.75rem;
+    border-top: 3px solid var(--accent-green);
+  }
+  
+  .biography__title-icon {
+    width: 24px;
+    aspect-ratio: 1 / 1;
+    border: 1px solid var(--silverback);
+    padding: 0.25rem;
+    /* img-container utility handles centering */
+  }
+  
+  .biography__title-name {
+    margin: 0;
+    color: var(--nero);
+  }
+
+  .biography__quote p {
+    font-style: italic;
+    text-align: center;
+  }
+  
+  .biography__quote p,
+  .biography__message p {
+    margin: 0;
+    color: var(--nero);
+  }
+  
+  .biography__message p {
+    text-indent: 30px;
+  }
+  
+  .biography__message {
+    /* helps the big left box feel “dominant” like your sketch */
+    min-height: clamp(260px, 40vh, 520px);
+  }
+  .profile {
+    display: grid;
+    grid-template-rows: 1fr auto; /* image takes remaining height, footer fits content */
+    gap: 0;
+    padding: 0;
+  
+    /* If you want the whole right column to feel as tall as the left side */
+    min-height: clamp(420px, 60vh, 720px);
+    background-color: var(--offwhite);
+  }
+  
+  /* Footer list area */
+  .profile__footer {
+    display: grid;
+    gap: 0.75rem;
+    padding: 0.75rem; /* override box padding if you want it tighter */
+  }
+  
+  /* One row = icon + text, repeated */
+  .profile__tag {
+    display: grid;
+    grid-template-columns: 44px 1fr;
+    align-items: center;
+    gap: 0.75rem;
+  
+    border: 1px solid var(--silverback); /* gives the “mini-box rows” feel */
+    padding: 0.5rem 0.75rem;
+    background-color: #f2eee3;
+  }
+  
+  /* Icon block inside each row (your red small squares) */
+  .profile__tag-icon {
+    width: 44px;
+    aspect-ratio: 1 / 1;
+    padding: 0.25rem;
+    /* img-container utility handles centering */
+  }
+  
+  .profile__tag p {
+    margin: 0;
+  }
+
+.about-page .about-partners {
+  margin-top: var(--gap);
+  border-top: 3px solid var(--accent-yellow);
+  border-left: 1px solid var(--silverback);
+  background-color: var(--offwhite);
+}
+
+.about-page .about-partners h3 {
+  margin: 0 0 0.6rem;
+  color: var(--incremental);
+  text-transform: none;
+  letter-spacing: 0.01em;
+  font-size: 1rem;
+}
+
+.about-page .about-partners .dash-list {
+  list-style: disc;
+  margin: 0;
+  padding-left: 1.1rem;
+  display: grid;
+  gap: 0.45rem;
+}
+
+.about-page .about-partners .dash-list li {
+  position: static;
+  padding-left: 0.1rem;
+  line-height: 1.5;
+}
+
+.about-page .about-partners .dash-list li::before {
+  content: none;
+}
+
+.about-page .about-resume-download {
+  margin-top: 0.5rem;
+  width: 100%;
+}
+
+  @media (max-width: 768px) {
+    .section-personnel__inner {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto auto auto;
+      grid-template-areas:
+      "top"
+      "bio"
+      "profile";
+    }
+  
+    .profile {
+      min-height: auto;
+    }
+  
+    .profile__image {
+      min-height: 240px; /* prevents the image area from collapsing */
+    }
+  }

@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./main.css" />
+  <title>About | Fruitful Network Development</title>
+</head>
+<body>
+  <!-- ======================================
+      HEADER
+  ====================================== -->
+  <header class="topbar">
+    <div class="topbar__inner">
+      <button class="topbar__icon topbar__menu header__button--sidebar" type="button" aria-label="Index">
+        <img src="/assets/icon/icon-menu.png" alt="" />
+      </button>
+      <a class="topbar__mark" href="./index.html">FND</a>
+      <nav class="topbar__nav" aria-label="Primary">
+        <a class="topbar__link" href="./index.html">Home</a>
+        <a class="topbar__link" href="./services.html">Services</a>
+        <a class="topbar__link" href="./research.html">Research</a>
+        <a class="topbar__link is-current" href="./about.html">About</a>
+        <a class="topbar__link" href="./contact.html">Contact</a>
+      </nav>
+      <button class="topbar__icon" type="button" aria-label="Search">
+        <img src="/assets/icon/icon-search.png" alt="" />
+      </button>
+    </div>
+  </header>
+
+  <main class="edition about-page">
+    <!-- ======================================
+        LEAD HERO — SECTION
+    ====================================== -->
+    <section class="lead-band lead-band--about">
+      <section class="lead lead--page lead--parent lead--accent-red">
+        <div class="lead__content">
+          <p class="lead__kicker">Fruitful Network Development</p>
+          <h1 class="lead__title">About</h1>
+          <p class="lead__deck">Origin, values, and the people behind the mission.</p>
+        </div>
+      </section>
+    </section>
+
+    <!-- DIVIDER LINE -->
+    <hr class="divider" />
+
+    <!-- ======================================
+        ORIGIN STORY — SECTION
+    ====================================== -->
+    <section class="dossier-oeuvre">
+      <h2>§ Origin Story</h2>
+      <p>Founded by Dylan Montgomery (Computer Engineering + Applied Mathematics, University of Akron).</p>
+      <p>Built, tested, and refined the core idea over multiple years from hypothesis to working framework, guided by market research and customer discovery with agricultural stakeholders.</p>
+      <p>Placed 3rd in the University of Akron regional I-Corps pitch competition; subsequently formed Fruitful Network Development and began coordinating with a Northeast Ohio farm network to prototype early-adopter workflows.</p>
+      <p>Worked alongside Ohio State Extension's Northeast Ohio Agricultural Innovation Office; engaged with local farmer organizations; produced letters of impact for partner farms and community organizations (e.g., Cuyahoga Valley Countryside Conservancy).</p>
+      <p>Fruitful Network Development (FND) is a computer engineering contract firm providing server, web, and data framework services for farms and community organizations.</p>
+      <p>Company direction: use a shared, open data framework so producers can manage operations and publish supply (current/expected) without losing autonomy or control.</p>
+      <p class="subsection-actions">
+        <a class="article-link-btn" href="./subpages/articles.html?doc=cuyahoga_valley_countryside_initiative.md">Further Reading: Cuyahoga Valley Countryside Initiative</a>
+      </p>
+      <h2>§ The Mission</h2>
+      <p>FND's mission is to enable local producers to digitally offer current and expected supply using the same data they manage operations with (reduce duplicate entry and coordination friction).</p>
+      <p>Goal: build shared data infrastructure that mimics the efficiency of top-down industrial systems while preserving local autonomy and control.</p>
+      <p>Phase direction: Phase I feasibility + pilots; Phase II operational coordination (including cold-chain logistics and brokerage workflows) if feasibility criteria are met.</p>
+      <p class="subsection-actions">
+        <a class="article-link-btn" href="./subpages/articles.html?doc=interoperability_in_socio-technical_networks.md">Further Reading: Interoperability in Socio-Technical Networks</a>
+      </p>
+      <p class="subsection-actions">
+        <a class="article-link-btn" href="./subpages/articles.html?doc=opensource_competition.md">Further Reading: Open Source Competition</a>
+      </p>
+    </section>
+    
+    <!-- DIVIDER LINE -->
+    <hr class="divider" />
+
+    <!-- ======================================
+        VALUES / PRINCIPLES — SECTION
+    ====================================== -->
+    <section class="dossier-oeuvre">
+      <h2>§ Values &amp; Principles</h2>
+      <p>FND’s work is guided by a small set of constraints: improve local food coordination without forcing farmers or communities into dependency, lock‑in, or brittle centralized control.</p>
+
+      <h3>Equity targets (what “better” must mean)</h3>
+      <ul class="dash-list">
+        <li><strong>Income stability is a first‑class metric:</strong> small farms cannot plan production without credible sell‑through. We treat volatility (not just yield) as the operational bottleneck.</li>
+        <li><strong>Two‑sided feasibility:</strong> a viable local model must be <em>good for farms</em> (net improvement) and <em>not worse for buyers</em> (cost‑neutral or better at required service levels).</li>
+        <li><strong>Waste and distance are costs, not “externalities”:</strong> coordination should reduce preventable spoilage and unnecessary transport overhead where local supply is already geographically adjacent.</li>
+        <li><strong>Local economies should retain value:</strong> the goal is not boutique local food—it's dependable local provisioning where value stays local without sacrificing reliability.</li>
+      </ul>
+
+      <h3>Coordination over extraction</h3>
+      <ul class="dash-list">
+        <li><strong>The bottleneck is coordination:</strong> demand, product, and producers exist; failures occur in discovery, timing, logistics, and procurement workflows.</li>
+        <li><strong>Many‑to‑many, not single gatekeepers:</strong> regional resilience improves when multiple producers, hubs, and buyers can interoperate without a single company becoming the permanent choke‑point.</li>
+        <li><strong>Standards before scale:</strong> interoperability and clean interfaces matter more than building a monolithic “platform” early.</li>
+      </ul>
+
+      <h3>Autonomy, governance, and trust</h3>
+      <ul class="dash-list">
+        <li><strong>Autonomy‑first participation:</strong> operators keep control of data and workflows; network participation is opt‑in and policy‑scoped.</li>
+        <li><strong>Transparent accountability:</strong> where governance is required (e.g., fiscal sponsorship), the system must reflect real authority: donors express intent, but the sponsor retains final control under published policies.</li>
+        <li><strong>Local control over infrastructure:</strong> devices and software report to systems controlled by the client—not vendor-first data silos.</li>
+      </ul>
+
+      <h3>Interoperability and low lock‑in</h3>
+      <ul class="dash-list">
+        <li><strong>Schema‑first, export‑ready data:</strong> data should remain portable across tools, processors, and vendors; “leave” must remain possible without a rebuild.</li>
+        <li><strong>Replaceable components:</strong> payment processors, POS devices, and integrations should be swappable behind stable interfaces.</li>
+        <li><strong>Open‑source where it matters:</strong> core interoperability and user-control are protected by open code and open formats, not by proprietary contracts.</li>
+      </ul>
+
+      <h3>Research discipline (SBIR-aligned)</h3>
+      <ul class="dash-list">
+        <li><strong>Falsifiable Phase I claims:</strong> we prefer measurable hypotheses, explicit pass/fail conditions, and bounded models over expansive narratives.</li>
+        <li><strong>Capacity bands, not agronomic perfection:</strong> Phase I feasibility uses farmer‑reported current output plus capacity constraints derived from acreage and validated planning assumptions—without claiming full yield optimization.</li>
+        <li><strong>Feasibility before rollout:</strong> we only expand to Phase II operational coordination if Phase I evidence supports a transitional path to net positive outcomes.</li>
+      </ul>
+
+      <h3>Pragmatic delivery</h3>
+      <ul class="dash-list">
+        <li><strong>Deliver value today:</strong> practical web hosting, domains, email domains, payments, and field-ready tooling fund the work and create real user feedback loops.</li>
+        <li><strong>Reliability under real constraints:</strong> designs assume limited staffing, intermittent connectivity, and low operational overhead.</li>
+      </ul>
+    </section>
+
+    <!-- DIVIDER LINE -->
+    <hr class="divider" />
+
+    <!-- ======================================
+        PERSONNEL & PARTNERS — SECTION
+    ====================================== -->
+    <section class="section-personnel">
+      <div class="section-personnel__inner">
+        <div class="personnel__top box">
+          <h2>PERSONNEL</h2>
+        </div>
+
+        <div class="personnel_biography">
+          <div class="box biography__title">
+            <div class="biography__title-icon img-container"><img src="/assets/icon/icon-personnel.png"/></div>
+            <h3 class="biography__title-name">Dylan Montgomery</h3>
+          </div>
+          <div class="box biography__quote"><p>"Tend to the part of the garden you can touch," - Jack Kornfield</p></div>
+          <div class="box biography__message">
+            <p>I'm a Computer Engineering and Applied Mathematics student at the University of Akron, with a passion for building technology that empowers local communities and small organizations to thrive. Whether through data frameworks for agricultural networks, custom hardware interfaces, or applied mathematical models, my work is driven by one goal: making complex systems accessible and useful for real people.</p>
+            <p>My projects have ranged from modular ECU dashboards to salable ETL pipelines, but the common thread has always been bridging the gap between technical depth and practical application. I've spent the last few years exploring how open-source tools and semantic frameworks can help local agriculture operate with the same efficiency as large corporations; without sacrificing independence, transparency, or values.</p>
+            <p>I am the creator and CEO of Fruitful Network Development, a Computer Engineering Contract firm that provides server and data framework services. Currently the company's aim to employ a newly created data framework to assist small to midsize farms and agricultural communities compete to provide their products to US, with out changing who's in charge or how they stay individual businesses. This is being accomplish by providing the FND sweet of tools that use a single source of data for updating and for informing. No subscriptions, only a new paradigm that we hope to allow for a new paradigm of food brokerage that utilizes local agriculture. At the same price as what is offered with harmful chemicals and no return to local economies. Out competing harmful practices in the private sector.</p>
+            <p>I like to think my most unique/particular work skill is being able to see the potential in change and being able to bring that potential to life. Accomplishing that is always a challenge because the path is always uncertain, but the key to success is finding joy in the process. If you can do that, anything is possible.</p>
+          </div>
+        </div>
+
+        <div class="profile box">
+          <div class="profile__image img-container img-container--cover"><img src="assets/imgs/image-profile-dylan_montgomery.jpeg"/></div>
+          <div class="profile__footer box">
+            <div class="profile__tag">
+              <div class="profile__tag-icon box img-container"><img src="/assets/icon/icon-organization.png"/></div>
+              <p>Fruitful Network Development</p>
+            </div>
+            <div class="profile__tag">
+              <div class="profile__tag-icon box img-container"><img src="/assets/icon/icon-position.png"/></div>
+              <p>Founder & Managing Partner</p>
+            </div>
+            <div class="profile__tag">
+              <div class="profile__tag-icon box img-container"><img src="/assets/icon/icon-location.png"/></div>
+              <p>Cuyahoga Valley</p>
+            </div>
+            <div class="profile__tag">
+              <div class="profile__tag-icon box img-container"><img src="/assets/icon/icon-degree.png"/></div>
+              <p>Computer Engineering & Mathematics</p>
+            </div>
+            <div class="profile__tag">
+              <div class="profile__tag-icon box img-container"><img src="/assets/icon/icon-education.png"/></div>
+              <p>University of Akron</p>
+            </div>
+            <a class="button about-resume-download" href="./assets/docs/resume.pdf" download>Download Resume (PDF)</a>
+          </div>
+        </div>
+      </div>
+      <div class="about-partners box">
+        <h3>Partners &amp; Collaborators</h3>
+        <ul class="dash-list">
+          <li>Founder-led (solo) with a growing network of Northeast Ohio farms, food hubs, and community organizations participating in discovery and pilots.</li>
+          <li>Collaboration touchpoints include Ohio State Extension’s Northeast Ohio Agricultural Innovation Office and regional community partners (e.g., conservation and local-food organizations).</li>
+        </ul>
+      </div>
+      
+    </section>
+
+    <!-- DIVIDER LINE -->
+    <hr class="divider" />
+
+  </main>
+  <script src="./js/site-search.js" defer></script>
+  <script src="./js/sidebar.js" defer></script>
+</body>
+</html>

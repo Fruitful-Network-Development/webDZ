@@ -1,0 +1,72 @@
+/* subsections/feature-row.css
+   Auto-fit grid patterns for feature cards / service boards.
+   Extracted from CVCC .features-grid, FND .service-board,
+   .impact-triptych, .story-grid, CTV .card-row.
+   Uses em units.
+   ──────────────────────────────────────────────────────── */
+
+/* ── Generic auto-fit grid ───────────────────────────── */
+.ui-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 18em), 1fr));
+  gap: var(--ui-grid-gap, 1.5em);
+}
+
+.ui-grid--2 {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 22em), 1fr));
+}
+
+.ui-grid--3 {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 16em), 1fr));
+}
+
+.ui-grid--4 {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 14em), 1fr));
+}
+
+/* ── Triptych (exactly 3 columns on wide, stack on narrow) ── */
+.ui-triptych {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5em;
+}
+
+@media (max-width: 48em) {
+  .ui-triptych {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── Feature row header (centered above grid) ────────── */
+.ui-grid__header {
+  text-align: center;
+  max-width: 36em;
+  margin: 0 auto 1.5em;
+}
+
+.ui-grid__title {
+  font-size: 1.3em;
+  font-weight: 700;
+  margin: 0 0 0.5em 0;
+}
+
+.ui-grid__subtitle {
+  font-size: 0.95em;
+  color: var(--ui-text-light);
+  margin: 0;
+}
+
+/* ── Compact gap ─────────────────────────────────────── */
+.ui-grid--tight {
+  --ui-grid-gap: 0.75em;
+}
+
+/* ── Wide gap ────────────────────────────────────────── */
+.ui-grid--loose {
+  --ui-grid-gap: 2.5em;
+}
+
+/* ── Masonry hint (for future CSS masonry) ───────────── */
+.ui-grid--masonry {
+  align-items: start;
+}

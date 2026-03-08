@@ -1,0 +1,127 @@
+/* buttons/button-variants.css
+   Color, size, and style variants for ui-btn.
+   Merged from FND, CTV, CVCC button systems.
+   Uses em units.
+   ─────────────────────────────────────────────── */
+
+/* ── Color variants ──────────────────────────────── */
+.ui-btn--primary {
+  background-color: var(--ui-color-accent, var(--ui-accent-green));
+  color: var(--ui-color-text-inverse, var(--ui-bg-light));
+}
+.ui-btn--primary:hover {
+  background-color: var(--ui-color-accent-strong, var(--ui-primary-dark, var(--ui-color-accent, var(--ui-accent-green))));
+}
+
+.ui-btn--secondary {
+  background-color: var(--ui-color-accent-strong, var(--ui-secondary));
+  color: var(--ui-color-text-inverse, var(--ui-bg-light));
+}
+.ui-btn--secondary:hover {
+  background-color: color-mix(in srgb, var(--ui-color-accent-strong, var(--ui-incremental)) 88%, #000 12%);
+}
+
+.ui-btn--accent {
+  background-color: var(--ui-color-info, var(--ui-accent-blue));
+  color: var(--ui-color-text-inverse, var(--ui-bg-light));
+}
+.ui-btn--accent:hover {
+  background-color: color-mix(in srgb, var(--ui-color-info, var(--ui-incremental)) 86%, #000 14%);
+}
+
+.ui-btn--danger {
+  background-color: var(--ui-color-error, var(--ui-red));
+  color: var(--ui-color-text-inverse, var(--ui-bg-light));
+}
+.ui-btn--danger:hover {
+  background-color: color-mix(in srgb, var(--ui-color-error, var(--ui-kuwazome)) 86%, #000 14%);
+}
+
+/* ── Outline ─────────────────────────────────────── */
+.ui-btn--outline {
+  background: transparent;
+  border: 1px solid currentColor;
+  color: var(--ui-color-accent, var(--ui-accent-green));
+}
+.ui-btn--outline:hover {
+  background-color: var(--ui-color-accent, var(--ui-accent-green));
+  color: var(--ui-color-text-inverse, var(--ui-bg-light));
+}
+
+/* ── Ghost ───────────────────────────────────────── */
+.ui-btn--ghost {
+  background: transparent;
+  border-color: transparent;
+  color: var(--ui-color-accent, var(--ui-accent-blue));
+  padding: 0.45em 0.75em;
+}
+.ui-btn--ghost:hover {
+  background-color: color-mix(in srgb, var(--ui-color-accent, var(--ui-accent-blue)) 12%, transparent);
+}
+
+/* ── Light (CVCC white hero buttons) ─────────────── */
+.ui-btn--light {
+  background-color: rgba(255, 255, 255, 0.9);
+  color: var(--ui-color-accent, var(--ui-primary));
+  border-color: transparent;
+}
+.ui-btn--light:hover {
+  background-color: var(--ui-bg-light);
+}
+
+/* ── Dark ────────────────────────────────────────── */
+.ui-btn--dark {
+  background-color: var(--ui-nero);
+  color: var(--ui-color-text-inverse, var(--ui-offwhite));
+}
+.ui-btn--dark:hover {
+  background-color: var(--ui-nero-light);
+}
+
+/* ── Size variants ───────────────────────────────── */
+.ui-btn--sm {
+  font-size: 0.85em;
+  padding: 0.45em 0.85em;
+}
+
+.ui-btn--lg {
+  font-size: 1.1em;
+  padding: 0.75em 1.5em;
+}
+
+/* ── Full-width ──────────────────────────────────── */
+.ui-btn--block {
+  width: 100%;
+}
+
+/* ── Pill shape ──────────────────────────────────── */
+.ui-btn--pill {
+  border-radius: var(--ui-radius-pill);
+}
+
+/* ── CTV vintage flat button ─────────────────────── */
+.ui-btn--vintage {
+  background-color: var(--ui-film);
+  color: var(--ui-parchment);
+  border-radius: 0;
+  font-family: var(--ui-font-mono);
+  text-transform: uppercase;
+  letter-spacing: var(--ui-ls-wide);
+  font-size: 0.85em;
+}
+.ui-btn--vintage:hover {
+  background-color: var(--ui-ink);
+}
+
+/* ── Nav link button (FND topbar/internal nav) ───── */
+.ui-btn--nav {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--ui-color-text, var(--ui-nero));
+  padding: 0.35em 0.6em;
+  font-size: 0.88em;
+  border-radius: var(--ui-radius-2);
+}
+.ui-btn--nav:hover {
+  background-color: color-mix(in srgb, var(--ui-color-text, #000) 6%, transparent);
+}

@@ -1,0 +1,68 @@
+/* artifacts/audio.css
+   Audio player shelf / pill system.
+   Extracted from CTV audio-shelf / audio-pill.
+   Uses em units.
+   ──────────────────────────────────────────────── */
+
+/* ── Audio shelf container ───────────────────────── */
+.ui-audio-shelf {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  padding: 1em 0;
+}
+
+/* ── Audio pill ──────────────────────────────────── */
+.ui-audio-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  padding: 0.35em 0.75em;
+  border-radius: var(--ui-radius-pill);
+  border: 1px solid var(--ui-border);
+  background-color: var(--ui-bg-light);
+  font-size: 0.85em;
+  color: var(--ui-nero);
+  cursor: pointer;
+  transition:
+    background-color var(--ui-transition-normal),
+    box-shadow var(--ui-transition-normal);
+}
+
+.ui-audio-pill:hover {
+  background-color: var(--ui-offwhite);
+  box-shadow: var(--ui-shadow-1);
+}
+
+/* ── Play icon placeholder ───────────────────────── */
+.ui-audio-pill__icon {
+  width: 1.25em;
+  height: 1.25em;
+  border-radius: var(--ui-radius-circle);
+  background-color: var(--ui-accent-green);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.ui-audio-pill__icon svg {
+  width: 0.6em;
+  height: 0.6em;
+  fill: var(--ui-bg-light);
+}
+
+/* ── Audio label ─────────────────────────────────── */
+.ui-audio-pill__label {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 15em;
+}
+
+/* ── Audio duration ──────────────────────────────── */
+.ui-audio-pill__time {
+  font-size: 0.85em;
+  color: var(--ui-gray);
+  font-family: var(--ui-font-mono);
+}

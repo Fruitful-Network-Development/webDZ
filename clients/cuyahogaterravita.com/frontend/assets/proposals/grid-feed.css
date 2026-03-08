@@ -1,0 +1,128 @@
+/* dynamic/grid-feed.css
+   Indefinite-member grids for article tiles, card feeds, service grids.
+   Extracted from FND article-tiles, cards-grid, service_cards-grid.
+   Uses em units.
+   ──────────────────────────────────────────────────────── */
+
+/* ── Feed grid (indefinite children) ─────────────────── */
+.ui-feed {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 18em), 1fr));
+  gap: var(--ui-feed-gap, 1.5em);
+}
+
+.ui-feed--tight {
+  --ui-feed-gap: 1em;
+}
+
+.ui-feed--loose {
+  --ui-feed-gap: 2em;
+}
+
+/* ── Feed with explicit column counts ────────────────── */
+.ui-feed--2 {
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 24em), 1fr));
+}
+
+.ui-feed--4 {
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 14em), 1fr));
+}
+
+/* ── Article tile (FND article-tile for feed items) ──── */
+.ui-tile {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--ui-bg-light);
+  border-radius: var(--ui-radius-3);
+  overflow: hidden;
+  border: 1px solid var(--ui-border);
+  transition:
+    box-shadow var(--ui-transition-normal),
+    transform 120ms ease;
+  cursor: pointer;
+}
+
+.ui-tile:hover {
+  box-shadow: var(--ui-shadow-2);
+  transform: translateY(-1px);
+}
+
+.ui-tile__img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
+}
+
+.ui-tile__body {
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35em;
+  flex: 1;
+}
+
+.ui-tile__title {
+  font-size: 1em;
+  font-weight: 700;
+  margin: 0;
+  line-height: var(--ui-lh-snug);
+}
+
+.ui-tile__text {
+  font-size: 0.88em;
+  color: var(--ui-text-light);
+  line-height: var(--ui-lh-relaxed);
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.ui-tile__meta {
+  font-size: 0.78em;
+  color: var(--ui-gray);
+  margin-top: auto;
+  padding-top: 0.5em;
+}
+
+/* ── Service card grid (FND section-service_cards) ───── */
+.ui-service-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 16em), 1fr));
+  gap: 1.5em;
+}
+
+.ui-service-card {
+  padding: 1.5em;
+  background-color: var(--ui-bg-light);
+  border: 1px solid var(--ui-border);
+  border-radius: var(--ui-radius-3);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  transition: box-shadow var(--ui-transition-normal);
+}
+
+.ui-service-card:hover {
+  box-shadow: var(--ui-shadow-2);
+}
+
+.ui-service-card__icon {
+  font-size: 1.5em;
+  line-height: 1;
+}
+
+.ui-service-card__title {
+  font-size: 1.05em;
+  font-weight: 700;
+  margin: 0;
+}
+
+.ui-service-card__text {
+  font-size: 0.9em;
+  color: var(--ui-text-light);
+  line-height: var(--ui-lh-relaxed);
+  margin: 0;
+}

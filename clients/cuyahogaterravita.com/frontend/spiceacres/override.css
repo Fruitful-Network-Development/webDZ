@@ -1,0 +1,157 @@
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Source+Sans+Pro:wght@400;600;700&display=swap");
+
+/* ── Site theme: map the Evergreen-2 scene into shared design hooks ── */
+:root {
+  /* Typography hooks */
+  --ui-design-font-heading: "Fraunces", "Source Sans Pro", Georgia, serif;
+  --ui-design-font-body: "Source Sans Pro", system-ui, -apple-system, sans-serif;
+  --ui-design-font-sans: "Source Sans Pro", system-ui, -apple-system, sans-serif;
+
+  /* Color hooks (semantic) */
+  --ui-design-canvas: #fbf8f2;
+  --ui-design-surface: #ffffff;
+  --ui-design-surface-muted: #f4f4f4;
+
+  --ui-design-text: #142c2c;
+  --ui-design-text-muted: #3c5444;
+  --ui-design-text-inverse: #142c2c;
+
+  --ui-design-border: color-mix(in srgb, #142c2c 14%, #ffffff);
+  --ui-design-border-strong: #142c2c;
+
+  /* Accent family (Evergreen-2 gold) */
+  --ui-design-accent: #a48c4c;
+  --ui-design-accent-strong: #8f7a43;
+
+  /* Optional semantic colors used by variants */
+  --ui-design-info: #2c5c5c;
+
+  /* Compatibility bridges for legacy shared tokens (used by some shared primitives) */
+  --ui-bg: var(--ui-color-canvas);
+  --ui-bg-light: var(--ui-color-surface);
+  --ui-muted: var(--ui-color-surface-muted);
+  --ui-offwhite: color-mix(in srgb, var(--ui-color-canvas) 75%, #ffffff);
+  --ui-border: var(--ui-color-border);
+  --ui-nero: var(--ui-color-text);
+  --ui-gray: var(--ui-color-text-muted);
+  --ui-text-light: var(--ui-color-text-muted);
+}
+
+.sa-page {
+  background: var(--ui-color-canvas);
+}
+
+/* Ensure shared heading primitives use the heading hook. */
+.ui-h1, .ui-h2, .ui-h3, .ui-h4, .ui-h5, .ui-h6,
+.ui-card__title {
+  font-family: var(--ui-font-heading);
+}
+
+/* ── Header (sticky shell) ───────────────────────────────────────── */
+.sa-header {
+  position: sticky;
+  top: 0;
+  z-index: var(--ui-z-sticky, 50);
+  backdrop-filter: blur(12px);
+  background: color-mix(in srgb, var(--ui-color-canvas) 92%, transparent);
+}
+
+.sa-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75em;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.sa-brand__mark {
+  width: 3.25em;
+  height: 3.25em;
+  border-radius: var(--ui-radius-5);
+  background: var(--ui-color-surface);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border: 1px solid var(--ui-color-border);
+  box-shadow: var(--ui-shadow-1);
+}
+
+.sa-brand__mark img {
+  width: 2.5em;
+  height: 2.5em;
+  object-fit: contain;
+}
+
+/* ── Hero: Evergreen-2 split band + framed media ─────────────────── */
+.sa-hero {
+  --ui-split-a: color-mix(in srgb, var(--ui-color-accent) 28%, var(--ui-color-canvas));
+  --ui-split-b: var(--ui-color-text);
+  --ui-split-pos: 58%;
+  --ui-stripe-opacity: 0.10;
+}
+
+.sa-hero__inner {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr));
+  gap: 3rem;
+  align-items: center;
+}
+
+.sa-hero__text {
+  max-width: 40rem;
+}
+
+.sa-hero__frame {
+  background: color-mix(in srgb, var(--ui-color-surface) 92%, transparent);
+  border: 1px solid color-mix(in srgb, var(--ui-color-border) 70%, transparent);
+  padding: 1rem;
+  border-radius: var(--ui-radius-8);
+}
+
+.sa-hero__frame .ui-frame {
+  border-radius: var(--ui-radius-6);
+}
+
+.sa-hero__tag {
+  position: absolute;
+  inset: auto auto -0.75rem 1.25rem;
+  background: var(--ui-color-surface);
+  color: var(--ui-color-text);
+  border-color: var(--ui-color-border);
+  box-shadow: var(--ui-shadow-2);
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+/* Match the right-hand dark band */
+.sa-hero__figure {
+  position: relative;
+}
+
+/* ── Section separators (site rhythm) ────────────────────────────── */
+.sa-section {
+  border-top: 1px solid color-mix(in srgb, var(--ui-color-border) 65%, transparent);
+}
+
+.sa-section:first-of-type {
+  border-top: 0;
+}
+
+.sa-lede {
+  font-size: 1.05em;
+  max-width: 47.5em;
+  color: var(--ui-color-text-muted);
+}
+
+/* Mosaic: slightly tighter frames */
+.sa-mosaic .ui-frame {
+  border-radius: var(--ui-radius-5);
+  border: 1px solid var(--ui-color-border);
+  background: var(--ui-color-surface);
+}
+
+@media (max-width: 48rem) {
+  .sa-hero__inner {
+    gap: 2rem;
+  }
+}

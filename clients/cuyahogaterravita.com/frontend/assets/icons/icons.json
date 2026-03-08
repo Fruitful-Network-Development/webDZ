@@ -1,0 +1,1330 @@
+[
+  {
+    "key": "icon-admin",
+    "file": "icon-admin.png",
+    "label": "Admin",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-alias",
+    "file": "icon-alias.png",
+    "label": "Alias",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-animal",
+    "file": "icon-animal.png",
+    "label": "Animal",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-ankh",
+    "file": "icon-ankh.png",
+    "label": "Ankh",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-api",
+    "file": "icon-api.png",
+    "label": "Api",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-archive",
+    "file": "icon-archive.png",
+    "label": "Archive",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-audio",
+    "file": "icon-audio.png",
+    "label": "Audio",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-autumn",
+    "file": "icon-autumn.png",
+    "label": "Autumn",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-baked_good",
+    "file": "icon-baked_good.png",
+    "label": "Baked Good",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-basket",
+    "file": "icon-basket.png",
+    "label": "Basket",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-batch",
+    "file": "icon-batch.png",
+    "label": "Batch",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-billing",
+    "file": "icon-billing.png",
+    "label": "Billing",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-black_sun",
+    "file": "icon-black_sun.png",
+    "label": "Black Sun",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-breakfast",
+    "file": "icon-breakfast.png",
+    "label": "Breakfast",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-bulb",
+    "file": "icon-bulb.png",
+    "label": "Bulb",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-caduceus",
+    "file": "icon-caduceus.png",
+    "label": "Caduceus",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-calendar",
+    "file": "icon-calendar.png",
+    "label": "Calendar",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-charge",
+    "file": "icon-charge.png",
+    "label": "Charge",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-chicken",
+    "file": "icon-chicken.png",
+    "label": "Chicken",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-cloudy",
+    "file": "icon-cloudy.png",
+    "label": "Cloudy",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-collection",
+    "file": "icon-collection.png",
+    "label": "Collection",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-contract",
+    "file": "icon-contract.png",
+    "label": "Contract",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-cook_time",
+    "file": "icon-cook_time.png",
+    "label": "Cook Time",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-cow",
+    "file": "icon-cow.png",
+    "label": "Cow",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-degree",
+    "file": "icon-degree.png",
+    "label": "Degree",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-dessert",
+    "file": "icon-dessert.png",
+    "label": "Dessert",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-domain_local",
+    "file": "icon-domain_local.png",
+    "label": "Domain Local",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-double_helix",
+    "file": "icon-double_helix.png",
+    "label": "Double Helix",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-download",
+    "file": "icon-download.png",
+    "label": "Download",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-drinks",
+    "file": "icon-drinks.png",
+    "label": "Drinks",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-eclipse",
+    "file": "icon-eclipse.png",
+    "label": "Eclipse",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-education",
+    "file": "icon-education.png",
+    "label": "Education",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-eggs",
+    "file": "icon-eggs.png",
+    "label": "Eggs",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-entity_governing",
+    "file": "icon-entity_governing.png",
+    "label": "Entity Governing",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-entity_legal",
+    "file": "icon-entity_legal.png",
+    "label": "Entity Legal",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-entity_natural",
+    "file": "icon-entity_natural.png",
+    "label": "Entity Natural",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-equipment",
+    "file": "icon-equipment.png",
+    "label": "Equipment",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-esoteric_eye_of_horus",
+    "file": "icon-esoteric_eye_of_horus.png",
+    "label": "Esoteric Eye Of Horus",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-event",
+    "file": "icon-event.png",
+    "label": "Event",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-farm",
+    "file": "icon-farm.png",
+    "label": "Farm",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-farmer",
+    "file": "icon-farmer.png",
+    "label": "Farmer",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-feather",
+    "file": "icon-feather.png",
+    "label": "Feather",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-fiber",
+    "file": "icon-fiber.png",
+    "label": "Fiber",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-filament_object",
+    "file": "icon-filament_object.png",
+    "label": "Filament Object",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-fire",
+    "file": "icon-fire.png",
+    "label": "Fire",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-fish",
+    "file": "icon-fish.png",
+    "label": "Fish",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-flag",
+    "file": "icon-flag.png",
+    "label": "Flag",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-food_hub",
+    "file": "icon-food_hub.png",
+    "label": "Food Hub",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-forestry",
+    "file": "icon-forestry.png",
+    "label": "Forestry",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-gluten_free",
+    "file": "icon-gluten_free.png",
+    "label": "Gluten Free",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-hamsa",
+    "file": "icon-hamsa.png",
+    "label": "Hamsa",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-hardware",
+    "file": "icon-hardware.png",
+    "label": "Hardware",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-healthy",
+    "file": "icon-healthy.png",
+    "label": "Healthy",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-hide",
+    "file": "icon-hide.png",
+    "label": "Hide",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-history",
+    "file": "icon-history.png",
+    "label": "History",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-home",
+    "file": "icon-home.png",
+    "label": "Home",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-id",
+    "file": "icon-id.png",
+    "label": "Id",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-image",
+    "file": "icon-image.png",
+    "label": "Image",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-inbox",
+    "file": "icon-inbox.png",
+    "label": "Inbox",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-index",
+    "file": "icon-index.png",
+    "label": "Index",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-infinity",
+    "file": "icon-infinity.png",
+    "label": "Infinity",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-inherited_reference",
+    "file": "icon-inherited_reference.png",
+    "label": "Inherited Reference",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-inventory",
+    "file": "icon-inventory.png",
+    "label": "Inventory",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-keto",
+    "file": "icon-keto.png",
+    "label": "Keto",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-kit",
+    "file": "icon-kit.png",
+    "label": "Kit",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-local_value",
+    "file": "icon-local_value.png",
+    "label": "Local Value",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-location",
+    "file": "icon-location.png",
+    "label": "Location",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-locations",
+    "file": "icon-locations.png",
+    "label": "Locations",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-log",
+    "file": "icon-log.png",
+    "label": "Log",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-lotus",
+    "file": "icon-lotus.png",
+    "label": "Lotus",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-love",
+    "file": "icon-love.png",
+    "label": "Love",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-low_carb",
+    "file": "icon-low_carb.png",
+    "label": "Low Carb",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-mail",
+    "file": "icon-mail.png",
+    "label": "Mail",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-map",
+    "file": "icon-map.png",
+    "label": "Map",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-market",
+    "file": "icon-market.png",
+    "label": "Market",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-mass",
+    "file": "icon-mass.png",
+    "label": "Mass",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-maxican",
+    "file": "icon-maxican.png",
+    "label": "Maxican",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-meat",
+    "file": "icon-meat.png",
+    "label": "Meat",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-mediterranean",
+    "file": "icon-mediterranean.png",
+    "label": "Mediterranean",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-menu",
+    "file": "icon-menu.png",
+    "label": "Menu",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-milestone",
+    "file": "icon-milestone.png",
+    "label": "Milestone",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-milk",
+    "file": "icon-milk.png",
+    "label": "Milk",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-modem",
+    "file": "icon-modem.png",
+    "label": "Modem",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-moon",
+    "file": "icon-moon.png",
+    "label": "Moon",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-msn",
+    "file": "icon-msn.png",
+    "label": "Msn",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-mushroom",
+    "file": "icon-mushroom.png",
+    "label": "Mushroom",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-nazar",
+    "file": "icon-nazar.png",
+    "label": "Nazar",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-object",
+    "file": "icon-object.png",
+    "label": "Object",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-om",
+    "file": "icon-om.png",
+    "label": "Om",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-order",
+    "file": "icon-order.png",
+    "label": "Order",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-organization",
+    "file": "icon-organization.png",
+    "label": "Organization",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-ouroborus",
+    "file": "icon-ouroborus.png",
+    "label": "Ouroborus",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-oven",
+    "file": "icon-oven.png",
+    "label": "Oven",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-pages",
+    "file": "icon-pages.png",
+    "label": "Pages",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-parcel",
+    "file": "icon-parcel.png",
+    "label": "Parcel",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-parfait",
+    "file": "icon-parfait.png",
+    "label": "Parfait",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-peanut",
+    "file": "icon-peanut.png",
+    "label": "Peanut",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-pentacle",
+    "file": "icon-pentacle.png",
+    "label": "Pentacle",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-personnel",
+    "file": "icon-personnel.png",
+    "label": "Personnel",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-phoneme",
+    "file": "icon-phoneme.png",
+    "label": "Phoneme",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-pig",
+    "file": "icon-pig.png",
+    "label": "Pig",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-plan",
+    "file": "icon-plan.png",
+    "label": "Plan",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-plant",
+    "file": "icon-plant.png",
+    "label": "Plant",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-plot",
+    "file": "icon-plot.png",
+    "label": "Plot",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-pos",
+    "file": "icon-pos.png",
+    "label": "Pos",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-position",
+    "file": "icon-position.png",
+    "label": "Position",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-postage",
+    "file": "icon-postage.png",
+    "label": "Postage",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-power_bowl",
+    "file": "icon-power_bowl.png",
+    "label": "Power Bowl",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-product_type",
+    "file": "icon-product_type.png",
+    "label": "Product Type",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-profile",
+    "file": "icon-profile.png",
+    "label": "Profile",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-project",
+    "file": "icon-project.png",
+    "label": "Project",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-protein",
+    "file": "icon-protein.png",
+    "label": "Protein",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-receipt",
+    "file": "icon-receipt.png",
+    "label": "Receipt",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-rolladex",
+    "file": "icon-rolladex.png",
+    "label": "Rolladex",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-routes",
+    "file": "icon-routes.png",
+    "label": "Routes",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-salad",
+    "file": "icon-salad.png",
+    "label": "Salad",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-search",
+    "file": "icon-search.png",
+    "label": "Search",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-seed",
+    "file": "icon-seed.png",
+    "label": "Seed",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-sesame",
+    "file": "icon-sesame.png",
+    "label": "Sesame",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-sheep",
+    "file": "icon-sheep.png",
+    "label": "Sheep",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-shellfish",
+    "file": "icon-shellfish.png",
+    "label": "Shellfish",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-sign_in",
+    "file": "icon-sign_in.png",
+    "label": "Sign In",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-sign_out",
+    "file": "icon-sign_out.png",
+    "label": "Sign Out",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-smoothie",
+    "file": "icon-smoothie.png",
+    "label": "Smoothie",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-snack",
+    "file": "icon-snack.png",
+    "label": "Snack",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-special_day",
+    "file": "icon-special_day.png",
+    "label": "Special Day",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-sprout",
+    "file": "icon-sprout.png",
+    "label": "Sprout",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-ssl",
+    "file": "icon-ssl.png",
+    "label": "Ssl",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-stared",
+    "file": "icon-stared.png",
+    "label": "Stared",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-statistics",
+    "file": "icon-statistics.png",
+    "label": "Statistics",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-storage",
+    "file": "icon-storage.png",
+    "label": "Storage",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-summer",
+    "file": "icon-summer.png",
+    "label": "Summer",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-sun_esoteric",
+    "file": "icon-sun_esoteric.png",
+    "label": "Sun Esoteric",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-swastika",
+    "file": "icon-swastika.png",
+    "label": "Swastika",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-sweet",
+    "file": "icon-sweet.png",
+    "label": "Sweet",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-tag",
+    "file": "icon-tag.png",
+    "label": "Tag",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-taxonomy_value",
+    "file": "icon-taxonomy_value.png",
+    "label": "Taxonomy Value",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-television",
+    "file": "icon-television.png",
+    "label": "Television",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-thread",
+    "file": "icon-thread.png",
+    "label": "Thread",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-ticket",
+    "file": "icon-ticket.png",
+    "label": "Ticket",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-time",
+    "file": "icon-time.png",
+    "label": "Time",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-tower",
+    "file": "icon-tower.png",
+    "label": "Tower",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-tree",
+    "file": "icon-tree.png",
+    "label": "Tree",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-tree_nuts",
+    "file": "icon-tree_nuts.png",
+    "label": "Tree Nuts",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-triple_moon",
+    "file": "icon-triple_moon.png",
+    "label": "Triple Moon",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-triquetra",
+    "file": "icon-triquetra.png",
+    "label": "Triquetra",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-triskelion",
+    "file": "icon-triskelion.png",
+    "label": "Triskelion",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-txa",
+    "file": "icon-txa.png",
+    "label": "Txa",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-unit",
+    "file": "icon-unit.png",
+    "label": "Unit",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-vegetarian",
+    "file": "icon-vegetarian.png",
+    "label": "Vegetarian",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-vere",
+    "file": "icon-vere.png",
+    "label": "Vere",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-vesica_piscis",
+    "file": "icon-vesica_piscis.png",
+    "label": "Vesica Piscis",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-voicemail",
+    "file": "icon-voicemail.png",
+    "label": "Voicemail",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-wallet",
+    "file": "icon-wallet.png",
+    "label": "Wallet",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-weather",
+    "file": "icon-weather.png",
+    "label": "Weather",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-weather_foggy",
+    "file": "icon-weather_foggy.png",
+    "label": "Weather Foggy",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-weather_partially",
+    "file": "icon-weather_partially.png",
+    "label": "Weather Partially",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-weather_rain",
+    "file": "icon-weather_rain.png",
+    "label": "Weather Rain",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-weather_storm",
+    "file": "icon-weather_storm.png",
+    "label": "Weather Storm",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-weather_sunny",
+    "file": "icon-weather_sunny.png",
+    "label": "Weather Sunny",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-webpage",
+    "file": "icon-webpage.png",
+    "label": "Webpage",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-wheat",
+    "file": "icon-wheat.png",
+    "label": "Wheat",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-windy",
+    "file": "icon-windy.png",
+    "label": "Windy",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-winter",
+    "file": "icon-winter.png",
+    "label": "Winter",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-wood",
+    "file": "icon-wood.png",
+    "label": "Wood",
+    "tags": [
+      "ui"
+    ]
+  },
+  {
+    "key": "icon-www",
+    "file": "icon-www.png",
+    "label": "Www",
+    "tags": [
+      "ui"
+    ]
+  }
+]

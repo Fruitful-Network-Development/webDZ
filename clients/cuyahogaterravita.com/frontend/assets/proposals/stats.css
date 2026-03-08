@@ -1,0 +1,50 @@
+/* artifacts/stats.css
+   Stat/KPI clusters (value + uppercase label).
+   Extracted from Evergreen references (compact investment stats, KPI callouts).
+   Uses em units.
+   ─────────────────────────────────────────────────────────────── */
+
+.ui-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 12em), 1fr));
+  gap: var(--ui-stats-gap, 1.25em);
+  align-items: start;
+}
+
+.ui-stat {
+  display: grid;
+  gap: 0.25em;
+  padding: 1em;
+  border-radius: var(--ui-radius-4);
+  border: 1px solid var(--ui-color-border, var(--ui-border, #cfd6e0));
+  background-color: var(--ui-color-surface, var(--ui-bg-light, #ffffff));
+  box-shadow: var(--ui-shadow-0);
+}
+
+.ui-stat__value {
+  margin: 0;
+  font-size: clamp(1.3em, 1.15em + 0.7vw, 2em);
+  line-height: var(--ui-lh-tight);
+  font-weight: 700;
+  color: var(--ui-color-text, var(--ui-nero, #353535));
+  letter-spacing: 0;
+}
+
+.ui-stat__label {
+  margin: 0;
+  font-size: var(--ui-fs-xs);
+  line-height: var(--ui-lh-snug);
+  font-weight: 600;
+  letter-spacing: var(--ui-ls-caps);
+  text-transform: uppercase;
+  color: var(--ui-color-text-muted, var(--ui-gray, #717171));
+}
+
+.ui-stat--flat {
+  box-shadow: var(--ui-shadow-0);
+}
+
+.ui-stat--raised {
+  box-shadow: var(--ui-shadow-1);
+}
+

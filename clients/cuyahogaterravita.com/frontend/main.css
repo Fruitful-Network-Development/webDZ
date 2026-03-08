@@ -1,0 +1,22 @@
+/* Landing gallery styles (self-contained; no shared CSS library). */
+
+@import url("./gallery.css");
+
+:root {
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: #11241d;
+  line-height: 1.55;
+}
+
+a {
+  color: inherit;
+}

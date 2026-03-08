@@ -1,0 +1,115 @@
+/* artifacts/quotes.css
+   Blockquote / callout patterns.
+   Extracted from FND editorial blockquote, CTV dossier-editorial-quote,
+   editorial-callout-scope, dossier-editorial-callout.
+   Uses em units.
+   ──────────────────────────────────────────────────────────────────── */
+
+/* ── Standard blockquote ─────────────────────────────── */
+.ui-quote {
+  margin: 1.5em 0;
+  padding: 1em 1.25em;
+  border-left: 3px solid var(--ui-nero);
+  background-color: var(--ui-offwhite);
+  font-style: italic;
+  line-height: var(--ui-lh-relaxed);
+}
+
+:where(.ui-quote) p {
+  margin: 0 0 0.5em 0;
+  font-size: 0.95em;
+}
+
+:where(.ui-quote) p:last-child {
+  margin-bottom: 0;
+}
+
+.ui-quote__cite {
+  display: block;
+  margin-top: 0.75em;
+  font-size: 0.85em;
+  font-style: normal;
+  color: var(--ui-gray);
+}
+
+/* ── Variant: accent colored border ──────────────────── */
+.ui-quote--accent {
+  border-left-color: var(--ui-accent-blue);
+}
+
+/* ── Variant: vintage (CTV parchment) ────────────────── */
+.ui-quote--vintage {
+  background-color: var(--ui-paper);
+  border-left-color: var(--ui-parchment);
+  font-family: var(--ui-font-editorial);
+}
+
+/* ── Pull quote (large, centered) ────────────────────── */
+.ui-pullquote {
+  margin: 2em auto;
+  max-width: 32em;
+  text-align: center;
+  font-size: 1.35em;
+  font-style: italic;
+  font-family: var(--ui-font-editorial);
+  line-height: var(--ui-lh-relaxed);
+  color: var(--ui-nero);
+  padding: 1.5em 0;
+  border-top: 1px solid var(--ui-silverback);
+  border-bottom: 1px solid var(--ui-silverback);
+}
+
+.ui-pullquote__cite {
+  display: block;
+  margin-top: 0.75em;
+  font-size: 0.6em;
+  font-style: normal;
+  color: var(--ui-gray);
+  letter-spacing: var(--ui-ls-normal);
+}
+
+/* ── Callout box (FND editorial-callout) ─────────────── */
+.ui-callout {
+  margin: 1.5em 0;
+  padding: 1em 1.25em 1em 3em;
+  border: 1px solid var(--ui-border);
+  border-left: 4px solid var(--ui-accent-blue);
+  border-radius: var(--ui-radius-2);
+  background-color: var(--ui-bg);
+  position: relative;
+  font-size: 0.95em;
+  line-height: var(--ui-lh-relaxed);
+}
+
+.ui-callout::before {
+  content: "ℹ";
+  position: absolute;
+  left: 0.75em;
+  top: 1em;
+  font-size: 1.1em;
+  font-style: normal;
+}
+
+:where(.ui-callout) p {
+  margin: 0 0 0.5em 0;
+}
+
+:where(.ui-callout) p:last-child {
+  margin-bottom: 0;
+}
+
+/* Callout variants */
+.ui-callout--warn {
+  border-left-color: var(--ui-yellow);
+}
+.ui-callout--warn::before { content: "⚠"; }
+
+.ui-callout--error {
+  border-left-color: var(--ui-red);
+}
+.ui-callout--error::before { content: "✕"; }
+
+.ui-callout--success {
+  border-left-color: var(--ui-accent-green);
+}
+.ui-callout--success::before { content: "✓"; }

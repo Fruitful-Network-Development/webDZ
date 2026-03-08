@@ -1,0 +1,23 @@
+:where(.ui-header) {
+  padding: 1rem var(--ui-page-gutter, 1rem);
+  background-color: var(--ui-color-surface, var(--ui-bg-light, #ffffff));
+  color: var(--ui-color-text, var(--ui-nero, #353535));
+  border-bottom: 1px solid var(--ui-color-border, var(--ui-border, #cfd6e0));
+}
+
+:where(.ui-header__inner) {
+  max-width: var(--ui-container-lg, 68rem);
+  margin-inline: auto;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+:where(.ui-header__nav) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+}

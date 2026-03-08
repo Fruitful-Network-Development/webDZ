@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Donate | Cuyahoga Valley Countryside Conservancy</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="masthead">
+    <div class="masthead__wordmark">Countryside Conservancy</div>
+    <nav class="masthead__nav">
+      <a href="index.html">Home</a>
+      <a href="the_farms.html">The Farms</a>
+      <a href="history.html">History</a>
+      <a href="happenings.html">Happenings</a>
+      <a href="donate.html">Donate</a>
+      <a href="../index.html">Gallery</a>
+    </nav>
+  </header>
+
+  <main class="page">
+    <section class="section">
+      <div class="divider-film-strip">Membership Form</div>
+      <h1 class="headline-lg">Cuyahoga Valley Countryside Conservancy</h1>
+      <p>Support our work with a tax-deductible gift. Complete the form to start your donation.</p>
+    </section>
+
+    <section class="section">
+      <form id="donation-form" class="form-card" novalidate>
+        <div class="form-grid">
+          <div>
+            <label for="amount">Donation amount (USD)</label>
+            <input id="amount" name="amount" type="number" min="0.01" step="0.01" placeholder="50.00" required>
+          </div>
+
+          <div>
+            <label for="gateway">Gateway</label>
+            <select id="gateway" name="gateway">
+              <option value="direct">Direct (server-side donation)</option>
+              <option value="paypal">PayPal</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="donor-name">Donor name</label>
+            <input id="donor-name" name="donor-name" type="text" placeholder="Your full name" required>
+          </div>
+
+          <div>
+            <label for="donor-email">Email</label>
+            <input id="donor-email" name="donor-email" type="email" placeholder="you@example.com" required>
+          </div>
+        </div>
+
+        <div>
+          <label for="designation">Designation (optional)</label>
+          <textarea id="designation" name="designation" placeholder="Tell us if this gift should be designated to a specific program"></textarea>
+        </div>
+
+        <div>
+          <label for="acknowledge">Acknowledgment</label>
+          <div>
+            <input type="checkbox" id="acknowledge" required>
+            <span>I acknowledge that no goods or services were provided in exchange for this contribution.</span>
+          </div>
+        </div>
+
+        <button class="button" type="submit">Start Donation</button>
+      </form>
+    </section>
+
+    <section class="section">
+      <article class="card-farm">
+        <h2 class="card-farm__title">Receipt Preview</h2>
+        <p><strong>Legal Name:</strong> Cuyahoga Valley Countryside Conservancy</p>
+        <p><strong>EIN:</strong> <span id="preview-ein">(add EIN here)</span></p>
+        <p><strong>Donation amount:</strong> $<span id="preview-amount">0.00</span></p>
+        <p>Statement: No goods or services were provided in exchange for this donation.</p>
+        <p>Provider-specific receipt details, transaction IDs, and fulfillment notes will appear here after wiring to Flask endpoints.</p>
+      </article>
+    </section>
+
+    <section class="section">
+      <article class="card-farm">
+        <h2 class="card-farm__title">Confirmation</h2>
+        <p>After an approval is returned, confirm/capture the payment below.</p>
+        <button id="confirm-button" class="button button--ghost" type="button">Confirm / Capture</button>
+      </article>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__grid">
+      <div>
+        <figure class="figure">
+          <img class="figure__img" src="assets/logo/logo-stock-farm.png" alt="Cuyahoga Valley Countryside Conservancy">
+          <figcaption class="figure__cap sr-only">Cuyahoga Valley Countryside Conservancy</figcaption>
+        </figure>
+        <p>Preserving farmland and supporting local agriculture in the Cuyahoga Valley.</p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="the_farms.html">The Farms</a></li>
+          <li><a href="history.html">History</a></li>
+          <li><a href="index.html#happenings">Happenings</a></li>
+          <li><a href="donate.html">Donate</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <p>Email: info@cuyahogavalleycountrysideconservancy.org</p>
+        <p>Phone: (330) 555-0100</p>
+      </div>
+    </div>
+    <div>&copy; 2024 Cuyahoga Valley Countryside Conservancy. All rights reserved.</div>
+  </footer>
+</body>
+</html>

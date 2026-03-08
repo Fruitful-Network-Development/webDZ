@@ -1,0 +1,128 @@
+/* subsections/leadin/hero.css
+   Hero / lead-in component patterns.
+   Merged from CVCC .hero, CTV .hero, FND .lead / .lead--home / .lead--page.
+   Uses em units (component-level).
+   ──────────────────────────────────────────────────────────────────── */
+
+/* ── Base hero ───────────────────────────────────────── */
+.ui-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 3em 1.5em;
+  min-height: 24em;
+  position: relative;
+  overflow: hidden;
+  color: var(--ui-bg-light);
+}
+
+/* ── Background image layer ──────────────────────────── */
+.ui-hero__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+/* ── Dark overlay ────────────────────────────────────── */
+.ui-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.35),
+    rgba(0, 0, 0, 0.55)
+  );
+  z-index: 1;
+}
+
+/* ── Content container ───────────────────────────────── */
+.ui-hero__content {
+  position: relative;
+  z-index: 2;
+  max-width: 42em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;
+}
+
+/* ── Hero title ──────────────────────────────────────── */
+.ui-hero__title {
+  font-size: clamp(1.75em, 1.2em + 2vw, 3em);
+  font-weight: 700;
+  line-height: var(--ui-lh-tight);
+  text-wrap: balance;
+  margin: 0;
+  color: inherit;
+}
+
+/* ── Hero subtitle / tagline ─────────────────────────── */
+.ui-hero__subtitle {
+  font-size: 1.1em;
+  line-height: var(--ui-lh-relaxed);
+  max-width: 30em;
+  opacity: 0.92;
+  margin: 0;
+}
+
+/* ── Variant: tall (home page heroes) ────────────────── */
+.ui-hero--tall {
+  min-height: 32em;
+  padding: 5em 1.5em;
+}
+
+/* ── Variant: compact (subpage headers) ──────────────── */
+.ui-hero--compact {
+  min-height: 14em;
+  padding: 2.5em 1.5em;
+}
+
+/* ── Variant: left-aligned ───────────────────────────── */
+.ui-hero--left {
+  text-align: left;
+  align-items: flex-start;
+}
+
+.ui-hero--left .ui-hero__content {
+  align-items: flex-start;
+}
+
+/* ── Variant: nature (green overlay — CVCC/greenfield) ── */
+.ui-hero--nature .ui-hero__overlay {
+  background: linear-gradient(
+    to bottom,
+    rgba(27, 53, 45, 0.45),
+    rgba(27, 53, 45, 0.7)
+  );
+}
+
+/* ── Variant: vintage (CTV film-dark) ────────────────── */
+.ui-hero--vintage .ui-hero__overlay {
+  background: linear-gradient(
+    to bottom,
+    rgba(47, 45, 38, 0.4),
+    rgba(47, 45, 38, 0.75)
+  );
+}
+
+/* ── Responsive ──────────────────────────────────────── */
+@media (max-width: 40em) {
+  .ui-hero {
+    min-height: 18em;
+    padding: 2em 1em;
+  }
+
+  .ui-hero--tall {
+    min-height: 22em;
+    padding: 3em 1em;
+  }
+
+  .ui-hero__subtitle {
+    font-size: 1em;
+  }
+}

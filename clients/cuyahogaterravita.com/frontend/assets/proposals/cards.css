@@ -1,0 +1,170 @@
+/* artifacts/cards.css
+   Unified card component merged from:
+     CVCC .feature-card / .farm-card
+     CTV  .card / .card-farm / .csa-card
+     FND  .service-card / .impact-panel / .story / .market-feature-card
+          .target-card / .article-tile
+   Uses em units.
+   ─────────────────────────────────────────────────────────────── */
+
+/* ── Base card ──────────────────────────────────────────── */
+.ui-card {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--ui-bg-light);
+  border-radius: var(--ui-radius-5);
+  overflow: hidden;
+  transition:
+    box-shadow var(--ui-transition-normal),
+    transform 120ms ease;
+}
+
+.ui-card:hover {
+  box-shadow: var(--ui-shadow-3);
+}
+
+/* ── Card image slot ────────────────────────────────────── */
+.ui-card__img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+}
+
+.ui-card__img--wide {
+  aspect-ratio: 16 / 9;
+}
+
+.ui-card__img--square {
+  aspect-ratio: 1;
+}
+
+/* ── Card body ──────────────────────────────────────────── */
+.ui-card__body {
+  padding: 1.25em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  flex: 1;
+}
+
+/* ── Card title ─────────────────────────────────────────── */
+.ui-card__title {
+  font-size: 1.15em;
+  font-weight: 700;
+  line-height: var(--ui-lh-snug);
+  margin: 0;
+  color: var(--ui-nero);
+}
+
+/* ── Card text ──────────────────────────────────────────── */
+.ui-card__text {
+  font-size: 0.95em;
+  color: var(--ui-text-light);
+  line-height: var(--ui-lh-relaxed);
+  margin: 0;
+}
+
+/* ── Card footer / meta ─────────────────────────────────── */
+.ui-card__footer {
+  padding: 0.75em 1.25em;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  font-size: 0.8em;
+  color: var(--ui-gray);
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  margin-top: auto;
+}
+
+/* ── Variant: raised (permanent shadow) ─────────────────── */
+.ui-card--raised {
+  box-shadow: var(--ui-shadow-2);
+}
+
+.ui-card--raised:hover {
+  box-shadow: var(--ui-shadow-4);
+  transform: translateY(-2px);
+}
+
+/* ── Variant: flat (bordered, no shadow) ────────────────── */
+.ui-card--flat {
+  border: 1px solid var(--ui-border);
+  box-shadow: none;
+}
+
+.ui-card--flat:hover {
+  box-shadow: var(--ui-shadow-1);
+}
+
+/* ── Variant: compact (less padding) ────────────────────── */
+.ui-card--compact .ui-card__body {
+  padding: 0.75em 1em;
+}
+
+/* ── Variant: horizontal (side-by-side image + body) ────── */
+.ui-card--horizontal {
+  flex-direction: row;
+}
+
+.ui-card--horizontal .ui-card__img {
+  width: 40%;
+  aspect-ratio: auto;
+  min-height: 100%;
+}
+
+.ui-card--horizontal .ui-card__body {
+  flex: 1;
+}
+
+/* ── Variant: vintage (CTV parchment style) ─────────────── */
+.ui-card--vintage {
+  background-color: var(--ui-paper);
+  border: 1px solid var(--ui-parchment);
+  border-radius: 0;
+}
+
+.ui-card--vintage:hover {
+  box-shadow: var(--ui-shadow-offset);
+}
+
+/* ── Variant: impact (FND impact-panel gradient bottom) ─── */
+.ui-card--impact {
+  position: relative;
+  color: var(--ui-bg-light);
+  min-height: 16em;
+  justify-content: flex-end;
+}
+
+.ui-card--impact .ui-card__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.ui-card--impact .ui-card__body {
+  position: relative;
+  z-index: 1;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.65), transparent);
+  padding: 1.5em;
+}
+
+.ui-card--impact .ui-card__title,
+.ui-card--impact .ui-card__text {
+  color: var(--ui-bg-light);
+}
+
+/* ── Responsive ─────────────────────────────────────────── */
+@media (max-width: 40em) {
+  .ui-card--horizontal {
+    flex-direction: column;
+  }
+
+  .ui-card--horizontal .ui-card__img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+  }
+}

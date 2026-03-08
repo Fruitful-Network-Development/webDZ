@@ -1,0 +1,55 @@
+/* buttons/button-base.css
+   Universal button base merged from FND .btn, CTV .button, CVCC .btn.
+   Uses em units — scales with container font-size.
+   ────────────────────────────────────────────────────────────────────── */
+
+.ui-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45em;
+  font-family: inherit;
+  font-size: 1em;
+  font-weight: 600;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: var(--ui-radius-3);
+  padding: 0.65em 1.25em;
+  background-color: var(--ui-color-accent, var(--ui-accent-green));
+  color: var(--ui-color-text-inverse, var(--ui-bg-light));
+  transition:
+    background-color var(--ui-transition-normal),
+    color var(--ui-transition-normal),
+    box-shadow var(--ui-transition-normal),
+    transform 120ms ease;
+}
+
+.ui-btn:hover {
+  background-color: var(--ui-color-accent-strong, var(--ui-primary-dark, var(--ui-color-accent, var(--ui-accent-green))));
+  text-decoration: none;
+}
+
+.ui-btn:active {
+  transform: translateY(1px);
+}
+
+.ui-btn:focus-visible {
+  outline: 2px solid var(--ui-color-accent, var(--ui-accent-blue));
+  outline-offset: 2px;
+}
+
+/* ── Icon-only button (no label) ───────────────────── */
+.ui-btn--icon {
+  padding: 0.45em;
+  border-radius: var(--ui-radius-circle);
+  line-height: 1;
+}
+
+.ui-btn--icon svg {
+  width: 1.15em;
+  height: 1.15em;
+}
