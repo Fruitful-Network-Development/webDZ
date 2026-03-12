@@ -109,7 +109,7 @@
   };
 
   const renderLocation = (item) => (item.type === "doc" ? `Article: ${item.label}` : `Page: ${item.label}`);
-  const locationIcon = (item) => (item.type === "doc" ? `${iconPrefix}icon-archive.png` : `${iconPrefix}icon-webpage.png`);
+  const locationIcon = (item) => (item.type === "doc" ? `${iconPrefix}icon-archive.svg` : `${iconPrefix}icon-webpage.svg`);
 
   const renderResultCard = (result) => {
     const linkHref = toOpenPath(result);
@@ -174,7 +174,7 @@
 
         <form id="site-search-form" class="search-form" role="search" aria-label="Site Search">
           <label class="search-form__label ui-label-with-icon" for="site-search-input">
-            <span class="ui-icon-box ui-icon-box--sm ui-icon-box--muted" aria-hidden="true"><img src="${iconPrefix}icon-tag.png" alt="" /></span>
+            <span class="ui-icon-box ui-icon-box--sm ui-icon-box--muted" aria-hidden="true"><img src="${iconPrefix}icon-tag.svg" alt="" /></span>
             Search keywords
           </label>
           <div class="search-form__row">

@@ -99,7 +99,7 @@
   right: 0;
   bottom: 0;
   width: clamp(22rem, 48vw, 50rem);
-  background-image: url("../../assets/graphics/banner/graphic-banner-clouds.png");
+  background-image: url("../../assets/graphics/banner/graphic-banner-clouds.avif");
   background-size: cover;
   background-position: center right;
   opacity: 0.6;
@@ -190,19 +190,19 @@
 }
 
 .lead--graphic-services {
-  --lead-graphic: url("../../assets/graphics/banner/graphic-banner-slope.png");
+  --lead-graphic: url("../../assets/graphics/banner/graphic-banner-slope.avif");
 }
 
 .lead--graphic-research {
-  --lead-graphic: url("../../assets/graphics/banner/graphic-banner-mountain.png");
+  --lead-graphic: url("../../assets/graphics/banner/graphic-banner-mountain.avif");
 }
 
 .lead--graphic-about {
-  --lead-graphic: url("../../assets/graphics/banner/graphic-banner-forrest.png");
+  --lead-graphic: url("../../assets/graphics/banner/graphic-banner-forrest.avif");
 }
 
 .lead--graphic-contact {
-  --lead-graphic: url("../../assets/graphics/banner/graphic-banner-flawk.png");
+  --lead-graphic: url("../../assets/graphics/banner/graphic-banner-flawk.avif");
 }
 
 /* --- Lead band (full-width parent backdrop for page leads) --- */
@@ -244,19 +244,19 @@
 }
 
 .lead-band--research {
-  --lead-band-graphic: url("../../assets/graphics/banner/graphic-banner-mountain.png");
+  --lead-band-graphic: url("../../assets/graphics/banner/graphic-banner-mountain.avif");
 }
 
 .lead-band--services {
-  --lead-band-graphic: url("../../assets/graphics/banner/graphic-banner-slope.png");
+  --lead-band-graphic: url("../../assets/graphics/banner/graphic-banner-slope.avif");
 }
 
 .lead-band--about {
-  --lead-band-graphic: url("../../assets/graphics/banner/graphic-banner-forrest.png");
+  --lead-band-graphic: url("../../assets/graphics/banner/graphic-banner-forrest.avif");
 }
 
 .lead-band--contact {
-  --lead-band-graphic: url("../../assets/graphics/banner/graphic-banner-flawk.png");
+  --lead-band-graphic: url("../../assets/graphics/banner/graphic-banner-flawk.avif");
 }
 
 /* --- Lunette + floating lead (subpage variant) --- */
@@ -278,19 +278,19 @@
 }
 
 .lunette-hero--shawnee {
-  background-image: url("../../assets/graphics/headpiece/graphic-headpiece-shawnee_trail_tree_farm.png");
+  background-image: url("../../assets/graphics/headpiece/graphic-headpiece-shawnee_trail_tree_farm.avif");
 }
 
 .lunette-hero--oakhill {
-  background-image: url("../../assets/graphics/headpiece/graphic-headpiece-stan_hywet_torii.png");
+  background-image: url("../../assets/graphics/headpiece/graphic-headpiece-stan_hywet_torii.avif");
 }
 
 .lunette-hero--articles {
-  background-image: url("../../assets/graphics/headpiece/graphic-headpiece-oak_hill_trail.png");
+  background-image: url("../../assets/graphics/headpiece/graphic-headpiece-oak_hill_trail.avif");
 }
 
 .lunette-hero--maplegrove {
-  background-image: url("../../assets/graphics/headpiece/graphic-headpiece-maple_grove_park.png");
+  background-image: url("../../assets/graphics/headpiece/graphic-headpiece-maple_grove_park.avif");
 }
 
 .lead-floating {

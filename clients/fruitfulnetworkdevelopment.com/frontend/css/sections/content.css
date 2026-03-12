@@ -1656,13 +1656,18 @@ body.search-open footer {
   }
 
   .editorial--home {
-    padding-bottom: 9.25rem;
+    padding-bottom: 1rem;
   }
 
   .editorial-woodcut--barn {
-    left: 0.75rem;
-    bottom: 0.75rem;
+    position: static;
+    left: auto;
+    bottom: auto;
+    float: none;
+    clear: both;
+    display: block;
     width: min(46vw, 11rem);
+    margin: 0.9rem 0 0 auto;
   }
 
   .editorial-woodcut--tractor {
