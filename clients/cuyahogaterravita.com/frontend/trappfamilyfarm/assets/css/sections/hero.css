@@ -1,0 +1,133 @@
+/* Hero section – parallax landscape, centered lower; landing section below */
+
+.hero {
+  padding: 0;
+  text-align: center;
+  background: var(--charcoal);
+  border-bottom: 4px solid var(--orange);
+  overflow: hidden;
+}
+
+/* Parallax band: fixed background so image stays while content scrolls; crop centered lower (60% = more land, less sky) */
+.hero-parallax {
+  width: 100%;
+  height: 55vh;
+  min-height: 320px;
+  max-height: 520px;
+  background-image: url('../../images/farm_landscape.png');
+  background-size: cover;
+  background-position: center 50%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-color: var(--charcoal);
+}
+
+@media (max-width: 768px) {
+  .hero-parallax {
+    background-attachment: scroll;
+    height: 40vh;
+    min-height: 240px;
+  }
+}
+
+.hero .hero-body {
+  padding: 2rem 1.5rem 2.5rem;
+  background: var(--charcoal);
+  color: var(--cream);
+}
+
+.hero .category-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 0.75rem;
+}
+
+.hero .category-dots span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.hero .category-dots .dot-orange { background: var(--orange); }
+.hero .category-dots .dot-teal   { background: var(--teal-light); }
+.hero .category-dots .dot-olive  { background: var(--olive-light); }
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: var(--white);
+  margin: 0 0 0.75rem;
+  line-height: 1.15;
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+
+.hero .lead {
+  font-size: 1.05rem;
+  color: var(--olive-light);
+  max-width: 36em;
+  margin: 0 auto 1.25rem;
+  line-height: 1.65;
+}
+
+/* Landing section: visit, offer, who we are (homepage content absorbed from subpages) */
+.hero .landing {
+  text-align: left;
+  max-width: var(--width);
+  margin: 0 auto 2.5rem;
+  padding: 0 1.5rem;
+}
+
+.hero .landing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.75rem;
+  margin-top: 1.5rem;
+}
+
+.hero .landing-block {
+  padding: 1.25rem 1.25rem 1.5rem;
+  background: rgba(255, 255, 255, 0.06);
+  border-left: 4px solid var(--orange);
+  border-radius: var(--radius-sm);
+}
+
+.hero .landing-block h2 {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--orange-bright);
+  margin: 0 0 0.75rem;
+  padding: 0;
+  border: none;
+}
+
+.hero .landing-block p,
+.hero .landing-block ul {
+  margin: 0 0 0.6rem;
+  font-size: 0.95rem;
+  color: var(--olive-light);
+  line-height: 1.6;
+}
+
+.hero .landing-block ul {
+  padding-left: 1.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.hero .landing-block a {
+  color: var(--orange-bright);
+}
+
+.hero .landing-block a:hover {
+  color: var(--white);
+  text-decoration: none;
+}
+
+.hero .link-cards {
+  padding-bottom: 0.5rem;
+}

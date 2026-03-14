@@ -1,0 +1,130 @@
+/* Shared content-block patterns: pull quotes, key points, subsections, artifacts */
+
+/* Pull quote – single standout line */
+.pullquote {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--teal);
+  margin: 2rem 0;
+  padding: 1.25rem 1.5rem;
+  border-left: 4px solid var(--orange);
+  background: var(--orange-wash);
+}
+
+.pullquote cite {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-soft);
+  margin-top: 0.5rem;
+  font-style: normal;
+}
+
+/* Key points – scannable list */
+.key-points {
+  margin: 1.5rem 0;
+  padding: 1.25rem 1.5rem;
+  background: var(--cream);
+  border: 2px solid var(--teal);
+}
+
+.key-points h4 {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--teal);
+  margin: 0 0 0.75rem;
+}
+
+.key-points ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.key-points li {
+  padding: 0.35rem 0 0.35rem 1.25rem;
+  position: relative;
+  font-size: 0.95rem;
+}
+
+.key-points li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.65em;
+  width: 6px;
+  height: 6px;
+  background: var(--orange);
+  border-radius: 50%;
+}
+
+/* Subsection – clear h3 + short block */
+.subsection {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--teal-wash);
+}
+
+.subsection:first-of-type {
+  margin-top: 1rem;
+  padding-top: 0;
+  border-top: none;
+}
+
+.subsection h3 {
+  margin-top: 0;
+}
+
+/* Artifact – image + caption block */
+.artifact {
+  margin: 1.75rem 0;
+}
+
+.artifact .artifact-media {
+  overflow: hidden;
+  border: 3px solid var(--charcoal);
+}
+
+.artifact .artifact-media img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  object-position: center 50%;
+}
+
+.artifact .artifact-caption {
+  font-size: 0.9rem;
+  color: var(--text-soft);
+  margin-top: 0.5rem;
+  padding-left: 0.25rem;
+  font-style: italic;
+}
+
+/* Lead-in – first short paragraph emphasis */
+.lead-in {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--charcoal);
+  margin-bottom: 1.25rem;
+}
+
+/* Side-by-side: text + artifact */
+.content-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: start;
+  margin: 1.5rem 0;
+}
+
+@media (max-width: 700px) {
+  .content-row {
+    grid-template-columns: 1fr;
+  }
+}
