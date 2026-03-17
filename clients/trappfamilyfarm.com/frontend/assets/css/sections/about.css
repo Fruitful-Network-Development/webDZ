@@ -1,0 +1,40 @@
+/* About page – Us, Farm, Countryside, CVNP section styling */
+
+#us .section-block {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+#us .section-block .section-image {
+  margin: 0;
+  position: sticky;
+  top: 6rem;
+}
+
+@media (max-width: 768px) {
+  #us .section-block {
+    grid-template-columns: 1fr;
+  }
+  #us .section-block .section-image { position: static; }
+}
+
+#farm .subsection + .subsection {
+  margin-top: 2rem;
+}
+
+#countryside .key-points,
+#cvnp .key-points {
+  max-width: 32em;
+}
+
+#drafthorses .section-block {
+  text-align: center;
+  max-width: 28em;
+  margin: 0 auto;
+}
+
+#drafthorses .pullquote {
+  margin: 1.5rem 0;
+}

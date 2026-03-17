@@ -1,0 +1,24 @@
+/* More Info – Podcasts, News */
+
+#podcasts .media-item {
+  margin-bottom: 1rem;
+}
+
+#podcasts .section-intro {
+  margin-bottom: 1.5rem;
+  max-width: 40em;
+}
+
+#news .subsection {
+  margin-top: 2rem;
+}
+
+#news .subsection h3 {
+  margin-top: 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--teal-wash);
+}
+
+#news ul li {
+  margin-bottom: 0.4rem;
+}

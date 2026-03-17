@@ -1,0 +1,25 @@
+/* For Your Homestead – Ready-to-Lay Hens, Transplants */
+
+#ready-to-lay-hens .section-block,
+#transplants .section-block {
+  max-width: 42em;
+}
+
+#ready-to-lay-hens .artifact,
+#transplants .artifact {
+  max-width: 400px;
+  margin: 1.5rem 0;
+}
+
+#ready-to-lay-hens .key-points,
+#transplants .key-points {
+  margin: 1.5rem 0 2rem;
+}
+
+.homestead-cta {
+  margin-top: 1.5rem;
+  padding: 1rem 1.25rem;
+  background: var(--orange-wash);
+  border-left: 4px solid var(--orange);
+  font-weight: 600;
+}

@@ -1,0 +1,29 @@
+/* Projects – Deer Fencing, Barn */
+
+#deer-fencing .subsection,
+#barn .subsection {
+  margin-top: 1.75rem;
+}
+
+#deer-fencing .key-points,
+#barn .key-points {
+  margin: 1.25rem 0 1.5rem;
+}
+
+#deer-fencing .pullquote,
+#barn .pullquote {
+  font-size: 1.2rem;
+  margin: 1.5rem 0;
+}
+
+.projects-related {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--teal-wash);
+  font-size: 0.95rem;
+  color: var(--text-soft);
+}
+
+.projects-related a {
+  font-weight: 600;
+}

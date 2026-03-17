@@ -1,0 +1,33 @@
+/* Newsletters – issue blocks and archive layout */
+
+.newsletter-intro {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 2px solid var(--teal-wash);
+}
+
+.newsletter-issue {
+  margin-bottom: 1.5rem;
+}
+
+.newsletter-issue .issue-meta {
+  font-size: 0.85rem;
+  color: var(--text-soft);
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.newsletter-issue .subsection {
+  margin-top: 1.5rem;
+}
+
+.newsletter-issue .pullquote {
+  font-size: 1.15rem;
+  margin: 1.25rem 0;
+}
+
+.newsletter-issue .artifact {
+  max-width: 360px;
+  margin: 1rem 0 1.25rem;
+}
