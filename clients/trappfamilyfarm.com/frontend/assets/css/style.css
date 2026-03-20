@@ -75,10 +75,10 @@ a:hover { text-decoration: underline; }
   max-width: var(--width);
   margin: 0 auto;
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   align-items: center;
   justify-content: space-between;
-  gap: var(--space);
+  gap: 1rem;
 }
 
 .header-graphic {
@@ -116,8 +116,13 @@ a:hover { text-decoration: underline; }
   margin: 0;
   padding: 0;
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 0.25rem 0.75rem;
+  white-space: nowrap;
+}
+
+.main-nav {
+  overflow-x: auto;
 }
 
 .main-nav a {
@@ -362,7 +367,31 @@ a:hover { text-decoration: underline; }
   margin: 0 0 0.6rem;
   padding-bottom: 0;
   border-bottom: none;
-  display: block;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.footer-col h3::before {
+  content: "";
+  width: 0.95rem;
+  height: 0.95rem;
+  display: inline-block;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.footer-col:nth-child(2) h3::before {
+  background-image: url("../icons/icon-info.svg");
+}
+
+.footer-col:nth-child(3) h3::before {
+  background-image: url("../icons/icon-home.svg");
+}
+
+.footer-col:nth-child(4) h3::before {
+  background-image: url("../icons/icon-network.svg");
 }
 
 .footer-col p {
@@ -374,6 +403,52 @@ a:hover { text-decoration: underline; }
 
 .footer-col a {
   color: var(--orange-bright);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.footer-col a::before {
+  content: "";
+  width: 0.9rem;
+  height: 0.9rem;
+  display: inline-block;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("../icons/icon-info.svg");
+}
+
+.footer-col a[href^="tel:"]::before {
+  background-image: url("../icons/icon-network.svg");
+}
+
+.footer-col a[href^="mailto:"]::before {
+  background-image: url("../icons/icon-inbox.svg");
+}
+
+.footer-col a[href*="instagram.com"]::before {
+  background-image: url("../icons/icon-network.svg");
+}
+
+.footer-col a[href$="home.html"]::before {
+  background-image: url("../icons/icon-home.svg");
+}
+.footer-col a.instagram-link::before {
+  content: none;
+}
+
+.footer-col a.instagram-link {
+  width: 1.35rem;
+  height: 1.35rem;
+  justify-content: center;
+  color: var(--orange-bright);
+}
+
+.footer-col a.instagram-link img {
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 .footer-col a:hover { color: var(--white); text-decoration: none; }
 
