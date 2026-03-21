@@ -1,22 +1,28 @@
 /* ==========================================================================
-   Vineyard Farm / Cooperative Website Styles
-   File: styles.css (monolithic)
-   Theme: rustic, warm, traditional (NOT modern/minimal)
-   Layout-friendly: hero, cards, capabilities grid, team, work carousel, contact, footer
+   Sarah’s Vineyard – Research‑Driven Marketing Site
+   File: styles.css
+   Theme: park‑within‑a‑park, editorial, festival (inspired by survey / interior templates)
+   Layout: hero, capabilities grid, banded sections, team, work carousel, report‑style tables
    ========================================================================== */
 
-/* Optional: classic serif + readable body (comment out if you self-host fonts) */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Lora:wght@400;500;600&display=swap');
+/* Type pairing: editorial serif for headings, clean sans for body */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap');
 
 /* ------------------------------
    Root Theme Variables
--------------------------------- */
+   (warm rustic palette – original)
+   -------------------------------- */
 :root{
+  /* Surface */
   --bg: #f7f1e7;              /* parchment */
   --bg-2: #efe3d2;            /* warm sand */
   --paper: #fbf6ee;           /* lighter paper */
+
+  /* Text */
   --ink: #2c2622;             /* warm ink */
   --muted: #6b625c;           /* warm grey */
+
+  /* Warm vineyard accents */
   --stone: #d7c7ad;           /* stone */
   --oak: #7a5330;             /* barrel/oak */
   --copper: #b07a3f;          /* aged gold/copper */
@@ -25,6 +31,14 @@
   --vine: #355e3b;            /* vine green */
   --olive:#4f5a2a;            /* olive leaf */
   --cream:#fffaf2;
+
+  /* Convenience aliases used by newer sections */
+  --plum: var(--wine);
+  --plum-deep: #4b1720;
+  --coral: var(--copper);
+  --coral-soft: #f9dfc2;
+  --teal: var(--vine);
+  --teal-soft: #d9eadf;
 
   --shadow: 0 10px 22px rgba(44,38,34,.10);
   --shadow-soft: 0 6px 16px rgba(44,38,34,.08);
@@ -37,7 +51,7 @@
   --gutter: 22px;
 
   --serif: "Playfair Display", Georgia, "Times New Roman", serif;
-  --body: "Lora", Georgia, serif;
+  --body: "Source Sans 3", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 
   --line: rgba(44,38,34,.14);
 }
@@ -57,10 +71,10 @@ body{
   color: var(--ink);
   background: var(--bg);
   line-height: 1.6;
-  letter-spacing: .1px;
+  letter-spacing: .05px;
 }
 
-/* A subtle “paper” texture without images */
+/* Subtle paper texture */
 body::before{
   content:"";
   position: fixed;
@@ -93,9 +107,9 @@ h1,h2,h3,h4,h5{
   letter-spacing: .4px;
   color: var(--ink);
 }
-h1{ font-size: clamp(2rem, 3vw, 3.1rem); line-height: 1.1; }
-h2{ font-size: clamp(1.5rem, 2.2vw, 2.2rem); line-height: 1.2; }
-h3{ font-size: 1.25rem; line-height: 1.25; }
+h1{ font-size: clamp(2.3rem, 3.4vw, 3.3rem); line-height: 1.08; }
+h2{ font-size: clamp(1.7rem, 2.4vw, 2.35rem); line-height: 1.2; }
+h3{ font-size: 1.3rem; line-height: 1.25; }
 small{ color: var(--muted); }
 
 ::selection{
@@ -291,8 +305,8 @@ small{ color: var(--muted); }
   height: 42px;
   border-radius: 999px;
   background:
-    radial-gradient(circle at 35% 35%, rgba(255,250,242,.95), rgba(255,250,242,.2) 55%, transparent 56%),
-    linear-gradient(180deg, rgba(176,122,63,.95), rgba(107,31,42,.95));
+    radial-gradient(circle at 35% 35%, rgba(255,250,246,.96), rgba(255,250,246,.18) 55%, transparent 56%),
+    conic-gradient(from 210deg, var(--coral), var(--plum), var(--teal), var(--coral));
   border: 1px solid rgba(44,38,34,.18);
   box-shadow: 0 10px 16px rgba(44,38,34,.10);
 }
@@ -329,33 +343,33 @@ small{ color: var(--muted); }
   transition: background .12s ease, color .12s ease;
 }
 .nav a:hover{
-  background: rgba(176,122,63,.12);
+  background: rgba(255,122,74,.12);
   color: var(--wine);
 }
 .nav a.is-active{
-  background: rgba(107,31,42,.10);
-  border: 1px solid rgba(107,31,42,.18);
+  background: rgba(96,43,154,.12);
+  border: 1px solid rgba(96,43,154,.28);
   color: var(--wine);
 }
 
 .nav a.btn{
   padding: 12px 18px;
   border: 1px solid rgba(44,38,34,.22);
-  background: linear-gradient(180deg, #fff7ec, #f1dfc8);
+  background: linear-gradient(180deg, #ffffff, #efeafb);
   color: var(--ink);
   box-shadow: 0 8px 16px rgba(44,38,34,.10);
 }
 .nav a.btn:hover{
-  background: linear-gradient(180deg, #fffaf2, #f1dfc8);
+  background: linear-gradient(180deg, #ffffff, #f5f3ff);
   color: var(--ink);
 }
 .nav a.btn.btn--wine{
-  border-color: rgba(107,31,42,.35);
-  background: linear-gradient(180deg, #8a2b39, #5b1822);
+  border-color: rgba(96,43,154,.45);
+  background: linear-gradient(180deg, var(--plum), var(--plum-deep));
   color: var(--cream);
 }
 .nav a.btn.btn--wine:hover{
-  background: linear-gradient(180deg, #9a3140, #651b25);
+  background: linear-gradient(180deg, #6c35b6, #341555);
   color: var(--cream);
 }
 
@@ -420,7 +434,7 @@ small{ color: var(--muted); }
   opacity:.55;
 }
 
-/* Add “film grain” feel */
+/* Light film-grain overlay */
 .hero::after{
   content:"";
   position:absolute;
@@ -555,7 +569,7 @@ small{ color: var(--muted); }
   height: 190px;
   background-size: cover;
   background-position: center;
-  filter: sepia(.15) saturate(.95) contrast(1.02);
+  filter: saturate(.96) contrast(1.05);
   border-bottom: 1px solid rgba(44,38,34,.12);
 }
 .tile__body{
