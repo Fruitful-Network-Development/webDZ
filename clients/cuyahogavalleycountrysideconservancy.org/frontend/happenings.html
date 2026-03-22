@@ -3,214 +3,111 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Happenings | Cuyahoga Valley Countryside Conservancy</title>
+  <title>Programs &amp; calendar | Cuyahoga Valley Countryside Conservancy</title>
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header class="masthead">
-    <div class="masthead__wordmark">Countryside Conservancy</div>
-    <nav class="masthead__nav">
+  <header class="masthead masthead--archive">
+    <div class="masthead__top">
+      <a class="masthead__wordmark masthead__wordmark--with-icon masthead__wordmark--link" href="index.html">
+        <img class="masthead__wordmark-icon" src="assets/icons/home.svg" width="24" height="24" alt="" aria-hidden="true" />
+        Countryside Conservancy
+      </a>
+      <p class="masthead__subtitle">A documentary record of agriculture, stewardship, and Countryside programs in Cuyahoga Valley National Park.</p>
+    </div>
+    <nav class="masthead__nav" aria-label="Primary">
       <a href="index.html">Home</a>
-      <a href="the_farms.html">The Farms</a>
       <a href="history.html">History</a>
-      <a href="happenings.html">Happenings</a>
-      <a href="donate.html">Donate</a>
-      <a href="../index.html">Gallery</a>
+      <a href="timeline.html">Timeline</a>
+      <a href="people.html">People</a>
+      <a href="the_farms.html">Working farms</a>
+      <a href="happenings.html" aria-current="page">Programs &amp; calendar</a>
+      <a href="donate.html">Support</a>
+      <a href="newsletter.html">Newsletter</a>
     </nav>
   </header>
 
-  <main class="page">
-    <section class="section section--hero">
-      <div class="kicker">Field Journal</div>
-      <h1 class="headline-lg">Happenings</h1>
-      <p>Stay up to date with events, news, and activities happening across the Cuyahoga Valley Countryside Conservancy and our partner farms.</p>
+  <main class="page page--archive">
+    <section class="section">
+      <p class="home-lead__eyebrow" style="margin-bottom: var(--sp-3);">Public programs</p>
+      <h1 class="headline-site">Programs &amp; calendar</h1>
+      <p class="timeline-intro">Markets, partner festivals, railroad excursions, stewardship days, and fundraisers around Cuyahoga Valley National Park. Schedules and prices change—confirm dates and tickets on the official sites linked from each card. For park-wide listings, see the <a href="https://www.nps.gov/cuva/planyourvisit/calendar.htm">National Park Service calendar</a> and <a href="https://www.nps.gov/cuva/getinvolved/drop-in-opportunities.htm">drop-in volunteer opportunities</a>.</p>
     </section>
 
-    <section class="section section--ledger">
-      <div class="divider-film-strip">Upcoming Events</div>
-      <div class="ledger">
-        <article class="ledger__entry">
-          <div class="ledger__date">July 12, 2024<br>Sunset</div>
-          <div class="ledger__content">
-            <figure class="figure figure--mounted ledger__media">
-              <img class="figure__img" src="assets/image/img-trapp_family-scene.png" alt="Fieldside Supper Series">
-              <figcaption class="figure__cap">Fieldside Supper Series</figcaption>
-            </figure>
-            <h3>Fieldside Supper Series</h3>
-            <div class="ledger__location">
-              <figure class="figure figure--icon">
-                <img class="figure__img" src="assets/icon/icon-location.png" alt="Location">
-                <figcaption class="figure__cap sr-only">Location</figcaption>
-              </figure>
-              <span>Trapp Family Farm</span>
-            </div>
-            <p>Join us for an evening of farm-fresh dining under the stars. This special dinner features seasonal ingredients from local farms, prepared by guest chefs. Limited seating available.</p>
-            <a class="ledger__link" href="#">RSVP Now</a>
-          </div>
-        </article>
+    <section class="section program-calendar-page" aria-labelledby="upcoming-heading">
+      <h2 id="upcoming-heading" class="section-heading">Upcoming</h2>
+      <p class="timeline-intro program-calendar-page__sub">The next dated programs from the site dataset (not a complete park calendar).</p>
+      <noscript>
+        <p class="card-farm">Enable JavaScript for interactive listings, or open <a href="assets/content/happennings.md">happennings.md</a> for the narrative guide.</p>
+      </noscript>
+      <div id="program-upcoming" class="program-event-grid"></div>
+    </section>
 
-        <article class="ledger__entry">
-          <div class="ledger__date">August 5-6, 2024<br>Weekend</div>
-          <div class="ledger__content">
-            <figure class="figure figure--mounted ledger__media">
-              <img class="figure__img" src="assets/image/img-oxbow-orchard-scene.png" alt="Berry Bramble Festival">
-              <figcaption class="figure__cap">Berry Bramble Festival</figcaption>
-            </figure>
-            <h3>Berry Bramble Festival</h3>
-            <div class="ledger__location">
-              <figure class="figure figure--icon">
-                <img class="figure__img" src="assets/icon/icon-location.png" alt="Location">
-                <figcaption class="figure__cap sr-only">Location</figcaption>
-              </figure>
-              <span>Oxbow Orchard</span>
-            </div>
-            <p>Celebrate the peak of berry season with live music, farm tours, berry picking, and delicious treats. Fun for the whole family!</p>
-            <a class="ledger__link" href="#">Learn More</a>
+    <section class="section program-calendar-page" aria-labelledby="browse-heading">
+      <h2 id="browse-heading" class="section-heading">Browse by date</h2>
+      <p class="timeline-intro program-calendar-page__sub">Use the month grid to pick a day, or search by title, place, or category. With no day selected, cards match the month you are viewing.</p>
+      <div class="program-calendar-layout">
+        <div class="program-calendar-panel">
+          <div class="program-calendar-nav">
+            <button type="button" id="program-calendar-prev" class="program-calendar-nav__btn" aria-label="Previous month">‹</button>
+            <h3 class="program-calendar-nav__label" id="program-calendar-month-label"></h3>
+            <button type="button" id="program-calendar-next" class="program-calendar-nav__btn" aria-label="Next month">›</button>
           </div>
-        </article>
-
-        <article class="ledger__entry">
-          <div class="ledger__date">September 9, 2024<br>Workshop</div>
-          <div class="ledger__content">
-            <figure class="figure figure--mounted ledger__media">
-              <img class="figure__img" src="assets/image/img-greenfield_berry-scene.png" alt="Hands-on Soil School">
-              <figcaption class="figure__cap">Hands-on Soil School</figcaption>
-            </figure>
-            <h3>Hands-on Soil School</h3>
-            <div class="ledger__location">
-              <figure class="figure figure--icon">
-                <img class="figure__img" src="assets/icon/icon-location.png" alt="Location">
-                <figcaption class="figure__cap sr-only">Location</figcaption>
-              </figure>
-              <span>Greenfield Berry Farm</span>
-            </div>
-            <p>Learn about soil health, composting, and regenerative farming practices in this hands-on workshop. Perfect for home gardeners and aspiring farmers.</p>
-            <a class="ledger__link" href="#">Register</a>
-          </div>
-        </article>
-
-        <article class="ledger__entry">
-          <div class="ledger__date">October 15, 2024<br>All Day</div>
-          <div class="ledger__content">
-            <figure class="figure figure--mounted ledger__media">
-              <img class="figure__img" src="assets/image/img-sarahs_vineyard-scene.png" alt="Harvest Celebration">
-              <figcaption class="figure__cap">Harvest Celebration</figcaption>
-            </figure>
-            <h3>Harvest Celebration</h3>
-            <div class="ledger__location">
-              <figure class="figure figure--icon">
-                <img class="figure__img" src="assets/icon/icon-location.png" alt="Location">
-                <figcaption class="figure__cap sr-only">Location</figcaption>
-              </figure>
-              <span>Sarah's Vineyard</span>
-            </div>
-            <p>Join us for our annual harvest celebration featuring local food, wine tastings, farm tours, and activities for all ages.</p>
-            <a class="ledger__link" href="#">Get Tickets</a>
-          </div>
-        </article>
-
-        <article class="ledger__entry">
-          <div class="ledger__date">May 4, 2024<br>Opening Day</div>
-          <div class="ledger__content">
-            <figure class="figure figure--mounted ledger__media">
-              <img class="figure__img" src="assets/image/img-spice_acres-scene.png" alt="Farmers Market Opening">
-              <figcaption class="figure__cap">Market Opening</figcaption>
-            </figure>
-            <h3>Countryside Farmers Market Opening</h3>
-            <div class="ledger__location">
-              <figure class="figure figure--icon">
-                <img class="figure__img" src="assets/icon/icon-location.png" alt="Location">
-                <figcaption class="figure__cap sr-only">Location</figcaption>
-              </figure>
-              <span>Countryside Farmers Market</span>
-            </div>
-            <p>Kick off the season with our opening day celebration. Meet local farmers, enjoy live music, and shop for the freshest produce.</p>
-            <a class="ledger__link" href="#">Visit Market</a>
-          </div>
-        </article>
-
-        <article class="ledger__entry">
-          <div class="ledger__date">November 2, 2024<br>Workshop</div>
-          <div class="ledger__content">
-            <figure class="figure figure--mounted ledger__media">
-              <img class="figure__img" src="assets/image/img-purple_brown-scene.png" alt="Conservation Workshop">
-              <figcaption class="figure__cap">Conservation Workshop</figcaption>
-            </figure>
-            <h3>Land Conservation Workshop</h3>
-            <div class="ledger__location">
-              <figure class="figure figure--icon">
-                <img class="figure__img" src="assets/icon/icon-location.png" alt="Location">
-                <figcaption class="figure__cap sr-only">Location</figcaption>
-              </figure>
-              <span>Purple Brown Farmstead</span>
-            </div>
-            <p>Learn about conservation easements and how to protect your farmland for future generations. Free workshop for landowners.</p>
-            <a class="ledger__link" href="#">Register</a>
-          </div>
-        </article>
+          <div id="program-calendar-grid" class="program-cal-grid" role="application" aria-label="Event calendar by month"></div>
+          <button type="button" id="program-calendar-clear" class="program-calendar-clear" disabled>Clear selected day</button>
+        </div>
+        <div class="program-calendar-filter">
+          <label class="program-search-label" for="program-search">Search listings</label>
+          <input type="search" id="program-search" class="program-search-input" placeholder="e.g. market, railroad, Hale…" autocomplete="off" />
+          <p id="program-filter-hint" class="program-filter-hint" aria-live="polite"></p>
+          <div id="program-filtered-cards" class="program-event-grid"></div>
+        </div>
       </div>
     </section>
 
-    <section class="section section--ledger">
-      <div class="divider-film-strip">Latest News</div>
-      <div class="ledger">
-        <article class="ledger__entry">
-          <div class="ledger__date">March 15, 2024</div>
-          <div class="ledger__content">
-            <h3>New Conservation Easement Protects 50 Acres</h3>
-            <p>We're thrilled to announce a new conservation easement that will protect 50 acres of prime farmland in the Cuyahoga Valley. This partnership with a local family farm ensures the land will remain in agricultural use for generations to come.</p>
-            <a class="ledger__link" href="#">Read more</a>
-          </div>
-        </article>
-
-        <article class="ledger__entry">
-          <div class="ledger__date">February 28, 2024</div>
-          <div class="ledger__content">
-            <h3>Farmers Market Season Returns</h3>
-            <p>The Countryside Farmers Market is gearing up for another successful season. Starting in May, you'll find fresh produce, local artisans, and community connections every Saturday morning.</p>
-            <a class="ledger__link" href="#">Read more</a>
-          </div>
-        </article>
-
-        <article class="ledger__entry">
-          <div class="ledger__date">January 10, 2024</div>
-          <div class="ledger__content">
-            <h3>Grant Award Supports Farmer Education</h3>
-            <p>We've received a grant to expand our farmer education programs, providing workshops on sustainable practices, business management, and marketing strategies for local producers.</p>
-            <a class="ledger__link" href="#">Read more</a>
-          </div>
-        </article>
-      </div>
+    <section class="section">
+      <p class="card-farm">Long-form program guide (markdown): <a href="assets/content/happennings.md">happennings.md</a></p>
     </section>
   </main>
 
   <footer class="footer">
-    <div class="footer__grid">
-      <div>
+    <div class="footer__grid footer__grid--canonical">
+      <div class="footer__brand-col">
         <figure class="figure">
-          <img class="figure__img" src="assets/logo/logo-stock-farm.png" alt="Cuyahoga Valley Countryside Conservancy">
-          <figcaption class="figure__cap sr-only">Cuyahoga Valley Countryside Conservancy</figcaption>
+          <img class="figure__img footer__pictorial-map" src="assets/image/countryside/img-cvcc-pictorialmap.avif" alt="Illustrated map of farms and roads in the Cuyahoga Valley" />
+          <figcaption class="figure__cap">Pictorial valley map · Farm names &amp; roads</figcaption>
         </figure>
-        <p>Preserving farmland and supporting local agriculture in the Cuyahoga Valley.</p>
+        <p class="footer__tagline">Preserving working farmland and agricultural heritage in the Cuyahoga Valley.</p>
+        <p class="footer__visit-note">Countryside Conservancy supports farms and programs within Cuyahoga Valley National Park. Individual farmsteads set their own visitation rules; confirm hours and access on each <a href="the_farms.html">working farm</a> profile or official website. Park-wide events appear under <a href="happenings.html">Programs &amp; calendar</a>.</p>
+        <h4 class="footer__mini-heading">Correspondence</h4>
+        <p class="contact-row">
+          <img class="icon-inline" src="assets/icons/mail.svg" width="18" height="18" alt="" aria-hidden="true" />
+          <span><strong>Email</strong>: <a href="mailto:info@cuyahogavalleycountrysideconservancy.org">info@cuyahogavalleycountrysideconservancy.org</a></span>
+        </p>
+        <p class="contact-row">
+          <img class="icon-inline" src="assets/icons/message.svg" width="18" height="18" alt="" aria-hidden="true" />
+          <span><strong>Phone</strong>: <a href="tel:+13305550100">(330) 555-0100</a> (demo placeholder)</span>
+        </p>
+        <p class="footer__support-inline"><a href="donate.html">Support the archive &amp; programs</a> · <a href="newsletter.html">Newsletter signup</a></p>
       </div>
       <div>
-        <h4>Quick Links</h4>
+        <h4>Browse</h4>
         <ul>
           <li><a href="index.html">Home</a></li>
-          <li><a href="the_farms.html">The Farms</a></li>
           <li><a href="history.html">History</a></li>
-          <li><a href="index.html#happenings">Happenings</a></li>
-          <li><a href="donate.html">Donate</a></li>
+          <li><a href="timeline.html">Timeline</a></li>
+          <li><a href="people.html">People</a></li>
+          <li><a href="the_farms.html">Working farms</a></li>
+          <li><a href="happenings.html">Programs &amp; calendar</a></li>
+          <li><a href="donate.html">Support</a></li>
+          <li><a href="newsletter.html">Newsletter</a></li>
         </ul>
-      </div>
-      <div>
-        <h4>Contact</h4>
-        <p>Email: info@cuyahogavalleycountrysideconservancy.org</p>
-        <p>Phone: (330) 555-0100</p>
       </div>
     </div>
     <div>&copy; 2024 Cuyahoga Valley Countryside Conservancy. All rights reserved.</div>
   </footer>
+
+  <script src="JS/calendar.js" defer></script>
 </body>
 </html>

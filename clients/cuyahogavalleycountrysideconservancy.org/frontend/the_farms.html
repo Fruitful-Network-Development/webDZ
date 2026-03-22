@@ -8,31 +8,39 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header class="masthead">
-    <div class="masthead__wordmark">Countryside Conservancy</div>
-    <nav class="masthead__nav">
+  <header class="masthead masthead--archive">
+    <div class="masthead__top">
+      <a class="masthead__wordmark masthead__wordmark--with-icon masthead__wordmark--link" href="index.html">
+        <img class="masthead__wordmark-icon" src="assets/icons/home.svg" width="24" height="24" alt="" aria-hidden="true" />
+        Countryside Conservancy
+      </a>
+      <p class="masthead__subtitle">A documentary record of agriculture, stewardship, and Countryside programs in Cuyahoga Valley National Park.</p>
+    </div>
+    <nav class="masthead__nav" aria-label="Primary">
       <a href="index.html">Home</a>
-      <a href="the_farms.html">The Farms</a>
       <a href="history.html">History</a>
-      <a href="happenings.html">Happenings</a>
-      <a href="donate.html">Donate</a>
-      <a href="../index.html">Gallery</a>
+      <a href="timeline.html">Timeline</a>
+      <a href="people.html">People</a>
+      <a href="the_farms.html" aria-current="page">Working farms</a>
+      <a href="happenings.html">Programs &amp; calendar</a>
+      <a href="donate.html">Support</a>
+      <a href="newsletter.html">Newsletter</a>
     </nav>
   </header>
 
-  <main class="page">
-    <section class="section section--hero">
-      <div class="kicker">Field Index</div>
-      <h1 class="headline-lg">The Farms of the Cuyahoga Valley</h1>
-      <p>A magazine-style index of the growers, orchardists, and farmsteads stewarding the valley. Each card presents a quick portrait, the official link, and the latest sources covering their work.</p>
+  <main class="page page--archive">
+    <section class="section">
+      <p class="home-lead__eyebrow" style="margin-bottom: var(--sp-3);">Registry</p>
+      <h1 class="headline-site">Working farmsteads in the Cuyahoga Valley</h1>
+      <p class="timeline-intro">Each record describes a grower or farmstead in the Countryside program: scene photograph, narrative summary, official web link, and selected press or documentation. Use this index alongside the <a href="history.html">historical overview</a> (including documentary photos and farm scene index), and the <a href="timeline.html">timeline</a>.</p>
     </section>
 
-    <div class="divider-film-strip">Farm Index</div>
+    <h2 class="section-heading">Farmstead records</h2>
 
     <section class="grid-3">
       <article class="card-farm" id="trapp-family-farm" data-href="profiles/trapp_family_farm.html">
         <figure class="figure card-farm__media">
-          <img class="figure__img" src="assets/image/img-trapp_family-scene.png" alt="Fields at Trapp Family Farm" />
+          <img class="figure__img" src="assets/image/countryside/img-cvcc-widefarm.avif" alt="Fields at Trapp Family Farm" />
           <figcaption class="figure__cap">Trapp Family Farm fields.</figcaption>
           <figure class="card-farm__logo figure">
             <img class="figure__img" src="assets/logo/logo-trapp_family-demo.png" alt="Trapp Family Farm logo" />
@@ -63,7 +71,7 @@
 
       <article class="card-farm" id="purple-brown-farmstead" data-href="profiles/purple_brown_farmstead.html">
         <figure class="figure card-farm__media">
-          <img class="figure__img" src="assets/image/img-purple_brown-scene.png" alt="Purple Brown Farmstead landscape" />
+          <img class="figure__img" src="assets/image/countryside/img-purple_brown-scene.avif" alt="Purple Brown Farmstead landscape" />
           <figcaption class="figure__cap">Purple Brown Farmstead landscape.</figcaption>
           <figure class="card-farm__logo figure">
             <img class="figure__img" src="assets/logo/logo-purple_brown.png" alt="Purple Brown Farmstead logo" />
@@ -90,7 +98,7 @@
 
       <article class="card-farm" id="spicy-lamb-farm" data-href="profiles/spicy_lamb_farm.html">
         <figure class="figure card-farm__media">
-          <img class="figure__img" src="assets/image/img-spicy_lamb-scene.png" alt="Sheep at Spicy Lamb Farm" />
+          <img class="figure__img" src="assets/image/spicey_lamb_farm/img-spicy_lamb-scene.avif" alt="Sheep at Spicy Lamb Farm" />
           <figcaption class="figure__cap">The Spicy Lamb Farm.</figcaption>
           <figure class="card-farm__logo figure">
             <img class="figure__img" src="assets/logo/logo-the_spicy_lamb-demo.png" alt="Spicy Lamb Farm logo" />
@@ -117,7 +125,7 @@
 
       <article class="card-farm" id="oxbow-orchard" data-href="profiles/oxbow_orchard.html">
         <figure class="figure card-farm__media">
-          <img class="figure__img" src="assets/image/img-oxbow-orchard-scene.png" alt="Oxbow Orchard scene" />
+          <img class="figure__img" src="assets/image/countryside/img-oxbow-orchard-scene.avif" alt="Oxbow Orchard scene" />
           <figcaption class="figure__cap">Oxbow Orchard.</figcaption>
           <figure class="card-farm__logo figure">
             <img class="figure__img" src="assets/logo/logo-oxbow_orchard.png" alt="Oxbow Orchard logo" />
@@ -144,7 +152,7 @@
 
       <article class="card-farm" id="greenfield-berry-farm" data-href="profiles/greenfield_berry_farm.html">
         <figure class="figure card-farm__media">
-          <img class="figure__img" src="assets/image/img-greenfield_berry-scene.png" alt="Greenfield Berry Farm rows" />
+          <img class="figure__img" src="assets/image/greenfield_berry_farm/img-greenfield_berry-scene.avif" alt="Greenfield Berry Farm rows" />
           <figcaption class="figure__cap">Greenfield Berry Farm rows.</figcaption>
           <figure class="card-farm__logo figure">
             <img class="figure__img" src="assets/logo/logo-greenfield_berry.png" alt="Greenfield Berry Farm logo" />
@@ -181,7 +189,7 @@
 
       <article class="card-farm" id="keleman-point-farm" data-href="profiles/keleman_point_farm.html">
         <figure class="figure card-farm__media">
-          <img class="figure__img" src="assets/image/img-keleman_point-scene.jpg" alt="Pasture at Keleman Point Farm" />
+          <img class="figure__img" src="assets/image/keleman_point_farm/img-keleman_point-scene.avif" alt="Pasture at Keleman Point Farm" />
           <figcaption class="figure__cap">Keleman Point Farm pasture.</figcaption>
           <figure class="card-farm__logo figure">
             <img class="figure__img" src="assets/logo/logo-keleman_point-demo.png" alt="Keleman Point Farm logo" />
@@ -208,7 +216,7 @@
 
       <article class="card-farm" id="sarahs-vineyard" data-href="profiles/sarahs_vineyard.html">
         <figure class="figure card-farm__media">
-          <img class="figure__img" src="assets/image/img-sarahs_vineyard-scene.png" alt="Vines at Sarah's Vineyard" />
+          <img class="figure__img" src="assets/image/countryside/img-cvcc-vineyard.avif" alt="Vines at Sarah's Vineyard" />
           <figcaption class="figure__cap">Sarah's Vineyard vines.</figcaption>
           <figure class="card-farm__logo figure">
             <img class="figure__img" src="assets/logo/logo-sarahs_vineyard.png" alt="Sarah's Vineyard logo" />
@@ -235,7 +243,7 @@
 
       <article class="card-farm" id="spice-acres" data-href="profiles/spice_acres.html">
         <figure class="figure card-farm__media">
-          <img class="figure__img" src="assets/image/img-spice_acres-scene.png" alt="Spice Acres fields" />
+          <img class="figure__img" src="assets/image/spiceacres/img-spice_acres-scene.avif" alt="Spice Acres fields" />
           <figcaption class="figure__cap">Spice Acres fields.</figcaption>
           <figure class="card-farm__logo figure">
             <img class="figure__img" src="assets/logo/logo-spice_acres.png" alt="Spice Acres logo" />
@@ -270,8 +278,8 @@
 
       <article class="card-farm" id="neitenbach-farm" data-href="profiles/neitenbach_farm.html">
         <figure class="figure card-farm__media">
-          <img class="figure__img" src="assets/icon/icon-image.png" alt="Neitenbach Farm placeholder" />
-          <figcaption class="figure__cap">Neitenbach Farm placeholder.</figcaption>
+          <img class="figure__img figure__img--svg" src="assets/icons/farm.svg" alt="" aria-hidden="true" />
+          <figcaption class="figure__cap">Neitenbach Farm — scene to come.</figcaption>
           <figure class="card-farm__logo figure">
             <img class="figure__img" src="assets/logo/logo-stock-farm.png" alt="Neitenbach Farm logo" />
             <figcaption class="figure__cap sr-only">Neitenbach Farm logo</figcaption>
@@ -296,6 +304,43 @@
       </article>
     </section>
   </main>
+
+  <footer class="footer">
+    <div class="footer__grid footer__grid--canonical">
+      <div class="footer__brand-col">
+        <figure class="figure">
+          <img class="figure__img footer__pictorial-map" src="assets/image/countryside/img-cvcc-pictorialmap.avif" alt="Illustrated map of farms and roads in the Cuyahoga Valley" />
+          <figcaption class="figure__cap">Pictorial valley map · Farm names &amp; roads</figcaption>
+        </figure>
+        <p class="footer__tagline">Preserving working farmland and agricultural heritage in the Cuyahoga Valley.</p>
+        <p class="footer__visit-note">Countryside Conservancy supports farms and programs within Cuyahoga Valley National Park. Individual farmsteads set their own visitation rules; confirm hours and access on each <a href="the_farms.html">working farm</a> profile or official website. Park-wide events appear under <a href="happenings.html">Programs &amp; calendar</a>.</p>
+        <h4 class="footer__mini-heading">Correspondence</h4>
+        <p class="contact-row">
+          <img class="icon-inline" src="assets/icons/mail.svg" width="18" height="18" alt="" aria-hidden="true" />
+          <span><strong>Email</strong>: <a href="mailto:info@cuyahogavalleycountrysideconservancy.org">info@cuyahogavalleycountrysideconservancy.org</a></span>
+        </p>
+        <p class="contact-row">
+          <img class="icon-inline" src="assets/icons/message.svg" width="18" height="18" alt="" aria-hidden="true" />
+          <span><strong>Phone</strong>: <a href="tel:+13305550100">(330) 555-0100</a> (demo placeholder)</span>
+        </p>
+        <p class="footer__support-inline"><a href="donate.html">Support the archive &amp; programs</a> · <a href="newsletter.html">Newsletter signup</a></p>
+      </div>
+      <div>
+        <h4>Browse</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="history.html">History</a></li>
+          <li><a href="timeline.html">Timeline</a></li>
+          <li><a href="people.html">People</a></li>
+          <li><a href="the_farms.html">Working farms</a></li>
+          <li><a href="happenings.html">Programs &amp; calendar</a></li>
+          <li><a href="donate.html">Support</a></li>
+          <li><a href="newsletter.html">Newsletter</a></li>
+        </ul>
+      </div>
+    </div>
+    <div>&copy; 2024 Cuyahoga Valley Countryside Conservancy. All rights reserved.</div>
+  </footer>
 
   <script>
     document.querySelectorAll(".card-farm[data-href]").forEach((card) => {

@@ -74,7 +74,7 @@
     Dec: 11,
   };
 
-  const defaultThumb = "assets/image/img-countryside-pictoral_map.png";
+  const defaultThumb = "assets/image/countryside/img-cvcc-pictorialmap.avif";
 
   let posts = [];
   let postsById = new Map();

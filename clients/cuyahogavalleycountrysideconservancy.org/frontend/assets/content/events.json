@@ -1,0 +1,264 @@
+{
+  "meta": {
+    "note": "Sample schedule derived from program research; verify dates and tickets at source sites.",
+    "referenceMd": "assets/content/happennings.md"
+  },
+  "recurring": [
+    {
+      "id": "cvfm-saturday",
+      "title": "Cuyahoga Valley Farmers Market",
+      "weekday": 6,
+      "start": "2026-03-22",
+      "until": "2027-03-21",
+      "time": "9:00am–12:00pm",
+      "category": "Market",
+      "location": "Howe Meadow (May–Oct) · Old Trail School (Nov–Apr)",
+      "summary": "Producer-only Saturday market, rain or shine. Seasonal venue shift between Peninsula and Akron.",
+      "url": "https://cvfm.org/"
+    }
+  ],
+  "events": [
+    {
+      "id": "maple-2026-03-22",
+      "title": "Maple Sugar Festival & Pancake Breakfast",
+      "startDate": "2026-03-22",
+      "endDate": "2026-03-22",
+      "time": "10:00am–3:00pm",
+      "category": "Hale Farm & Village",
+      "location": "Hale Farm & Village, Bath",
+      "summary": "Maple sugaring, period crafts; pancake breakfast ticket options.",
+      "url": "https://www.wrhs.org/plan-visit/places-to-visit/hale-farm-village/things-to-do/signature-events"
+    },
+    {
+      "id": "maple-2026-03-28",
+      "title": "Maple Sugar Festival & Pancake Breakfast",
+      "startDate": "2026-03-28",
+      "endDate": "2026-03-29",
+      "time": "10:00am–3:00pm",
+      "category": "Hale Farm & Village",
+      "location": "Hale Farm & Village, Bath",
+      "summary": "Weekend dates for the spring maple tradition.",
+      "url": "https://www.wrhs.org/plan-visit/places-to-visit/hale-farm-village/things-to-do/signature-events"
+    },
+    {
+      "id": "cvsr-scenic-2026-03-29",
+      "title": "CVSR — National Park Scenic",
+      "startDate": "2026-03-29",
+      "endDate": "2026-03-29",
+      "time": "Example: 10:00am Peninsula Depot",
+      "category": "Railroad",
+      "location": "Cuyahoga Valley Scenic Railroad",
+      "summary": "Flagship park excursion; multiple stations and departures—see official ticket calendar.",
+      "url": "https://www.cvsr.org/book-tickets/calendar"
+    },
+    {
+      "id": "nature-rx-2026-04-22",
+      "title": "Nature Rx | Reciprocity through Volunteerism",
+      "startDate": "2026-04-22",
+      "endDate": "2026-04-22",
+      "time": "5:30pm–7:30pm",
+      "category": "Stewardship",
+      "location": "CVNP (details to registrants)",
+      "summary": "Earth Day–themed stewardship and guided reflection; registration via Eventbrite.",
+      "url": "https://www.conservancyforcvnp.org/calendar/"
+    },
+    {
+      "id": "cvsr-critter-2026-04-18",
+      "title": "CVSR — Create-A-Critter (Family Fun Loop)",
+      "startDate": "2026-04-18",
+      "endDate": "2026-04-18",
+      "time": "See ticket calendar",
+      "category": "Railroad",
+      "location": "Cuyahoga Valley Scenic Railroad",
+      "summary": "Family-oriented excursion series; pricing varies by train.",
+      "url": "https://www.cvsr.org/book-tickets/calendar"
+    },
+    {
+      "id": "cvsr-western-2026-04-24",
+      "title": "CVSR — Western Locomotive (Themed)",
+      "startDate": "2026-04-24",
+      "endDate": "2026-04-24",
+      "time": "Evening departure",
+      "category": "Railroad",
+      "location": "Cuyahoga Valley Scenic Railroad",
+      "summary": "Themed evening ride; confirm schedule on CVSR calendar.",
+      "url": "https://www.cvsr.org/book-tickets/calendar"
+    },
+    {
+      "id": "photo-hike-2026-05-09",
+      "title": "Photo Exploration Hike — Frazee House",
+      "startDate": "2026-05-09",
+      "endDate": "2026-05-09",
+      "time": "10:00am–12:00pm",
+      "category": "Stewardship",
+      "location": "7733 Canal Road, Valley View",
+      "summary": "Guided hike with your own camera; under 2 mi, some hills.",
+      "url": "https://www.conservancyforcvnp.org/calendar/"
+    },
+    {
+      "id": "photo-society-2026-05-20",
+      "title": "Cuyahoga Valley Photo Society — Juxtapositions",
+      "startDate": "2026-05-20",
+      "endDate": "2026-05-20",
+      "time": "7:00pm–9:00pm",
+      "category": "Stewardship",
+      "location": "Hines Hill Conference Center, Peninsula",
+      "summary": "Evening program; ticketing via Eventbrite.",
+      "url": "https://www.conservancyforcvnp.org/calendar/"
+    },
+    {
+      "id": "summer-market-opens",
+      "title": "CVFM — Summer season opens (Howe Meadow)",
+      "startDate": "2026-05-03",
+      "endDate": "2026-05-03",
+      "time": "9:00am–12:00pm",
+      "category": "Market",
+      "location": "Howe Meadow, Peninsula",
+      "summary": "Outdoor market season through late October.",
+      "url": "https://cvfm.org/"
+    },
+    {
+      "id": "elevation-2026",
+      "title": "Elevation — Conservancy fundraiser",
+      "startDate": "2026-06-12",
+      "endDate": "2026-06-12",
+      "time": "6:30pm–11:00pm",
+      "category": "Fundraiser",
+      "location": "Howe Meadow",
+      "summary": "Annual benefit supporting Trails Now Fund; rain or shine.",
+      "url": "https://www.conservancyforcvnp.org/donate/fundraising-events/"
+    },
+    {
+      "id": "topography-2026",
+      "title": "Topography — Conservancy dinner",
+      "startDate": "2026-06-13",
+      "endDate": "2026-06-13",
+      "time": "Evening (arrival & dinner)",
+      "category": "Fundraiser",
+      "location": "Howe Meadow",
+      "summary": "Annual dinner fundraiser; valet noted for past editions.",
+      "url": "https://www.conservancyforcvnp.org/donate/fundraising-events/"
+    },
+    {
+      "id": "sow-grow-2026",
+      "title": "Sow & Grow Festival & Plant Sale",
+      "startDate": "2026-06-13",
+      "endDate": "2026-06-14",
+      "time": "10:00am–4:00pm",
+      "category": "Hale Farm & Village",
+      "location": "Hale Farm & Village, Bath",
+      "summary": "Farm demonstrations, plant sale, partner exhibits.",
+      "url": "https://www.wrhs.org/do-see/events"
+    },
+    {
+      "id": "juneteenth-2026",
+      "title": "Juneteenth Celebration",
+      "startDate": "2026-06-17",
+      "endDate": "2026-06-20",
+      "time": "10:00am–4:00pm",
+      "category": "Hale Farm & Village",
+      "location": "Hale Farm & Village, Bath",
+      "summary": "Multi-day commemoration and interpretive programming.",
+      "url": "https://www.wrhs.org/do-see/events"
+    },
+    {
+      "id": "artfest-june-2026",
+      "title": "Boston Mills Artfest — June show",
+      "startDate": "2026-06-26",
+      "endDate": "2026-06-28",
+      "time": "Festival hours TBA",
+      "category": "Arts",
+      "location": "Boston Mills Ski Resort, Peninsula",
+      "summary": "Fine art festival weekend; verify public hours and admission.",
+      "url": "https://www.bostonmillsartfest.com/"
+    },
+    {
+      "id": "artfest-july-2026",
+      "title": "Boston Mills Artfest — July show",
+      "startDate": "2026-07-03",
+      "endDate": "2026-07-05",
+      "time": "Festival hours TBA",
+      "category": "Arts",
+      "location": "Boston Mills Ski Resort, Peninsula",
+      "summary": "Second summer weekend of the juried art festival.",
+      "url": "https://www.bostonmillsartfest.com/"
+    },
+    {
+      "id": "blossom-season-2026",
+      "title": "Blossom Music Festival (season)",
+      "startDate": "2026-07-03",
+      "endDate": "2026-09-06",
+      "time": "Varies by concert",
+      "category": "Music",
+      "location": "Blossom Music Center, Cuyahoga Falls",
+      "summary": "Cleveland Orchestra summer home; many dated performances—see official calendar.",
+      "url": "https://www.clevelandorchestra.com/tickets/calendar/2026-blossom-season"
+    },
+    {
+      "id": "made-in-ohio-2026",
+      "title": "Made in Ohio Art & Craft Festival",
+      "startDate": "2026-09-04",
+      "endDate": "2026-09-06",
+      "time": "10:00am–5:00pm",
+      "category": "Hale Farm & Village",
+      "location": "Hale Farm & Village area",
+      "summary": "Labor Day weekend craft festival; published gate pricing on festival site.",
+      "url": "https://www.madeinohioartandcraftfestival.com/"
+    },
+    {
+      "id": "harvest-1-2026",
+      "title": "Harvest Festival (weekend 1)",
+      "startDate": "2026-10-03",
+      "endDate": "2026-10-04",
+      "time": "10:00am–4:00pm",
+      "category": "Hale Farm & Village",
+      "location": "Hale Farm & Village, Bath",
+      "summary": "Fall seasonal programming and demonstrations.",
+      "url": "https://www.wrhs.org/do-see/events"
+    },
+    {
+      "id": "harvest-2-2026",
+      "title": "Harvest Festival (weekend 2)",
+      "startDate": "2026-10-10",
+      "endDate": "2026-10-11",
+      "time": "10:00am–4:00pm",
+      "category": "Hale Farm & Village",
+      "location": "Hale Farm & Village, Bath",
+      "summary": "Second fall festival weekend.",
+      "url": "https://www.wrhs.org/do-see/events"
+    },
+    {
+      "id": "winter-market-opens",
+      "title": "CVFM — Winter season opens (Old Trail School)",
+      "startDate": "2026-11-01",
+      "endDate": "2026-11-01",
+      "time": "9:00am–12:00pm",
+      "category": "Market",
+      "location": "Old Trail School, Akron",
+      "summary": "Indoor Saturday market season.",
+      "url": "https://cvfm.org/"
+    },
+    {
+      "id": "holiday-market-2026",
+      "title": "Holiday Art & Craft Market",
+      "startDate": "2026-11-22",
+      "endDate": "2026-11-22",
+      "time": "12:00pm–4:00pm",
+      "category": "Hale Farm & Village",
+      "location": "Hale Farm Gatehouse / MarketPlace",
+      "summary": "Free admission for shoppers; vendor-focused application on file for 2026.",
+      "url": "https://www.wrhs.org/do-see/events"
+    },
+    {
+      "id": "lantern-2026-12-26",
+      "title": "Holiday Lantern Tours",
+      "startDate": "2026-12-26",
+      "endDate": "2026-12-26",
+      "time": "4:40pm–9:00pm (tours every 20 min)",
+      "category": "Hale Farm & Village",
+      "location": "Hale Farm & Village, Bath",
+      "summary": "Lantern-lit village walks; uneven terrain—see accessibility notes on WRHS.",
+      "url": "https://www.wrhs.org/do-see/events"
+    }
+  ]
+}

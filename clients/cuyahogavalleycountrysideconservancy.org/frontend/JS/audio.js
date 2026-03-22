@@ -13,9 +13,9 @@
 
   function updatePillUI(pill) {
     const audio = pill.querySelector("audio");
-    const button = pill.querySelector(".audio-pill__button");
-    const progress = pill.querySelector(".audio-pill__progress");
-    const time = pill.querySelector(".audio-pill__time");
+    const button = pill.querySelector(".oral-player__button");
+    const progress = pill.querySelector(".oral-player__progress");
+    const time = pill.querySelector(".oral-player__time");
     if (!audio || !button || !progress || !time) return;
 
     const durationText = Number.isFinite(audio.duration) ? formatTime(audio.duration) : "--:--";
@@ -34,15 +34,15 @@
   }
 
   function wireAudioPills() {
-    const pills = Array.from(document.querySelectorAll(".audio-pill"));
+    const pills = Array.from(document.querySelectorAll(".oral-player"));
     if (!pills.length) return;
 
     let currentlyPlaying = null;
 
     pills.forEach((pill) => {
       const audio = pill.querySelector("audio");
-      const button = pill.querySelector(".audio-pill__button");
-      const bar = pill.querySelector(".audio-pill__bar");
+      const button = pill.querySelector(".oral-player__button");
+      const bar = pill.querySelector(".oral-player__bar");
       if (!audio || !button || !bar) return;
 
       button.setAttribute("aria-pressed", "false");
