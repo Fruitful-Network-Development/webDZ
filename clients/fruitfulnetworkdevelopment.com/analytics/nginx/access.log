@@ -60,3 +60,4 @@
 23.101.4.52 - - [24/Mar/2026:05:20:53 +0000] "GET /wp-includes/fonts/ HTTP/1.1" 404 188 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
 23.101.4.52 - - [24/Mar/2026:05:20:53 +0000] "GET /wordpress/wp-admin/maint/ HTTP/1.1" 404 188 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
 23.101.4.52 - - [24/Mar/2026:05:20:54 +0000] "GET /cgi-bin/ HTTP/1.1" 404 188 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+43.164.197.177 - - [24/Mar/2026:05:39:59 +0000] "GET / HTTP/1.1" 200 5966 "http://www.fruitfulnetworkdevelopment.com" "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1"
