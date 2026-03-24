@@ -1,4 +1,6 @@
 (() => {
+  let currentlyPlaying = null;
+
   function pad2(value) {
     return String(value).padStart(2, "0");
   }
@@ -33,11 +35,12 @@
     button.setAttribute("aria-pressed", isPlaying ? "true" : "false");
   }
 
-  function wireAudioPills() {
-    const pills = Array.from(document.querySelectorAll(".oral-player"));
+  function wireAudioPills(root = document) {
+    const scope = root && typeof root.querySelectorAll === "function" ? root : document;
+    const pills = Array.from(scope.querySelectorAll(".oral-player")).filter(
+      (pill) => pill.dataset.audioBound !== "true"
+    );
     if (!pills.length) return;
-
-    let currentlyPlaying = null;
 
     pills.forEach((pill) => {
       const audio = pill.querySelector("audio");
@@ -45,6 +48,7 @@
       const bar = pill.querySelector(".oral-player__bar");
       if (!audio || !button || !bar) return;
 
+      pill.dataset.audioBound = "true";
       button.setAttribute("aria-pressed", "false");
       updatePillUI(pill);
 
@@ -92,10 +96,11 @@
     });
   }
 
+  window.initOralPlayers = wireAudioPills;
+
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", wireAudioPills);
   } else {
     wireAudioPills();
   }
 })();
-
