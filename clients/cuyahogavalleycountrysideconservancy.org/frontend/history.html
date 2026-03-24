@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>History &amp; overview | Cuyahoga Valley Countryside Conservancy</title>
+  <title>History &amp; chronology | Cuyahoga Valley Countryside Conservancy</title>
   <link rel="icon" type="image/png" href="favicon.png" />
   <link rel="stylesheet" href="styles.css" />
 </head>
@@ -19,7 +19,6 @@
     <nav class="masthead__nav" aria-label="Primary">
       <a href="index.html">Home</a>
       <a href="history.html" aria-current="page">History</a>
-      <a href="timeline.html">Timeline</a>
       <a href="people.html">People</a>
       <a href="the_farms.html">Working farms</a>
       <a href="happenings.html">Programs &amp; calendar</a>
@@ -28,399 +27,44 @@
     </nav>
   </header>
 
-  <main class="page page--archive">
-    <header class="home-lead">
-      <p class="home-lead__eyebrow">Institutional &amp; landscape history</p>
-      <h1 class="headline-site">History &amp; overview</h1>
-      <p class="home-lead__deck">The valley’s agricultural story unfolds as a sequence of land-use regimes: Indigenous food systems and early horticulture; Euro-American settlement and forest clearance; canal- and rail-linked commercial farming; twentieth-century mechanization and urban pressure; and today’s park-based working-land model. This page groups that story into interpretive periods, then documentary photographs, oral history excerpts, and external finding aids. The companion <a href="timeline.html">Timeline</a> presents the full dated chronology with citations.</p>
+  <main class="page page--archive page--history-merged">
+    <header class="home-lead home-lead--history">
+      <p class="home-lead__eyebrow">Landscape chronology</p>
+      <h1 class="headline-site">History &amp; chronology</h1>
+      <p class="home-lead__deck">The split overview-and-timeline experience now lives on one page: a focused chronology widget at the top and a stacked archival reading view below. Every card is loaded from <code>timeline.json</code> so dates, images, audio, farm links, practical notes, and sources stay together.</p>
     </header>
 
-    <div class="era-stack">
-      <section class="era-band" aria-labelledby="era-indigenous">
-        <h2 id="era-indigenous" class="era-band__heading">
-          <span class="era-band__dates">Pre-contact — 18th century</span>
-          Indigenous lifeways &amp; early food systems
-        </h2>
-        <div class="era-band__body">
-          <p>Park interpretation and regional archaeology describe long continuity of hunting, fishing, gathering, and—over time—intensified village agriculture along floodplains and terraces. Maize, beans, and squash appear in later pre-contact communities; mound and village contexts link ceremonial life to working fields beside the Cuyahoga corridor.</p>
-          <p><a href="timeline.html#indigenous-pre-contact-lifeways-and-agriculture">Open dated entries for this period →</a></p>
-        </div>
-      </section>
-
-      <section class="era-band" aria-labelledby="era-settler">
-        <h2 id="era-settler" class="era-band__heading">
-          <span class="era-band__dates">Late 1700s — mid-1800s</span>
-          Treaties, surveys, &amp; settler farm-making
-        </h2>
-        <div class="era-band__body">
-          <p>Western Reserve histories emphasize treaties, land-company surveys, and New England–origin families clearing forest for household production—corn, pigs, and garden crops—with gradual ties to distant markets. Farm geometry and title patterns from this era still shape how valley parcels read on the land today.</p>
-          <p><a href="timeline.html#treaties-land-transfer-and-settler-farming">Open dated entries for this period →</a></p>
-        </div>
-      </section>
-
-      <section class="era-band" aria-labelledby="era-canal">
-        <h2 id="era-canal" class="era-band__heading">
-          <span class="era-band__dates">1820s — late 1800s</span>
-          Canal era &amp; nineteenth-century diversification
-        </h2>
-        <div class="era-band__body">
-          <p>Ohio &amp; Erie Canal construction lowered shipping costs and widened access to Cleveland and Akron markets. Dairy and cheese factories, grain movements, and livestock breeding responded to new possibilities; institutions such as agricultural societies and fairs spread technique and identity across the countryside.</p>
-          <p><a href="timeline.html#canal-era-and-nineteenth-century-diversification">Open dated entries for this period →</a></p>
-        </div>
-      </section>
-
-      <section class="era-band" aria-labelledby="era-modern">
-        <h2 id="era-modern" class="era-band__heading">
-          <span class="era-band__dates">Early 1900s — 1970s</span>
-          Mechanization, truck farming, &amp; land-use change
-        </h2>
-        <div class="era-band__body">
-          <p>Industrial growth in Cleveland and Akron drew labor from full-time farming; many households adapted through truck crops, roadside stands, and part-time work. Electrification, paved roads, and mechanization altered daily rhythms. Oral histories in park archives document these transitions household by household.</p>
-          <p><a href="timeline.html#twentieth-century-mechanization-markets-and-land-use-change">Open dated entries for this period →</a></p>
-        </div>
-      </section>
-
-      <section class="era-band" aria-labelledby="era-park">
-        <h2 id="era-park" class="era-band__heading">
-          <span class="era-band__dates">1974 — present</span>
-          Park designation &amp; the Countryside program
-        </h2>
-        <div class="era-band__body">
-          <p>Congressional action in the 1970s framed the valley as a protected corridor; acquisition changed who farmed which acres. In 1999 the Countryside Initiative paired rehabilitation of historic farmsteads with long-term agricultural leases—treating working farms as conservation infrastructure. Markets, education, and nonprofit partners extended that model into public life.</p>
-          <p><a href="timeline.html#farmland-preservation-the-park-and-the-countryside-program">Open dated entries for this period →</a></p>
-          <p>See also <a href="the_farms.html">today’s working farms index</a> and <a href="people.html">people &amp; voices</a>.</p>
-        </div>
-      </section>
-    </div>
-
-    <nav class="gallery-subnav gallery-subnav--archive" aria-label="On this page">
-      <a class="gallery-subnav__link" href="#valley-views">Valley &amp; markets</a>
-      <a class="gallery-subnav__link" href="#farm-sites">Farm sites today</a>
-      <a class="gallery-subnav__link" href="#history-oral">Oral histories</a>
-      <a class="gallery-subnav__link" href="#history-sources">Documentary sources</a>
-    </nav>
-
-    <section id="valley-views">
-      <h2 class="section-heading">Historic photos — valley landscapes &amp; commerce</h2>
-      <p class="timeline-intro">Images in orderly rows with catalog-style notes: title, approximate or contextual date, place or subject, and a short interpretive line.</p>
-      <div class="gallery-archive">
-        <article class="gallery-archive__row">
-          <figure class="archival-figure">
-            <img class="archival-figure__img photo--sepia" src="assets/image/countryside/img-cvcc-historicbridge.avif" alt="Historic stone bridge over a stream in wooded valley" width="900" height="600" />
-          </figure>
-          <div>
-            <p class="archival-figure__title">Stone arch bridge, canal landscape</p>
-            <p class="archival-figure__meta">Date: Historic structure (19th–20th c. use) · Location: Canal corridor · Subject: Transportation &amp; farm access</p>
-            <p class="archival-figure__desc">Water-level routes structured settlement and shipping; many farm lanes still follow these corridors.</p>
-          </div>
-        </article>
-        <article class="gallery-archive__row">
-          <figure class="archival-figure">
-            <img class="archival-figure__img" src="assets/image/countryside/img-cvcc-foodterminal.avif" alt="Interior hall of a historic public market" width="900" height="600" />
-          </figure>
-          <div>
-            <p class="archival-figure__title">Public market interior</p>
-            <p class="archival-figure__meta">Date: Early–mid 20th c. context · Location: Regional (Cleveland food system) · Subject: Produce trade</p>
-            <p class="archival-figure__desc">Urban halls received truck crops and specialty goods from valley and plateau farms.</p>
-          </div>
-        </article>
-        <article class="gallery-archive__row">
-          <figure class="archival-figure">
-            <img class="archival-figure__img photo--bw" src="assets/image/countryside/img-cvcc-historicgreenhouse.avif" alt="Glass greenhouse attached to field rows" width="900" height="600" />
-          </figure>
-          <div>
-            <p class="archival-figure__title">Greenhouse agriculture</p>
-            <p class="archival-figure__meta">Date: 20th c. horticulture · Location: Regional industry · Subject: Protected cultivation</p>
-            <p class="archival-figure__desc">Connects to narratives of specialty crops, labor migration, and peri-urban food systems referenced in the timeline.</p>
-          </div>
-        </article>
-        <article class="gallery-archive__row">
-          <figure class="archival-figure">
-            <img class="archival-figure__img photo--desat" src="assets/image/countryside/img-cvcc-aerialfarm.avif" alt="Aerial view of farmland patches and forest" width="900" height="600" />
-          </figure>
-          <div>
-            <p class="archival-figure__title">Agricultural patchwork from above</p>
-            <p class="archival-figure__meta">Date: Contemporary · Location: Cuyahoga Valley National Park · Subject: Stewardship footprint</p>
-            <p class="archival-figure__desc">Illustrates how leased farm parcels read against woodland and riparian zones in the park.</p>
-          </div>
-        </article>
-        <article class="gallery-archive__row">
-          <figure class="archival-figure">
-            <img class="archival-figure__img" src="assets/image/countryside/img-cvcc-vineyard.avif" alt="Vineyard rows on a sloping field" width="900" height="600" />
-          </figure>
-          <div>
-            <p class="archival-figure__title">Vineyard rows</p>
-            <p class="archival-figure__meta">Date: Contemporary · Location: In-park farm site · Subject: Specialty crop production</p>
-            <p class="archival-figure__desc">Represents diversification of historic farmsteads under long-term agricultural management.</p>
-          </div>
-        </article>
+    <section id="history-widget" class="history-widget-shell" aria-labelledby="historyWidgetHeading">
+      <h2 id="historyWidgetHeading" class="section-heading">Interactive Chronology</h2>
+      <p class="timeline-intro">Use the left and right arrows or the horizontal timeline to move through the record. When you scroll down, the full card stack and jump rail stay synchronized with the event in focus.</p>
+      <div id="historyWidgetMount" class="history-widget" aria-live="polite">
+        <p class="card-farm">Loading the valley timeline from <a href="assets/timeline.json">timeline.json</a>…</p>
       </div>
     </section>
 
-    <section id="farm-sites">
-      <h2 class="section-heading">Working farmsteads — scene photographs</h2>
-      <p class="timeline-intro">Each entry links to the farm’s profile sheet. Images are field views used in the registry, not marketing composites.</p>
-      <ul class="record-list">
-        <li class="record-list__item">
-          <div class="record-list__thumb">
-            <a href="profiles/spice_acres.html"><img src="assets/image/spiceacres/img-spice_acres-scene.avif" alt="Fields at Spice Acres" width="160" height="120" /></a>
-          </div>
-          <div>
-            <p class="record-list__title"><a href="profiles/spice_acres.html">Spice Acres</a></p>
-            <p class="record-list__meta">Everett Road farmstead · Contemporary</p>
-            <p class="record-list__desc">Culinary-forward diversified farm; scene shows production ground in the Countryside program.</p>
-          </div>
-        </li>
-        <li class="record-list__item">
-          <div class="record-list__thumb">
-            <a href="profiles/greenfield_berry_farm.html"><img src="assets/image/greenfield_berry_farm/img-greenfield_berry-scene.avif" alt="Berry rows at Greenfield Berry Farm" width="160" height="120" /></a>
-          </div>
-          <div>
-            <p class="record-list__title"><a href="profiles/greenfield_berry_farm.html">Greenfield Berry Farm</a></p>
-            <p class="record-list__meta">Certified organic brambles · Contemporary</p>
-            <p class="record-list__desc">U-pick and market fruit; hedgerows visible along some ridgelines.</p>
-          </div>
-        </li>
-        <li class="record-list__item">
-          <div class="record-list__thumb">
-            <a href="profiles/spicy_lamb_farm.html"><img src="assets/image/spicey_lamb_farm/img-spicy_lamb-scene.avif" alt="Pasture at The Spicy Lamb Farm" width="160" height="120" /></a>
-          </div>
-          <div>
-            <p class="record-list__title"><a href="profiles/spicy_lamb_farm.html">The Spicy Lamb Farm</a></p>
-            <p class="record-list__meta">Heritage sheep &amp; orchard · Contemporary</p>
-            <p class="record-list__desc">Pasture-based livestock and fruit; public programs by appointment and event.</p>
-          </div>
-        </li>
-        <li class="record-list__item">
-          <div class="record-list__thumb">
-            <a href="profiles/oxbow_orchard.html"><img src="assets/image/countryside/img-oxbow-orchard-scene.avif" alt="Oxbow Orchard" width="160" height="120" /></a>
-          </div>
-          <div>
-            <p class="record-list__title"><a href="profiles/oxbow_orchard.html">Oxbow Orchard</a></p>
-            <p class="record-list__meta">Tree fruit · Contemporary</p>
-            <p class="record-list__desc">Orchard scene in park context; see profile for varieties and visitation.</p>
-          </div>
-        </li>
-        <li class="record-list__item">
-          <div class="record-list__thumb">
-            <a href="profiles/trapp_family_farm.html"><img src="assets/image/countryside/img-cvcc-widefarm.avif" alt="Wide fields at Trapp Family Farm" width="160" height="120" /></a>
-          </div>
-          <div>
-            <p class="record-list__title"><a href="profiles/trapp_family_farm.html">Trapp Family Farm</a></p>
-            <p class="record-list__meta">Mixed crop &amp; livestock · Draft power · Contemporary</p>
-            <p class="record-list__desc">Illustrates larger field blocks under animal traction management.</p>
-          </div>
-        </li>
-        <li class="record-list__item">
-          <div class="record-list__thumb">
-            <a href="profiles/purple_brown_farmstead.html"><img src="assets/image/countryside/img-purple_brown-scene.avif" alt="Purple Brown Farmstead" width="160" height="120" /></a>
-          </div>
-          <div>
-            <p class="record-list__title"><a href="profiles/purple_brown_farmstead.html">Purple Brown Farmstead</a></p>
-            <p class="record-list__meta">Permaculture-oriented diversified farm · Contemporary</p>
-            <p class="record-list__desc">Food forest and heritage cider apple plantings.</p>
-          </div>
-        </li>
-        <li class="record-list__item">
-          <div class="record-list__thumb">
-            <a href="profiles/keleman_point_farm.html"><img src="assets/image/keleman_point_farm/img-keleman_point-scene.avif" alt="Keleman Point Farm" width="160" height="120" /></a>
-          </div>
-          <div>
-            <p class="record-list__title"><a href="profiles/keleman_point_farm.html">Keleman Point Farm</a></p>
-            <p class="record-list__meta">In-park lease site · Contemporary</p>
-            <p class="record-list__desc">Scene documentation for registry; see profile for enterprises.</p>
-          </div>
-        </li>
-        <li class="record-list__item">
-          <div class="record-list__thumb">
-            <a href="profiles/sarahs_vineyard.html"><img src="assets/image/countryside/img-cvcc-vineyard.avif" alt="Vineyard at Sarah's Vineyard" width="160" height="120" /></a>
-          </div>
-          <div>
-            <p class="record-list__title"><a href="profiles/sarahs_vineyard.html">Sarah’s Vineyard</a></p>
-            <p class="record-list__meta">Grapes &amp; wine · Contemporary</p>
-            <p class="record-list__desc">Slope planting visible; ties to specialty crop history in the region.</p>
-          </div>
-        </li>
-        <li class="record-list__item">
-          <div class="record-list__thumb">
-            <a href="profiles/neitenbach_farm.html" style="display: grid; place-items: center; min-height: 90px; background: color-mix(in srgb, var(--c-mist) 75%, var(--c-paper)); border: 1px solid color-mix(in srgb, var(--c-film) 25%, transparent);"><img src="assets/icons/farm.svg" alt="" width="40" height="40" aria-hidden="true" /></a>
-          </div>
-          <div>
-            <p class="record-list__title"><a href="profiles/neitenbach_farm.html">Neitenbach Farm</a></p>
-            <p class="record-list__meta">Placeholder scene graphic · See profile</p>
-            <p class="record-list__desc">Registry entry; photograph pending in this demo set.</p>
-          </div>
-        </li>
-      </ul>
-      <p style="margin-top: var(--sp-6);"><a href="the_farms.html">Full working farms index with narratives</a></p>
-    </section>
+    <section id="history-story" class="history-explorer" aria-labelledby="historyStoryHeading">
+      <h2 id="historyStoryHeading" class="section-heading">Stacked Archive</h2>
+      <p class="timeline-intro">The left rail is a jump list for eras and individual entries. Each stacked card below can carry visuals, audio, related farm records, directions, and source trails without splitting the story across multiple pages.</p>
 
-    <section id="history-oral">
-      <h2 class="section-heading">Oral histories &amp; memories</h2>
-      <p class="timeline-intro">Short excerpts from farmer and founder interviews. Players use a simple archival layout. For who’s speaking and how they connect to farms, see <a href="people.html">People</a>. NPS hosts additional oral-history pages linked from the <a href="timeline.html">timeline</a> citations.</p>
-      <h3 class="collection-block__title" style="margin-top: var(--sp-6);">Interview excerpts</h3>
-      <div class="oral-shelf">
-        <div class="oral-player">
-          <button class="oral-player__button" type="button">Play</button>
-          <div class="oral-player__meta">
-            <div class="oral-player__title">Daniel Greenfield — Berry rows &amp; soil care</div>
-            <div class="oral-player__bar">
-              <div class="oral-player__progress" style="width: 0%;"></div>
+      <div class="history-explorer__layout">
+        <aside class="history-rail" aria-label="Timeline jump navigation">
+          <div class="history-rail__shell">
+            <p class="history-rail__title">Jump rail</p>
+            <div id="historyRailMount">
+              <p class="history-rail__loading">Preparing the timeline…</p>
             </div>
-            <div class="oral-player__time">00:00 / 03:42</div>
-            <audio src="assets/audio/daniel_greenfield-sustainability_and_the_small_farm.mp3" preload="metadata"></audio>
           </div>
-        </div>
-        <div class="oral-player">
-          <button class="oral-player__button" type="button">Play</button>
-          <div class="oral-player__meta">
-            <div class="oral-player__title">Daniel Greenfield — Life outdoors</div>
-            <div class="oral-player__bar">
-              <div class="oral-player__progress" style="width: 0%;"></div>
-            </div>
-            <div class="oral-player__time">00:00 / --:--</div>
-            <audio src="assets/audio/daniel_greenfield-life_outdoors.mp3" preload="metadata"></audio>
-          </div>
-        </div>
-        <div class="oral-player">
-          <button class="oral-player__button" type="button">Play</button>
-          <div class="oral-player__meta">
-            <div class="oral-player__title">Alan Halko — Orchard stewardship</div>
-            <div class="oral-player__bar">
-              <div class="oral-player__progress" style="width: 0%;"></div>
-            </div>
-            <div class="oral-player__time">00:00 / 02:58</div>
-            <audio src="assets/audio/alan_halko-farming_in_a_national_park.mp3" preload="metadata"></audio>
-          </div>
-        </div>
-        <div class="oral-player">
-          <button class="oral-player__button" type="button">Play</button>
-          <div class="oral-player__meta">
-            <div class="oral-player__title">Beth Knorr — Sustainable farming</div>
-            <div class="oral-player__bar">
-              <div class="oral-player__progress" style="width: 0%;"></div>
-            </div>
-            <div class="oral-player__time">00:00 / --:--</div>
-            <audio src="assets/audio/beth_knorr-sustainable_farming.mp3" preload="metadata"></audio>
-          </div>
-        </div>
-        <div class="oral-player">
-          <button class="oral-player__button" type="button">Play</button>
-          <div class="oral-player__meta">
-            <div class="oral-player__title">Darwin Kelsey — Countryside Initiative</div>
-            <div class="oral-player__bar">
-              <div class="oral-player__progress" style="width: 0%;"></div>
-            </div>
-            <div class="oral-player__time">00:00 / --:--</div>
-            <audio src="assets/audio/darwin_kelsey-countryside_initiative.mp3" preload="metadata"></audio>
-          </div>
-        </div>
-        <div class="oral-player">
-          <button class="oral-player__button" type="button">Play</button>
-          <div class="oral-player__meta">
-            <div class="oral-player__title">Earl Foote — Loving farm life</div>
-            <div class="oral-player__bar">
-              <div class="oral-player__progress" style="width: 0%;"></div>
-            </div>
-            <div class="oral-player__time">00:00 / --:--</div>
-            <audio src="assets/audio/earl_foote-loving_farm_life.mp3" preload="metadata"></audio>
-          </div>
+        </aside>
+
+        <div id="historyStoryMount" class="history-story" aria-live="polite">
+          <p class="card-farm">Loading the history cards…</p>
         </div>
       </div>
     </section>
 
-    <section id="history-sources">
-      <h2 class="section-heading">Documentary sources &amp; finding aids</h2>
-      <p class="timeline-intro">External references grouped for research and verification; each link leaves this site. Seasonal stories and recipes also appear in the <a href="newsletter.html">Newsletter &amp; field journal</a>.</p>
-
-      <section class="collection-block" id="park-records">
-        <h3 class="collection-block__title">National Park Service — Cuyahoga Valley</h3>
-        <ul class="record-list">
-          <li class="record-list__item">
-            <div class="record-list__thumb" aria-hidden="true"><img src="assets/image/countryside/img-cvcc-pictorialmap.avif" alt="" width="100" height="75" style="object-fit: cover; width: 100%; height: 100%; min-height: 72px;" /></div>
-            <div>
-              <p class="record-list__title"><a href="https://www.nps.gov/cuva/learn/farms.htm" target="_blank" rel="noopener noreferrer">Farming in the valley (NPS)</a></p>
-              <p class="record-list__meta">Type: Interpretive web · Subject: Current program overview</p>
-              <p class="record-list__desc">Official park introduction to agriculture inside CVNP.</p>
-            </div>
-          </li>
-          <li class="record-list__item">
-            <div class="record-list__thumb" aria-hidden="true"><img src="assets/image/countryside/img-cvcc-historicbridge.avif" alt="" width="100" height="75" style="object-fit: cover; width: 100%; height: 100%; min-height: 72px;" /></div>
-            <div>
-              <p class="record-list__title"><a href="https://www.nps.gov/cuva/learn/historyculture/countryside.htm" target="_blank" rel="noopener noreferrer">Countryside history (NPS)</a></p>
-              <p class="record-list__meta">Type: History &amp; culture · Subject: Program origins</p>
-              <p class="record-list__desc">Park-authored context for the Countryside Initiative.</p>
-            </div>
-          </li>
-          <li class="record-list__item">
-            <div class="record-list__thumb" aria-hidden="true"><img src="assets/image/stock/img-stock-farm_pano.avif" alt="" width="100" height="75" style="object-fit: cover; width: 100%; height: 100%; min-height: 72px;" /></div>
-            <div>
-              <p class="record-list__title"><a href="https://www.nps.gov/cuva/planyourvisit/calendar.htm" target="_blank" rel="noopener noreferrer">Park calendar</a></p>
-              <p class="record-list__meta">Type: Events · Subject: Visitor planning</p>
-              <p class="record-list__desc">Dates and programs change; confirm before travel.</p>
-            </div>
-          </li>
-        </ul>
-      </section>
-
-      <section class="collection-block" id="markets">
-        <h3 class="collection-block__title">Markets &amp; regional food</h3>
-        <ul class="record-list">
-          <li class="record-list__item">
-            <div class="record-list__thumb" aria-hidden="true"><img src="assets/image/countryside/img-cvcc-foodterminal.avif" alt="" width="100" height="75" style="object-fit: cover; width: 100%; height: 100%; min-height: 72px;" /></div>
-            <div>
-              <p class="record-list__title"><a href="https://cvfm.org/" target="_blank" rel="noopener noreferrer">Cuyahoga Valley Farmers Market</a></p>
-              <p class="record-list__meta">Type: Nonprofit market · Subject: Vendor &amp; season info</p>
-              <p class="record-list__desc">Successor organization to early Countryside market programming; verify seasons on site.</p>
-            </div>
-          </li>
-          <li class="record-list__item">
-            <div class="record-list__thumb" aria-hidden="true"></div>
-            <div>
-              <p class="record-list__title"><a href="https://cvfm.org/policies-and-faqs/" target="_blank" rel="noopener noreferrer">CVFM policies &amp; FAQs</a></p>
-              <p class="record-list__meta">Type: Reference · Subject: Market rules</p>
-              <p class="record-list__desc">Practical reference for shoppers and vendors.</p>
-            </div>
-          </li>
-        </ul>
-      </section>
-
-      <section class="collection-block" id="heritage">
-        <h3 class="collection-block__title">Heritage sites &amp; venues</h3>
-        <ul class="record-list">
-          <li class="record-list__item">
-            <div class="record-list__thumb" aria-hidden="true"></div>
-            <div>
-              <p class="record-list__title"><a href="https://www.wrhs.org/plan-visit/places-to-visit/hale-farm-village/things-to-do/signature-events" target="_blank" rel="noopener noreferrer">Hale Farm &amp; Village — programs</a></p>
-              <p class="record-list__meta">Type: Museum site · Subject: Living history</p>
-              <p class="record-list__desc">Complements valley agricultural interpretation; event dates vary.</p>
-            </div>
-          </li>
-          <li class="record-list__item">
-            <div class="record-list__thumb" aria-hidden="true"></div>
-            <div>
-              <p class="record-list__title"><a href="https://www.cvsr.org/" target="_blank" rel="noopener noreferrer">Cuyahoga Valley Scenic Railroad</a></p>
-              <p class="record-list__meta">Type: Heritage railroad · Subject: Corridor access</p>
-              <p class="record-list__desc">Historic transportation corridor alongside farm landscapes.</p>
-            </div>
-          </li>
-        </ul>
-      </section>
-
-      <section class="collection-block" id="partner">
-        <h3 class="collection-block__title">Partners &amp; philanthropy</h3>
-        <ul class="record-list">
-          <li class="record-list__item">
-            <div class="record-list__thumb" aria-hidden="true"></div>
-            <div>
-              <p class="record-list__title"><a href="https://www.conservancyforcvnp.org/calendar/" target="_blank" rel="noopener noreferrer">Conservancy for CVNP — calendar</a></p>
-              <p class="record-list__meta">Type: Friends organization · Subject: Fundraising &amp; events</p>
-              <p class="record-list__desc">Park philanthropy and volunteer pathways.</p>
-            </div>
-          </li>
-        </ul>
-      </section>
-    </section>
+    <noscript>
+      <p class="card-farm">This page is rendered from <a href="assets/timeline.json">timeline.json</a>. Enable JavaScript to browse the interactive chronology and full stacked archive.</p>
+    </noscript>
   </main>
 
   <footer class="footer">
@@ -448,7 +92,6 @@
         <ul>
           <li><a href="index.html">Home</a></li>
           <li><a href="history.html">History</a></li>
-          <li><a href="timeline.html">Timeline</a></li>
           <li><a href="people.html">People</a></li>
           <li><a href="the_farms.html">Working farms</a></li>
           <li><a href="happenings.html">Programs &amp; calendar</a></li>
@@ -460,6 +103,7 @@
     <div>&copy; 2024 Cuyahoga Valley Countryside Conservancy. All rights reserved.</div>
   </footer>
 
+  <script src="JS/history.js" defer></script>
   <script src="JS/audio.js" defer></script>
 </body>
 </html>
