@@ -3,7 +3,7 @@
 This directory is the local-only instance home for the demo portal state.
 
 - Runtime code: `/srv/repo/mycite-core/portals`
-- Runtime service: `portal@example.service`
+- Runtime service: `portal@demo.service`
 - Bind address: `127.0.0.1:5303`
 - Entry URL: `http://127.0.0.1:5303/portal/system`
 - State root: `/srv/webapps/demo-portal/state`
@@ -15,5 +15,5 @@ To refresh the demo state from the current TFF portal snapshot:
 
 ```bash
 /srv/webapps/demo-portal/sync-state-from-tff.sh
-sudo systemctl restart portal@example.service
+sudo systemctl restart portal@demo.service
 ```
