@@ -1,5 +1,5 @@
 (() => {
-  const MD_PATH = "assets/content/happennings.md";
+  const MD_PATH = "assets/docs/research/happennings.md";
 
   function slugify(raw, used) {
     let base = String(raw)
@@ -61,7 +61,7 @@
 
     if (typeof marked === "undefined" || typeof sanitizeMdArtifacts !== "function") {
       bodyEl.innerHTML =
-        "<p>Content could not load. <a href=\"assets/content/happennings.md\">Open happenings.md</a>.</p>";
+        "<p>Content could not load. <a href=\"assets/docs/research/happennings.md\">Open happenings.md</a>.</p>";
       return;
     }
 
@@ -80,7 +80,7 @@
       }
     } catch {
       bodyEl.innerHTML =
-        "<p class=\"card-farm\">Events content could not be loaded. Read <a href=\"assets/content/happennings.md\">happennings.md</a> directly.</p>";
+        "<p class=\"card-farm\">Events content could not be loaded. Read <a href=\"assets/docs/research/happennings.md\">happennings.md</a> directly.</p>";
       return;
     }
 

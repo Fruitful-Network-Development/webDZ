@@ -1,0 +1,243 @@
+/* Hero section – lighter homepage treatment */
+
+.hero {
+  padding: 0;
+  background: linear-gradient(180deg, #faf6ed 0%, #f2ead9 100%);
+  border-bottom: 1px solid #d7c8a5;
+  overflow: hidden;
+}
+
+.hero-parallax {
+  width: 100%;
+  height: 55vh;
+  min-height: 320px;
+  max-height: 520px;
+  background-image: url('../../assets/images/farm_landscape.avif');
+  background-size: cover;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-color: #d8c7a2;
+}
+
+@media (max-width: 768px) {
+  .hero-parallax {
+    background-attachment: scroll;
+    height: 40vh;
+    min-height: 240px;
+  }
+}
+
+.hero .hero-body {
+  max-width: var(--width);
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 3rem;
+  color: #22372f;
+  text-align: left;
+}
+
+.hero .hero-kicker {
+  margin: 0 0 0.6rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #8b5f2b;
+  font-weight: 700;
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  color: #2b473e;
+  margin: 0 0 0.9rem;
+  line-height: 1.15;
+  letter-spacing: 0.01em;
+  text-transform: none;
+}
+
+.hero .lead {
+  font-size: 1.05rem;
+  color: #3e544b;
+  max-width: 58ch;
+  margin: 0 0 2rem;
+  line-height: 1.65;
+}
+
+.hero .landing-redesign {
+  display: grid;
+  grid-template-columns: minmax(260px, 340px) 1fr;
+  gap: 1.25rem;
+  align-items: stretch;
+}
+
+.hero .landing-panel {
+  background: #fffdf8;
+  border: 1px solid #e6dcc6;
+  box-shadow: 0 8px 22px rgba(112, 95, 66, 0.08);
+  padding: 1.3rem 1.35rem 1.45rem;
+}
+
+.hero .landing-panel h2 {
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.11em;
+  color: #87551f;
+  margin: 0 0 0.85rem;
+  padding: 0;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.hero .landing-panel h2::before,
+.hero .highlight-card h3::before,
+.hero .visit-detail::before {
+  content: "";
+  display: inline-block;
+  flex: 0 0 auto;
+  background-color: currentColor;
+  -webkit-mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-position: center;
+  mask-repeat: no-repeat;
+  mask-size: contain;
+}
+
+.hero .visit-panel h2::before {
+  width: 1rem;
+  height: 1rem;
+  -webkit-mask-image: url("../../assets/icon/icon-location.svg");
+  mask-image: url("../../assets/icon/icon-location.svg");
+}
+
+.hero .highlights-panel h2::before {
+  width: 1rem;
+  height: 1rem;
+  -webkit-mask-image: url("../../assets/icon/icon-inventory.svg");
+  mask-image: url("../../assets/icon/icon-inventory.svg");
+}
+
+.hero .visit-panel p {
+  margin: 0 0 0.7rem;
+  color: #41544b;
+  line-height: 1.55;
+  font-size: 0.95rem;
+}
+
+.hero .visit-panel p:last-child {
+  margin-bottom: 0;
+}
+
+.hero .visit-detail {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+}
+
+.hero .visit-detail::before {
+  width: 1rem;
+  height: 1rem;
+  margin-top: 0.2rem;
+}
+
+.hero .visit-location::before {
+  -webkit-mask-image: url("../../assets/icon/icon-location.svg");
+  mask-image: url("../../assets/icon/icon-location.svg");
+}
+
+.hero .visit-hours::before {
+  -webkit-mask-image: url("../../assets/icon/ui/icon-time.svg");
+  mask-image: url("../../assets/icon/ui/icon-time.svg");
+}
+
+.hero .visit-note::before {
+  -webkit-mask-image: url("../../assets/icon/icon-tag.svg");
+  mask-image: url("../../assets/icon/icon-tag.svg");
+}
+
+.hero .visit-contact::before {
+  -webkit-mask-image: url("../../assets/icon/icon-mail.svg");
+  mask-image: url("../../assets/icon/icon-mail.svg");
+}
+
+.hero .visit-panel a {
+  color: #8b5f2b;
+  font-weight: 600;
+}
+
+.hero .highlight-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.9rem;
+}
+
+.hero .highlight-card {
+  background: #f7efe1;
+  border: 1px solid #e5d4b6;
+  padding: 1rem;
+}
+
+.hero .highlight-card h3 {
+  margin: 0 0 0.5rem;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: #2f4d45;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.hero .highlight-card h3::before {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+.hero .stand-card h3::before {
+  -webkit-mask-image: url("../../assets/icon/icon-inventory.svg");
+  mask-image: url("../../assets/icon/icon-inventory.svg");
+}
+
+.hero .animals-card h3::before {
+  -webkit-mask-image: url("../../assets/icon/ui/icon-relationship.svg");
+  mask-image: url("../../assets/icon/ui/icon-relationship.svg");
+}
+
+.hero .story-card h3::before {
+  -webkit-mask-image: url("../../assets/icon/ui/icon-info.svg");
+  mask-image: url("../../assets/icon/ui/icon-info.svg");
+}
+
+.hero .highlight-card p {
+  margin: 0 0 0.75rem;
+  color: #4b5f56;
+  line-height: 1.55;
+  font-size: 0.95rem;
+}
+
+.hero .highlight-card a {
+  color: #8b5f2b;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+}
+
+.hero .highlight-card a:hover {
+  color: #2f4d45;
+  text-decoration: none;
+}
+
+@media (max-width: 980px) {
+  .hero .landing-redesign {
+    grid-template-columns: 1fr;
+  }
+
+  .hero .highlight-grid {
+    grid-template-columns: 1fr;
+  }
+}

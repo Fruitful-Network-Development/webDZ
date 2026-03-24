@@ -1,5 +1,5 @@
 (() => {
-  const DATA_PATH = "assets/timeline.json";
+  const DATA_PATH = "assets/docs/timeline.json";
   const SECTION_META = [
     {
       title: "Indigenous pre-contact lifeways and agriculture",
@@ -57,6 +57,28 @@
     trackScrollerEl: null,
     scrollBound: false
   };
+
+  const LEGACY_ASSET_PATHS = {
+    "assets/icons/farm.svg": "assets/icon/icon-domain-local.svg",
+    "assets/image/countryside/img-cvcc-aerialfarm.avif": "assets/image/aerial_farm.avif",
+    "assets/image/countryside/img-cvcc-foodterminal.avif": "assets/image/historic/food_terminal.avif",
+    "assets/image/countryside/img-cvcc-historicbridge.avif": "assets/image/historic/bridge.avif",
+    "assets/image/countryside/img-cvcc-historicgreenhouse.avif": "assets/image/historic/greenhouse.avif",
+    "assets/image/countryside/img-cvcc-pictorialmap.avif": "assets/image/pictorial_map.avif",
+    "assets/image/countryside/img-cvcc-vineyard.avif": "assets/image/vineyard.avif",
+    "assets/image/countryside/img-cvcc-widefarm.avif": "assets/image/long_farm_pano.avif",
+    "assets/image/countryside/img-oxbow-orchard-scene.avif": "assets/image/farms/OBO/oxbow_orchard.avif",
+    "assets/image/countryside/img-purple_brown-scene.avif": "assets/image/farms/PBFS/purple_brown_farm_stead.avif",
+    "assets/image/greenfield_berry_farm/img-greenfield_berry-scene.avif": "assets/image/farms/GBF/img-greenfield_berry-scene.avif",
+    "assets/image/keleman_point_farm/img-keleman_point-scene.avif": "assets/image/farms/KPF/img-keleman_point-scene.avif",
+    "assets/image/spiceacres/img-spice_acres-scene.avif": "assets/image/farms/SA/img-spice_acres-scene.avif",
+    "assets/image/spicey_lamb_farm/img-spicy_lamb-scene.avif": "assets/image/farms/SLF/img-spicy_lamb-scene.avif",
+    "assets/image/stock/img-stock-farm_pano.avif": "assets/image/farms/SLF/img-stock-aerial_farm.avif"
+  };
+
+  function resolveAssetPath(path) {
+    return LEGACY_ASSET_PATHS[path] || path;
+  }
 
   function escapeHtml(value) {
     return String(value ?? "")
@@ -910,7 +932,25 @@
       }
 
       const payload = await response.json();
-      const items = Array.isArray(payload) ? payload.filter((item) => item?.type === "timeline_event") : [];
+      const items = Array.isArray(payload)
+        ? payload
+            .filter((item) => item?.type === "timeline_event")
+            .map((item) => ({
+              ...item,
+              image_paths: (item.image_paths || []).map((image) => ({
+                ...image,
+                path: resolveAssetPath(image.path)
+              })),
+              related_farm_paths: (item.related_farm_paths || []).map((farm) => ({
+                ...farm,
+                image_path: resolveAssetPath(farm.image_path)
+              })),
+              additional_source_links: (item.additional_source_links || []).map((link) => ({
+                ...link,
+                thumb_path: resolveAssetPath(link.thumb_path)
+              }))
+            }))
+        : [];
 
       if (!items.length) {
         throw new Error("Timeline data is empty.");

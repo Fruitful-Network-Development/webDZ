@@ -1,0 +1,52 @@
+/* Newsletters – issue blocks and archive layout */
+
+.newsletter-intro {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 2px solid var(--teal-wash);
+}
+
+.newsletter-issue {
+  margin-bottom: 1.5rem;
+}
+
+.newsletter-issue .issue-meta {
+  font-size: 0.85rem;
+  color: var(--text-soft);
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.newsletter-issue .issue-meta::before {
+  content: "";
+  width: 0.9rem;
+  height: 0.9rem;
+  display: inline-block;
+  background-color: currentColor;
+  -webkit-mask-image: url("../../assets/icon/ui/icon-time.svg");
+  -webkit-mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-image: url("../../assets/icon/ui/icon-time.svg");
+  mask-position: center;
+  mask-repeat: no-repeat;
+  mask-size: contain;
+}
+
+.newsletter-issue .subsection {
+  margin-top: 1.5rem;
+}
+
+.newsletter-issue .pullquote {
+  font-size: 1.15rem;
+  margin: 1.25rem 0;
+}
+
+.newsletter-issue .artifact {
+  max-width: 360px;
+  margin: 1rem 0 1.25rem;
+}

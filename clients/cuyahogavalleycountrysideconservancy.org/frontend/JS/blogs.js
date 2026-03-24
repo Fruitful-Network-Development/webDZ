@@ -1,6 +1,6 @@
 (() => {
-  const BLOG_MD_DIR = "assets/blogs";
-  const BLOG_IMG_DIR = "assets/blogs/imgs";
+  const BLOG_MD_DIR = "assets/docs/blogs";
+  const BLOG_IMG_DIR = "assets/image/blog-images";
   const POST_FILES = [
     "20-10-15.md",
     "20-10-20.md",
@@ -74,7 +74,7 @@
     Dec: 11,
   };
 
-  const defaultThumb = "assets/image/countryside/img-cvcc-pictorialmap.avif";
+  const defaultThumb = "assets/image/pictorial_map.avif";
 
   let posts = [];
   let postsById = new Map();
@@ -213,12 +213,13 @@
     const dot = name.lastIndexOf(".");
     const base = dot > 0 ? name.slice(0, dot) : name;
 
-    return [
+    return [...new Set([
+      `${BLOG_IMG_DIR}/${base}.avif`,
       `${BLOG_IMG_DIR}/${name}`,
       `${BLOG_IMG_DIR}/${base}.jpg`,
       `${BLOG_IMG_DIR}/${base}.jpeg`,
       `${BLOG_IMG_DIR}/${base}.png`,
-    ];
+    ])];
   }
 
   function applyImageFallback(imgEl, originalSrc) {

@@ -1,0 +1,3141 @@
+{
+  "schema_version": "1.0.0",
+  "dataset": {
+    "id": "cvcc-happenings",
+    "title": "CVCC Happenings",
+    "scope": "Recurring events, dated events, program series, ongoing programs, and ongoing initiatives.",
+    "generated_at": "2026-03-24T17:34:11Z",
+    "source_files": [
+      {
+        "name": "events-1.json",
+        "role": "canonical rich-content records"
+      },
+      {
+        "name": "events-2.json",
+        "role": "calendar/timeline-ready schedule records"
+      },
+      {
+        "name": "happennings.md",
+        "role": "narrative research summary and timeline context"
+      }
+    ],
+    "design_notes": [
+      "items is the canonical rich-content registry.",
+      "schedule.entries is the simplified UI-ready time index.",
+      "sections preserves display grouping from the source materials.",
+      "indexes are derived helpers for filtering and rendering."
+    ]
+  },
+  "sections": [
+    {
+      "id": "recurring-food-and-market-culture-around-cuyahoga-valley-farmers-market-peninsula-oh-us",
+      "title": "Recurring food and market culture around Cuyahoga Valley Farmers Market Peninsula, OH, US",
+      "about": "The market is explicitly “every Saturday,” rain or shine, 9:00am–12:00pm, with a seasonal location shift: winter indoors (November–April) and summer outdoors (May–October) “located in the scenic” national park. The market also publishes policies that affect visit planning (dog-free first hour, restroom availability, handicap parking availability but uneven meadow terrain, etc.). Photos/content are available directly on the market site (embedded images) and via its official social accounts linked from the site.",
+      "item_ids": [
+        "cvcc-happening-0001",
+        "cvcc-happening-0002",
+        "cvcc-happening-0003"
+      ]
+    },
+    {
+      "id": "annual-festivals-and-venue-series-within-the-parks-partner-network",
+      "title": "Annual festivals and venue series within the park’s partner network",
+      "about": "The park press materials explicitly identify multiple publicly oriented operations “within park boundaries,” including Blossom Music Center, Hale Farm & Village, and the Boston Mills/Brandywine ski resorts—each of which operates its own ticketed event calendar. Photos/content are available via partner sites and the park’s own “Music & Arts” content and press kit.",
+      "item_ids": [
+        "cvcc-happening-0004",
+        "cvcc-happening-0005",
+        "cvcc-happening-0006",
+        "cvcc-happening-0007",
+        "cvcc-happening-0008",
+        "cvcc-happening-0009",
+        "cvcc-happening-0010",
+        "cvcc-happening-0011",
+        "cvcc-happening-0012",
+        "cvcc-happening-0013"
+      ]
+    },
+    {
+      "id": "cuyahoga-valley-scenic-railroad-peninsula-oh-us-excursions-and-themed-rides",
+      "title": "Cuyahoga Valley Scenic Railroad Peninsula, OH, US excursions and themed rides",
+      "about": "The railroad is a nonprofit excursion railway that explicitly positions its rides as experiences “through” the national park and publishes a date-indexed ticket calendar with departure times, stations, and price ranges. Photos/content are available on the railroad’s site and official social channels linked from the site.",
+      "item_ids": [
+        "cvcc-happening-0014",
+        "cvcc-happening-0015"
+      ]
+    },
+    {
+      "id": "park-programs-volunteer-stewardship-and-conservancy-led-public-programming",
+      "title": "Park programs, volunteer stewardship, and Conservancy-led public programming",
+      "about": "The park and its partners position volunteering as an ongoing biodiversity and trail-support strategy with multiple formats: small “drop-ins,” larger “Days of Service,” and skills/education programs that mix learning with stewardship. Photos/content sources are embedded in the NPS and Conservancy pages and reinforced through linked social/media channels.",
+      "item_ids": [
+        "cvcc-happening-0016",
+        "cvcc-happening-0017",
+        "cvcc-happening-0018",
+        "cvcc-happening-0019",
+        "cvcc-happening-0020"
+      ]
+    },
+    {
+      "id": "ongoing-initiatives-and-programs-to-track",
+      "title": "Ongoing initiatives and programs to track",
+      "about": "",
+      "item_ids": [
+        "cvcc-happening-0021",
+        "cvcc-happening-0022",
+        "cvcc-happening-0023"
+      ]
+    }
+  ],
+  "items": [
+    {
+      "id": "cvcc-happening-0001",
+      "type": "recurring_event",
+      "slug": "year-round-saturday-farmers-market-summer-winter-locations",
+      "title": "Year‑round Saturday Farmers Market (Summer/Winter locations)",
+      "display_heading": "Year‑round Saturday Farmers Market (Summer/Winter locations) — Saturdays weekly; the next Saturday after March 21, 2026 is March 28, 2026 (then weekly). Seasonal anchors below.",
+      "date_label": "Saturdays weekly; the next Saturday after March 21, 2026 is March 28, 2026 (then weekly). Seasonal anchors below.",
+      "date_details": [
+        "typical recurrence: Every Saturday, 9:00am–12:00pm (rain or shine).",
+        "next dates (next 12 months): Saturdays weekly; the next Saturday after March 21, 2026 is March 28, 2026 (then weekly). Seasonal anchors below.",
+        "published 2026 season markers: Summer market runs May 3–October 25; winter market runs November 1–April 25 (winter season extends into early 2027)."
+      ],
+      "section_title": "Recurring food and market culture around Cuyahoga Valley Farmers Market Peninsula, OH, US",
+      "section_about": "The market is explicitly “every Saturday,” rain or shine, 9:00am–12:00pm, with a seasonal location shift: winter indoors (November–April) and summer outdoors (May–October) “located in the scenic” national park. The market also publishes policies that affect visit planning (dog-free first hour, restroom availability, handicap parking availability but uneven meadow terrain, etc.). Photos/content are available directly on the market site (embedded images) and via its official social accounts linked from the site.",
+      "paragraph": "Producer-only farmers market (local produce, meats, baked goods, prepared foods; vendor mix varies). Every Saturday, 9:00am–12:00pm (rain or shine). Saturdays weekly; the next Saturday after March 21, 2026 is March 28, 2026 (then weekly). Seasonal anchors below. info@cvfm.org; vendor inquiries via marketmanager@cvfm.org. Market entry fee is not stated on the official market pages (purchases vary by vendor). handicap parking spaces available; market is “on a meadow” with natural uneven ground.",
+      "details": {
+        "description": "Producer-only farmers market (local produce, meats, baked goods, prepared foods; vendor mix varies).",
+        "typical_recurrence": "Every Saturday, 9:00am–12:00pm (rain or shine).",
+        "next_dates_next_12_months": "Saturdays weekly; the next Saturday after March 21, 2026 is March 28, 2026 (then weekly). Seasonal anchors below.",
+        "seasonal_schedule_and_venue": [],
+        "winter_market": "“November – April” Saturdays 9–12 at Old Trail School Akron, OH, US (2315 Ira Rd, Akron, OH 44333).",
+        "summer_market": "“May – October” Saturdays 9–12 at Howe Meadow Peninsula, OH, US (4040 Riverview Rd, Peninsula, OH 44264).",
+        "published_2026_season_markers": "Summer market runs May 3–October 25; winter market runs November 1–April 25 (winter season extends into early 2027).",
+        "organizer_contact": "info@cvfm.org; vendor inquiries via marketmanager@cvfm.org.",
+        "tickets_cost": "Market entry fee is not stated on the official market pages (purchases vary by vendor).",
+        "practical_details_from_official_policies_faq": [],
+        "restrooms": "porta‑potties (summer market).",
+        "dogs": "dog‑free 9–10am; dogs allowed 10am–12pm (policy phrased for summer market).",
+        "accessibility": "handicap parking spaces available; market is “on a meadow” with natural uneven ground.",
+        "weather": "rain or shine; severe weather cancellations are posted to website/social.",
+        "photos_content_sources": "the market website (images and updates) and its official Facebook/Instagram linked in the footer; the summer/winter market pages also provide location context."
+      },
+      "locations": [
+        {
+          "name": "Old Trail School",
+          "address": "2315 Ira Rd, Akron, OH 44333",
+          "google_maps": "https://www.google.com/maps/search/?api=1&query=2315%20Ira%20Rd%2C%20Akron%2C%20OH%2044333",
+          "apple_maps": "https://maps.apple.com/?q=2315%20Ira%20Rd%2C%20Akron%2C%20OH%2044333"
+        },
+        {
+          "name": "Howe Meadow",
+          "address": "4040 Riverview Rd, Peninsula, OH 44264",
+          "google_maps": "https://www.google.com/maps/search/?api=1&query=4040%20Riverview%20Rd%2C%20Peninsula%2C%20OH%2044264",
+          "apple_maps": "https://maps.apple.com/?q=4040%20Riverview%20Rd%2C%20Peninsula%2C%20OH%2044264"
+        }
+      ],
+      "source_links": [
+        {
+          "url": "happenings.html",
+          "kind": "internal_page",
+          "purpose": [
+            "content"
+          ],
+          "source_file_path": "/mnt/data/happenings.html"
+        },
+        {
+          "url": "assets/content/happennings.md",
+          "kind": "internal_markdown_path",
+          "purpose": [
+            "content"
+          ],
+          "source_file_path": "/mnt/data/happenings.html"
+        },
+        {
+          "url": "https://cvfm.org/contact-us/",
+          "kind": "external",
+          "purpose": [
+            "content",
+            "images"
+          ],
+          "source_file_path": "/mnt/data/happennings.md"
+        },
+        {
+          "url": "https://cvfm.org/policies-and-faqs/",
+          "kind": "external",
+          "purpose": [
+            "content",
+            "images"
+          ],
+          "source_file_path": "/mnt/data/happennings.md"
+        }
+      ],
+      "source_notes": [],
+      "section_id": "recurring-food-and-market-culture-around-cuyahoga-valley-farmers-market-peninsula-oh-us",
+      "primary_location": {
+        "name": "Old Trail School",
+        "address": "2315 Ira Rd, Akron, OH 44333",
+        "google_maps": "https://www.google.com/maps/search/?api=1&query=2315%20Ira%20Rd%2C%20Akron%2C%20OH%2044333",
+        "apple_maps": "https://maps.apple.com/?q=2315%20Ira%20Rd%2C%20Akron%2C%20OH%2044333"
+      },
+      "primary_url": "https://cvfm.org/contact-us/",
+      "schedule_entry_ids": [
+        "cvfm-saturday",
+        "summer-market-opens",
+        "winter-market-opens"
+      ],
+      "schedule_aliases": [
+        "CVFM — Summer season opens",
+        "CVFM — Winter season opens"
+      ],
+      "time_model": "mixed",
+      "media": {
+        "images": [
+          {
+            "path": "assets/image/countryside/img-cvcc-pictorialmap.avif",
+            "caption": "Illustrated map of farms and roads in the Cuyahoga Valley",
+            "event_specific": false,
+            "source_file_path": "/mnt/data/happenings.html"
+          }
+        ],
+        "audio": []
+      },
+      "source_summary": {
+        "file_paths": [
+          "/mnt/data/happennings.md",
+          "/mnt/data/happenings.html"
+        ],
+        "internal_paths": {
+          "html_page_path": "happenings.html",
+          "attached_html_file_path": "/mnt/data/happenings.html",
+          "site_markdown_path": "assets/content/happennings.md",
+          "attached_markdown_file_path": "/mnt/data/happennings.md"
+        },
+        "notes": []
+      }
+    },
+    {
+      "id": "cvcc-happening-0002",
+      "type": "recurring_event",
+      "slug": "annual-tomato-tasting-festival",
+      "title": "Annual Tomato Tasting Festival",
+      "display_heading": "Annual Tomato Tasting Festival — unspecified on current market pages for 2026/2027; market advises following social for “latest updates.”",
+      "date_label": "unspecified on current market pages for 2026/2027; market advises following social for “latest updates.”",
+      "date_details": [
+        "typical recurrence: Annual; late summer; the published example is a Saturday morning 9:00am–12:00pm.",
+        "next dates (next 12 months): unspecified on current market pages for 2026/2027; market advises following social for “latest updates.”"
+      ],
+      "section_title": "Recurring food and market culture around Cuyahoga Valley Farmers Market Peninsula, OH, US",
+      "section_about": "The market is explicitly “every Saturday,” rain or shine, 9:00am–12:00pm, with a seasonal location shift: winter indoors (November–April) and summer outdoors (May–October) “located in the scenic” national park. The market also publishes policies that affect visit planning (dog-free first hour, restroom availability, handicap parking availability but uneven meadow terrain, etc.). Photos/content are available directly on the market site (embedded images) and via its official social accounts linked from the site.",
+      "paragraph": "Market “Tomato Tasting Festival” featuring 35+ varieties to sample, plus live music and kid‑friendly activities (2025 write‑up). Annual; late summer; the published example is a Saturday morning 9:00am–12:00pm. unspecified on current market pages for 2026/2027; market advises following social for “latest updates.” Howe Meadow (summer market site). Cuyahoga Valley Farmers Market (info@cvfm.org). described as “free to the public” (2025 page). scheduled 9:00am–12:00pm in the published example; parking/access follows summer market policies (meadow terrain; dog-free first hour).",
+      "details": {
+        "description": "Market “Tomato Tasting Festival” featuring 35+ varieties to sample, plus live music and kid‑friendly activities (2025 write‑up).",
+        "typical_recurrence": "Annual; late summer; the published example is a Saturday morning 9:00am–12:00pm.",
+        "next_dates_next_12_months": "unspecified on current market pages for 2026/2027; market advises following social for “latest updates.”",
+        "location": "Howe Meadow (summer market site).",
+        "organizer_contact": "Cuyahoga Valley Farmers Market (info@cvfm.org).",
+        "tickets_cost": "described as “free to the public” (2025 page).",
+        "practical_details": "scheduled 9:00am–12:00pm in the published example; parking/access follows summer market policies (meadow terrain; dog-free first hour).",
+        "photos_content_sources": "the festival page includes multiple highlight images; the page also points to the market’s Instagram for updates."
+      },
+      "locations": [
+        {
+          "name": "Howe Meadow",
+          "address": "4040 Riverview Rd, Peninsula, OH 44264",
+          "google_maps": "https://www.google.com/maps/search/?api=1&query=4040%20Riverview%20Rd%2C%20Peninsula%2C%20OH%2044264",
+          "apple_maps": "https://maps.apple.com/?q=4040%20Riverview%20Rd%2C%20Peninsula%2C%20OH%2044264"
+        }
+      ],
+      "source_links": [
+        {
+          "url": "happenings.html",
+          "kind": "internal_page",
+          "purpose": [
+            "content"
+          ],
+          "source_file_path": "/mnt/data/happenings.html"
+        },
+        {
+          "url": "assets/content/happennings.md",
+          "kind": "internal_markdown_path",
+          "purpose": [
+            "content"
+          ],
+          "source_file_path": "/mnt/data/happenings.html"
+        },
+        {
+          "url": "https://cvfm.org/contact-us/",
+          "kind": "external",
+          "purpose": [
+            "content",
+            "images"
+          ],
+          "source_file_path": "/mnt/data/happennings.md"
+        },
+        {
+          "url": "https://cvfm.org/policies-and-faqs/",
+          "kind": "external",
+          "purpose": [
+            "content",
+            "images"
+          ],
+          "source_file_path": "/mnt/data/happennings.md"
+        }
+      ],
+      "source_notes": [],
+      "section_id": "recurring-food-and-market-culture-around-cuyahoga-valley-farmers-market-peninsula-oh-us",
+      "primary_location": {
+        "name": "Howe Meadow",
+        "address": "4040 Riverview Rd, Peninsula, OH 44264",
+        "google_maps": "https://www.google.com/maps/search/?api=1&query=4040%20Riverview%20Rd%2C%20Peninsula%2C%20OH%2044264",
+        "apple_maps": "https://maps.apple.com/?q=4040%20Riverview%20Rd%2C%20Peninsula%2C%20OH%2044264"
+      },
+      "primary_url": "https://cvfm.org/contact-us/",
+      "schedule_entry_ids": [],
+      "schedule_aliases": [],
+      "time_model": "descriptive",
+      "media": {
+        "images": [
+          {
+            "path": "assets/image/countryside/img-cvcc-pictorialmap.avif",
+            "caption": "Illustrated map of farms and roads in the Cuyahoga Valley",
+            "event_specific": false,
+            "source_file_path": "/mnt/data/happenings.html"
+          }
+        ],
+        "audio": []
+      },
+      "source_summary": {
+        "file_paths": [
+          "/mnt/data/happennings.md",
+          "/mnt/data/happenings.html"
+        ],
+        "internal_paths": {
+          "html_page_path": "happenings.html",
+          "attached_html_file_path": "/mnt/data/happenings.html",
+          "site_markdown_path": "assets/content/happennings.md",
+          "attached_markdown_file_path": "/mnt/data/happennings.md"
+        },
+        "notes": []
+      }
+    },
+    {
+      "id": "cvcc-happening-0003",
+      "type": "program_series",
+      "slug": "other-repeated-special-events-and-programs-at-the-market",
+      "title": "Other repeated “special events” and programs at the market",
+      "display_heading": "Other repeated “special events” and programs at the market — “Annual Seed Swap & Share” is listed for Jan 31, 2026 (already past); future date unspecified.; “Fungi, Spore, and Fermentation Fest” shows Oct 25, 2025 (past); future date unspecified.; “Christmas Market” is described as planned; date unspecified.",
+      "date_label": "“Annual Seed Swap & Share” is listed for Jan 31, 2026 (already past); future date unspecified.; “Fungi, Spore, and Fermentation Fest” shows Oct 25, 2025 (past); future date unspecified.; “Christmas Market” is described as planned; date unspecified.",
+      "date_details": [
+        "typical recurrence: annual / seasonal, but not date-fixed on the public page.",
+        "next dates (next 12 months): “Annual Seed Swap & Share” is listed for Jan 31, 2026 (already past); future date unspecified.",
+        "next dates (next 12 months): “Fungi, Spore, and Fermentation Fest” shows Oct 25, 2025 (past); future date unspecified.",
+        "next dates (next 12 months): “Christmas Market” is described as planned; date unspecified."
+      ],
+      "section_title": "Recurring food and market culture around Cuyahoga Valley Farmers Market Peninsula, OH, US",
+      "section_about": "The market is explicitly “every Saturday,” rain or shine, 9:00am–12:00pm, with a seasonal location shift: winter indoors (November–April) and summer outdoors (May–October) “located in the scenic” national park. The market also publishes policies that affect visit planning (dog-free first hour, restroom availability, handicap parking availability but uneven meadow terrain, etc.). Photos/content are available directly on the market site (embedded images) and via its official social accounts linked from the site.",
+      "paragraph": "The market describes recurring chef demonstrations and seasonal gatherings and lists “signature festivals” (Roots & Shoots, Tomato Tasting, and planned Christmas Market). annual / seasonal, but not date-fixed on the public page. “Annual Seed Swap & Share” is listed for Jan 31, 2026 (already past); future date unspecified.; “Fungi, Spore, and Fermentation Fest” shows Oct 25, 2025 (past); future date unspecified.; “Christmas Market” is described as planned; date unspecified. CVFM; follow market social for date announcements. these are characterized as “free to attend” for chef demos/festivals on the special events page, but individual event pages should be checked when published.",
+      "details": {
+        "description": "The market describes recurring chef demonstrations and seasonal gatherings and lists “signature festivals” (Roots & Shoots, Tomato Tasting, and planned Christmas Market).",
+        "typical_recurrence": "annual / seasonal, but not date-fixed on the public page.",
+        "next_dates_next_12_months": [
+          "“Annual Seed Swap & Share” is listed for Jan 31, 2026 (already past); future date unspecified.",
+          "“Fungi, Spore, and Fermentation Fest” shows Oct 25, 2025 (past); future date unspecified.",
+          "“Christmas Market” is described as planned; date unspecified."
+        ],
+        "organizer_contact": "CVFM; follow market social for date announcements.",
+        "tickets_cost": "these are characterized as “free to attend” for chef demos/festivals on the special events page, but individual event pages should be checked when published.",
+        "photos_content_sources": "CVFM “Special Events” page and linked detailed event pages (when live), plus official social channels linked from the site footer."
+      },
+      "locations": [
+        {
+          "name": "Howe Meadow",
+          "address": "4040 Riverview Rd, Peninsula, OH 44264",
+          "google_maps": "https://www.google.com/maps/search/?api=1&query=4040%20Riverview%20Rd%2C%20Peninsula%2C%20OH%2044264",
+          "apple_maps": "https://maps.apple.com/?q=4040%20Riverview%20Rd%2C%20Peninsula%2C%20OH%2044264"
+        },
+        {
+          "name": "Old Trail School",
+          "address": "2315 Ira Rd, Akron, OH 44333",
+          "google_maps": "https://www.google.com/maps/search/?api=1&query=2315%20Ira%20Rd%2C%20Akron%2C%20OH%2044333",
+          "apple_maps": "https://maps.apple.com/?q=2315%20Ira%20Rd%2C%20Akron%2C%20OH%2044333"
+        }
+      ],
+      "source_links": [
+        {
+          "url": "happenings.html",
+          "kind": "internal_page",
+          "purpose": [
+            "content"
+          ],
+          "source_file_path": "/mnt/data/happenings.html"
+        },
+        {
+          "url": "assets/content/happennings.md",
+          "kind": "internal_markdown_path",
+          "purpose": [
+            "content"
+          ],
+          "source_file_path": "/mnt/data/happenings.html"
+        },
+        {
+          "url": "https://cvfm.org/contact-us/",
+          "kind": "external",
+          "purpose": [
+            "content",
+            "images"
+          ],
+          "source_file_path": "/mnt/data/happennings.md"
+        },
+        {
+          "url": "https://cvfm.org/policies-and-faqs/",
+          "kind": "external",
+          "purpose": [
+            "content",
+            "images"
+          ],
+          "source_file_path": "/mnt/data/happennings.md"
+        }
+      ],
+      "source_notes": [],
+      "subevents": [
+        {
+          "title": "Annual Seed Swap & Share",
+          "date_label": "January 31, 2026 (listed in attached markdown as already past; future date unspecified)"
+        },
+        {
+          "title": "Fungi, Spore, and Fermentation Fest",
+          "date_label": "October 25, 2025 (listed in attached markdown as already past; future date unspecified)"
+        },
+        {
+          "title": "Christmas Market",
+          "date_label": "Planned; date unspecified in attached files"
+        }
+      ],
+      "section_id": "recurring-food-and-market-culture-around-cuyahoga-valley-farmers-market-peninsula-oh-us",
+      "primary_location": {
+        "name": "Howe Meadow",
+        "address": "4040 Riverview Rd, Peninsula, OH 44264",
+        "google_maps": "https://www.google.com/maps/search/?api=1&query=4040%20Riverview%20Rd%2C%20Peninsula%2C%20OH%2044264",
+        "apple_maps": "https://maps.apple.com/?q=4040%20Riverview%20Rd%2C%20Peninsula%2C%20OH%2044264"
+      },
+      "primary_url": "https://cvfm.org/contact-us/",
+      "schedule_entry_ids": [],
+      "schedule_aliases": [],
+      "time_model": "series",
+      "media": {
+        "images": [
+          {
+            "path": "assets/image/countryside/img-cvcc-pictorialmap.avif",
+            "caption": "Illustrated map of farms and roads in the Cuyahoga Valley",
+            "event_specific": false,
+            "source_file_path": "/mnt/data/happenings.html"
+          }
+        ],
+        "audio": []
+      },
+      "source_summary": {
+        "file_paths": [
+          "/mnt/data/happennings.md",
+          "/mnt/data/happenings.html"
+        ],
+        "internal_paths": {
+          "html_page_path": "happenings.html",
+          "attached_html_file_path": "/mnt/data/happenings.html",
+          "site_markdown_path": "assets/content/happennings.md",
+          "attached_markdown_file_path": "/mnt/data/happennings.md"
+        },
+        "notes": []
+      }
+    },
+    {
+      "id": "cvcc-happening-0004",
+      "type": "program_series",
+      "slug": "hale-farm-and-village-signature-event-cycle",
+      "title": "Hale Farm & Village signature-event cycle",
+      "display_heading": "Hale Farm & Village signature-event cycle — ongoing / date not specified",
+      "date_label": null,
+      "date_details": [],
+      "section_title": "Annual festivals and venue series within the park’s partner network",
+      "section_about": "The park press materials explicitly identify multiple publicly oriented operations “within park boundaries,” including Blossom Music Center, Hale Farm & Village, and the Boston Mills/Brandywine ski resorts—each of which operates its own ticketed event calendar. Photos/content are available via partner sites and the park’s own “Music & Arts” content and press kit.",
+      "paragraph": "Key signature events within the next 12 months (dates/time published for 2026): Hale Farm & Village Bath, OH, US (published address: 2686 Oak Hill Road, Bath, OH 44210). Western Reserve Historical Society Cleveland, OH, US states this site is a living history museum in the national park and publishes a “series of annual events.”",
+      "details": {
+        "operator": "Western Reserve Historical Society Cleveland, OH, US states this site is a living history museum in the national park and publishes a “series of annual events.”",
+        "location": "Hale Farm & Village Bath, OH, US (published address: 2686 Oak Hill Road, Bath, OH 44210).",
+        "tickets": "“Purchase Tickets Here” links route to the WRHS ticketing platform (330tix) for many events; admission rates “may vary.”",
+        "photos_content_sources": "individual event pages (with embedded images), WRHS site photography, and (for some events) dedicated event websites and local arts press."
+      },
+      "locations": [
+        {
+          "name": "Hale Farm & Village",
+          "address": "2686 Oak Hill Rd, Bath, OH 44210",
+          "google_maps": "https://www.google.com/maps/search/?api=1&query=2686%20Oak%20Hill%20Rd%2C%20Bath%2C%20OH%2044210",
+          "apple_maps": "https://maps.apple.com/?q=2686%20Oak%20Hill%20Rd%2C%20Bath%2C%20OH%2044210"
+        }
+      ],
+      "source_links": [
+        {
+          "url": "happenings.html",
+          "kind": "internal_page",
+          "purpose": [
+            "content"
+          ],
+          "source_file_path": "/mnt/data/happenings.html"
+        },
+        {
+          "url": "assets/content/happennings.md",
+          "kind": "internal_markdown_path",
+          "purpose": [
+            "content"
+          ],
+          "source_file_path": "/mnt/data/happenings.html"
+        },
+        {
+          "url": "https://www.wrhs.org/plan-visit/places-to-visit/hale-farm-village/things-to-do/signature-events",
+          "kind": "external",
+          "purpose": [
+            "content",
+            "images"
+          ],
+          "source_file_path": "/mnt/data/happennings.md"
+        },
+        {
+          "url": "https://www.wrhs.org/do-see/events",
+          "kind": "external",
+          "purpose": [
+            "content",
+            "images"
+          ],
+          "source_file_path": "/mnt/data/happennings.md"
+        }
+      ],
+      "source_notes": [],
+      "section_id": "annual-festivals-and-venue-series-within-the-parks-partner-network",
+      "primary_location": {
+        "name": "Hale Farm & Village",
+        "address": "2686 Oak Hill Rd, Bath, OH 44210",
+        "google_maps": "https://www.google.com/maps/search/?api=1&query=2686%20Oak%20Hill%20Rd%2C%20Bath%2C%20OH%2044210",
+        "apple_maps": "https://maps.apple.com/?q=2686%20Oak%20Hill%20Rd%2C%20Bath%2C%20OH%2044210"
+      },
+      "primary_url": "https://www.wrhs.org/plan-visit/places-to-visit/hale-farm-village/things-to-do/signature-events",
+      "schedule_entry_ids": [],
+      "schedule_aliases": [],
+      "time_model": "series",
+      "media": {
+        "images": [
+          {
+            "path": "assets/image/countryside/img-cvcc-pictorialmap.avif",
+            "caption": "Illustrated map of farms and roads in the Cuyahoga Valley",
+            "event_specific": false,
+            "source_file_path": "/mnt/data/happenings.html"
+          }
+        ],
+        "audio": []
+      },
+      "source_summary": {
+        "file_paths": [
+          "/mnt/data/happennings.md",
+          "/mnt/data/happenings.html"
+        ],
+        "internal_paths": {
+          "html_page_path": "happenings.html",
+          "attached_html_file_path": "/mnt/data/happenings.html",
+          "site_markdown_path": "assets/content/happennings.md",
+          "attached_markdown_file_path": "/mnt/data/happennings.md"
+        },
+        "notes": []
+      }
+    },
+    {
+      "id": "cvcc-happening-0005",
+      "type": "recurring_event",
+      "slug": "maple-sugar-festival-and-pancake-breakfast",
+      "title": "Maple Sugar Festival & Pancake Breakfast",
+      "display_heading": "Maple Sugar Festival & Pancake Breakfast — March 22, 2026 and March 28–29, 2026, 10:00am–3:00pm.",
+      "date_label": "March 22, 2026 and March 28–29, 2026, 10:00am–3:00pm.",
+      "date_details": [
+        "recurrence: four weekends in March (2026 schedule published).",
+        "upcoming dates (relative to march 21, 2026): March 22, 2026 and March 28–29, 2026, 10:00am–3:00pm."
+      ],
+      "section_title": "Annual festivals and venue series within the park’s partner network",
+      "section_about": "The park press materials explicitly identify multiple publicly oriented operations “within park boundaries,” including Blossom Music Center, Hale Farm & Village, and the Boston Mills/Brandywine ski resorts—each of which operates its own ticketed event calendar. Photos/content are available via partner sites and the park’s own “Music & Arts” content and press kit.",
+      "paragraph": "annual spring tradition featuring maple sugaring programming plus period crafts/trades demonstrations; pancake breakfast is part of ticketed options. four weekends in March (2026 schedule published). March 22, 2026 and March 28–29, 2026, 10:00am–3:00pm. adult + pancake breakfast $25; youth (3–12) + breakfast $16; member/military + breakfast $10; youth member + breakfast $8; other ticket types listed. breakfast served 10:00am–2:00pm; ticketing via 330tix; other logistics (parking/accessibility) not specified on the event page and should be verified on the ticketing page.",
+      "details": {
+        "description": "annual spring tradition featuring maple sugaring programming plus period crafts/trades demonstrations; pancake breakfast is part of ticketed options.",
+        "recurrence": "four weekends in March (2026 schedule published).",
+        "upcoming_dates_relative_to_march_21_2026": "March 22, 2026 and March 28–29, 2026, 10:00am–3:00pm.",
+        "cost_published_for_2026": "adult + pancake breakfast $25; youth (3–12) + breakfast $16; member/military + breakfast $10; youth member + breakfast $8; other ticket types listed.",
+        "practical_details": "breakfast served 10:00am–2:00pm; ticketing via 330tix; other logistics (parking/accessibility) not specified on the event page and should be verified on the ticketing page.",
+        "photos_content_sources": "the Maple Sugar Festival page contains images and press-ready descriptive copy; WRHS pages are the primary reference."
+      },
+      "locations": [
+        {
+          "name": "Hale Farm & Village",
+          "address": "2686 Oak Hill Rd, Bath, OH 44210",
+          "google_maps": "https://www.google.com/maps/search/?api=1&query=2686%20Oak%20Hill%20Rd%2C%20Bath%2C%20OH%2044210",
+          "apple_maps": "https://maps.apple.com/?q=2686%20Oak%20Hill%20Rd%2C%20Bath%2C%20OH%2044210"
+        }
+      ],
+      "source_links": [
+        {
+          "url": "happenings.html",
+          "kind": "internal_page",
+          "purpose": [
+            "content"
+          ],
+          "source_file_path": "/mnt/data/happenings.html"
+        },
+        {
+          "url": "assets/content/happennings.md",
+          "kind": "internal_markdown_path",
+          "purpose": [
+            "content"
+          ],
+          "source_file_path": "/mnt/data/happenings.html"
+        },
+        {
+          "url": "https://www.wrhs.org/plan-visit/places-to-visit/hale-farm-village/things-to-do/signature-events",
+          "kind": "external",
+          "purpose": [
+            "content",
+            "images"
+          ],
+          "source_file_path": "/mnt/data/happennings.md"
+        },
+        {
+          "url": "https://www.wrhs.org/do-see/events",
+          "kind": "external",
+          "purpose": [
+            "content",
+            "images"
+          ],
+          "source_file_path": "/mnt/data/happennings.md"
+        }
+      ],
+      "source_notes": [],
+      "section_id": "annual-festivals-and-venue-series-within-the-parks-partner-network",
+      "primary_location": {
+        "name": "Hale Farm & Village",
+        "address": "2686 Oak Hill Rd, Bath, OH 44210",
+        "google_maps": "https://www.google.com/maps/search/?api=1&query=2686%20Oak%20Hill%20Rd%2C%20Bath%2C%20OH%2044210",
+        "apple_maps": "https://maps.apple.com/?q=2686%20Oak%20Hill%20Rd%2C%20Bath%2C%20OH%2044210"
+      },
+      "primary_url": "https://www.wrhs.org/plan-visit/places-to-visit/hale-farm-village/things-to-do/signature-events",
+      "schedule_entry_ids": [
+        "maple-2026-03-22",
+        "maple-2026-03-28"
+      ],
+      "schedule_aliases": [],
+      "time_model": "mixed",
+      "media": {
+        "images": [
+          {
+            "path": "assets/image/countryside/img-cvcc-pictorialmap.avif",
+            "caption": "Illustrated map of farms and roads in the Cuyahoga Valley",
+            "event_specific": false,
+            "source_file_path": "/mnt/data/happenings.html"
+          }
+        ],
+        "audio": []
+      },
+      "source_summary": {
+        "file_paths": [
+          "/mnt/data/happennings.md",
+          "/mnt/data/happenings.html"
+        ],
+        "internal_paths": {
+          "html_page_path": "happenings.html",
+          "attached_html_file_path": "/mnt/data/happenings.html",
+          "site_markdown_path": "assets/content/happennings.md",
+          "attached_markdown_file_path": "/mnt/data/happennings.md"
+        },
+        "notes": []
+      }
+    },
+    {
+      "id": "cvcc-happening-0006",
+      "type": "recurring_event",
+      "slug": "sow-and-grow-festival-and-plant-sale",
+      "title": "Sow & Grow Festival and Plant Sale",
+      "display_heading": "Sow & Grow Festival and Plant Sale — June 13–14, 2026, 10:00am–4:00pm.",
+      "date_label": "June 13–14, 2026, 10:00am–4:00pm.",
+      "date_details": [
+        "recurrence: annual / early summer (listed as a signature event series).",
+        "upcoming dates (2026): June 13–14, 2026, 10:00am–4:00pm."
+      ],
+      "section_title": "Annual festivals and venue series within the park’s partner network",
+      "section_about": "The park press materials explicitly identify multiple publicly oriented operations “within park boundaries,” including Blossom Music Center, Hale Farm & Village, and the Boston Mills/Brandywine ski resorts—each of which operates its own ticketed event calendar. Photos/content are available via partner sites and the park’s own “Music & Arts” content and press kit.",
+      "paragraph": "19th‑century farm demonstrations and seasonal work, including draft horse and oxen/animal demonstrations; community partner demos (2025 description). annual / early summer (listed as a signature event series). June 13–14, 2026, 10:00am–4:00pm. 2026 admission pricing is unspecified on the WRHS calendar listing; verify in ticketing for the specific 2026 event instance. daytime (10–4) programming; accessibility/parking details unspecified on the public calendar page.",
+      "details": {
+        "description_typical_content_based_on_the_most_recent_detailed_event_page_available": "19th‑century farm demonstrations and seasonal work, including draft horse and oxen/animal demonstrations; community partner demos (2025 description).",
+        "recurrence": "annual / early summer (listed as a signature event series).",
+        "upcoming_dates_2026": "June 13–14, 2026, 10:00am–4:00pm.",
+        "tickets_cost": "2026 admission pricing is unspecified on the WRHS calendar listing; verify in ticketing for the specific 2026 event instance.",
+        "practical_details": "daytime (10–4) programming; accessibility/parking details unspecified on the public calendar page.",
+        "photos_content_sources": "WRHS event pages and WRHS site imagery; the 2025 event page provides program description framing that typically carries forward."
+      },
+      "locations": [
+        {
+          "name": "Hale Farm & Village",
+          "address": "2686 Oak Hill Rd, Bath, OH 44210",
+          "google_maps": "https://www.google.com/maps/search/?api=1&query=2686%20Oak%20Hill%20Rd%2C%20Bath%2C%20OH%2044210",
+          "apple_maps": "https://maps.apple.com/?q=2686%20Oak%20Hill%20Rd%2C%20Bath%2C%20OH%2044210"
+        }
+      ],
+      "source_links": [
+        {
+          "url": "happenings.html",
+          "kind": "internal_page",
+          "purpose": [
+            "content"
+          ],
+          "source_file_path": "/mnt/data/happenings.html"
+        },
+        {
+          "url": "assets/content/happennings.md",
+          "kind": "internal_markdown_path",
+          "purpose": [
+            "content"
+          ],
+          "source_file_path": "/mnt/data/happenings.html"
+        },
+        {
+          "url": "https://www.wrhs.org/plan-visit/places-to-visit/hale-farm-village/things-to-do/signature-events",
+          "kind": "external",
+          "purpose": [
+            "content",
+            "images"
+          ],
+          "source_file_path": "/mnt/data/happennings.md"
+        },
+        {
+          "url": "https://www.wrhs.org/do-see/events",
+          "kind": "external",
+          "purpose": [
+            "content",
+            "images"
+          ],
+          "source_file_path": "/mnt/data/happennings.md"
+        }
+      ],
+      "source_notes": [],
+      "section_id": "annual-festivals-and-venue-series-within-the-parks-partner-network",
+      "primary_location": {
+        "name": "Hale Farm & Village",
+        "address": "2686 Oak Hill Rd, Bath, OH 44210",
+        "google_maps": "https://www.google.com/maps/search/?api=1&query=2686%20Oak%20Hill%20Rd%2C%20Bath%2C%20OH%2044210",
+        "apple_maps": "https://maps.apple.com/?q=2686%20Oak%20Hill%20Rd%2C%20Bath%2C%20OH%2044210"
+      },
+      "primary_url": "https://www.wrhs.org/plan-visit/places-to-visit/hale-farm-village/things-to-do/signature-events",
+      "schedule_entry_ids": [
+        "sow-grow-2026"
+      ],
+      "schedule_aliases": [],
+      "time_model": "dated_span",
+      "media": {
+        "images": [
+          {
+            "path": "assets/image/countryside/img-cvcc-pictorialmap.avif",
+            "caption": "Illustrated map of farms and roads in the Cuyahoga Valley",
+            "event_specific": false,
+            "source_file_path": "/mnt/data/happenings.html"
+          }
+        ],
+        "audio": []
+      },
+      "source_summary": {
+        "file_paths": [
+          "/mnt/data/happennings.md",
+          "/mnt/data/happenings.html"
+        ],
+        "internal_paths": {
+          "html_page_path": "happenings.html",
+          "attached_html_file_path": "/mnt/data/happenings.html",
+          "site_markdown_path": "assets/content/happennings.md",
+          "attached_markdown_file_path": "/mnt/data/happennings.md"
+        },
+        "notes": []
+      }
+    },
+    {
+      "id": "cvcc-happening-0007",
+      "type": "recurring_event",
+      "slug": "juneteenth-celebration",
+      "title": "Juneteenth Celebration",
+      "display_heading": "Juneteenth Celebration — June 17–20, 2026, 10:00am–4:00pm.",
+      "date_label": "June 17–20, 2026, 10:00am–4:00pm.",
+      "date_details": [
+        "recurrence: annual (listed as a signature event; 2026 dates are posted).",
+        "upcoming dates (2026): June 17–20, 2026, 10:00am–4:00pm."
+      ],
+      "section_title": "Annual festivals and venue series within the park’s partner network",
+      "section_about": "The park press materials explicitly identify multiple publicly oriented operations “within park boundaries,” including Blossom Music Center, Hale Farm & Village, and the Boston Mills/Brandywine ski resorts—each of which operates its own ticketed event calendar. Photos/content are available via partner sites and the park’s own “Music & Arts” content and press kit.",
+      "paragraph": "historically framed commemoration with interpretive storytelling and programming (2025 description). annual (listed as a signature event; 2026 dates are posted). June 17–20, 2026, 10:00am–4:00pm. 2026 pricing is unspecified; the latest detailed pricing example (2025) lists adult $15, child $8, and free for WRHS members/active military/children under 2 (verify for 2026). multi-day daytime schedule; confirm any special timed programs via the specific 2026 ticketing page.",
+      "details": {
+        "description_typical_content_per_latest_detailed_event_page": "historically framed commemoration with interpretive storytelling and programming (2025 description).",
+        "recurrence": "annual (listed as a signature event; 2026 dates are posted).",
+        "upcoming_dates_2026": "June 17–20, 2026, 10:00am–4:00pm.",
+        "tickets_cost": "2026 pricing is unspecified; the latest detailed pricing example (2025) lists adult $15, child $8, and free for WRHS members/active military/children under 2 (verify for 2026).",
+        "practical_details": "multi-day daytime schedule; confirm any special timed programs via the specific 2026 ticketing page.",
+        "photos_content_sources": "WRHS Juneteenth event page copy (for content) and WRHS site imagery; the organization’s event calendar is the authoritative schedule reference."
+      },
+      "locations": [
+        {
+          "name": "Hale Farm & Village",
+          "address": "2686 Oak Hill Rd, Bath, OH 44210",
+          "google_maps": "https://www.google.com/maps/search/?api=1&query=2686%20Oak%20Hill%20Rd%2C%20Bath%2C%20OH%2044210",
+          "apple_maps": "https://maps.apple.com/?q=2686%20Oak%20Hill%20Rd%2C%20Bath%2C%20OH%2044210"
+        }
+      ],
+      "source_links": [
+        {
+          "url": "happenings.html",
+          "kind": "internal_page",
+          "purpose": [
+            "content"
+          ],
+          "source_file_path": "/mnt/data/happenings.html"
+        },
+        {
+          "url": "assets/content/happennings.md",
+          "kind": "internal_markdown_path",
+          "purpose": [
+            "content"
+          ],
+          "source_file_path": "/mnt/data/happenings.html"
+        },
+        {
+          "url": "https://www.wrhs.org/plan-visit/places-to-visit/hale-farm-village/things-to-do/signature-events",
+          "kind": "external",
+          "purpose": [
+            "content",
+            "images"
+          ],
+          "source_file_path": "/mnt/data/happennings.md"
+        },
+        {
+          "url": "https://www.wrhs.org/do-see/events",
+          "kind": "external",
+          "purpose": [
+            "content",
+            "images"
+          ],
+          "source_file_path": "/mnt/data/happennings.md"
+        }
+      ],
+      "source_notes": [],
+      "section_id": "annual-festivals-and-venue-series-within-the-parks-partner-network",
+      "primary_location": {
+        "name": "Hale Farm & Village",
+        "address": "2686 Oak Hill Rd, Bath, OH 44210",
+        "google_maps": "https://www.google.com/maps/search/?api=1&query=2686%20Oak%20Hill%20Rd%2C%20Bath%2C%20OH%2044210",
+        "apple_maps": "https://maps.apple.com/?q=2686%20Oak%20Hill%20Rd%2C%20Bath%2C%20OH%2044210"
+      },
+      "primary_url": "https://www.wrhs.org/plan-visit/places-to-visit/hale-farm-village/things-to-do/signature-events",
+      "schedule_entry_ids": [
+        "juneteenth-2026"
+      ],
+      "schedule_aliases": [],
+      "time_model": "dated_span",
+      "media": {
+        "images": [
+          {
+            "path": "assets/image/countryside/img-cvcc-pictorialmap.avif",
+            "caption": "Illustrated map of farms and roads in the Cuyahoga Valley",
+            "event_specific": false,
+            "source_file_path": "/mnt/data/happenings.html"
+          }
+        ],
+        "audio": []
+      },
+      "source_summary": {
+        "file_paths": [
+          "/mnt/data/happennings.md",
+          "/mnt/data/happenings.html"
+        ],
+        "internal_paths": {
+          "html_page_path": "happenings.html",
+          "attached_html_file_path": "/mnt/data/happenings.html",
+          "site_markdown_path": "assets/content/happennings.md",
+          "attached_markdown_file_path": "/mnt/data/happennings.md"
+        },
+        "notes": []
+      }
+    },
+    {
+      "id": "cvcc-happening-0008",
+      "type": "recurring_event",
+      "slug": "made-in-ohio-art-and-craft-festival",
+      "title": "Made in Ohio Art & Craft Festival",
+      "display_heading": "Made in Ohio Art & Craft Festival — September 4–6, 2026, 10:00am–5:00pm.",
+      "date_label": "September 4–6, 2026, 10:00am–5:00pm.",
+      "date_details": [
+        "recurrence: annual over Labor Day weekend.",
+        "upcoming dates (2026): September 4–6, 2026, 10:00am–5:00pm."
+      ],
+      "section_title": "Annual festivals and venue series within the park’s partner network",
+      "section_about": "The park press materials explicitly identify multiple publicly oriented operations “within park boundaries,” including Blossom Music Center, Hale Farm & Village, and the Boston Mills/Brandywine ski resorts—each of which operates its own ticketed event calendar. Photos/content are available via partner sites and the park’s own “Music & Arts” content and press kit.",
+      "paragraph": "Labor Day weekend art & craft festival at Hale Farm & Village with vendors and food/drink (WRHS describes the event as a community favorite). annual over Labor Day weekend. September 4–6, 2026, 10:00am–5:00pm. Hale Farm & Village; festival site publishes address (2686 Oak Hill Road, Peninsula/Bath area). $12 adults; $6 children (3–12). hours 10–5 each day; parking/accessibility details unspecified on the festival site excerpt and should be verified on the ticketing/venue pages.",
+      "details": {
+        "description": "Labor Day weekend art & craft festival at Hale Farm & Village with vendors and food/drink (WRHS describes the event as a community favorite).",
+        "recurrence": "annual over Labor Day weekend.",
+        "upcoming_dates_2026": "September 4–6, 2026, 10:00am–5:00pm.",
+        "tickets_cost_published_by_the_festival_site": "$12 adults; $6 children (3–12).",
+        "location": "Hale Farm & Village; festival site publishes address (2686 Oak Hill Road, Peninsula/Bath area).",
+        "practical_details": "hours 10–5 each day; parking/accessibility details unspecified on the festival site excerpt and should be verified on the ticketing/venue pages.",
+        "photos_content_sources": "the festival site includes multiple images; WRHS “Made in Ohio” event page provides additional descriptive copy (even when dated to a prior year)."
+      },
+      "locations": [
+        {
+          "name": "Hale Farm & Village",
+          "address": "2686 Oak Hill Rd, Bath, OH 44210",
+          "google_maps": "https://www.google.com/maps/search/?api=1&query=2686%20Oak%20Hill%20Rd%2C%20Bath%2C%20OH%2044210",
+          "apple_maps": "https://maps.apple.com/?q=2686%20Oak%20Hill%20Rd%2C%20Bath%2C%20OH%2044210"
+        }
+      ],
+      "source_links": [
+        {
+          "url": "happenings.html",
+          "kind": "internal_page",
+          "purpose": [
+            "content"
+          ],
+          "source_file_path": "/mnt/data/happenings.html"
+        },
+        {
+          "url": "assets/content/happennings.md",
+          "kind": "internal_markdown_path",
+          "purpose": [
+            "content"
+          ],
+          "source_file_path": "/mnt/data/happenings.html"
+        },
+        {
+          "url": "https://www.wrhs.org/plan-visit/places-to-visit/hale-farm-village/things-to-do/signature-events",
+          "kind": "external",
+          "purpose": [
+            "content",
+            "images"
+          ],
+          "source_file_path": "/mnt/data/happennings.md"
+        },
+        {
+          "url": "https://www.wrhs.org/do-see/events",
+          "kind": "external",
+          "purpose": [
+            "content",
+            "images"
+          ],
+          "source_file_path": "/mnt/data/happennings.md"
+        }
+      ],
+      "source_notes": [],
+      "section_id": "annual-festivals-and-venue-series-within-the-parks-partner-network",
+      "primary_location": {
+        "name": "Hale Farm & Village",
+        "address": "2686 Oak Hill Rd, Bath, OH 44210",
+        "google_maps": "https://www.google.com/maps/search/?api=1&query=2686%20Oak%20Hill%20Rd%2C%20Bath%2C%20OH%2044210",
+        "apple_maps": "https://maps.apple.com/?q=2686%20Oak%20Hill%20Rd%2C%20Bath%2C%20OH%2044210"
+      },
+      "primary_url": "https://www.wrhs.org/plan-visit/places-to-visit/hale-farm-village/things-to-do/signature-events",
+      "schedule_entry_ids": [
+        "made-in-ohio-2026"
+      ],
+      "schedule_aliases": [],
+      "time_model": "dated_span",
+      "media": {
+        "images": [
+          {
+            "path": "assets/image/countryside/img-cvcc-pictorialmap.avif",
+            "caption": "Illustrated map of farms and roads in the Cuyahoga Valley",
+            "event_specific": false,
+            "source_file_path": "/mnt/data/happenings.html"
+          }
+        ],
+        "audio": []
+      },
+      "source_summary": {
+        "file_paths": [
+          "/mnt/data/happennings.md",
+          "/mnt/data/happenings.html"
+        ],
+        "internal_paths": {
+          "html_page_path": "happenings.html",
+          "attached_html_file_path": "/mnt/data/happenings.html",
+          "site_markdown_path": "assets/content/happennings.md",
+          "attached_markdown_file_path": "/mnt/data/happennings.md"
+        },
+        "notes": []
+      }
+    },
+    {
+      "id": "cvcc-happening-0009",
+      "type": "recurring_event",
+      "slug": "harvest-festival",
+      "title": "Harvest Festival",
+      "display_heading": "Harvest Festival — October 3–4 and October 10–11, 2026, 10:00am–4:00pm.",
+      "date_label": "October 3–4 and October 10–11, 2026, 10:00am–4:00pm.",
+      "date_details": [
+        "recurrence: annual; two weekends (pattern shown in WRHS event calendars).",
+        "upcoming dates (2026): October 3–4 and October 10–11, 2026, 10:00am–4:00pm."
+      ],
+      "section_title": "Annual festivals and venue series within the park’s partner network",
+      "section_about": "The park press materials explicitly identify multiple publicly oriented operations “within park boundaries,” including Blossom Music Center, Hale Farm & Village, and the Boston Mills/Brandywine ski resorts—each of which operates its own ticketed event calendar. Photos/content are available via partner sites and the park’s own “Music & Arts” content and press kit.",
+      "paragraph": "fall festival programming emphasizing 19th‑century seasonal work and community partner demonstrations (WRHS event detail). annual; two weekends (pattern shown in WRHS event calendars). October 3–4 and October 10–11, 2026, 10:00am–4:00pm. “Purchase Tickets Here” is provided on the event detail page; price unspecified on the visible excerpt. daytime schedule; verify parking/accessibility on the ticketing page.",
+      "details": {
+        "description": "fall festival programming emphasizing 19th‑century seasonal work and community partner demonstrations (WRHS event detail).",
+        "recurrence": "annual; two weekends (pattern shown in WRHS event calendars).",
+        "upcoming_dates_2026": "October 3–4 and October 10–11, 2026, 10:00am–4:00pm.",
+        "tickets_cost": "“Purchase Tickets Here” is provided on the event detail page; price unspecified on the visible excerpt.",
+        "practical_details": "daytime schedule; verify parking/accessibility on the ticketing page.",
+        "photos_content_sources": "the WRHS event page (content + imagery) is the primary source; WRHS calendars provide the authoritative list of weekend dates."
+      },
+      "locations": [
+        {
+          "name": "Hale Farm & Village",
+          "address": "2686 Oak Hill Rd, Bath, OH 44210",
+          "google_maps": "https://www.google.com/maps/search/?api=1&query=2686%20Oak%20Hill%20Rd%2C%20Bath%2C%20OH%2044210",
+          "apple_maps": "https://maps.apple.com/?q=2686%20Oak%20Hill%20Rd%2C%20Bath%2C%20OH%2044210"
+        }
+      ],
+      "source_links": [
+        {
+          "url": "happenings.html",
+          "kind": "internal_page",
+          "purpose": [
+            "content"
+          ],
+          "source_file_path": "/mnt/data/happenings.html"
+        },
+        {
+          "url": "assets/content/happennings.md",
+          "kind": "internal_markdown_path",
+          "purpose": [
+            "content"
+          ],
+          "source_file_path": "/mnt/data/happenings.html"
+        },
+        {
+          "url": "https://www.wrhs.org/plan-visit/places-to-visit/hale-farm-village/things-to-do/signature-events",
+          "kind": "external",
+          "purpose": [
+            "content",
+            "images"
+          ],
+          "source_file_path": "/mnt/data/happennings.md"
+        },
+        {
+          "url": "https://www.wrhs.org/do-see/events",
+          "kind": "external",
+          "purpose": [
+            "content",
+            "images"
+          ],
+          "source_file_path": "/mnt/data/happennings.md"
+        }
+      ],
+      "source_notes": [],
+      "section_id": "annual-festivals-and-venue-series-within-the-parks-partner-network",
+      "primary_location": {
+        "name": "Hale Farm & Village",
+        "address": "2686 Oak Hill Rd, Bath, OH 44210",
+        "google_maps": "https://www.google.com/maps/search/?api=1&query=2686%20Oak%20Hill%20Rd%2C%20Bath%2C%20OH%2044210",
+        "apple_maps": "https://maps.apple.com/?q=2686%20Oak%20Hill%20Rd%2C%20Bath%2C%20OH%2044210"
+      },
+      "primary_url": "https://www.wrhs.org/plan-visit/places-to-visit/hale-farm-village/things-to-do/signature-events",
+      "schedule_entry_ids": [
+        "harvest-1-2026",
+        "harvest-2-2026"
+      ],
+      "schedule_aliases": [
+        "Harvest Festival (weekend 1)",
+        "Harvest Festival (weekend 2)"
+      ],
+      "time_model": "dated_span",
+      "media": {
+        "images": [
+          {
+            "path": "assets/image/countryside/img-cvcc-pictorialmap.avif",
+            "caption": "Illustrated map of farms and roads in the Cuyahoga Valley",
+            "event_specific": false,
+            "source_file_path": "/mnt/data/happenings.html"
+          }
+        ],
+        "audio": []
+      },
+      "source_summary": {
+        "file_paths": [
+          "/mnt/data/happennings.md",
+          "/mnt/data/happenings.html"
+        ],
+        "internal_paths": {
+          "html_page_path": "happenings.html",
+          "attached_html_file_path": "/mnt/data/happenings.html",
+          "site_markdown_path": "assets/content/happennings.md",
+          "attached_markdown_file_path": "/mnt/data/happennings.md"
+        },
+        "notes": []
+      }
+    },
+    {
+      "id": "cvcc-happening-0010",
+      "type": "recurring_event",
+      "slug": "holiday-art-and-craft-market",
+      "title": "Holiday Art & Craft Market",
+      "display_heading": "Holiday Art & Craft Market — Sunday, November 22, 2026, 12:00pm–4:00pm (vendor application).",
+      "date_label": "Sunday, November 22, 2026, 12:00pm–4:00pm (vendor application).",
+      "date_details": [
+        "recurrence: annual (listed on signature events and vendor documentation).",
+        "upcoming date (2026): Sunday, November 22, 2026, 12:00pm–4:00pm (vendor application)."
+      ],
+      "section_title": "Annual festivals and venue series within the park’s partner network",
+      "section_about": "The park press materials explicitly identify multiple publicly oriented operations “within park boundaries,” including Blossom Music Center, Hale Farm & Village, and the Boston Mills/Brandywine ski resorts—each of which operates its own ticketed event calendar. Photos/content are available via partner sites and the park’s own “Music & Arts” content and press kit.",
+      "paragraph": "a holiday market at the Gatehouse Visitor Center / MarketPlace area (vendor application describes it as “Holiday Art & Craft Market” with “free admission for shoppers”). annual (listed on signature events and vendor documentation). Sunday, November 22, 2026, 12:00pm–4:00pm (vendor application). show contact email in application: jmoretuzzo@wrhs.org. Free admission for shoppers (explicit in vendor application); vendors pay booth fees per application rules (not visitor-facing). indoor market (Gatehouse Visitor Center) with setup rules; parking/accessibility unspecified in the excerpt and should be verified with the venue.",
+      "details": {
+        "description": "a holiday market at the Gatehouse Visitor Center / MarketPlace area (vendor application describes it as “Holiday Art & Craft Market” with “free admission for shoppers”).",
+        "recurrence": "annual (listed on signature events and vendor documentation).",
+        "upcoming_date_2026": "Sunday, November 22, 2026, 12:00pm–4:00pm (vendor application).",
+        "tickets_cost": "Free admission for shoppers (explicit in vendor application); vendors pay booth fees per application rules (not visitor-facing).",
+        "organizer_contact": "show contact email in application: jmoretuzzo@wrhs.org.",
+        "practical_details": "indoor market (Gatehouse Visitor Center) with setup rules; parking/accessibility unspecified in the excerpt and should be verified with the venue.",
+        "photos_content_sources": "the vendor application is a content/verification artifact; WRHS/venue pages provide broader photo context."
+      },
+      "locations": [
+        {
+          "name": "Hale Farm & Village",
+          "address": "2686 Oak Hill Rd, Bath, OH 44210",
+          "google_maps": "https://www.google.com/maps/search/?api=1&query=2686%20Oak%20Hill%20Rd%2C%20Bath%2C%20OH%2044210",
+          "apple_maps": "https://maps.apple.com/?q=2686%20Oak%20Hill%20Rd%2C%20Bath%2C%20OH%2044210"
+        }
+      ],
+      "source_links": [
+        {
+          "url": "happenings.html",
+          "kind": "internal_page",
+          "purpose": [
+            "content"
+          ],
+          "source_file_path": "/mnt/data/happenings.html"
+        },
+        {
+          "url": "assets/content/happennings.md",
+          "kind": "internal_markdown_path",
+          "purpose": [
+            "content"
+          ],
+          "source_file_path": "/mnt/data/happenings.html"
+        },
+        {
+          "url": "https://www.wrhs.org/plan-visit/places-to-visit/hale-farm-village/things-to-do/signature-events",
+          "kind": "external",
+          "purpose": [
+            "content",
+            "images"
+          ],
+          "source_file_path": "/mnt/data/happennings.md"
+        },
+        {
+          "url": "https://www.wrhs.org/do-see/events",
+          "kind": "external",
+          "purpose": [
+            "content",
+            "images"
+          ],
+          "source_file_path": "/mnt/data/happennings.md"
+        }
+      ],
+      "source_notes": [],
+      "section_id": "annual-festivals-and-venue-series-within-the-parks-partner-network",
+      "primary_location": {
+        "name": "Hale Farm & Village",
+        "address": "2686 Oak Hill Rd, Bath, OH 44210",
+        "google_maps": "https://www.google.com/maps/search/?api=1&query=2686%20Oak%20Hill%20Rd%2C%20Bath%2C%20OH%2044210",
+        "apple_maps": "https://maps.apple.com/?q=2686%20Oak%20Hill%20Rd%2C%20Bath%2C%20OH%2044210"
+      },
+      "primary_url": "https://www.wrhs.org/plan-visit/places-to-visit/hale-farm-village/things-to-do/signature-events",
+      "schedule_entry_ids": [
+        "holiday-market-2026"
+      ],
+      "schedule_aliases": [],
+      "time_model": "dated_point",
+      "media": {
+        "images": [
+          {
+            "path": "assets/image/countryside/img-cvcc-pictorialmap.avif",
+            "caption": "Illustrated map of farms and roads in the Cuyahoga Valley",
+            "event_specific": false,
+            "source_file_path": "/mnt/data/happenings.html"
+          }
+        ],
+        "audio": []
+      },
+      "source_summary": {
+        "file_paths": [
+          "/mnt/data/happennings.md",
+          "/mnt/data/happenings.html"
+        ],
+        "internal_paths": {
+          "html_page_path": "happenings.html",
+          "attached_html_file_path": "/mnt/data/happenings.html",
+          "site_markdown_path": "assets/content/happennings.md",
+          "attached_markdown_file_path": "/mnt/data/happennings.md"
+        },
+        "notes": []
+      }
+    },
+    {
+      "id": "cvcc-happening-0011",
+      "type": "recurring_event",
+      "slug": "holiday-lantern-tours",
+      "title": "Holiday Lantern Tours",
+      "display_heading": "Holiday Lantern Tours — multiple dates in December 2026 are listed on the signature events calendar (examples include Dec 5–6, 11–13, 18–23, 26–28).",
+      "date_label": "multiple dates in December 2026 are listed on the signature events calendar (examples include Dec 5–6, 11–13, 18–23, 26–28).",
+      "date_details": [
+        "recurrence: annual; now in its “31st year” as of the 2026 listing.",
+        "upcoming dates (within next 12 months): multiple dates in December 2026 are listed on the signature events calendar (examples include Dec 5–6, 11–13, 18–23, 26–28)."
+      ],
+      "section_title": "Annual festivals and venue series within the park’s partner network",
+      "section_about": "The park press materials explicitly identify multiple publicly oriented operations “within park boundaries,” including Blossom Music Center, Hale Farm & Village, and the Boston Mills/Brandywine ski resorts—each of which operates its own ticketed event calendar. Photos/content are available via partner sites and the park’s own “Music & Arts” content and press kit.",
+      "paragraph": "lantern-lit walking tours through the historic village; homes decorated; seasonal treats and museum store shopping. annual; now in its “31st year” as of the 2026 listing. multiple dates in December 2026 are listed on the signature events calendar (examples include Dec 5–6, 11–13, 18–23, 26–28). ticket price unspecified on the visible excerpt; “Purchase Tickets Here” and refund policy are provided (all sales final; non-refundable/non-transferable). ~0.85 miles on gravel/grass; uneven/muddy in wet conditions; some buildings require 2–3 steps and are not wheelchair/stroller accessible.",
+      "details": {
+        "description": "lantern-lit walking tours through the historic village; homes decorated; seasonal treats and museum store shopping.",
+        "recurrence": "annual; now in its “31st year” as of the 2026 listing.",
+        "upcoming_dates_within_next_12_months": "multiple dates in December 2026 are listed on the signature events calendar (examples include Dec 5–6, 11–13, 18–23, 26–28).",
+        "example_instance_with_full_published_logistics": "December 26, 2026, 4:40pm–9:00pm; tours depart every 20 minutes starting at 4:40pm; each tour ~90 minutes.",
+        "tickets_cost": "ticket price unspecified on the visible excerpt; “Purchase Tickets Here” and refund policy are provided (all sales final; non-refundable/non-transferable).",
+        "accessibility_terrain_explicit": "~0.85 miles on gravel/grass; uneven/muddy in wet conditions; some buildings require 2–3 steps and are not wheelchair/stroller accessible.",
+        "photos_content_sources": "the WRHS event detail page includes descriptive copy and is a stable reference for accessibility language; WRHS digital collections are linked site‑wide for broader imagery."
+      },
+      "locations": [
+        {
+          "name": "Hale Farm & Village",
+          "address": "2686 Oak Hill Rd, Bath, OH 44210",
+          "google_maps": "https://www.google.com/maps/search/?api=1&query=2686%20Oak%20Hill%20Rd%2C%20Bath%2C%20OH%2044210",
+          "apple_maps": "https://maps.apple.com/?q=2686%20Oak%20Hill%20Rd%2C%20Bath%2C%20OH%2044210"
+        }
+      ],
+      "source_links": [
+        {
+          "url": "happenings.html",
+          "kind": "internal_page",
+          "purpose": [
+            "content"
+          ],
+          "source_file_path": "/mnt/data/happenings.html"
+        },
+        {
+          "url": "assets/content/happennings.md",
+          "kind": "internal_markdown_path",
+          "purpose": [
+            "content"
+          ],
+          "source_file_path": "/mnt/data/happenings.html"
+        },
+        {
+          "url": "https://www.wrhs.org/plan-visit/places-to-visit/hale-farm-village/things-to-do/signature-events",
+          "kind": "external",
+          "purpose": [
+            "content",
+            "images"
+          ],
+          "source_file_path": "/mnt/data/happennings.md"
+        },
+        {
+          "url": "https://www.wrhs.org/do-see/events",
+          "kind": "external",
+          "purpose": [
+            "content",
+            "images"
+          ],
+          "source_file_path": "/mnt/data/happennings.md"
+        }
+      ],
+      "source_notes": [],
+      "section_id": "annual-festivals-and-venue-series-within-the-parks-partner-network",
+      "primary_location": {
+        "name": "Hale Farm & Village",
+        "address": "2686 Oak Hill Rd, Bath, OH 44210",
+        "google_maps": "https://www.google.com/maps/search/?api=1&query=2686%20Oak%20Hill%20Rd%2C%20Bath%2C%20OH%2044210",
+        "apple_maps": "https://maps.apple.com/?q=2686%20Oak%20Hill%20Rd%2C%20Bath%2C%20OH%2044210"
+      },
+      "primary_url": "https://www.wrhs.org/plan-visit/places-to-visit/hale-farm-village/things-to-do/signature-events",
+      "schedule_entry_ids": [
+        "lantern-2026-12-26"
+      ],
+      "schedule_aliases": [
+        "Holiday Lantern Tours (example night)"
+      ],
+      "time_model": "dated_point",
+      "media": {
+        "images": [
+          {
+            "path": "assets/image/countryside/img-cvcc-pictorialmap.avif",
+            "caption": "Illustrated map of farms and roads in the Cuyahoga Valley",
+            "event_specific": false,
+            "source_file_path": "/mnt/data/happenings.html"
+          }
+        ],
+        "audio": []
+      },
+      "source_summary": {
+        "file_paths": [
+          "/mnt/data/happennings.md",
+          "/mnt/data/happenings.html"
+        ],
+        "internal_paths": {
+          "html_page_path": "happenings.html",
+          "attached_html_file_path": "/mnt/data/happenings.html",
+          "site_markdown_path": "assets/content/happennings.md",
+          "attached_markdown_file_path": "/mnt/data/happennings.md"
+        },
+        "notes": []
+      }
+    },
+    {
+      "id": "cvcc-happening-0012",
+      "type": "recurring_event",
+      "slug": "annual-blossom-music-festival-at-blossom-music-center",
+      "title": "Annual Blossom Music Festival at Blossom Music Center",
+      "display_heading": "Annual Blossom Music Festival at Blossom Music Center — July 3–September 6, 2026 (published festival calendar).",
+      "date_label": "July 3–September 6, 2026 (published festival calendar).",
+      "date_details": [
+        "2026 season window: July 3–September 6, 2026 (published festival calendar).",
+        "specific 2026 festival dates (published list; titles abbreviated here): Jul 3; Jul 4; Jul 11–12; Jul 18; Jul 25; Jul 26; Aug 1; Aug 8; Aug 15; Aug 22; Aug 23; Aug 29; Sep 4–6."
+      ],
+      "section_title": "Annual festivals and venue series within the park’s partner network",
+      "section_about": "The park press materials explicitly identify multiple publicly oriented operations “within park boundaries,” including Blossom Music Center, Hale Farm & Village, and the Boston Mills/Brandywine ski resorts—each of which operates its own ticketed event calendar. Photos/content are available via partner sites and the park’s own “Music & Arts” content and press kit.",
+      "paragraph": "- Blossom is described by the park as “nestled within Cuyahoga Valley” and the park’s “Music & Arts” page positions the Blossom Festival as an annual anchor. Blossom Music Center Cuyahoga Falls, OH, US is the summer home of The Cleveland Orchestra Cleveland, OH, US, located in Cuyahoga Falls within the national park (per the Orchestra’s venue guide). varies by performance; a dedicated youth-access policy is published—each regular-priced Lawn ticket offers two Under‑18 free Lawn passes for “most” Blossom Music Festival concerts. wheelchair/companion seating areas are reserved and selectable; ramps and ADA restrooms are noted; parking/directions are published by the Orchestra.",
+      "details": {
+        "where_what": "Blossom Music Center Cuyahoga Falls, OH, US is the summer home of The Cleveland Orchestra Cleveland, OH, US, located in Cuyahoga Falls within the national park (per the Orchestra’s venue guide).",
+        "2026_season_window": "July 3–September 6, 2026 (published festival calendar).",
+        "specific_2026_festival_dates_published_list_titles_abbreviated_here": "Jul 3; Jul 4; Jul 11–12; Jul 18; Jul 25; Jul 26; Aug 1; Aug 8; Aug 15; Aug 22; Aug 23; Aug 29; Sep 4–6.",
+        "tickets_cost": "varies by performance; a dedicated youth-access policy is published—each regular-priced Lawn ticket offers two Under‑18 free Lawn passes for “most” Blossom Music Festival concerts.",
+        "practical_details": "wheelchair/companion seating areas are reserved and selectable; ramps and ADA restrooms are noted; parking/directions are published by the Orchestra.",
+        "photos_content_sources": "the Orchestra’s festival calendar and Blossom venue guide pages include photography and are primary sources; the park’s “Music & Arts” page also provides official context and imagery."
+      },
+      "locations": [
+        {
+          "name": "Blossom Music Center",
+          "address": "1145 W Steels Corners Rd, Cuyahoga Falls, OH 44223",
+          "google_maps": "https://www.google.com/maps/search/?api=1&query=1145%20W%20Steels%20Corners%20Rd%2C%20Cuyahoga%20Falls%2C%20OH%2044223",
+          "apple_maps": "https://maps.apple.com/?q=1145%20W%20Steels%20Corners%20Rd%2C%20Cuyahoga%20Falls%2C%20OH%2044223"
+        }
+      ],
+      "source_links": [
+        {
+          "url": "happenings.html",
+          "kind": "internal_page",
+          "purpose": [
+            "content"
+          ],
+          "source_file_path": "/mnt/data/happenings.html"
+        },
+        {
+          "url": "assets/content/happennings.md",
+          "kind": "internal_markdown_path",
+          "purpose": [
+            "content"
+          ],
+          "source_file_path": "/mnt/data/happenings.html"
+        },
+        {
+          "url": "https://www.clevelandorchestra.com/tickets/calendar/2026-blossom-season",
+          "kind": "external",
+          "purpose": [
+            "content",
+            "images"
+          ],
+          "source_file_path": "/mnt/data/happennings.md"
+        },
+        {
+          "url": "https://www.clevelandorchestra.com/visit/blossom-music-center",
+          "kind": "external",
+          "purpose": [
+            "content",
+            "images"
+          ],
+          "source_file_path": "/mnt/data/happennings.md"
+        }
+      ],
+      "source_notes": [],
+      "section_id": "annual-festivals-and-venue-series-within-the-parks-partner-network",
+      "primary_location": {
+        "name": "Blossom Music Center",
+        "address": "1145 W Steels Corners Rd, Cuyahoga Falls, OH 44223",
+        "google_maps": "https://www.google.com/maps/search/?api=1&query=1145%20W%20Steels%20Corners%20Rd%2C%20Cuyahoga%20Falls%2C%20OH%2044223",
+        "apple_maps": "https://maps.apple.com/?q=1145%20W%20Steels%20Corners%20Rd%2C%20Cuyahoga%20Falls%2C%20OH%2044223"
+      },
+      "primary_url": "https://www.clevelandorchestra.com/tickets/calendar/2026-blossom-season",
+      "schedule_entry_ids": [
+        "blossom-season-2026"
+      ],
+      "schedule_aliases": [],
+      "time_model": "dated_span",
+      "media": {
+        "images": [
+          {
+            "path": "assets/image/countryside/img-cvcc-pictorialmap.avif",
+            "caption": "Illustrated map of farms and roads in the Cuyahoga Valley",
+            "event_specific": false,
+            "source_file_path": "/mnt/data/happenings.html"
+          }
+        ],
+        "audio": []
+      },
+      "source_summary": {
+        "file_paths": [
+          "/mnt/data/happennings.md",
+          "/mnt/data/happenings.html"
+        ],
+        "internal_paths": {
+          "html_page_path": "happenings.html",
+          "attached_html_file_path": "/mnt/data/happenings.html",
+          "site_markdown_path": "assets/content/happennings.md",
+          "attached_markdown_file_path": "/mnt/data/happennings.md"
+        },
+        "notes": []
+      }
+    },
+    {
+      "id": "cvcc-happening-0013",
+      "type": "recurring_event",
+      "slug": "boston-mills-artfest-two-weekend-fine-art-festival",
+      "title": "Boston Mills Artfest (two-weekend fine art festival)",
+      "display_heading": "Boston Mills Artfest (two-weekend fine art festival) — Boston Mills I (“June Show”) June 26–28, 2026; Boston Mills II (“July Show”) July 3–5, 2026 (artist‑call summary).",
+      "date_label": "Boston Mills I (“June Show”) June 26–28, 2026; Boston Mills II (“July Show”) July 3–5, 2026 (artist‑call summary).",
+      "date_details": [
+        "recurrence: annual; multi‑weekend fine-art festival; 2026 dates are published for participants in artist‑facing systems and regional coverage.",
+        "upcoming dates (2026): Boston Mills I (“June Show”) June 26–28, 2026; Boston Mills II (“July Show”) July 3–5, 2026 (artist‑call summary)."
+      ],
+      "section_title": "Annual festivals and venue series within the park’s partner network",
+      "section_about": "The park press materials explicitly identify multiple publicly oriented operations “within park boundaries,” including Blossom Music Center, Hale Farm & Village, and the Boston Mills/Brandywine ski resorts—each of which operates its own ticketed event calendar. Photos/content are available via partner sites and the park’s own “Music & Arts” content and press kit.",
+      "paragraph": "- The park’s press kit names “Boston Mills/Brandywine Ski Resorts” as within park boundaries. annual; multi‑weekend fine-art festival; 2026 dates are published for participants in artist‑facing systems and regional coverage. Boston Mills I (“June Show”) June 26–28, 2026; Boston Mills II (“July Show”) July 3–5, 2026 (artist‑call summary). at Boston Mills Ski Resort Peninsula, OH, US (site listings for prior editions and venue references place the event at the Boston Mills property in Peninsula). artist system lists a contact phone for the event (330.657.2334) and provides an event gallery and “contact event” workflow. public admission pricing for 2026 is unspecified in the primary sources above; regional coverage for recent editions indicates paid admission and free on‑site parking (verify on official 2026 pages when accessible).",
+      "details": {
+        "recurrence": "annual; multi‑weekend fine-art festival; 2026 dates are published for participants in artist‑facing systems and regional coverage.",
+        "upcoming_dates_2026": "Boston Mills I (“June Show”) June 26–28, 2026; Boston Mills II (“July Show”) July 3–5, 2026 (artist‑call summary).",
+        "location": "at Boston Mills Ski Resort Peninsula, OH, US (site listings for prior editions and venue references place the event at the Boston Mills property in Peninsula).",
+        "organizer_contact": "artist system lists a contact phone for the event (330.657.2334) and provides an event gallery and “contact event” workflow.",
+        "tickets_cost": "public admission pricing for 2026 is unspecified in the primary sources above; regional coverage for recent editions indicates paid admission and free on‑site parking (verify on official 2026 pages when accessible).",
+        "parking": "the venue’s general parking guidance states Boston Mills parking is directly in front of the lodge off Riverview Road.",
+        "photos_content_sources": "the ZAPP listing includes an “Event Gallery”; regional coverage (Ohio Magazine) provides images and background."
+      },
+      "locations": [
+        {
+          "name": "Boston Mills Ski Resort",
+          "address": "7100 Riverview Rd, Peninsula, OH 44264",
+          "google_maps": "https://www.google.com/maps/search/?api=1&query=7100%20Riverview%20Rd%2C%20Peninsula%2C%20OH%2044264",
+          "apple_maps": "https://maps.apple.com/?q=7100%20Riverview%20Rd%2C%20Peninsula%2C%20OH%2044264"
+        }
+      ],
+      "source_links": [
+        {
+          "url": "happenings.html",
+          "kind": "internal_page",
+          "purpose": [
+            "content"
+          ],
+          "source_file_path": "/mnt/data/happenings.html"
+        },
+        {
+          "url": "assets/content/happennings.md",
+          "kind": "internal_markdown_path",
+          "purpose": [
+            "content"
+          ],
+          "source_file_path": "/mnt/data/happenings.html"
+        }
+      ],
+      "source_notes": [
+        "The attached markdown references external source pages for this item, but does not include a raw event-specific URL.",
+        "No raw external source URL was present in the attached files for this item; internal page and markdown paths are preserved."
+      ],
+      "section_id": "annual-festivals-and-venue-series-within-the-parks-partner-network",
+      "primary_location": {
+        "name": "Boston Mills Ski Resort",
+        "address": "7100 Riverview Rd, Peninsula, OH 44264",
+        "google_maps": "https://www.google.com/maps/search/?api=1&query=7100%20Riverview%20Rd%2C%20Peninsula%2C%20OH%2044264",
+        "apple_maps": "https://maps.apple.com/?q=7100%20Riverview%20Rd%2C%20Peninsula%2C%20OH%2044264"
+      },
+      "primary_url": "happenings.html",
+      "schedule_entry_ids": [
+        "artfest-june-2026",
+        "artfest-july-2026"
+      ],
+      "schedule_aliases": [
+        "Boston Mills Artfest — June show",
+        "Boston Mills Artfest — July show"
+      ],
+      "time_model": "dated_span",
+      "media": {
+        "images": [
+          {
+            "path": "assets/image/countryside/img-cvcc-pictorialmap.avif",
+            "caption": "Illustrated map of farms and roads in the Cuyahoga Valley",
+            "event_specific": false,
+            "source_file_path": "/mnt/data/happenings.html"
+          }
+        ],
+        "audio": []
+      },
+      "source_summary": {
+        "file_paths": [
+          "/mnt/data/happennings.md",
+          "/mnt/data/happenings.html"
+        ],
+        "internal_paths": {
+          "html_page_path": "happenings.html",
+          "attached_html_file_path": "/mnt/data/happenings.html",
+          "site_markdown_path": "assets/content/happennings.md",
+          "attached_markdown_file_path": "/mnt/data/happennings.md"
+        },
+        "notes": [
+          "The attached markdown references external source pages for this item, but does not include a raw event-specific URL.",
+          "No raw external source URL was present in the attached files for this item; internal page and markdown paths are preserved."
+        ]
+      }
+    },
+    {
+      "id": "cvcc-happening-0014",
+      "type": "recurring_event",
+      "slug": "national-park-scenic-core-excursion",
+      "title": "National Park Scenic (core excursion)",
+      "display_heading": "National Park Scenic (core excursion) — Sunday, March 29, 2026 departures include 10:00am from Peninsula Depot with a listed price range $25–$38 (plus other same-day departures at different stations).",
+      "date_label": "Sunday, March 29, 2026 departures include 10:00am from Peninsula Depot with a listed price range $25–$38 (plus other same-day departures at different stations).",
+      "date_details": [
+        "typical recurrence: frequent (often weekends and peak periods); exact days vary month to month.",
+        "next published date within 12 months (example): Sunday, March 29, 2026 departures include 10:00am from Peninsula Depot with a listed price range $25–$38 (plus other same-day departures at different stations)."
+      ],
+      "section_title": "Cuyahoga Valley Scenic Railroad Peninsula, OH, US excursions and themed rides",
+      "section_about": "The railroad is a nonprofit excursion railway that explicitly positions its rides as experiences “through” the national park and publishes a date-indexed ticket calendar with departure times, stations, and price ranges. Photos/content are available on the railroad’s site and official social channels linked from the site.",
+      "paragraph": "“National Park Scenic” is presented as the flagship excursion experience; the calendar shows multiple departures per operating day. frequent (often weekends and peak periods); exact days vary month to month. Sunday, March 29, 2026 departures include 10:00am from Peninsula Depot with a listed price range $25–$38 (plus other same-day departures at different stations). customer service email and phone are published; hours Monday–Friday 9am–4pm. as published per-date in the calendar (varies by ride and seat type); food options such as “Café Car” appear for many scenic departures. details are handled on the railroad’s “Accessibility” planning pages and should be verified per ride and car type (not fully visible in the calendar excerpt).",
+      "details": {
+        "description": "“National Park Scenic” is presented as the flagship excursion experience; the calendar shows multiple departures per operating day.",
+        "typical_recurrence": "frequent (often weekends and peak periods); exact days vary month to month.",
+        "next_published_date_within_12_months_example": "Sunday, March 29, 2026 departures include 10:00am from Peninsula Depot with a listed price range $25–$38 (plus other same-day departures at different stations).",
+        "april_2026_examples_published": "multiple National Park Scenic departures on April weekends with the same $25–$38 range shown.",
+        "stations_nearby": "commonly listed stations include Peninsula Depot, Akron Northside Station, and Rockside Station in the calendar listings.",
+        "tickets_cost": "as published per-date in the calendar (varies by ride and seat type); food options such as “Café Car” appear for many scenic departures.",
+        "accessibility": "details are handled on the railroad’s “Accessibility” planning pages and should be verified per ride and car type (not fully visible in the calendar excerpt).",
+        "organizer_contact": "customer service email and phone are published; hours Monday–Friday 9am–4pm.",
+        "photos_content_sources": "CVSR excursion pages include images and embedded media; CVSR also links to social channels from its site navigation."
+      },
+      "locations": [
+        {
+          "name": "Peninsula Depot",
+          "address": "1630 Mill St, Peninsula, OH 44264",
+          "google_maps": "https://www.google.com/maps/search/?api=1&query=1630%20Mill%20St%2C%20Peninsula%2C%20OH%2044264",
+          "apple_maps": "https://maps.apple.com/?q=1630%20Mill%20St%2C%20Peninsula%2C%20OH%2044264"
+        },
+        {
+          "name": "Akron Northside Station",
+          "address": "27 Ridge St, Akron, OH 44308",
+          "google_maps": "https://www.google.com/maps/search/?api=1&query=27%20Ridge%20St%2C%20Akron%2C%20OH%2044308",
+          "apple_maps": "https://maps.apple.com/?q=27%20Ridge%20St%2C%20Akron%2C%20OH%2044308"
+        },
+        {
+          "name": "Rockside Station",
+          "address": "7900 Old Rockside Rd, Independence, OH 44131",
+          "google_maps": "https://www.google.com/maps/search/?api=1&query=7900%20Old%20Rockside%20Rd%2C%20Independence%2C%20OH%2044131",
+          "apple_maps": "https://maps.apple.com/?q=7900%20Old%20Rockside%20Rd%2C%20Independence%2C%20OH%2044131"
+        }
+      ],
+      "source_links": [
+        {
+          "url": "happenings.html",
+          "kind": "internal_page",
+          "purpose": [
+            "content"
+          ],
+          "source_file_path": "/mnt/data/happenings.html"
+        },
+        {
+          "url": "assets/content/happennings.md",
+          "kind": "internal_markdown_path",
+          "purpose": [
+            "content"
+          ],
+          "source_file_path": "/mnt/data/happenings.html"
+        },
+        {
+          "url": "https://www.cvsr.org/",
+          "kind": "external",
+          "purpose": [
+            "content",
+            "images"
+          ],
+          "source_file_path": "/mnt/data/happennings.md"
+        },
+        {
+          "url": "https://www.cvsr.org/book-tickets/calendar",
+          "kind": "external",
+          "purpose": [
+            "content",
+            "images"
+          ],
+          "source_file_path": "/mnt/data/happennings.md"
+        }
+      ],
+      "source_notes": [],
+      "section_id": "cuyahoga-valley-scenic-railroad-peninsula-oh-us-excursions-and-themed-rides",
+      "primary_location": {
+        "name": "Peninsula Depot",
+        "address": "1630 Mill St, Peninsula, OH 44264",
+        "google_maps": "https://www.google.com/maps/search/?api=1&query=1630%20Mill%20St%2C%20Peninsula%2C%20OH%2044264",
+        "apple_maps": "https://maps.apple.com/?q=1630%20Mill%20St%2C%20Peninsula%2C%20OH%2044264"
+      },
+      "primary_url": "https://www.cvsr.org/",
+      "schedule_entry_ids": [
+        "cvsr-scenic-2026-03-29"
+      ],
+      "schedule_aliases": [],
+      "time_model": "dated_point",
+      "media": {
+        "images": [
+          {
+            "path": "assets/image/countryside/img-cvcc-pictorialmap.avif",
+            "caption": "Illustrated map of farms and roads in the Cuyahoga Valley",
+            "event_specific": false,
+            "source_file_path": "/mnt/data/happenings.html"
+          }
+        ],
+        "audio": []
+      },
+      "source_summary": {
+        "file_paths": [
+          "/mnt/data/happennings.md",
+          "/mnt/data/happenings.html"
+        ],
+        "internal_paths": {
+          "html_page_path": "happenings.html",
+          "attached_html_file_path": "/mnt/data/happenings.html",
+          "site_markdown_path": "assets/content/happennings.md",
+          "attached_markdown_file_path": "/mnt/data/happennings.md"
+        },
+        "notes": []
+      }
+    },
+    {
+      "id": "cvcc-happening-0015",
+      "type": "program_series",
+      "slug": "family-fun-loop-and-themed-events-umbrella-series",
+      "title": "Family Fun Loop and Themed Events (umbrella series)",
+      "display_heading": "Family Fun Loop and Themed Events (umbrella series) — “Create‑A‑Critter” (Family Fun Loop) appears Saturday, April 18, 2026 with builder/helper ticket pricing shown in the calendar block.; “Western Locomotive” (Themed Events) appears Friday, April 24, 2026 (evening departure).",
+      "date_label": "“Create‑A‑Critter” (Family Fun Loop) appears Saturday, April 18, 2026 with builder/helper ticket pricing shown in the calendar block.; “Western Locomotive” (Themed Events) appears Friday, April 24, 2026 (evening departure).",
+      "date_details": [
+        "typical recurrence: scheduled on select dates (not a fixed weekly pattern); the ticket calendar is the authoritative source for next departures and pricing.",
+        "next dates within 12 months (examples from april 2026 calendar): “Create‑A‑Critter” (Family Fun Loop) appears Saturday, April 18, 2026 with builder/helper ticket pricing shown in the calendar block.",
+        "next dates within 12 months (examples from april 2026 calendar): “Western Locomotive” (Themed Events) appears Friday, April 24, 2026 (evening departure)."
+      ],
+      "section_title": "Cuyahoga Valley Scenic Railroad Peninsula, OH, US excursions and themed rides",
+      "section_about": "The railroad is a nonprofit excursion railway that explicitly positions its rides as experiences “through” the national park and publishes a date-indexed ticket calendar with departure times, stations, and price ranges. Photos/content are available on the railroad’s site and official social channels linked from the site.",
+      "paragraph": "“Family Fun Loop” is described as an event series designed for families; “Themed Events” are a separate excursion category. scheduled on select dates (not a fixed weekly pattern); the ticket calendar is the authoritative source for next departures and pricing. “Create‑A‑Critter” (Family Fun Loop) appears Saturday, April 18, 2026 with builder/helper ticket pricing shown in the calendar block.; “Western Locomotive” (Themed Events) appears Friday, April 24, 2026 (evening departure). CVSR; see contact block above.",
+      "details": {
+        "description": "“Family Fun Loop” is described as an event series designed for families; “Themed Events” are a separate excursion category.",
+        "typical_recurrence": "scheduled on select dates (not a fixed weekly pattern); the ticket calendar is the authoritative source for next departures and pricing.",
+        "next_dates_within_12_months_examples_from_april_2026_calendar": [
+          "“Create‑A‑Critter” (Family Fun Loop) appears Saturday, April 18, 2026 with builder/helper ticket pricing shown in the calendar block.",
+          "“Western Locomotive” (Themed Events) appears Friday, April 24, 2026 (evening departure)."
+        ],
+        "organizer_contact": "CVSR; see contact block above.",
+        "photos_content_sources": "the Family Fun Loop / Themed Events landing pages contain images and descriptive copy; the calendar provides the transactional “tickets” path."
+      },
+      "locations": [
+        {
+          "name": "Peninsula Depot",
+          "address": "1630 Mill St, Peninsula, OH 44264",
+          "google_maps": "https://www.google.com/maps/search/?api=1&query=1630%20Mill%20St%2C%20Peninsula%2C%20OH%2044264",
+          "apple_maps": "https://maps.apple.com/?q=1630%20Mill%20St%2C%20Peninsula%2C%20OH%2044264"
+        },
+        {
+          "name": "Akron Northside Station",
+          "address": "27 Ridge St, Akron, OH 44308",
+          "google_maps": "https://www.google.com/maps/search/?api=1&query=27%20Ridge%20St%2C%20Akron%2C%20OH%2044308",
+          "apple_maps": "https://maps.apple.com/?q=27%20Ridge%20St%2C%20Akron%2C%20OH%2044308"
+        },
+        {
+          "name": "Rockside Station",
+          "address": "7900 Old Rockside Rd, Independence, OH 44131",
+          "google_maps": "https://www.google.com/maps/search/?api=1&query=7900%20Old%20Rockside%20Rd%2C%20Independence%2C%20OH%2044131",
+          "apple_maps": "https://maps.apple.com/?q=7900%20Old%20Rockside%20Rd%2C%20Independence%2C%20OH%2044131"
+        }
+      ],
+      "source_links": [
+        {
+          "url": "happenings.html",
+          "kind": "internal_page",
+          "purpose": [
+            "content"
+          ],
+          "source_file_path": "/mnt/data/happenings.html"
+        },
+        {
+          "url": "assets/content/happennings.md",
+          "kind": "internal_markdown_path",
+          "purpose": [
+            "content"
+          ],
+          "source_file_path": "/mnt/data/happenings.html"
+        },
+        {
+          "url": "https://www.cvsr.org/",
+          "kind": "external",
+          "purpose": [
+            "content",
+            "images"
+          ],
+          "source_file_path": "/mnt/data/happennings.md"
+        },
+        {
+          "url": "https://www.cvsr.org/book-tickets/calendar",
+          "kind": "external",
+          "purpose": [
+            "content",
+            "images"
+          ],
+          "source_file_path": "/mnt/data/happennings.md"
+        }
+      ],
+      "source_notes": [],
+      "section_id": "cuyahoga-valley-scenic-railroad-peninsula-oh-us-excursions-and-themed-rides",
+      "primary_location": {
+        "name": "Peninsula Depot",
+        "address": "1630 Mill St, Peninsula, OH 44264",
+        "google_maps": "https://www.google.com/maps/search/?api=1&query=1630%20Mill%20St%2C%20Peninsula%2C%20OH%2044264",
+        "apple_maps": "https://maps.apple.com/?q=1630%20Mill%20St%2C%20Peninsula%2C%20OH%2044264"
+      },
+      "primary_url": "https://www.cvsr.org/",
+      "schedule_entry_ids": [
+        "cvsr-critter-2026-04-18",
+        "cvsr-western-2026-04-24"
+      ],
+      "schedule_aliases": [
+        "Create‑A‑Critter",
+        "Western Locomotive"
+      ],
+      "time_model": "series",
+      "media": {
+        "images": [
+          {
+            "path": "assets/image/countryside/img-cvcc-pictorialmap.avif",
+            "caption": "Illustrated map of farms and roads in the Cuyahoga Valley",
+            "event_specific": false,
+            "source_file_path": "/mnt/data/happenings.html"
+          }
+        ],
+        "audio": []
+      },
+      "source_summary": {
+        "file_paths": [
+          "/mnt/data/happennings.md",
+          "/mnt/data/happenings.html"
+        ],
+        "internal_paths": {
+          "html_page_path": "happenings.html",
+          "attached_html_file_path": "/mnt/data/happenings.html",
+          "site_markdown_path": "assets/content/happennings.md",
+          "attached_markdown_file_path": "/mnt/data/happennings.md"
+        },
+        "notes": []
+      }
+    },
+    {
+      "id": "cvcc-happening-0016",
+      "type": "ongoing_program",
+      "slug": "recurring-nps-volunteer-drop-ins-invasive-removal-plantings-seed-collection",
+      "title": "Recurring NPS volunteer drop‑ins (invasive removal, plantings, seed collection)",
+      "display_heading": "Recurring NPS volunteer drop‑ins (invasive removal, plantings, seed collection) — unspecified on the static volunteer page because it points to the (dynamic) calendar feed for specific dates; see the event table below for concrete drop‑in examples already published by partners.",
+      "date_label": "unspecified on the static volunteer page because it points to the (dynamic) calendar feed for specific dates; see the event table below for concrete drop‑in examples already published by partners.",
+      "date_details": [
+        "typical recurrence: offered throughout spring/summer/fall; “advanced registration required” and “calendar listings include a registration link.”",
+        "next dates (next 12 months): unspecified on the static volunteer page because it points to the (dynamic) calendar feed for specific dates; see the event table below for concrete drop‑in examples already published by partners."
+      ],
+      "section_title": "Park programs, volunteer stewardship, and Conservancy-led public programming",
+      "section_about": "The park and its partners position volunteering as an ongoing biodiversity and trail-support strategy with multiple formats: small “drop-ins,” larger “Days of Service,” and skills/education programs that mix learning with stewardship. Photos/content sources are embedded in the NPS and Conservancy pages and reinforced through linked social/media channels.",
+      "paragraph": "the park solicits volunteers to “preserve biodiversity,” with three core drop‑in types—Invasive Plant Removal, Native Plantings, and Native Seed Collection. offered throughout spring/summer/fall; “advanced registration required” and “calendar listings include a registration link.” unspecified on the static volunteer page because it points to the (dynamic) calendar feed for specific dates; see the event table below for concrete drop‑in examples already published by partners. projects rain or shine except thunderstorms; tools/PPE provided; age suitability differs by activity.",
+      "details": {
+        "description": "the park solicits volunteers to “preserve biodiversity,” with three core drop‑in types—Invasive Plant Removal, Native Plantings, and Native Seed Collection.",
+        "typical_recurrence": "offered throughout spring/summer/fall; “advanced registration required” and “calendar listings include a registration link.”",
+        "next_dates_next_12_months": "unspecified on the static volunteer page because it points to the (dynamic) calendar feed for specific dates; see the event table below for concrete drop‑in examples already published by partners.",
+        "contact": "volunteer@forcvnp.org for groups of 5+; youth requirements and what-to-bring list are specified (boots/closed-toe, water, etc.).",
+        "practical_details": "projects rain or shine except thunderstorms; tools/PPE provided; age suitability differs by activity.",
+        "photos_content_sources": "the NPS drop‑in page includes a project photo and is a stable reference; the Conservancy volunteer pages also include photos and link-outs."
+      },
+      "locations": [
+        {
+          "name": "Cuyahoga Valley National Park",
+          "address": "Cuyahoga Valley National Park, Ohio",
+          "google_maps": "https://www.google.com/maps/search/?api=1&query=Cuyahoga%20Valley%20National%20Park%2C%20Ohio",
+          "apple_maps": "https://maps.apple.com/?q=Cuyahoga%20Valley%20National%20Park%2C%20Ohio"
+        }
+      ],
+      "source_links": [
+        {
+          "url": "happenings.html",
+          "kind": "internal_page",
+          "purpose": [
+            "content"
+          ],
+          "source_file_path": "/mnt/data/happenings.html"
+        },
+        {
+          "url": "assets/content/happennings.md",
+          "kind": "internal_markdown_path",
+          "purpose": [
+            "content"
+          ],
+          "source_file_path": "/mnt/data/happenings.html"
+        },
+        {
+          "url": "https://www.nps.gov/cuva/planyourvisit/calendar.htm",
+          "kind": "external",
+          "purpose": [
+            "content",
+            "images"
+          ],
+          "source_file_path": "/mnt/data/happennings.md"
+        },
+        {
+          "url": "https://www.nps.gov/cuva/getinvolved/drop-in-opportunities.htm",
+          "kind": "external",
+          "purpose": [
+            "content",
+            "images"
+          ],
+          "source_file_path": "/mnt/data/happennings.md"
+        },
+        {
+          "url": "https://www.conservancyforcvnp.org/calendar/",
+          "kind": "external",
+          "purpose": [
+            "content",
+            "images"
+          ],
+          "source_file_path": "/mnt/data/happennings.md"
+        }
+      ],
+      "source_notes": [],
+      "section_id": "park-programs-volunteer-stewardship-and-conservancy-led-public-programming",
+      "primary_location": {
+        "name": "Cuyahoga Valley National Park",
+        "address": "Cuyahoga Valley National Park, Ohio",
+        "google_maps": "https://www.google.com/maps/search/?api=1&query=Cuyahoga%20Valley%20National%20Park%2C%20Ohio",
+        "apple_maps": "https://maps.apple.com/?q=Cuyahoga%20Valley%20National%20Park%2C%20Ohio"
+      },
+      "primary_url": "https://www.nps.gov/cuva/planyourvisit/calendar.htm",
+      "schedule_entry_ids": [],
+      "schedule_aliases": [],
+      "time_model": "ongoing",
+      "media": {
+        "images": [
+          {
+            "path": "assets/image/countryside/img-cvcc-pictorialmap.avif",
+            "caption": "Illustrated map of farms and roads in the Cuyahoga Valley",
+            "event_specific": false,
+            "source_file_path": "/mnt/data/happenings.html"
+          }
+        ],
+        "audio": []
+      },
+      "source_summary": {
+        "file_paths": [
+          "/mnt/data/happennings.md",
+          "/mnt/data/happenings.html"
+        ],
+        "internal_paths": {
+          "html_page_path": "happenings.html",
+          "attached_html_file_path": "/mnt/data/happenings.html",
+          "site_markdown_path": "assets/content/happennings.md",
+          "attached_markdown_file_path": "/mnt/data/happennings.md"
+        },
+        "notes": []
+      }
+    },
+    {
+      "id": "cvcc-happening-0017",
+      "type": "ongoing_program",
+      "slug": "conservancy-days-of-service-large-volunteer-days",
+      "title": "Conservancy “Days of Service” (large volunteer days)",
+      "display_heading": "Conservancy “Days of Service” (large volunteer days) — specific 2026/2027 event dates are unspecified on the program description page; verify via event listings.",
+      "date_label": "specific 2026/2027 event dates are unspecified on the program description page; verify via event listings.",
+      "date_details": [
+        "typical recurrence (explicit planned anchors): Earth Day (April), National Public Lands Day (September), Make a Difference Day (October).",
+        "next dates in next 12 months: specific 2026/2027 event dates are unspecified on the program description page; verify via event listings."
+      ],
+      "section_title": "Park programs, volunteer stewardship, and Conservancy-led public programming",
+      "section_about": "The park and its partners position volunteering as an ongoing biodiversity and trail-support strategy with multiple formats: small “drop-ins,” larger “Days of Service,” and skills/education programs that mix learning with stewardship. Photos/content sources are embedded in the NPS and Conservancy pages and reinforced through linked social/media channels.",
+      "paragraph": "large-scale, done-in-a-day volunteer events; projects vary by season (invasive removal, plantings, seed collection). Earth Day (April), National Public Lands Day (September), Make a Difference Day (October). specific 2026/2027 event dates are unspecified on the program description page; verify via event listings.",
+      "details": {
+        "description": "large-scale, done-in-a-day volunteer events; projects vary by season (invasive removal, plantings, seed collection).",
+        "typical_recurrence_explicit_planned_anchors": "Earth Day (April), National Public Lands Day (September), Make a Difference Day (October).",
+        "next_dates_in_next_12_months": "specific 2026/2027 event dates are unspecified on the program description page; verify via event listings.",
+        "photos_content_sources": "Conservancy volunteer pages and the event calendar listings carry imagery and can be reused for briefs/press."
+      },
+      "locations": [
+        {
+          "name": "Cuyahoga Valley National Park",
+          "address": "Cuyahoga Valley National Park, Ohio",
+          "google_maps": "https://www.google.com/maps/search/?api=1&query=Cuyahoga%20Valley%20National%20Park%2C%20Ohio",
+          "apple_maps": "https://maps.apple.com/?q=Cuyahoga%20Valley%20National%20Park%2C%20Ohio"
+        }
+      ],
+      "source_links": [
+        {
+          "url": "happenings.html",
+          "kind": "internal_page",
+          "purpose": [
+            "content"
+          ],
+          "source_file_path": "/mnt/data/happenings.html"
+        },
+        {
+          "url": "assets/content/happennings.md",
+          "kind": "internal_markdown_path",
+          "purpose": [
+            "content"
+          ],
+          "source_file_path": "/mnt/data/happenings.html"
+        },
+        {
+          "url": "https://www.nps.gov/cuva/planyourvisit/calendar.htm",
+          "kind": "external",
+          "purpose": [
+            "content",
+            "images"
+          ],
+          "source_file_path": "/mnt/data/happennings.md"
+        },
+        {
+          "url": "https://www.nps.gov/cuva/getinvolved/drop-in-opportunities.htm",
+          "kind": "external",
+          "purpose": [
+            "content",
+            "images"
+          ],
+          "source_file_path": "/mnt/data/happennings.md"
+        },
+        {
+          "url": "https://www.conservancyforcvnp.org/calendar/",
+          "kind": "external",
+          "purpose": [
+            "content",
+            "images"
+          ],
+          "source_file_path": "/mnt/data/happennings.md"
+        }
+      ],
+      "source_notes": [],
+      "section_id": "park-programs-volunteer-stewardship-and-conservancy-led-public-programming",
+      "primary_location": {
+        "name": "Cuyahoga Valley National Park",
+        "address": "Cuyahoga Valley National Park, Ohio",
+        "google_maps": "https://www.google.com/maps/search/?api=1&query=Cuyahoga%20Valley%20National%20Park%2C%20Ohio",
+        "apple_maps": "https://maps.apple.com/?q=Cuyahoga%20Valley%20National%20Park%2C%20Ohio"
+      },
+      "primary_url": "https://www.nps.gov/cuva/planyourvisit/calendar.htm",
+      "schedule_entry_ids": [],
+      "schedule_aliases": [],
+      "time_model": "ongoing",
+      "media": {
+        "images": [
+          {
+            "path": "assets/image/countryside/img-cvcc-pictorialmap.avif",
+            "caption": "Illustrated map of farms and roads in the Cuyahoga Valley",
+            "event_specific": false,
+            "source_file_path": "/mnt/data/happenings.html"
+          }
+        ],
+        "audio": []
+      },
+      "source_summary": {
+        "file_paths": [
+          "/mnt/data/happennings.md",
+          "/mnt/data/happenings.html"
+        ],
+        "internal_paths": {
+          "html_page_path": "happenings.html",
+          "attached_html_file_path": "/mnt/data/happenings.html",
+          "site_markdown_path": "assets/content/happennings.md",
+          "attached_markdown_file_path": "/mnt/data/happennings.md"
+        },
+        "notes": []
+      }
+    },
+    {
+      "id": "cvcc-happening-0018",
+      "type": "ongoing_program",
+      "slug": "nature-rx-public-program-example-stewardship-mindfulness-session",
+      "title": "Nature Rx public program (example: stewardship + mindfulness session)",
+      "display_heading": "Nature Rx public program (example: stewardship + mindfulness session) — April 22, 2026, 5:30pm–7:30pm.",
+      "date_label": "April 22, 2026, 5:30pm–7:30pm.",
+      "date_details": [
+        "typical recurrence: Nature Rx appears as an ongoing program with periodic events (exact cadence varies).",
+        "upcoming date (published): April 22, 2026, 5:30pm–7:30pm."
+      ],
+      "section_title": "Park programs, volunteer stewardship, and Conservancy-led public programming",
+      "section_about": "The park and its partners position volunteering as an ongoing biodiversity and trail-support strategy with multiple formats: small “drop-ins,” larger “Days of Service,” and skills/education programs that mix learning with stewardship. Photos/content sources are embedded in the NPS and Conservancy pages and reinforced through linked social/media channels.",
+      "paragraph": "“Nature Rx | Reciprocity through Volunteerism” (Earth Day themed tree planting + guided reflection). Nature Rx appears as an ongoing program with periodic events (exact cadence varies). April 22, 2026, 5:30pm–7:30pm. specific parking/location emailed to registrants two days before; walking required (~0.25 miles). registration is routed via Eventbrite; ticket price unspecified on the visible event page excerpt.",
+      "details": {
+        "example_event": "“Nature Rx | Reciprocity through Volunteerism” (Earth Day themed tree planting + guided reflection).",
+        "typical_recurrence": "Nature Rx appears as an ongoing program with periodic events (exact cadence varies).",
+        "upcoming_date_published": "April 22, 2026, 5:30pm–7:30pm.",
+        "location": "specific parking/location emailed to registrants two days before; walking required (~0.25 miles).",
+        "tickets_cost": "registration is routed via Eventbrite; ticket price unspecified on the visible event page excerpt.",
+        "photos_content_sources": "the event page includes images and provides links to the Nature Rx program page for broader context."
+      },
+      "locations": [
+        {
+          "name": "Cuyahoga Valley National Park",
+          "address": "Cuyahoga Valley National Park, Ohio",
+          "google_maps": "https://www.google.com/maps/search/?api=1&query=Cuyahoga%20Valley%20National%20Park%2C%20Ohio",
+          "apple_maps": "https://maps.apple.com/?q=Cuyahoga%20Valley%20National%20Park%2C%20Ohio"
+        }
+      ],
+      "source_links": [
+        {
+          "url": "happenings.html",
+          "kind": "internal_page",
+          "purpose": [
+            "content"
+          ],
+          "source_file_path": "/mnt/data/happenings.html"
+        },
+        {
+          "url": "assets/content/happennings.md",
+          "kind": "internal_markdown_path",
+          "purpose": [
+            "content"
+          ],
+          "source_file_path": "/mnt/data/happenings.html"
+        },
+        {
+          "url": "https://www.conservancyforcvnp.org/calendar/",
+          "kind": "external",
+          "purpose": [
+            "content",
+            "images"
+          ],
+          "source_file_path": "/mnt/data/happennings.md"
+        }
+      ],
+      "source_notes": [],
+      "section_id": "park-programs-volunteer-stewardship-and-conservancy-led-public-programming",
+      "primary_location": {
+        "name": "Cuyahoga Valley National Park",
+        "address": "Cuyahoga Valley National Park, Ohio",
+        "google_maps": "https://www.google.com/maps/search/?api=1&query=Cuyahoga%20Valley%20National%20Park%2C%20Ohio",
+        "apple_maps": "https://maps.apple.com/?q=Cuyahoga%20Valley%20National%20Park%2C%20Ohio"
+      },
+      "primary_url": "https://www.conservancyforcvnp.org/calendar/",
+      "schedule_entry_ids": [
+        "nature-rx-2026-04-22"
+      ],
+      "schedule_aliases": [],
+      "time_model": "ongoing",
+      "media": {
+        "images": [
+          {
+            "path": "assets/image/countryside/img-cvcc-pictorialmap.avif",
+            "caption": "Illustrated map of farms and roads in the Cuyahoga Valley",
+            "event_specific": false,
+            "source_file_path": "/mnt/data/happenings.html"
+          }
+        ],
+        "audio": []
+      },
+      "source_summary": {
+        "file_paths": [
+          "/mnt/data/happennings.md",
+          "/mnt/data/happenings.html"
+        ],
+        "internal_paths": {
+          "html_page_path": "happenings.html",
+          "attached_html_file_path": "/mnt/data/happenings.html",
+          "site_markdown_path": "assets/content/happennings.md",
+          "attached_markdown_file_path": "/mnt/data/happennings.md"
+        },
+        "notes": []
+      }
+    },
+    {
+      "id": "cvcc-happening-0019",
+      "type": "program_series",
+      "slug": "photography-programs-example-cluster",
+      "title": "Photography programs (example cluster)",
+      "display_heading": "Photography programs (example cluster) — ongoing / date not specified",
+      "date_label": null,
+      "date_details": [
+        "date/time: May 9, 2026, 10:00am–12:00pm.",
+        "date/time: May 20, 2026, 7:00pm–9:00pm at Hines Hill Conference Center Peninsula, OH, US (address in listing).",
+        "date/time: Ticketing via Eventbrite; cost unspecified on the visible excerpt."
+      ],
+      "section_title": "Park programs, volunteer stewardship, and Conservancy-led public programming",
+      "section_about": "The park and its partners position volunteering as an ongoing biodiversity and trail-support strategy with multiple formats: small “drop-ins,” larger “Days of Service,” and skills/education programs that mix learning with stewardship. Photos/content sources are embedded in the NPS and Conservancy pages and reinforced through linked social/media channels.",
+      "paragraph": "7733 Canal Road, Valley View, OH 44125 (site-listed). <2 miles, some hills; bring your own camera/phone; all skill levels welcome; ticketing via Eventbrite.",
+      "details": {
+        "photo_exploration_hike": "Frazee House (Sagamore Creek)”:",
+        "date_time": [
+          "May 9, 2026, 10:00am–12:00pm.",
+          "May 20, 2026, 7:00pm–9:00pm at Hines Hill Conference Center Peninsula, OH, US (address in listing).",
+          "Ticketing via Eventbrite; cost unspecified on the visible excerpt."
+        ],
+        "location": "7733 Canal Road, Valley View, OH 44125 (site-listed).",
+        "practical_details": "<2 miles, some hills; bring your own camera/phone; all skill levels welcome; ticketing via Eventbrite.",
+        "cuyahoga_valley_photo_society_juxtapositions": [],
+        "photos_content_sources": "Conservancy event pages include images and speaker/leader context; Eventbrite links provide promotional graphics where posted."
+      },
+      "locations": [
+        {
+          "name": "Frazee House (Sagamore Creek)",
+          "address": "7733 Canal Rd, Valley View, OH 44125",
+          "google_maps": "https://www.google.com/maps/search/?api=1&query=7733%20Canal%20Rd%2C%20Valley%20View%2C%20OH%2044125",
+          "apple_maps": "https://maps.apple.com/?q=7733%20Canal%20Rd%2C%20Valley%20View%2C%20OH%2044125"
+        },
+        {
+          "name": "Hines Hill Conference Center",
+          "address": "1403 Hines Hill Rd, Peninsula, OH 44264",
+          "google_maps": "https://www.google.com/maps/search/?api=1&query=1403%20Hines%20Hill%20Rd%2C%20Peninsula%2C%20OH%2044264",
+          "apple_maps": "https://maps.apple.com/?q=1403%20Hines%20Hill%20Rd%2C%20Peninsula%2C%20OH%2044264"
+        }
+      ],
+      "source_links": [
+        {
+          "url": "happenings.html",
+          "kind": "internal_page",
+          "purpose": [
+            "content"
+          ],
+          "source_file_path": "/mnt/data/happenings.html"
+        },
+        {
+          "url": "assets/content/happennings.md",
+          "kind": "internal_markdown_path",
+          "purpose": [
+            "content"
+          ],
+          "source_file_path": "/mnt/data/happenings.html"
+        },
+        {
+          "url": "https://www.conservancyforcvnp.org/calendar/",
+          "kind": "external",
+          "purpose": [
+            "content",
+            "images"
+          ],
+          "source_file_path": "/mnt/data/happennings.md"
+        }
+      ],
+      "source_notes": [],
+      "subevents": [
+        {
+          "title": "Photo Exploration Hike: Frazee House (Sagamore Creek)",
+          "date_label": "May 9, 2026, 10:00am–12:00pm",
+          "location": "7733 Canal Road, Valley View, OH 44125",
+          "google_maps": "https://www.google.com/maps/search/?api=1&query=7733%20Canal%20Rd%2C%20Valley%20View%2C%20OH%2044125",
+          "apple_maps": "https://maps.apple.com/?q=7733%20Canal%20Rd%2C%20Valley%20View%2C%20OH%2044125",
+          "practical_details": "<2 miles, some hills; bring your own camera/phone; all skill levels welcome; ticketing via Eventbrite."
+        },
+        {
+          "title": "Cuyahoga Valley Photo Society | Juxtapositions…",
+          "date_label": "May 20, 2026, 7:00pm–9:00pm",
+          "location": "Hines Hill Conference Center, Peninsula, OH",
+          "google_maps": "https://www.google.com/maps/search/?api=1&query=1403%20Hines%20Hill%20Rd%2C%20Peninsula%2C%20OH%2044264",
+          "apple_maps": "https://maps.apple.com/?q=1403%20Hines%20Hill%20Rd%2C%20Peninsula%2C%20OH%2044264",
+          "practical_details": "Ticketing via Eventbrite; cost unspecified in the attached files."
+        }
+      ],
+      "section_id": "park-programs-volunteer-stewardship-and-conservancy-led-public-programming",
+      "primary_location": {
+        "name": "Frazee House (Sagamore Creek)",
+        "address": "7733 Canal Rd, Valley View, OH 44125",
+        "google_maps": "https://www.google.com/maps/search/?api=1&query=7733%20Canal%20Rd%2C%20Valley%20View%2C%20OH%2044125",
+        "apple_maps": "https://maps.apple.com/?q=7733%20Canal%20Rd%2C%20Valley%20View%2C%20OH%2044125"
+      },
+      "primary_url": "https://www.conservancyforcvnp.org/calendar/",
+      "schedule_entry_ids": [
+        "photo-hike-2026-05-09",
+        "photo-society-2026-05-20"
+      ],
+      "schedule_aliases": [
+        "Photo Exploration Hike: Frazee House (Sagamore Creek)",
+        "Cuyahoga Valley Photo Society | Juxtapositions…"
+      ],
+      "time_model": "series",
+      "media": {
+        "images": [
+          {
+            "path": "assets/image/countryside/img-cvcc-pictorialmap.avif",
+            "caption": "Illustrated map of farms and roads in the Cuyahoga Valley",
+            "event_specific": false,
+            "source_file_path": "/mnt/data/happenings.html"
+          }
+        ],
+        "audio": []
+      },
+      "source_summary": {
+        "file_paths": [
+          "/mnt/data/happennings.md",
+          "/mnt/data/happenings.html"
+        ],
+        "internal_paths": {
+          "html_page_path": "happenings.html",
+          "attached_html_file_path": "/mnt/data/happenings.html",
+          "site_markdown_path": "assets/content/happennings.md",
+          "attached_markdown_file_path": "/mnt/data/happennings.md"
+        },
+        "notes": []
+      }
+    },
+    {
+      "id": "cvcc-happening-0020",
+      "type": "ongoing_initiative",
+      "slug": "conservancy-fundraising-events-annual-trail-visitor-amenity-impact",
+      "title": "Conservancy fundraising events (annual; trail/visitor-amenity impact)",
+      "display_heading": "Conservancy fundraising events (annual; trail/visitor-amenity impact) — Friday, June 12, 2026 at Howe Meadow; schedule published 6:30pm–11:00pm with band times and food service windows.; Saturday, June 13, 2026 at Howe Meadow with arrival/cocktail/dinner schedule and valet parking provided.",
+      "date_label": "Friday, June 12, 2026 at Howe Meadow; schedule published 6:30pm–11:00pm with band times and food service windows.; Saturday, June 13, 2026 at Howe Meadow with arrival/cocktail/dinner schedule and valet parking provided.",
+      "date_details": [
+        "when/where: Friday, June 12, 2026 at Howe Meadow; schedule published 6:30pm–11:00pm with band times and food service windows.",
+        "when/where: Saturday, June 13, 2026 at Howe Meadow with arrival/cocktail/dinner schedule and valet parking provided."
+      ],
+      "section_title": "Park programs, volunteer stewardship, and Conservancy-led public programming",
+      "section_about": "The park and its partners position volunteering as an ongoing biodiversity and trail-support strategy with multiple formats: small “drop-ins,” larger “Days of Service,” and skills/education programs that mix learning with stewardship. Photos/content sources are embedded in the NPS and Conservancy pages and reinforced through linked social/media channels.",
+      "paragraph": "member and non-member ticket pricing is shown in the ticketing snippet ($100 member / $160 non-member).; ticket price appears in the ticketing snippet ($350 individual ticket). rain or shine; trail casual attire; ticket includes food and drink-ticket allotments; contact phone/email listed.",
+      "details": {
+        "elevation_annual_fundraiser": [],
+        "when_where": [
+          "Friday, June 12, 2026 at Howe Meadow; schedule published 6:30pm–11:00pm with band times and food service windows.",
+          "Saturday, June 13, 2026 at Howe Meadow with arrival/cocktail/dinner schedule and valet parking provided."
+        ],
+        "cost": [
+          "member and non-member ticket pricing is shown in the ticketing snippet ($100 member / $160 non-member).",
+          "ticket price appears in the ticketing snippet ($350 individual ticket)."
+        ],
+        "practical_details": "rain or shine; trail casual attire; ticket includes food and drink-ticket allotments; contact phone/email listed.",
+        "photos_content_sources": [
+          "the Elevation page contains event photography and narrative copy suitable for briefs.",
+          "the Topography page includes imagery and program framing."
+        ],
+        "topography_annual_dinner": []
+      },
+      "locations": [
+        {
+          "name": "Howe Meadow",
+          "address": "4040 Riverview Rd, Peninsula, OH 44264",
+          "google_maps": "https://www.google.com/maps/search/?api=1&query=4040%20Riverview%20Rd%2C%20Peninsula%2C%20OH%2044264",
+          "apple_maps": "https://maps.apple.com/?q=4040%20Riverview%20Rd%2C%20Peninsula%2C%20OH%2044264"
+        }
+      ],
+      "source_links": [
+        {
+          "url": "happenings.html",
+          "kind": "internal_page",
+          "purpose": [
+            "content"
+          ],
+          "source_file_path": "/mnt/data/happenings.html"
+        },
+        {
+          "url": "assets/content/happennings.md",
+          "kind": "internal_markdown_path",
+          "purpose": [
+            "content"
+          ],
+          "source_file_path": "/mnt/data/happenings.html"
+        },
+        {
+          "url": "https://www.conservancyforcvnp.org/donate/fundraising-events/",
+          "kind": "external",
+          "purpose": [
+            "content",
+            "images"
+          ],
+          "source_file_path": "/mnt/data/happennings.md"
+        },
+        {
+          "url": "https://www.conservancyforcvnp.org/calendar/",
+          "kind": "external",
+          "purpose": [
+            "content",
+            "images"
+          ],
+          "source_file_path": "/mnt/data/happennings.md"
+        }
+      ],
+      "source_notes": [],
+      "subevents": [
+        {
+          "title": "Elevation",
+          "date_label": "Friday, June 12, 2026, 6:30pm–11:00pm",
+          "location": "Howe Meadow, 4040 Riverview Rd, Peninsula, OH 44264",
+          "google_maps": "https://www.google.com/maps/search/?api=1&query=4040%20Riverview%20Rd%2C%20Peninsula%2C%20OH%2044264",
+          "apple_maps": "https://maps.apple.com/?q=4040%20Riverview%20Rd%2C%20Peninsula%2C%20OH%2044264",
+          "cost": "$100 member / $160 non-member",
+          "practical_details": "Rain or shine; trail casual attire; ticket includes food and drink-ticket allotments; contact phone/email listed."
+        },
+        {
+          "title": "Topography",
+          "date_label": "Saturday, June 13, 2026",
+          "location": "Howe Meadow, 4040 Riverview Rd, Peninsula, OH 44264",
+          "google_maps": "https://www.google.com/maps/search/?api=1&query=4040%20Riverview%20Rd%2C%20Peninsula%2C%20OH%2044264",
+          "apple_maps": "https://maps.apple.com/?q=4040%20Riverview%20Rd%2C%20Peninsula%2C%20OH%2044264",
+          "cost": "$350 individual ticket",
+          "practical_details": "Arrival/cocktail/dinner schedule; valet parking provided."
+        }
+      ],
+      "section_id": "park-programs-volunteer-stewardship-and-conservancy-led-public-programming",
+      "primary_location": {
+        "name": "Howe Meadow",
+        "address": "4040 Riverview Rd, Peninsula, OH 44264",
+        "google_maps": "https://www.google.com/maps/search/?api=1&query=4040%20Riverview%20Rd%2C%20Peninsula%2C%20OH%2044264",
+        "apple_maps": "https://maps.apple.com/?q=4040%20Riverview%20Rd%2C%20Peninsula%2C%20OH%2044264"
+      },
+      "primary_url": "https://www.conservancyforcvnp.org/donate/fundraising-events/",
+      "schedule_entry_ids": [
+        "elevation-2026",
+        "topography-2026"
+      ],
+      "schedule_aliases": [
+        "Elevation",
+        "Topography"
+      ],
+      "time_model": "ongoing",
+      "media": {
+        "images": [
+          {
+            "path": "assets/image/countryside/img-cvcc-pictorialmap.avif",
+            "caption": "Illustrated map of farms and roads in the Cuyahoga Valley",
+            "event_specific": false,
+            "source_file_path": "/mnt/data/happenings.html"
+          }
+        ],
+        "audio": []
+      },
+      "source_summary": {
+        "file_paths": [
+          "/mnt/data/happennings.md",
+          "/mnt/data/happenings.html"
+        ],
+        "internal_paths": {
+          "html_page_path": "happenings.html",
+          "attached_html_file_path": "/mnt/data/happenings.html",
+          "site_markdown_path": "assets/content/happennings.md",
+          "attached_markdown_file_path": "/mnt/data/happennings.md"
+        },
+        "notes": []
+      }
+    },
+    {
+      "id": "cvcc-happening-0021",
+      "type": "recurring_event",
+      "slug": "countryside-sustainable-farming-in-the-valley-nps-described-program",
+      "title": "Countryside / sustainable farming in the valley (NPS-described program)",
+      "display_heading": "Countryside / sustainable farming in the valley (NPS-described program) — ongoing / date not specified",
+      "date_label": null,
+      "date_details": [],
+      "section_title": "Ongoing initiatives and programs to track",
+      "section_about": "",
+      "paragraph": "The park describes an ongoing farming program (originally the “Countryside Initiative”) in which historic farmsteads were rehabilitated and leased to farmers using sustainable practices, preserving the agricultural landscape and related resources. Photos/content: the NPS “Farming in the Valley” story page is a stable narrative reference for context and terminology.",
+      "details": {},
+      "locations": [
+        {
+          "name": "Cuyahoga Valley National Park",
+          "address": "Cuyahoga Valley National Park, Ohio",
+          "google_maps": "https://www.google.com/maps/search/?api=1&query=Cuyahoga%20Valley%20National%20Park%2C%20Ohio",
+          "apple_maps": "https://maps.apple.com/?q=Cuyahoga%20Valley%20National%20Park%2C%20Ohio"
+        }
+      ],
+      "source_links": [
+        {
+          "url": "happenings.html",
+          "kind": "internal_page",
+          "purpose": [
+            "content"
+          ],
+          "source_file_path": "/mnt/data/happenings.html"
+        },
+        {
+          "url": "assets/content/happennings.md",
+          "kind": "internal_markdown_path",
+          "purpose": [
+            "content"
+          ],
+          "source_file_path": "/mnt/data/happenings.html"
+        }
+      ],
+      "source_notes": [
+        "The attached markdown references external source pages for this item, but does not include a raw event-specific URL.",
+        "No raw external source URL was present in the attached files for this item; internal page and markdown paths are preserved."
+      ],
+      "section_id": "ongoing-initiatives-and-programs-to-track",
+      "primary_location": {
+        "name": "Cuyahoga Valley National Park",
+        "address": "Cuyahoga Valley National Park, Ohio",
+        "google_maps": "https://www.google.com/maps/search/?api=1&query=Cuyahoga%20Valley%20National%20Park%2C%20Ohio",
+        "apple_maps": "https://maps.apple.com/?q=Cuyahoga%20Valley%20National%20Park%2C%20Ohio"
+      },
+      "primary_url": "happenings.html",
+      "schedule_entry_ids": [],
+      "schedule_aliases": [],
+      "time_model": "descriptive",
+      "media": {
+        "images": [
+          {
+            "path": "assets/image/countryside/img-cvcc-pictorialmap.avif",
+            "caption": "Illustrated map of farms and roads in the Cuyahoga Valley",
+            "event_specific": false,
+            "source_file_path": "/mnt/data/happenings.html"
+          }
+        ],
+        "audio": []
+      },
+      "source_summary": {
+        "file_paths": [
+          "/mnt/data/happennings.md",
+          "/mnt/data/happenings.html"
+        ],
+        "internal_paths": {
+          "html_page_path": "happenings.html",
+          "attached_html_file_path": "/mnt/data/happenings.html",
+          "site_markdown_path": "assets/content/happennings.md",
+          "attached_markdown_file_path": "/mnt/data/happennings.md"
+        },
+        "notes": [
+          "The attached markdown references external source pages for this item, but does not include a raw event-specific URL.",
+          "No raw external source URL was present in the attached files for this item; internal page and markdown paths are preserved."
+        ]
+      }
+    },
+    {
+      "id": "cvcc-happening-0022",
+      "type": "ongoing_initiative",
+      "slug": "trails-now-fund-conservancy-impact-channel",
+      "title": "Trails Now Fund (Conservancy impact channel)",
+      "display_heading": "Trails Now Fund (Conservancy impact channel) — ongoing / date not specified",
+      "date_label": null,
+      "date_details": [],
+      "section_title": "Ongoing initiatives and programs to track",
+      "section_about": "",
+      "paragraph": "Both Elevation and Topography explicitly route proceeds to trail maintenance, trailheads, and visitor amenities (“Trails Now Fund”), making these events recurring “fundraising + trails” initiatives rather than standalone parties. Photos/content: event pages provide reusable copy and imagery; the fund itself is linked from those pages.",
+      "details": {},
+      "locations": [
+        {
+          "name": "Cuyahoga Valley National Park",
+          "address": "Cuyahoga Valley National Park, Ohio",
+          "google_maps": "https://www.google.com/maps/search/?api=1&query=Cuyahoga%20Valley%20National%20Park%2C%20Ohio",
+          "apple_maps": "https://maps.apple.com/?q=Cuyahoga%20Valley%20National%20Park%2C%20Ohio"
+        }
+      ],
+      "source_links": [
+        {
+          "url": "happenings.html",
+          "kind": "internal_page",
+          "purpose": [
+            "content"
+          ],
+          "source_file_path": "/mnt/data/happenings.html"
+        },
+        {
+          "url": "assets/content/happennings.md",
+          "kind": "internal_markdown_path",
+          "purpose": [
+            "content"
+          ],
+          "source_file_path": "/mnt/data/happenings.html"
+        },
+        {
+          "url": "https://www.conservancyforcvnp.org/donate/fundraising-events/",
+          "kind": "external",
+          "purpose": [
+            "content",
+            "images"
+          ],
+          "source_file_path": "/mnt/data/happennings.md"
+        },
+        {
+          "url": "https://www.conservancyforcvnp.org/calendar/",
+          "kind": "external",
+          "purpose": [
+            "content",
+            "images"
+          ],
+          "source_file_path": "/mnt/data/happennings.md"
+        }
+      ],
+      "source_notes": [],
+      "section_id": "ongoing-initiatives-and-programs-to-track",
+      "primary_location": {
+        "name": "Cuyahoga Valley National Park",
+        "address": "Cuyahoga Valley National Park, Ohio",
+        "google_maps": "https://www.google.com/maps/search/?api=1&query=Cuyahoga%20Valley%20National%20Park%2C%20Ohio",
+        "apple_maps": "https://maps.apple.com/?q=Cuyahoga%20Valley%20National%20Park%2C%20Ohio"
+      },
+      "primary_url": "https://www.conservancyforcvnp.org/donate/fundraising-events/",
+      "schedule_entry_ids": [],
+      "schedule_aliases": [],
+      "time_model": "ongoing",
+      "media": {
+        "images": [
+          {
+            "path": "assets/image/countryside/img-cvcc-pictorialmap.avif",
+            "caption": "Illustrated map of farms and roads in the Cuyahoga Valley",
+            "event_specific": false,
+            "source_file_path": "/mnt/data/happenings.html"
+          }
+        ],
+        "audio": []
+      },
+      "source_summary": {
+        "file_paths": [
+          "/mnt/data/happennings.md",
+          "/mnt/data/happenings.html"
+        ],
+        "internal_paths": {
+          "html_page_path": "happenings.html",
+          "attached_html_file_path": "/mnt/data/happenings.html",
+          "site_markdown_path": "assets/content/happennings.md",
+          "attached_markdown_file_path": "/mnt/data/happennings.md"
+        },
+        "notes": []
+      }
+    },
+    {
+      "id": "cvcc-happening-0023",
+      "type": "ongoing_initiative",
+      "slug": "accessibility-and-inclusion-mechanisms-examples",
+      "title": "Accessibility and inclusion mechanisms (examples)",
+      "display_heading": "Accessibility and inclusion mechanisms (examples) — ongoing / date not specified",
+      "date_label": null,
+      "date_details": [],
+      "section_title": "Ongoing initiatives and programs to track",
+      "section_about": "",
+      "paragraph": "under‑18 free lawn passes are embedded in the ticket policy; accessible seating and ADA restrooms are described in the venue guide. the event page provides unusually explicit route/terrain constraints, enabling accurately scoped visitor messaging.",
+      "details": {
+        "blossom_music_festival": "under‑18 free lawn passes are embedded in the ticket policy; accessible seating and ADA restrooms are described in the venue guide.",
+        "hale_farm_holiday_lantern_tours": "the event page provides unusually explicit route/terrain constraints, enabling accurately scoped visitor messaging."
+      },
+      "locations": [
+        {
+          "name": "Blossom Music Center",
+          "address": "1145 W Steels Corners Rd, Cuyahoga Falls, OH 44223",
+          "google_maps": "https://www.google.com/maps/search/?api=1&query=1145%20W%20Steels%20Corners%20Rd%2C%20Cuyahoga%20Falls%2C%20OH%2044223",
+          "apple_maps": "https://maps.apple.com/?q=1145%20W%20Steels%20Corners%20Rd%2C%20Cuyahoga%20Falls%2C%20OH%2044223"
+        },
+        {
+          "name": "Hale Farm & Village",
+          "address": "2686 Oak Hill Rd, Bath, OH 44210",
+          "google_maps": "https://www.google.com/maps/search/?api=1&query=2686%20Oak%20Hill%20Rd%2C%20Bath%2C%20OH%2044210",
+          "apple_maps": "https://maps.apple.com/?q=2686%20Oak%20Hill%20Rd%2C%20Bath%2C%20OH%2044210"
+        }
+      ],
+      "source_links": [
+        {
+          "url": "happenings.html",
+          "kind": "internal_page",
+          "purpose": [
+            "content"
+          ],
+          "source_file_path": "/mnt/data/happenings.html"
+        },
+        {
+          "url": "assets/content/happennings.md",
+          "kind": "internal_markdown_path",
+          "purpose": [
+            "content"
+          ],
+          "source_file_path": "/mnt/data/happenings.html"
+        },
+        {
+          "url": "https://www.clevelandorchestra.com/tickets/calendar/2026-blossom-season",
+          "kind": "external",
+          "purpose": [
+            "content",
+            "images"
+          ],
+          "source_file_path": "/mnt/data/happennings.md"
+        },
+        {
+          "url": "https://www.clevelandorchestra.com/visit/blossom-music-center",
+          "kind": "external",
+          "purpose": [
+            "content",
+            "images"
+          ],
+          "source_file_path": "/mnt/data/happennings.md"
+        },
+        {
+          "url": "https://www.wrhs.org/plan-visit/places-to-visit/hale-farm-village/things-to-do/signature-events",
+          "kind": "external",
+          "purpose": [
+            "content",
+            "images"
+          ],
+          "source_file_path": "/mnt/data/happennings.md"
+        }
+      ],
+      "source_notes": [],
+      "examples": [
+        {
+          "title": "Blossom Music Festival",
+          "note": "Under‑18 free lawn passes are embedded in the ticket policy; accessible seating and ADA restrooms are described in the venue guide."
+        },
+        {
+          "title": "Hale Farm Holiday Lantern Tours",
+          "note": "The event page provides explicit route and terrain constraints for accessibility planning."
+        }
+      ],
+      "section_id": "ongoing-initiatives-and-programs-to-track",
+      "primary_location": {
+        "name": "Blossom Music Center",
+        "address": "1145 W Steels Corners Rd, Cuyahoga Falls, OH 44223",
+        "google_maps": "https://www.google.com/maps/search/?api=1&query=1145%20W%20Steels%20Corners%20Rd%2C%20Cuyahoga%20Falls%2C%20OH%2044223",
+        "apple_maps": "https://maps.apple.com/?q=1145%20W%20Steels%20Corners%20Rd%2C%20Cuyahoga%20Falls%2C%20OH%2044223"
+      },
+      "primary_url": "https://www.clevelandorchestra.com/tickets/calendar/2026-blossom-season",
+      "schedule_entry_ids": [],
+      "schedule_aliases": [],
+      "time_model": "ongoing",
+      "media": {
+        "images": [
+          {
+            "path": "assets/image/countryside/img-cvcc-pictorialmap.avif",
+            "caption": "Illustrated map of farms and roads in the Cuyahoga Valley",
+            "event_specific": false,
+            "source_file_path": "/mnt/data/happenings.html"
+          }
+        ],
+        "audio": []
+      },
+      "source_summary": {
+        "file_paths": [
+          "/mnt/data/happennings.md",
+          "/mnt/data/happenings.html"
+        ],
+        "internal_paths": {
+          "html_page_path": "happenings.html",
+          "attached_html_file_path": "/mnt/data/happenings.html",
+          "site_markdown_path": "assets/content/happennings.md",
+          "attached_markdown_file_path": "/mnt/data/happennings.md"
+        },
+        "notes": []
+      }
+    }
+  ],
+  "schedule": {
+    "meta": {
+      "note": "Sample schedule derived from program research; verify dates and tickets at source sites.",
+      "referenceMd": "assets/content/happennings.md"
+    },
+    "entries": [
+      {
+        "id": "cvfm-saturday",
+        "entry_type": "recurring_pattern",
+        "timeline_kind": "recurring_pattern",
+        "canonical_item_id": "cvcc-happening-0001",
+        "canonical_subitem_title": null,
+        "title": "Cuyahoga Valley Farmers Market",
+        "category": "Market",
+        "location": "Howe Meadow (May–Oct) · Old Trail School (Nov–Apr)",
+        "summary": "Producer-only Saturday market, rain or shine. Seasonal venue shift between Peninsula and Akron.",
+        "url": "https://cvfm.org/",
+        "start_date": "2026-03-22",
+        "end_date": "2027-03-21",
+        "time_text": "9:00am–12:00pm",
+        "recurrence": {
+          "weekday": 6,
+          "starts_on": "2026-03-22",
+          "until": "2027-03-21"
+        }
+      },
+      {
+        "id": "maple-2026-03-22",
+        "entry_type": "scheduled_event",
+        "timeline_kind": "dated_point",
+        "canonical_item_id": "cvcc-happening-0005",
+        "canonical_subitem_title": null,
+        "title": "Maple Sugar Festival & Pancake Breakfast",
+        "category": "Hale Farm & Village",
+        "location": "Hale Farm & Village, Bath",
+        "summary": "Maple sugaring, period crafts; pancake breakfast ticket options.",
+        "url": "https://www.wrhs.org/plan-visit/places-to-visit/hale-farm-village/things-to-do/signature-events",
+        "start_date": "2026-03-22",
+        "end_date": "2026-03-22",
+        "time_text": "10:00am–3:00pm"
+      },
+      {
+        "id": "maple-2026-03-28",
+        "entry_type": "scheduled_event",
+        "timeline_kind": "dated_span",
+        "canonical_item_id": "cvcc-happening-0005",
+        "canonical_subitem_title": null,
+        "title": "Maple Sugar Festival & Pancake Breakfast",
+        "category": "Hale Farm & Village",
+        "location": "Hale Farm & Village, Bath",
+        "summary": "Weekend dates for the spring maple tradition.",
+        "url": "https://www.wrhs.org/plan-visit/places-to-visit/hale-farm-village/things-to-do/signature-events",
+        "start_date": "2026-03-28",
+        "end_date": "2026-03-29",
+        "time_text": "10:00am–3:00pm"
+      },
+      {
+        "id": "cvsr-scenic-2026-03-29",
+        "entry_type": "scheduled_event",
+        "timeline_kind": "dated_point",
+        "canonical_item_id": "cvcc-happening-0014",
+        "canonical_subitem_title": null,
+        "title": "CVSR — National Park Scenic",
+        "category": "Railroad",
+        "location": "Cuyahoga Valley Scenic Railroad",
+        "summary": "Flagship park excursion; multiple stations and departures—see official ticket calendar.",
+        "url": "https://www.cvsr.org/book-tickets/calendar",
+        "start_date": "2026-03-29",
+        "end_date": "2026-03-29",
+        "time_text": "Example: 10:00am Peninsula Depot"
+      },
+      {
+        "id": "nature-rx-2026-04-22",
+        "entry_type": "scheduled_event",
+        "timeline_kind": "dated_point",
+        "canonical_item_id": "cvcc-happening-0018",
+        "canonical_subitem_title": null,
+        "title": "Nature Rx | Reciprocity through Volunteerism",
+        "category": "Stewardship",
+        "location": "CVNP (details to registrants)",
+        "summary": "Earth Day–themed stewardship and guided reflection; registration via Eventbrite.",
+        "url": "https://www.conservancyforcvnp.org/calendar/",
+        "start_date": "2026-04-22",
+        "end_date": "2026-04-22",
+        "time_text": "5:30pm–7:30pm"
+      },
+      {
+        "id": "cvsr-critter-2026-04-18",
+        "entry_type": "scheduled_event",
+        "timeline_kind": "dated_point",
+        "canonical_item_id": "cvcc-happening-0015",
+        "canonical_subitem_title": "Create‑A‑Critter",
+        "title": "CVSR — Create-A-Critter (Family Fun Loop)",
+        "category": "Railroad",
+        "location": "Cuyahoga Valley Scenic Railroad",
+        "summary": "Family-oriented excursion series; pricing varies by train.",
+        "url": "https://www.cvsr.org/book-tickets/calendar",
+        "start_date": "2026-04-18",
+        "end_date": "2026-04-18",
+        "time_text": "See ticket calendar"
+      },
+      {
+        "id": "cvsr-western-2026-04-24",
+        "entry_type": "scheduled_event",
+        "timeline_kind": "dated_point",
+        "canonical_item_id": "cvcc-happening-0015",
+        "canonical_subitem_title": "Western Locomotive",
+        "title": "CVSR — Western Locomotive (Themed)",
+        "category": "Railroad",
+        "location": "Cuyahoga Valley Scenic Railroad",
+        "summary": "Themed evening ride; confirm schedule on CVSR calendar.",
+        "url": "https://www.cvsr.org/book-tickets/calendar",
+        "start_date": "2026-04-24",
+        "end_date": "2026-04-24",
+        "time_text": "Evening departure"
+      },
+      {
+        "id": "photo-hike-2026-05-09",
+        "entry_type": "scheduled_event",
+        "timeline_kind": "dated_point",
+        "canonical_item_id": "cvcc-happening-0019",
+        "canonical_subitem_title": "Photo Exploration Hike: Frazee House (Sagamore Creek)",
+        "title": "Photo Exploration Hike — Frazee House",
+        "category": "Stewardship",
+        "location": "7733 Canal Road, Valley View",
+        "summary": "Guided hike with your own camera; under 2 mi, some hills.",
+        "url": "https://www.conservancyforcvnp.org/calendar/",
+        "start_date": "2026-05-09",
+        "end_date": "2026-05-09",
+        "time_text": "10:00am–12:00pm"
+      },
+      {
+        "id": "photo-society-2026-05-20",
+        "entry_type": "scheduled_event",
+        "timeline_kind": "dated_point",
+        "canonical_item_id": "cvcc-happening-0019",
+        "canonical_subitem_title": "Cuyahoga Valley Photo Society | Juxtapositions…",
+        "title": "Cuyahoga Valley Photo Society — Juxtapositions",
+        "category": "Stewardship",
+        "location": "Hines Hill Conference Center, Peninsula",
+        "summary": "Evening program; ticketing via Eventbrite.",
+        "url": "https://www.conservancyforcvnp.org/calendar/",
+        "start_date": "2026-05-20",
+        "end_date": "2026-05-20",
+        "time_text": "7:00pm–9:00pm"
+      },
+      {
+        "id": "summer-market-opens",
+        "entry_type": "scheduled_event",
+        "timeline_kind": "dated_point",
+        "canonical_item_id": "cvcc-happening-0001",
+        "canonical_subitem_title": "CVFM — Summer season opens",
+        "title": "CVFM — Summer season opens (Howe Meadow)",
+        "category": "Market",
+        "location": "Howe Meadow, Peninsula",
+        "summary": "Outdoor market season through late October.",
+        "url": "https://cvfm.org/",
+        "start_date": "2026-05-03",
+        "end_date": "2026-05-03",
+        "time_text": "9:00am–12:00pm"
+      },
+      {
+        "id": "elevation-2026",
+        "entry_type": "scheduled_event",
+        "timeline_kind": "dated_point",
+        "canonical_item_id": "cvcc-happening-0020",
+        "canonical_subitem_title": "Elevation",
+        "title": "Elevation — Conservancy fundraiser",
+        "category": "Fundraiser",
+        "location": "Howe Meadow",
+        "summary": "Annual benefit supporting Trails Now Fund; rain or shine.",
+        "url": "https://www.conservancyforcvnp.org/donate/fundraising-events/",
+        "start_date": "2026-06-12",
+        "end_date": "2026-06-12",
+        "time_text": "6:30pm–11:00pm"
+      },
+      {
+        "id": "topography-2026",
+        "entry_type": "scheduled_event",
+        "timeline_kind": "dated_point",
+        "canonical_item_id": "cvcc-happening-0020",
+        "canonical_subitem_title": "Topography",
+        "title": "Topography — Conservancy dinner",
+        "category": "Fundraiser",
+        "location": "Howe Meadow",
+        "summary": "Annual dinner fundraiser; valet noted for past editions.",
+        "url": "https://www.conservancyforcvnp.org/donate/fundraising-events/",
+        "start_date": "2026-06-13",
+        "end_date": "2026-06-13",
+        "time_text": "Evening (arrival & dinner)"
+      },
+      {
+        "id": "sow-grow-2026",
+        "entry_type": "scheduled_event",
+        "timeline_kind": "dated_span",
+        "canonical_item_id": "cvcc-happening-0006",
+        "canonical_subitem_title": null,
+        "title": "Sow & Grow Festival & Plant Sale",
+        "category": "Hale Farm & Village",
+        "location": "Hale Farm & Village, Bath",
+        "summary": "Farm demonstrations, plant sale, partner exhibits.",
+        "url": "https://www.wrhs.org/do-see/events",
+        "start_date": "2026-06-13",
+        "end_date": "2026-06-14",
+        "time_text": "10:00am–4:00pm"
+      },
+      {
+        "id": "juneteenth-2026",
+        "entry_type": "scheduled_event",
+        "timeline_kind": "dated_span",
+        "canonical_item_id": "cvcc-happening-0007",
+        "canonical_subitem_title": null,
+        "title": "Juneteenth Celebration",
+        "category": "Hale Farm & Village",
+        "location": "Hale Farm & Village, Bath",
+        "summary": "Multi-day commemoration and interpretive programming.",
+        "url": "https://www.wrhs.org/do-see/events",
+        "start_date": "2026-06-17",
+        "end_date": "2026-06-20",
+        "time_text": "10:00am–4:00pm"
+      },
+      {
+        "id": "artfest-june-2026",
+        "entry_type": "scheduled_event",
+        "timeline_kind": "dated_span",
+        "canonical_item_id": "cvcc-happening-0013",
+        "canonical_subitem_title": "Boston Mills Artfest — June show",
+        "title": "Boston Mills Artfest — June show",
+        "category": "Arts",
+        "location": "Boston Mills Ski Resort, Peninsula",
+        "summary": "Fine art festival weekend; verify public hours and admission.",
+        "url": "https://www.bostonmillsartfest.com/",
+        "start_date": "2026-06-26",
+        "end_date": "2026-06-28",
+        "time_text": "Festival hours TBA"
+      },
+      {
+        "id": "artfest-july-2026",
+        "entry_type": "scheduled_event",
+        "timeline_kind": "dated_span",
+        "canonical_item_id": "cvcc-happening-0013",
+        "canonical_subitem_title": "Boston Mills Artfest — July show",
+        "title": "Boston Mills Artfest — July show",
+        "category": "Arts",
+        "location": "Boston Mills Ski Resort, Peninsula",
+        "summary": "Second summer weekend of the juried art festival.",
+        "url": "https://www.bostonmillsartfest.com/",
+        "start_date": "2026-07-03",
+        "end_date": "2026-07-05",
+        "time_text": "Festival hours TBA"
+      },
+      {
+        "id": "blossom-season-2026",
+        "entry_type": "scheduled_event",
+        "timeline_kind": "dated_span",
+        "canonical_item_id": "cvcc-happening-0012",
+        "canonical_subitem_title": null,
+        "title": "Blossom Music Festival (season)",
+        "category": "Music",
+        "location": "Blossom Music Center, Cuyahoga Falls",
+        "summary": "Cleveland Orchestra summer home; many dated performances—see official calendar.",
+        "url": "https://www.clevelandorchestra.com/tickets/calendar/2026-blossom-season",
+        "start_date": "2026-07-03",
+        "end_date": "2026-09-06",
+        "time_text": "Varies by concert"
+      },
+      {
+        "id": "made-in-ohio-2026",
+        "entry_type": "scheduled_event",
+        "timeline_kind": "dated_span",
+        "canonical_item_id": "cvcc-happening-0008",
+        "canonical_subitem_title": null,
+        "title": "Made in Ohio Art & Craft Festival",
+        "category": "Hale Farm & Village",
+        "location": "Hale Farm & Village area",
+        "summary": "Labor Day weekend craft festival; published gate pricing on festival site.",
+        "url": "https://www.madeinohioartandcraftfestival.com/",
+        "start_date": "2026-09-04",
+        "end_date": "2026-09-06",
+        "time_text": "10:00am–5:00pm"
+      },
+      {
+        "id": "harvest-1-2026",
+        "entry_type": "scheduled_event",
+        "timeline_kind": "dated_span",
+        "canonical_item_id": "cvcc-happening-0009",
+        "canonical_subitem_title": "Harvest Festival (weekend 1)",
+        "title": "Harvest Festival (weekend 1)",
+        "category": "Hale Farm & Village",
+        "location": "Hale Farm & Village, Bath",
+        "summary": "Fall seasonal programming and demonstrations.",
+        "url": "https://www.wrhs.org/do-see/events",
+        "start_date": "2026-10-03",
+        "end_date": "2026-10-04",
+        "time_text": "10:00am–4:00pm"
+      },
+      {
+        "id": "harvest-2-2026",
+        "entry_type": "scheduled_event",
+        "timeline_kind": "dated_span",
+        "canonical_item_id": "cvcc-happening-0009",
+        "canonical_subitem_title": "Harvest Festival (weekend 2)",
+        "title": "Harvest Festival (weekend 2)",
+        "category": "Hale Farm & Village",
+        "location": "Hale Farm & Village, Bath",
+        "summary": "Second fall festival weekend.",
+        "url": "https://www.wrhs.org/do-see/events",
+        "start_date": "2026-10-10",
+        "end_date": "2026-10-11",
+        "time_text": "10:00am–4:00pm"
+      },
+      {
+        "id": "winter-market-opens",
+        "entry_type": "scheduled_event",
+        "timeline_kind": "dated_point",
+        "canonical_item_id": "cvcc-happening-0001",
+        "canonical_subitem_title": "CVFM — Winter season opens",
+        "title": "CVFM — Winter season opens (Old Trail School)",
+        "category": "Market",
+        "location": "Old Trail School, Akron",
+        "summary": "Indoor Saturday market season.",
+        "url": "https://cvfm.org/",
+        "start_date": "2026-11-01",
+        "end_date": "2026-11-01",
+        "time_text": "9:00am–12:00pm"
+      },
+      {
+        "id": "holiday-market-2026",
+        "entry_type": "scheduled_event",
+        "timeline_kind": "dated_point",
+        "canonical_item_id": "cvcc-happening-0010",
+        "canonical_subitem_title": null,
+        "title": "Holiday Art & Craft Market",
+        "category": "Hale Farm & Village",
+        "location": "Hale Farm Gatehouse / MarketPlace",
+        "summary": "Free admission for shoppers; vendor-focused application on file for 2026.",
+        "url": "https://www.wrhs.org/do-see/events",
+        "start_date": "2026-11-22",
+        "end_date": "2026-11-22",
+        "time_text": "12:00pm–4:00pm"
+      },
+      {
+        "id": "lantern-2026-12-26",
+        "entry_type": "scheduled_event",
+        "timeline_kind": "dated_point",
+        "canonical_item_id": "cvcc-happening-0011",
+        "canonical_subitem_title": "Holiday Lantern Tours (example night)",
+        "title": "Holiday Lantern Tours",
+        "category": "Hale Farm & Village",
+        "location": "Hale Farm & Village, Bath",
+        "summary": "Lantern-lit village walks; uneven terrain—see accessibility notes on WRHS.",
+        "url": "https://www.wrhs.org/do-see/events",
+        "start_date": "2026-12-26",
+        "end_date": "2026-12-26",
+        "time_text": "4:40pm–9:00pm (tours every 20 min)"
+      }
+    ]
+  },
+  "indexes": {
+    "item_ids_by_section": {
+      "recurring-food-and-market-culture-around-cuyahoga-valley-farmers-market-peninsula-oh-us": [
+        "cvcc-happening-0001",
+        "cvcc-happening-0002",
+        "cvcc-happening-0003"
+      ],
+      "annual-festivals-and-venue-series-within-the-parks-partner-network": [
+        "cvcc-happening-0004",
+        "cvcc-happening-0005",
+        "cvcc-happening-0006",
+        "cvcc-happening-0007",
+        "cvcc-happening-0008",
+        "cvcc-happening-0009",
+        "cvcc-happening-0010",
+        "cvcc-happening-0011",
+        "cvcc-happening-0012",
+        "cvcc-happening-0013"
+      ],
+      "cuyahoga-valley-scenic-railroad-peninsula-oh-us-excursions-and-themed-rides": [
+        "cvcc-happening-0014",
+        "cvcc-happening-0015"
+      ],
+      "park-programs-volunteer-stewardship-and-conservancy-led-public-programming": [
+        "cvcc-happening-0016",
+        "cvcc-happening-0017",
+        "cvcc-happening-0018",
+        "cvcc-happening-0019",
+        "cvcc-happening-0020"
+      ],
+      "ongoing-initiatives-and-programs-to-track": [
+        "cvcc-happening-0021",
+        "cvcc-happening-0022",
+        "cvcc-happening-0023"
+      ]
+    },
+    "item_ids_by_type": {
+      "ongoing_initiative": [
+        "cvcc-happening-0020",
+        "cvcc-happening-0022",
+        "cvcc-happening-0023"
+      ],
+      "ongoing_program": [
+        "cvcc-happening-0016",
+        "cvcc-happening-0017",
+        "cvcc-happening-0018"
+      ],
+      "program_series": [
+        "cvcc-happening-0003",
+        "cvcc-happening-0004",
+        "cvcc-happening-0015",
+        "cvcc-happening-0019"
+      ],
+      "recurring_event": [
+        "cvcc-happening-0001",
+        "cvcc-happening-0002",
+        "cvcc-happening-0005",
+        "cvcc-happening-0006",
+        "cvcc-happening-0007",
+        "cvcc-happening-0008",
+        "cvcc-happening-0009",
+        "cvcc-happening-0010",
+        "cvcc-happening-0011",
+        "cvcc-happening-0012",
+        "cvcc-happening-0013",
+        "cvcc-happening-0014",
+        "cvcc-happening-0021"
+      ]
+    },
+    "item_ids_by_time_model": {
+      "dated_point": [
+        "cvcc-happening-0010",
+        "cvcc-happening-0011",
+        "cvcc-happening-0014"
+      ],
+      "dated_span": [
+        "cvcc-happening-0006",
+        "cvcc-happening-0007",
+        "cvcc-happening-0008",
+        "cvcc-happening-0009",
+        "cvcc-happening-0012",
+        "cvcc-happening-0013"
+      ],
+      "descriptive": [
+        "cvcc-happening-0002",
+        "cvcc-happening-0021"
+      ],
+      "mixed": [
+        "cvcc-happening-0001",
+        "cvcc-happening-0005"
+      ],
+      "ongoing": [
+        "cvcc-happening-0016",
+        "cvcc-happening-0017",
+        "cvcc-happening-0018",
+        "cvcc-happening-0020",
+        "cvcc-happening-0022",
+        "cvcc-happening-0023"
+      ],
+      "series": [
+        "cvcc-happening-0003",
+        "cvcc-happening-0004",
+        "cvcc-happening-0015",
+        "cvcc-happening-0019"
+      ]
+    },
+    "schedule_entry_ids_by_item_id": {
+      "cvcc-happening-0001": [
+        "cvfm-saturday",
+        "summer-market-opens",
+        "winter-market-opens"
+      ],
+      "cvcc-happening-0005": [
+        "maple-2026-03-22",
+        "maple-2026-03-28"
+      ],
+      "cvcc-happening-0006": [
+        "sow-grow-2026"
+      ],
+      "cvcc-happening-0007": [
+        "juneteenth-2026"
+      ],
+      "cvcc-happening-0008": [
+        "made-in-ohio-2026"
+      ],
+      "cvcc-happening-0009": [
+        "harvest-1-2026",
+        "harvest-2-2026"
+      ],
+      "cvcc-happening-0010": [
+        "holiday-market-2026"
+      ],
+      "cvcc-happening-0011": [
+        "lantern-2026-12-26"
+      ],
+      "cvcc-happening-0012": [
+        "blossom-season-2026"
+      ],
+      "cvcc-happening-0013": [
+        "artfest-june-2026",
+        "artfest-july-2026"
+      ],
+      "cvcc-happening-0014": [
+        "cvsr-scenic-2026-03-29"
+      ],
+      "cvcc-happening-0015": [
+        "cvsr-critter-2026-04-18",
+        "cvsr-western-2026-04-24"
+      ],
+      "cvcc-happening-0018": [
+        "nature-rx-2026-04-22"
+      ],
+      "cvcc-happening-0019": [
+        "photo-hike-2026-05-09",
+        "photo-society-2026-05-20"
+      ],
+      "cvcc-happening-0020": [
+        "elevation-2026",
+        "topography-2026"
+      ]
+    }
+  }
+}

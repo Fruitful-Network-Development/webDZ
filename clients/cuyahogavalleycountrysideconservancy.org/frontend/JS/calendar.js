@@ -1,5 +1,5 @@
 (() => {
-  const DATA_URL = "assets/content/events.json";
+  const DATA_URL = "assets/docs/events.json";
 
   function parseYMD(s) {
     const [y, m, d] = String(s).split("-").map(Number);
@@ -263,7 +263,7 @@
     const upcoming = buildUpcomingList(discrete, recurring, todayStr, 24);
     upcomingEl.innerHTML = upcoming.length
       ? upcoming.map((i) => buildCardMarkup(i)).join("")
-      : '<p class="program-calendar__empty">No upcoming listings in the dataset. Check back or use the official links in <a href="assets/content/happennings.md">happennings.md</a>.</p>';
+      : '<p class="program-calendar__empty">No upcoming listings in the dataset. Check back or use the official links in <a href="assets/docs/research/happennings.md">happennings.md</a>.</p>';
 
     const now = new Date();
     let viewYear = now.getFullYear();
