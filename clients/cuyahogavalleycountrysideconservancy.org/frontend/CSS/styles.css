@@ -1977,6 +1977,198 @@ textarea {
   font-size: var(--fs-sm);
 }
 
+/* Data-driven board directory */
+.board-lead {
+  max-width: 76ch;
+}
+
+.board-featured {
+  margin: var(--sp-8) 0 var(--sp-6);
+}
+
+.board-grid {
+  margin: var(--sp-8) 0;
+}
+
+.board-grid__cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: var(--sp-5);
+}
+
+.board-card {
+  border: 1px solid color-mix(in srgb, var(--c-film) 20%, transparent);
+  background: color-mix(in srgb, var(--c-paper) 90%, white);
+  box-shadow: 2px 2px 0 color-mix(in srgb, var(--c-bark) 45%, transparent);
+  padding: var(--sp-4);
+  display: grid;
+  gap: var(--sp-3);
+}
+
+.board-card--featured {
+  border-color: color-mix(in srgb, var(--c-forest) 45%, var(--c-film));
+  box-shadow: 3px 3px 0 color-mix(in srgb, var(--c-forest) 32%, transparent);
+}
+
+.board-card__head {
+  display: grid;
+  grid-template-columns: minmax(0, 128px) minmax(0, 1fr);
+  gap: var(--sp-3);
+  align-items: center;
+}
+
+.board-card__portrait {
+  margin: 0;
+  width: 100%;
+  aspect-ratio: 1;
+  border: 1px solid color-mix(in srgb, var(--c-film) 22%, transparent);
+  background: color-mix(in srgb, var(--c-mist) 54%, var(--c-paper));
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.board-card__photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.board-card__portrait--symbolic {
+  background: linear-gradient(
+    160deg,
+    color-mix(in srgb, var(--c-mist) 55%, var(--c-paper)),
+    color-mix(in srgb, var(--c-paper) 76%, var(--c-beige))
+  );
+}
+
+.board-card__placeholder-icon {
+  width: 52%;
+  height: auto;
+  opacity: 0.76;
+}
+
+.board-card__identity h3 {
+  margin: 0;
+  font-family: var(--font-editorial);
+  font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+  color: var(--c-ink);
+}
+
+.board-card__role {
+  margin: 0 0 var(--sp-1);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--c-forest);
+  font-family: var(--font-mono);
+  display: flex;
+  gap: 0.45rem;
+  align-items: center;
+}
+
+.board-card__chair-mark {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  padding: 0.1rem 0.45rem;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--c-forest) 48%, transparent);
+  background: color-mix(in srgb, var(--c-paper) 76%, var(--c-sage));
+  color: color-mix(in srgb, var(--c-forest) 80%, var(--c-bark));
+  font-size: 10px;
+  letter-spacing: 0.08em;
+}
+
+.board-card__summary {
+  margin: 0;
+  font-size: var(--fs-md);
+  line-height: var(--lh-relaxed);
+  color: var(--c-bark);
+}
+
+.board-card__details {
+  border-top: 1px solid color-mix(in srgb, var(--c-film) 16%, transparent);
+  padding-top: var(--sp-2);
+}
+
+.board-card__details summary {
+  cursor: pointer;
+  font-family: var(--font-sans);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--c-olive);
+}
+
+.board-card__details-body {
+  margin-top: var(--sp-2);
+  display: grid;
+  gap: var(--sp-2);
+}
+
+.board-card__details-body p {
+  margin: 0;
+  color: var(--c-bark);
+  line-height: var(--lh-relaxed);
+}
+
+.board-card__meta {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+}
+
+.board-card__meta a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: var(--fs-xs);
+  color: var(--c-ink);
+  border-bottom-color: color-mix(in srgb, var(--c-bark) 30%, transparent);
+}
+
+.board-card__meta img {
+  width: 0.9rem;
+  height: 0.9rem;
+  opacity: 0.78;
+}
+
+.board-card__tags {
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.board-card__tags span {
+  font-size: 10px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border: 1px solid color-mix(in srgb, var(--c-film) 22%, transparent);
+  padding: 0.1rem 0.34rem;
+  color: var(--c-olive);
+}
+
+.board-closing-note {
+  margin-top: var(--sp-8);
+}
+
+@media (max-width: 760px) {
+  .board-card__head {
+    grid-template-columns: 1fr;
+  }
+
+  .board-card__portrait {
+    max-width: 180px;
+  }
+}
+
 /* Collections / finding-aid style lists */
 .collection-block {
   margin: var(--sp-10) 0;

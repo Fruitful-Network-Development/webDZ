@@ -28,111 +28,18 @@
   </header>
 
   <main class="page page--archive">
-    <header class="home-lead">
+    <header class="home-lead board-lead">
       <p class="home-lead__eyebrow">Governance</p>
       <h1 class="headline-site">Board of directors</h1>
-      <p class="home-lead__deck">Current board members of the Cuyahoga Valley Countryside Conservancy. Portraits are shown when available; otherwise the natural-entity mark stands in as a neutral placeholder.</p>
+      <p class="home-lead__deck">The board stewards mission, continuity, and public trust for Countryside Conservancy. Profiles below are loaded from the current board registry and presented as public record cards.</p>
     </header>
 
-    <div class="people-grid people-grid--board">
-      <article class="person-record person-record--board">
-        <div class="person-record__media">
-          <figure class="person-record__portrait">
-            <img class="person-record__photo" src="assets/image/people/daniel_greenfield.png" alt="Portrait of Daniel Greenfield" width="400" height="400" loading="lazy" decoding="async" />
-          </figure>
-        </div>
-        <div>
-          <h2 class="person-record__name">Daniel Greenfield</h2>
-          <p class="person-record__role">Board member</p>
-        </div>
-      </article>
+    <section id="board-featured" class="board-featured" aria-live="polite"></section>
+    <section id="board-grid" class="board-grid" aria-live="polite">
+      <p class="timeline-intro">Loading board records…</p>
+    </section>
 
-      <article class="person-record person-record--board">
-        <div class="person-record__media">
-          <figure class="person-record__portrait">
-            <img class="person-record__photo" src="assets/image/people/elizabeth_blake.png" alt="Portrait of Elizabeth Blake" width="400" height="400" loading="lazy" decoding="async" />
-          </figure>
-        </div>
-        <div>
-          <h2 class="person-record__name">Elizabeth Blake</h2>
-          <p class="person-record__role">Board member</p>
-        </div>
-      </article>
-
-      <article class="person-record person-record--board">
-        <div class="person-record__media">
-          <div class="person-record__portrait person-record__portrait--placeholder" aria-hidden="true">
-            <img class="person-record__placeholder-icon" src="assets/icon/icon-profile.svg" width="80" height="80" alt="" />
-          </div>
-        </div>
-        <div>
-          <h2 class="person-record__name">Jennifer Gray</h2>
-          <p class="person-record__role">Board member</p>
-        </div>
-      </article>
-
-      <article class="person-record person-record--board">
-        <div class="person-record__media">
-          <figure class="person-record__portrait">
-            <img class="person-record__photo" src="assets/image/people/jennifer_till.png" alt="Portrait of Jennifer Till" width="400" height="400" loading="lazy" decoding="async" />
-          </figure>
-        </div>
-        <div>
-          <h2 class="person-record__name">Jennifer Till</h2>
-          <p class="person-record__role">Board member</p>
-        </div>
-      </article>
-
-      <article class="person-record person-record--board">
-        <div class="person-record__media">
-          <figure class="person-record__portrait">
-            <img class="person-record__photo" src="assets/image/people/kalyani_sapkal.png" alt="Portrait of Kalyani Sapkal" width="400" height="400" loading="lazy" decoding="async" />
-          </figure>
-        </div>
-        <div>
-          <h2 class="person-record__name">Kalyani Sapkal</h2>
-          <p class="person-record__role">Board member</p>
-        </div>
-      </article>
-
-      <article class="person-record person-record--board">
-        <div class="person-record__media">
-          <figure class="person-record__portrait">
-            <img class="person-record__photo" src="assets/image/people/marilyn_wotowiec.png" alt="Portrait of Marilyn Wotowiec" width="400" height="400" loading="lazy" decoding="async" />
-          </figure>
-        </div>
-        <div>
-          <h2 class="person-record__name">Marilyn Wotowiec</h2>
-          <p class="person-record__role">Board member</p>
-        </div>
-      </article>
-
-      <article class="person-record person-record--board">
-        <div class="person-record__media">
-          <figure class="person-record__portrait">
-            <img class="person-record__photo" src="assets/image/people/sara_steele.png" alt="Portrait of Sara Steele" width="400" height="400" loading="lazy" decoding="async" />
-          </figure>
-        </div>
-        <div>
-          <h2 class="person-record__name">Sara Steele</h2>
-          <p class="person-record__role">Board member</p>
-        </div>
-      </article>
-
-      <article class="person-record person-record--board">
-        <div class="person-record__media">
-          <div class="person-record__portrait person-record__portrait--placeholder" aria-hidden="true">
-            <img class="person-record__placeholder-icon" src="assets/icon/icon-profile.svg" width="80" height="80" alt="" />
-          </div>
-        </div>
-        <div>
-          <h2 class="person-record__name">Susan Schmidt</h2>
-          <p class="person-record__role">Board member</p>
-        </div>
-      </article>
-    </div>
-
-    <p class="timeline-intro">Farm profiles, timelines, and oral history voices live on <a href="the_farms.html">Working farms</a> and <a href="history.html">History</a>.</p>
+    <p class="timeline-intro board-closing-note">Farm profiles, timelines, and oral-history voices continue on <a href="the_farms.html">Working farms</a> and <a href="history.html">History</a>.</p>
   </main>
 
   <footer class="footer footer--lean">
@@ -173,5 +80,246 @@
       </a>
     </div>
   </footer>
+
+  <script>
+    (function () {
+      var featuredHost = document.getElementById("board-featured");
+      var gridHost = document.getElementById("board-grid");
+      var DATA_URL = "assets/docs/board_profiles.json";
+
+      var SOCIAL_META = {
+        email: { label: "Email", icon: "assets/icon/icon-mail.svg" },
+        website: { label: "Website", icon: "assets/icon/icon-www.svg" },
+        facebook: { label: "Facebook", icon: "assets/icon/logos/logo-facebook.svg" },
+        instagram: { label: "Instagram", icon: "assets/icon/logos/logo-instagram.svg" },
+        linkedin: { label: "LinkedIn", icon: "assets/icon/logos/logo-linkedin.svg" }
+      };
+
+      function text(value) {
+        return String(value == null ? "" : value).trim();
+      }
+
+      function esc(value) {
+        return String(value == null ? "" : value)
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;")
+          .replace(/'/g, "&#39;");
+      }
+
+      function toList(value) {
+        return Array.isArray(value) ? value : [];
+      }
+
+      function hasTag(profile, tag) {
+        var tags = toList(profile && profile.tags).map(function (item) { return text(item).toLowerCase(); });
+        return tags.indexOf(text(tag).toLowerCase()) !== -1;
+      }
+
+      function roleFor(profile) {
+        return hasTag(profile, "board_chair") ? "Board chair" : "Board member";
+      }
+
+      function isPlaceholderImage(pathToken) {
+        var token = text(pathToken).toLowerCase();
+        return token.indexOf("assets/icon/icon-profile.svg") !== -1;
+      }
+
+      function socialPairs(profile) {
+        var items = [];
+        toList(profile && profile.socials).forEach(function (row) {
+          if (!row || typeof row !== "object") return;
+          Object.keys(row).forEach(function (key) {
+            var value = text(row[key]);
+            if (!value) return;
+            items.push({ key: text(key).toLowerCase(), value: value });
+          });
+        });
+        return items;
+      }
+
+      function normalizeExternalUrl(key, value) {
+        var token = text(value);
+        if (!token) return "";
+        if (key === "instagram" && token.indexOf("http") !== 0) {
+          return "https://instagram.com/" + token.replace(/^@+/, "");
+        }
+        if (key === "facebook" && token.indexOf("http") !== 0) {
+          return "https://" + token.replace(/^\/+/, "");
+        }
+        if (key === "linkedin" && token.indexOf("http") !== 0) {
+          return "https://" + token.replace(/^\/+/, "");
+        }
+        if (key === "website" && token.indexOf("http") !== 0) {
+          return "https://" + token.replace(/^\/+/, "");
+        }
+        return token;
+      }
+
+      function hostLabel(url) {
+        try {
+          var parsed = new URL(url);
+          return parsed.hostname.replace(/^www\./, "");
+        } catch (_) {
+          return text(url);
+        }
+      }
+
+      function summaryBio(profile) {
+        var paragraphs = toList(profile && profile.bio).map(text).filter(Boolean);
+        if (!paragraphs.length) return "";
+        var first = paragraphs[0];
+        if (first.length > 240) {
+          return first.slice(0, 237).replace(/\s+\S*$/, "") + "...";
+        }
+        return first;
+      }
+
+      function detailsBio(profile) {
+        return toList(profile && profile.bio).map(text).filter(Boolean);
+      }
+
+      function renderMedia(profile) {
+        var name = text(profile && profile.name) || "Board member";
+        var image = text(profile && profile.image);
+        if (!image || isPlaceholderImage(image)) {
+          return (
+            '<div class="board-card__portrait board-card__portrait--symbolic" role="img" aria-label="Symbolic portrait marker for ' +
+            esc(name) +
+            '">' +
+            '<img class="board-card__placeholder-icon" src="assets/icon/icon-profile.svg" alt="" aria-hidden="true" />' +
+            "</div>"
+          );
+        }
+        return (
+          '<figure class="board-card__portrait">' +
+          '<img class="board-card__photo" src="' + esc(image) + '" alt="Portrait of ' + esc(name) + '" loading="lazy" decoding="async" />' +
+          "</figure>"
+        );
+      }
+
+      function renderMeta(profile) {
+        var out = [];
+        var email = text(profile && profile.email);
+        if (email) {
+          out.push(
+            '<li><a href="mailto:' + esc(email) + '">' +
+            '<img src="' + esc(SOCIAL_META.email.icon) + '" alt="" aria-hidden="true" />' +
+            "<span>Email</span></a></li>"
+          );
+        }
+        socialPairs(profile).forEach(function (item) {
+          if (!item || !item.key || !SOCIAL_META[item.key]) return;
+          var href = normalizeExternalUrl(item.key, item.value);
+          if (!href) return;
+          out.push(
+            '<li><a href="' + esc(href) + '" target="_blank" rel="noopener noreferrer">' +
+            '<img src="' + esc(SOCIAL_META[item.key].icon) + '" alt="" aria-hidden="true" />' +
+            "<span>" + esc(item.key === "website" ? hostLabel(href) : SOCIAL_META[item.key].label) + "</span></a></li>"
+          );
+        });
+        if (!out.length) return "";
+        return '<ul class="board-card__meta">' + out.join("") + "</ul>";
+      }
+
+      function renderTags(profile) {
+        var tags = toList(profile && profile.tags).map(text).filter(Boolean).filter(function (tag) {
+          return text(tag).toLowerCase() !== "board_chair";
+        });
+        if (!tags.length) return "";
+        return (
+          '<p class="board-card__tags">' +
+          tags.slice(0, 4).map(function (tag) { return '<span>' + esc(tag.replace(/_/g, " ")) + "</span>"; }).join("") +
+          "</p>"
+        );
+      }
+
+      function renderBioDetail(profile, idToken) {
+        var lines = detailsBio(profile);
+        if (lines.length <= 1) return "";
+        var detailId = "board-bio-" + idToken;
+        var body = lines.slice(1).map(function (line) { return "<p>" + esc(line) + "</p>"; }).join("");
+        return (
+          '<details class="board-card__details">' +
+          '<summary aria-controls="' + esc(detailId) + '">Read full profile</summary>' +
+          '<div id="' + esc(detailId) + '" class="board-card__details-body">' + body + "</div>" +
+          "</details>"
+        );
+      }
+
+      function renderCard(profile, index, opts) {
+        var idToken = "p" + String(index + 1);
+        var role = roleFor(profile);
+        var isChair = role === "Board chair";
+        var summary = summaryBio(profile);
+        var chairBadge = isChair ? '<span class="board-card__chair-mark">Chair</span>' : "";
+        var featuredClass = opts && opts.featured ? " board-card--featured" : "";
+        return (
+          '<article class="board-card' + featuredClass + '">' +
+          '<div class="board-card__head">' +
+          renderMedia(profile) +
+          '<div class="board-card__identity">' +
+          '<p class="board-card__role">' + chairBadge + esc(role) + "</p>" +
+          "<h3>" + esc(text(profile && profile.name) || "Board member") + "</h3>" +
+          "</div></div>" +
+          '<p class="board-card__summary">' + esc(summary || "Biography currently unavailable.") + "</p>" +
+          renderBioDetail(profile, idToken) +
+          renderMeta(profile) +
+          renderTags(profile) +
+          "</article>"
+        );
+      }
+
+      function sortProfiles(list) {
+        return list.slice().sort(function (a, b) {
+          var aChair = hasTag(a, "board_chair") ? 0 : 1;
+          var bChair = hasTag(b, "board_chair") ? 0 : 1;
+          if (aChair !== bChair) return aChair - bChair;
+          return text(a && a.name).localeCompare(text(b && b.name));
+        });
+      }
+
+      function renderPage(rows) {
+        if (!rows.length) {
+          featuredHost.innerHTML = "";
+          gridHost.innerHTML = '<p class="timeline-intro">No board records found in the current registry.</p>';
+          return;
+        }
+        var ordered = sortProfiles(rows);
+        var chair = ordered.find(function (item) { return hasTag(item, "board_chair"); }) || null;
+        var others = ordered.filter(function (item) { return item !== chair; });
+
+        if (chair) {
+          featuredHost.innerHTML =
+            '<h2 class="section-heading">Board leadership</h2>' +
+            renderCard(chair, 0, { featured: true });
+        } else {
+          featuredHost.innerHTML = "";
+        }
+
+        var cards = (chair ? others : ordered).map(function (row, idx) {
+          return renderCard(row, idx + 1, { featured: false });
+        });
+        gridHost.innerHTML =
+          '<h2 class="section-heading">Directors</h2>' +
+          '<div class="board-grid__cards">' + cards.join("") + "</div>";
+      }
+
+      fetch(DATA_URL, { cache: "no-store" })
+        .then(function (res) {
+          if (!res.ok) throw new Error("Failed to load board profile data.");
+          return res.json();
+        })
+        .then(function (payload) {
+          if (!Array.isArray(payload)) throw new Error("Board profile payload is not an array.");
+          renderPage(payload);
+        })
+        .catch(function () {
+          featuredHost.innerHTML = "";
+          gridHost.innerHTML = '<p class="timeline-intro">Board profiles are temporarily unavailable. Please check back shortly.</p>';
+        });
+    })();
+  </script>
 </body>
 </html>

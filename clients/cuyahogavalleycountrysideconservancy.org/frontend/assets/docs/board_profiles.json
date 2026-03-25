@@ -1,0 +1,110 @@
+[
+    {
+      "name": "Daniel Greenfield",
+      "image": "assets/image/people/daniel_greenfield.png",
+      "email": "dgreenfi67@hotmail.com",
+      "bio": [
+        "Daniel Greenfield is a farmer and environmental educator who operates Greenfield Berry Farm as part of the farm program in Cuyahoga Valley National Park.",
+        "At Greenfield Berry Farm, he grows pick-your-own blueberries, aronia berries, and sunflowers, along with vegetables, tulips, pussy willows, and honey, and he regularly welcomes visitors for tours and educational experiences.",
+        "Daniel brings a background in education and a longstanding commitment to connecting people with the land through farming, stewardship, and hands-on learning."
+      ],
+      "socials": [
+        { "website": "greenfieldberryfarm.com" },
+        { "facebook": "facebook.com/p/Greenfield-Berry-Farm-100064617136997" }
+      ],
+      "tags": []
+    },
+    {
+      "name": "Elizabeth Blake",
+      "image": "assets/image/people/elizabeth_blake.png",
+      "email": "elizabeth.blake@gmail.com",
+      "bio": [
+        "Elizabeth Blake brings a background in applied ethics, public policy, and higher education.",
+        "Her work spans teaching, research, writing, and editorial leadership, with a focus on the ethical foundations of social life, public institutions, and community resilience.",
+        "On the Countryside board, she contributes thoughtful perspective on stewardship, sustainability, and the conditions that help local communities thrive."
+      ],
+      "socials": [
+        { "website": "elizabethbrake.com" }
+      ],
+      "tags": []
+    },
+    {
+      "name": "Jennifer Gray",
+      "image": "assets/icon/icon-profile.svg",
+      "email": "jenniferloragray@gmail.com",
+      "bio": [
+        "Jennifer Gray brings a legal background shaped by work in court and public-service settings.",
+        "Her experience in advocacy, analysis, and public institutions supports Countryside’s commitment to strong governance and mission-driven service."
+      ],
+      "socials": [],
+      "tags": []
+    },
+    {
+      "name": "Jennifer Till",
+      "image": "assets/image/people/jennifer_till.png",
+      "email": "till.20017@gmail.com",
+      "bio": [
+        "Jennifer Till is co-owner of Till Family Farms, a family farm known for all-natural goods including candles, soaps, jams, caramels, eggs, and chicken.",
+        "With a focus on quality, craftsmanship, and regenerative farm values, she helps connect local families to food and farm-made products rooted in care for the land and animals.",
+        "She also shares that work through local markets, helping strengthen the region’s connection to small-scale agriculture."
+      ],
+      "socials": [
+        { "website": "tillff.square.site" },
+        { "instagram": "tillfamilyfarms" }
+      ],
+      "tags": []
+    },
+    {
+      "name": "Kalyani Sapkal",
+      "image": "assets/image/people/kalyani_sapkal.png",
+      "email": "kalyanisapkal.r@gmail.com",
+      "bio": [
+        "Kalyani Sapkal is the founder of Kalyani Consulting, where she supports nonprofit organizations with fund development, grant strategy, and long-term planning.",
+        "Her work is especially rooted in food, water, and community-impact sectors, and she brings extensive experience helping mission-driven organizations grow their capacity.",
+        "At Countryside, she contributes strategic perspective on fundraising, partnerships, and the long-term health of community-based food systems."
+      ],
+      "socials": [
+        { "website": "kalyani-consulting.com" },
+        { "linkedin": "linkedin.com/in/kalyani-sapkal-fundraiser" }
+      ],
+      "tags": []
+    },
+    {
+      "name": "Marilyn Wotowiec",
+      "image": "assets/image/people/marilyn_wotowiec.png",
+      "email": "mjmw677@gmail.com",
+      "bio": [
+        "Marilyn Wotowiec is a dedicated Countryside volunteer and advocate who has supported the organization’s mission through board service and community leadership.",
+        "She brings a deep commitment to local food, land stewardship, and the relationships that sustain a strong regional farm community."
+      ],
+      "socials": [],
+      "tags": ["board_chair"]
+    },
+    {
+      "name": "Sara Steele",
+      "image": "assets/image/people/sara_steele.png",
+      "email": "saralizsteele@gmail.com",
+      "bio": [
+        "Sara Steele is an artist whose work reflects a strong connection to creative expression, place, and community.",
+        "Through painting, visual storytelling, and public-facing creative projects, she brings an arts-based perspective to Countryside’s work of cultivating vibrant local culture around food and land."
+      ],
+      "socials": [
+        { "instagram": "saralizsteele" }
+      ],
+      "tags": []
+    },
+    {
+      "name": "Susan Schmidt",
+      "image": "assets/icon/icon-profile.svg",
+      "email": "susanschmidt@rocketmail.com",
+      "bio": [
+        "Susan Schmidt operates Schmidt Family Farms in Medina County, where she raises certified organic produce and other farm products with a strong focus on stewardship and quality.",
+        "Her work reflects deep practical knowledge in small-scale agriculture, and she has long participated in local markets that connect growers directly with the community.",
+        "Through Schmidt Family Farms, she helps make organic food and farm goods more accessible across the region."
+      ],
+      "socials": [
+        { "facebook": "facebook.com/schmidtfamilyfarms.org" }
+      ],
+      "tags": []
+    }
+  ]
