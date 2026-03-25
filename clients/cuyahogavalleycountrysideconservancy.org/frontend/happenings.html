@@ -6,6 +6,332 @@
   <title>Programs &amp; calendar | Cuyahoga Valley Countryside Conservancy</title>
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="stylesheet" href="CSS/styles.css">
+  <style>
+    :root {
+      --hap-bg: #f2efe7;
+      --hap-paper: #fbf8f1;
+      --hap-ink: #24231f;
+      --hap-soft-ink: #575246;
+      --hap-line: #d6cfbf;
+      --hap-focus: #4b6652;
+      --hap-radius: 16px;
+      --type-special-day: #6d5a3b;
+      --type-span: #4d6a54;
+      --type-weekly: #2f6168;
+      --type-seasonal: #7f5a67;
+      --type-series: #7a6b3a;
+      --type-ongoing-program: #4f6b60;
+      --type-ongoing-initiative: #708087;
+    }
+
+    .happenings-annual {
+      background: radial-gradient(circle at 20% 15%, #faf5ea 0%, var(--hap-bg) 52%, #e8e2d3 100%);
+      border: 1px solid var(--hap-line);
+      border-radius: calc(var(--hap-radius) + 8px);
+      padding: clamp(1.1rem, 2.4vw, 2rem);
+    }
+
+    .happenings-meta {
+      display: grid;
+      grid-template-columns: 1.1fr auto;
+      gap: 0.75rem;
+      align-items: end;
+      margin-bottom: 1rem;
+    }
+
+    .happenings-meta h2,
+    .happenings-meta h3 {
+      margin: 0;
+      font-family: "Times New Roman", Georgia, serif;
+      letter-spacing: 0.02em;
+      color: var(--hap-ink);
+    }
+
+    .happenings-meta p {
+      margin: 0.25rem 0 0;
+      color: var(--hap-soft-ink);
+      max-width: 66ch;
+    }
+
+    .happenings-upcoming-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(215px, 1fr));
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    .happenings-card {
+      background: rgba(255, 253, 249, 0.9);
+      border: 1px solid var(--hap-line);
+      border-left: 5px solid var(--type-span);
+      border-radius: 12px;
+      padding: 0.75rem 0.8rem;
+      color: var(--hap-ink);
+      cursor: pointer;
+      text-align: left;
+      transition: transform 0.12s ease, box-shadow 0.12s ease, border-color 0.12s ease;
+    }
+
+    .happenings-card:hover,
+    .happenings-card:focus-visible {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 18px rgba(37, 30, 18, 0.08);
+      border-color: #b9af99;
+      outline: none;
+    }
+
+    .happenings-card[aria-current="true"] {
+      border-color: var(--hap-focus);
+      box-shadow: 0 0 0 1px var(--hap-focus);
+    }
+
+    .happenings-card__title {
+      margin: 0;
+      font-size: 0.98rem;
+      line-height: 1.35;
+    }
+
+    .happenings-card__meta {
+      margin: 0.4rem 0 0;
+      font-size: 0.88rem;
+      color: var(--hap-soft-ink);
+      line-height: 1.35;
+    }
+
+    .happenings-chip {
+      display: inline-block;
+      margin-top: 0.55rem;
+      font-size: 0.72rem;
+      line-height: 1;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 0.32rem 0.52rem;
+      border: 1px solid currentColor;
+      border-radius: 999px;
+      color: inherit;
+      background: rgba(255, 255, 255, 0.45);
+    }
+
+    .happenings-main-layout {
+      display: grid;
+      grid-template-columns: minmax(360px, 1fr) minmax(300px, 0.78fr);
+      gap: 1rem;
+      align-items: start;
+      margin-top: 1rem;
+    }
+
+    .happenings-calendar-shell {
+      background: rgba(255, 252, 246, 0.7);
+      border: 1px solid var(--hap-line);
+      border-radius: var(--hap-radius);
+      padding: 0.8rem;
+    }
+
+    .happenings-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 0.7rem;
+    }
+
+    .happenings-control-btn {
+      appearance: none;
+      border: 1px solid #bdb39d;
+      background: #f8f2e5;
+      color: #3f3b33;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      padding: 0.3rem 0.65rem;
+      cursor: pointer;
+    }
+
+    .happenings-control-btn[aria-pressed="true"] {
+      border-color: var(--hap-focus);
+      color: var(--hap-focus);
+      background: #edf2eb;
+    }
+
+    .happenings-calendar-wrap {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    #happenings-calendar-svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .ring-grid {
+      stroke: #d9d1c0;
+      stroke-width: 1;
+      fill: none;
+    }
+
+    .month-spoke {
+      stroke: #ccc2ad;
+      stroke-width: 1;
+      opacity: 0.8;
+    }
+
+    .month-label {
+      font-size: 12px;
+      fill: #5d5648;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      text-anchor: middle;
+    }
+
+    .event-stroke {
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      cursor: pointer;
+      opacity: 0.88;
+      transition: opacity 0.12s ease, stroke-width 0.12s ease;
+    }
+
+    .event-point {
+      cursor: pointer;
+      stroke: rgba(255, 255, 255, 0.8);
+      stroke-width: 1.5;
+      transition: transform 0.12s ease;
+    }
+
+    .event-active {
+      opacity: 1;
+      filter: drop-shadow(0 0 7px rgba(48, 39, 21, 0.34));
+    }
+
+    .event-muted {
+      opacity: 0.18;
+    }
+
+    .happenings-legend {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.45rem 0.85rem;
+      margin-top: 0.75rem;
+    }
+
+    .happenings-legend-item {
+      font-size: 0.8rem;
+      color: #494338;
+      display: flex;
+      align-items: center;
+      gap: 0.38rem;
+    }
+
+    .happenings-legend-dot {
+      width: 0.7rem;
+      height: 0.7rem;
+      border-radius: 999px;
+      flex-shrink: 0;
+      border: 1px solid rgba(0, 0, 0, 0.15);
+    }
+
+    .happenings-detail {
+      background: var(--hap-paper);
+      border: 1px solid var(--hap-line);
+      border-radius: var(--hap-radius);
+      padding: 0.95rem;
+      color: var(--hap-ink);
+      position: sticky;
+      top: 0.8rem;
+      max-height: 84vh;
+      overflow: auto;
+    }
+
+    .happenings-detail h3 {
+      margin: 0;
+      font-size: 1.18rem;
+      line-height: 1.3;
+    }
+
+    .happenings-detail__sub {
+      margin: 0.4rem 0 0.65rem;
+      color: var(--hap-soft-ink);
+      font-size: 0.92rem;
+    }
+
+    .happenings-detail__pill {
+      display: inline-block;
+      margin: 0 0.4rem 0.4rem 0;
+      font-size: 0.72rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      border: 1px solid currentColor;
+      border-radius: 999px;
+      padding: 0.28rem 0.52rem;
+      background: #fff;
+    }
+
+    .happenings-detail__block {
+      margin-top: 0.75rem;
+      border-top: 1px solid #dfd7c6;
+      padding-top: 0.7rem;
+    }
+
+    .happenings-detail__label {
+      margin: 0 0 0.36rem;
+      color: #5f5647;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-size: 0.73rem;
+    }
+
+    .happenings-detail__block p,
+    .happenings-detail__block li {
+      margin: 0.24rem 0;
+      line-height: 1.45;
+      font-size: 0.92rem;
+    }
+
+    .happenings-detail__block ul {
+      margin: 0;
+      padding-left: 1rem;
+    }
+
+    .happenings-detail img {
+      width: 100%;
+      border-radius: 10px;
+      border: 1px solid #d9d0be;
+      margin-top: 0.45rem;
+      display: block;
+    }
+
+    .happenings-loading,
+    .happenings-error {
+      border: 1px solid var(--hap-line);
+      border-radius: var(--hap-radius);
+      padding: 0.9rem;
+      background: var(--hap-paper);
+      color: var(--hap-soft-ink);
+    }
+
+    @media (max-width: 1080px) {
+      .happenings-main-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .happenings-detail {
+        position: static;
+        max-height: none;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .happenings-legend {
+        grid-template-columns: 1fr;
+      }
+
+      .happenings-meta {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
   <header class="masthead masthead--archive">
@@ -31,42 +357,47 @@
     <section class="section">
       <p class="home-lead__eyebrow" style="margin-bottom: var(--sp-3);">Public programs</p>
       <h1 class="headline-site">Programs &amp; calendar</h1>
-      <p class="timeline-intro">Markets, partner festivals, railroad excursions, stewardship days, and fundraisers around Cuyahoga Valley National Park. Schedules and prices change—confirm dates and tickets on the official sites linked from each card. For park-wide listings, see the <a href="https://www.nps.gov/cuva/planyourvisit/calendar.htm">National Park Service calendar</a> and <a href="https://www.nps.gov/cuva/getinvolved/drop-in-opportunities.htm">drop-in volunteer opportunities</a>.</p>
+      <p class="timeline-intro">A chronology-aware annual view of markets, festivals, excursions, stewardship events, and long-running initiatives around Cuyahoga Valley National Park. Dates and ticket policies can shift; verify details using the official sources linked for each record.</p>
     </section>
 
-    <section class="section program-calendar-page" aria-labelledby="upcoming-heading">
-      <h2 id="upcoming-heading" class="section-heading">Upcoming</h2>
-      <p class="timeline-intro program-calendar-page__sub">The next dated programs from the site dataset (not a complete park calendar).</p>
-      <noscript>
-        <p class="card-farm">Enable JavaScript for interactive listings, or open <a href="assets/docs/research/happennings.md">happennings.md</a> for the narrative guide.</p>
-      </noscript>
-      <div id="program-upcoming" class="program-event-grid"></div>
-    </section>
-
-    <section class="section program-calendar-page" aria-labelledby="browse-heading">
-      <h2 id="browse-heading" class="section-heading">Browse by date</h2>
-      <p class="timeline-intro program-calendar-page__sub">Use the month grid to pick a day, or search by title, place, or category. With no day selected, cards match the month you are viewing.</p>
-      <div class="program-calendar-layout">
-        <div class="program-calendar-panel">
-          <div class="program-calendar-nav">
-            <button type="button" id="program-calendar-prev" class="program-calendar-nav__btn" aria-label="Previous month">‹</button>
-            <h3 class="program-calendar-nav__label" id="program-calendar-month-label"></h3>
-            <button type="button" id="program-calendar-next" class="program-calendar-nav__btn" aria-label="Next month">›</button>
-          </div>
-          <div id="program-calendar-grid" class="program-cal-grid" role="application" aria-label="Event calendar by month"></div>
-          <button type="button" id="program-calendar-clear" class="program-calendar-clear" disabled>Clear selected day</button>
+    <section class="section happenings-annual" aria-labelledby="happenings-annual-heading">
+      <div class="happenings-meta">
+        <div>
+          <h2 id="happenings-annual-heading" class="section-heading" style="margin:0;">Annual happenings</h2>
+          <p>Upcoming cards, circular annual calendar, and a stable detail panel are all synchronized from one source: <code>assets/docs/happenings.json</code>.</p>
         </div>
-        <div class="program-calendar-filter">
-          <label class="program-search-label" for="program-search">Search listings</label>
-          <input type="search" id="program-search" class="program-search-input" placeholder="e.g. market, railroad, Hale…" autocomplete="off" />
-          <p id="program-filter-hint" class="program-filter-hint" aria-live="polite"></p>
-          <div id="program-filtered-cards" class="program-event-grid"></div>
-        </div>
+        <p id="happenings-window-label" class="home-lead__eyebrow" style="margin:0;"></p>
       </div>
-    </section>
 
-    <section class="section">
-      <p class="card-farm">Long-form program guide (markdown): <a href="assets/docs/research/happennings.md">happennings.md</a></p>
+      <section aria-labelledby="happenings-upcoming-heading">
+        <h3 id="happenings-upcoming-heading" class="section-heading" style="margin:0;">Upcoming</h3>
+        <p class="timeline-intro" style="margin:0.35rem 0 0;">The next concrete occurrences, including the next date for recurring entries.</p>
+        <div id="happenings-upcoming" class="happenings-upcoming-grid" aria-live="polite"></div>
+      </section>
+
+      <div class="happenings-main-layout">
+        <div class="happenings-calendar-shell">
+          <div class="happenings-controls" aria-label="Timeline controls">
+            <button class="happenings-control-btn" type="button" data-view="all" aria-pressed="true">All</button>
+            <button class="happenings-control-btn" type="button" data-view="upcoming" aria-pressed="false">Upcoming only</button>
+            <button class="happenings-control-btn" type="button" data-view="recurring" aria-pressed="false">Recurring</button>
+            <button class="happenings-control-btn" type="button" data-view="ongoing" aria-pressed="false">Ongoing</button>
+            <button class="happenings-control-btn" type="button" id="happenings-clear-selection">Clear selection</button>
+          </div>
+          <div class="happenings-calendar-wrap">
+            <svg id="happenings-calendar-svg" viewBox="0 0 840 840" role="img" aria-label="Circular annual happenings calendar"></svg>
+          </div>
+          <div class="happenings-legend" id="happenings-legend"></div>
+        </div>
+
+        <aside class="happenings-detail" id="happenings-detail-panel" aria-live="polite">
+          <p class="happenings-loading">Loading happenings data…</p>
+        </aside>
+      </div>
+
+      <noscript>
+        <p class="card-farm">Enable JavaScript to load the annual interactive view, or open <a href="assets/content/happennings.md">happennings.md</a> for the long-form guide.</p>
+      </noscript>
     </section>
   </main>
 
@@ -106,6 +437,726 @@
     <div>&copy; 2024 Cuyahoga Valley Countryside Conservancy. All rights reserved.</div>
   </footer>
 
-  <script src="JS/calendar.js" defer></script>
+  <script>
+    (function () {
+      const DATA_URL = "assets/docs/happenings.json";
+      const SVG_NS = "http://www.w3.org/2000/svg";
+      const calendarSvg = document.getElementById("happenings-calendar-svg");
+      const detailPanel = document.getElementById("happenings-detail-panel");
+      const upcomingHost = document.getElementById("happenings-upcoming");
+      const legendHost = document.getElementById("happenings-legend");
+      const windowLabel = document.getElementById("happenings-window-label");
+      const clearSelectionBtn = document.getElementById("happenings-clear-selection");
+      const viewButtons = Array.from(document.querySelectorAll(".happenings-control-btn[data-view]"));
+
+      const TYPE_META = {
+        special_day: { label: "Special day", color: getCss("--type-special-day") },
+        span: { label: "Date span / multi-day", color: getCss("--type-span") },
+        recurring_weekly: { label: "Recurring weekly", color: getCss("--type-weekly") },
+        recurring_seasonal: { label: "Seasonal / annual recurring", color: getCss("--type-seasonal") },
+        series: { label: "Multi-week class / series", color: getCss("--type-series") },
+        ongoing_program: { label: "Ongoing program", color: getCss("--type-ongoing-program") },
+        ongoing_initiative: { label: "Ongoing initiative", color: getCss("--type-ongoing-initiative") }
+      };
+
+      const state = {
+        itemsById: new Map(),
+        sectionsById: new Map(),
+        scheduleEntries: [],
+        timelineEntries: [],
+        upcomingCards: [],
+        elementsById: new Map(),
+        selectedId: null,
+        activeView: "all",
+        windowStart: null,
+        windowEnd: null
+      };
+
+      load();
+
+      function getCss(name) {
+        return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+      }
+
+      async function load() {
+        try {
+          const res = await fetch(DATA_URL, { cache: "no-store" });
+          if (!res.ok) throw new Error("Unable to load happenings data.");
+          const data = await res.json();
+          hydrateState(data);
+          renderLegend();
+          renderUpcomingCards();
+          renderCalendar();
+          bindControls();
+          const defaultId = state.upcomingCards[0] ? state.upcomingCards[0].targetId : state.timelineEntries[0]?.id || null;
+          setSelection(defaultId);
+        } catch (err) {
+          detailPanel.innerHTML = '<p class="happenings-error">Could not load happenings data. Please try again shortly.</p>';
+          upcomingHost.innerHTML = "";
+          console.error(err);
+        }
+      }
+
+      function hydrateState(data) {
+        const items = Array.isArray(data.items) ? data.items : [];
+        const sections = Array.isArray(data.sections) ? data.sections : [];
+        const scheduleEntries = data.schedule && Array.isArray(data.schedule.entries) ? data.schedule.entries : [];
+
+        items.forEach((item) => state.itemsById.set(item.id, item));
+        sections.forEach((section) => state.sectionsById.set(section.id, section));
+        state.scheduleEntries = scheduleEntries;
+
+        const datedEntries = scheduleEntries
+          .filter((entry) => entry.start_date)
+          .sort((a, b) => toDate(a.start_date) - toDate(b.start_date));
+        const first = datedEntries[0] ? toDate(datedEntries[0].start_date) : startOfDay(new Date());
+        state.windowStart = first;
+        state.windowEnd = addDays(first, 364);
+        windowLabel.textContent = formatDate(state.windowStart, { month: "short", day: "numeric", year: "numeric" }) +
+          " - " +
+          formatDate(state.windowEnd, { month: "short", day: "numeric", year: "numeric" });
+
+        const scheduleVisuals = scheduleEntries.map((entry, index) => {
+          const item = state.itemsById.get(entry.canonical_item_id) || null;
+          const classKey = classify(entry, item);
+          return {
+            id: "entry:" + entry.id,
+            entryId: entry.id,
+            itemId: entry.canonical_item_id || null,
+            source: "schedule",
+            title: entry.title || item?.title || "Untitled event",
+            startDate: entry.start_date || null,
+            endDate: entry.end_date || entry.start_date || null,
+            timeText: entry.time_text || null,
+            location: entry.location || item?.primary_location?.name || null,
+            summary: entry.summary || item?.paragraph || null,
+            url: entry.url || item?.primary_url || null,
+            typeKey: classKey,
+            timelineKind: entry.timeline_kind || null,
+            recurrence: entry.recurrence || null,
+            sequence: index,
+            entry,
+            item
+          };
+        });
+
+        const scheduledItemIds = new Set(scheduleVisuals.map((v) => v.itemId).filter(Boolean));
+        const contextualItems = items.filter((item) => !scheduledItemIds.has(item.id));
+        const contextualVisuals = contextualItems.map((item, index) => {
+          const typeKey = classify(null, item);
+          const startDay = (index * 43) % 360;
+          const span = typeKey === "ongoing_initiative" ? 320 : typeKey === "ongoing_program" ? 300 : 240;
+          return {
+            id: "item:" + item.id,
+            entryId: null,
+            itemId: item.id,
+            source: "item",
+            title: item.title || "Untitled context",
+            startDate: isoFromWindowOffset(startDay),
+            endDate: isoFromWindowOffset(Math.min(startDay + span, 364)),
+            timeText: item.date_label || null,
+            location: item.primary_location?.name || null,
+            summary: item.paragraph || null,
+            url: item.primary_url || null,
+            typeKey,
+            timelineKind: "context_band",
+            recurrence: null,
+            sequence: 1000 + index,
+            entry: null,
+            item
+          };
+        });
+
+        state.timelineEntries = scheduleVisuals.concat(contextualVisuals);
+        state.upcomingCards = buildUpcomingCards(scheduleVisuals);
+      }
+
+      function buildUpcomingCards(scheduleVisuals) {
+        const today = startOfDay(new Date());
+        const upcoming = [];
+        scheduleVisuals.forEach((v) => {
+          if (!v.startDate) return;
+          if (v.timelineKind === "recurring_pattern" && v.recurrence) {
+            const next = nextOccurrence(v.recurrence, today);
+            if (!next) return;
+            upcoming.push({
+              targetId: v.id,
+              itemId: v.itemId,
+              title: v.title,
+              date: next,
+              dateText: formatDate(next),
+              timeText: v.timeText || "Recurring schedule",
+              location: v.location,
+              typeKey: v.typeKey,
+              isRecurring: true
+            });
+            return;
+          }
+          const start = toDate(v.startDate);
+          if (start >= today) {
+            upcoming.push({
+              targetId: v.id,
+              itemId: v.itemId,
+              title: v.title,
+              date: start,
+              dateText: buildDateRangeLabel(v.startDate, v.endDate),
+              timeText: v.timeText || "",
+              location: v.location,
+              typeKey: v.typeKey,
+              isRecurring: false
+            });
+          }
+        });
+        return upcoming.sort((a, b) => a.date - b.date).slice(0, 10);
+      }
+
+      function renderLegend() {
+        legendHost.innerHTML = "";
+        Object.keys(TYPE_META).forEach((key) => {
+          const row = document.createElement("div");
+          row.className = "happenings-legend-item";
+          const dot = document.createElement("span");
+          dot.className = "happenings-legend-dot";
+          dot.style.background = TYPE_META[key].color;
+          row.appendChild(dot);
+          row.append(TYPE_META[key].label);
+          legendHost.appendChild(row);
+        });
+      }
+
+      function renderUpcomingCards() {
+        upcomingHost.innerHTML = "";
+        if (!state.upcomingCards.length) {
+          upcomingHost.innerHTML = '<p class="happenings-loading">No upcoming dated entries are available in the current dataset window.</p>';
+          return;
+        }
+        state.upcomingCards.forEach((card) => {
+          const button = document.createElement("button");
+          button.type = "button";
+          button.className = "happenings-card";
+          button.dataset.targetId = card.targetId;
+          button.style.borderLeftColor = TYPE_META[card.typeKey]?.color || TYPE_META.special_day.color;
+          button.innerHTML = [
+            '<h4 class="happenings-card__title">' + escapeHtml(card.title) + "</h4>",
+            '<p class="happenings-card__meta">' + escapeHtml(card.dateText) + "</p>",
+            card.timeText ? '<p class="happenings-card__meta">' + escapeHtml(card.timeText) + "</p>" : "",
+            card.location ? '<p class="happenings-card__meta">' + escapeHtml(card.location) + "</p>" : "",
+            '<span class="happenings-chip">' + escapeHtml(TYPE_META[card.typeKey]?.label || "Event") + "</span>"
+          ].join("");
+          button.addEventListener("click", () => setSelection(card.targetId, true));
+          upcomingHost.appendChild(button);
+        });
+      }
+
+      function renderCalendar() {
+        state.elementsById.clear();
+        calendarSvg.innerHTML = "";
+        const center = 420;
+        const radii = {
+          gridOuter: 335,
+          month: 304,
+          recurring: 282,
+          span: 258,
+          point: 234,
+          series: 210,
+          ongoing: 184,
+          inner: 120
+        };
+
+        [radii.gridOuter, radii.recurring, radii.span, radii.series, radii.ongoing, radii.inner].forEach((r) => {
+          const c = svgEl("circle", { cx: center, cy: center, r: r, class: "ring-grid" });
+          calendarSvg.appendChild(c);
+        });
+
+        drawMonthGuides(center, radii.month);
+
+        const layer = svgEl("g", { "aria-label": "Event tracks" });
+        calendarSvg.appendChild(layer);
+
+        state.timelineEntries.forEach((evt, index) => {
+          const color = TYPE_META[evt.typeKey]?.color || TYPE_META.special_day.color;
+          if (evt.timelineKind === "dated_point") {
+            const circle = drawPoint(evt, center, radii.point + (index % 3) * 5, color);
+            layer.appendChild(circle);
+            state.elementsById.set(evt.id, [circle]);
+            return;
+          }
+
+          if (evt.timelineKind === "recurring_pattern") {
+            const marks = drawRecurring(evt, center, radii.recurring, color);
+            marks.forEach((mark) => layer.appendChild(mark));
+            state.elementsById.set(evt.id, marks);
+            return;
+          }
+
+          const radius = evt.typeKey === "series" ? radii.series : evt.typeKey.startsWith("ongoing") ? radii.ongoing : radii.span;
+          const strokeWidth = evt.typeKey.startsWith("ongoing") ? 16 : evt.timelineKind === "dated_span" ? 10 : 7;
+          const arc = drawArc(evt, center, radius, color, strokeWidth);
+          layer.appendChild(arc);
+          state.elementsById.set(evt.id, [arc]);
+        });
+
+        const centerText = svgEl("text", {
+          x: center,
+          y: center - 8,
+          "text-anchor": "middle",
+          fill: "#4c463c",
+          "font-size": "23",
+          "font-family": "Times New Roman, Georgia, serif"
+        });
+        centerText.textContent = "Annual";
+        const centerText2 = svgEl("text", {
+          x: center,
+          y: center + 18,
+          "text-anchor": "middle",
+          fill: "#655f53",
+          "font-size": "15",
+          "font-family": "Georgia, serif"
+        });
+        centerText2.textContent = "Happenings";
+        calendarSvg.append(centerText, centerText2);
+      }
+
+      function drawMonthGuides(center, radius) {
+        const cursor = new Date(state.windowStart);
+        cursor.setDate(1);
+        const monthStarts = [];
+        for (let i = 0; i < 13; i += 1) {
+          monthStarts.push(new Date(cursor));
+          cursor.setMonth(cursor.getMonth() + 1);
+        }
+        monthStarts.forEach((dt, i) => {
+          const angle = dateToAngle(dt);
+          const p1 = pointOnCircle(center, center, radius - 18, angle);
+          const p2 = pointOnCircle(center, center, radius + 20, angle);
+          const spoke = svgEl("line", { x1: p1.x, y1: p1.y, x2: p2.x, y2: p2.y, class: "month-spoke" });
+          calendarSvg.appendChild(spoke);
+          if (i < 12) {
+            const next = monthStarts[i + 1];
+            const mid = midpointAngle(dateToAngle(dt), dateToAngle(next));
+            const labelPoint = pointOnCircle(center, center, radius + 34, mid);
+            const label = svgEl("text", { x: labelPoint.x, y: labelPoint.y, class: "month-label" });
+            label.textContent = dt.toLocaleDateString(undefined, { month: "short" });
+            calendarSvg.appendChild(label);
+          }
+        });
+      }
+
+      function drawPoint(evt, cx, radius, color) {
+        const date = toDate(evt.startDate);
+        const angle = dateToAngle(date);
+        const p = pointOnCircle(cx, cx, radius, angle);
+        const circle = svgEl("circle", {
+          cx: p.x,
+          cy: p.y,
+          r: 6,
+          fill: color,
+          class: "event-point",
+          "data-event-id": evt.id,
+          tabindex: "0",
+          role: "button",
+          "aria-label": evt.title
+        });
+        circle.addEventListener("click", () => setSelection(evt.id, true));
+        circle.addEventListener("keydown", (e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            setSelection(evt.id, true);
+          }
+        });
+        return circle;
+      }
+
+      function drawArc(evt, cx, radius, color, strokeWidth) {
+        const start = toDate(evt.startDate);
+        const end = toDate(evt.endDate || evt.startDate);
+        const path = svgEl("path", {
+          d: arcPath(cx, cx, radius, dateToAngle(start), dateToAngle(end), true),
+          stroke: color,
+          "stroke-width": String(strokeWidth),
+          class: "event-stroke",
+          "data-event-id": evt.id,
+          tabindex: "0",
+          role: "button",
+          "aria-label": evt.title
+        });
+        if (evt.typeKey === "ongoing_initiative") {
+          path.setAttribute("stroke-dasharray", "5 8");
+        } else if (evt.typeKey === "recurring_seasonal") {
+          path.setAttribute("stroke-dasharray", "3 5");
+        }
+        path.addEventListener("click", () => setSelection(evt.id, true));
+        path.addEventListener("keydown", (e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            setSelection(evt.id, true);
+          }
+        });
+        return path;
+      }
+
+      function drawRecurring(evt, cx, radius, color) {
+        const marks = [];
+        if (!evt.recurrence || typeof evt.recurrence.weekday !== "number") {
+          return [drawArc(evt, cx, radius, color, 7)];
+        }
+        const start = toDate(evt.recurrence.starts_on || evt.startDate);
+        const until = toDate(evt.recurrence.until || evt.endDate || evt.startDate);
+        let cursor = nextWeekdayOnOrAfter(start, evt.recurrence.weekday);
+        while (cursor && cursor <= until) {
+          if (cursor >= state.windowStart && cursor <= state.windowEnd) {
+            const a = dateToAngle(cursor);
+            const p = pointOnCircle(cx, cx, radius + (marks.length % 2 ? 2 : -2), a);
+            const dot = svgEl("circle", {
+              cx: p.x,
+              cy: p.y,
+              r: 3.4,
+              fill: color,
+              class: "event-point",
+              "data-event-id": evt.id,
+              tabindex: "0",
+              role: "button",
+              "aria-label": evt.title
+            });
+            dot.addEventListener("click", () => setSelection(evt.id, true));
+            dot.addEventListener("keydown", (e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                setSelection(evt.id, true);
+              }
+            });
+            marks.push(dot);
+          }
+          cursor = addDays(cursor, 7);
+        }
+        if (!marks.length) {
+          marks.push(drawArc(evt, cx, radius, color, 6));
+        }
+        return marks;
+      }
+
+      function bindControls() {
+        viewButtons.forEach((button) => {
+          button.addEventListener("click", () => {
+            state.activeView = button.dataset.view;
+            viewButtons.forEach((b) => b.setAttribute("aria-pressed", String(b === button)));
+            applyVisibilityFilter();
+          });
+        });
+        clearSelectionBtn.addEventListener("click", () => {
+          setSelection(null, false);
+        });
+      }
+
+      function applyVisibilityFilter() {
+        const now = startOfDay(new Date());
+        state.timelineEntries.forEach((evt) => {
+          const nodes = state.elementsById.get(evt.id) || [];
+          const show = shouldShow(evt, now);
+          nodes.forEach((node) => {
+            node.style.display = show ? "" : "none";
+          });
+        });
+      }
+
+      function shouldShow(evt, now) {
+        if (state.activeView === "all") return true;
+        if (state.activeView === "ongoing") return evt.typeKey === "ongoing_program" || evt.typeKey === "ongoing_initiative";
+        if (state.activeView === "recurring") return evt.timelineKind === "recurring_pattern" || evt.typeKey === "recurring_seasonal";
+        if (state.activeView === "upcoming") {
+          if (!evt.startDate) return false;
+          if (evt.timelineKind === "recurring_pattern" && evt.recurrence) {
+            return Boolean(nextOccurrence(evt.recurrence, now));
+          }
+          return toDate(evt.startDate) >= now;
+        }
+        return true;
+      }
+
+      function setSelection(id, ensureVisible) {
+        state.selectedId = id;
+        const selected = id ? state.timelineEntries.find((evt) => evt.id === id) || null : null;
+        syncUpcomingSelected(id);
+        syncCalendarSelected(id, ensureVisible);
+        renderDetail(selected);
+      }
+
+      function syncUpcomingSelected(id) {
+        Array.from(upcomingHost.querySelectorAll(".happenings-card")).forEach((el) => {
+          el.setAttribute("aria-current", String(el.dataset.targetId === id));
+        });
+      }
+
+      function syncCalendarSelected(id, ensureVisible) {
+        state.timelineEntries.forEach((evt) => {
+          const nodes = state.elementsById.get(evt.id) || [];
+          const muted = Boolean(id) && evt.id !== id;
+          nodes.forEach((node) => {
+            node.classList.toggle("event-active", evt.id === id);
+            node.classList.toggle("event-muted", muted);
+          });
+        });
+        if (ensureVisible && id && state.activeView !== "all") {
+          const selected = state.timelineEntries.find((evt) => evt.id === id);
+          if (selected && !shouldShow(selected, startOfDay(new Date()))) {
+            state.activeView = "all";
+            viewButtons.forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.view === "all")));
+            applyVisibilityFilter();
+          }
+        }
+      }
+
+      function renderDetail(selected) {
+        if (!selected) {
+          detailPanel.innerHTML = '<p class="happenings-loading">Select any card or calendar mark to open full details.</p>';
+          return;
+        }
+        const item = selected.item || state.itemsById.get(selected.itemId) || null;
+        const section = item && item.section_id ? state.sectionsById.get(item.section_id) : null;
+        const typeLabel = TYPE_META[selected.typeKey]?.label || "Event";
+
+        const parts = [];
+        parts.push("<h3>" + escapeHtml(selected.title) + "</h3>");
+        if (item && item.display_heading && item.display_heading !== selected.title) {
+          parts.push('<p class="happenings-detail__sub">' + escapeHtml(item.display_heading) + "</p>");
+        }
+        parts.push('<span class="happenings-detail__pill" style="color:' + escapeHtml(TYPE_META[selected.typeKey]?.color || "#555") + '">' + escapeHtml(typeLabel) + "</span>");
+        if (item && item.time_model) {
+          parts.push('<span class="happenings-detail__pill">' + escapeHtml(item.time_model.replaceAll("_", " ")) + "</span>");
+        }
+
+        parts.push('<div class="happenings-detail__block"><p class="happenings-detail__label">Date and time</p>');
+        if (selected.startDate) {
+          parts.push("<p>" + escapeHtml(buildDateRangeLabel(selected.startDate, selected.endDate)) + (selected.timeText ? " - " + escapeHtml(selected.timeText) : "") + "</p>");
+        }
+        if (item && item.date_label) {
+          parts.push("<p>" + escapeHtml(item.date_label) + "</p>");
+        }
+        if (item && Array.isArray(item.date_details) && item.date_details.length) {
+          parts.push("<ul>" + item.date_details.slice(0, 5).map((v) => "<li>" + escapeHtml(String(v)) + "</li>").join("") + "</ul>");
+        }
+        parts.push("</div>");
+
+        if (item && (item.paragraph || selected.summary)) {
+          parts.push('<div class="happenings-detail__block"><p class="happenings-detail__label">Overview</p><p>' + escapeHtml(item.paragraph || selected.summary || "") + "</p></div>");
+        }
+
+        if (item && item.media && Array.isArray(item.media.images) && item.media.images[0] && item.media.images[0].path) {
+          const image = item.media.images[0];
+          parts.push('<div class="happenings-detail__block"><p class="happenings-detail__label">Image</p><img src="' + escapeAttr(image.path) + '" alt="' + escapeAttr(image.caption || selected.title) + '">');
+          if (image.caption) {
+            parts.push("<p>" + escapeHtml(image.caption) + "</p>");
+          }
+          parts.push("</div>");
+        }
+
+        if (item && item.media && Array.isArray(item.media.audio) && item.media.audio.length) {
+          const audioRows = item.media.audio
+            .filter((a) => a && a.path)
+            .map((a) => '<li><a href="' + escapeAttr(a.path) + '">' + escapeHtml(a.caption || "Audio") + "</a></li>")
+            .join("");
+          if (audioRows) {
+            parts.push('<div class="happenings-detail__block"><p class="happenings-detail__label">Audio</p><ul>' + audioRows + "</ul></div>");
+          }
+        }
+
+        const locations = item && Array.isArray(item.locations) ? item.locations : [];
+        if (locations.length) {
+          const locationRows = locations.slice(0, 4).map((loc) => {
+            const maps = [];
+            if (loc.google_maps) maps.push('<a href="' + escapeAttr(loc.google_maps) + '">Google Maps</a>');
+            if (loc.apple_maps) maps.push('<a href="' + escapeAttr(loc.apple_maps) + '">Apple Maps</a>');
+            return "<li><strong>" + escapeHtml(loc.name || "Location") + "</strong>" +
+              (loc.address ? " - " + escapeHtml(loc.address) : "") +
+              (maps.length ? " (" + maps.join(" · ") + ")" : "") +
+              "</li>";
+          }).join("");
+          parts.push('<div class="happenings-detail__block"><p class="happenings-detail__label">Locations and directions</p><ul>' + locationRows + "</ul></div>");
+        } else if (selected.location) {
+          parts.push('<div class="happenings-detail__block"><p class="happenings-detail__label">Location</p><p>' + escapeHtml(selected.location) + "</p></div>");
+        }
+
+        if (item && Array.isArray(item.subevents) && item.subevents.length) {
+          const rows = item.subevents.slice(0, 6).map((s) => "<li><strong>" + escapeHtml(s.title || "Subevent") + "</strong>" +
+            (s.date_label ? " - " + escapeHtml(s.date_label) : "") + "</li>").join("");
+          parts.push('<div class="happenings-detail__block"><p class="happenings-detail__label">Subevents</p><ul>' + rows + "</ul></div>");
+        }
+
+        const links = collectLinks(item, selected);
+        if (links.length) {
+          parts.push('<div class="happenings-detail__block"><p class="happenings-detail__label">Relevant links and sources</p><ul>' +
+            links.map((l) => '<li><a href="' + escapeAttr(l.url) + '">' + escapeHtml(l.label) + "</a></li>").join("") +
+            "</ul></div>");
+        }
+
+        if (section || (item && (item.section_title || item.section_about))) {
+          parts.push('<div class="happenings-detail__block"><p class="happenings-detail__label">Section context</p>');
+          if (item && item.section_title) {
+            parts.push("<p><strong>" + escapeHtml(item.section_title) + "</strong></p>");
+          } else if (section && section.title) {
+            parts.push("<p><strong>" + escapeHtml(section.title) + "</strong></p>");
+          }
+          if (item && item.section_about) {
+            parts.push("<p>" + escapeHtml(item.section_about) + "</p>");
+          } else if (section && section.about) {
+            parts.push("<p>" + escapeHtml(section.about) + "</p>");
+          }
+          parts.push("</div>");
+        }
+
+        detailPanel.innerHTML = parts.join("");
+      }
+
+      function collectLinks(item, selected) {
+        const out = [];
+        const seen = new Set();
+        const pushLink = (url, label) => {
+          if (!url || seen.has(url)) return;
+          seen.add(url);
+          out.push({ url, label });
+        };
+        if (selected.url) pushLink(selected.url, "Selected schedule entry");
+        if (item && item.primary_url) pushLink(item.primary_url, "Primary source");
+        if (item && Array.isArray(item.source_links)) {
+          item.source_links.forEach((s) => {
+            if (s && s.url) {
+              const label = s.kind ? "Source (" + s.kind.replaceAll("_", " ") + ")" : "Source";
+              pushLink(s.url, label);
+            }
+          });
+        }
+        return out.slice(0, 8);
+      }
+
+      function classify(entry, item) {
+        if (item && item.type === "ongoing_initiative") return "ongoing_initiative";
+        if (item && item.type === "ongoing_program") return "ongoing_program";
+        if (entry && entry.entry_type === "recurring_pattern") return "recurring_weekly";
+        if (entry && entry.timeline_kind === "dated_span") {
+          if (item && (item.time_model === "series" || item.type === "program_series")) return "series";
+          return "span";
+        }
+        if (entry && entry.timeline_kind === "dated_point") return "special_day";
+        if (item && (item.time_model === "series" || item.type === "program_series")) return "series";
+        if (item && item.type === "recurring_event") return "recurring_seasonal";
+        if (item && item.time_model === "dated_span") return "span";
+        if (item && item.time_model === "dated_point") return "special_day";
+        return "recurring_seasonal";
+      }
+
+      function dateToAngle(date) {
+        const day = Math.max(0, Math.min(364, diffDays(state.windowStart, date)));
+        return -90 + (day / 365) * 360;
+      }
+
+      function midpointAngle(a1, a2) {
+        let delta = a2 - a1;
+        if (delta < 0) delta += 360;
+        return a1 + delta / 2;
+      }
+
+      function isoFromWindowOffset(offset) {
+        return toIso(addDays(state.windowStart, offset));
+      }
+
+      function arcPath(cx, cy, r, startAngle, endAngle, clampFull) {
+        let sweep = endAngle - startAngle;
+        if (sweep < 0) sweep += 360;
+        if (sweep < 2) sweep = 2;
+        if (clampFull && sweep >= 359) sweep = 358.5;
+        const a2 = startAngle + sweep;
+        const p1 = pointOnCircle(cx, cy, r, startAngle);
+        const p2 = pointOnCircle(cx, cy, r, a2);
+        const largeArc = sweep > 180 ? 1 : 0;
+        return "M " + p1.x + " " + p1.y + " A " + r + " " + r + " 0 " + largeArc + " 1 " + p2.x + " " + p2.y;
+      }
+
+      function pointOnCircle(cx, cy, r, angle) {
+        const rad = (angle * Math.PI) / 180;
+        return { x: cx + Math.cos(rad) * r, y: cy + Math.sin(rad) * r };
+      }
+
+      function svgEl(tag, attrs) {
+        const el = document.createElementNS(SVG_NS, tag);
+        Object.entries(attrs).forEach(([k, v]) => el.setAttribute(k, String(v)));
+        return el;
+      }
+
+      function nextOccurrence(recurrence, fromDate) {
+        const start = toDate(recurrence.starts_on || toIso(fromDate));
+        const until = recurrence.until ? toDate(recurrence.until) : addDays(fromDate, 365);
+        if (fromDate > until) return null;
+        if (typeof recurrence.weekday !== "number") return start >= fromDate ? start : null;
+        const first = nextWeekdayOnOrAfter(start > fromDate ? start : fromDate, recurrence.weekday);
+        return first && first <= until ? first : null;
+      }
+
+      function nextWeekdayOnOrAfter(date, weekday) {
+        const d = new Date(date);
+        const current = d.getDay();
+        const diff = (weekday - current + 7) % 7;
+        d.setDate(d.getDate() + diff);
+        return startOfDay(d);
+      }
+
+      function buildDateRangeLabel(startIso, endIso) {
+        if (!startIso) return "Date to be confirmed";
+        if (!endIso || endIso === startIso) return formatDate(toDate(startIso));
+        const start = toDate(startIso);
+        const end = toDate(endIso);
+        if (start.getMonth() === end.getMonth()) {
+          return start.toLocaleDateString(undefined, { month: "long", day: "numeric" }) +
+            " - " +
+            end.toLocaleDateString(undefined, { day: "numeric", year: "numeric" });
+        }
+        return formatDate(start) + " - " + formatDate(end);
+      }
+
+      function toDate(isoLike) {
+        if (isoLike instanceof Date) return startOfDay(isoLike);
+        const [y, m, d] = String(isoLike).slice(0, 10).split("-").map(Number);
+        return new Date(y, (m || 1) - 1, d || 1);
+      }
+
+      function toIso(date) {
+        const y = date.getFullYear();
+        const m = String(date.getMonth() + 1).padStart(2, "0");
+        const d = String(date.getDate()).padStart(2, "0");
+        return y + "-" + m + "-" + d;
+      }
+
+      function startOfDay(date) {
+        return new Date(date.getFullYear(), date.getMonth(), date.getDate());
+      }
+
+      function addDays(date, count) {
+        const d = new Date(date);
+        d.setDate(d.getDate() + count);
+        return startOfDay(d);
+      }
+
+      function diffDays(a, b) {
+        const ms = startOfDay(b).getTime() - startOfDay(a).getTime();
+        return Math.floor(ms / 86400000);
+      }
+
+      function formatDate(date, opts) {
+        return date.toLocaleDateString(undefined, opts || { month: "long", day: "numeric", year: "numeric" });
+      }
+
+      function escapeHtml(value) {
+        return String(value)
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;")
+          .replaceAll("'", "&#39;");
+      }
+
+      function escapeAttr(value) {
+        return escapeHtml(value);
+      }
+    })();
+  </script>
 </body>
 </html>
