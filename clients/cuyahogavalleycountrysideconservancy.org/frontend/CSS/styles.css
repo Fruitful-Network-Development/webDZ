@@ -701,60 +701,32 @@ textarea {
   border-top: 4px solid var(--c-film);
   border-bottom: 1px solid var(--c-film);
   margin-top: var(--sp-12);
-  padding: var(--sp-4);
+  padding: var(--sp-3) var(--sp-4) var(--sp-2);
   background: var(--c-forest);
   display: grid;
-  gap: var(--sp-3);
+  gap: var(--sp-2);
   font-size: var(--fs-sm);
   color: var(--c-paper);
 }
 
-.footer__grid {
+.footer__main {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: var(--sp-6);
+  gap: var(--sp-3);
 }
 
-.footer__grid--canonical {
-  grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.75fr);
-  align-items: start;
+.footer__col {
+  min-width: 0;
 }
 
-.footer__brand-col .figure__cap {
-  text-transform: none;
-  letter-spacing: 0.04em;
-  font-size: 11px;
-  max-width: 42ch;
-}
-
-.footer__pictorial-map {
-  width: 100%;
-  max-width: 440px;
-  height: auto;
-}
-
-.footer__tagline {
-  margin: var(--sp-3) 0 var(--sp-2);
-  font-size: var(--fs-sm);
-  color: var(--c-paper);
-  line-height: var(--lh-normal);
-}
-
-.footer__visit-note {
-  margin: 0 0 var(--sp-4);
-  font-size: var(--fs-sm);
-  color: color-mix(in srgb, var(--c-paper) 92%, var(--c-mist));
-  line-height: var(--lh-relaxed);
-  max-width: 52ch;
-}
-
-.footer__visit-note a {
-  color: var(--c-paper);
-  border-bottom-color: color-mix(in srgb, var(--c-paper) 55%, transparent);
+.footer__text {
+  margin: 0 0 var(--sp-2);
+  color: color-mix(in srgb, var(--c-paper) 88%, var(--c-mist));
+  line-height: 1.45;
 }
 
 .footer__mini-heading {
-  margin: var(--sp-4) 0 var(--sp-2);
+  margin: 0 0 var(--sp-1);
   font-family: var(--font-display);
   font-size: var(--fs-xs);
   letter-spacing: 0.12em;
@@ -762,14 +734,13 @@ textarea {
   color: var(--c-parchment);
 }
 
-.footer__support-inline {
-  margin: var(--sp-4) 0 0;
-  font-size: var(--fs-sm);
+.footer__support-link {
+  margin: 0;
 }
 
-.footer__support-inline a {
+.footer__support-link a {
   color: var(--c-paper);
-  border-bottom-color: color-mix(in srgb, var(--c-paper) 55%, transparent);
+  border-bottom-color: color-mix(in srgb, var(--c-paper) 46%, transparent);
 }
 
 .footer h4 {
@@ -796,6 +767,92 @@ textarea {
 .footer .figure__img {
   width: 56px;
   height: auto;
+}
+
+.footer-newsletter {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: var(--sp-1);
+  align-items: end;
+  margin: 0 0 var(--sp-1);
+}
+
+.footer-newsletter__label {
+  display: grid;
+  gap: 0.24rem;
+  font-size: var(--fs-xs);
+  letter-spacing: 0.03em;
+  color: color-mix(in srgb, var(--c-paper) 88%, var(--c-mist));
+}
+
+.footer-newsletter__input {
+  border: 1px solid color-mix(in srgb, var(--c-paper) 35%, transparent);
+  background: color-mix(in srgb, var(--c-forest) 85%, var(--c-film));
+  color: var(--c-paper);
+  border-radius: 0.3rem;
+  padding: 0.34rem 0.45rem;
+  font: inherit;
+}
+
+.footer-newsletter__button {
+  border: 1px solid color-mix(in srgb, var(--c-paper) 45%, transparent);
+  background: transparent;
+  color: var(--c-paper);
+  border-radius: 0.3rem;
+  padding: 0.38rem 0.72rem;
+  font: inherit;
+  cursor: pointer;
+}
+
+.footer__nav-muted {
+  margin: 0;
+  font-size: var(--fs-xs);
+  color: color-mix(in srgb, var(--c-paper) 74%, var(--c-mist));
+}
+
+.footer__nav-muted a {
+  color: inherit;
+  border-bottom-color: color-mix(in srgb, var(--c-paper) 32%, transparent);
+}
+
+.footer__lower {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-2);
+  border-top: 1px solid color-mix(in srgb, var(--c-paper) 18%, transparent);
+  padding-top: var(--sp-1);
+}
+
+.footer__copyright {
+  font-size: var(--fs-xs);
+  color: color-mix(in srgb, var(--c-paper) 68%, var(--c-mist));
+}
+
+.footer__production-mark {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.48rem;
+  text-decoration: none;
+  color: color-mix(in srgb, var(--c-paper) 62%, var(--c-mist));
+  font-size: 0.67rem;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+  text-transform: uppercase;
+  opacity: 0.88;
+}
+
+.footer__production-mark:hover {
+  opacity: 1;
+}
+
+.footer__production-icon {
+  width: 1.05rem;
+  height: 1.05rem;
+  background-color: currentColor;
+  -webkit-mask: url("/assets/icon/logos/logo-fruitful_network_development.svg") center / contain no-repeat;
+  mask: url("/assets/icon/logos/logo-fruitful_network_development.svg") center / contain no-repeat;
+  flex: 0 0 auto;
 }
 
 .overlay-body {
@@ -929,12 +986,13 @@ textarea {
     grid-template-columns: 1fr;
   }
 
-  .footer__grid {
+  .footer__main {
     grid-template-columns: 1fr;
   }
 
-  .footer__grid--canonical {
-    grid-template-columns: 1fr;
+  .footer__lower {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }
 
