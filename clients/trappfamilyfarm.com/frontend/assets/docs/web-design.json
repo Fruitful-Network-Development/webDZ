@@ -1,0 +1,304 @@
+{
+  "_description": "Snapshot of the static frontend: HTML files, image asset paths (relative to site root), section/container patterns, and concise content labels. Paths use leading slash like layout.json (/assets/...).",
+  "global_assets": {
+    "stylesheets": ["css/style.css"],
+    "favicon": "favicon.svg",
+    "header": {
+      "graphic_avif": "/assets/graphics/graphic-header.avif",
+      "note": "Shown only on index.html and home.html inside .header-graphic; other pages omit the graphic."
+    },
+    "footer": {
+      "graphic_avif": "/assets/graphics/graphic-footer.avif",
+      "instagram_svg": "/assets/icon/logos/logo-instagram.svg"
+    },
+    "hero_background": {
+      "avif": "/assets/images/farm_landscape.avif",
+      "applied_in_css": "css/sections/hero.css (.hero-parallax background-image)"
+    },
+    "nav_icon_masks": {
+      "pattern": "CSS mask-image on .nav-with-icons a::before in css/style.css",
+      "paths": [
+        "/assets/icon/ui/icon-home.svg",
+        "/assets/icon/ui/icon-info.svg",
+        "/assets/icon/ui/icon-data.svg",
+        "/assets/icon/ui/icon-relationship.svg",
+        "/assets/icon/ui/icon-inbox.svg",
+        "/assets/icon/ui/icon-tools.svg"
+      ]
+    },
+    "other_ui_icons_in_css": [
+      "/assets/icon/icon-location.svg",
+      "/assets/icon/ui/icon-time.svg",
+      "/assets/icon/icon-mail.svg"
+    ]
+  },
+  "layout_vocabulary": {
+    "site_shell": "header.site-header > .header-inner | main.main | footer.site-footer > .footer-inner + .footer-bottom",
+    "max_width": "1100px (--width in css/style.css); .header-inner, .container, .footer-inner align to this",
+    "inner_page_section": "section.page-section > .container (most inner pages)",
+    "hero_page": "section.hero > .hero-parallax + .hero-body (index.html, home.html; body.home-page)",
+    "content_patterns": [
+      ".section-block — text + media column layouts",
+      ".section-split — .panel-text + .panel-image (e.g. slideshow)",
+      ".slideshow-artifact — .slideshow-viewport / .slideshow-track / .slide",
+      ".artifact — .artifact-media img + .artifact-caption",
+      ".key-points — h4 + ul",
+      ".subsection — h3 + paragraphs",
+      ".landing-redesign — home panels: .landing-panel.visit-panel, .highlights-panel > .highlight-grid > .highlight-card",
+      ".media-item — info.html podcast rows: img + text column",
+      ".newsletter-issue — newsletter section body"
+    ]
+  },
+  "navigation": {
+    "links": [
+      { "label": "About", "href": "about.html" },
+      { "label": "Making the Crops", "href": "crops.html" },
+      { "label": "Animal Husbandry", "href": "animals.html" },
+      { "label": "For Your Homestead", "href": "homestead.html" },
+      { "label": "Newsletters", "href": "newsletter.html" },
+      { "label": "More Info", "href": "info.html" },
+      { "label": "Projects", "href": "projects.html" }
+    ],
+    "logo": { "href": "home.html", "markup": ".logo > .logo-text (TRAPP / FAMILY / FARM)" }
+  },
+  "pages": {
+    "index.html": {
+      "title": "Trapp Family Farm | Coming Soon",
+      "body_class": "home-page",
+      "header": "full: graphic + logo + nav",
+      "main": [
+        {
+          "section": "section.hero",
+          "containers": [".hero-parallax (bg via CSS)", ".hero-body"],
+          "images_html": ["/assets/graphics/graphic-header.avif"],
+          "content": ["Website update in progress", "Coming Soon"]
+        }
+      ],
+      "scripts": []
+    },
+    "home.html": {
+      "title": "Trapp Family Farm | Horse-Powered Farming in Cuyahoga Valley National Park",
+      "body_class": "home-page",
+      "header": "full: graphic + logo + nav",
+      "main": [
+        {
+          "section": "section.hero",
+          "containers": [".hero-parallax", ".hero-body", "section.landing-redesign"],
+          "images_html": ["/assets/graphics/graphic-header.avif"],
+          "content": [
+            "Kicker: Horse-powered farming in Cuyahoga Valley National Park",
+            "H1: Trapp Family Farm",
+            "Lead: family-run crop and livestock farm since 2012",
+            "Plan Your Visit — address, stand hours Mon–Sun 8a–8p, cash/check, phone, email",
+            "At The Farm — highlight cards: Today at the Stand, Animals & Meat, Our Story"
+          ]
+        }
+      ],
+      "scripts": ["js/gallery-home-button.js"]
+    },
+    "about.html": {
+      "title": "About | Trapp Family Farm in Cuyahoga Valley",
+      "header": "compact: logo + nav only (no header graphic)",
+      "main": [
+        {
+          "id": "us",
+          "containers": ["section.page-section > .container > h2 + .section-block", ".section-image", ".key-points", ".subsection"],
+          "images": ["/assets/images/mark_and_emily.avif"]
+        },
+        {
+          "id": "farm",
+          "containers": [".section-split .panel-text.accent", ".panel-image .slideshow-artifact", "nested .container (second block in #farm)"],
+          "images_slideshow": [
+            "/assets/images/compost.avif",
+            "/assets/images/field_work.avif",
+            "/assets/images/doc_and_dan.avif",
+            "/assets/images/horse_power.avif",
+            "/assets/images/plowing.avif"
+          ],
+          "images_other": ["/assets/images/hourse_drawn.avif"],
+          "content": ["About Us", "The Farm", "Our Journey list", "How we got here", "Power on the farm", "Inspired by", "Planning a visit"]
+        },
+        {
+          "id": "drafthorses",
+          "images": ["/assets/images/leading_the_hourses.avif"],
+          "content": ["Draft Horses", "Finding inspiration in every muscle", "draft horses at the heart of field work"]
+        },
+        {
+          "id": "countryside",
+          "images": [],
+          "content": ["Countryside Initiative explanation", "How Countryside shows up for visitors"]
+        },
+        {
+          "id": "cvnp",
+          "images": [],
+          "content": ["Cuyahoga Valley National Park working landscape", "Two things at once"]
+        }
+      ],
+      "scripts": ["js/slideshow.js", "js/gallery-home-button.js"]
+    },
+    "crops.html": {
+      "title": "Making the Crops | Trapp Family Farm",
+      "main": [
+        {
+          "id": "vegetables",
+          "containers": [".section-block: slideshow + text column"],
+          "images_slideshow": [
+            "/assets/images/vegitables.avif",
+            "/assets/images/crop_rows.avif",
+            "/assets/images/greenhouse.avif",
+            "/assets/images/sproutes.avif",
+            "/assets/images/washing_the_produce.avif"
+          ],
+          "content": ["Vegetables", "How we grow (key-points)", "On a mixed farm", "links to At the Stand / Setting the Table"]
+        },
+        {
+          "id": "at-the-stand-now",
+          "images": ["/assets/images/roadside_stand.avif"],
+          "content": ["At the Stand Now", "How to use this page", "Garlic subsection", "Hours note"]
+        },
+        {
+          "id": "setting-the-table",
+          "images": [],
+          "content": ["Setting the Table", "Two recipes (tomatoes, omelet)", "Food safety key-points", "Setting the Table for Fruit"]
+        }
+      ],
+      "scripts": ["js/slideshow.js", "js/gallery-home-button.js"]
+    },
+    "animals.html": {
+      "title": "Animal Husbandry | Trapp Family Farm",
+      "main": [
+        {
+          "section": "intro (no id)",
+          "containers": [".container > .slideshow-artifact + .section-intro"],
+          "images_slideshow": [
+            "/assets/images/animal_husbandry.avif",
+            "/assets/images/eggs.avif",
+            "/assets/images/free_range.avif",
+            "/assets/images/broilers.avif",
+            "/assets/images/sheep.avif"
+          ]
+        },
+        {
+          "id": "layers",
+          "images": ["/assets/images/free_range.avif"],
+          "content": ["Layers", "Our approach", "links to Ready-to-Lay Hens / Setting the Table"]
+        },
+        {
+          "id": "broilers",
+          "images": ["/assets/images/broilers.avif"],
+          "content": ["Broilers", "At Trapp Family Farm", "pre-order email"]
+        },
+        {
+          "id": "turkeys",
+          "images": ["/assets/images/turkeys_chicks.avif"],
+          "content": ["Turkeys", "Thanksgiving / organic / pasture", "pre-order email"]
+        },
+        {
+          "id": "sheep",
+          "images": ["/assets/images/sheep.avif"],
+          "content": ["Sheep", "How we raise them", "grass-fed lamb contact"]
+        }
+      ],
+      "scripts": ["js/slideshow.js", "js/gallery-home-button.js"]
+    },
+    "homestead.html": {
+      "title": "For Your Homestead | Trapp Family Farm",
+      "main": [
+        {
+          "section": "intro (no id)",
+          "images": ["/assets/images/for_your_homestead.avif"],
+          "content": ["section-intro: pullets and transplants"]
+        },
+        {
+          "id": "ready-to-lay-hens",
+          "images": ["/assets/images/ready_to_lay_hens.avif"],
+          "content": ["Ready-to-Lay Hens", "Readiness checklist", "Reserve Spring 2026"]
+        },
+        {
+          "id": "transplants",
+          "images": ["/assets/images/sproutes.avif"],
+          "content": ["Transplants", "How we grow them", "Three jobs of a transplant page", "Memorial Day weekend CTA"]
+        }
+      ],
+      "scripts": ["js/gallery-home-button.js"]
+    },
+    "newsletter.html": {
+      "title": "Newsletters | Trapp Family Farm",
+      "main": [
+        {
+          "section": "intro",
+          "content": [".newsletter-intro — quarterly email signup via mailto"]
+        },
+        {
+          "id": "winter-25-26",
+          "images": [],
+          "content": ["Winter ’25–’26", "system check / soil / equipment / seed"]
+        },
+        {
+          "id": "fall-25",
+          "images": [],
+          "content": ["Fall ’25", "storage and transition season"]
+        },
+        {
+          "id": "fall-24",
+          "images": ["/assets/images/FALL_2024.avif"],
+          "content": ["Fall ’24 full issue in HTML", "Turkeys", "Lamb", "Farm news: one horse, new methods", "Related links"],
+          "source_markdown_also": "/assets/docs/newsletters/FALL-2024.md"
+        },
+        {
+          "id": "spring-24",
+          "images": [],
+          "content": ["Spring ’24", "edge of chaos season pointers"]
+        }
+      ],
+      "scripts": ["js/gallery-home-button.js"]
+    },
+    "info.html": {
+      "title": "More Info | Trapp Family Farm",
+      "main": [
+        {
+          "id": "podcasts",
+          "containers": [".media-item × 3"],
+          "images": [
+            "/assets/images/CLE_Foodcast.avif",
+            "/assets/images/eat_better_food_today.avif",
+            "/assets/images/low_power_happy_hour.avif"
+          ],
+          "content": ["CLE Foodcast", "Eat Better Food Today", "Low Power Happy Hour", "external listen links"]
+        },
+        {
+          "id": "news",
+          "images": [],
+          "content": ["News & Sources — link lists: NPS, partners, journalism, Extension/USDA, deer fencing, historic barns"]
+        }
+      ],
+      "scripts": ["js/gallery-home-button.js"]
+    },
+    "projects.html": {
+      "title": "Projects | Trapp Family Farm",
+      "main": [
+        {
+          "id": "deer-fencing",
+          "images": [],
+          "content": ["Deer Fencing", "practical takeaway", "2021 exclusion fence", "cross-links to crops/about/info"]
+        },
+        {
+          "id": "barn",
+          "images": [],
+          "content": ["Barn", "planning / preservation standards", "cross-links"]
+        }
+      ],
+      "scripts": ["js/gallery-home-button.js"]
+    }
+  },
+  "footer_all_pages": {
+    "structure": ".footer-inner: .footer-illustration img | .footer-details | .footer-hours | .footer-follow",
+    "graphic": "/assets/graphics/graphic-footer.avif",
+    "text_blocks": [
+      "Visit & Contact — address, phone, email",
+      "Stand Hours — Mon–Sun, 8a–8p, Cash or Check",
+      "Follow Along — Instagram logo link",
+      ".footer-bottom — © 2024 by Trapp Family Farm."
+    ]
+  }
+}
