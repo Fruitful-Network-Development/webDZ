@@ -12,7 +12,7 @@
   height: 55vh;
   min-height: 320px;
   max-height: 520px;
-  background-image: url('../../assets/images/farm_landscape.avif');
+  background-image: var(--hero-bg-image, url('../../assets/images/foliage.avif'));
   background-size: cover;
   background-position: center bottom;
   background-repeat: no-repeat;

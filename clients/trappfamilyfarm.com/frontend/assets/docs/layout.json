@@ -1,65 +1,97 @@
 {
-    "header": {
-      "graphic": ["/assets/graphics/graphic-header.avif"],
-      "navigation": [
-        "MAKING THE CROPS",
-        "ANIMAL HUSBANDRY",
-        "FOR YOUR HOMESTEAD",
-        "NEWSLETTERS",
-        "MORE INFO"
-      ]
+  "_meta": {
+    "description": "Site content source of truth. Text strings are preserved from the editorial layout; body arrays hold paragraph copy. Images list asset paths used by each section."
+  },
+  "site": {
+    "hero_background": "/assets/images/foliage.avif"
+  },
+  "header": {
+    "graphic": ["/assets/graphics/graphic-header.avif"],
+    "navigation": [
+      "MAKING THE CROPS",
+      "ANIMAL HUSBANDRY",
+      "FOR YOUR HOMESTEAD",
+      "NEWSLETTERS",
+      "MORE INFO"
+    ]
+  },
+  "home": {
+    "about_our_farm": {
+      "body": [
+        "Est. 2012",
+        "Our farm draws its inspiration from many sources but it all began in earnest with a trip to Burlington, Vt and upstate NY in November 2010.  I was on a mission to discover Essex Farm in Essex, NY and see a modern horse-powered farm that seemed in writing to solve so many of the problems that had been vexing a young millennial searching for a different path forward.  Essex Farm did not disappoint, nor did the power of a generous and hospitable farm couple at Intervale in Burlington.  Benner and Dana welcomed me into their farm field and later home, kidded me a bit, but ultimately were supportive and non-judgmental about my zeal to start a horse powered farm.",
+        "They introduced me to the Small Farmer's Journal Cultivating Questions section featuring Eric and Anne Nordell and their unparalleled work at Beech Grove Farm over the last four decades.  A pdf booklet on the Nordell's site describes their unique and thoughtful approach to Weeding the Soil, Not the Crop.  They also recently posted a beautiful presentation describing their market garden and cover cropping methodology here.  I still recall watching this DVD, in awe, 15 years ago as I crafted a plan for a future farm.  It has not lost its effect!"
+      ],
+      "images": ["/assets/images/Home_front_door_address.avif"]
     },
-    "home": {
-        "about_our_farm": [
-            "Est. 2012",
-            "Our farm draws its inspiration from many sources but it all began in earnest with a trip to Burlington, Vt and upstate NY in November 2010.  I was on a mission to discover Essex Farm in Essex, NY and see a modern horse-powered farm that seemed in writing to solve so many of the problems that had been vexing a young millennial searching for a different path forward.  Essex Farm did not disappoint, nor did the power of a generous and hospitable farm couple at Intervale in Burlington.  Benner and Dana welcomed me into their farm field and later home, kidded me a bit, but ultimately were supportive and non-judgmental about my zeal to start a horse powered farm.",
-            "They introduced me to the Small Farmer's Journal Cultivating Questions section featuring Eric and Anne Nordell and their unparalleled work at Beech Grove Farm over the last four decades.  A pdf booklet on the Nordell's site describes their unique and thoughtful approach to Weeding the Soil, Not the Crop.  They also recently posted a beautiful presentation describing their market garden and cover cropping methodology here.  I still recall watching this DVD, in awe, 15 years ago as I crafted a plan for a future farm.  It has not lost its effect!"
-        ],
-        "our_journey": [
-            "Family & Comunity Centered",
-            "Multi-generation Human Power",
-            "On the margins",
-            "Diverse offerings"
-        ],
-        "draft_horses": [
-            "Drafthorses",
-            "Finding Inspiration in Every Muscle",
-            "Our draft horses are at the heart of how we work the land,reducing reliance on fossil fuels and keeping a pace that fits small-scale, diverse production. They move our flocks, till our fields, and connect us to a tradition of human and animal power that remains practical and meaningful today."
-        ]
+    "our_journey": {
+      "body": [
+        "Family & Comunity Centered",
+        "Multi-generation Human Power",
+        "On the margins",
+        "Diverse offerings"
+      ],
+      "images": ["/assets/images/crop.avif"]
     },
-    "about": {
-      "us": [],
-      "farm": [],
-      "countryside": [],
-      "cvnp": []
-    },
-    "making_the_crops": {
-      "intro": [
+    "draft_horses": {
+      "body": [
+        "Drafthorses",
+        "Finding Inspiration in Every Muscle",
+        "Our draft horses are at the heart of how we work the land,reducing reliance on fossil fuels and keeping a pace that fits small-scale, diverse production. They move our flocks, till our fields, and connect us to a tradition of human and animal power that remains practical and meaningful today."
+      ],
+      "images": ["/assets/images/compost.avif"]
+    }
+  },
+  "about": {
+    "us": [],
+    "farm": [],
+    "countryside": [],
+    "cvnp": []
+  },
+  "making_the_crops": {
+    "intro": {
+      "body": [
         "The small family farm is one the last places - they are getting rarer every day - where men and women (and girls and boys, too) can answer that call to be an artist, to learn to give love to the work of their hands.  It is one of the last places where the maker - and some farmers still do talk about making the crops - is responsible from start to finish, for the thing made. - Wendell Berry",
         "Explore the crops we grow and offer for sale at our farmstand through the links below",
         "VEGETABLES",
         "AT THE STAND NOW",
         "SETTING THE TABLE"
       ],
-      "vegetables": [
+      "images": ["/assets/images/vegitables.avif"]
+    },
+    "vegetables": {
+      "body": [
         "The availability of our seasonal produce has ebbed and flowed over the years, yet our commitment to trying to grow the best crops is steadfast.  Here we are referring to crops free of synthetic fertilizers, insecticides, herbicides, pesticides, and most certainly fungicides which are most damaging to our fungal partners that are essential to building healthy soil in partnership with healthy plants.  We use draft horses for our fieldwork and feel it has been, and will continue to be, important, exciting, and magical to explore the possibility of growing food with a minimum of fossil fuel energy and an optimal mix of muscle power both human and animal.",
         "Since the farm's founding we have subscribed to William Albrechts prescriptions of balancing soil cations, specifically calcium, magnesium, potassium, zinc as well as boron.  We have amended our soils over the years with hi-calcium lime, epsom salts, homemade compost, zinc sulfate, and boron.",
         "As we learn more about soil ecology from the likes of Christine Jones and Helen Atthowe, we are excited to refine our methods of feeding our soil microbes with fewer and fewer and off-farm inputs and more and more energy from the sun.",
         "Vegetables don't stand alone. Livestock can be part of the fertility plan; cover crops protect soil between harvests; timing matters because Northeast Ohio weather makes every season feel shorter than the seed catalog promises. The goal: harvest at peak quality while leaving the field better than you found it."
       ],
-      "at_the_stand_now": [
-        {"GARLIC": [
-          "We purchased 40 odd pounds of hardneck seed garlic from Fedco Seeds upon moving here in 2012.  We have been growing, saving, eating and selling that same garlic ever since.  We sell it by the head, pint, quart or by the pound."
-        ]}
-      ],
-      "setting_the_table": [
-        {"fruit": [
-            "In 2021 a deer exclusion fence was erected around our main 16-acre field.  The next year we planted 100 fruit trees within that field, adding another layer protection for the trees, hardware cloth around the trunks for rabbit and vole deterrence.  In 2024 we harvested our first small crop of fruit, which were grown without synthetic fertilizer, insecticides, pesticides, herbicides, or fungicides.  We look forward to offering more of this fruit in the near future, but also realize the path to marketable fruit grown without the abovementioned -cides is uniquely challenging and trying.  In the meantime, we have expanded our small bush fruit like strawberries, blueberries, and raspberries."
-        ]}
-      ]
+      "images": ["/assets/images/vegitables.avif", "/assets/images/compost.avif"]
     },
-    "animal_husbandry": {
-      "intro": [
+    "at_the_stand_now": {
+      "blocks": [
+        {
+          "GARLIC": [
+            "We purchased 40 odd pounds of hardneck seed garlic from Fedco Seeds upon moving here in 2012.  We have been growing, saving, eating and selling that same garlic ever since.  We sell it by the head, pint, quart or by the pound."
+          ]
+        }
+      ],
+      "images": ["/assets/images/stand.avif"]
+    },
+    "setting_the_table": {
+      "blocks": [
+        {
+          "fruit": [
+            "In 2021 a deer exclusion fence was erected around our main 16-acre field.  The next year we planted 100 fruit trees within that field, adding another layer protection for the trees, hardware cloth around the trunks for rabbit and vole deterrence.  In 2024 we harvested our first small crop of fruit, which were grown without synthetic fertilizer, insecticides, pesticides, herbicides, or fungicides.  We look forward to offering more of this fruit in the near future, but also realize the path to marketable fruit grown without the abovementioned -cides is uniquely challenging and trying.  In the meantime, we have expanded our small bush fruit like strawberries, blueberries, and raspberries."
+          ]
+        }
+      ],
+      "images": ["/assets/images/turkey.avif"]
+    }
+  },
+  "animal_husbandry": {
+    "intro": {
+      "body": [
         "Husbandry is the name of all practices that sustain life by connecting us conservingly to our places and our world; it is the art of keeping tied all the strands in the living network that sustain us. - Wendell Berry",
         "We take the care of our animals seriously giving them fresh air, plenty of healthy forage, feed, and water, as well as shelter from the cold, wet and wind when conditions change for the worse.  Explore the links below for more on how we raise our animals and how you can share in the many gifts they provide. ",
         "LAYERS",
@@ -68,92 +100,134 @@
         "SHEEP",
         "HORSES"
       ],
-      "layers": [
+      "images": ["/assets/images/animal_husbandry.avif"]
+    },
+    "layers": {
+      "body": [
         "Our flock of laying hens enjoy fresh pasture from April through December, and on into January, weather permitting.  The bulk of their diet consists of organic feed from Maysville Elevator in Apple Creek, Ohio.  We use draftpower to haul this feed to the hens as they move daily to new pasture foraging a variety of grasses, clovers, forbs and the seeds, leaves, flowers and stems those plants provide.  If we do our job well, the roots of those plants are never eaten or disturbed, leaving them primed to quickly regenerate leaf canopy protecting our precious soils and in the process pumping plant generated carbon in the form of root exudates to our beloved soil microbes!",
         "Good land and soil stewardship equals healthy hens and high quality eggs!  If you would like to try our eggs they are available for sale daily at our front door until sold out."
       ],
-      "broilers": [
+      "images": [
+        "/assets/images/eggs.avif",
+        "/assets/images/free_range.avif",
+        "/assets/images/chicken_feed.avif"
+      ]
+    },
+    "broilers": {
+      "body": [
         "Broilers are chickens of a certain size raised for meat--in our farm's case, 3.5 to 6.5 pounds once processed.  We raise our broilers on pasture with a series of bottomless pens that are predator proof and easily moveable to promote chicken and forage health.  As such broilers are only available from May to November.  Outside of these months, the wet or cold, or both is often inhospitable for young chickens, so we, and the land, rest.  While on pasture from an age of three weeks on, our broilers cover a half-acre of pasture, moving twice daily to fresh forage.   As with our laying flock, we feed only an organic layer ration from Maysville Elevator.  Our chicks are sourced from Eagle Nest Poultry in Oceola, Ohio.",
         "If you are interested in getting on our pre-order list for seasonal broilers, please email us!"
       ],
-      "turkeys": [
+      "images": ["/assets/images/broilers.avif"]
+    },
+    "turkeys": {
+      "body": [
         "Our Thanksgiving turkeys are; fed only organic feed, moved daily to fresh pasture, given clean water (no trivial task with turkeys), and grit to help grind up the forage and insects they consume.  We feel their quality of life and the resulting taste is unparalleled.  On top of that, we have fun raising them and marvel at how they help to transform our soils.",
         "Arriving from Eagle Nest Hatchery as day-old poults, we shelter our turkeys in a heated, well-bedded, draft-free brooder until they are big and strong enough to thrive on pasture.",
         "If you are interested in getting on our pre-order list for Thanksgiving turkeys, please email us!"
       ],
-      "sheep": [
+      "images": ["/assets/images/turkeys_chicks.avif"]
+    },
+    "sheep": {
+      "body": [
         "As with the crops we make, we strive to raise the healthiest sheep possible.  We have faith in rotational grazing, free-choice minerals, keen observation, and a gentle presence with our flock of sheep all go a long way to create an environment in which our hair sheep can thrive.  The flock enjoys a fresh paddock daily, or more often, nearly year-round as our deer exclusion fence allows us to stockpile forage for flock.",
         "Our productive ewes continue to expand our flock and valued customers enjoy the meat with which the remainder of our sheep provide us.  If you are interested, in trying some of our exclusively grass-fed sheep for your home or institution, contact us to begin a discussion."
-      ]
-    },
-    "for_your_homestead": {
-      "intro": [
+      ],
+      "images": ["/assets/images/sheep-grass.avif", "/assets/images/lamb_chops.avif"]
+    }
+  },
+  "for_your_homestead": {
+    "intro": {
+      "body": [
         "Odd as I am sure it will appear to some, I can think of no better form of personal involvement in the cure of the environment than that of gardening.  A person who is growing a garden, if he is growing it organically, is improving a piece of the world.  He is producing something to eat, which makes him somewhat independent of the grocery business, but he is also enlarging, for himself, the meaning of food and the pleasure of eating. - Wendell Berry",
         "We welcome you to explore some of offerings below that may help you along your homesteading journey in whatever form that may take",
         "Ready-To-Lay HENS",
         "TRANSPLANTS",
         "CLASSES"
       ],
-      "ready_to_lay_hens": [
+      "images": ["/assets/images/for_your_homestead.avif"]
+    },
+    "ready_to_lay_hens": {
+      "body": [
         "Each spring we offer ready-to-lay pullets once they approach a laying age of 16 weeks.  We leave their beaks intact, only feed an organic ration of an appropriate protein percentage to achieve a healthy weight and good laying frame.  We raise Golden Buff/Comets sourced from Eagle Nest Poultry as day-old unmedicated chicks.",
         "Email or call to reserve your hens from Spring of 2026!"
       ],
-      "transplants": [
+      "images": ["/assets/images/ready_to_lay_hens.avif"]
+    },
+    "transplants": {
+      "body": [
         "Transplants set the stage for a successful season in the garden.  Healthy plants, photosynthesizing efficiently, are the source of the root exudates that feed the microorganisms, which return the favor by feeding the plant compounds and nutrients otherwise in accessible.",
         "To get this beautiful symbiotic system moving we use organic seed (except for a few exceptions once of which is Sungold cherry tomatoes), and organic potting mix from Tilth or Ohio Earth Food. In recent years we began exploring a variety of certified organic mineral sprays to address micronutrient deficiencies in transplants.  As our understanding of soil biology and the strength of multiple botanical plant families expands we are excited to seed a variety of companion seeds with our usual suite of seasonal vegetable transplants to promote a healthy community of soil microorganisms in each of our soil blocks.",
         "If you are in the market for plants in the Spring, our tomato and peppers are typically ready for Memorial Day weekend.  If you are seeking a specific plant variety and quantity, please let us know!"
-      ]
+      ],
+      "images": ["/assets/images/sproutes.avif"]
+    }
+  },
+  "newsletters": {
+    "winter_2025_2026-LEAVE_OUT": [],
+    "fall_2025-LEAVE_OUT": [],
+    "fall_2024": {
+      "files": ["/assets/docs/newsletters/FALL-2024.md"],
+      "images": ["/assets/images/newsletter/FALL_2024.avif"]
     },
-    "newsletters": {
-      "winter_2025_2026-LEAVE_OUT": [],
-      "fall_2025-LEAVE_OUT": [],
-      "fall_2024": ["/assets/docs/newsletters/FALL-2024.md"],
-      "spring_2024": []
-    },
-    "more_info": {
-      "intro": [
+    "spring_2024": []
+  },
+  "more_info": {
+    "intro": {
+      "body": [
         "We have been so very fortunate to share our story over the years via in-person talks, podcasts and more. See below for past and future engagement opportunities.",
         "We are always interested in sharing our unique story, but with the challenges of managing a farm and family, we have limited opportunities and typically in the winter, to do so. If that timing can work for your organization, please reach out below to discuss a talk or farm tour."
       ],
-      "podcasts": [
-        {"CLE Foodcast": [
-            "CLE Foodcast",
-            "with Lisa Sands",
-            "August 2022",
-            "https://podcasts.apple.com/us/podcast/ep-55-modern-farming-in-the-old-school-style-with-mark-trapp/id1562930034?i=1000578062095"
-        ]},
-        {"Eat Better Food Today": [
+      "images": []
+    },
+    "podcasts": [
+      {
+        "CLE Foodcast": [
+          "CLE Foodcast",
+          "with Lisa Sands",
+          "August 2022",
+          "https://podcasts.apple.com/us/podcast/ep-55-modern-farming-in-the-old-school-style-with-mark-trapp/id1562930034?i=1000578062095"
+        ],
+        "image": "/assets/images/logo/logo-CLE_Foodcast.avif"
+      },
+      {
+        "Eat Better Food Today": [
           "Features \"Mark Trapp's Omelet for Dinner\", eggs plus seasonal/leftover vegetables. A straightforward model for cooking from the stand. See also Setting the Table for more farm-based cooking.",
           "Spring 2023",
           "https://open.spotify.com/episode/166OBLeuDwD7KntExDMYVp"
-        ]},
-        {"Low Power Happy Hour": [
+        ],
+        "image": "/assets/images/logo/logo-eat_better_food_today.avif"
+      },
+      {
+        "Low Power Happy Hour": [
           "We had the pleasure sharing our farm story in the cozy Happy Days Lodge to a sold out crowd as part of the Low Power Happy Hour series presented by the Conservancy for CVNP.",
           "January 2024 & 2026",
           "https://www.conservancyforcvnp.org/experience/low-power-happy-hour/"
-        ]}
-      ],
-      "news": []
-    },
-    "projects-LEAVE_OUT": {
-      "deer_fencing-LEAVE_OUT": [],
-      "barn-LEAVE_OUT": []
-    },
-    "footer": {
-        "graphic": [{"path": "/assets/graphics/graphic-footer.avif"}],
-        "details": [
-          "1019 W. Streetsboro Rd.",
-          "Peninsula, OH 44264",
-          "(330) 657-2844",
-          "trapp.family.farm@gmail.com"
         ],
-        "farm_stand": [
-          "Farm Stand",
-          "Mon - Sun",
-          "8a - 8p",
-          "Cash or Check, please!"
-        ],
-        "social": ["instagram.com/trappfamilyfarm"],
-        "copyright": ["© 2024 by Trapp Family Farm."]
-    }
+        "image": "/assets/images/logo/logo-low_power_happy_hour.avif"
+      }
+    ],
+    "news": []
+  },
+  "projects": {
+    "deer_fencing": [],
+    "barn": []
+  },
+  "footer": {
+    "graphic": [{ "path": "/assets/graphics/graphic-footer.avif" }],
+    "details": [
+      "1019 W. Streetsboro Rd.",
+      "Peninsula, OH 44264",
+      "(330) 657-2844",
+      "trapp.family.farm@gmail.com"
+    ],
+    "farm_stand": [
+      "Farm Stand",
+      "Mon - Sun",
+      "8a - 8p",
+      "Cash or Check, please!"
+    ],
+    "social": ["instagram.com/trappfamilyfarm"],
+    "copyright": ["© 2024 by Trapp Family Farm."]
   }
+}

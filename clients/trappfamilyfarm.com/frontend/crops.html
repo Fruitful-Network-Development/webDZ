@@ -4,162 +4,26 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Making the Crops | Trapp Family Farm</title>
-  <meta name="description" content="What we grow, why we rotate, and how to cook with what's in season,vegetables and soil-building crops raised in the valley's working landscape.">
+  <meta name="description" content="Vegetables, farm stand, and setting the table.">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body data-page="crops">
   <header class="site-header">
     <div class="header-inner">
       <a href="home.html" class="logo">
         <span class="logo-text"><span>TRAPP</span><span>FAMILY</span><span>FARM</span></span>
       </a>
       <nav class="main-nav">
-        <ul class="nav-with-icons">
-          <li><a href="about.html">About</a></li>
-          <li><a href="crops.html" class="active">Making the Crops</a></li>
-          <li><a href="animals.html">Animal Husbandry</a></li>
-          <li><a href="homestead.html">For Your Homestead</a></li>
-          <li><a href="newsletter.html">Newsletters</a></li>
-          <li><a href="info.html">More Info</a></li>
-          <li><a href="projects.html">Projects</a></li>
-        </ul>
+        <ul class="nav-with-icons" id="nav-root"></ul>
       </nav>
     </div>
   </header>
 
-  <main class="main">
-    <section id="vegetables" class="page-section">
-      <div class="container">
-        <h2>Vegetables</h2>
-        <div class="section-block">
-          <div class="slideshow-artifact" data-current="0">
-            <div class="slideshow-viewport">
-              <div class="slideshow-track">
-                <div class="slide is-active" aria-hidden="false">
-                  <img src="assets/images/vegitables.avif" alt="Peak-season harvest from the valley.">
-                </div>
-                <div class="slide" aria-hidden="true">
-                  <img src="assets/images/crop_rows.avif" alt="Crop rows at Trapp Family Farm.">
-                </div>
-                <div class="slide" aria-hidden="true">
-                  <img src="assets/images/greenhouse.avif" alt="Greenhouse and starts.">
-                </div>
-                <div class="slide" aria-hidden="true">
-                  <img src="assets/images/sproutes.avif" alt="Starts and sprouts.">
-                </div>
-                <div class="slide" aria-hidden="true">
-                  <img src="assets/images/washing_the_produce.avif" alt="Washing produce at the farm.">
-                </div>
-              </div>
-            </div>
-            <div class="slideshow-nav">
-              <button type="button" class="slideshow-prev" aria-label="Previous slide">Prev</button>
-              <button type="button" class="slideshow-next" aria-label="Next slide">Next</button>
-            </div>
-          </div>
-          <div>
-            <p class="lead-in">Vegetables are the most visible part of the farm,what you see in the stand bins and what you taste at the table,but they're also the product of a longer system: soil building, crop rotation, and the question, "What can this field support next?"</p>
-            <div class="key-points">
-              <h4>How we grow</h4>
-              <ul>
-                <li>No synthetic fertilizers, insecticides, herbicides, pesticides, or fungicides</li>
-                <li>Draft horses for fieldwork,minimal fossil fuel, human and animal power</li>
-                <li>William Albrecht–style soil balancing: calcium, magnesium, potassium, zinc, boron</li>
-                <li>Learning from Christine Jones and Helen Atthowe to feed soil microbes with fewer off-farm inputs</li>
-              </ul>
-            </div>
-            <div class="subsection">
-              <h3>On a mixed farm</h3>
-              <p>Vegetables don't stand alone. Livestock can be part of the fertility plan; cover crops protect soil between harvests; timing matters because Northeast Ohio weather makes every season feel shorter than the seed catalog promises. The goal: harvest at peak quality while leaving the field better than you found it.</p>
-            </div>
-            <p class="pullquote">For customers: think "what's in season, and why." Build meals around what is ready now.</p>
-            <p>Pair this with <a href="#at-the-stand-now">At the Stand Now</a> and <a href="#setting-the-table">Setting the Table</a>.</p>
-          </div>
-        </div>
-      </div>
-    </section>
+  <main class="main" id="main-root"></main>
 
-    <section id="at-the-stand-now" class="page-section">
-      <div class="container">
-        <h2>At the Stand Now</h2>
-        <div class="section-block">
-          <div class="artifact">
-            <div class="artifact-media">
-              <img src="assets/images/roadside_stand.avif" alt="Seasonal stand at the farm entrance.">
-            </div>
-            <p class="artifact-caption">Farm stand at the entrance,what's available shifts with weather and harvest.</p>
-          </div>
-          <p class="lead-in">Live-update page for what's available right now,built for real farm conditions, not grocery-store certainty. During growing season, the farm stand at the entrance is where most visitors meet the farm.</p>
-          <div class="key-points">
-            <h4>How to use this page</h4>
-            <ul>
-              <li>Check before you drive over.</li>
-              <li>Build your meal plan around "in stock now," not what you wish were ready.</li>
-              <li>For specific items (holiday poultry, limited batch), contact us and confirm pickup.</li>
-              <li>Typical: eggs and produce; first/last harvest notes; sold-out flags; storage notes.</li>
-            </ul>
-          </div>
-          <div class="subsection">
-            <h3>Garlic</h3>
-            <p>We purchased 40-odd pounds of hardneck seed garlic from Fedco Seeds in 2012. We've been growing, saving, eating, and selling that same garlic ever since,by the head, pint, quart, or pound.</p>
-          </div>
-          <p><strong>Hours:</strong> Treat posted hours as "most recent"; confirm via the farm's latest update or <a href="home.html#footer">contact details</a> below.</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="setting-the-table" class="page-section">
-      <div class="container">
-        <h2>Setting the Table</h2>
-        <div class="section-block">
-          <p class="pullquote">Not just growing food,making it usable on a Tuesday night.</p>
-          <p class="lead-in">Cooking from a farm stand is repeatable patterns: one-pan meals that absorb "whatever is in season"; egg-based dinners; preservation habits that stretch abundance into winter.</p>
-          <div class="subsection">
-            <h3>Two recipes</h3>
-            <p><strong>Low-and-slow tomatoes:</strong> Oven-dried small sweet tomatoes,cut, oil and salt, dry at low heat. Use for months: eggs, pizza, pasta, pesto. (Cleveland Mag: Juliet tomatoes at 200°F, 6–9 hours; store in bags up to a year.)</p>
-            <p><strong>Omelet-for-dinner:</strong> Mark Trapp's approach: eggs + vegetables (fresh or leftover),onions, mushrooms, peppers, broccoli. See <a href="info.html#podcasts">Podcasts</a> for the Eat Better Food Today episode.</p>
-          </div>
-          <div class="key-points">
-            <h4>Food safety</h4>
-            <ul>
-              <li>Thermometer for poultry; cook eggs until firm for a broad audience.</li>
-              <li>Refrigerate perishables promptly; avoid the "danger zone" (40°F–140°F).</li>
-              <li>Cook all poultry to 165°F.</li>
-            </ul>
-          </div>
-          <div class="subsection">
-            <h3>Setting the Table for Fruit</h3>
-            <p>In 2021 a deer exclusion fence went up around our main 16-acre field. We planted 100 fruit trees; in 2024 we harvested our first small crop of fruit, grown without synthetics. We're expanding bush fruit,strawberries, blueberries, raspberries,and look forward to offering more tree fruit as we can.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer" id="footer">
-    <div class="footer-inner">
-      <div class="footer-illustration">
-        <img src="assets/graphics/graphic-footer.avif" alt="Hen and chicks illustration">
-      </div>
-      <div class="footer-col footer-details">
-        <h3>Visit &amp; Contact</h3>
-        <p>1019 W. Streetsboro Rd.<br>Peninsula, OH 44264<br><a href="tel:+13306572844">(330) 657-2844</a><br><a href="mailto:trapp.family.farm@gmail.com">trapp.family.farm@gmail.com</a></p>
-      </div>
-      <div class="footer-col footer-hours">
-        <h3>Stand Hours</h3>
-        <p>Mon – Sun<br>8a – 8p<br>Cash or Check, please!</p>
-      </div>
-      <div class="footer-col footer-follow">
-        <h3>Follow Along</h3>
-        <p><a class="instagram-link" href="https://www.instagram.com/trappfamilyfarm/" target="_blank" rel="noopener" aria-label="Instagram"><img src="assets/icon/logos/logo-instagram.svg" alt=""></a></p>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>© 2024 by Trapp Family Farm.</p>
-    </div>
-  </footer>
-  <script src="js/slideshow.js"></script>
+  <footer class="site-footer" id="footer-root"></footer>
+  <script src="js/site-content.js"></script>
   <script src="js/gallery-home-button.js"></script>
 </body>
 </html>

@@ -1,5 +1,5 @@
 {
-  "_description": "Snapshot of the static frontend: HTML files, image asset paths (relative to site root), section/container patterns, and concise content labels. Paths use leading slash like layout.json (/assets/...).",
+  "_description": "Snapshot of the static frontend. Primary copy and image paths live in assets/docs/layout.json; js/site-content.js fetches that JSON and fills #main-root and #footer-root. HTML shells are minimal. Paths use leading slash like layout.json (/assets/...).",
   "global_assets": {
     "stylesheets": ["css/style.css"],
     "favicon": "favicon.svg",
@@ -12,8 +12,8 @@
       "instagram_svg": "/assets/icon/logos/logo-instagram.svg"
     },
     "hero_background": {
-      "avif": "/assets/images/farm_landscape.avif",
-      "applied_in_css": "css/sections/hero.css (.hero-parallax background-image)"
+      "avif": "/assets/images/foliage.avif",
+      "applied_in_css": "css/sections/hero.css (.hero-parallax uses var(--hero-bg-image)); layout.json site.hero_background; JS sets on documentElement"
     },
     "nav_icon_masks": {
       "pattern": "CSS mask-image on .nav-with-icons a::before in css/style.css",
@@ -22,8 +22,7 @@
         "/assets/icon/ui/icon-info.svg",
         "/assets/icon/ui/icon-data.svg",
         "/assets/icon/ui/icon-relationship.svg",
-        "/assets/icon/ui/icon-inbox.svg",
-        "/assets/icon/ui/icon-tools.svg"
+        "/assets/icon/ui/icon-inbox.svg"
       ]
     },
     "other_ui_icons_in_css": [
@@ -51,13 +50,11 @@
   },
   "navigation": {
     "links": [
-      { "label": "About", "href": "about.html" },
       { "label": "Making the Crops", "href": "crops.html" },
       { "label": "Animal Husbandry", "href": "animals.html" },
       { "label": "For Your Homestead", "href": "homestead.html" },
       { "label": "Newsletters", "href": "newsletter.html" },
-      { "label": "More Info", "href": "info.html" },
-      { "label": "Projects", "href": "projects.html" }
+      { "label": "More Info", "href": "info.html" }
     ],
     "logo": { "href": "home.html", "markup": ".logo > .logo-text (TRAPP / FAMILY / FARM)" }
   },

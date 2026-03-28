@@ -2,13 +2,12 @@
 @import "sections/content-blocks.css";
 @import "sections/slideshow.css";
 @import "sections/hero.css";
-@import "sections/about.css";
+@import "sections/json-layout.css";
 @import "sections/crops.css";
 @import "sections/animals.css";
 @import "sections/homestead.css";
 @import "sections/newsletter.css";
 @import "sections/info.css";
-@import "sections/projects.css";
 
 /* —— Base —— */
 :root {
@@ -162,7 +161,6 @@ a:hover { text-decoration: underline; }
   mask-image: url("../assets/icon/ui/icon-home.svg");
 }
 
-.main-nav ul.nav-with-icons a[href="about.html"]::before,
 .main-nav ul.nav-with-icons a[href="info.html"]::before {
   -webkit-mask-image: url("../assets/icon/ui/icon-info.svg");
   mask-image: url("../assets/icon/ui/icon-info.svg");
@@ -186,11 +184,6 @@ a:hover { text-decoration: underline; }
 .main-nav ul.nav-with-icons a[href="newsletter.html"]::before {
   -webkit-mask-image: url("../assets/icon/ui/icon-inbox.svg");
   mask-image: url("../assets/icon/ui/icon-inbox.svg");
-}
-
-.main-nav ul.nav-with-icons a[href="projects.html"]::before {
-  -webkit-mask-image: url("../assets/icon/ui/icon-tools.svg");
-  mask-image: url("../assets/icon/ui/icon-tools.svg");
 }
 
 .main-nav a:hover {
