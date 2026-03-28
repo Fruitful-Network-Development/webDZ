@@ -1,6 +1,31 @@
 {
   "_meta": {
-    "description": "Site content source of truth. Text strings are preserved from the editorial layout; body arrays hold paragraph copy. Images list asset paths used by each section."
+    "description": "Site content source of truth. Text strings are preserved from the editorial layout; body arrays hold paragraph copy. Images list asset paths used by each section. The icons object holds SVG paths for masks and images; js/site-content.js applies them as CSS variables (--icon-nav-*, --icon-footer-*, --icon-section-*) and updates the favicon link."
+  },
+  "icons": {
+    "favicon": "/favicon.svg",
+    "navigation": {
+      "crops": "/assets/icon/ui/icon-data.svg",
+      "animals": "/assets/icon/ui/icon-relationship.svg",
+      "homestead": "/assets/icon/ui/icon-home.svg",
+      "newsletters": "/assets/icon/ui/icon-inbox.svg",
+      "more_info": "/assets/icon/ui/icon-info.svg"
+    },
+    "footer": {
+      "visit": "/assets/icon/icon-location.svg",
+      "stand_hours": "/assets/icon/ui/icon-time.svg",
+      "instagram": "/assets/icon/logos/logo-instagram.svg",
+      "mail": "/assets/icon/icon-mail.svg"
+    },
+    "sections": {
+      "location": "/assets/icon/icon-location.svg",
+      "inventory": "/assets/icon/icon-inventory.svg",
+      "time": "/assets/icon/ui/icon-time.svg",
+      "tag": "/assets/icon/icon-tag.svg",
+      "mail": "/assets/icon/icon-mail.svg",
+      "relationship": "/assets/icon/ui/icon-relationship.svg",
+      "info": "/assets/icon/ui/icon-info.svg"
+    }
   },
   "site": {
     "hero_background": "/assets/images/foliage.avif"

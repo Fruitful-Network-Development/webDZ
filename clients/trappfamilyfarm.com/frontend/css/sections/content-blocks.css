@@ -50,11 +50,11 @@
   display: inline-block;
   flex: 0 0 0.95rem;
   background-color: currentColor;
-  -webkit-mask-image: url("../../assets/icon/icon-tag.svg");
+  -webkit-mask-image: var(--icon-section-tag, url("../../assets/icon/icon-tag.svg"));
   -webkit-mask-position: center;
   -webkit-mask-repeat: no-repeat;
   -webkit-mask-size: contain;
-  mask-image: url("../../assets/icon/icon-tag.svg");
+  mask-image: var(--icon-section-tag, url("../../assets/icon/icon-tag.svg"));
   mask-position: center;
   mask-repeat: no-repeat;
   mask-size: contain;

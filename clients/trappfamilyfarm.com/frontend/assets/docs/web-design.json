@@ -1,5 +1,5 @@
 {
-  "_description": "Snapshot of the static frontend. Primary copy and image paths live in assets/docs/layout.json; js/site-content.js fetches that JSON and fills #main-root and #footer-root. HTML shells are minimal. Paths use leading slash like layout.json (/assets/...).",
+  "_description": "Offline backup / documentation snapshot only. It is NOT loaded by the website. The live site uses assets/docs/layout.json and js/site-content.js only. Do not reference this file from HTML, CSS, or JS.",
   "global_assets": {
     "stylesheets": ["css/style.css"],
     "favicon": "favicon.svg",
@@ -12,8 +12,7 @@
       "instagram_svg": "/assets/icon/logos/logo-instagram.svg"
     },
     "hero_background": {
-      "avif": "/assets/images/foliage.avif",
-      "applied_in_css": "css/sections/hero.css (.hero-parallax uses var(--hero-bg-image)); layout.json site.hero_background; JS sets on documentElement"
+      "note": "No longer used: home and index do not render a hero parallax; hero.css remains imported for legacy rules only."
     },
     "nav_icon_masks": {
       "pattern": "CSS mask-image on .nav-with-icons a::before in css/style.css",
@@ -35,7 +34,7 @@
     "site_shell": "header.site-header > .header-inner | main.main | footer.site-footer > .footer-inner + .footer-bottom",
     "max_width": "1100px (--width in css/style.css); .header-inner, .container, .footer-inner align to this",
     "inner_page_section": "section.page-section > .container (most inner pages)",
-    "hero_page": "section.hero > .hero-parallax + .hero-body (index.html, home.html; body.home-page)",
+    "home_page": "section.json-home-page > .container (home.html; content from layout.json home)",
     "content_patterns": [
       ".section-block — text + media column layouts",
       ".section-split — .panel-text + .panel-image (e.g. slideshow)",
@@ -61,37 +60,15 @@
   "pages": {
     "index.html": {
       "title": "Trapp Family Farm | Coming Soon",
-      "body_class": "home-page",
-      "header": "full: graphic + logo + nav",
-      "main": [
-        {
-          "section": "section.hero",
-          "containers": [".hero-parallax (bg via CSS)", ".hero-body"],
-          "images_html": ["/assets/graphics/graphic-header.avif"],
-          "content": ["Website update in progress", "Coming Soon"]
-        }
-      ],
-      "scripts": []
+      "header": "graphic + logo only (no nav, no nav-root)",
+      "main": "Single section: h1 \"Coming soon\" only; no hero; footer from layout.json",
+      "scripts": ["js/site-content.js", "js/gallery-home-button.js"]
     },
     "home.html": {
-      "title": "Trapp Family Farm | Horse-Powered Farming in Cuyahoga Valley National Park",
-      "body_class": "home-page",
-      "header": "full: graphic + logo + nav",
-      "main": [
-        {
-          "section": "section.hero",
-          "containers": [".hero-parallax", ".hero-body", "section.landing-redesign"],
-          "images_html": ["/assets/graphics/graphic-header.avif"],
-          "content": [
-            "Kicker: Horse-powered farming in Cuyahoga Valley National Park",
-            "H1: Trapp Family Farm",
-            "Lead: family-run crop and livestock farm since 2012",
-            "Plan Your Visit — address, stand hours Mon–Sun 8a–8p, cash/check, phone, email",
-            "At The Farm — highlight cards: Today at the Stand, Animals & Meat, Our Story"
-          ]
-        }
-      ],
-      "scripts": ["js/gallery-home-button.js"]
+      "title": "Trapp Family Farm",
+      "header": "graphic + logo + nav (nav from layout.json)",
+      "main": "section.json-home-page: kicker + H1 + grid from layout.json home (about_our_farm, our_journey, draft_horses); no hero",
+      "scripts": ["js/site-content.js", "js/gallery-home-button.js"]
     },
     "about.html": {
       "title": "About | Trapp Family Farm in Cuyahoga Valley",

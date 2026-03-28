@@ -19,6 +19,46 @@
     "MORE INFO": "More Info"
   };
 
+  function relAssetPath(p) {
+    return (p || "").replace(/^\//, "");
+  }
+
+  function cssUrlFromPath(p) {
+    var r = relAssetPath(p);
+    return r ? 'url("' + r + '")' : "";
+  }
+
+  /**
+   * Applies paths from layout.icons as CSS custom properties so masks/images
+   * can be changed by editing layout.json only.
+   */
+  function applyIconCssVars(layout) {
+    var icons = layout.icons;
+    if (!icons) return;
+    var root = document.documentElement;
+
+    if (icons.favicon) {
+      var fav = relAssetPath(icons.favicon);
+      document.querySelectorAll('link[rel="icon"], link[rel="shortcut icon"]').forEach(function (l) {
+        l.href = fav;
+      });
+    }
+
+    function setGroup(prefix, obj) {
+      if (!obj || typeof obj !== "object") return;
+      Object.keys(obj).forEach(function (key) {
+        var val = cssUrlFromPath(obj[key]);
+        if (val) {
+          root.style.setProperty("--icon-" + prefix + "-" + key, val);
+        }
+      });
+    }
+
+    setGroup("nav", icons.navigation);
+    setGroup("footer", icons.footer);
+    setGroup("section", icons.sections);
+  }
+
   function escapeHtml(s) {
     if (s == null) return "";
     return String(s)
@@ -179,19 +219,18 @@
 
   function renderHome(layout) {
     var h = layout.home;
-    var heroKicker = h.about_our_farm.body[0];
+    var kicker = h.about_our_farm.body[0];
     var aboutRest = h.about_our_farm.body.slice(1);
     var journeyItems = h.our_journey.body.map(function (line) {
       return "<li>" + escapeHtml(line) + "</li>";
     }).join("");
     return (
-      '<section class="hero json-home-hero">' +
-      '<div class="hero-parallax" role="img" aria-label="Farm"></div>' +
-      '<div class="hero-body">' +
-      '<p class="hero-kicker">' +
-      escapeHtml(heroKicker) +
+      '<section class="page-section json-home-page">' +
+      '<div class="container json-container">' +
+      '<p class="json-home-kicker">' +
+      escapeHtml(kicker) +
       "</p>" +
-      "<h1>Trapp Family Farm</h1>" +
+      '<h1 class="json-home-title">Trapp Family Farm</h1>' +
       '<div class="json-home-grid">' +
       '<div class="json-home-col json-home-story">' +
       bodyParagraphs(aboutRest) +
@@ -430,6 +469,12 @@
     var ig = ft.social[0] || "";
     var igUrl = ig.indexOf("http") === 0 ? ig : "https://www.instagram.com/" + ig.replace(/^instagram\.com\//, "").replace(/^\//, "");
     var copy = ft.copyright && ft.copyright[0] ? ft.copyright[0] : "";
+    var igIcon =
+      layout.icons &&
+      layout.icons.footer &&
+      layout.icons.footer.instagram
+        ? relAssetPath(layout.icons.footer.instagram)
+        : "assets/icon/logos/logo-instagram.svg";
     root.innerHTML =
       '<div class="footer-inner">' +
       '<div class="footer-illustration">' +
@@ -468,7 +513,9 @@
       "<h3>Follow along</h3>" +
       '<p><a class="instagram-link" href="' +
       escapeHtml(igUrl) +
-      '" target="_blank" rel="noopener" aria-label="Instagram"><img src="assets/icon/logos/logo-instagram.svg" alt=""></a></p>' +
+      '" target="_blank" rel="noopener" aria-label="Instagram"><img src="' +
+      escapeHtml(igIcon) +
+      '" alt=""></a></p>' +
       "</div>" +
       "</div>" +
       '<div class="footer-bottom"><p>' +
@@ -498,13 +545,6 @@
     navRoot.innerHTML = items;
   }
 
-  function setHeroBackground(layout) {
-    var path = (layout.site && layout.site.hero_background) || "";
-    if (!path) return;
-    var rel = path.replace(/^\//, "");
-    document.documentElement.style.setProperty("--hero-bg-image", "url('" + rel + "')");
-  }
-
   function renderHeader(layout, headerGraphic, navRoot, currentFile) {
     var g = layout.header.graphic && layout.header.graphic[0];
     var showGraphic =
@@ -517,10 +557,14 @@
       var wrapOff = headerGraphic.closest(".header-graphic");
       if (wrapOff) wrapOff.style.display = "none";
     }
-    renderNav(layout, navRoot, currentFile);
+    if (navRoot && currentFile !== "index.html") {
+      renderNav(layout, navRoot, currentFile);
+    }
   }
 
   function run(layout) {
+    applyIconCssVars(layout);
+
     var page = document.body.getAttribute("data-page");
     var main = document.getElementById("main-root");
     var footer = document.getElementById("footer-root");
@@ -528,13 +572,7 @@
     var headerImg = document.querySelector(".header-graphic img");
     var path = window.location.pathname.split("/").pop() || "index.html";
 
-    setHeroBackground(layout);
-
-    if (page === "home" || page === "index") {
-      document.body.classList.add("home-page");
-    }
-
-    if (nav) {
+    if (headerImg || nav) {
       renderHeader(layout, headerImg, nav, path);
     }
 
@@ -547,7 +585,7 @@
       else if (page === "more_info") main.innerHTML = renderMoreInfo(layout);
       else if (page === "index") {
         main.innerHTML =
-          '<section class="hero"><div class="hero-parallax"></div><div class="hero-body"><p class="hero-kicker">Website update in progress</p><h1>Coming soon</h1></div></section>';
+          '<section class="page-section json-index-soon"><div class="container json-container"><h1 class="json-coming-soon-heading">Coming soon</h1></div></section>';
       }
     }
 

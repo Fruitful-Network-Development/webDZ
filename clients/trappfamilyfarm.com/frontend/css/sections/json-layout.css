@@ -1,5 +1,39 @@
 /* JSON-driven page layout — content from assets/docs/layout.json */
 
+.json-home-page {
+  padding-top: 0;
+}
+
+.json-home-kicker {
+  font-size: 0.85rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin: 0 0 0.5rem;
+}
+
+.json-home-title {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--charcoal);
+  margin: 0 0 2rem;
+  line-height: 1.2;
+}
+
+.json-index-soon {
+  padding: 4rem 0 5rem;
+  text-align: center;
+}
+
+.json-coming-soon-heading {
+  font-family: var(--font-display);
+  font-size: 2.25rem;
+  font-weight: 600;
+  color: var(--charcoal);
+  margin: 0;
+}
+
 .json-container {
   padding-top: 2rem;
   padding-bottom: 3rem;

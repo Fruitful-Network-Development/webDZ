@@ -13,7 +13,17 @@
   var frontendRootUrl = new URL("../", script.src);
   var homeUrl = new URL("home.html", frontendRootUrl);
   var indexUrl = new URL("index.html", frontendRootUrl);
-  var faviconUrl = new URL("favicon.svg", frontendRootUrl);
+  var defaultFaviconUrl = new URL("favicon.svg", frontendRootUrl);
+
+  function resolveFaviconHref() {
+    var link = document.querySelector("link[rel='icon']");
+    if (link && link.getAttribute("href")) {
+      try {
+        return new URL(link.getAttribute("href"), window.location.href).href;
+      } catch (e) {}
+    }
+    return defaultFaviconUrl.href;
+  }
   var pathname = window.location.pathname;
   var isHomePage =
     pathname === homeUrl.pathname ||
@@ -43,7 +53,7 @@
         document.head.appendChild(link);
       }
 
-      link.href = faviconUrl.href;
+      link.href = resolveFaviconHref();
       if (link.rel === "icon") {
         link.type = "image/svg+xml";
       }
@@ -114,7 +124,7 @@
     button.setAttribute("aria-label", "Back to home");
     button.title = "Back to home";
 
-    image.src = faviconUrl.href;
+    image.src = resolveFaviconHref();
     image.alt = "";
     image.setAttribute("aria-hidden", "true");
 

@@ -111,15 +111,15 @@
 .hero .visit-panel h2::before {
   width: 1rem;
   height: 1rem;
-  -webkit-mask-image: url("../../assets/icon/icon-location.svg");
-  mask-image: url("../../assets/icon/icon-location.svg");
+  -webkit-mask-image: var(--icon-section-location, url("../../assets/icon/icon-location.svg"));
+  mask-image: var(--icon-section-location, url("../../assets/icon/icon-location.svg"));
 }
 
 .hero .highlights-panel h2::before {
   width: 1rem;
   height: 1rem;
-  -webkit-mask-image: url("../../assets/icon/icon-inventory.svg");
-  mask-image: url("../../assets/icon/icon-inventory.svg");
+  -webkit-mask-image: var(--icon-section-inventory, url("../../assets/icon/icon-inventory.svg"));
+  mask-image: var(--icon-section-inventory, url("../../assets/icon/icon-inventory.svg"));
 }
 
 .hero .visit-panel p {
@@ -146,23 +146,23 @@
 }
 
 .hero .visit-location::before {
-  -webkit-mask-image: url("../../assets/icon/icon-location.svg");
-  mask-image: url("../../assets/icon/icon-location.svg");
+  -webkit-mask-image: var(--icon-section-location, url("../../assets/icon/icon-location.svg"));
+  mask-image: var(--icon-section-location, url("../../assets/icon/icon-location.svg"));
 }
 
 .hero .visit-hours::before {
-  -webkit-mask-image: url("../../assets/icon/ui/icon-time.svg");
-  mask-image: url("../../assets/icon/ui/icon-time.svg");
+  -webkit-mask-image: var(--icon-section-time, url("../../assets/icon/ui/icon-time.svg"));
+  mask-image: var(--icon-section-time, url("../../assets/icon/ui/icon-time.svg"));
 }
 
 .hero .visit-note::before {
-  -webkit-mask-image: url("../../assets/icon/icon-tag.svg");
-  mask-image: url("../../assets/icon/icon-tag.svg");
+  -webkit-mask-image: var(--icon-section-tag, url("../../assets/icon/icon-tag.svg"));
+  mask-image: var(--icon-section-tag, url("../../assets/icon/icon-tag.svg"));
 }
 
 .hero .visit-contact::before {
-  -webkit-mask-image: url("../../assets/icon/icon-mail.svg");
-  mask-image: url("../../assets/icon/icon-mail.svg");
+  -webkit-mask-image: var(--icon-section-mail, url("../../assets/icon/icon-mail.svg"));
+  mask-image: var(--icon-section-mail, url("../../assets/icon/icon-mail.svg"));
 }
 
 .hero .visit-panel a {
@@ -198,18 +198,18 @@
 }
 
 .hero .stand-card h3::before {
-  -webkit-mask-image: url("../../assets/icon/icon-inventory.svg");
-  mask-image: url("../../assets/icon/icon-inventory.svg");
+  -webkit-mask-image: var(--icon-section-inventory, url("../../assets/icon/icon-inventory.svg"));
+  mask-image: var(--icon-section-inventory, url("../../assets/icon/icon-inventory.svg"));
 }
 
 .hero .animals-card h3::before {
-  -webkit-mask-image: url("../../assets/icon/ui/icon-relationship.svg");
-  mask-image: url("../../assets/icon/ui/icon-relationship.svg");
+  -webkit-mask-image: var(--icon-section-relationship, url("../../assets/icon/ui/icon-relationship.svg"));
+  mask-image: var(--icon-section-relationship, url("../../assets/icon/ui/icon-relationship.svg"));
 }
 
 .hero .story-card h3::before {
-  -webkit-mask-image: url("../../assets/icon/ui/icon-info.svg");
-  mask-image: url("../../assets/icon/ui/icon-info.svg");
+  -webkit-mask-image: var(--icon-section-info, url("../../assets/icon/ui/icon-info.svg"));
+  mask-image: var(--icon-section-info, url("../../assets/icon/ui/icon-info.svg"));
 }
 
 .hero .highlight-card p {
