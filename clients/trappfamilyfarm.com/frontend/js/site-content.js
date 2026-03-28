@@ -414,7 +414,7 @@
         parts.push(
           renderSectionBlock(
             "Fall 2024 newsletter",
-            renderImages(val.images) +
+            renderImages(val.images, "json-newsletter-cover") +
               '<div class="json-newsletter-md" data-md-src="' +
               escapeHtml(val.files[0].replace(/^\//, "")) +
               '"></div>',
@@ -445,18 +445,101 @@
     return out;
   }
 
+  /**
+   * Remove Cursor / doc export artifacts like :contentReference[oaicite:0]{index=0}
+   */
+  function stripContentReferenceNoise(text) {
+    return String(text).replace(/\s*:contentReference\[[^\]]+\]\{[^}]*\}/g, "");
+  }
+
+  /**
+   * Drop lead that duplicates the page chrome: H1, cover image, hr, first H2
+   * (cover image is shown from layout.json; section title is in HTML).
+   */
+  function stripNewsletterPreamble(md) {
+    var lines = md.split(/\r?\n/);
+    var i = 0;
+    function skipBlanks() {
+      while (i < lines.length && !lines[i].trim()) {
+        i += 1;
+      }
+    }
+    skipBlanks();
+    if (i < lines.length && /^#\s+/.test(lines[i])) {
+      i += 1;
+    }
+    skipBlanks();
+    if (
+      i < lines.length &&
+      /^!\[[^\]]*\]\([^)]+\)\s*$/.test(lines[i].trim())
+    ) {
+      i += 1;
+    }
+    skipBlanks();
+    if (i < lines.length && /^---\s*$/.test(lines[i].trim())) {
+      i += 1;
+    }
+    skipBlanks();
+    if (i < lines.length && /^##\s+/.test(lines[i].trim())) {
+      i += 1;
+    }
+    skipBlanks();
+    return lines.slice(i).join("\n");
+  }
+
+  var markedConfigured = false;
+
+  function configureMarkedForSite() {
+    if (markedConfigured) return;
+    markedConfigured = true;
+    if (!window.marked || !window.marked.Renderer) return;
+    var renderer = new window.marked.Renderer();
+    renderer.html = function (html) {
+      return escapeHtml(html);
+    };
+    window.marked.setOptions({ renderer: renderer });
+  }
+
+  function postProcessNewsletterMarkdown(container) {
+    container.querySelectorAll("a[href]").forEach(function (a) {
+      var href = a.getAttribute("href") || "";
+      if (/^https?:\/\//i.test(href)) {
+        a.setAttribute("target", "_blank");
+        a.setAttribute("rel", "noopener noreferrer");
+      }
+    });
+    container.querySelectorAll("img[src]").forEach(function (img) {
+      var src = img.getAttribute("src") || "";
+      if (src.charAt(0) === "/") {
+        img.setAttribute("src", src.replace(/^\//, ""));
+      }
+    });
+  }
+
   function fetchMarkdownInto(el, url) {
     fetch(url)
       .then(function (r) {
+        if (!r.ok) throw new Error("md");
         return r.text();
       })
       .then(function (text) {
-        var blocks = text.split(/\n\n+/);
-        el.innerHTML = blocks
-          .map(function (b) {
-            return b.trim() ? paragraphHtml(b.trim()) : "";
-          })
-          .join("");
+        var cleaned = stripContentReferenceNoise(text);
+        cleaned = stripNewsletterPreamble(cleaned);
+        if (window.marked && typeof window.marked.parse === "function") {
+          configureMarkedForSite();
+          el.classList.add("json-newsletter-md--marked");
+          el.innerHTML = window.marked.parse(cleaned);
+          postProcessNewsletterMarkdown(el);
+        } else {
+          el.innerHTML =
+            '<p class="json-newsletter-md-fallback">Markdown parser not loaded. Include <code>js/marked.min.js</code> before site-content.js.</p>' +
+            cleaned
+              .split(/\n\n+/)
+              .map(function (b) {
+                return b.trim() ? paragraphHtml(b.trim()) : "";
+              })
+              .join("");
+        }
       })
       .catch(function () {
         el.innerHTML = "<p>Unable to load newsletter file.</p>";
@@ -523,9 +606,9 @@
       "</p></div>";
   }
 
-  function renderNav(layout, navRoot, currentFile) {
+  function renderNavHtml(layout, currentFile) {
     var labels = layout.header.navigation || [];
-    var items = labels
+    return labels
       .map(function (label) {
         var href = NAV_MAP[label] || "#";
         var active = href === currentFile;
@@ -542,10 +625,17 @@
         );
       })
       .join("");
-    navRoot.innerHTML = items;
   }
 
-  function renderHeader(layout, headerGraphic, navRoot, currentFile) {
+  function renderNav(layout, currentFile) {
+    var items = renderNavHtml(layout, currentFile);
+    document.querySelectorAll("ul.js-site-nav").forEach(function (ul) {
+      if (ul.id === "nav-root" && currentFile === "index.html") return;
+      ul.innerHTML = items;
+    });
+  }
+
+  function renderHeader(layout, headerGraphic, currentFile) {
     var g = layout.header.graphic && layout.header.graphic[0];
     var showGraphic =
       currentFile === "home.html" || currentFile === "index.html";
@@ -557,9 +647,69 @@
       var wrapOff = headerGraphic.closest(".header-graphic");
       if (wrapOff) wrapOff.style.display = "none";
     }
-    if (navRoot && currentFile !== "index.html") {
-      renderNav(layout, navRoot, currentFile);
+    if (document.querySelector("ul.js-site-nav")) {
+      renderNav(layout, currentFile);
     }
+  }
+
+  function initHeaderBehavior() {
+    var header = document.querySelector(".site-header");
+    var toggle = document.querySelector(".nav-toggle");
+    var drawer = document.getElementById("site-nav-drawer");
+    var overlay = document.getElementById("nav-overlay");
+    var closeBtn = document.querySelector(".nav-drawer-close");
+
+    if (header) {
+      var threshold = 56;
+      function updateCompact() {
+        if (window.scrollY > threshold) {
+          header.classList.add("site-header--compact");
+        } else {
+          header.classList.remove("site-header--compact");
+        }
+      }
+      window.addEventListener("scroll", updateCompact, { passive: true });
+      updateCompact();
+    }
+
+    if (!toggle || !drawer || !overlay || !closeBtn) return;
+
+    var lastFocus = null;
+
+    function openDrawer() {
+      lastFocus = document.activeElement;
+      document.body.classList.add("nav-drawer-open");
+      toggle.setAttribute("aria-expanded", "true");
+      drawer.setAttribute("aria-hidden", "false");
+      overlay.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+      closeBtn.focus();
+    }
+
+    function closeDrawer() {
+      document.body.classList.remove("nav-drawer-open");
+      toggle.setAttribute("aria-expanded", "false");
+      drawer.setAttribute("aria-hidden", "true");
+      overlay.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+      if (lastFocus && typeof lastFocus.focus === "function") lastFocus.focus();
+    }
+
+    toggle.addEventListener("click", function () {
+      if (document.body.classList.contains("nav-drawer-open")) closeDrawer();
+      else openDrawer();
+    });
+    closeBtn.addEventListener("click", closeDrawer);
+    overlay.addEventListener("click", closeDrawer);
+    drawer.addEventListener("click", function (e) {
+      if (e.target.closest("a")) closeDrawer();
+    });
+
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && document.body.classList.contains("nav-drawer-open")) {
+        closeDrawer();
+      }
+    });
   }
 
   function run(layout) {
@@ -568,13 +718,15 @@
     var page = document.body.getAttribute("data-page");
     var main = document.getElementById("main-root");
     var footer = document.getElementById("footer-root");
-    var nav = document.getElementById("nav-root");
     var headerImg = document.querySelector(".header-graphic img");
     var path = window.location.pathname.split("/").pop() || "index.html";
+    var hasNav = document.querySelector("ul.js-site-nav");
 
-    if (headerImg || nav) {
-      renderHeader(layout, headerImg, nav, path);
+    if (headerImg || hasNav) {
+      renderHeader(layout, headerImg, path);
     }
+
+    initHeaderBehavior();
 
     if (main) {
       if (page === "home") main.innerHTML = renderHome(layout);

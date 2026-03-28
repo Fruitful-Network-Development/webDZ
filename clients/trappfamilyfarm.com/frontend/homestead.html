@@ -11,14 +11,28 @@
 <body data-page="homestead">
   <header class="site-header">
     <div class="header-inner">
+      <button type="button" class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav-drawer">
+        <span class="nav-toggle-bars" aria-hidden="true"><span></span><span></span><span></span></span>
+      </button>
       <a href="home.html" class="logo">
         <span class="logo-text"><span>TRAPP</span><span>FAMILY</span><span>FARM</span></span>
       </a>
-      <nav class="main-nav">
-        <ul class="nav-with-icons" id="nav-root"></ul>
+      <nav class="main-nav" aria-label="Primary">
+        <ul class="nav-with-icons js-site-nav" id="nav-root"></ul>
       </nav>
     </div>
   </header>
+
+  <div class="nav-overlay" id="nav-overlay" aria-hidden="true"></div>
+  <aside class="nav-drawer" id="site-nav-drawer" role="dialog" aria-modal="true" aria-labelledby="site-nav-drawer-title" aria-hidden="true">
+    <div class="nav-drawer-top">
+      <p class="nav-drawer-title" id="site-nav-drawer-title">Menu</p>
+      <button type="button" class="nav-drawer-close" aria-label="Close menu"><span aria-hidden="true">×</span></button>
+    </div>
+    <nav class="nav-drawer-nav" aria-label="Site pages">
+      <ul class="nav-with-icons nav-drawer-list js-site-nav" id="nav-drawer-root"></ul>
+    </nav>
+  </aside>
 
   <main class="main" id="main-root"></main>
 

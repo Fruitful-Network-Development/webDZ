@@ -245,12 +245,82 @@
   margin: 0.75rem 0 0 !important;
 }
 
-/* Newsletter markdown */
+/* Newsletter: cover art modest width, top of section (not full-bleed / hero) */
+.json-figure.json-newsletter-cover {
+  max-width: min(18rem, 46vw);
+  margin: 0 0 1.25rem;
+}
+
+.json-figure.json-newsletter-cover img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Newsletter body (Marked output; same approach as CV Countryside blog reader) */
 .json-newsletter-md {
-  margin-top: 1.5rem;
+  margin-top: 0.5rem;
   max-width: 65ch;
 }
 
-.json-newsletter-md p {
+.json-newsletter-md--marked h2 {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--teal);
+  margin: 2rem 0 0.75rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 3px solid var(--orange);
+}
+
+.json-newsletter-md--marked h2:first-child {
+  margin-top: 0;
+}
+
+.json-newsletter-md--marked h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--olive);
+  margin: 1.5rem 0 0.5rem;
+}
+
+.json-newsletter-md--marked p {
   margin: 0 0 1rem;
+  line-height: 1.65;
+}
+
+.json-newsletter-md--marked ul,
+.json-newsletter-md--marked ol {
+  margin: 0 0 1rem;
+  padding-left: 1.35rem;
+}
+
+.json-newsletter-md--marked li {
+  margin: 0.25rem 0;
+}
+
+.json-newsletter-md--marked hr {
+  border: none;
+  border-top: 1px solid rgba(45, 90, 94, 0.2);
+  margin: 1.5rem 0;
+}
+
+.json-newsletter-md--marked strong {
+  font-weight: 700;
+  color: var(--charcoal);
+}
+
+.json-newsletter-md--marked img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1rem 0;
+  border: 1px solid rgba(45, 90, 94, 0.15);
+}
+
+.json-newsletter-md-fallback {
+  color: var(--text-soft);
+  font-size: 0.95rem;
 }
