@@ -1,11 +1,22 @@
 {
-  "schema": "webdz.site_content.v2",
+  "schema": "webdz.site_content.v3",
   "site": {
     "name": "Trapp Family Farm",
-    "favicon": "/favicon.svg",
-    "hero_background": "/assets/images/foliage.avif",
-    "header_graphic": "/assets/graphics/graphic-header.avif",
-    "footer_graphic": "/assets/graphics/graphic-footer.avif"
+    "homepage_href": "home.html",
+    "shell": {
+      "menu_label": "Menu",
+      "wordmark_lines": [
+        "TRAPP",
+        "FAMILY",
+        "FARM"
+      ],
+      "assets": {
+        "favicon": "/favicon.svg",
+        "hero_background": "/assets/images/foliage.avif",
+        "header_graphic": "/assets/graphics/graphic-header.avif",
+        "footer_graphic": "/assets/graphics/graphic-footer.avif"
+      }
+    }
   },
   "icons": {
     "favicon": "/favicon.svg",
@@ -65,31 +76,66 @@
     }
   ],
   "footer": {
-    "visit": {
-      "heading": "Visit & contact",
-      "address_lines": [
-        "1019 W. Streetsboro Rd.",
-        "Peninsula, OH 44264"
-      ],
-      "phone": "(330) 657-2844",
-      "phone_digits": "3306572844",
-      "email": "trapp.family.farm@gmail.com"
-    },
-    "farm_stand": {
-      "heading": "Farm Stand",
-      "days": "Mon - Sun",
-      "hours": "8a - 8p",
-      "note": "Cash or Check, please!"
-    },
-    "social_links": [
+    "columns": [
       {
-        "id": "instagram",
-        "label": "Instagram",
-        "href": "https://www.instagram.com/trappfamilyfarm",
-        "icon": "/assets/icon/logos/logo-instagram.svg"
+        "template": "contact_lines",
+        "class_name": "footer-details",
+        "heading": "Visit & contact",
+        "items": [
+          {
+            "template": "text",
+            "value": "1019 W. Streetsboro Rd."
+          },
+          {
+            "template": "text",
+            "value": "Peninsula, OH 44264"
+          },
+          {
+            "template": "phone",
+            "label": "(330) 657-2844",
+            "value": "3306572844"
+          },
+          {
+            "template": "email",
+            "value": "trapp.family.farm@gmail.com"
+          }
+        ]
+      },
+      {
+        "template": "line_list",
+        "class_name": "footer-hours",
+        "heading": "Farm Stand",
+        "lines": [
+          "Mon - Sun",
+          "8a - 8p",
+          "Cash or Check, please!"
+        ]
+      },
+      {
+        "template": "social_links",
+        "class_name": "footer-follow",
+        "heading": "Follow along",
+        "links": [
+          {
+            "label": "Instagram",
+            "href": "https://www.instagram.com/trappfamilyfarm",
+            "icon": "/assets/icon/logos/logo-instagram.svg",
+            "class_name": "instagram-link"
+          }
+        ]
       }
     ],
     "copyright": "\u00a9 2024 by Trapp Family Farm."
+  },
+  "collections": {
+    "newsletters": {
+      "type": "markdown_documents",
+      "items": [
+        {
+          "source": "assets/docs/newsletters/fall-2024.md"
+        }
+      ]
+    }
   },
   "pages": {
     "index": {
@@ -97,21 +143,25 @@
       "template": "coming_soon",
       "title": "Trapp Family Farm | Coming Soon",
       "description": "Trapp Family Farm website update in progress.",
-      "show_header_graphic": true,
-      "show_main_nav": false,
+      "shell": {
+        "show_header_graphic": true,
+        "show_main_nav": false
+      },
       "content": {
         "heading": "Coming soon"
       }
     },
     "home": {
       "file": "home.html",
-      "template": "home",
+      "template": "home_featured",
       "title": "Trapp Family Farm",
       "description": "Horse-powered farming in Cuyahoga Valley National Park.",
       "body_class": "home-page",
-      "show_header_graphic": true,
-      "sections": {
-        "about_our_farm": {
+      "shell": {
+        "show_header_graphic": true
+      },
+      "content": {
+        "lead": {
           "kicker": "Est. 2012",
           "heading": "Trapp Family Farm",
           "body": [
@@ -125,52 +175,57 @@
             }
           ]
         },
-        "our_journey": {
-          "heading": "Our journey",
-          "items": [
-            "Family & Comunity Centered",
-            "Multi-generation Human Power",
-            "On the margins",
-            "Diverse offerings"
-          ],
-          "images": [
-            {
-              "src": "/assets/images/crop.avif",
-              "alt": "Crops growing in the field at Trapp Family Farm."
-            }
-          ]
-        },
-        "draft_horses": {
-          "id": "draft-horses",
-          "heading": "Drafthorses",
-          "subheading": "Finding Inspiration in Every Muscle",
-          "body": [
-            "Our draft horses are at the heart of how we work the land,reducing reliance on fossil fuels and keeping a pace that fits small-scale, diverse production. They move our flocks, till our fields, and connect us to a tradition of human and animal power that remains practical and meaningful today."
-          ],
-          "images": [
-            {
-              "src": "/assets/images/compost.avif",
-              "alt": "Farm work powered by draft horses and compost hauling."
-            }
-          ]
-        }
+        "sidebar_cards": [
+          {
+            "template": "list_card",
+            "class_name": "json-panel json-panel-journey",
+            "heading": "Our journey",
+            "items": [
+              "Family & Comunity Centered",
+              "Multi-generation Human Power",
+              "On the margins",
+              "Diverse offerings"
+            ],
+            "images": [
+              {
+                "src": "/assets/images/crop.avif",
+                "alt": "Crops growing in the field at Trapp Family Farm."
+              }
+            ],
+            "image_class": "json-journey-img"
+          },
+          {
+            "template": "quote_card",
+            "class_name": "json-panel json-panel-horses",
+            "id": "draft-horses",
+            "heading": "Drafthorses",
+            "quote": "Finding Inspiration in Every Muscle",
+            "body": [
+              "Our draft horses are at the heart of how we work the land,reducing reliance on fossil fuels and keeping a pace that fits small-scale, diverse production. They move our flocks, till our fields, and connect us to a tradition of human and animal power that remains practical and meaningful today."
+            ],
+            "images": [
+              {
+                "src": "/assets/images/compost.avif",
+                "alt": "Farm work powered by draft horses and compost hauling."
+              }
+            ]
+          }
+        ]
       }
     },
     "crops": {
       "file": "crops.html",
-      "template": "standard_sections",
+      "template": "section_stack",
       "title": "Making the Crops | Trapp Family Farm",
       "description": "Vegetables, farm stand, and setting the table.",
-      "section_order": [
-        "intro",
-        "vegetables",
-        "at_the_stand_now",
-        "setting_the_table"
-      ],
-      "sections": {
-        "intro": {
-          "id": "intro",
+      "shell": {
+        "show_main_nav": true
+      },
+      "sections": [
+        {
+          "template": "toc_section",
           "layout": "split",
+          "id": "intro",
           "heading": "Making the Crops",
           "quote": "The small family farm is one the last places - they are getting rarer every day - where men and women (and girls and boys, too) can answer that call to be an artist, to learn to give love to the work of their hands.  It is one of the last places where the maker - and some farmers still do talk about making the crops - is responsible from start to finish, for the thing made. - Wendell Berry",
           "body": [
@@ -197,9 +252,9 @@
             }
           ]
         },
-        "vegetables": {
+        {
+          "template": "split_section",
           "id": "vegetables",
-          "layout": "split",
           "heading": "Vegetables",
           "body": [
             "The availability of our seasonal produce has ebbed and flowed over the years, yet our commitment to trying to grow the best crops is steadfast.  Here we are referring to crops free of synthetic fertilizers, insecticides, herbicides, pesticides, and most certainly fungicides which are most damaging to our fungal partners that are essential to building healthy soil in partnership with healthy plants.  We use draft horses for our fieldwork and feel it has been, and will continue to be, important, exciting, and magical to explore the possibility of growing food with a minimum of fossil fuel energy and an optimal mix of muscle power both human and animal.",
@@ -207,8 +262,6 @@
             "As we learn more about soil ecology from the likes of Christine Jones and Helen Atthowe, we are excited to refine our methods of feeding our soil microbes with fewer and fewer and off-farm inputs and more and more energy from the sun.",
             "Vegetables don't stand alone. Livestock can be part of the fertility plan; cover crops protect soil between harvests; timing matters because Northeast Ohio weather makes every season feel shorter than the seed catalog promises. The goal: harvest at peak quality while leaving the field better than you found it."
           ],
-          "reverse": true,
-          "content_first": true,
           "images": [
             {
               "src": "/assets/images/vegitables.avif",
@@ -218,11 +271,13 @@
               "src": "/assets/images/compost.avif",
               "alt": "Compost prepared for soil-building work."
             }
-          ]
+          ],
+          "reverse": true,
+          "content_first": true
         },
-        "at_the_stand_now": {
+        {
+          "template": "subsection_collection",
           "id": "at-the-stand-now",
-          "layout": "subsections",
           "heading": "At the Stand Now",
           "images": [
             {
@@ -239,9 +294,9 @@
             }
           ]
         },
-        "setting_the_table": {
+        {
+          "template": "subsection_collection",
           "id": "setting-the-table",
-          "layout": "subsections",
           "heading": "Setting the Table",
           "images": [
             {
@@ -258,22 +313,17 @@
             }
           ]
         }
-      }
+      ]
     },
     "animals": {
       "file": "animals.html",
-      "template": "animals",
+      "template": "section_stack",
       "title": "Animal Husbandry | Trapp Family Farm",
       "description": "Layers, broilers, turkeys, and sheep.",
-      "section_order": [
-        "intro",
-        "layers",
-        "broilers",
-        "turkeys",
-        "sheep"
-      ],
-      "sections": {
-        "intro": {
+      "sections": [
+        {
+          "template": "toc_section",
+          "layout": "stacked",
           "id": "intro",
           "heading": "Animal Husbandry",
           "quote": "Husbandry is the name of all practices that sustain life by connecting us conservingly to our places and our world; it is the art of keeping tied all the strands in the living network that sustain us. - Wendell Berry",
@@ -307,11 +357,12 @@
               "src": "/assets/images/animal_husbandry.avif",
               "alt": "Animals and pasture at Trapp Family Farm."
             }
-          ]
+          ],
+          "image_class": "json-intro-images"
         },
-        "layers": {
+        {
+          "template": "split_section",
           "id": "layers",
-          "layout": "split",
           "heading": "Layers",
           "body": [
             "Our flock of laying hens enjoy fresh pasture from April through December, and on into January, weather permitting.  The bulk of their diet consists of organic feed from Maysville Elevator in Apple Creek, Ohio.  We use draftpower to haul this feed to the hens as they move daily to new pasture foraging a variety of grasses, clovers, forbs and the seeds, leaves, flowers and stems those plants provide.  If we do our job well, the roots of those plants are never eaten or disturbed, leaving them primed to quickly regenerate leaf canopy protecting our precious soils and in the process pumping plant generated carbon in the form of root exudates to our beloved soil microbes!",
@@ -332,26 +383,26 @@
             }
           ]
         },
-        "broilers": {
+        {
+          "template": "split_section",
           "id": "broilers",
-          "layout": "split",
           "heading": "Broilers",
           "body": [
             "Broilers are chickens of a certain size raised for meat--in our farm's case, 3.5 to 6.5 pounds once processed.  We raise our broilers on pasture with a series of bottomless pens that are predator proof and easily moveable to promote chicken and forage health.  As such broilers are only available from May to November.  Outside of these months, the wet or cold, or both is often inhospitable for young chickens, so we, and the land, rest.  While on pasture from an age of three weeks on, our broilers cover a half-acre of pasture, moving twice daily to fresh forage.   As with our laying flock, we feed only an organic layer ration from Maysville Elevator.  Our chicks are sourced from Eagle Nest Poultry in Oceola, Ohio.",
             "If you are interested in getting on our pre-order list for seasonal broilers, please email us!"
           ],
-          "reverse": true,
-          "content_first": true,
           "images": [
             {
               "src": "/assets/images/broilers.avif",
               "alt": "Broiler chickens raised on pasture."
             }
-          ]
+          ],
+          "reverse": true,
+          "content_first": true
         },
-        "turkeys": {
+        {
+          "template": "split_section",
           "id": "turkeys",
-          "layout": "split",
           "heading": "Turkeys",
           "body": [
             "Our Thanksgiving turkeys are; fed only organic feed, moved daily to fresh pasture, given clean water (no trivial task with turkeys), and grit to help grind up the forage and insects they consume.  We feel their quality of life and the resulting taste is unparalleled.  On top of that, we have fun raising them and marvel at how they help to transform our soils.",
@@ -365,16 +416,14 @@
             }
           ]
         },
-        "sheep": {
+        {
+          "template": "split_section",
           "id": "sheep",
-          "layout": "split",
           "heading": "Sheep",
           "body": [
             "As with the crops we make, we strive to raise the healthiest sheep possible.  We have faith in rotational grazing, free-choice minerals, keen observation, and a gentle presence with our flock of sheep all go a long way to create an environment in which our hair sheep can thrive.  The flock enjoys a fresh paddock daily, or more often, nearly year-round as our deer exclusion fence allows us to stockpile forage for flock.",
             "Our productive ewes continue to expand our flock and valued customers enjoy the meat with which the remainder of our sheep provide us.  If you are interested, in trying some of our exclusively grass-fed sheep for your home or institution, contact us to begin a discussion."
           ],
-          "reverse": true,
-          "content_first": true,
           "images": [
             {
               "src": "/assets/images/sheep-grass.avif",
@@ -384,30 +433,28 @@
               "src": "/assets/images/lamb_chops.avif",
               "alt": "Grass-fed lamb prepared for the table."
             }
-          ]
+          ],
+          "reverse": true,
+          "content_first": true
         }
-      }
+      ]
     },
     "homestead": {
       "file": "homestead.html",
-      "template": "standard_sections",
+      "template": "section_stack",
       "title": "For Your Homestead | Trapp Family Farm",
       "description": "Ready-to-lay hens and transplants.",
-      "section_order": [
-        "intro",
-        "ready_to_lay_hens",
-        "transplants"
-      ],
-      "sections": {
-        "intro": {
-          "id": "intro",
+      "sections": [
+        {
+          "template": "toc_section",
           "layout": "split",
+          "id": "intro",
           "heading": "For Your Homestead",
           "quote": "Odd as I am sure it will appear to some, I can think of no better form of personal involvement in the cure of the environment than that of gardening.  A person who is growing a garden, if he is growing it organically, is improving a piece of the world.  He is producing something to eat, which makes him somewhat independent of the grocery business, but he is also enlarging, for himself, the meaning of food and the pleasure of eating. - Wendell Berry",
           "body": [
             "We welcome you to explore some of offerings below that may help you along your homesteading journey in whatever form that may take"
           ],
-          "topics": [
+          "links": [
             {
               "label": "Ready-to-Lay Hens",
               "href": "#ready-to-lay-hens"
@@ -427,26 +474,26 @@
             }
           ]
         },
-        "ready_to_lay_hens": {
+        {
+          "template": "split_section",
           "id": "ready-to-lay-hens",
-          "layout": "split",
           "heading": "Ready-to-Lay Hens",
           "body": [
             "Each spring we offer ready-to-lay pullets once they approach a laying age of 16 weeks.  We leave their beaks intact, only feed an organic ration of an appropriate protein percentage to achieve a healthy weight and good laying frame.  We raise Golden Buff/Comets sourced from Eagle Nest Poultry as day-old unmedicated chicks.",
             "Email or call to reserve your hens from Spring of 2026!"
           ],
-          "reverse": true,
-          "content_first": true,
           "images": [
             {
               "src": "/assets/images/ready_to_lay_hens.avif",
               "alt": "Ready-to-lay hens raised for homesteads."
             }
-          ]
+          ],
+          "reverse": true,
+          "content_first": true
         },
-        "transplants": {
+        {
+          "template": "split_section",
           "id": "transplants",
-          "layout": "split",
           "heading": "Transplants",
           "body": [
             "Transplants set the stage for a successful season in the garden.  Healthy plants, photosynthesizing efficiently, are the source of the root exudates that feed the microorganisms, which return the favor by feeding the plant compounds and nutrients otherwise in accessible.",
@@ -460,41 +507,33 @@
             }
           ]
         }
-      }
+      ]
     },
     "newsletter": {
       "file": "newsletter.html",
-      "template": "newsletter",
+      "template": "article_archive",
       "title": "Newsletters | Trapp Family Farm",
       "description": "Farm newsletters.",
-      "issues": [
-        {
-          "id": "fall-2024",
-          "title": "Fall 2024 newsletter",
-          "published_label": "Fall, 2024",
-          "cover_image": {
-            "src": "/assets/images/newsletter/FALL_2024.avif",
-            "alt": "Fall 2024 newsletter cover art."
-          },
-          "content_markdown": "Never fear, you did not miss a summer farm newsletter; it was never sent!\n\nWe have focused our energy on a variety of challenges since our last note in the spring. In that regard, we have news to share below. But first information on turkey orders and our grass-fed lamb.\n\n---\n\n## TURKEYS\n\nFor our twelfth consecutive year we are offering Thanksgiving turkeys; fed only organic feed, moved daily to fresh pasture, given clean water (no trivial task with turkeys), and grit to help grind up the never-sprayed forage and insects they consume. We feel their quality of life and the resulting taste is unparalleled. On top of that, we have fun raising them and marvel at how they help to transform our soils. We are asking **$5.50/lb** for turkeys.\n\nMost turkeys range in size from 15\u201320 lb. We do have some smaller and some larger but not many. Turkeys will be available the evening of **Sunday, November 24th**. The week of pickup we will send out a reminder email with a half hour pickup time slot between **5 pm and 8 pm**.\n\nIt is a limited year for produce, but that evening we are looking forward to offering **brussels sprouts, cabbage, and garlic** all grown here. If you would like to order a turkey, reply to this email and confirm that you will be able to pick it up at the farm on Sunday November 24th. Due to very limited refrigeration, it is very important that someone comes that evening to pick up your turkey. Please specify if you want the neck and/or giblets (1 heart, 1 liver, 1 gizzard). There is no extra cost, but we do not bag up those that are not ordered.\n\n---\n\n## LAMB\n\nOur flock of sheep, after spending much of the summer and early fall grazing the 60% of the main farm field that is out of sight from the road, are now in full view. An astute eye will notice them moving to a completely new paddock to graze every **18 to 36 hours** depending on weather, soil, and farmer condition. In addition to all this high-quality forage, the flock is fed a little hay in the winter, and a free-choice buffet of naturally occurring minerals to make up for any deficiencies in our soils.\n\nWe still have a small amount of ground lamb from the sheep we had processed in the spring. Reply to this email for specifics. For lamb aficionados, we are sending another group to be processed the first week of December. If you are interested in a half or whole lamb, please call or text Mark at **216-287-4721** for details and pricing or reply to this email.\n\n---\n\n## FARM NEWS (LONG FORM)\n\nIn our last farm news, we shared the loss of our horse Dan, as we stared into an agricultural abyss. After consultation with many family members, farmers and friends, we decided to retool our 2-horse equipment to 1-horse equipment. The risk was too great to introduce a second unknown horse to our strong-willed, and flat-out strong, remaining horse Doc, without a new set of horse stalls, small barn, and a barnyard fence.\n\nFortunately, within a month things were looking promising. We found affordable sources for equipment and alterations and Doc passed his first major test one late April night, pulling our flock of laying hens and supplies, spread over four separate loads, out of their winter greenhouse, a quarter-mile uphill, into our far field. The laying hens never skipped a beat, taking right to the fresh pasture without a drop in egg production.\n\nAs this was unfolding, we borrowed a tractor for a week and half from our friend and fellow Park farmer, Ben. Serendipitously, he was stepping off his tractor having just finished his rush of spring work when he saw my text inquiring about more horsepower to get ahead of spring tillage. While it was jarring to witness Ben's generosity and the power of a tractor to transform soils quickly, I returned it looking forward to getting my boots back on the ground and my hands on harness and reins.\n\nAs such we concentrated on growing transplanted crops, given our relative strength growing healthy starts and our projected weakness at forming clean planting beds with one horse for our favorite direct seeded crops like carrots, beets, and spinach.\n\nFarming with one horse, in a hot, humid summer proved very difficult. Relearning to drive Doc who, unnerved by flies and unmoored from the constraints of cart and Dan, often chose not, or knew not, to go where I tried to tell him began as a tense exercise in wiggly rows. But with time and patience from all, it morphed into a hopeful new method for growing produce here.\n\nOut of necessity, we now cut a shallow furrow, progressively deeper, leaving the soil friable enough to set a 300-foot row of transplants quickly. After this, a wide swath on both sides of the crop row is mowed periodically by horse or scythe. If mowed by horse-drawn mower, the clippings are then raked against and between the bases of a row of transplants. If scythed, the end of the swing deposits the just cut grass, clovers, forbs and weeds under the crops without raking, but with the occasional sliced off tomato or pepper plant.\n\nWhile we carefully test and balance our soils with naturally mined minerals, the magic of truly healthy plants really happens biologically rather than chemically. Setting aside crops compromised or worse by weed pressure; three or four tomato rows, two rows of winter squash, a row of melons, two rows of okra, and a half row of onions, the mowed and raked mulch mentioned above provide a weed barrier and a steady diet for the soil microbes, which ultimately feed plants best.\n\nTo conclude our new growing methods, parallel to the crop row and adjacent to the mowed swath, we now leave a fully undisturbed section (no mowing, plowing or grazing) to promote spider and beetle among many other beneficials. These arachnids and insects had suffered greatly under our typical yearly regime of mowing, plowing, and rotational grazing with chickens\u2014quick and relentless predators of all things small and mobile.\n\nWhere we have made the time and implemented this system best, we are seeing really healthy crops with significantly less work for horses and humans than ever before here. As we close in on Thanksgiving, I am so grateful for this forced change in direction and I am more excited for growing again next year than I can ever remember.\n\nMany of you have asked about next steps and offered to help. Doc will turn twenty in March, and two months later, we will celebrate our thirteenth anniversary here. We very much believe that one horse, or perhaps two small horses are appropriate for the scale and type of farming we plan to do here.\n\nMany of you are also aware that any farm infrastructure projects are our financial responsibility to construct and upon completion become assets of the National Park Service. Furthermore, we do not own this land and therefore lack the collateral that many farmers use to borrow against for bank or USDA loans.\n\nTo complicate things more, we refuse to farm this land in a way that maximizes profits at the expense of our soil and surrounding air and waterway health.\n\nAt the risk of overthinking this situation, we feel farming to maximize profit leads to unsustainable stress for family and community while simultaneously pushing more consequences of farming into other communities.\n\n---\n\n## LOOKING AHEAD\n\nThe good news is it doesn't take much to make a small farm work well:\n\n- A committed group of farmers living modestly, but rich with good food and work. \u2014 Check.  \n- A committed community that values such farming. \u2014 Check.  \n- A small group of committed preparers of farm food for their primary nourishment. \u2014 Check (about 50 people per farmer).  \n- A small collection of buildings to support said farm. \u2014 Incomplete.\n\nIn addition to the usual winter chores and projects, this is where we are focusing our energy this winter. That is, developing a plan for early 2025, with a series of options for community investment and donation in this farm beyond the incredible support we already receive.\n\nMore soon, including a fun website!\n\n---\n\n\u2014 Mark"
-        }
-      ]
+      "content": {
+        "collection": "newsletters",
+        "entry_template": "full_markdown_entry"
+      }
     },
     "info": {
       "file": "info.html",
-      "template": "info",
+      "template": "section_stack",
       "title": "More Info | Trapp Family Farm",
       "description": "Podcasts, talks, and tours.",
-      "sections": {
-        "intro": {
-          "body": [
+      "sections": [
+        {
+          "template": "rich_cards",
+          "id": "podcasts",
+          "heading": "Podcasts, Talks & Tours",
+          "intro_body": [
             "We have been so very fortunate to share our story over the years via in-person talks, podcasts and more. See below for past and future engagement opportunities.",
             "We are always interested in sharing our unique story, but with the challenges of managing a farm and family, we have limited opportunities and typically in the winter, to do so. If that timing can work for your organization, please reach out below to discuss a talk or farm tour."
-          ]
-        },
-        "podcasts": {
-          "heading": "Podcasts, Talks & Tours",
-          "items": [
+          ],
+          "cards": [
             {
               "id": "cle-foodcast",
               "title": "CLE Foodcast",
@@ -532,11 +571,8 @@
               }
             }
           ]
-        },
-        "news": {
-          "body": []
         }
-      }
+      ]
     }
   }
 }
