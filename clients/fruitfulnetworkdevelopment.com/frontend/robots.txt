@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+Disallow: /assets/docs/
+Disallow: /scripts/
+Disallow: /admin/
+Disallow: /portal/
+Disallow: /api/
+Disallow: /drafts/
+Disallow: /staging/
+
+Sitemap: https://fruitfulnetworkdevelopment.com/sitemap.xml
