@@ -7,6 +7,67 @@
   <link rel="icon" type="image/png" href="favicon.png" />
   <link rel="stylesheet" href="CSS/styles.css" />
   <style>
+    .home-intro-note {
+      margin: 0 0 0.85rem;
+      font-size: 0.84rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--color-muted);
+    }
+
+    .home-intro-note a {
+      color: inherit;
+      font-weight: 600;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 2px;
+    }
+
+    .home-hero__copy {
+      display: grid;
+      gap: 1.2rem;
+    }
+
+    .home-hero__stack {
+      display: grid;
+      gap: 1rem;
+      max-width: 70rem;
+    }
+
+    .home-hero__panel {
+      padding: 1rem 1.1rem;
+      border: 1px solid var(--color-line);
+      background: rgba(250, 248, 243, 0.94);
+      box-shadow: 0 10px 30px rgba(64, 45, 22, 0.05);
+    }
+
+    .home-hero__panel h2 {
+      margin: 0 0 0.45rem;
+      font-size: 1.2rem;
+    }
+
+    .home-hero__panel p:last-child {
+      margin-bottom: 0;
+    }
+
+    .home-hero__mission {
+      display: grid;
+      gap: 0.85rem;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .home-hero__mission-block {
+      padding: 1rem 1.1rem;
+      background: #f6f0e6;
+      border-top: 3px solid #77614e;
+    }
+
+    .home-hero__mission-block h3 {
+      margin: 0 0 0.4rem;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
     .home-history-callout {
       margin-top: var(--sp-5);
       padding: 0.8rem 0.95rem;
@@ -89,6 +150,39 @@
       color: var(--color-muted);
     }
 
+    .home-relationships {
+      margin-top: var(--sp-8);
+      display: grid;
+      gap: 1rem;
+    }
+
+    .home-relationships__intro {
+      max-width: 66ch;
+    }
+
+    .home-relationships__grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.9rem;
+    }
+
+    .home-relationship-card {
+      padding: 1rem;
+      border: 1px solid var(--color-line);
+      background:
+        linear-gradient(180deg, rgba(246, 240, 230, 0.95) 0%, rgba(255, 255, 255, 0.98) 100%);
+      min-height: 190px;
+    }
+
+    .home-relationship-card h3 {
+      margin: 0 0 0.55rem;
+      font-size: 1.05rem;
+    }
+
+    .home-relationship-card p:last-child {
+      margin-bottom: 0;
+    }
+
     .home-events-strip {
       margin-top: var(--sp-6);
       border-top: 1px solid var(--color-line);
@@ -161,8 +255,13 @@
     }
 
     @media (max-width: 1020px) {
+      .home-hero__mission,
       .home-news-feature {
         grid-template-columns: 1fr;
+      }
+
+      .home-relationships__grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
       .home-news-feature__article {
@@ -178,8 +277,16 @@
     }
 
     @media (max-width: 680px) {
+      .home-relationships__grid,
       .home-events-strip__grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 540px) {
+      .home-relationships__grid,
+      .home-events-strip__grid {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -220,12 +327,70 @@
       </figure>
       <div class="home-hero__copy">
         <p class="kicker kicker--hero">Cuyahoga Valley Countryside Conservancy</p>
-        <h1 class="headline-lg headline-lg--hero">Working agricultural heritage in the national park</h1>
-        <p class="home-lead__deck">Since 1999 the Countryside Initiative has paired rehabilitation of historic farmsteads with long-term stewardship leases—keeping nineteenth- and twentieth-century agricultural landscapes active, documented, and open to learning. This site is organized as a small archival reading room: chronology, photographs, named stewards, and collected sources alongside today’s farm registry and programs.</p>
-        <aside class="home-history-callout">
-          <p>For a chronology-first path through the archive, continue to <a href="history.html">History</a> for era context, dated records, oral-history clips, and source-linked annotations.</p>
-        </aside>
+        <h1 class="headline-lg headline-lg--hero">Connecting people, food, and land in and beyond Cuyahoga Valley National Park</h1>
+        <div class="home-hero__stack">
+          <section class="home-hero__panel" aria-labelledby="home-who-we-are-heading">
+            <p class="home-intro-note">Who we are · Meet the <a href="people.html">board members</a> · Visit the <a href="the_farms.html">farms</a></p>
+            <h2 id="home-who-we-are-heading">Who are we</h2>
+            <p>Countryside Conservancy builds a thriving local food community by connecting people, food, and land in and beyond Cuyahoga Valley National Park. We support working farms, cultivate public understanding of agriculture, and help keep the valley’s historic agricultural landscape active, useful, and shared.</p>
+          </section>
+
+          <section class="home-hero__panel" aria-labelledby="home-born-out-of-heading">
+            <p class="home-intro-note">Born out of the initial past · Continue on <a href="history.html">History</a></p>
+            <h2 id="home-born-out-of-heading">What the Countryside program was born out of</h2>
+            <p>The founding purpose of Countryside was to promote and manage the reestablishment and revitalization of appropriate farming practices in Cuyahoga Valley National Park and beyond. From the start, the work joined stewardship, public education, biodiversity, and historical-cultural landscape preservation.</p>
+            <p>That purpose still shapes the program today. Countryside now works with farms to enrich the cultural and community presence of farming in the Cuyahoga Valley, reconnecting consumer-citizens with farmer-citizens and developing durable public-private partnerships around land, food, and care.</p>
+          </section>
+
+          <div class="home-hero__mission" aria-label="Mission and objective">
+            <section class="home-hero__mission-block">
+              <h3>Mission</h3>
+              <p>Build a thriving local food community by connecting people, food and land in and beyond Cuyahoga Valley National Park.</p>
+            </section>
+            <section class="home-hero__mission-block">
+              <h3>Objective</h3>
+              <p>Become an ecologically and financially sustainable, inclusive, and equitable organization with highly effective models for protecting land, cultivating farmers, and connecting people to local food.</p>
+            </section>
+          </div>
+        </div>
       </div>
+    </section>
+
+    <section class="home-relationships" aria-labelledby="home-relationships-heading">
+      <div class="home-relationships__intro">
+        <p class="kicker">Relationships in the valley</p>
+        <h2 id="home-relationships-heading" class="section-heading">The relationships Countryside regards as essential in the Cuyahoga Valley</h2>
+        <p class="timeline-intro">Countryside’s founding purpose reaches beyond land management alone. It treats agriculture as a shared civic practice, one that depends on strong relationships between farms, neighbors, cultural memory, public land, and the people and institutions willing to sustain them together.</p>
+      </div>
+      <div class="home-relationships__grid">
+        <article class="home-relationship-card">
+          <h3>Farms</h3>
+          <p>Working farms carry the valley’s agricultural life forward through stewardship, production, teaching, and long-term care for historic farmsteads.</p>
+        </article>
+        <article class="home-relationship-card">
+          <h3>The Community</h3>
+          <p>Residents, visitors, volunteers, and local food buyers keep farming rooted in daily life by showing up, learning, and participating in a local food system.</p>
+        </article>
+        <article class="home-relationship-card">
+          <h3>The Culture</h3>
+          <p>Farming in the valley is also cultural presence: memory, seasonal ritual, shared knowledge, and the stories that make agriculture part of public identity.</p>
+        </article>
+        <article class="home-relationship-card">
+          <h3>The Cuyahoga Valley National Park</h3>
+          <p>The national park provides the landscape where preservation, public access, recreation, ecology, and active agriculture can be held in careful balance.</p>
+        </article>
+        <article class="home-relationship-card">
+          <h3>Partners</h3>
+          <p>Public and private partners make it possible to guide land use, support farmers, and test collaborative models that neither sector could accomplish alone.</p>
+        </article>
+        <article class="home-relationship-card">
+          <h3>Sponsors</h3>
+          <p>Sponsors help sustain programs, communications, and educational access so the work of connecting people, food, and land can continue to grow.</p>
+        </article>
+      </div>
+      <aside class="home-history-callout">
+        <p>Condensed from the Articles of Incorporation: Countryside exists to revitalize appropriate farming practices, develop a regional showcase for sustainable agriculture, and create new public-private ways of caring for land in the valley.</p>
+      </aside>
     </section>
 
     <section class="home-news-feature" aria-labelledby="home-news-feature-heading">

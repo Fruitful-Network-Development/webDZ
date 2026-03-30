@@ -1,4 +1,4 @@
-/* JSON-driven page layout — content from assets/docs/layout.json */
+/* Manifest-rendered page layout */
 
 .json-home-page {
   padding-top: 0;
@@ -184,7 +184,8 @@
   gap: 0.5rem 1rem;
 }
 
-.json-animal-toc a {
+.json-animal-toc a,
+.json-animal-toc span {
   font-weight: 600;
   font-size: 0.8rem;
   letter-spacing: 0.06em;

@@ -10,15 +10,11 @@
       --c-parchment: #d6c89a;
       --c-paper: #f9f8f3;
       --c-canvas: #fbf2ed;
-      --c-beige: #cfc8b8;
       --c-mist: #d9d6ce;
       --c-film: #2f2d26;
       --c-ink: #332e28;
       --c-bark: #302c1e;
       --c-olive: #6d6b56;
-      --c-sage: #9aa38a;
-      --c-mustard: #bfa23a;
-      --c-ochre: #a8872d;
       --c-warm-olive: #6b6f5b;
       --c-forest: #3c4a30;
 
@@ -32,11 +28,7 @@
       --fs-sm: 14px;
       --fs-md: 16px;
       --fs-lg: 20px;
-      --fs-xl: 28px;
-      --fs-2xl: 40px;
-      --fs-3xl: 64px;
 
-      --lh-tight: 0.95;
       --lh-snug: 1.2;
       --lh-normal: 1.45;
       --lh-relaxed: 1.65;
@@ -51,18 +43,17 @@
       --sp-10: 40px;
       --sp-12: 48px;
       --sp-16: 64px;
-      --sp-20: 80px;
 
-      --container: 1120px;
-      --article: 760px;
+      --container: 1180px;
 
       --history-paper: #fbf7ec;
       --history-paper-deep: #f3eddc;
       --history-ink: #24364a;
       --history-ink-soft: #66717a;
-      --history-rule: rgba(36, 54, 74, 0.22);
-      --history-rule-strong: rgba(36, 54, 74, 0.68);
+      --history-rule: rgba(36, 54, 74, 0.18);
+      --history-rule-strong: rgba(36, 54, 74, 0.48);
       --history-highlight: rgba(36, 54, 74, 0.08);
+      --history-audio: #5b6b58;
     }
 
     * {
@@ -79,8 +70,6 @@
       color: var(--c-film);
       background: var(--c-parchment);
       line-height: var(--lh-relaxed);
-      position: relative;
-      overflow-x: hidden;
     }
 
     body::before {
@@ -94,8 +83,8 @@
     }
 
     img {
-      max-width: 100%;
       display: block;
+      max-width: 100%;
     }
 
     a {
@@ -106,55 +95,24 @@
     }
 
     a:hover {
-      opacity: 0.9;
+      opacity: 0.92;
     }
 
-    .page {
-      max-width: var(--container);
-      margin: 0 auto;
-      padding: var(--sp-12) var(--sp-6) var(--sp-16);
-    }
-
-    .page--archive {
-      padding-top: var(--sp-8);
-    }
-
-    .headline-site {
-      font-family: var(--font-editorial);
-      font-size: clamp(1.85rem, 4vw, 2.65rem);
-      line-height: var(--lh-snug);
-      font-weight: 400;
-      color: var(--c-ink);
-      margin: 0 0 var(--sp-4);
+    button,
+    input,
+    textarea {
+      font: inherit;
     }
 
     .masthead {
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-top: 4px solid var(--c-film);
+      flex-direction: column;
+      align-items: stretch;
+      gap: var(--sp-4);
+      padding: var(--sp-5) var(--sp-6);
+      border-top: 3px solid var(--c-film);
       border-bottom: 1px solid var(--c-film);
-      padding: var(--sp-4) var(--sp-6);
       background: var(--c-paper);
-    }
-
-    .masthead__wordmark {
-      font-family: var(--font-display);
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      font-size: var(--fs-lg);
-    }
-
-    .masthead__wordmark--with-icon {
-      display: inline-flex;
-      align-items: center;
-      gap: var(--sp-3);
-    }
-
-    .masthead__wordmark-icon {
-      flex-shrink: 0;
-      object-fit: contain;
-      opacity: 0.92;
     }
 
     .masthead__top {
@@ -169,19 +127,24 @@
       display: inline-flex;
       align-items: center;
       gap: var(--sp-3);
-      text-decoration: none;
       border-bottom: none;
       color: inherit;
+      font-family: var(--font-display);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-size: var(--fs-lg);
     }
 
-    .masthead__wordmark--link:hover {
-      opacity: 0.88;
+    .masthead__wordmark-icon {
+      width: 24px;
+      height: 24px;
+      object-fit: contain;
+      opacity: 0.92;
     }
 
     .masthead__subtitle {
       margin: 0;
-      max-width: 36rem;
-      font-family: var(--font-body);
+      max-width: 38rem;
       font-size: var(--fs-sm);
       font-style: italic;
       color: var(--c-warm-olive);
@@ -191,73 +154,332 @@
     .masthead__nav {
       display: flex;
       flex-wrap: wrap;
-      gap: var(--sp-3) var(--sp-4);
-      font-family: var(--font-sans);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      font-size: var(--fs-xs);
-    }
-
-    .masthead__nav a:hover {
-      color: var(--c-forest);
-    }
-
-    .masthead--archive {
-      flex-direction: column;
-      align-items: stretch;
-      gap: var(--sp-4);
-      padding: var(--sp-5) var(--sp-6);
-      border-top-width: 3px;
-    }
-
-    .masthead--archive .masthead__nav {
-      font-family: var(--font-body);
-      text-transform: none;
-      letter-spacing: 0.03em;
-      font-size: var(--fs-sm);
-      font-variant: small-caps;
       gap: var(--sp-2) var(--sp-5);
       border-top: 1px solid color-mix(in srgb, var(--c-film) 18%, transparent);
       padding-top: var(--sp-3);
+      font-size: var(--fs-sm);
+      font-variant: small-caps;
+      letter-spacing: 0.03em;
     }
 
-    .masthead--archive .masthead__nav a {
+    .masthead__nav a {
       border-bottom: 1px solid transparent;
-      padding-bottom: 2px;
     }
 
-    .masthead--archive .masthead__nav a:hover,
-    .masthead--archive .masthead__nav a[aria-current="page"] {
+    .masthead__nav a:hover,
+    .masthead__nav a[aria-current="page"] {
       border-bottom-color: color-mix(in srgb, var(--c-forest) 55%, transparent);
       opacity: 1;
     }
 
-    .figure {
+    .page {
+      position: relative;
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: var(--sp-10) var(--sp-6) var(--sp-16);
+    }
+
+    .history-page {
+      display: grid;
+      gap: var(--sp-8);
+    }
+
+    .history-intro {
+      max-width: 68ch;
+      display: grid;
+      gap: var(--sp-3);
+    }
+
+    .history-kicker,
+    .history-summary__eyebrow,
+    .history-period__eyebrow,
+    .history-event__date,
+    .history-meta-block h4,
+    .history-links h4,
+    .history-files h4,
+    .history-quote-group h4 {
       margin: 0;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--history-ink-soft);
+    }
+
+    .headline-site {
+      margin: 0;
+      font-family: var(--font-editorial);
+      font-size: clamp(1.95rem, 4vw, 2.9rem);
+      line-height: var(--lh-snug);
+      font-weight: 400;
+      color: var(--c-ink);
+    }
+
+    .history-intro p {
+      margin: 0;
+      font-size: var(--fs-md);
+    }
+
+    .history-summary {
+      display: grid;
+      gap: var(--sp-3);
+      padding: var(--sp-5);
+      border: 1px solid var(--history-rule-strong);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.45), transparent), var(--history-paper);
+    }
+
+    .history-summary__counts {
+      margin: 0;
+      font-size: var(--fs-md);
+      color: var(--c-bark);
+    }
+
+    .history-summary__note {
+      margin: 0;
+      color: var(--c-bark);
+    }
+
+    #history-periods {
+      display: grid;
+      gap: var(--sp-8);
+    }
+
+    .history-period {
+      display: grid;
+      gap: var(--sp-5);
+      padding: var(--sp-5);
+      border: 1px solid var(--history-rule-strong);
+      background: var(--history-paper);
+    }
+
+    .history-period-header {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: var(--sp-5);
+      align-items: start;
+      border-bottom: 1px solid var(--history-rule);
+      padding-bottom: var(--sp-4);
+    }
+
+    .history-period__label {
+      display: grid;
+      gap: var(--sp-2);
+      min-width: 0;
+    }
+
+    .history-period__title {
+      margin: 0;
+      font-family: var(--font-editorial);
+      font-size: clamp(1.35rem, 2.6vw, 2rem);
+      line-height: 1.1;
+      color: var(--history-ink);
+    }
+
+    .history-period-summary {
+      margin: 0;
+      max-width: 70ch;
+      color: var(--c-bark);
+    }
+
+    .history-period__icon {
+      width: 74px;
+      height: 74px;
+      object-fit: cover;
+      border: 1px solid var(--history-rule);
+      background: var(--history-paper-deep);
+    }
+
+    .history-period-events {
+      display: grid;
+      gap: var(--sp-4);
+    }
+
+    .history-event {
+      display: grid;
+      gap: var(--sp-4);
+      padding: var(--sp-5);
+      border: 1px solid var(--history-rule);
+      background: rgba(255, 255, 255, 0.58);
+    }
+
+    .history-event__header {
       display: grid;
       gap: var(--sp-2);
     }
 
-    .figure__img {
-      border: 2px solid var(--c-film);
-      background: var(--c-mist);
+    .history-event__date {
+      color: var(--history-ink);
     }
 
-    .figure__cap {
-      font-family: var(--font-mono);
-      font-size: var(--fs-xs);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--c-olive);
+    .history-event__title {
+      margin: 0;
+      font-family: var(--font-editorial);
+      font-size: clamp(1.25rem, 2.5vw, 1.7rem);
+      line-height: 1.15;
+      color: var(--c-ink);
     }
 
-    .icon-inline {
-      flex-shrink: 0;
-      width: 18px;
-      height: 18px;
-      display: inline-block;
-      vertical-align: middle;
-      object-fit: contain;
+    .history-event__heading {
+      margin: 0;
+      color: var(--history-ink-soft);
+      font-size: var(--fs-sm);
+    }
+
+    .history-event__body {
+      display: grid;
+      gap: var(--sp-3);
+    }
+
+    .history-event__body p {
+      margin: 0;
+    }
+
+    .history-event__grid {
+      display: grid;
+      gap: var(--sp-4);
+      grid-template-columns: minmax(0, 1.45fr) minmax(260px, 0.95fr);
+    }
+
+    .history-event__main,
+    .history-event__side {
+      display: grid;
+      gap: var(--sp-4);
+      align-content: start;
+    }
+
+    .history-images {
+      display: grid;
+      gap: var(--sp-3);
+    }
+
+    .history-images__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: var(--sp-3);
+    }
+
+    .history-image-card {
+      display: grid;
+      gap: var(--sp-2);
+      margin: 0;
+      padding: var(--sp-3);
+      border: 1px solid var(--history-rule);
+      background: rgba(255, 255, 255, 0.68);
+    }
+
+    .history-image-card img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      background: var(--history-paper-deep);
+      border: 1px solid var(--history-rule);
+    }
+
+    .history-image-card figcaption {
+      display: grid;
+      gap: var(--sp-1);
+      font-size: var(--fs-sm);
+    }
+
+    .history-image-card strong {
+      color: var(--history-ink);
+    }
+
+    .history-meta-block,
+    .history-links,
+    .history-files,
+    .history-quote-group,
+    .history-location,
+    .history-audio-group {
+      display: grid;
+      gap: var(--sp-2);
+      padding: var(--sp-3);
+      border: 1px solid var(--history-rule);
+      background: rgba(255, 255, 255, 0.52);
+    }
+
+    .history-meta-block p,
+    .history-location p {
+      margin: 0;
+      font-size: var(--fs-sm);
+    }
+
+    .history-location__maps,
+    .history-links ul,
+    .history-files ul {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--sp-2) var(--sp-3);
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      font-size: var(--fs-sm);
+    }
+
+    .history-audio-group {
+      border-left: 4px solid var(--history-audio);
+    }
+
+    .history-audio-group__head {
+      display: grid;
+      gap: var(--sp-1);
+    }
+
+    .history-audio-group__head p,
+    .history-audio-group__links,
+    .history-transcript {
+      margin: 0;
+      font-size: var(--fs-sm);
+    }
+
+    .history-audio-group audio {
+      width: 100%;
+    }
+
+    .history-audio-group__links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--sp-2) var(--sp-3);
+    }
+
+    .history-transcript-toggle {
+      width: fit-content;
+      padding: 0.45rem 0.75rem;
+      border: 1px solid var(--history-rule-strong);
+      background: var(--history-highlight);
+      color: var(--history-ink);
+      cursor: pointer;
+    }
+
+    .history-transcript {
+      padding-top: var(--sp-2);
+      border-top: 1px solid var(--history-rule);
+      white-space: pre-wrap;
+    }
+
+    .history-quote-group blockquote {
+      margin: 0;
+      padding-left: var(--sp-4);
+      border-left: 3px solid var(--history-rule-strong);
+      color: var(--c-bark);
+    }
+
+    .history-quote-group cite {
+      display: block;
+      margin-top: var(--sp-2);
+      color: var(--history-ink-soft);
+      font-style: normal;
+      font-size: var(--fs-sm);
+    }
+
+    .history-loading,
+    .history-error,
+    .history-empty,
+    .history-noscript {
+      margin: 0;
+      padding: var(--sp-5);
+      border: 1px solid var(--history-rule-strong);
+      background: var(--history-paper);
     }
 
     .contact-row {
@@ -267,67 +489,33 @@
       margin: 0 0 var(--sp-2);
     }
 
+    .icon-inline {
+      flex-shrink: 0;
+      width: 18px;
+      height: 18px;
+      object-fit: contain;
+    }
+
     .footer {
       border-top: 4px solid var(--c-film);
       border-bottom: 1px solid var(--c-film);
       margin-top: var(--sp-12);
       padding: var(--sp-4);
       background: var(--c-forest);
+      color: var(--c-paper);
       display: grid;
       gap: var(--sp-3);
       font-size: var(--fs-sm);
-      color: var(--c-paper);
     }
 
-    .footer__grid {
+    .footer__main {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: var(--sp-6);
     }
 
-    .footer__grid--canonical {
-      grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.75fr);
-      align-items: start;
-    }
-
-    .footer__brand-col .figure__cap {
-      text-transform: none;
-      letter-spacing: 0.04em;
-      font-size: 11px;
-      max-width: 42ch;
-    }
-
-    .footer__pictorial-map {
-      width: 100%;
-      max-width: 440px;
-      height: auto;
-    }
-
-    .footer__tagline {
-      margin: var(--sp-3) 0 var(--sp-2);
-      font-size: var(--fs-sm);
-      color: var(--c-paper);
-      line-height: var(--lh-normal);
-    }
-
-    .footer__visit-note {
-      margin: 0 0 var(--sp-4);
-      font-size: var(--fs-sm);
-      color: color-mix(in srgb, var(--c-paper) 92%, var(--c-mist));
-      line-height: var(--lh-relaxed);
-      max-width: 52ch;
-    }
-
-    .footer__visit-note a,
-    .footer__support-inline a,
-    .footer .contact-row a,
-    .footer a {
-      color: var(--c-paper);
-      border-bottom-color: color-mix(in srgb, var(--c-paper) 60%, transparent);
-    }
-
     .footer__mini-heading {
-      margin: var(--sp-4) 0 var(--sp-2);
+      margin: 0 0 var(--sp-2);
       font-family: var(--font-display);
       font-size: var(--fs-xs);
       letter-spacing: 0.12em;
@@ -335,1143 +523,102 @@
       color: var(--c-parchment);
     }
 
-    .footer__support-inline {
-      margin: var(--sp-4) 0 0;
-      font-size: var(--fs-sm);
-    }
-
-    .footer h4 {
-      margin: 0 0 var(--sp-2);
-      font-family: var(--font-display);
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      font-size: var(--fs-sm);
-    }
-
-    .footer ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: grid;
-      gap: var(--sp-1);
-    }
-
-    .footer .icon-inline {
-      filter: brightness(0) invert(1);
-      opacity: 0.92;
-    }
-
-    .history-chronology {
-      display: grid;
-      gap: var(--sp-10);
-      max-width: 1220px;
-    }
-
-    .history-chronology__intro {
-      max-width: 62ch;
-      display: grid;
-      gap: var(--sp-3);
-    }
-
-    .history-chronology__intro .headline-site {
-      margin-bottom: 0;
-    }
-
-    .history-chronology__kicker,
-    .history-chronology__eyebrow,
-    .history-chronology__spine-label,
-    .history-era-break__eyebrow,
-    .history-card__date,
-    .history-card__fact dt,
-    .history-feature__date {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--history-ink-soft);
-    }
-
-    .history-chronology__lede,
-    .history-chronology__summary,
-    .history-chronology__note {
-      margin: 0;
-      color: var(--c-bark);
-      font-size: var(--fs-md);
-    }
-
-    .history-chronology__surface {
-      display: grid;
-      gap: var(--sp-8);
-    }
-
-    .history-chronology__top {
-      display: grid;
-      gap: var(--sp-5);
-      padding: var(--sp-5);
-      border: 1px solid var(--history-rule-strong);
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.45), transparent), var(--history-paper);
-    }
-
-    .history-chronology__top-meta {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(280px, 420px);
-      gap: var(--sp-5);
-      align-items: start;
-    }
-
-    .history-chronology__era-nav {
-      display: grid;
-      grid-template-columns: repeat(5, minmax(0, 1fr));
-      border-top: 1px solid var(--history-rule-strong);
-      border-bottom: 1px solid var(--history-rule-strong);
-      background: rgba(255, 255, 255, 0.3);
-    }
-
-    .history-chronology__era-btn {
-      display: grid;
-      gap: 2px;
-      padding: 0.85rem 0.9rem 0.75rem;
-      border: 0;
-      border-right: 1px solid var(--history-rule);
-      background: transparent;
-      text-align: left;
-      cursor: pointer;
-      color: var(--history-ink);
-    }
-
-    .history-chronology__era-btn:last-child {
-      border-right: 0;
-    }
-
-    .history-chronology__era-btn:hover,
-    .history-chronology__era-btn.is-active {
-      background: var(--history-highlight);
-    }
-
-    .history-chronology__era-number {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--history-ink-soft);
-    }
-
-    .history-chronology__era-label {
-      font-family: var(--font-editorial);
-      font-size: var(--fs-md);
-      line-height: var(--lh-snug);
-    }
-
-    .history-chronology__feature-row {
-      display: grid;
-      grid-template-columns: auto minmax(0, 1fr) auto;
-      gap: var(--sp-4);
-      align-items: stretch;
-    }
-
-    .history-chronology__arrow {
-      min-width: 3rem;
-      padding: 0;
-      border: 1px solid var(--history-rule-strong);
-      background: rgba(255, 255, 255, 0.35);
-      font-size: 1.4rem;
-      color: var(--history-ink);
-      cursor: pointer;
-    }
-
-    .history-chronology__arrow:hover {
-      background: var(--history-highlight);
-    }
-
-    .history-chronology__arrow:disabled {
-      opacity: 0.38;
-      cursor: default;
-      background: rgba(255, 255, 255, 0.15);
-    }
-
-    .history-feature {
-      position: relative;
-      display: grid;
-      gap: var(--sp-5);
-      padding: var(--sp-5);
-      border: 1px solid var(--history-rule-strong);
-      background: rgba(255, 255, 255, 0.5);
-    }
-
-    .history-feature::before,
-    .history-feature::after {
-      content: "";
-      position: absolute;
-      inset: 10px auto auto 10px;
-      width: calc(100% - 20px);
-      height: calc(100% - 20px);
-      border: 1px solid rgba(36, 54, 74, 0.08);
-      pointer-events: none;
-    }
-
-    .history-feature::after {
-      inset: 18px auto auto 18px;
-      width: calc(100% - 36px);
-      height: calc(100% - 36px);
-    }
-
-    .history-feature__top {
-      position: relative;
-      z-index: 1;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: start;
-      justify-content: space-between;
-      gap: var(--sp-3);
-    }
-
-    .history-feature__sequence,
-    .history-feature__era {
-      margin: 0;
-    }
-
-    .history-feature__sequence {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--history-ink-soft);
-    }
-
-    .history-feature__era {
-      margin-top: 3px;
-      font-family: var(--font-editorial);
-      font-size: var(--fs-lg);
-      color: var(--history-ink);
-    }
-
-    .history-feature__jump {
-      align-self: center;
-      border-bottom: none;
-      border: 1px solid var(--history-rule-strong);
-      padding: 0.55rem 0.8rem;
-      font-family: var(--font-mono);
-      font-size: 11px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      background: rgba(255, 255, 255, 0.35);
-    }
-
-    .history-feature__grid {
-      position: relative;
-      z-index: 1;
-      display: grid;
-      grid-template-columns: minmax(0, 1.05fr) minmax(240px, 0.95fr);
-      gap: var(--sp-5);
-      align-items: start;
-    }
-
-    .history-feature__copy {
-      display: grid;
-      gap: var(--sp-4);
-      min-width: 0;
-    }
-
-    .history-feature__date {
-      margin: 0;
-      color: var(--history-ink);
-    }
-
-    .history-feature__title {
-      margin: 0;
-      font-family: var(--font-editorial);
-      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
-      line-height: 0.98;
-      color: var(--c-ink);
-    }
-
-    .history-feature__summary {
-      margin: 0;
-      color: var(--c-bark);
-      font-size: var(--fs-md);
-      max-width: 54ch;
-    }
-
-    .history-feature__facts {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: var(--sp-4);
-      margin: 0;
-    }
-
-    .history-feature__facts dt {
-      margin: 0 0 var(--sp-2);
-      font-family: var(--font-mono);
-      font-size: 11px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--history-ink-soft);
-    }
-
-    .history-feature__facts dd {
-      margin: 0;
-      font-size: var(--fs-sm);
-      color: var(--c-bark);
-    }
-
-    .history-feature__media {
-      display: grid;
-      gap: var(--sp-2);
-      margin: 0;
-      align-content: start;
-    }
-
-    .history-feature__media img {
-      width: 100%;
-      aspect-ratio: 4 / 3;
-      object-fit: cover;
-      border: 1px solid var(--history-rule-strong);
-      background: var(--history-paper-deep);
-    }
-
-    .history-feature__media img.history-feature__media-icon {
-      object-fit: contain;
-      padding: var(--sp-8);
-    }
-
-    .history-feature__media figcaption {
-      display: grid;
-      gap: 2px;
-      color: var(--history-ink-soft);
-      font-size: 11px;
-    }
-
-    .history-feature__media figcaption span:first-child {
-      font-family: var(--font-editorial);
-      font-size: var(--fs-md);
-      color: var(--history-ink);
-    }
-
-    .history-feature__artifact {
-      min-height: 220px;
-      display: grid;
-      place-items: center;
-      border: 1px solid var(--history-rule);
-      background:
-        linear-gradient(180deg, transparent 0 62%, rgba(36, 54, 74, 0.12) 62% 63%, transparent 63%),
-        rgba(255, 255, 255, 0.2);
-    }
-
-    .history-feature__source-row,
-    .history-card__source-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--sp-3);
-      font-size: var(--fs-sm);
-    }
-
-    .history-chip-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--sp-2);
-    }
-
-    .history-chip {
-      display: inline-flex;
-      align-items: center;
-      min-height: 1.95rem;
-      padding: 0.15rem 0.6rem;
-      border: 1px solid var(--history-rule);
-      background: rgba(255, 255, 255, 0.32);
-      font-family: var(--font-mono);
-      font-size: 11px;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      color: var(--history-ink);
-    }
-
-    .history-chronology__track-wrap {
-      overflow: hidden;
-      padding-top: var(--sp-2);
-    }
-
-    .history-chronology__track {
-      overflow-x: auto;
-      padding-bottom: var(--sp-2);
-    }
-
-    .history-chronology__track-inner {
-      position: relative;
-      display: flex;
-      gap: var(--sp-4);
-      min-width: max-content;
-      padding: var(--sp-4) var(--sp-3) var(--sp-2);
-    }
-
-    .history-chronology__track-inner::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      right: 0;
-      top: 2rem;
-      height: 1px;
-      background: var(--history-rule-strong);
-    }
-
-    .history-chronology__track-btn {
-      position: relative;
-      display: grid;
-      gap: 0.25rem;
-      min-width: 10.75rem;
-      padding: 2.45rem 0.3rem 0.3rem;
-      border: 0;
-      background: transparent;
-      text-align: left;
-      cursor: pointer;
-      color: var(--history-ink);
-    }
-
-    .history-chronology__track-btn::before {
-      content: "";
-      position: absolute;
-      top: 1.55rem;
-      left: 0.3rem;
-      width: 0.9rem;
-      height: 0.9rem;
-      border-radius: 50%;
-      background: var(--history-paper);
-      border: 2px solid var(--history-rule-strong);
-      transform: translateY(-50%);
-    }
-
-    .history-chronology__track-btn.is-active::before {
-      background: var(--history-ink);
-      box-shadow: 0 0 0 6px rgba(36, 54, 74, 0.08);
-    }
-
-    .history-chronology__track-date {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--history-ink-soft);
-    }
-
-    .history-chronology__track-title {
-      font-family: var(--font-editorial);
-      font-size: var(--fs-md);
-      line-height: var(--lh-snug);
-    }
-
-    .history-chronology__reading-room {
-      display: grid;
-      grid-template-columns: minmax(220px, 270px) minmax(0, 1fr);
-      gap: clamp(1.5rem, 4vw, 3rem);
-      align-items: start;
-    }
-
-    .history-chronology__spine-shell {
-      position: relative;
-    }
-
-    .history-chronology__spine-sticky {
-      position: sticky;
-      top: var(--sp-8);
-      padding-right: var(--sp-4);
-    }
-
-    .history-chronology__spine {
-      position: relative;
-      display: grid;
-      gap: var(--sp-5);
-      padding: var(--sp-2) 0;
-    }
-
-    .history-chronology__spine::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      right: 0.75rem;
-      width: 2px;
-      background: var(--history-rule-strong);
-    }
-
-    .history-chronology__spine-group {
-      position: relative;
-      display: grid;
-      gap: var(--sp-2);
-      z-index: 1;
-    }
-
-    .history-chronology__spine-era {
-      display: grid;
-      gap: 2px;
-      justify-items: start;
-      border: 0;
-      background: transparent;
-      padding: 0 2.5rem 0 0;
-      text-align: left;
-      cursor: pointer;
-      color: var(--history-ink);
-    }
-
-    .history-chronology__spine-era.is-active {
-      color: var(--c-ink);
-    }
-
-    .history-chronology__spine-era span:first-child {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--history-ink-soft);
-    }
-
-    .history-chronology__spine-era span:last-child {
-      font-family: var(--font-editorial);
-      font-size: var(--fs-md);
-      line-height: var(--lh-snug);
-    }
-
-    .history-chronology__spine-item {
-      position: relative;
-      display: grid;
-      gap: 2px;
-      justify-items: start;
-      border: 0;
-      background: transparent;
-      padding: 0.1rem 2.5rem 0.1rem 0;
-      text-align: left;
-      cursor: pointer;
-      color: var(--c-bark);
-    }
-
-    .history-chronology__spine-item::after {
-      content: "";
-      position: absolute;
-      right: 0.45rem;
-      top: 0.75rem;
-      width: 0.7rem;
-      height: 0.7rem;
-      border-radius: 50%;
-      background: var(--history-paper);
-      border: 2px solid var(--history-rule-strong);
-    }
-
-    .history-chronology__spine-item.is-active::after {
-      background: var(--history-ink);
-    }
-
-    .history-chronology__spine-date {
-      font-family: var(--font-mono);
-      font-size: 10px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--history-ink-soft);
-    }
-
-    .history-chronology__spine-title {
-      font-size: var(--fs-sm);
-      line-height: var(--lh-snug);
-    }
-
-    .history-chronology__card-column {
-      display: grid;
-      gap: var(--sp-8);
-      min-width: 0;
-    }
-
-    .history-era-break {
-      position: relative;
-      display: grid;
-      grid-template-columns: auto minmax(0, 1fr);
-      gap: var(--sp-5);
-      padding-top: var(--sp-2);
-      scroll-margin-top: 120px;
-    }
-
-    .history-era-break__number {
-      display: grid;
-      place-items: center;
-      width: 3rem;
-      height: 3rem;
-      border: 1px solid var(--history-rule-strong);
-      background: rgba(255, 255, 255, 0.25);
-      font-family: var(--font-mono);
-      font-size: 11px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--history-ink);
-    }
-
-    .history-era-break__copy {
-      display: grid;
-      gap: var(--sp-2);
-      max-width: 58ch;
-    }
-
-    .history-era-break__copy h2 {
-      margin: 0;
-      font-family: var(--font-editorial);
-      font-size: clamp(1.5rem, 3vw, 2.2rem);
-      line-height: var(--lh-snug);
-      color: var(--c-ink);
-    }
-
-    .history-era-break__copy p {
-      margin: 0;
-      color: var(--c-bark);
-      font-size: var(--fs-md);
-    }
-
-    .history-anchor {
-      display: block;
-      position: relative;
-      top: -120px;
-      visibility: hidden;
-    }
-
-    .history-card {
-      position: relative;
-      display: grid;
-      gap: var(--sp-4);
-      margin-left: clamp(1.25rem, 4vw, 3.75rem);
-      padding: var(--sp-5);
-      border: 1px solid var(--history-rule-strong);
-      background: rgba(255, 255, 255, 0.38);
-      scroll-margin-top: 120px;
-      cursor: pointer;
-    }
-
-    .history-card::before {
-      content: "";
-      position: absolute;
-      top: 2rem;
-      left: calc(-1 * clamp(1.25rem, 4vw, 3.75rem));
-      width: clamp(1.25rem, 4vw, 3.75rem);
-      height: 2px;
-      background: var(--history-rule-strong);
-    }
-
-    .history-card::after {
-      content: "";
-      position: absolute;
-      top: calc(2rem - 0.45rem);
-      left: calc(-1 * clamp(1.25rem, 4vw, 3.75rem) - 0.45rem);
-      width: 0.9rem;
-      height: 0.9rem;
-      border-radius: 50%;
-      background: var(--history-paper);
-      border: 2px solid var(--history-rule-strong);
-    }
-
-    .history-card.is-active {
-      background: rgba(255, 255, 255, 0.72);
-      border-color: rgba(36, 54, 74, 0.82);
-    }
-
-    .history-card.is-active::after {
-      background: var(--history-ink);
-    }
-
-    .history-card__head {
-      display: grid;
-      grid-template-columns: auto minmax(0, 1fr);
-      gap: var(--sp-4);
-      align-items: start;
-    }
-
-    .history-card__stamp {
-      display: grid;
-      place-items: center;
-      width: 2.5rem;
-      min-width: 2.5rem;
-      height: 2.5rem;
-      border: 1px solid var(--history-rule-strong);
-      font-family: var(--font-mono);
-      font-size: 11px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--history-ink);
-      background: rgba(255, 255, 255, 0.24);
-    }
-
-    .history-card__titles {
-      display: grid;
-      gap: var(--sp-2);
-      min-width: 0;
-    }
-
-    .history-card__date {
-      margin: 0;
-      color: var(--history-ink);
-    }
-
-    .history-card__titles h3 {
-      margin: 0;
-      font-family: var(--font-editorial);
-      font-size: clamp(1.2rem, 2.5vw, 1.75rem);
-      line-height: var(--lh-snug);
-      color: var(--c-ink);
-    }
-
-    .history-card__display {
-      margin: 0;
-      font-size: var(--fs-sm);
-      color: var(--history-ink-soft);
-    }
-
-    .history-card__summary {
-      margin: 0;
-      color: var(--c-bark);
-      font-size: var(--fs-md);
-    }
-
-    .history-card__expanded {
-      display: grid;
-      gap: var(--sp-5);
-    }
-
-    .history-card:not(.is-active) .history-card__expanded {
-      display: none;
-    }
-
-    .history-card:not(.is-active) .history-card__summary {
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-    }
-
-    .history-card__fact-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: var(--sp-4);
-      margin: 0;
-    }
-
-    .history-card__fact {
-      padding-top: var(--sp-3);
-      border-top: 1px solid var(--history-rule);
-    }
-
-    .history-card__fact dt {
-      margin: 0 0 var(--sp-2);
-    }
-
-    .history-card__fact dd {
-      margin: 0;
-      font-size: var(--fs-sm);
-      color: var(--c-bark);
-    }
-
-    .history-card__block {
-      display: grid;
-      gap: var(--sp-3);
-    }
-
-    .history-card__block-head {
-      display: grid;
-      gap: 2px;
-    }
-
-    .history-card__block-head h4 {
-      margin: 0;
-      font-family: var(--font-display);
-      font-size: var(--fs-xs);
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--history-ink);
-    }
-
-    .history-card__block-head p,
-    .history-card__more {
-      margin: 0;
-      font-size: var(--fs-sm);
-      color: var(--history-ink-soft);
-    }
-
-    .history-card__media-grid,
-    .history-card__link-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-      gap: var(--sp-4);
-    }
-
-    .history-card__media-link,
-    .history-card__link-card {
-      border-bottom: none;
-    }
-
-    .history-card__media-card,
-    .history-card__link-card {
-      display: grid;
-      gap: var(--sp-3);
-      padding: var(--sp-3);
-      border: 1px solid var(--history-rule);
-      background: rgba(255, 255, 255, 0.26);
-      min-height: 100%;
-    }
-
-    .history-card__media-card img,
-    .history-card__link-card img,
-    .history-card__link-thumb {
-      width: 100%;
-      aspect-ratio: 4 / 3;
-      object-fit: cover;
-      border: 1px solid var(--history-rule);
-      background: var(--history-paper-deep);
-    }
-
-    .history-card__media-card img.history-card__icon,
-    .history-card__link-card img.history-card__icon,
-    .history-card__link-thumb.history-card__icon {
-      object-fit: contain;
-      padding: var(--sp-6);
-    }
-
-    .history-card__link-thumb--placeholder {
-      display: grid;
-      place-items: center;
-      padding: var(--sp-6);
-      font-family: var(--font-mono);
-      font-size: 10px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--history-ink-soft);
-    }
-
-    .history-card__media-copy,
-    .history-card__link-copy {
-      display: grid;
-      gap: 2px;
-    }
-
-    .history-card__media-title,
-    .history-card__link-title {
-      margin: 0;
-      font-family: var(--font-editorial);
-      font-size: var(--fs-md);
-      line-height: var(--lh-snug);
-      color: var(--history-ink);
-    }
-
-    .history-card__media-meta,
-    .history-card__link-meta,
-    .history-card__link-collection {
-      margin: 0;
-      font-family: var(--font-mono);
-      font-size: 10px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--history-ink-soft);
-    }
-
-    .history-card__media-desc,
-    .history-card__link-desc {
-      margin: 0;
-      font-size: var(--fs-sm);
-      color: var(--c-bark);
-    }
-
-    .history-card__audio-list {
-      display: grid;
-      gap: var(--sp-3);
-    }
-
-    .history-card__audio {
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: var(--sp-4);
-      align-items: center;
-      padding: var(--sp-4);
-      border: 1px solid var(--history-rule);
-      background: rgba(255, 255, 255, 0.26);
-    }
-
-    .history-card__audio-button {
-      border: 1px solid var(--history-rule-strong);
-      background: rgba(255, 255, 255, 0.55);
-      color: var(--history-ink);
-      font-family: var(--font-body);
-      font-size: var(--fs-sm);
-      padding: var(--sp-2) var(--sp-4);
-      cursor: pointer;
-    }
-
-    .history-card__audio-meta {
-      display: grid;
-      gap: var(--sp-2);
-      min-width: 0;
-    }
-
-    .history-card__audio-title {
-      font-family: var(--font-editorial);
-      font-size: var(--fs-md);
-      color: var(--c-ink);
-      line-height: var(--lh-snug);
-    }
-
-    .history-card__audio-bar {
-      position: relative;
-      height: 3px;
-      background: rgba(36, 54, 74, 0.15);
-      cursor: pointer;
-    }
-
-    .history-card__audio-progress {
-      position: absolute;
-      inset: 0 auto 0 0;
-      width: 0%;
-      background: var(--history-ink);
-    }
-
-    .history-card__audio-time {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      color: var(--history-ink-soft);
-    }
-
-    .history-card__source-list {
-      display: grid;
-      gap: var(--sp-2);
-      padding: 0;
-      margin: 0;
-      list-style: none;
-    }
-
-    .history-card__source-list li {
-      padding-bottom: var(--sp-2);
-      border-bottom: 1px solid var(--history-rule);
-    }
-
-    .history-card__source-list li:last-child {
-      padding-bottom: 0;
-      border-bottom: 0;
-    }
-
-    .history-card__loading,
-    .history-chronology__noscript {
-      margin: 0;
-      padding: var(--sp-5);
-      border: 1px solid var(--history-rule-strong);
-      background: var(--history-paper);
-      color: var(--c-bark);
-    }
-
-    @media (max-width: 1040px) {
-      .footer__grid,
-      .footer__grid--canonical {
-        grid-template-columns: 1fr;
-      }
-
-      .history-chronology__top-meta,
-      .history-feature__grid,
-      .history-chronology__reading-room {
-        grid-template-columns: 1fr;
-      }
-
-      .history-chronology__spine-sticky {
-        position: relative;
-        top: auto;
-        padding-right: 0;
-      }
-
-      .history-chronology__spine::after {
-        right: auto;
-        left: 0.75rem;
-      }
-
-      .history-chronology__spine-era,
-      .history-chronology__spine-item {
-        padding-left: 2.25rem;
-        padding-right: 0;
-      }
-
-      .history-chronology__spine-item::after {
-        left: 0.4rem;
-        right: auto;
-      }
-    }
-
-    @media (max-width: 860px) {
-      .history-chronology__era-nav {
-        grid-template-columns: 1fr;
-      }
-
-      .history-chronology__feature-row {
-        grid-template-columns: 1fr;
-      }
-
-      .history-chronology__arrow {
-        display: none;
-      }
-
-      .history-card {
-        margin-left: 0;
-      }
-
-      .history-card::before,
-      .history-card::after {
-        display: none;
-      }
-    }
-
-    @media (max-width: 640px) {
-      .page,
-      .masthead,
-      .masthead--archive {
-        padding-left: var(--sp-4);
-        padding-right: var(--sp-4);
-      }
-
-      .masthead,
-      .masthead__top {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: var(--sp-3);
-      }
-
-      .history-feature,
-      .history-chronology__top {
-        padding: var(--sp-4);
-      }
-
-      .history-card,
-      .history-card__audio {
-        grid-template-columns: 1fr;
-      }
-
-      .history-card__head,
-      .history-era-break {
-        grid-template-columns: 1fr;
-      }
-
-      .history-feature__facts,
-      .history-card__fact-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .history-chronology__track-btn {
-        min-width: 9.2rem;
-      }
-    }
-
-    /* Shared lean footer pattern override */
-    .footer {
-      padding: var(--sp-3) var(--sp-4) var(--sp-2);
-      gap: var(--sp-2);
-    }
-
-    .footer__main {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: var(--sp-3);
-    }
-
-    .footer__text {
-      margin: 0 0 var(--sp-2);
-      color: color-mix(in srgb, var(--c-paper) 88%, var(--c-mist));
-      line-height: 1.45;
-    }
-
-    .footer__mini-heading {
-      margin: 0 0 var(--sp-1);
-    }
-
-    .footer__support-link {
-      margin: 0;
+    .footer__text,
+    .footer__support-link,
+    .footer__nav-muted {
+      margin: 0 0 var(--sp-3);
+    }
+
+    .footer a,
+    .footer .contact-row a {
+      color: var(--c-paper);
+      border-bottom-color: color-mix(in srgb, var(--c-paper) 60%, transparent);
     }
 
     .footer-newsletter {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) auto;
-      gap: var(--sp-1);
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--sp-2);
       align-items: end;
-      margin: 0 0 var(--sp-1);
     }
 
     .footer-newsletter__label {
       display: grid;
-      gap: 0.24rem;
-      font-size: var(--fs-xs);
-      letter-spacing: 0.03em;
-      color: color-mix(in srgb, var(--c-paper) 88%, var(--c-mist));
+      gap: var(--sp-1);
+      flex: 1 1 220px;
     }
 
     .footer-newsletter__input {
+      width: 100%;
+      padding: 0.5rem 0.6rem;
       border: 1px solid color-mix(in srgb, var(--c-paper) 35%, transparent);
-      background: color-mix(in srgb, var(--c-forest) 85%, var(--c-film));
+      background: rgba(255, 255, 255, 0.12);
       color: var(--c-paper);
-      border-radius: 0.3rem;
-      padding: 0.34rem 0.45rem;
-      font: inherit;
+    }
+
+    .footer-newsletter__input::placeholder {
+      color: rgba(249, 248, 243, 0.72);
     }
 
     .footer-newsletter__button {
-      border: 1px solid color-mix(in srgb, var(--c-paper) 45%, transparent);
+      padding: 0.55rem 0.85rem;
+      border: 1px solid color-mix(in srgb, var(--c-paper) 55%, transparent);
       background: transparent;
       color: var(--c-paper);
-      border-radius: 0.3rem;
-      padding: 0.38rem 0.72rem;
-      font: inherit;
       cursor: pointer;
-    }
-
-    .footer__nav-muted {
-      margin: 0;
-      font-size: var(--fs-xs);
-      color: color-mix(in srgb, var(--c-paper) 74%, var(--c-mist));
-    }
-
-    .footer__nav-muted a {
-      color: inherit;
     }
 
     .footer__lower {
       display: flex;
-      align-items: center;
+      flex-wrap: wrap;
       justify-content: space-between;
-      gap: var(--sp-2);
-      border-top: 1px solid color-mix(in srgb, var(--c-paper) 18%, transparent);
-      padding-top: var(--sp-1);
-    }
-
-    .footer__copyright {
-      font-size: var(--fs-xs);
-      color: color-mix(in srgb, var(--c-paper) 68%, var(--c-mist));
+      gap: var(--sp-3);
+      align-items: center;
+      border-top: 1px solid color-mix(in srgb, var(--c-paper) 22%, transparent);
+      padding-top: var(--sp-3);
     }
 
     .footer__production-mark {
       display: inline-flex;
       align-items: center;
-      gap: 0.48rem;
-      text-decoration: none;
-      color: color-mix(in srgb, var(--c-paper) 62%, var(--c-mist));
-      font-size: 0.67rem;
-      letter-spacing: 0.1em;
-      white-space: nowrap;
-      text-transform: uppercase;
-      opacity: 0.88;
-    }
-
-    .footer__production-mark:hover {
-      opacity: 1;
+      gap: var(--sp-2);
+      border-bottom: none;
     }
 
     .footer__production-icon {
-      width: 1.05rem;
-      height: 1.05rem;
-      background-color: currentColor;
-      -webkit-mask: url("/assets/icon/logos/logo-fruitful_network_development.svg") center / contain no-repeat;
-      mask: url("/assets/icon/logos/logo-fruitful_network_development.svg") center / contain no-repeat;
-      flex: 0 0 auto;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: currentColor;
+      opacity: 0.8;
     }
 
-    @media (max-width: 1024px) {
+    @media (max-width: 960px) {
+      .history-event__grid,
+      .history-period-header,
       .footer__main {
         grid-template-columns: 1fr;
       }
 
-      .footer__lower {
-        flex-direction: column;
-        align-items: flex-start;
+      .history-period__icon {
+        width: 60px;
+        height: 60px;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .page {
+        padding-left: var(--sp-4);
+        padding-right: var(--sp-4);
+      }
+
+      .masthead {
+        padding-left: var(--sp-4);
+        padding-right: var(--sp-4);
+      }
+
+      .history-images__grid {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -1496,60 +643,29 @@
     </nav>
   </header>
 
-  <main class="page page--archive history-chronology">
-    <header class="history-chronology__intro">
-      <p class="history-chronology__kicker">Chronology-first archive</p>
+  <main class="page history-page">
+    <header class="history-intro">
+      <p class="history-kicker">Chronology-first archive</p>
       <h1 class="headline-site">History</h1>
-      <p class="history-chronology__lede">This page reads as one continuous record. <code>timeline.json</code> drives the featured stop at the top, the year-and-era navigator, and the stacked archival cards below, so sequence itself remains the organizing model throughout.</p>
+      <p>This page is now rendered directly from <code>assets/docs/timeline.json</code>. Periods provide the conceptual frame, but the events remain the primary record: dated stops, oral histories, images, source trails, and place-based references tied to the changing agricultural life of the valley.</p>
+      <p>Edit the timeline dataset to update this page’s periods, chronology, media, and documentation without rewriting the markup below.</p>
     </header>
 
-    <section class="history-chronology__surface" aria-labelledby="historyChronologyLabel">
-      <div id="history-widget" class="history-chronology__top">
-        <div class="history-chronology__top-meta">
-          <div>
-            <p id="historyChronologyLabel" class="history-chronology__eyebrow">Browse by sequence</p>
-            <p id="historyChronologySummary" class="history-chronology__summary">Loading chronology from <a href="assets/docs/timeline.json">timeline.json</a>…</p>
-          </div>
-          <p class="history-chronology__note">The top navigator lets you move across the record, while the left spine below stays synced to the same active stop and serves as the persistent jump index for the page.</p>
-        </div>
+    <section class="history-summary" aria-labelledby="history-summary-heading">
+      <p id="history-summary-heading" class="history-summary__eyebrow">Rendered from timeline data</p>
+      <p id="history-summary-text" class="history-summary__counts">Loading chronology from <a href="assets/docs/timeline.json">timeline.json</a>…</p>
+      <p class="history-summary__note">Events are sorted numerically by <code>start.parts</code> and grouped under their assigned period. Optional media, transcripts, source links, map links, quotes, and file references appear only when present in the JSON.</p>
+    </section>
 
-        <nav id="historyEraNav" class="history-chronology__era-nav" aria-label="Browse by era">
-          <p class="history-card__loading">Preparing eras…</p>
-        </nav>
-
-        <div class="history-chronology__feature-row">
-          <button id="historyPrevBtn" class="history-chronology__arrow" type="button" aria-label="Previous event">&larr;</button>
-          <article id="historyFeature" class="history-feature" aria-live="polite">
-            <p class="history-card__loading">Loading featured event…</p>
-          </article>
-          <button id="historyNextBtn" class="history-chronology__arrow" type="button" aria-label="Next event">&rarr;</button>
-        </div>
-
-        <div class="history-chronology__track-wrap">
-          <div id="historyTrack" class="history-chronology__track" aria-label="Browse by milestone">
-            <p class="history-card__loading">Preparing chronology markers…</p>
-          </div>
-        </div>
-      </div>
-
-      <div id="history-story" class="history-chronology__reading-room">
-        <aside class="history-chronology__spine-shell" aria-label="Vertical chronology spine">
-          <div class="history-chronology__spine-sticky">
-            <p class="history-chronology__spine-label">By year</p>
-            <nav id="historySpine" class="history-chronology__spine" aria-label="Jump to event on this page">
-              <p class="history-card__loading">Building chronology spine…</p>
-            </nav>
-          </div>
-        </aside>
-
-        <div id="historyCardColumn" class="history-chronology__card-column" aria-live="polite">
-          <p class="history-card__loading">Loading archival record cards…</p>
-        </div>
+    <section aria-labelledby="history-periods-heading">
+      <h2 id="history-periods-heading" class="history-kicker">Periods and events</h2>
+      <div id="history-periods" aria-live="polite">
+        <p class="history-loading">Loading period sections…</p>
       </div>
     </section>
 
     <noscript>
-      <p class="history-chronology__noscript">This chronology is rendered directly from <a href="assets/docs/timeline.json">timeline.json</a>. Enable JavaScript to use the era navigator, synced spine, and archival card stack.</p>
+      <p class="history-noscript">This chronology is rendered directly from <a href="assets/docs/timeline.json">timeline.json</a>. Enable JavaScript to view the period-by-period event record.</p>
     </noscript>
   </main>
 
@@ -1595,66 +711,6 @@
   <script>
     (() => {
       const DATA_URL = "assets/docs/timeline.json";
-      const ERA_META = {
-        "Indigenous pre-contact lifeways and agriculture": {
-          id: "era-indigenous",
-          number: "01",
-          shortLabel: "Origins",
-          aliases: ["indigenous-pre-contact-lifeways-and-agriculture"]
-        },
-        "Treaties, land transfer, and settler farming": {
-          id: "era-settler",
-          number: "02",
-          shortLabel: "Settler farms",
-          aliases: ["treaties-land-transfer-and-settler-farming"]
-        },
-        "Canal-era and nineteenth-century diversification": {
-          id: "era-canal",
-          number: "03",
-          shortLabel: "Canal era",
-          aliases: ["canal-era-and-nineteenth-century-diversification"]
-        },
-        "Twentieth-century mechanization, markets, and land-use change": {
-          id: "era-modern",
-          number: "04",
-          shortLabel: "Mechanization",
-          aliases: [
-            "twentieth-century-mechanization-markets-and-land-use-change",
-            "valley-views",
-            "history-oral",
-            "history-sources"
-          ]
-        },
-        "Farmland preservation, the park, and the Countryside program": {
-          id: "era-park",
-          number: "05",
-          shortLabel: "Countryside era",
-          aliases: ["farmland-preservation-the-park-and-the-countryside-program", "farm-sites"]
-        }
-      };
-
-      const state = {
-        items: [],
-        groups: [],
-        activeIndex: 0,
-        cardEls: [],
-        trackEls: [],
-        spineEls: [],
-        eraEls: [],
-        currentAudio: null
-      };
-
-      const refs = {
-        summary: document.getElementById("historyChronologySummary"),
-        eraNav: document.getElementById("historyEraNav"),
-        feature: document.getElementById("historyFeature"),
-        track: document.getElementById("historyTrack"),
-        spine: document.getElementById("historySpine"),
-        cards: document.getElementById("historyCardColumn"),
-        prev: document.getElementById("historyPrevBtn"),
-        next: document.getElementById("historyNextBtn")
-      };
-
       const LEGACY_ASSET_PATHS = {
         "assets/icons/farm.svg": "assets/icon/icon-domain-local.svg",
         "assets/image/countryside/img-cvcc-aerialfarm.avif": "assets/image/aerial_farm.avif",
@@ -1673,26 +729,613 @@
         "assets/image/stock/img-stock-farm_pano.avif": "assets/image/farms/SLF/img-stock-aerial_farm.avif"
       };
 
+      const refs = {
+        summary: document.getElementById("history-summary-text"),
+        periods: document.getElementById("history-periods")
+      };
+
+      init();
+
+      async function init() {
+        try {
+          const payload = await fetchTimelineData();
+          const periods = sortByParts(normalizePeriods(payload));
+          const events = sortByParts(normalizeEvents(payload));
+          const periodLookup = normalizePeriodLookup(periods);
+          const grouped = groupEventsByPeriod(periods, events, periodLookup);
+
+          refs.summary.textContent = `${events.length} events grouped into ${grouped.length} period sections.`;
+          renderPeriodSections(grouped);
+          handleInitialHash();
+          bindTranscriptToggles();
+        } catch (error) {
+          const message = error instanceof Error ? error.message : "Unable to load timeline data.";
+          refs.summary.textContent = message;
+          refs.periods.replaceChildren(createMessage("history-error", message));
+        }
+      }
+
+      async function fetchTimelineData() {
+        const response = await fetch(DATA_URL, { cache: "no-store" });
+        if (!response.ok) {
+          throw new Error(`Unable to load chronology (${response.status}).`);
+        }
+        return response.json();
+      }
+
+      function normalizePeriods(payload) {
+        return Array.isArray(payload && payload.periods) ? payload.periods.slice() : [];
+      }
+
+      function normalizeEvents(payload) {
+        if (Array.isArray(payload && payload.events)) return payload.events.slice();
+        if (Array.isArray(payload)) return payload.slice();
+        return [];
+      }
+
+      function normalizePeriodLookup(periods) {
+        const lookup = new Map();
+        periods.forEach((period) => {
+          if (period && period.id) lookup.set(period.id, period);
+        });
+        return lookup;
+      }
+
+      function sortByParts(items) {
+        return items.slice().sort((left, right) => compareParts(getParts(left), getParts(right)));
+      }
+
+      function compareParts(left, right) {
+        const a = Array.isArray(left) ? left : [];
+        const b = Array.isArray(right) ? right : [];
+        const length = Math.max(a.length, b.length);
+        for (let index = 0; index < length; index += 1) {
+          const av = Number.isFinite(a[index]) ? a[index] : 0;
+          const bv = Number.isFinite(b[index]) ? b[index] : 0;
+          if (av !== bv) return av - bv;
+        }
+        return 0;
+      }
+
+      function getParts(item) {
+        return item && item.start && Array.isArray(item.start.parts) ? item.start.parts : [];
+      }
+
+      function groupEventsByPeriod(periods, events, periodLookup) {
+        const sections = periods.map((period) => ({ period, events: [] }));
+        const sectionLookup = new Map(sections.map((entry) => [entry.period.id, entry]));
+        const unassigned = [];
+
+        events.forEach((event) => {
+          const periodId = event && event.period_id;
+          if (periodId && sectionLookup.has(periodId)) {
+            sectionLookup.get(periodId).events.push(event);
+          } else {
+            unassigned.push(event);
+          }
+        });
+
+        if (unassigned.length) {
+          const start = unassigned[0] && unassigned[0].start ? unassigned[0].start : { id: "unassigned", parts: [0] };
+          const stop = unassigned[unassigned.length - 1] && unassigned[unassigned.length - 1].stop
+            ? unassigned[unassigned.length - 1].stop
+            : start;
+          sections.push({
+            period: {
+              id: "unassigned",
+              title: "Unassigned",
+              start,
+              stop,
+              summary: "These events were present in the data but did not include a recognized period assignment.",
+              icon_path: ""
+            },
+            events: unassigned
+          });
+        }
+
+        return sections.filter((entry) => entry.period && (entry.events.length || periodLookup.has(entry.period.id)));
+      }
+
+      function renderPeriodSections(grouped) {
+        if (!grouped.length) {
+          refs.periods.replaceChildren(createMessage("history-empty", "No period or event data was found in timeline.json."));
+          return;
+        }
+
+        const fragment = document.createDocumentFragment();
+        grouped.forEach((entry, index) => {
+          fragment.appendChild(renderPeriodSection(entry.period, entry.events, index));
+        });
+        refs.periods.replaceChildren(fragment);
+      }
+
+      function renderPeriodSection(period, events, index) {
+        const section = createEl("section", "history-period");
+        section.id = period.id || `history-period-${index + 1}`;
+
+        const header = createEl("header", "history-period-header");
+        const label = createEl("div", "history-period__label");
+        label.appendChild(createTextEl("p", "history-period__eyebrow", `Period ${String(index + 1).padStart(2, "0")}`));
+        label.appendChild(createTextEl("h2", "history-period__title", period.title || "Untitled period"));
+        if (period.summary) {
+          label.appendChild(createTextEl("p", "history-period-summary", period.summary));
+        }
+        header.appendChild(label);
+
+        if (period.icon_path) {
+          const icon = document.createElement("img");
+          icon.className = "history-period__icon";
+          icon.src = resolveAssetPath(period.icon_path);
+          icon.alt = "";
+          icon.loading = "lazy";
+          icon.decoding = "async";
+          icon.addEventListener("error", () => {
+            icon.remove();
+          });
+          header.appendChild(icon);
+        }
+
+        section.appendChild(header);
+
+        const eventsHost = createEl("div", "history-period-events");
+        events.forEach((event) => {
+          eventsHost.appendChild(renderEvent(event));
+        });
+
+        if (!events.length) {
+          eventsHost.appendChild(createMessage("history-empty", "No events are currently assigned to this period."));
+        }
+
+        section.appendChild(eventsHost);
+        return section;
+      }
+
+      function renderEvent(event) {
+        const article = createEl("article", "history-event");
+        article.id = event.slug || event.id || "";
+
+        const header = createEl("header", "history-event__header");
+        header.appendChild(createTextEl("p", "history-event__date", getDateLabel(event)));
+        header.appendChild(createTextEl("h3", "history-event__title", getEventTitle(event)));
+
+        const heading = getSecondaryHeading(event);
+        if (heading) {
+          header.appendChild(createTextEl("p", "history-event__heading", heading));
+        }
+        article.appendChild(header);
+
+        const grid = createEl("div", "history-event__grid");
+        const main = createEl("div", "history-event__main");
+        const side = createEl("aside", "history-event__side");
+
+        const body = renderBodyText(event);
+        if (body) main.appendChild(body);
+
+        const quotes = renderQuoteGroup(event.quotes);
+        if (quotes) main.appendChild(quotes);
+
+        const images = renderImageArtifacts(getImages(event));
+        if (images) main.appendChild(images);
+
+        const audio = renderAudioArtifacts(getAudio(event));
+        if (audio) side.appendChild(audio);
+
+        const location = renderLocation(event.location);
+        if (location) side.appendChild(location);
+
+        const metaBlocks = renderMetaBlocks(event);
+        metaBlocks.forEach((block) => side.appendChild(block));
+
+        const sources = renderSourceBlocks(event);
+        sources.forEach((block) => side.appendChild(block));
+
+        const links = renderRelatedLinks(event.related_links);
+        if (links) side.appendChild(links);
+
+        const farms = renderRelatedFarms(event.related_farms);
+        if (farms) side.appendChild(farms);
+
+        const files = renderFiles(event.files);
+        if (files) side.appendChild(files);
+
+        grid.appendChild(main);
+        grid.appendChild(side);
+        article.appendChild(grid);
+        return article;
+      }
+
+      function getDateLabel(event) {
+        const display = event && event.display && typeof event.display.date_text === "string" ? event.display.date_text.trim() : "";
+        if (display) return display;
+        const startId = event && event.start && event.start.id ? event.start.id : "";
+        const stopId = event && event.stop && event.stop.id ? event.stop.id : "";
+        if (startId && stopId && startId !== stopId) return `${startId} to ${stopId}`;
+        return startId || stopId || "Date not stated";
+      }
+
+      function getEventTitle(event) {
+        return (event && (event.title || event.heading || (event.display && event.display.heading))) || "Untitled event";
+      }
+
+      function getSecondaryHeading(event) {
+        const heading = event && event.heading ? String(event.heading).trim() : "";
+        const title = event && event.title ? String(event.title).trim() : "";
+        const displayHeading = event && event.display && event.display.heading ? String(event.display.heading).trim() : "";
+
+        if (heading && heading !== title) return heading;
+        if (displayHeading && displayHeading !== title && displayHeading !== heading) return displayHeading;
+        return "";
+      }
+
+      function renderBodyText(event) {
+        const parts = uniqueStrings([
+          event && event.paragraph,
+          event && event.summary,
+          event && event.about
+        ]);
+        if (!parts.length) return null;
+
+        const wrap = createEl("div", "history-event__body");
+        parts.forEach((part) => {
+          wrap.appendChild(createTextEl("p", "", part));
+        });
+        return wrap;
+      }
+
+      function renderMetaBlocks(event) {
+        const blocks = [];
+
+        const details = event && event.details ? event.details : {};
+        const notes = Array.isArray(details.notes) ? details.notes.filter(Boolean) : [];
+        if (notes.length) {
+          blocks.push(renderSimpleTextBlock("Notes", notes.join(" ")));
+        }
+
+        if (details.practical_locations) {
+          blocks.push(renderSimpleTextBlock("Practical locations", details.practical_locations));
+        }
+
+        if (details.practical_details) {
+          blocks.push(renderSimpleTextBlock("Practical details", details.practical_details));
+        }
+
+        if (details.image_content_source_note) {
+          blocks.push(renderSimpleTextBlock("Image note", details.image_content_source_note));
+        }
+
+        if (details.time_id_note) {
+          blocks.push(renderSimpleTextBlock("Time ID note", details.time_id_note));
+        }
+
+        return blocks;
+      }
+
+      function renderSimpleTextBlock(title, text) {
+        if (!text) return null;
+        const block = createEl("section", "history-meta-block");
+        block.appendChild(createTextEl("h4", "", title));
+        block.appendChild(createTextEl("p", "", text));
+        return block;
+      }
+
+      function renderImageArtifacts(images) {
+        if (!images.length) return null;
+
+        const wrap = createEl("section", "history-images");
+        wrap.appendChild(createTextEl("p", "history-kicker", images.length > 1 ? "Image artifacts" : "Image artifact"));
+
+        const grid = createEl("div", "history-images__grid");
+        images.forEach((image) => {
+          const figure = document.createElement("figure");
+          figure.className = "history-image-card";
+
+          const img = document.createElement("img");
+          img.src = resolveAssetPath(image.path || "");
+          img.alt = image.alt || image.title || "";
+          img.loading = "lazy";
+          img.decoding = "async";
+          figure.appendChild(img);
+
+          const caption = document.createElement("figcaption");
+          if (image.title) caption.appendChild(createTextEl("strong", "", image.title));
+          if (image.meta) caption.appendChild(createTextEl("span", "", image.meta));
+          if (image.description) caption.appendChild(createTextEl("span", "", image.description));
+          if (image.credit) caption.appendChild(createTextEl("span", "", image.credit));
+
+          const imageLink = firstUrl(image, ["source_link", "source_url", "credit_link", "credit_url", "url"]);
+          if (imageLink) {
+            const link = createExternalLink(imageLink, "Image source");
+            caption.appendChild(link);
+          }
+
+          figure.appendChild(caption);
+          grid.appendChild(figure);
+        });
+        wrap.appendChild(grid);
+        return wrap;
+      }
+
+      function renderAudioArtifacts(audioItems) {
+        if (!audioItems.length) return null;
+
+        const wrap = createEl("section", "history-audio-list");
+        wrap.appendChild(createTextEl("p", "history-kicker", audioItems.length > 1 ? "Oral histories and audio" : "Oral history and audio"));
+
+        audioItems.forEach((audio, index) => {
+          const block = createEl("section", "history-audio-group");
+          const head = createEl("div", "history-audio-group__head");
+          head.appendChild(createTextEl("h4", "", audio.title || "Audio excerpt"));
+          if (audio.description) head.appendChild(createTextEl("p", "", audio.description));
+          if (audio.credit || audio.date_created) {
+            head.appendChild(createTextEl("p", "", [audio.credit, audio.date_created].filter(Boolean).join(" · ")));
+          }
+          block.appendChild(head);
+
+          if (audio.path && audio.player_enabled !== false) {
+            const player = document.createElement("audio");
+            player.controls = true;
+            player.preload = "metadata";
+            player.src = resolveAssetPath(audio.path);
+            block.appendChild(player);
+          }
+
+          const audioLinks = uniqueStrings([
+            audio.player_source_url,
+            audio.context_page_url,
+            audio.source_url
+          ]);
+          if (audioLinks.length) {
+            const linksWrap = createEl("div", "history-audio-group__links");
+            audioLinks.forEach((url) => {
+              linksWrap.appendChild(createExternalLink(url, hostLabel(url)));
+            });
+            block.appendChild(linksWrap);
+          }
+
+          if ((audio.show_transcript_button || audio.transcript || audio.transcript_path || audio.transcript_source_url) && hasTranscriptContent(audio)) {
+            const transcriptId = `${eventSafeId(audio.title || "audio")}-transcript-${index}`;
+            const button = createEl("button", "history-transcript-toggle");
+            button.type = "button";
+            button.setAttribute("aria-expanded", "false");
+            button.setAttribute("aria-controls", transcriptId);
+            button.dataset.transcriptTarget = transcriptId;
+            button.dataset.closedLabel = audio.transcript_button_label || "Show transcript";
+            button.dataset.openLabel = "Hide transcript";
+            button.textContent = button.dataset.closedLabel;
+            block.appendChild(button);
+
+            const transcript = createEl("div", "history-transcript");
+            transcript.id = transcriptId;
+            transcript.hidden = true;
+            renderTranscriptContent(transcript, audio);
+            block.appendChild(transcript);
+          }
+
+          wrap.appendChild(block);
+        });
+
+        return wrap;
+      }
+
+      function renderTranscriptContent(host, audio) {
+        if (audio.transcript) {
+          host.appendChild(createTextEl("p", "", audio.transcript));
+        }
+        if (audio.transcript_path) {
+          const p = document.createElement("p");
+          p.appendChild(createExternalLink(resolveAssetPath(audio.transcript_path), "Transcript file"));
+          host.appendChild(p);
+        }
+        if (audio.transcript_source_url && audio.transcript_source_url !== audio.transcript_path) {
+          const p = document.createElement("p");
+          p.appendChild(createExternalLink(audio.transcript_source_url, "Transcript source"));
+          host.appendChild(p);
+        }
+      }
+
+      function renderQuoteGroup(quotes) {
+        if (!Array.isArray(quotes) || !quotes.length) return null;
+        const wrap = createEl("section", "history-quote-group");
+        wrap.appendChild(createTextEl("h4", "", quotes.length > 1 ? "Quotes" : "Quote"));
+
+        quotes.forEach((quote) => {
+          const blockquote = document.createElement("blockquote");
+          const text = quote && (quote.text || quote.quote || quote.excerpt);
+          if (text) blockquote.appendChild(createTextEl("p", "", text));
+          const attribution = [quote && (quote.attribution || quote.speaker || quote.credit), quote && quote.source].filter(Boolean).join(" · ");
+          if (attribution) {
+            const cite = document.createElement("cite");
+            cite.textContent = attribution;
+            blockquote.appendChild(cite);
+          }
+          wrap.appendChild(blockquote);
+        });
+        return wrap;
+      }
+
+      function renderLocation(location) {
+        if (!location || (!location.label && !location.description && !location.google_maps_url && !location.apple_maps_url)) {
+          return null;
+        }
+
+        const section = createEl("section", "history-location");
+        section.appendChild(createTextEl("h4", "history-kicker", "Location"));
+        if (location.label) section.appendChild(createTextEl("p", "", location.label));
+        if (location.description) section.appendChild(createTextEl("p", "", location.description));
+        if (location.address) section.appendChild(createTextEl("p", "", location.address));
+
+        const mapLinks = [location.google_maps_url, location.apple_maps_url].filter(Boolean);
+        if (mapLinks.length) {
+          const list = createEl("ul", "history-location__maps");
+          if (location.google_maps_url) list.appendChild(createLinkItem(location.google_maps_url, "Google Maps"));
+          if (location.apple_maps_url) list.appendChild(createLinkItem(location.apple_maps_url, "Apple Maps"));
+          section.appendChild(list);
+        }
+        return section;
+      }
+
+      function renderSourceBlocks(event) {
+        const blocks = [];
+        const sources = event && event.sources ? event.sources : {};
+
+        const primary = Array.isArray(sources.primary) ? sources.primary : [];
+        const additional = Array.isArray(sources.additional) ? sources.additional : [];
+
+        if (primary.length) blocks.push(renderLinkCollection("Primary sources", primary));
+        if (additional.length) blocks.push(renderLinkCollection("Additional sources", additional));
+        return blocks.filter(Boolean);
+      }
+
+      function renderLinkCollection(title, entries) {
+        const usable = entries.filter((entry) => entry && (entry.url || entry.path || entry.label || entry.title));
+        if (!usable.length) return null;
+
+        const section = createEl("section", "history-links");
+        section.appendChild(createTextEl("h4", "", title));
+        const list = document.createElement("ul");
+        usable.forEach((entry) => {
+          const item = document.createElement("li");
+          const url = entry.url || entry.path;
+          const label = entry.label || entry.title || hostLabel(url || "");
+
+          if (url) {
+            item.appendChild(createExternalLink(url, label));
+          } else {
+            item.textContent = label;
+          }
+
+          const meta = [entry.collection, entry.meta, entry.description].filter(Boolean).join(" · ");
+          if (meta) item.appendChild(document.createTextNode(` (${meta})`));
+          list.appendChild(item);
+        });
+        section.appendChild(list);
+        return section;
+      }
+
+      function renderRelatedLinks(links) {
+        if (!Array.isArray(links) || !links.length) return null;
+        return renderLinkCollection("Related links", links);
+      }
+
+      function renderRelatedFarms(farms) {
+        if (!Array.isArray(farms) || !farms.length) return null;
+
+        const section = createEl("section", "history-links");
+        section.appendChild(createTextEl("h4", "", "Related farms"));
+        const list = document.createElement("ul");
+        farms.forEach((farm) => {
+          const item = document.createElement("li");
+          if (typeof farm === "string") {
+            item.textContent = farm;
+          } else if (farm && (farm.url || farm.profile_path)) {
+            item.appendChild(createExternalLink(farm.url || farm.profile_path, farm.label || farm.title || "Farm link"));
+          } else if (farm && (farm.label || farm.title)) {
+            item.textContent = farm.label || farm.title;
+          }
+          list.appendChild(item);
+        });
+        section.appendChild(list);
+        return section;
+      }
+
+      function renderFiles(files) {
+        if (!files) return null;
+
+        const items = [];
+        const internalPaths = files.internal_paths || {};
+        Object.keys(internalPaths).forEach((key) => {
+          if (internalPaths[key]) {
+            items.push({ label: key.replace(/_/g, " "), path: internalPaths[key] });
+          }
+        });
+        if (Array.isArray(files.source_file_paths)) {
+          files.source_file_paths.forEach((path) => {
+            if (path) items.push({ label: "source file", path });
+          });
+        }
+        if (!items.length) return null;
+
+        const section = createEl("section", "history-files");
+        section.appendChild(createTextEl("h4", "", "Files and references"));
+        const list = document.createElement("ul");
+
+        items.forEach((entry) => {
+          const item = document.createElement("li");
+          const label = `${entry.label}: ${entry.path}`;
+          if (looksLikeHref(entry.path)) {
+            item.appendChild(createExternalLink(entry.path, label));
+          } else {
+            item.textContent = label;
+          }
+          list.appendChild(item);
+        });
+
+        section.appendChild(list);
+        return section;
+      }
+
+      function getImages(event) {
+        const artifacts = event && event.artifacts ? event.artifacts : {};
+        return Array.isArray(artifacts.images) ? artifacts.images : [];
+      }
+
+      function getAudio(event) {
+        const artifacts = event && event.artifacts ? event.artifacts : {};
+        return Array.isArray(artifacts.audio) ? artifacts.audio : [];
+      }
+
+      function bindTranscriptToggles() {
+        document.addEventListener("click", (event) => {
+          const button = event.target.closest(".history-transcript-toggle");
+          if (!button) return;
+          const targetId = button.dataset.transcriptTarget;
+          if (!targetId) return;
+          const transcript = document.getElementById(targetId);
+          if (!transcript) return;
+          const expanded = button.getAttribute("aria-expanded") === "true";
+          button.setAttribute("aria-expanded", expanded ? "false" : "true");
+          button.textContent = expanded ? (button.dataset.closedLabel || "Show transcript") : (button.dataset.openLabel || "Hide transcript");
+          transcript.hidden = expanded;
+        });
+      }
+
+      function handleInitialHash() {
+        const hash = window.location.hash.replace(/^#/, "");
+        if (!hash) return;
+        const target = document.getElementById(hash);
+        if (target) {
+          target.scrollIntoView({ block: "start" });
+        }
+      }
+
+      function hasTranscriptContent(audio) {
+        return Boolean(audio && (audio.transcript || audio.transcript_path || audio.transcript_source_url));
+      }
+
+      function uniqueStrings(values) {
+        const seen = new Set();
+        return values
+          .map((value) => (typeof value === "string" ? value.trim() : ""))
+          .filter((value) => {
+            if (!value || seen.has(value)) return false;
+            seen.add(value);
+            return true;
+          });
+      }
+
       function resolveAssetPath(path) {
         return LEGACY_ASSET_PATHS[path] || path;
       }
 
-      function escapeHtml(value) {
-        return String(value ?? "")
-          .replace(/&/g, "&amp;")
-          .replace(/</g, "&lt;")
-          .replace(/>/g, "&gt;")
-          .replace(/"/g, "&quot;")
-          .replace(/'/g, "&#39;");
+      function firstUrl(entry, keys) {
+        for (let index = 0; index < keys.length; index += 1) {
+          const value = entry && entry[keys[index]];
+          if (typeof value === "string" && value.trim()) return value.trim();
+        }
+        return "";
       }
 
-      function shorten(value, maxLength) {
-        const text = String(value ?? "").trim();
-        if (text.length <= maxLength) return text;
-        return `${text.slice(0, Math.max(0, maxLength - 1)).trim()}...`;
-      }
-
-      function formatHost(url) {
+      function hostLabel(url) {
         try {
           return new URL(url, window.location.href).hostname.replace(/^www\./, "");
         } catch {
@@ -1700,822 +1343,47 @@
         }
       }
 
-      function uniqueUrls(urls) {
-        const seen = new Set();
-        return urls.filter((url) => {
-          if (!url || seen.has(url)) return false;
-          seen.add(url);
-          return true;
-        });
+      function looksLikeHref(path) {
+        return /^(https?:)?\//.test(String(path || "")) || /\.html(#.+)?$/i.test(String(path || ""));
       }
 
-      function extractUrls(text) {
-        return uniqueUrls(String(text ?? "").match(/https?:\/\/[^\s;,)]+/g) || []);
+      function createMessage(className, text) {
+        return createTextEl("p", className, text);
       }
 
-      function renderLinkedText(text) {
-        const value = String(text ?? "");
-        if (!value) return "";
-
-        const regex = /https?:\/\/[^\s;,)]+/g;
-        let cursor = 0;
-        let html = "";
-
-        value.replace(regex, (match, offset) => {
-          html += escapeHtml(value.slice(cursor, offset));
-          html += `<a href="${escapeHtml(match)}" target="_blank" rel="noreferrer">${escapeHtml(formatHost(match))}</a>`;
-          cursor = offset + match.length;
-          return match;
-        });
-
-        html += escapeHtml(value.slice(cursor));
-        return html;
+      function createLinkItem(href, label) {
+        const item = document.createElement("li");
+        item.appendChild(createExternalLink(href, label));
+        return item;
       }
 
-      function getDisplayTitle(item) {
-        const raw = String(item.title || "").trim();
-        if (raw && raw.toLowerCase() !== "recent") return raw;
-
-        const display = String(item.display_heading || "").trim();
-        if (display) return display.split(" (")[0].trim();
-
-        return "Untitled record";
-      }
-
-      function getEra(sectionTitle) {
-        return ERA_META[sectionTitle] || {
-          id: `era-${sectionTitle.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}`,
-          number: "00",
-          shortLabel: "Chronology",
-          aliases: []
-        };
-      }
-
-      function collectFacts(item) {
-        const details = item.details || {};
-        const facts = [];
-
-        if (details.practical_locations || details.practical_location) {
-          facts.push({
-            label: "Location",
-            html: renderLinkedText(details.practical_locations || details.practical_location)
-          });
+      function createExternalLink(href, label) {
+        const link = document.createElement("a");
+        link.href = href;
+        if (/^https?:/i.test(href)) {
+          link.target = "_blank";
+          link.rel = "noreferrer";
         }
-
-        if (details.practical_details) {
-          facts.push({
-            label: "Directions",
-            html: renderLinkedText(details.practical_details)
-          });
-        }
-
-        if (Array.isArray(details.notes) && details.notes.length) {
-          facts.push({
-            label: "Notes",
-            html: details.notes.map((note) => escapeHtml(note)).join(" ")
-          });
-        }
-
-        if (details.primary_documentation_links) {
-          const urls = extractUrls(details.primary_documentation_links);
-          facts.push({
-            label: "Primary docs",
-            html: urls.length
-              ? urls
-                  .map(
-                    (url) =>
-                      `<a href="${escapeHtml(url)}" target="_blank" rel="noreferrer">${escapeHtml(formatHost(url))}</a>`
-                  )
-                  .join(" · ")
-              : renderLinkedText(details.primary_documentation_links)
-          });
-        }
-
-        return facts;
+        link.textContent = label;
+        return link;
       }
 
-      function getCoreSources(item) {
-        return uniqueUrls([
-          ...(item.source_links || []).map((entry) => entry.url),
-          ...extractUrls((item.details || {}).primary_documentation_links)
-        ]);
+      function createEl(tagName, className) {
+        const el = document.createElement(tagName);
+        if (className) el.className = className;
+        return el;
       }
 
-      function getFeatureVisual(item) {
-        if (item.image_paths && item.image_paths.length) return item.image_paths[0];
-
-        if (item.related_farm_paths && item.related_farm_paths.length) {
-          const farm = item.related_farm_paths[0];
-          return {
-            title: farm.title,
-            meta: "Related farm record",
-            description: "Linked from the working farm registry.",
-            path: farm.image_path,
-            alt: farm.title,
-            profile_path: farm.profile_path
-          };
-        }
-
-        return null;
+      function createTextEl(tagName, className, text) {
+        const el = createEl(tagName, className);
+        el.textContent = text;
+        return el;
       }
 
-      function renderChips(item) {
-        const parts = [
-          item.image_paths?.length ? `${item.image_paths.length} visual${item.image_paths.length === 1 ? "" : "s"}` : null,
-          item.audio_paths?.length ? `${item.audio_paths.length} audio${item.audio_paths.length === 1 ? "" : "s"}` : null,
-          item.related_farm_paths?.length ? `${item.related_farm_paths.length} farm link${item.related_farm_paths.length === 1 ? "" : "s"}` : null,
-          (getCoreSources(item).length + (item.additional_source_links || []).length)
-            ? `${getCoreSources(item).length + (item.additional_source_links || []).length} source${getCoreSources(item).length + (item.additional_source_links || []).length === 1 ? "" : "s"}`
-            : null
-        ].filter(Boolean);
-
-        if (!parts.length) return "";
-
-        return `<div class="history-chip-row">${parts
-          .map((part) => `<span class="history-chip">${escapeHtml(part)}</span>`)
-          .join("")}</div>`;
+      function eventSafeId(value) {
+        return String(value || "transcript").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") || "transcript";
       }
-
-      function renderImageBlock(images) {
-        if (!images || !images.length) return "";
-
-        const visible = images.slice(0, 3);
-        const overflow = images.length - visible.length;
-
-        return `
-          <section class="history-card__block">
-            <div class="history-card__block-head">
-              <h4>Image artifacts</h4>
-              <p>Attached visuals connected to this stop in the chronology.</p>
-            </div>
-            <div class="history-card__media-grid">
-              ${visible
-                .map((image) => {
-                  const isSvg = /\.svg$/i.test(String(image.path || ""));
-                  const body = `
-                    <figure class="history-card__media-card">
-                      <img class="${isSvg ? "history-card__icon" : ""}" src="${escapeHtml(image.path || "")}" alt="${escapeHtml(image.alt || image.title || "")}" loading="lazy" decoding="async" />
-                      <figcaption class="history-card__media-copy">
-                        <p class="history-card__media-title">${escapeHtml(image.title || "Archival image")}</p>
-                        ${image.meta ? `<p class="history-card__media-meta">${escapeHtml(image.meta)}</p>` : ""}
-                        ${image.description ? `<p class="history-card__media-desc">${escapeHtml(image.description)}</p>` : ""}
-                      </figcaption>
-                    </figure>
-                  `;
-                  return image.profile_path
-                    ? `<a class="history-card__media-link" href="${escapeHtml(image.profile_path)}">${body}</a>`
-                    : body;
-                })
-                .join("")}
-            </div>
-            ${overflow > 0 ? `<p class="history-card__more">+ ${overflow} more visual attachments are associated with this record.</p>` : ""}
-          </section>
-        `;
-      }
-
-      function renderAudioBlock(audios, itemIndex) {
-        if (!audios || !audios.length) return "";
-
-        const visible = audios.slice(0, 2);
-        const overflow = audios.length - visible.length;
-
-        return `
-          <section class="history-card__block">
-            <div class="history-card__block-head">
-              <h4>Audio</h4>
-              <p>Oral-history or archival listening excerpts linked to this record.</p>
-            </div>
-            <div class="history-card__audio-list">
-              ${visible
-                .map(
-                  (audio, audioIndex) => `
-                    <div class="history-card__audio" data-audio-root="${itemIndex}-${audioIndex}">
-                      <button class="history-card__audio-button" type="button">Play</button>
-                      <div class="history-card__audio-meta">
-                        <div class="history-card__audio-title">${escapeHtml(audio.title || "Audio excerpt")}</div>
-                        <div class="history-card__audio-bar">
-                          <div class="history-card__audio-progress"></div>
-                        </div>
-                        <div class="history-card__audio-time">${escapeHtml(audio.time_label || "00:00 / --:--")}</div>
-                        <audio src="${escapeHtml(audio.path || "")}" preload="metadata"></audio>
-                      </div>
-                    </div>
-                  `
-                )
-                .join("")}
-            </div>
-            ${overflow > 0 ? `<p class="history-card__more">+ ${overflow} more audio excerpts are attached to this record.</p>` : ""}
-          </section>
-        `;
-      }
-
-      function renderFarmBlock(farms) {
-        if (!farms || !farms.length) return "";
-
-        const visible = farms.slice(0, 3);
-        const overflow = farms.length - visible.length;
-
-        return `
-          <section class="history-card__block">
-            <div class="history-card__block-head">
-              <h4>Related farms</h4>
-              <p>Current farm records that connect back to this point in the sequence.</p>
-            </div>
-            <div class="history-card__link-grid">
-              ${visible
-                .map((farm) => {
-                  const isSvg = /\.svg$/i.test(String(farm.image_path || ""));
-                  return `
-                    <a class="history-card__link-card" href="${escapeHtml(farm.profile_path || "#")}">
-                      <img class="${isSvg ? "history-card__icon" : ""}" src="${escapeHtml(farm.image_path || "")}" alt="${escapeHtml(farm.title || "")}" loading="lazy" decoding="async" />
-                      <div class="history-card__link-copy">
-                        <p class="history-card__link-title">${escapeHtml(farm.title || "Farm record")}</p>
-                      </div>
-                    </a>
-                  `;
-                })
-                .join("")}
-            </div>
-            ${overflow > 0 ? `<p class="history-card__more">+ ${overflow} more farm links are attached to this record.</p>` : ""}
-          </section>
-        `;
-      }
-
-      function renderLinkBlock(links) {
-        if (!links || !links.length) return "";
-
-        const visible = links.slice(0, 4);
-        const overflow = links.length - visible.length;
-
-        return `
-          <section class="history-card__block">
-            <div class="history-card__block-head">
-              <h4>Linked collections</h4>
-              <p>Additional finding aids, partner pages, and reference trails.</p>
-            </div>
-            <div class="history-card__link-grid">
-              ${visible
-                .map((link) => {
-                  const thumb = link.thumb_path
-                    ? `<img src="${escapeHtml(link.thumb_path)}" alt="" loading="lazy" decoding="async" />`
-                    : `<div class="history-card__link-thumb history-card__link-thumb--placeholder">${escapeHtml(link.collection || "Reference")}</div>`;
-                  return `
-                    <a class="history-card__link-card" href="${escapeHtml(link.url || "#")}" target="_blank" rel="noreferrer">
-                      ${thumb}
-                      <div class="history-card__link-copy">
-                        <p class="history-card__link-collection">${escapeHtml(link.collection || "Collection")}</p>
-                        <p class="history-card__link-title">${escapeHtml(link.title || formatHost(link.url || ""))}</p>
-                        ${link.meta ? `<p class="history-card__link-meta">${escapeHtml(link.meta)}</p>` : ""}
-                        ${link.description ? `<p class="history-card__link-desc">${escapeHtml(link.description)}</p>` : ""}
-                      </div>
-                    </a>
-                  `;
-                })
-                .join("")}
-            </div>
-            ${overflow > 0 ? `<p class="history-card__more">+ ${overflow} more linked resources are associated with this record.</p>` : ""}
-          </section>
-        `;
-      }
-
-      function renderSourcesBlock(item) {
-        const sources = getCoreSources(item);
-        if (!sources.length) return "";
-
-        return `
-          <section class="history-card__block">
-            <div class="history-card__block-head">
-              <h4>Core sources</h4>
-              <p>Primary source trail used for the dating and framing on this card.</p>
-            </div>
-            <ul class="history-card__source-list">
-              ${sources
-                .map(
-                  (source) => `
-                    <li>
-                      <a href="${escapeHtml(source)}" target="_blank" rel="noreferrer">${escapeHtml(formatHost(source))}</a>
-                    </li>
-                  `
-                )
-                .join("")}
-            </ul>
-          </section>
-        `;
-      }
-
-      function buildFeature(item) {
-        const visual = getFeatureVisual(item);
-        const facts = collectFacts(item).slice(0, 2);
-        const sources = getCoreSources(item).slice(0, 2);
-
-        const media = visual
-          ? `
-              <figure class="history-feature__media">
-                ${visual.profile_path ? `<a href="${escapeHtml(visual.profile_path)}">` : ""}
-                <img class="${/\.svg$/i.test(String(visual.path || "")) ? "history-feature__media-icon" : ""}" src="${escapeHtml(visual.path || "")}" alt="${escapeHtml(visual.alt || visual.title || "")}" loading="lazy" decoding="async" />
-                ${visual.profile_path ? "</a>" : ""}
-                <figcaption>
-                  <span>${escapeHtml(visual.title || "Featured artifact")}</span>
-                  ${visual.meta ? `<span>${escapeHtml(visual.meta)}</span>` : ""}
-                </figcaption>
-              </figure>
-            `
-          : `<div class="history-feature__artifact" aria-hidden="true"></div>`;
-
-        refs.feature.innerHTML = `
-          <div class="history-feature__top">
-            <div>
-              <p class="history-feature__sequence">Era ${escapeHtml(item.era.number)} · Entry ${escapeHtml(item.sequence)}</p>
-              <p class="history-feature__era">${escapeHtml(item.era.shortLabel)}</p>
-            </div>
-            <a class="history-feature__jump" href="#${escapeHtml(item.slug)}" data-open-card="${item.index}">Open in archive</a>
-          </div>
-          <div class="history-feature__grid">
-            <div class="history-feature__copy">
-              <p class="history-feature__date">${escapeHtml(item.timestamp_label || "Date not stated")}</p>
-              <h2 class="history-feature__title">${escapeHtml(item.displayTitle)}</h2>
-              <p class="history-feature__summary">${escapeHtml(item.paragraph || "")}</p>
-              ${renderChips(item)}
-              ${
-                facts.length
-                  ? `
-                      <dl class="history-feature__facts">
-                        ${facts
-                          .map(
-                            (fact) => `
-                              <div>
-                                <dt>${escapeHtml(fact.label)}</dt>
-                                <dd>${fact.html}</dd>
-                              </div>
-                            `
-                          )
-                          .join("")}
-                      </dl>
-                    `
-                  : ""
-              }
-              ${
-                sources.length
-                  ? `<div class="history-feature__source-row">${sources
-                      .map(
-                        (source) =>
-                          `<a href="${escapeHtml(source)}" target="_blank" rel="noreferrer">${escapeHtml(formatHost(source))}</a>`
-                      )
-                      .join("")}</div>`
-                  : ""
-              }
-            </div>
-            ${media}
-          </div>
-        `;
-      }
-
-      function buildEraNav(groups) {
-        refs.eraNav.innerHTML = groups
-          .map(
-            (group) => `
-              <button class="history-chronology__era-btn" type="button" data-era-id="${escapeHtml(group.id)}" data-first-index="${group.items[0].index}">
-                <span class="history-chronology__era-number">${escapeHtml(group.number)}</span>
-                <span class="history-chronology__era-label">${escapeHtml(group.shortLabel)}</span>
-              </button>
-            `
-          )
-          .join("");
-      }
-
-      function buildTrack(items) {
-        refs.track.innerHTML = `
-          <div class="history-chronology__track-inner">
-            ${items
-              .map(
-                (item) => `
-                  <button class="history-chronology__track-btn" type="button" data-index="${item.index}" aria-label="Focus ${escapeHtml(item.displayTitle)}">
-                    <span class="history-chronology__track-date">${escapeHtml(shorten(item.timestamp_label || "Undated", 28))}</span>
-                    <span class="history-chronology__track-title">${escapeHtml(shorten(item.displayTitle, 30))}</span>
-                  </button>
-                `
-              )
-              .join("")}
-          </div>
-        `;
-      }
-
-      function buildSpine(groups) {
-        refs.spine.innerHTML = groups
-          .map(
-            (group) => `
-              <section class="history-chronology__spine-group">
-                <button class="history-chronology__spine-era" type="button" data-era-id="${escapeHtml(group.id)}" data-first-index="${group.items[0].index}">
-                  <span>${escapeHtml(group.number)}</span>
-                  <span>${escapeHtml(group.shortLabel)}</span>
-                </button>
-                ${group.items
-                  .map(
-                    (item) => `
-                      <button class="history-chronology__spine-item" type="button" data-index="${item.index}">
-                        <span class="history-chronology__spine-date">${escapeHtml(shorten(item.timestamp_label || "Undated", 24))}</span>
-                        <span class="history-chronology__spine-title">${escapeHtml(shorten(item.displayTitle, 30))}</span>
-                      </button>
-                    `
-                  )
-                  .join("")}
-              </section>
-            `
-          )
-          .join("");
-      }
-
-      function buildCards(groups) {
-        refs.cards.innerHTML = groups
-          .map((group) => {
-            const aliases = (group.aliases || [])
-              .filter((alias) => alias && alias !== group.id)
-              .map((alias) => `<span class="history-anchor" id="${escapeHtml(alias)}" aria-hidden="true"></span>`)
-              .join("");
-
-            return `
-              <section class="history-era-break" id="${escapeHtml(group.id)}">
-                ${aliases}
-                <div class="history-era-break__number">${escapeHtml(group.number)}</div>
-                <div class="history-era-break__copy">
-                  <p class="history-era-break__eyebrow">${escapeHtml(group.shortLabel)}</p>
-                  <h2>${escapeHtml(group.title)}</h2>
-                  <p>${escapeHtml(group.about || "")}</p>
-                </div>
-              </section>
-              ${group.items
-                .map(
-                  (item) => `
-                    <article class="history-card" id="${escapeHtml(item.slug)}" data-index="${item.index}" data-era-id="${escapeHtml(item.era.id)}">
-                      <header class="history-card__head">
-                        <div class="history-card__stamp">${escapeHtml(item.sequence)}</div>
-                        <div class="history-card__titles">
-                          <p class="history-card__date">${escapeHtml(item.timestamp_label || "Date not stated")}</p>
-                          <h3>${escapeHtml(item.displayTitle)}</h3>
-                          ${
-                            item.display_heading && item.display_heading !== item.displayTitle
-                              ? `<p class="history-card__display">${escapeHtml(item.display_heading)}</p>`
-                              : ""
-                          }
-                        </div>
-                      </header>
-                      <p class="history-card__summary">${escapeHtml(item.paragraph || "")}</p>
-                      ${renderChips(item)}
-                      <div class="history-card__expanded">
-                        ${
-                          collectFacts(item).length
-                            ? `
-                                <dl class="history-card__fact-grid">
-                                  ${collectFacts(item)
-                                    .map(
-                                      (fact) => `
-                                        <div class="history-card__fact">
-                                          <dt>${escapeHtml(fact.label)}</dt>
-                                          <dd>${fact.html}</dd>
-                                        </div>
-                                      `
-                                    )
-                                    .join("")}
-                                </dl>
-                              `
-                            : ""
-                        }
-                        ${renderImageBlock(item.image_paths)}
-                        ${renderAudioBlock(item.audio_paths, item.index)}
-                        ${renderFarmBlock(item.related_farm_paths)}
-                        ${renderLinkBlock(item.additional_source_links)}
-                        ${renderSourcesBlock(item)}
-                      </div>
-                    </article>
-                  `
-                )
-                .join("")}
-            `;
-          })
-          .join("");
-      }
-
-      function normalizeItems(raw) {
-        return raw
-          .filter((item) => item && item.type === "timeline_event")
-          .map((item, index) => ({
-            ...item,
-            image_paths: (item.image_paths || []).map((image) => ({
-              ...image,
-              path: resolveAssetPath(image.path)
-            })),
-            related_farm_paths: (item.related_farm_paths || []).map((farm) => ({
-              ...farm,
-              image_path: resolveAssetPath(farm.image_path)
-            })),
-            additional_source_links: (item.additional_source_links || []).map((link) => ({
-              ...link,
-              thumb_path: resolveAssetPath(link.thumb_path)
-            })),
-            index,
-            sequence: String(index + 1).padStart(2, "0"),
-            displayTitle: getDisplayTitle(item),
-            era: getEra(item.section_title)
-          }));
-      }
-
-      function groupItems(items) {
-        const groups = [];
-
-        items.forEach((item) => {
-          const last = groups[groups.length - 1];
-          if (last && last.title === item.section_title) {
-            last.items.push(item);
-            return;
-          }
-
-          groups.push({
-            ...item.era,
-            title: item.section_title,
-            about: item.section_about,
-            items: [item]
-          });
-        });
-
-        return groups;
-      }
-
-      function scrollCardIntoView(index, behavior = "smooth") {
-        const card = state.cardEls[index];
-        if (!card) return;
-        const top = card.getBoundingClientRect().top + window.scrollY - 120;
-        window.scrollTo({ top, behavior });
-      }
-
-      function setActive(index, options = {}) {
-        const bounded = Math.max(0, Math.min(state.items.length - 1, index));
-        const item = state.items[bounded];
-        if (!item) return;
-
-        state.activeIndex = bounded;
-        buildFeature(item);
-
-        state.trackEls.forEach((button, buttonIndex) => {
-          const active = buttonIndex === bounded;
-          button.classList.toggle("is-active", active);
-          button.setAttribute("aria-pressed", active ? "true" : "false");
-        });
-
-        state.spineEls.forEach((button) => {
-          button.classList.toggle("is-active", Number(button.dataset.index) === bounded);
-        });
-
-        state.eraEls.forEach((button) => {
-          button.classList.toggle("is-active", button.dataset.eraId === item.era.id);
-        });
-
-        state.cardEls.forEach((card, cardIndex) => {
-          card.classList.toggle("is-active", cardIndex === bounded);
-        });
-
-        refs.prev.disabled = bounded === 0;
-        refs.next.disabled = bounded === state.items.length - 1;
-
-        if (options.centerTrack !== false) {
-          state.trackEls[bounded]?.scrollIntoView({ block: "nearest", inline: "center" });
-        }
-
-        if (options.revealInArchive) {
-          scrollCardIntoView(bounded);
-        }
-      }
-
-      function wireAudioPlayers() {
-        const audioRoots = Array.from(refs.cards.querySelectorAll("[data-audio-root]"));
-        audioRoots.forEach((root) => {
-          const audio = root.querySelector("audio");
-          const button = root.querySelector(".history-card__audio-button");
-          const bar = root.querySelector(".history-card__audio-bar");
-          const progress = root.querySelector(".history-card__audio-progress");
-          const time = root.querySelector(".history-card__audio-time");
-          if (!audio || !button || !bar || !progress || !time) return;
-
-          const pad = (value) => String(value).padStart(2, "0");
-          const format = (seconds) => {
-            if (!Number.isFinite(seconds) || seconds < 0) return "--:--";
-            const whole = Math.floor(seconds);
-            const minutes = Math.floor(whole / 60);
-            const secs = whole % 60;
-            return `${pad(minutes)}:${pad(secs)}`;
-          };
-
-          const update = () => {
-            const duration = Number.isFinite(audio.duration) ? format(audio.duration) : "--:--";
-            time.textContent = `${format(audio.currentTime)} / ${duration}`;
-            progress.style.width =
-              Number.isFinite(audio.duration) && audio.duration > 0
-                ? `${Math.max(0, Math.min(1, audio.currentTime / audio.duration)) * 100}%`
-                : "0%";
-            const playing = !audio.paused && !audio.ended;
-            button.textContent = playing ? "Pause" : "Play";
-            button.setAttribute("aria-pressed", playing ? "true" : "false");
-          };
-
-          button.addEventListener("click", async (event) => {
-            event.stopPropagation();
-
-            try {
-              if (!audio.paused && !audio.ended) {
-                audio.pause();
-                return;
-              }
-
-              if (state.currentAudio && state.currentAudio !== audio) {
-                state.currentAudio.pause();
-              }
-
-              state.currentAudio = audio;
-              await audio.play();
-            } catch {
-              button.disabled = true;
-              button.textContent = "Unavailable";
-            } finally {
-              update();
-            }
-          });
-
-          bar.addEventListener("click", (event) => {
-            event.stopPropagation();
-            if (!Number.isFinite(audio.duration) || audio.duration <= 0) return;
-            const rect = bar.getBoundingClientRect();
-            const x = Math.max(0, Math.min(rect.width, event.clientX - rect.left));
-            audio.currentTime = rect.width > 0 ? (x / rect.width) * audio.duration : 0;
-            update();
-          });
-
-          audio.addEventListener("loadedmetadata", update);
-          audio.addEventListener("durationchange", update);
-          audio.addEventListener("timeupdate", update);
-          audio.addEventListener("play", update);
-          audio.addEventListener("pause", update);
-          audio.addEventListener("ended", update);
-          audio.addEventListener("error", () => {
-            button.disabled = true;
-            button.textContent = "Unavailable";
-          });
-
-          update();
-        });
-      }
-
-      function bindEvents() {
-        refs.prev.addEventListener("click", () => {
-          setActive(state.activeIndex - 1);
-        });
-
-        refs.next.addEventListener("click", () => {
-          setActive(state.activeIndex + 1);
-        });
-
-        refs.eraNav.addEventListener("click", (event) => {
-          const button = event.target.closest("[data-first-index]");
-          if (!button) return;
-          setActive(Number(button.dataset.firstIndex), { revealInArchive: true });
-        });
-
-        refs.track.addEventListener("click", (event) => {
-          const button = event.target.closest("[data-index]");
-          if (!button) return;
-          setActive(Number(button.dataset.index));
-        });
-
-        refs.feature.addEventListener("click", (event) => {
-          const link = event.target.closest("[data-open-card]");
-          if (!link) return;
-          event.preventDefault();
-          setActive(Number(link.dataset.openCard), { revealInArchive: true });
-          window.history.replaceState(null, "", `#${state.items[Number(link.dataset.openCard)].slug}`);
-        });
-
-        refs.spine.addEventListener("click", (event) => {
-          const eraButton = event.target.closest(".history-chronology__spine-era");
-          if (eraButton) {
-            setActive(Number(eraButton.dataset.firstIndex), { revealInArchive: true });
-            return;
-          }
-
-          const eventButton = event.target.closest(".history-chronology__spine-item");
-          if (!eventButton) return;
-          const index = Number(eventButton.dataset.index);
-          setActive(index, { revealInArchive: true });
-          window.history.replaceState(null, "", `#${state.items[index].slug}`);
-        });
-
-        refs.cards.addEventListener("click", (event) => {
-          if (event.target.closest("a, button")) return;
-          const card = event.target.closest(".history-card");
-          if (!card) return;
-          const index = Number(card.dataset.index);
-          setActive(index);
-          window.history.replaceState(null, "", `#${card.id}`);
-        });
-
-        let ticking = false;
-        const syncFromScroll = () => {
-          ticking = false;
-          if (!state.cardEls.length) return;
-          const anchor = window.scrollY + Math.min(window.innerHeight * 0.34, 250);
-          let active = 0;
-
-          for (const card of state.cardEls) {
-            if (card.offsetTop <= anchor) {
-              active = Number(card.dataset.index);
-            } else {
-              break;
-            }
-          }
-
-          setActive(active, { centerTrack: false });
-        };
-
-        const onScroll = () => {
-          if (ticking) return;
-          ticking = true;
-          window.requestAnimationFrame(syncFromScroll);
-        };
-
-        window.addEventListener("scroll", onScroll, { passive: true });
-        window.addEventListener("resize", onScroll, { passive: true });
-      }
-
-      function handleInitialHash() {
-        const hash = window.location.hash.replace(/^#/, "");
-        if (!hash) {
-          setActive(0);
-          return;
-        }
-
-        const target = document.getElementById(hash);
-        if (!target) {
-          setActive(0);
-          return;
-        }
-
-        const card = target.closest(".history-card");
-        if (card) {
-          const index = Number(card.dataset.index);
-          setActive(index, { revealInArchive: true, centerTrack: false });
-          return;
-        }
-
-        const eraBreak = target.closest(".history-era-break");
-        if (eraBreak) {
-          const eraId = eraBreak.id;
-          const firstCard = state.cardEls.find((entry) => entry.dataset.eraId === eraId);
-          if (firstCard) {
-            setActive(Number(firstCard.dataset.index), { revealInArchive: true, centerTrack: false });
-            return;
-          }
-        }
-
-        setActive(0);
-      }
-
-      async function init() {
-        try {
-          const response = await fetch(DATA_URL);
-          if (!response.ok) throw new Error(`Unable to load chronology (${response.status}).`);
-          const payload = await response.json();
-          state.items = normalizeItems(Array.isArray(payload) ? payload : []);
-          state.groups = groupItems(state.items);
-
-          if (!state.items.length) {
-            throw new Error("No chronology items were found in timeline.json.");
-          }
-
-          refs.summary.textContent = `${state.items.length} stops across ${state.groups.length} eras. Use the top navigator to browse and the left spine to jump into the stack.`;
-          buildEraNav(state.groups);
-          buildTrack(state.items);
-          buildSpine(state.groups);
-          buildCards(state.groups);
-
-          state.trackEls = Array.from(refs.track.querySelectorAll(".history-chronology__track-btn"));
-          state.spineEls = Array.from(refs.spine.querySelectorAll(".history-chronology__spine-item"));
-          state.eraEls = Array.from(document.querySelectorAll(".history-chronology__era-btn, .history-chronology__spine-era"));
-          state.cardEls = Array.from(refs.cards.querySelectorAll(".history-card"));
-
-          wireAudioPlayers();
-          bindEvents();
-          handleInitialHash();
-        } catch (error) {
-          const message = error instanceof Error ? error.message : "Unable to load the chronology.";
-          refs.summary.textContent = message;
-          refs.eraNav.innerHTML = `<p class="history-card__loading">${escapeHtml(message)}</p>`;
-          refs.feature.innerHTML = `<p class="history-card__loading">${escapeHtml(message)}</p>`;
-          refs.track.innerHTML = `<p class="history-card__loading">${escapeHtml(message)}</p>`;
-          refs.spine.innerHTML = `<p class="history-card__loading">${escapeHtml(message)}</p>`;
-          refs.cards.innerHTML = `<p class="history-card__loading">${escapeHtml(message)} Open <a href="${DATA_URL}">timeline.json</a> directly if needed.</p>`;
-        }
-      }
-
-      init();
     })();
   </script>
-    <script src="JS/audio.js" defer></script>
 </body>
 </html>
