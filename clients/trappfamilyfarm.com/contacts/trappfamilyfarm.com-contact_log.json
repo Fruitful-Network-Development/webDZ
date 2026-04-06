@@ -3,6 +3,20 @@
   "domain": "trappfamilyfarm.com",
   "contacts": [
     {
+      "email": "dcm103@uakron.edu",
+      "name": "Dylan",
+      "zip": "44236",
+      "source": "website_signup",
+      "subscribed": true,
+      "created_at": "2026-04-06T07:44:15.674253+00:00",
+      "subscribed_at": "2026-04-06T07:44:15.674253+00:00",
+      "unsubscribed_at": "",
+      "updated_at": "2026-04-06T08:14:03.074754+00:00",
+      "last_newsletter_sent_at": "2026-04-06T08:14:03.074754+00:00",
+      "send_count": 1,
+      "notes": ""
+    },
+    {
       "email": "trapp.family.farm@gmail.com",
       "name": "Trapp Family Farm Inbox",
       "zip": "44264",
@@ -39,7 +53,40 @@
           "message_id": "0100019d6151e9e9-7846c9a9-7d84-417b-b52f-9ffe475537f1-000000"
         }
       ]
+    },
+    {
+      "dispatch_id": "dispatch-310e0d478388419ebd6cc518aeb06e9a",
+      "requested_at": "2026-04-06T08:14:02.114291+00:00",
+      "completed_at": "2026-04-06T08:14:03.074754+00:00",
+      "requested_by": "operator",
+      "domain": "trappfamilyfarm.com",
+      "author_profile_id": "aws-csm.tff.technicalContact",
+      "author_address": "technicalContact@trappfamilyfarm.com",
+      "sender_profile_id": "aws-csm.tff.technicalContact",
+      "sender_address": "news@trappfamilyfarm.com",
+      "list_address": "news@trappfamilyfarm.com",
+      "reply_to_address": "technicalContact@trappfamilyfarm.com",
+      "subject": "TFF queued newsletter smoke test",
+      "body_text": "This is a live queue plus Lambda newsletter smoke test. The newsletter is submitted by the technical contact mailbox and delivered outward from news@domain.",
+      "target_count": 1,
+      "queued_count": 0,
+      "sent_count": 1,
+      "failed_count": 0,
+      "submission_copy_message_id": "0100019d61db1a3a-d82bd584-8e55-4f10-94ad-86231c58f6f6-000000",
+      "delivery_mode": "aws_sqs_lambda_us_east_1",
+      "aws_region": "us-east-1",
+      "status": "completed",
+      "results": [
+        {
+          "email": "dcm103@uakron.edu",
+          "status": "sent",
+          "unsubscribe_url": "https://trappfamilyfarm.com/__fnd/newsletter/unsubscribe?email=dcm103@uakron.edu&token=6cf5c383d6b9bed7f52abc8284de15b7ebe4fb52d87b1fd91deeb7bd6c82f4fb",
+          "queue_message_id": "129d17ce-269c-467c-8611-792b8dd6b81b",
+          "message_id": "0100019d61db214a-ff2493e8-871b-4d05-9e6b-81d59a081af7-000000",
+          "updated_at": "2026-04-06T08:14:03.074754+00:00"
+        }
+      ]
     }
   ],
-  "updated_at": "2026-04-06T05:44:22.797389+00:00"
+  "updated_at": "2026-04-06T08:14:03.074792+00:00"
 }

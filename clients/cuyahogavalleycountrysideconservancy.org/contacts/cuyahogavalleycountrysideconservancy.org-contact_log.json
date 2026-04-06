@@ -3,6 +3,20 @@
   "domain": "cuyahogavalleycountrysideconservancy.org",
   "contacts": [
     {
+      "email": "dcm103@uakron.edu",
+      "name": "Dylan",
+      "zip": "44236",
+      "source": "website_signup",
+      "subscribed": true,
+      "created_at": "2026-04-06T08:14:00.256159+00:00",
+      "subscribed_at": "2026-04-06T08:14:00.256159+00:00",
+      "unsubscribed_at": "",
+      "updated_at": "2026-04-06T08:14:03.923215+00:00",
+      "last_newsletter_sent_at": "2026-04-06T08:14:03.923215+00:00",
+      "send_count": 1,
+      "notes": ""
+    },
+    {
       "email": "dylancarsonmontgomery@gmail.com",
       "name": "Dylan Montgomery",
       "zip": "44264",
@@ -39,7 +53,40 @@
           "message_id": "0100019d6151e9e5-9b062341-4459-4727-b3e6-712f72aa0ca3-000000"
         }
       ]
+    },
+    {
+      "dispatch_id": "dispatch-65e4d022ae3d45d5a61dd85e79febd43",
+      "requested_at": "2026-04-06T08:14:03.857727+00:00",
+      "completed_at": "2026-04-06T08:14:03.923215+00:00",
+      "requested_by": "operator",
+      "domain": "cuyahogavalleycountrysideconservancy.org",
+      "author_profile_id": "aws-csm.cvcc.technicalContact",
+      "author_address": "technicalContact@cuyahogavalleycountrysideconservancy.org",
+      "sender_profile_id": "aws-csm.cvcc.technicalContact",
+      "sender_address": "news@cuyahogavalleycountrysideconservancy.org",
+      "list_address": "news@cuyahogavalleycountrysideconservancy.org",
+      "reply_to_address": "technicalContact@cuyahogavalleycountrysideconservancy.org",
+      "subject": "CVCC queued newsletter smoke test",
+      "body_text": "This is a live queue plus Lambda newsletter smoke test. The newsletter is submitted by the technical contact mailbox and delivered outward from news@domain.",
+      "target_count": 1,
+      "queued_count": 0,
+      "sent_count": 1,
+      "failed_count": 0,
+      "submission_copy_message_id": "0100019d61db2161-2b635fc4-cdf1-4fc3-87d0-1b8c2ecf92d8-000000",
+      "delivery_mode": "aws_sqs_lambda_us_east_1",
+      "aws_region": "us-east-1",
+      "status": "completed",
+      "results": [
+        {
+          "email": "dcm103@uakron.edu",
+          "status": "sent",
+          "unsubscribe_url": "https://cuyahogavalleycountrysideconservancy.org/__fnd/newsletter/unsubscribe?email=dcm103@uakron.edu&token=ee8e8288bfe43671301eb2cf9dcafdd64d41e177e6cedfdc670f60c3d14b92ec",
+          "queue_message_id": "ebe3950e-a644-4679-b5fe-9352f6747bfc",
+          "message_id": "0100019d61db250e-2e87f596-88ef-4bc4-88c0-097b1e5d956c-000000",
+          "updated_at": "2026-04-06T08:14:03.923215+00:00"
+        }
+      ]
     }
   ],
-  "updated_at": "2026-04-06T05:44:22.826956+00:00"
+  "updated_at": "2026-04-06T08:14:03.923250+00:00"
 }
