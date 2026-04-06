@@ -70,9 +70,46 @@
     });
   }
 
+  function bindNewsletterForms() {
+    document.querySelectorAll("[data-newsletter-signup]").forEach(function (form) {
+      var ackSelector = form.getAttribute("data-newsletter-ack");
+      var ack = ackSelector ? document.querySelector(ackSelector) : null;
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+        var data = new URLSearchParams(new FormData(form));
+        fetch("/__fnd/newsletter/subscribe", {
+          method: "POST",
+          headers: { Accept: "application/json" },
+          body: data,
+          credentials: "same-origin"
+        }).then(function (response) {
+          return response.json().catch(function () { return {}; }).then(function (payload) {
+            if (!response.ok || !payload || payload.ok === false) {
+              throw new Error(String((payload && (payload.error || payload.message)) || ("HTTP " + response.status)));
+            }
+            if (ack) {
+              ack.hidden = false;
+              ack.textContent = "Thanks. Your address is now in the live contact log.";
+            }
+            form.reset();
+          });
+        }).catch(function (error) {
+          if (ack) {
+            ack.hidden = false;
+            ack.textContent = error && error.message ? error.message : "Signup failed.";
+          }
+        });
+      });
+    });
+  }
+
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", initHeaderBehavior, { once: true });
+    document.addEventListener("DOMContentLoaded", function () {
+      initHeaderBehavior();
+      bindNewsletterForms();
+    }, { once: true });
   } else {
     initHeaderBehavior();
+    bindNewsletterForms();
   }
 })();
