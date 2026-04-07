@@ -59,23 +59,31 @@
       letter-spacing: 0.08em;
     }
 
-    .home-history-callout {
-      margin-top: var(--sp-5);
-      padding: 0.8rem 0.95rem;
-      border-left: 3px solid #77614e;
-      background: rgba(246, 240, 230, 0.9);
-      max-width: 54ch;
+    .home-donate-callout {
+      display: grid;
+      gap: 0.7rem;
+      align-items: start;
+      padding: 1rem 1.1rem;
+      border: 1px solid var(--color-line);
+      background: rgba(250, 248, 243, 0.96);
+      box-shadow: 0 10px 30px rgba(64, 45, 22, 0.05);
     }
 
-    .home-history-callout p {
+    .home-donate-callout__eyebrow {
       margin: 0;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
       color: var(--color-muted);
     }
 
-    .home-history-callout a {
-      font-weight: 600;
-      text-decoration-thickness: 1px;
-      text-underline-offset: 2px;
+    .home-donate-callout__body {
+      margin: 0;
+      max-width: 56ch;
+    }
+
+    .home-donate-callout .button {
+      width: fit-content;
     }
 
     .home-news-feature {
@@ -139,39 +147,6 @@
       margin: 0.35rem 0 0;
       font-size: 0.82rem;
       color: var(--color-muted);
-    }
-
-    .home-relationships {
-      margin-top: var(--sp-8);
-      display: grid;
-      gap: 1rem;
-    }
-
-    .home-relationships__intro {
-      max-width: 66ch;
-    }
-
-    .home-relationships__grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 0.9rem;
-    }
-
-    .home-relationship-card {
-      padding: 1rem;
-      border: 1px solid var(--color-line);
-      background:
-        linear-gradient(180deg, rgba(246, 240, 230, 0.95) 0%, rgba(255, 255, 255, 0.98) 100%);
-      min-height: 190px;
-    }
-
-    .home-relationship-card h3 {
-      margin: 0 0 0.55rem;
-      font-size: 1.05rem;
-    }
-
-    .home-relationship-card p:last-child {
-      margin-bottom: 0;
     }
 
     .home-events-strip {
@@ -251,10 +226,6 @@
         grid-template-columns: 1fr;
       }
 
-      .home-relationships__grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
       .home-news-feature__article {
         border-right: 0;
         border-bottom: 1px solid var(--color-line);
@@ -268,14 +239,12 @@
     }
 
     @media (max-width: 680px) {
-      .home-relationships__grid,
       .home-events-strip__grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
 
     @media (max-width: 540px) {
-      .home-relationships__grid,
       .home-events-strip__grid {
         grid-template-columns: 1fr;
       }

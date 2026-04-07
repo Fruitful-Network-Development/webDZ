@@ -77,7 +77,9 @@ def render_footer(manifest: dict[str, object]) -> str:
 def render_document(manifest: dict[str, object], page_key: str, page: dict[str, object], frontend_root) -> str:
     stylesheets = page.get("stylesheets", manifest["site"].get("stylesheets", []))
     stylesheet_tags = "\n".join(f'  <link rel="stylesheet" href="{escape(rel_asset(path))}" />' for path in stylesheets)
-    scripts = page.get("scripts", manifest["site"].get("scripts", []))
+    site_scripts = manifest["site"].get("scripts", [])
+    page_scripts = page.get("scripts", [])
+    scripts = list(dict.fromkeys([*site_scripts, *page_scripts])) if page_scripts else list(site_scripts)
     script_tags = "\n".join(f'  <script src="{escape(rel_asset(path))}" defer></script>' for path in scripts)
     description = page.get("description", manifest["site"].get("description", ""))
     body_class = f' class="{escape(page["body_class"])}"' if page.get("body_class") else ""
@@ -105,4 +107,3 @@ def render_document(manifest: dict[str, object], page_key: str, page: dict[str, 
             "",
         ]
     )
-

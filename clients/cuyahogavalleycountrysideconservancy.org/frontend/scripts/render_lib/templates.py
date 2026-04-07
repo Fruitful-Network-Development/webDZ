@@ -44,7 +44,7 @@ def render_page(page: dict[str, object], manifest: dict[str, object], frontend_r
 
 def render_archive_home(page: dict[str, object], manifest: dict[str, object], frontend_root: Path) -> str:
     content = page["content"]
-    posts = load_collection(manifest, frontend_root, content["newsletter_collection"])
+    posts = prepare_posts(load_collection(manifest, frontend_root, content["newsletter_collection"]), manifest, frontend_root)
     happenings = load_collection(manifest, frontend_root, content["happenings_collection"])
     latest_post = select_featured_post(posts)
     upcoming = upcoming_happenings(happenings, limit=5)
@@ -68,26 +68,12 @@ def render_archive_home(page: dict[str, object], manifest: dict[str, object], fr
         )
         for block in content["mission_blocks"]
     )
-    relationship_cards = "".join(
-        (
-            '<article class="home-relationship-card">'
-            f'<h3>{escape(card["heading"])}</h3>'
-            f'{render_paragraphs(card["body"])}'
-            "</article>"
-        )
-        for card in content["relationship_cards"]
-    )
-    portal_cards = "".join(
-        (
-            "<li>"
-            f'<a class="portal-card" href="{escape(card["href"])}">'
-            f'<p class="portal-card__label">{escape(card["label"])}</p>'
-            f'<h3 class="portal-card__title">{escape(card["title"])}</h3>'
-            f'<p class="portal-card__note">{escape(card["note"])}</p>'
-            "</a>"
-            "</li>"
-        )
-        for card in content["portal_cards"]
+    donate_callout = (
+        '<section class="home-donate-callout" aria-label="Donation link">'
+        f'<p class="home-donate-callout__eyebrow">{escape(content["donate_callout"]["eyebrow"])}</p>'
+        f'<p class="home-donate-callout__body">{escape(content["donate_callout"]["body"])}</p>'
+        f'<a class="button" href="{escape(content["donate_callout"]["href"])}">{escape(content["donate_callout"]["link_label"])}</a>'
+        "</section>"
     )
 
     return (
@@ -99,19 +85,9 @@ def render_archive_home(page: dict[str, object], manifest: dict[str, object], fr
         '<div class="home-hero__stack">'
         f"{intro_panels}"
         f'<div class="home-hero__mission" aria-label="Mission and objective">{mission_blocks}</div>'
+        f"{donate_callout}"
         "</div>"
         "</div>"
-        "</section>"
-        '<section class="home-relationships" aria-labelledby="home-relationships-heading">'
-        '<div class="home-relationships__intro">'
-        f'<p class="kicker">{escape(content["relationships"]["kicker"])}</p>'
-        '<h2 id="home-relationships-heading" class="section-heading">'
-        f'{escape(content["relationships"]["heading"])}'
-        "</h2>"
-        f'{render_paragraphs(content["relationships"]["body"])}'
-        "</div>"
-        f'<div class="home-relationships__grid">{relationship_cards}</div>'
-        f'<aside class="home-history-callout"><p>{content["relationships"]["callout_html"]}</p></aside>'
         "</section>"
         '<section class="home-news-feature" aria-labelledby="home-news-feature-heading">'
         '<article class="home-news-feature__article">'
@@ -133,8 +109,6 @@ def render_archive_home(page: dict[str, object], manifest: dict[str, object], fr
         "</div>"
         f'<div class="home-events-strip__grid">{render_home_event_cards(upcoming)}</div>'
         "</section>"
-        f'<h2 class="section-heading">{escape(content["portal_heading"])}</h2>'
-        f'<ul class="portal-grid">{portal_cards}</ul>'
     )
 
 
@@ -168,36 +142,47 @@ def render_board_directory(page: dict[str, object], manifest: dict[str, object],
 
 
 def render_article_archive(page: dict[str, object], manifest: dict[str, object], frontend_root: Path) -> str:
-    posts = load_collection(manifest, frontend_root, page["content"]["collection"])
-    posts = sorted(posts, key=lambda post: str(post.get("published_sort", "")), reverse=True)
+    posts = prepare_posts(load_collection(manifest, frontend_root, page["content"]["collection"]), manifest, frontend_root)
     featured = select_featured_post(posts)
-    gallery = "".join(render_post_card(post) for post in posts)
-    entries = "".join(render_post_entry(post) for post in posts)
     content = page["content"]
+    archive_posts = [post for post in posts if featured and post["slug"] != featured["slug"]]
+    page_size = max(int(content.get("page_size", 9)), 1)
+    cards = "".join(
+        render_post_card(post, page_number=(index // page_size) + 1, hidden=index >= page_size)
+        for index, post in enumerate(archive_posts)
+    )
+    templates = "".join(render_post_template(post) for post in posts)
+    pagination = render_newsletter_pagination(len(archive_posts), page_size, content)
+    reset_link = (
+        '<a class="newsletter-archive__reset" href="newsletter.html">Show newest newsletter</a>'
+        if featured
+        else ""
+    )
 
     return (
-        '<section class="section">'
+        '<section class="section newsletter-archive"'
+        f' data-newsletter-archive data-default-slug="{escape(featured["slug"] if featured else "")}">'
         f'<p class="home-lead__eyebrow" style="margin-bottom: var(--sp-3);">{escape(content["eyebrow"])}</p>'
         f'<h1 class="headline-site">{escape(content["heading"])}</h1>'
         f'<p class="timeline-intro">{escape(content["deck"])}</p>'
-        "</section>"
-        '<section class="section">'
-        f'<h2 class="section-heading">{escape(content["featured_heading"])}</h2>'
-        f'{render_post_entry(featured, class_name="blog-reader", include_anchor=False)}'
-        f'<div class="blog-gallery grid-4" aria-label="Blog post gallery">{gallery}</div>'
-        "</section>"
-        '<section class="section">'
+        '<div class="newsletter-archive__viewer-head">'
+        f'<h2 id="newsletter-viewer-heading" class="section-heading">{escape(content["featured_heading"])}</h2>'
+        f"{reset_link}"
+        "</div>"
+        f'<div id="newsletter-viewer">{render_post_entry(featured, class_name="blog-reader newsletter-viewer__article", include_anchor=False)}</div>'
+        '<div class="newsletter-register">'
+        '<div class="newsletter-register__head">'
         f'<h2 class="section-heading">{escape(content["archive_heading"])}</h2>'
-        f'<div class="ledger">{entries}</div>'
-        "</section>"
-        '<section class="section">'
-        '<article class="card-farm">'
-        f'<h2 class="card-farm__title">{escape(content["email_card"]["heading"])}</h2>'
-        f'<p>{content["email_card"]["body_html"]}</p>'
-        "</article>"
+        '<p class="timeline-intro">Browse older issues in reverse chronological order.</p>'
+        "</div>"
+        f'<div class="newsletter-register__grid" aria-label="Newsletter archive cards">{cards}</div>'
+        f"{pagination}"
+        "</div>"
+        f'<div class="newsletter-archive__templates" hidden>{templates}</div>'
         "</section>"
         '<section class="section">'
         f'<h2 class="section-heading">{escape(content["signup"]["heading"])}</h2>'
+        f'<p class="timeline-intro">{content["email_card"]["body_html"]}</p>'
         f'{render_signup_form(content["signup"]["form"], "newsletter-ack", "form-note")}'
         "</section>"
     )
@@ -286,15 +271,7 @@ def render_static_fragment(page: dict[str, object], _manifest: dict[str, object]
 def render_home_latest_post(post: dict[str, object]) -> str:
     if not post:
         return '<p class="timeline-intro" style="margin:0;">Browse all seasonal writing in <a href="newsletter.html">Newsletter</a>.</p>'
-    author = f' - {escape(post["author"])}' if post.get("author") else ""
-    return (
-        "<div>"
-        f'<h3>{escape(post["title"])}</h3>'
-        f'<p class="home-news-feature__meta">{escape(post["published_label"])}{author}</p>'
-        f'<p class="home-news-feature__excerpt">{escape(post.get("excerpt", ""))}</p>'
-        f'<a href="newsletter.html#{escape(post["slug"])}">Read the full article</a>'
-        "</div>"
-    )
+    return render_featured_post_card(post, href=f'newsletter.html#{escape(post["slug"])}')
 
 
 def render_signup_form(form: dict[str, object], ack_id: str, ack_class: str) -> str:
@@ -336,27 +313,26 @@ def select_featured_post(posts: list[dict[str, object]]) -> dict[str, object] | 
 
 
 def cover_image_for_post(post: dict[str, object]) -> dict[str, str]:
-    source = post.get("cover_image") or "assets/image/pictorial_map.avif"
+    source = post.get("resolved_cover_image") or post.get("cover_image") or "favicon.png"
     return {
         "src": source,
-        "alt": post.get("cover_alt") or post.get("title") or "Newsletter image",
+        "alt": post.get("resolved_cover_alt") or post.get("cover_alt") or post.get("title") or "Newsletter image",
     }
 
 
-def render_post_card(post: dict[str, object]) -> str:
+def render_post_card(post: dict[str, object], page_number: int = 1, hidden: bool = False) -> str:
     image = cover_image_for_post(post)
-    tags = ", ".join(post.get("tags", []))
-    tags_html = f'<div><div class="meta-label">Tags</div><span class="blog-card__tags">{escape(tags)}</span></div>' if tags else ""
+    media_class = "newsletter-card__media newsletter-card__media--fallback" if post.get("resolved_cover_is_fallback") else "newsletter-card__media"
     return (
-        f'<article class="card-farm blog-card" data-post-id="{escape(post["slug"])}">'
-        f'<a href="#{escape(post["slug"])}" style="border-bottom:none;color:inherit;">'
-        f'{render_figure(image, class_name="figure card-farm__media")}'
-        '<div class="card-farm__content">'
-        f'<h3 class="card-farm__title">{escape(post["title"])}</h3>'
-        f'<p class="card-farm__bio">{escape(post.get("excerpt", ""))}</p>'
-        '<div class="card-farm__meta">'
-        f'<div><div class="meta-label">Published</div><span>{escape(post.get("published_label", ""))}</span></div>'
-        f"{tags_html}"
+        f'<article class="newsletter-card newsletter-card--compact" data-post-id="{escape(post["slug"])}" data-page="{escape(page_number)}"{" hidden" if hidden else ""}>'
+        f'<a class="newsletter-card__link" href="#{escape(post["slug"])}">'
+        f'{render_figure(image, class_name=media_class)}'
+        '<div class="newsletter-card__content">'
+        f'<p class="newsletter-card__meta">{escape(build_post_meta(post))}</p>'
+        f'<h3 class="newsletter-card__title">{escape(post["title"])}</h3>'
+        f'<p class="newsletter-card__excerpt">{escape(post.get("excerpt", ""))}</p>'
+        '<div class="newsletter-card__footer">'
+        '<span class="newsletter-card__cta">Read in the viewer</span>'
         "</div>"
         "</div>"
         "</a>"
@@ -367,14 +343,98 @@ def render_post_card(post: dict[str, object]) -> str:
 def render_post_entry(post: dict[str, object], class_name: str = "blog-reader", include_anchor: bool = True) -> str:
     image = cover_image_for_post(post)
     anchor = f' id="{escape(post["slug"])}"' if include_anchor else ""
-    meta = " · ".join(part for part in [str(post.get("published_label", "")), str(post.get("author", ""))] if part)
+    meta = build_post_meta(post)
+    figure_class = "figure figure--newsletter-fallback" if post.get("resolved_cover_is_fallback") else "figure"
     return (
         f'<article class="{escape(class_name)}"{anchor}>'
         f'<p class="home-news-feature__eyebrow">{escape(meta)}</p>'
         f'<h2>{escape(post["title"])}</h2>'
-        f'{render_figure(image)}'
+        f'{render_figure(image, class_name=figure_class)}'
         f'{post["body_html"]}'
         "</article>"
+    )
+
+
+def prepare_posts(posts: list[dict[str, object]], manifest: dict[str, object], frontend_root: Path) -> list[dict[str, object]]:
+    ordered = sorted(posts, key=lambda post: str(post.get("published_sort", "")), reverse=True)
+    default_image = str(manifest.get("site", {}).get("favicon", "favicon.png"))
+    prepared = []
+    for post in ordered:
+        item = dict(post)
+        item["resolved_cover_image"] = resolve_post_cover_image(item, frontend_root, default_image)
+        item["resolved_cover_alt"] = item.get("cover_alt") or item.get("title") or "Newsletter image"
+        item["resolved_cover_is_fallback"] = item["resolved_cover_image"] == rel_asset(default_image)
+        prepared.append(item)
+    return prepared
+
+
+def resolve_post_cover_image(post: dict[str, object], frontend_root: Path, default_image: str) -> str:
+    candidates: list[str] = []
+    if post.get("cover_image"):
+        candidates.append(str(post["cover_image"]))
+    slug = str(post.get("slug", "")).strip()
+    if slug:
+        for stem in (f"assets/image/blog-images/{slug}", f"assets/image/blog-images/{slug}-1"):
+            for extension in (".avif", ".png", ".jpg", ".jpeg", ".webp"):
+                candidates.append(f"{stem}{extension}")
+    for candidate in candidates:
+        if (frontend_root / rel_asset(candidate)).exists():
+            return rel_asset(candidate)
+    return rel_asset(default_image)
+
+
+def build_post_meta(post: dict[str, object]) -> str:
+    return " · ".join(part for part in [str(post.get("published_label", "")), str(post.get("author", ""))] if part)
+
+
+def render_featured_post_card(post: dict[str, object], href: str) -> str:
+    image = cover_image_for_post(post)
+    media_class = "newsletter-card__media newsletter-card__media--feature newsletter-card__media--fallback" if post.get("resolved_cover_is_fallback") else "newsletter-card__media newsletter-card__media--feature"
+    return (
+        '<article class="newsletter-card newsletter-card--feature">'
+        f'<a class="newsletter-card__link" href="{escape(href)}">'
+        f'{render_figure(image, class_name=media_class)}'
+        '<div class="newsletter-card__content">'
+        f'<p class="newsletter-card__meta">{escape(build_post_meta(post))}</p>'
+        f'<h3 class="newsletter-card__title">{escape(post["title"])}</h3>'
+        f'<p class="newsletter-card__excerpt">{escape(post.get("excerpt", ""))}</p>'
+        '<div class="newsletter-card__footer">'
+        '<span class="newsletter-card__cta">Read the full newsletter</span>'
+        "</div>"
+        "</div>"
+        "</a>"
+        "</article>"
+    )
+
+
+def render_post_template(post: dict[str, object]) -> str:
+    return (
+        f'<template data-newsletter-template="{escape(post["slug"])}">'
+        f'{render_post_entry(post, class_name="blog-reader newsletter-viewer__article", include_anchor=False)}'
+        "</template>"
+    )
+
+
+def render_newsletter_pagination(total_posts: int, page_size: int, content: dict[str, object]) -> str:
+    if total_posts <= page_size:
+        return ""
+    page_count = (total_posts + page_size - 1) // page_size
+    buttons = "".join(
+        (
+            f'<button class="newsletter-pagination__button{" is-active" if page_number == 1 else ""}"'
+            f' type="button" data-newsletter-page="{page_number}"'
+            f'{" aria-current=\"page\"" if page_number == 1 else ""}>'
+            f"{page_number}"
+            "</button>"
+        )
+        for page_number in range(1, page_count + 1)
+    )
+    return (
+        f'<nav class="newsletter-pagination" aria-label="{escape(content.get("pagination_aria_label", "Newsletter archive pages"))}">'
+        f'<button class="newsletter-pagination__button newsletter-pagination__button--direction" type="button" data-newsletter-prev>{escape(content.get("pagination_previous_label", "Previous"))}</button>'
+        f'<div class="newsletter-pagination__pages">{buttons}</div>'
+        f'<button class="newsletter-pagination__button newsletter-pagination__button--direction" type="button" data-newsletter-next>{escape(content.get("pagination_next_label", "Next"))}</button>'
+        "</nav>"
     )
 
 

@@ -106,5 +106,14 @@
         { "facebook": "facebook.com/schmidtfamilyfarms.org" }
       ],
       "tags": []
+    },
+    {
+      "name": "Nathan Seals",
+      "image": "assets/icon/icon-profile.svg",
+      "email": "n8seals@gmail.com",
+      "bio": [
+      ],
+      "socials": [],
+      "tags": []
     }
   ]

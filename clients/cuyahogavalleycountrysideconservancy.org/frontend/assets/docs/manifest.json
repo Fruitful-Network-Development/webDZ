@@ -2,7 +2,7 @@
   "schema": "webdz.site_content.v2",
   "site": {
     "name": "Cuyahoga Valley Countryside Conservancy",
-    "description": "A documentary record of agriculture, stewardship, and Countryside programs in Cuyahoga Valley National Park.",
+    "description": "An impact driven organization to support agriculture and stewardship",
     "homepage_href": "index.html",
     "favicon": "favicon.png",
     "favicon_type": "image/png",
@@ -10,14 +10,15 @@
       "CSS/styles.css"
     ],
     "scripts": [
-      "JS/site-enhancements.js"
+      "JS/site-enhancements.js",
+      "/__fnd/analytics.js"
     ],
     "shell": {
       "masthead_class": "masthead masthead--archive",
       "wordmark_class": "masthead__wordmark masthead__wordmark--with-icon masthead__wordmark--link",
       "wordmark_text": "Countryside Conservancy",
       "wordmark_icon": "assets/icon/ui/icon-home.svg",
-      "subtitle": "A documentary record of agriculture, stewardship, and Countryside programs in Cuyahoga Valley National Park."
+      "subtitle": "An impact driven organization to support agriculture and stewardship"
     }
   },
   "navigation": [
@@ -106,8 +107,8 @@
         "class_name": "footer__col footer__col--newsletter",
         "heading": "Newsletter",
         "label": "Email",
-        "action": "/newsletter.html",
-        "method": "get",
+        "action": "/__fnd/newsletter/subscribe",
+        "method": "post",
         "name": "email",
         "placeholder": "you@example.org",
         "button_label": "Join",
@@ -146,7 +147,7 @@
       "file": "index.html",
       "template": "archive_home",
       "title": "Cuyahoga Valley Countryside Conservancy | Heritage & working lands archive",
-      "description": "A documentary record of agriculture, stewardship, and Countryside programs in Cuyahoga Valley National Park.",
+      "description": "An impact driven organization to support agriculture and stewardship",
       "main_class": "page page--home",
       "stylesheets": [
         "CSS/styles.css",
@@ -166,7 +167,7 @@
             "note_html": "Who we are \u00b7 Meet the <a href=\"people.html\">board members</a> \u00b7 Visit the <a href=\"the_farms.html\">farms</a>",
             "heading": "Who are we",
             "body": [
-              "Countryside Conservancy builds a thriving local food community by connecting people, food, and land in and beyond Cuyahoga Valley National Park. We support working farms, cultivate public understanding of agriculture, and help keep the valley\u2019s historic agricultural landscape active, useful, and shared."
+              "The Cuyahoga Valley Countryside Conservancy (CVCC) is a small nonprofit serving the Cuyahoga Valley in Ohio (and beyond). We are a group of individuals dedicated to supporting area farms, promoting sustainable agriculture, educating the public about sustainable practices, and connecting our community with healthy, local food."
             ]
           },
           {
@@ -174,71 +175,33 @@
             "note_html": "Born out of the initial past \u00b7 Continue on <a href=\"history.html\">History</a>",
             "heading": "What the Countryside program was born out of",
             "body": [
-              "The founding purpose of Countryside was to promote and manage the reestablishment and revitalization of appropriate farming practices in Cuyahoga Valley National Park and beyond. From the start, the work joined stewardship, public education, biodiversity, and historical-cultural landscape preservation.",
-              "That purpose still shapes the program today. Countryside now works with farms to enrich the cultural and community presence of farming in the Cuyahoga Valley, reconnecting consumer-citizens with farmer-citizens and developing durable public-private partnerships around land, food, and care."
+              "Originally created to support the Countryside Initiative, Cuyahoga Valley National Parks' program to rehabilitate farmland within the park, the CVCC continues to support the Initiative farms and has begun expanding it's support to include other local farms, farmers, and farmers markets."
             ]
           }
         ],
         "mission_blocks": [
           {
-            "heading": "Mission",
+            "heading": "Your Donations Will Be Used To:",
             "body": [
-              "Build a thriving local food community by connecting people, food and land in and beyond Cuyahoga Valley National Park."
+              "Support infrastructure projects for farms both within the National Park and surrounding areas.",
+              "Provide grants to local farms and farmers emphasizing sustainable agriculture and education.",
+              "Connect local people to healthy food and a supportive community."
             ]
           },
           {
-            "heading": "Objective",
+            "heading": "How You Can Help",
             "body": [
-              "Become an ecologically and financially sustainable, inclusive, and equitable organization with highly effective models for protecting land, cultivating farmers, and connecting people to local food."
+              "Contributions sustain preservation work, farmer training, and year-round public programming",
+              "Contribute through the archive support page"
             ]
           }
         ],
-        "relationships": {
-          "kicker": "Relationships in the valley",
-          "heading": "The relationships Countryside regards as essential in the Cuyahoga Valley",
-          "body": [
-            "Countryside\u2019s founding purpose reaches beyond land management alone. It treats agriculture as a shared civic practice, one that depends on strong relationships between farms, neighbors, cultural memory, public land, and the people and institutions willing to sustain them together."
-          ],
-          "callout_html": "Condensed from the Articles of Incorporation: Countryside exists to revitalize appropriate farming practices, develop a regional showcase for sustainable agriculture, and create new public-private ways of caring for land in the valley."
+        "donate_callout": {
+          "eyebrow": "Support the work",
+          "body": "Help sustain preservation work, farmer training, and year-round public programming through the donation page.",
+          "href": "donate.html",
+          "link_label": "Visit the donation page"
         },
-        "relationship_cards": [
-          {
-            "heading": "Farms",
-            "body": [
-              "Working farms carry the valley\u2019s agricultural life forward through stewardship, production, teaching, and long-term care for historic farmsteads."
-            ]
-          },
-          {
-            "heading": "The Community",
-            "body": [
-              "Residents, visitors, volunteers, and local food buyers keep farming rooted in daily life by showing up, learning, and participating in a local food system."
-            ]
-          },
-          {
-            "heading": "The Culture",
-            "body": [
-              "Farming in the valley is also cultural presence: memory, seasonal ritual, shared knowledge, and the stories that make agriculture part of public identity."
-            ]
-          },
-          {
-            "heading": "The Cuyahoga Valley National Park",
-            "body": [
-              "The national park provides the landscape where preservation, public access, recreation, ecology, and active agriculture can be held in careful balance."
-            ]
-          },
-          {
-            "heading": "Partners",
-            "body": [
-              "Public and private partners make it possible to guide land use, support farmers, and test collaborative models that neither sector could accomplish alone."
-            ]
-          },
-          {
-            "heading": "Sponsors",
-            "body": [
-              "Sponsors help sustain programs, communications, and educational access so the work of connecting people, food, and land can continue to grow."
-            ]
-          }
-        ],
         "newsletter_collection": "blog_posts",
         "newsletter_feature": {
           "eyebrow": "Latest from the newsletter",
@@ -251,11 +214,11 @@
           "form": {
             "id": "home-newsletter-form",
             "class_name": "",
-            "action": "#",
-            "method": "get",
+            "action": "/__fnd/newsletter/subscribe",
+            "method": "post",
             "button_class": "button",
             "button_label": "Subscribe",
-            "ack_label": "Thanks\u2014we\u2019ll connect this to a newsletter service endpoint soon.",
+            "ack_label": "Thanks. Your address is now in the live contact log.",
             "fields": [
               {
                 "id": "home-news-email",
@@ -274,22 +237,7 @@
           "heading": "Upcoming program highlights",
           "href": "happenings.html#happenings-annual-heading",
           "link_label": "Open full annual happenings"
-        },
-        "portal_heading": "See More",
-        "portal_cards": [
-          {
-            "label": "Governance",
-            "title": "Board of directors",
-            "note": "Conservancy board roster with portraits from the archive where available.",
-            "href": "people.html"
-          },
-          {
-            "label": "Registry",
-            "title": "Working farms",
-            "note": "Farmstead records with photographs, links, and press references for each lease site.",
-            "href": "the_farms.html"
-          }
-        ]
+        }
       }
     },
     "history": {
@@ -388,8 +336,12 @@
         "eyebrow": "Field journal",
         "heading": "Newsletter & seasonal writing",
         "deck": "Stories, recipes, and seasonal notes from the Countryside community\u2014presented here as a readable digest. For email reminders, use the signup at the end of the page.",
-        "featured_heading": "Posts",
-        "archive_heading": "Archive",
+        "featured_heading": "Latest issue",
+        "archive_heading": "More newsletters",
+        "page_size": 9,
+        "pagination_aria_label": "Newsletter archive pages",
+        "pagination_previous_label": "Newer",
+        "pagination_next_label": "Older",
         "email_card": {
           "heading": "Prefer email directly?",
           "body_html": "You can also reach the team at <a href=\"mailto:info@cuyahogavalleycountrysideconservancy.org\">info@cuyahogavalleycountrysideconservancy.org</a> to ask about programs and partnerships."
@@ -399,11 +351,11 @@
           "form": {
             "id": "newsletter-form",
             "class_name": "form-card",
-            "action": "#",
-            "method": "get",
+            "action": "/__fnd/newsletter/subscribe",
+            "method": "post",
             "button_class": "button",
             "button_label": "Join the list",
-            "ack_label": "Thanks\u2014we\u2019ll wire this to a mailing service soon.",
+            "ack_label": "Thanks. Your address is now in the live contact log.",
             "use_grid": true,
             "fields": [
               {
@@ -435,7 +387,7 @@
             "notes": [
               {
                 "class_name": "form-note",
-                "html": "This demo form does not submit anywhere yet. Replace the form <code>action</code> with your ESP or CRM endpoint when ready."
+                "html": "This form sends directly to the live newsletter subscription endpoint for this site."
               }
             ]
           }
