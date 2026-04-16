@@ -1,3 +1,17 @@
+---
+title: "Market Transparency, Entropy, and Equitability"
+slug: "market_transparency"
+summary: "Market transparency is the degree to which participants can observe relevant state of a market in time to act on it: supply availability, demand intent, quality attributes, constraints (time, location, logistics), and th"
+entity_type: "article"
+topics: []
+claims: []
+source_links: []
+last_reviewed: "2026-04-16"
+status: "active"
+related_docs: []
+supports_claims: []
+supersedes: []
+---
 # Market Transparency, Entropy, and Equitability
 
 ## Overview

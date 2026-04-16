@@ -1,0 +1,26 @@
+{
+  "site": "fruitfulnetworkdevelopment.com",
+  "updated": "2026-04-16",
+  "corpus": [
+    {
+      "section": "Core machine-readable brief",
+      "path": "/llms.md",
+      "format": "markdown"
+    },
+    {
+      "section": "Research and public narrative docs",
+      "path": "/assets/docs/",
+      "format": "markdown"
+    },
+    {
+      "section": "Article rendering entry point",
+      "path": "/subpages/articles.html",
+      "format": "html"
+    },
+    {
+      "section": "Machine indexes",
+      "path": "/machine/",
+      "format": "json"
+    }
+  ]
+}

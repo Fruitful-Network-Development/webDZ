@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fruitfulnetworkdevelopment.com/machine/page-manifest.schema.json",
+  "title": "FND page manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "page",
+    "title",
+    "machine_inpage_blocks",
+    "machine_page_links"
+  ],
+  "properties": {
+    "page": {
+      "type": "string",
+      "description": "Canonical URL path for the rendered page."
+    },
+    "title": {
+      "type": "string"
+    },
+    "machine_inpage_blocks": {
+      "type": "array",
+      "description": "Hidden machine-readable blocks injected into this page output.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "source", "injection_pattern"],
+        "properties": {
+          "id": { "type": "string" },
+          "source": {
+            "type": "string",
+            "description": "Relative file path from machine/inpage/."
+          },
+          "injection_pattern": {
+            "type": "string",
+            "enum": [
+              "script:application/ld+json",
+              "script:application/json"
+            ]
+          }
+        }
+      }
+    },
+    "machine_page_links": {
+      "type": "array",
+      "description": "Standalone machine pages linked for crawlers and agents.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["rel", "href"],
+        "properties": {
+          "rel": {
+            "type": "string",
+            "enum": ["machine-index", "dataset", "agent-doc", "llm-context"]
+          },
+          "href": {
+            "type": "string",
+            "description": "Absolute or site-root-relative URL to a machine page."
+          }
+        }
+      }
+    }
+  }
+}

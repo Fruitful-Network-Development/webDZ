@@ -1,3 +1,17 @@
+---
+title: "Northeast Ohio Greenhouse Industry"
+slug: "ne_ohio_greenhouse_industry"
+summary: "In the late 19th and early 20th centuries, Greater Cleveland developed a dense cluster of commercial greenhouse operations and earned regional and national recognition as a “greenhouse capital.” The industry’s growth ref"
+entity_type: "article"
+topics: []
+claims: []
+source_links: []
+last_reviewed: "2026-04-16"
+status: "active"
+related_docs: []
+supports_claims: []
+supersedes: []
+---
 # Northeast Ohio Greenhouse Industry
 
 ## Overview

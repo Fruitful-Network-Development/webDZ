@@ -1,3 +1,17 @@
+---
+title: "Northeast Ohio Historic Local Food System Infrastructure"
+slug: "ne_ohio_historic_local_food_system"
+summary: "Historically, local and regional food systems in and around Northeast Ohio relied on shared physical and social “interfaces” that made supply and demand legible:"
+entity_type: "article"
+topics: []
+claims: []
+source_links: []
+last_reviewed: "2026-04-16"
+status: "active"
+related_docs: []
+supports_claims: []
+supersedes: []
+---
 # Northeast Ohio Historic Local Food System Infrastructure
 
 ## Overview

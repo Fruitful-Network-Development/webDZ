@@ -1,3 +1,17 @@
+---
+title: "Open‑source competition (Arduino model) and “organize information first” (Google model)"
+slug: "opensource_competition"
+summary: "This article describes two related competitive patterns:"
+entity_type: "article"
+topics: []
+claims: []
+source_links: []
+last_reviewed: "2026-04-16"
+status: "active"
+related_docs: []
+supports_claims: []
+supersedes: []
+---
 # Open‑source competition (Arduino model) and “organize information first” (Google model)
 
 This article describes two related competitive patterns:

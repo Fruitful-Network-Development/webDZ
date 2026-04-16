@@ -1,0 +1,207 @@
+{
+  "baseUrl": "https://fruitfulnetworkdevelopment.com",
+  "organization": {
+    "@type": "Organization",
+    "@id": "https://fruitfulnetworkdevelopment.com/#organization",
+    "name": "Fruitful Network Development",
+    "alternateName": "FND",
+    "url": "https://fruitfulnetworkdevelopment.com/",
+    "logo": "https://fruitfulnetworkdevelopment.com/favicon.svg",
+    "description": "Computer engineering contract firm providing server, web, and data framework services for farms and community organizations.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Cuyahoga Valley",
+      "addressRegion": "OH",
+      "addressCountry": "US"
+    },
+    "contactPoint": [
+      {
+        "@type": "ContactPoint",
+        "contactType": "customer support",
+        "email": "dcmontgomery@fruitfulnetworkdevelopment.com",
+        "availableLanguage": ["en"]
+      },
+      {
+        "@type": "ContactPoint",
+        "contactType": "sales",
+        "email": "dcmontgomery@fruitfulnetworkdevelopment.com",
+        "availableLanguage": ["en"]
+      }
+    ],
+    "sameAs": [
+      "https://github.com/Fruitful-Network-Development"
+    ]
+  },
+  "website": {
+    "@type": "WebSite",
+    "@id": "https://fruitfulnetworkdevelopment.com/#website",
+    "name": "Fruitful Network Development",
+    "url": "https://fruitfulnetworkdevelopment.com/",
+    "publisher": {
+      "@id": "https://fruitfulnetworkdevelopment.com/#organization"
+    },
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://fruitfulnetworkdevelopment.com/subpages/search.html?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  },
+  "person": {
+    "@type": "Person",
+    "@id": "https://fruitfulnetworkdevelopment.com/#founder",
+    "name": "Dylan Montgomery",
+    "jobTitle": "Founder & Managing Partner",
+    "email": "dcmontgomery@fruitfulnetworkdevelopment.com",
+    "worksFor": {
+      "@id": "https://fruitfulnetworkdevelopment.com/#organization"
+    },
+    "homeLocation": {
+      "@type": "Place",
+      "name": "Cuyahoga Valley, Ohio"
+    },
+    "alumniOf": {
+      "@type": "CollegeOrUniversity",
+      "name": "University of Akron"
+    }
+  },
+  "services": [
+    {
+      "@type": "Service",
+      "@id": "https://fruitfulnetworkdevelopment.com/services.html#website-hosting-development",
+      "name": "Website Hosting & Development",
+      "serviceType": "Website hosting and development",
+      "url": "https://fruitfulnetworkdevelopment.com/subpages/payment-processing.html",
+      "provider": {
+        "@id": "https://fruitfulnetworkdevelopment.com/#organization"
+      },
+      "areaServed": "US"
+    },
+    {
+      "@type": "Service",
+      "@id": "https://fruitfulnetworkdevelopment.com/services.html#email-communications",
+      "name": "Email & Communications",
+      "serviceType": "Email operations and communications setup",
+      "url": "https://fruitfulnetworkdevelopment.com/subpages/email-management.html",
+      "provider": {
+        "@id": "https://fruitfulnetworkdevelopment.com/#organization"
+      },
+      "areaServed": "US"
+    },
+    {
+      "@type": "Service",
+      "@id": "https://fruitfulnetworkdevelopment.com/services.html#point-of-sale-payments",
+      "name": "Point-of-Sale & Payments",
+      "serviceType": "Point-of-sale and payment processing configuration",
+      "url": "https://fruitfulnetworkdevelopment.com/subpages/pos.html",
+      "provider": {
+        "@id": "https://fruitfulnetworkdevelopment.com/#organization"
+      },
+      "areaServed": "US"
+    },
+    {
+      "@type": "Service",
+      "@id": "https://fruitfulnetworkdevelopment.com/services.html#hardware-instrumentation",
+      "name": "Hardware & Instrumentation",
+      "serviceType": "Operational monitoring and instrumentation deployment",
+      "url": "https://fruitfulnetworkdevelopment.com/services.html#hardware-dev",
+      "provider": {
+        "@id": "https://fruitfulnetworkdevelopment.com/#organization"
+      },
+      "areaServed": "US"
+    }
+  ],
+  "docs": {
+    "articles": [
+      {
+        "@type": "Article",
+        "headline": "Interoperability in Socio-Technical Networks",
+        "url": "https://fruitfulnetworkdevelopment.com/subpages/articles.html?doc=interoperability_in_socio-technical_networks.md",
+        "author": {
+          "@id": "https://fruitfulnetworkdevelopment.com/#organization"
+        }
+      },
+      {
+        "@type": "ScholarlyArticle",
+        "headline": "Agronomic Micro Structure",
+        "url": "https://fruitfulnetworkdevelopment.com/subpages/articles.html?doc=agronomic_mirco_structure.md",
+        "author": {
+          "@id": "https://fruitfulnetworkdevelopment.com/#organization"
+        }
+      }
+    ],
+    "reports": [
+      {
+        "@type": "Report",
+        "headline": "Market Research Report",
+        "url": "https://fruitfulnetworkdevelopment.com/subpages/articles.html?doc=market-research-report.md",
+        "author": {
+          "@id": "https://fruitfulnetworkdevelopment.com/#organization"
+        }
+      }
+    ],
+    "dataset": {
+      "@type": "Dataset",
+      "name": "Fruitful Network Development Research Archive",
+      "url": "https://fruitfulnetworkdevelopment.com/subpages/articles.html",
+      "creator": {
+        "@id": "https://fruitfulnetworkdevelopment.com/#organization"
+      },
+      "description": "Docs-backed archive used for services and research rationale."
+    }
+  },
+  "pages": {
+    "/": {
+      "title": "Fruitful Network Development",
+      "breadcrumb": [{"name": "Home", "path": "/"}]
+    },
+    "/index.html": {
+      "title": "Fruitful Network Development",
+      "breadcrumb": [{"name": "Home", "path": "/"}]
+    },
+    "/services.html": {
+      "title": "Services",
+      "breadcrumb": [{"name": "Home", "path": "/"}, {"name": "Services", "path": "/services.html"}],
+      "includeServices": true
+    },
+    "/research.html": {
+      "title": "Research",
+      "breadcrumb": [{"name": "Home", "path": "/"}, {"name": "Research", "path": "/research.html"}],
+      "includeReport": true
+    },
+    "/about.html": {
+      "title": "About",
+      "breadcrumb": [{"name": "Home", "path": "/"}, {"name": "About", "path": "/about.html"}],
+      "includePerson": true
+    },
+    "/contact.html": {
+      "title": "Contact",
+      "breadcrumb": [{"name": "Home", "path": "/"}, {"name": "Contact", "path": "/contact.html"}],
+      "includePerson": true
+    },
+    "/subpages/articles.html": {
+      "title": "Articles",
+      "breadcrumb": [{"name": "Home", "path": "/"}, {"name": "Research", "path": "/research.html"}, {"name": "Articles", "path": "/subpages/articles.html"}],
+      "includeDocs": true
+    },
+    "/subpages/payment-processing.html": {
+      "title": "Payment Processing",
+      "breadcrumb": [{"name": "Home", "path": "/"}, {"name": "Services", "path": "/services.html"}, {"name": "Payment Processing", "path": "/subpages/payment-processing.html"}]
+    },
+    "/subpages/email-management.html": {
+      "title": "Email Management",
+      "breadcrumb": [{"name": "Home", "path": "/"}, {"name": "Services", "path": "/services.html"}, {"name": "Email Management", "path": "/subpages/email-management.html"}]
+    },
+    "/subpages/pos.html": {
+      "title": "POS and Payment Table",
+      "breadcrumb": [{"name": "Home", "path": "/"}, {"name": "Services", "path": "/services.html"}, {"name": "POS and Payment Table", "path": "/subpages/pos.html"}]
+    },
+    "/subpages/checkout.html": {
+      "title": "Checkout",
+      "breadcrumb": [{"name": "Home", "path": "/"}, {"name": "Services", "path": "/services.html"}, {"name": "Checkout", "path": "/subpages/checkout.html"}]
+    },
+    "/subpages/search.html": {
+      "title": "Search",
+      "breadcrumb": [{"name": "Home", "path": "/"}, {"name": "Search", "path": "/subpages/search.html"}]
+    }
+  }
+}
