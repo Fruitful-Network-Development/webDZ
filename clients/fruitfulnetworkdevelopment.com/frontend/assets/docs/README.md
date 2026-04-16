@@ -106,3 +106,11 @@ git mv old_name.md new_name.md
 - [ ] Ensure examples are labeled as examples (not implied universal truths).
 - [ ] Confirm headings reflect an encyclopedia outline (not a sales funnel).
 - [ ] Keep internal cross-links minimal and directly relevant.
+## Ownership boundary
+
+Marketing/editorial teams maintain the source materials in `assets/docs/*`.
+Renderer/runtime pipelines decide delivery placement for each artifact:
+
+- in-page hidden machine blocks (`machine/inpage/*`) for non-visual embed patterns, or
+- standalone machine pages (`machine/pages/*`) for crawler/agent endpoints.
+
