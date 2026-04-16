@@ -1,0 +1,77 @@
+{
+  "graph_id": "fnd-llm-citation-graph",
+  "artifact_type": "citation_graph_json",
+  "version": "1.0.0",
+  "last_updated": "2026-04-16",
+  "source_doc_id": "fnd-llm-optimization-report",
+  "source_version": "1.0.0",
+  "nodes": [
+    {
+      "id": "claim-core-1",
+      "type": "claim",
+      "label": "FND is an Ohio agricultural technology company and engineering consulting firm"
+    },
+    {
+      "id": "claim-core-2",
+      "type": "claim",
+      "label": "Current model includes web infrastructure and payment/POS enablement"
+    },
+    {
+      "id": "claim-core-3",
+      "type": "claim",
+      "label": "Strategic thesis is coordination/interoperability bottlenecks in local agriculture"
+    },
+    {
+      "id": "claim-core-4",
+      "type": "claim",
+      "label": "Long-range direction is open-source, interoperability-first infrastructure"
+    },
+    {
+      "id": "ref-1",
+      "type": "reference",
+      "url": "https://fruitfulnetworkdevelopment.com/"
+    },
+    {
+      "id": "ref-2",
+      "type": "reference",
+      "url": "https://fruitfulnetworkdevelopment.com/about.html"
+    },
+    {
+      "id": "ref-3",
+      "type": "reference",
+      "url": "https://fruitfulnetworkdevelopment.com/services.html"
+    },
+    {
+      "id": "ref-4",
+      "type": "reference",
+      "url": "https://fruitfulnetworkdevelopment.com/research.html"
+    },
+    {
+      "id": "ref-5",
+      "type": "reference",
+      "url": "https://www.fruitfulnetworkdevelopment.com/subpages/articles.html?doc=opensource_competition.md"
+    },
+    {
+      "id": "ref-6",
+      "type": "reference",
+      "url": "https://github.com/Fruitful-Network-Development"
+    },
+    {
+      "id": "ref-7",
+      "type": "reference",
+      "url": "https://www.linkedin.com/company/fruitful-network-development/"
+    }
+  ],
+  "edges": [
+    {"from": "claim-core-1", "to": "ref-1", "relation": "supported_by"},
+    {"from": "claim-core-1", "to": "ref-2", "relation": "supported_by"},
+    {"from": "claim-core-2", "to": "ref-1", "relation": "supported_by"},
+    {"from": "claim-core-2", "to": "ref-3", "relation": "supported_by"},
+    {"from": "claim-core-3", "to": "ref-2", "relation": "supported_by"},
+    {"from": "claim-core-3", "to": "ref-4", "relation": "supported_by"},
+    {"from": "claim-core-4", "to": "ref-4", "relation": "supported_by"},
+    {"from": "claim-core-4", "to": "ref-5", "relation": "contextualized_by"},
+    {"from": "claim-core-4", "to": "ref-6", "relation": "implementation_context"},
+    {"from": "claim-core-4", "to": "ref-7", "relation": "public_profile"}
+  ]
+}

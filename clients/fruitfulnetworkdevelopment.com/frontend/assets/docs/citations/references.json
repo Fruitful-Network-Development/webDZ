@@ -1,0 +1,70 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-04-16",
+  "sources": [
+    {
+      "id": "ref-usda-ers-food-dollar-2025",
+      "url": "https://www.ers.usda.gov/data-products/food-dollar-series/",
+      "title": "Food Dollar Series",
+      "publisher": "USDA Economic Research Service",
+      "date_accessed": "2026-04-16",
+      "topics": ["agriculture", "supply-chain", "economics"]
+    },
+    {
+      "id": "ref-usda-climate-smart-2025",
+      "url": "https://www.usda.gov/climate-solutions/climate-smart-agriculture-and-forestry",
+      "title": "Climate-Smart Agriculture and Forestry",
+      "publisher": "United States Department of Agriculture",
+      "date_accessed": "2026-04-16",
+      "topics": ["regenerative-farming", "policy", "climate"]
+    },
+    {
+      "id": "ref-epa-wasted-food-scale-2025",
+      "url": "https://www.epa.gov/sustainable-management-food/wasted-food-scale",
+      "title": "Wasted Food Scale",
+      "publisher": "U.S. Environmental Protection Agency",
+      "date_accessed": "2026-04-16",
+      "topics": ["food-waste", "sustainability", "operations"]
+    },
+    {
+      "id": "ref-fao-food-loss-index-2024",
+      "url": "https://www.fao.org/platform-food-loss-waste/flw-data/en/",
+      "title": "Food Loss and Waste Database",
+      "publisher": "Food and Agriculture Organization of the United Nations",
+      "date_accessed": "2026-04-16",
+      "topics": ["food-waste", "global-benchmarks", "market-analysis"]
+    },
+    {
+      "id": "ref-ams-local-food-directories-2025",
+      "url": "https://www.ams.usda.gov/services/local-regional/food-directories",
+      "title": "Local Food Directories",
+      "publisher": "USDA Agricultural Marketing Service",
+      "date_accessed": "2026-04-16",
+      "topics": ["local-food-systems", "distribution", "market-transparency"]
+    },
+    {
+      "id": "ref-cdfa-farm-to-school-procurement-2025",
+      "url": "https://www.cdfa.ca.gov/farmtoschool/procurement.html",
+      "title": "Farm to School Procurement Guidance",
+      "publisher": "California Department of Food and Agriculture",
+      "date_accessed": "2026-04-16",
+      "topics": ["procurement", "local-food-systems", "institutional-buying"]
+    },
+    {
+      "id": "ref-nifa-sbir-overview-2025",
+      "url": "https://www.nifa.usda.gov/grants/programs/small-business-innovation-research-program-sbir",
+      "title": "Small Business Innovation Research Program (SBIR)",
+      "publisher": "USDA NIFA",
+      "date_accessed": "2026-04-16",
+      "topics": ["research-funding", "commercialization", "rural-innovation"]
+    },
+    {
+      "id": "ref-nga-local-food-economies-2024",
+      "url": "https://www.nga.org/publications/the-role-of-states-in-strengthening-local-and-regional-food-systems/",
+      "title": "The Role of States in Strengthening Local and Regional Food Systems",
+      "publisher": "National Governors Association",
+      "date_accessed": "2026-04-16",
+      "topics": ["regional-planning", "local-food-systems", "policy"]
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "version": "1.0",
+  "updated_at": "2026-04-16",
+  "site": "https://fruitfulnetworkdevelopment.com",
+  "pages": [
+    {
+      "rel": "llm-context",
+      "href": "/llms.md",
+      "format": "text/markdown"
+    },
+    {
+      "rel": "dataset",
+      "href": "/machine/pages/fnd-pages.manifest.json",
+      "format": "application/json"
+    }
+  ]
+}

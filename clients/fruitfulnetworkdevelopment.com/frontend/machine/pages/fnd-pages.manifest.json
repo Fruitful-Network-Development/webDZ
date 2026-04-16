@@ -1,0 +1,23 @@
+[
+  {
+    "page": "/",
+    "title": "Fruitful Network Development",
+    "machine_inpage_blocks": [
+      {
+        "id": "fnd-org-schema",
+        "source": "home.organization.ld+json",
+        "injection_pattern": "script:application/ld+json"
+      }
+    ],
+    "machine_page_links": [
+      {
+        "rel": "machine-index",
+        "href": "/machine/pages/fnd-machine-index.json"
+      },
+      {
+        "rel": "llm-context",
+        "href": "/llms.md"
+      }
+    ]
+  }
+]

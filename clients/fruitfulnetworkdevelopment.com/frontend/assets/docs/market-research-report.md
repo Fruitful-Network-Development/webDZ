@@ -1,3 +1,17 @@
+---
+title: "USDA SBIR Topic 8.6 Market Evidence Pack for Perishable Produce"
+slug: "market-research-report"
+summary: "This Evidence Pack is tailored to a entity[\"organization\",\"USDA Small Business Innovation Research\",\"sbir program\"] Phase I proposal (Topic 8.6) and is restricted to perishable, time sensitive produce (fresh vegetable"
+entity_type: "article"
+topics: []
+claims: []
+source_links: []
+last_reviewed: "2026-04-16"
+status: "active"
+related_docs: []
+supports_claims: []
+supersedes: []
+---
 # USDA SBIR Topic 8.6 Market Evidence Pack for Perishable Produce
 
 ## Scope and definitions

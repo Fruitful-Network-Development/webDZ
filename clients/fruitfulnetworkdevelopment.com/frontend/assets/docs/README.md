@@ -1,3 +1,17 @@
+---
+title: "Articles Directory — README"
+slug: "README"
+summary: "This directory contains reference style (Wikipedia like) articles used as “Read More” links across the Fruitful Network Development website."
+entity_type: "index"
+topics: []
+claims: []
+source_links: []
+last_reviewed: "2026-04-16"
+status: "active"
+related_docs: []
+supports_claims: []
+supersedes: []
+---
 # Articles Directory — README
 
 ## Purpose
@@ -106,3 +120,30 @@ git mv old_name.md new_name.md
 - [ ] Ensure examples are labeled as examples (not implied universal truths).
 - [ ] Confirm headings reflect an encyclopedia outline (not a sales funnel).
 - [ ] Keep internal cross-links minimal and directly relevant.
+## Ownership boundary
+
+Marketing/editorial teams maintain source materials in `assets/docs/*`.
+Renderer/runtime pipelines decide delivery placement for each artifact:
+
+- in-page hidden machine blocks (`machine/inpage/*`) for non-visual embed patterns, or
+- standalone machine pages (`machine/pages/*`) for crawler/agent endpoints.
+
+## LLM Optimization Source Bundle
+
+Canonical source and generated machine artifacts for LLM consumption live in this folder:
+
+- `LLM-optimization-report.md` (canonical machine-ingestion source)
+- `llm-optimization-manifest.json` (deterministic extraction map + artifact registry)
+- `LLM-optimization-report.machine-brief.md`
+- `LLM-optimization-report.citation-graph.json`
+- `LLM-optimization-report.entity-profiles.jsonld`
+
+All of the above include explicit `version` and `last_updated` fields for traceable updates.
+
+### Lint check for required sections
+
+```bash
+python3 clients/fruitfulnetworkdevelopment.com/frontend/assets/docs/scripts/lint_llm_docs.py \
+  clients/fruitfulnetworkdevelopment.com/frontend/assets/docs/LLM-optimization-report.md
+```
+
