@@ -1,3 +1,17 @@
+---
+title: "Agronomic Micro-Structure: Cyclical Reinvestment, Local Infrastructure, and the Critical Point"
+slug: "agronomic_mirco_structure"
+summary: "This article describes a local agriculture micro structure : the recurring, small scale mechanisms that determine whether local supply can reliably meet local demand at competitive delivered prices."
+entity_type: "article"
+topics: []
+claims: []
+source_links: []
+last_reviewed: "2026-04-16"
+status: "active"
+related_docs: []
+supports_claims: []
+supersedes: []
+---
 # Agronomic Micro-Structure: Cyclical Reinvestment, Local Infrastructure, and the Critical Point
 
 This article describes a *local agriculture micro-structure*: the recurring, small-scale mechanisms that determine whether local supply can reliably meet local demand at competitive delivered prices.

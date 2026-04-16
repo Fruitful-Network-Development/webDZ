@@ -1,3 +1,17 @@
+---
+title: "Food System Value Dimensions"
+slug: "food_system_value_dimentions"
+summary: "This article describes a recurring confusion in food systems analysis: a system can generate “more value” while feeling less equitable to operate in , and a system can generate the same physical output while producing mo"
+entity_type: "article"
+topics: []
+claims: []
+source_links: []
+last_reviewed: "2026-04-16"
+status: "active"
+related_docs: []
+supports_claims: []
+supersedes: []
+---
 # Food System Value Dimensions
 
 This article describes a recurring confusion in food systems analysis: **a system can generate “more value” while feeling less equitable to operate in**, and a system can generate **the same physical output** while producing **more real value** by wasting less effort, time, and material.

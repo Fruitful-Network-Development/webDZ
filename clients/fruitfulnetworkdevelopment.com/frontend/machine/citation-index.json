@@ -1,0 +1,31 @@
+{
+  "site": "fruitfulnetworkdevelopment.com",
+  "updated": "2026-04-16",
+  "citations": [
+    {
+      "topic": "Canonical company brief",
+      "url": "https://fruitfulnetworkdevelopment.com/llms.md",
+      "type": "narrative"
+    },
+    {
+      "topic": "Services and operating model",
+      "url": "https://fruitfulnetworkdevelopment.com/services.html",
+      "type": "page"
+    },
+    {
+      "topic": "Research thesis and technical framing",
+      "url": "https://fruitfulnetworkdevelopment.com/research.html",
+      "type": "page"
+    },
+    {
+      "topic": "Company profile and mission",
+      "url": "https://fruitfulnetworkdevelopment.com/about.html",
+      "type": "page"
+    },
+    {
+      "topic": "Public docs corpus",
+      "url": "https://fruitfulnetworkdevelopment.com/machine/docs-corpus-map.json",
+      "type": "index"
+    }
+  ]
+}

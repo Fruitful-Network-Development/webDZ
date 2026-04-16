@@ -176,6 +176,35 @@ const mdToHtml = (md) => {
   return html;
 };
 
+const parseFrontMatter = (md) => {
+  if (!md.startsWith("---\n")) {
+    return { metadata: {}, body: md };
+  }
+
+  const end = md.indexOf("\n---\n", 4);
+  if (end === -1) {
+    return { metadata: {}, body: md };
+  }
+
+  const frontMatter = md.slice(4, end);
+  const body = md.slice(end + 5);
+  const metadata = {};
+
+  frontMatter.split("\n").forEach((line) => {
+    const idx = line.indexOf(":");
+    if (idx === -1) return;
+    const key = line.slice(0, idx).trim();
+    let value = line.slice(idx + 1).trim();
+    if (!key) return;
+    if ((value.startsWith("\"") && value.endsWith("\"")) || (value.startsWith("'") && value.endsWith("'"))) {
+      value = value.slice(1, -1);
+    }
+    metadata[key] = value;
+  });
+
+  return { metadata, body };
+};
+
 /* ========================================
    OVERLAY MANAGEMENT
 ======================================== */
@@ -183,6 +212,9 @@ const mdToHtml = (md) => {
 let overlay = null;
 let viewerBody = null;
 let viewerTitle = null;
+let viewerCitations = null;
+let viewerMachine = null;
+let citationState = { references: null, articleMap: null };
 
 const buildOverlay = () => {
   const el = document.createElement("div");
@@ -195,6 +227,8 @@ const buildOverlay = () => {
         <button class="article-viewer__close" type="button" aria-label="Close article">&times;</button>
       </div>
       <div class="article-viewer__body" id="article-viewer-body"></div>
+      <div class="article-viewer__citations" id="article-viewer-citations"></div>
+      <script id="article-machine-metadata" type="application/json" hidden>{}</script>
     </div>
   `;
   document.body.appendChild(el);
@@ -202,6 +236,8 @@ const buildOverlay = () => {
   overlay = el;
   viewerBody = el.querySelector("#article-viewer-body");
   viewerTitle = el.querySelector("#article-viewer-title");
+  viewerCitations = el.querySelector("#article-viewer-citations");
+  viewerMachine = el.querySelector("#article-machine-metadata");
 
   /* Close handlers */
   const closeBtn = el.querySelector(".article-viewer__close");
@@ -225,6 +261,7 @@ const openArticle = async (path) => {
 
   viewerBody.innerHTML = '<p style="text-align:center;color:#717171;">Loading…</p>';
   viewerTitle.textContent = "Loading…";
+  viewerMachine.textContent = "{}";
   overlay.classList.add("is-open");
   document.body.style.overflow = "hidden";
   document.body.classList.add("has-article-open");
@@ -233,9 +270,10 @@ const openArticle = async (path) => {
     const res = await fetch(path);
     if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
     const md = await res.text();
+    const { metadata, body } = parseFrontMatter(md);
 
     /* Derive title from first H1 or filename */
-    const h1Match = md.match(/^#\s+(.*)/m);
+    const h1Match = body.match(/^#\s+(.*)/m);
     const title = h1Match
       ? h1Match[1]
       : path
@@ -245,11 +283,49 @@ const openArticle = async (path) => {
           .replace(/_/g, " ");
 
     viewerTitle.textContent = title;
-    viewerBody.innerHTML = mdToHtml(md);
+    viewerBody.innerHTML = mdToHtml(body);
+    viewerMachine.textContent = JSON.stringify({
+      title,
+      slug: metadata.slug || path.split("/").pop().replace(/\.md$/, ""),
+      summary: metadata.summary || "",
+      entity_type: metadata.entity_type || "article",
+      doc_path: path
+    });
+    if (window.FNDCitations?.applyOutboundLinkGovernance) {
+      window.FNDCitations.applyOutboundLinkGovernance(viewerBody);
+    }
+    await renderArticleCitationBlock(path);
     viewerBody.scrollTop = 0;
   } catch (err) {
     viewerBody.innerHTML = `<p style="color:#a32023;text-align:center;">Failed to load article.<br><small>${err.message}</small></p>`;
     viewerTitle.textContent = "Error";
+    viewerMachine.textContent = "{}";
+  }
+};
+
+const ensureCitationState = async () => {
+  if (citationState.references && citationState.articleMap) return citationState;
+  citationState.references = await window.FNDCitations.loadReferences();
+  citationState.articleMap = await window.FNDCitations.loadArticleReferences();
+  return citationState;
+};
+
+const renderArticleCitationBlock = async (path) => {
+  if (!viewerCitations || !window.FNDCitations?.renderCitationMachineBlock) return;
+
+  try {
+    const state = await ensureCitationState();
+    const articleName = path.split("/").pop() || "";
+    const citationIds = state.articleMap.articles?.[articleName] || [];
+    const filtered = (state.references.sources || []).filter((source) => citationIds.includes(source.id));
+    const payload = {
+      article: articleName,
+      citation_ids: citationIds,
+      references: filtered
+    };
+    window.FNDCitations.renderCitationMachineBlock(viewerCitations, payload);
+  } catch (_err) {
+    viewerCitations.innerHTML = "";
   }
 };
 
@@ -258,6 +334,9 @@ const openArticle = async (path) => {
 ======================================== */
 
 document.addEventListener("DOMContentLoaded", () => {
+  if (window.FNDCitations?.applyOutboundLinkGovernance) {
+    window.FNDCitations.applyOutboundLinkGovernance(document);
+  }
   document.querySelectorAll("[data-article]").forEach((link) => {
     link.addEventListener("click", (e) => {
       e.preventDefault();

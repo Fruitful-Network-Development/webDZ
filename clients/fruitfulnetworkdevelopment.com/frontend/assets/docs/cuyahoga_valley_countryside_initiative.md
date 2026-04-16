@@ -1,3 +1,17 @@
+---
+title: "Cuyahoga Valley National Park — Countryside Initiative"
+slug: "cuyahoga_valley_countryside_initiative"
+summary: "The Countryside Initiative is a program in Cuyahoga Valley National Park (CVNP) designed to preserve agriculture as a living, working landscape rather than a static historic display. It began in 1999 and focuses on rehab"
+entity_type: "article"
+topics: []
+claims: []
+source_links: []
+last_reviewed: "2026-04-16"
+status: "active"
+related_docs: []
+supports_claims: []
+supersedes: []
+---
 # Cuyahoga Valley National Park — Countryside Initiative
 
 ## Overview

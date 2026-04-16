@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Machine References | Fruitful Network Development</title>
+  <meta name="robots" content="index,follow" />
+  <link rel="stylesheet" href="../../main.css" />
+</head>
+<body>
+  <main class="edition">
+    <section class="editorial editorial--linear">
+      <h1>Machine Reference Index</h1>
+      <p>This page is for crawlers and agents. References are normalized and evidence-oriented.</p>
+      <div id="references-list"></div>
+      <section id="machine-citations-reference-page" hidden aria-hidden="true" data-machine="citations"></section>
+    </section>
+  </main>
+
+  <script src="../../js/citation-governance.js" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      const list = document.getElementById('references-list');
+      if (!window.FNDCitations || !list) return;
+      try {
+        const payload = await window.FNDCitations.loadReferences();
+        const items = (payload.sources || []).map((source) => `
+          <article>
+            <h2>${source.id}</h2>
+            <p><strong>Title:</strong> ${source.title}</p>
+            <p><strong>Publisher:</strong> ${source.publisher}</p>
+            <p><strong>Date Accessed:</strong> ${source.date_accessed}</p>
+            <p><strong>Topics:</strong> ${(source.topics || []).join(', ')}</p>
+            <p><a href="${source.url}">${source.url}</a></p>
+          </article>
+        `).join('');
+
+        list.innerHTML = items;
+        window.FNDCitations.renderCitationMachineBlock(
+          document.getElementById('machine-citations-reference-page'),
+          {
+            page: '/machine/pages/references.html',
+            references: payload.sources || [],
+            evidence_policy: 'non-promotional, evidence-oriented references only'
+          }
+        );
+        window.FNDCitations.applyOutboundLinkGovernance(document);
+      } catch (err) {
+        list.innerHTML = `<p>Reference load failed: ${err.message}</p>`;
+      }
+    });
+  </script>
+</body>
+</html>

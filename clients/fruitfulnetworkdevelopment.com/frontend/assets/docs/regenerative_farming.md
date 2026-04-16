@@ -1,3 +1,17 @@
+---
+title: "Regenerative Farming"
+slug: "regenerative_farming"
+summary: "Purpose. This article provides a deep dive into regenerative agriculture with an emphasis on how the Savory Institute / Holistic Management tradition frames (1) ecological function, (2) management decisions under complex"
+entity_type: "article"
+topics: []
+claims: []
+source_links: []
+last_reviewed: "2026-04-16"
+status: "active"
+related_docs: []
+supports_claims: []
+supersedes: []
+---
 # Regenerative Farming
 ## Principles, Practice Classifiers, and the Savory (Holistic Management) School of Thought
 

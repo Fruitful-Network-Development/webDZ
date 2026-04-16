@@ -1,0 +1,21 @@
+{
+  "site": "fruitfulnetworkdevelopment.com",
+  "updated": "2026-04-16",
+  "hubs": [
+    {
+      "id": "public-pages",
+      "description": "Primary public website pages and service descriptions.",
+      "url": "https://fruitfulnetworkdevelopment.com/sitemap.xml"
+    },
+    {
+      "id": "articles-viewer",
+      "description": "Document-backed article viewer and machine-readable document query parameter entry point.",
+      "url": "https://fruitfulnetworkdevelopment.com/subpages/articles.html"
+    },
+    {
+      "id": "research-briefing",
+      "description": "Research and technical framing page for Mycite and interoperability work.",
+      "url": "https://fruitfulnetworkdevelopment.com/research.html"
+    }
+  ]
+}

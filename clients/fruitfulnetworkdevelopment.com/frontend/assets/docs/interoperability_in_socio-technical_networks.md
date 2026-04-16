@@ -1,3 +1,17 @@
+---
+title: "Interoperability in Socio-Technical Networks"
+slug: "interoperability_in_socio-technical_networks"
+summary: "Interoperability is the ability of independently developed systems (software, organizations, devices, and their human operators) to exchange information and use it meaningfully without bespoke, case by case integration f"
+entity_type: "article"
+topics: []
+claims: []
+source_links: []
+last_reviewed: "2026-04-16"
+status: "active"
+related_docs: []
+supports_claims: []
+supersedes: []
+---
 # Interoperability in Socio-Technical Networks
 
 ## Overview
