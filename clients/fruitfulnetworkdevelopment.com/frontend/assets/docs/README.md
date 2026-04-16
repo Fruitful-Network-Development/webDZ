@@ -106,3 +106,21 @@ git mv old_name.md new_name.md
 - [ ] Ensure examples are labeled as examples (not implied universal truths).
 - [ ] Confirm headings reflect an encyclopedia outline (not a sales funnel).
 - [ ] Keep internal cross-links minimal and directly relevant.
+## LLM Optimization Source Bundle
+
+Canonical source and generated machine artifacts for LLM consumption live in this folder:
+
+- `LLM-optimization-report.md` (canonical machine-ingestion source)
+- `llm-optimization-manifest.json` (deterministic extraction map + artifact registry)
+- `LLM-optimization-report.machine-brief.md`
+- `LLM-optimization-report.citation-graph.json`
+- `LLM-optimization-report.entity-profiles.jsonld`
+
+All of the above include explicit `version` and `last_updated` fields for traceable updates.
+
+### Lint check for required sections
+
+```bash
+python3 clients/fruitfulnetworkdevelopment.com/frontend/assets/docs/scripts/lint_llm_docs.py \
+  clients/fruitfulnetworkdevelopment.com/frontend/assets/docs/LLM-optimization-report.md
+```
