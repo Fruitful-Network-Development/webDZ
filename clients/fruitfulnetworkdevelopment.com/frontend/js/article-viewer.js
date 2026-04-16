@@ -183,6 +183,8 @@ const mdToHtml = (md) => {
 let overlay = null;
 let viewerBody = null;
 let viewerTitle = null;
+let viewerCitations = null;
+let citationState = { references: null, articleMap: null };
 
 const buildOverlay = () => {
   const el = document.createElement("div");
@@ -195,6 +197,7 @@ const buildOverlay = () => {
         <button class="article-viewer__close" type="button" aria-label="Close article">&times;</button>
       </div>
       <div class="article-viewer__body" id="article-viewer-body"></div>
+      <div class="article-viewer__citations" id="article-viewer-citations"></div>
     </div>
   `;
   document.body.appendChild(el);
@@ -202,6 +205,7 @@ const buildOverlay = () => {
   overlay = el;
   viewerBody = el.querySelector("#article-viewer-body");
   viewerTitle = el.querySelector("#article-viewer-title");
+  viewerCitations = el.querySelector("#article-viewer-citations");
 
   /* Close handlers */
   const closeBtn = el.querySelector(".article-viewer__close");
@@ -246,10 +250,40 @@ const openArticle = async (path) => {
 
     viewerTitle.textContent = title;
     viewerBody.innerHTML = mdToHtml(md);
+    if (window.FNDCitations?.applyOutboundLinkGovernance) {
+      window.FNDCitations.applyOutboundLinkGovernance(viewerBody);
+    }
+    await renderArticleCitationBlock(path);
     viewerBody.scrollTop = 0;
   } catch (err) {
     viewerBody.innerHTML = `<p style="color:#a32023;text-align:center;">Failed to load article.<br><small>${err.message}</small></p>`;
     viewerTitle.textContent = "Error";
+  }
+};
+
+const ensureCitationState = async () => {
+  if (citationState.references && citationState.articleMap) return citationState;
+  citationState.references = await window.FNDCitations.loadReferences();
+  citationState.articleMap = await window.FNDCitations.loadArticleReferences();
+  return citationState;
+};
+
+const renderArticleCitationBlock = async (path) => {
+  if (!viewerCitations || !window.FNDCitations?.renderCitationMachineBlock) return;
+
+  try {
+    const state = await ensureCitationState();
+    const articleName = path.split("/").pop() || "";
+    const citationIds = state.articleMap.articles?.[articleName] || [];
+    const filtered = (state.references.sources || []).filter((source) => citationIds.includes(source.id));
+    const payload = {
+      article: articleName,
+      citation_ids: citationIds,
+      references: filtered
+    };
+    window.FNDCitations.renderCitationMachineBlock(viewerCitations, payload);
+  } catch (_err) {
+    viewerCitations.innerHTML = "";
   }
 };
 
@@ -258,6 +292,9 @@ const openArticle = async (path) => {
 ======================================== */
 
 document.addEventListener("DOMContentLoaded", () => {
+  if (window.FNDCitations?.applyOutboundLinkGovernance) {
+    window.FNDCitations.applyOutboundLinkGovernance(document);
+  }
   document.querySelectorAll("[data-article]").forEach((link) => {
     link.addEventListener("click", (e) => {
       e.preventDefault();

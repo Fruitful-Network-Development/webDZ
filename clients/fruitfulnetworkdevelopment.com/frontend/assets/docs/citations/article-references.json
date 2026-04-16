@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.0",
+  "articles": {
+    "market-research-report.md": [
+      "ref-usda-ers-food-dollar-2025",
+      "ref-epa-wasted-food-scale-2025",
+      "ref-fao-food-loss-index-2024",
+      "ref-ams-local-food-directories-2025"
+    ],
+    "market_transparency.md": [
+      "ref-ams-local-food-directories-2025",
+      "ref-cdfa-farm-to-school-procurement-2025",
+      "ref-nga-local-food-economies-2024"
+    ],
+    "regenerative_farming.md": [
+      "ref-usda-climate-smart-2025",
+      "ref-fao-food-loss-index-2024"
+    ],
+    "regenerative_farming_market_recapture.md": [
+      "ref-usda-climate-smart-2025",
+      "ref-nga-local-food-economies-2024"
+    ],
+    "modern_models_in_local_agriculture.md": [
+      "ref-ams-local-food-directories-2025",
+      "ref-nga-local-food-economies-2024"
+    ],
+    "README.md": [
+      "ref-nifa-sbir-overview-2025"
+    ]
+  }
+}

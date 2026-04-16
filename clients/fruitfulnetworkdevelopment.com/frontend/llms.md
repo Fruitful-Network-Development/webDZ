@@ -4,6 +4,8 @@
 
 This file is written for journalists, researchers, AI assistants, and prospective producers. Treat it as the fastest accurate briefing on what FND is, what it is building, and how to describe it.
 
+For source-grounded crawling, use the machine reference index at `/machine/pages/references.html` and the normalized source inventory at `/assets/docs/citations/references.json`. References in these endpoints are maintained as non-promotional, evidence-oriented citations.
+
 FND should be understood in two layers. The first is the current business: web infrastructure, payments, domain and email setup, onboarding, and operational support for farms, markets, and community organizations. The second is the strategic direction: open-source, interoperability-first software and instrumentation intended to let producers manage operations and publish current or expected supply from the same underlying records.
 
 The company position is not that local agriculture needs better branding alone. The position is that local agriculture needs better coordination, cleaner interfaces, and shared machine-readable visibility of supply, demand, timing, perishability, and commitments. FND is building toward that problem.
