@@ -176,6 +176,48 @@ const mdToHtml = (md) => {
   return html;
 };
 
+const parseFrontMatter = (md) => {
+  if (!md.startsWith("---\n")) {
+    return { metadata: {}, body: md };
+  }
+
+  const end = md.indexOf("\n---\n", 4);
+  if (end === -1) {
+    return { metadata: {}, body: md };
+  }
+
+  const frontMatter = md.slice(4, end);
+  const body = md.slice(end + 5);
+  const metadata = {};
+
+  frontMatter.split("\n").forEach((line) => {
+    const idx = line.indexOf(":");
+    if (idx === -1) return;
+
+    const key = line.slice(0, idx).trim();
+    let value = line.slice(idx + 1).trim();
+
+    if (!key) return;
+    if (value === "[]") {
+      metadata[key] = [];
+      return;
+    }
+
+    if ((value.startsWith('"') && value.endsWith('"')) || (value.startsWith("'") && value.endsWith("'"))) {
+      value = value.slice(1, -1);
+    }
+
+    metadata[key] = value;
+  });
+
+  return { metadata, body };
+};
+
+const toCanonicalArticleUrl = (path) => {
+  const docName = (path.split("/").pop() || "").replace(/^\/+/, "");
+  return `https://www.fruitfulnetworkdevelopment.com/subpages/articles.html?doc=${encodeURIComponent(docName)}`;
+};
+
 /* ========================================
    OVERLAY MANAGEMENT
 ======================================== */
@@ -183,6 +225,25 @@ const mdToHtml = (md) => {
 let overlay = null;
 let viewerBody = null;
 let viewerTitle = null;
+let viewerMachine = null;
+let docManifest = null;
+let manifestRequested = false;
+
+const loadManifest = async () => {
+  if (manifestRequested) return;
+  manifestRequested = true;
+
+  try {
+    const res = await fetch("../assets/docs/manifest.json");
+    if (!res.ok) return;
+    const payload = await res.json();
+    if (payload && Array.isArray(payload.documents)) {
+      docManifest = payload.documents;
+    }
+  } catch (_err) {
+    docManifest = null;
+  }
+};
 
 const buildOverlay = () => {
   const el = document.createElement("div");
@@ -195,6 +256,7 @@ const buildOverlay = () => {
         <button class="article-viewer__close" type="button" aria-label="Close article">&times;</button>
       </div>
       <div class="article-viewer__body" id="article-viewer-body"></div>
+      <script id="article-machine-metadata" type="application/json" hidden>{}</script>
     </div>
   `;
   document.body.appendChild(el);
@@ -202,6 +264,7 @@ const buildOverlay = () => {
   overlay = el;
   viewerBody = el.querySelector("#article-viewer-body");
   viewerTitle = el.querySelector("#article-viewer-title");
+  viewerMachine = el.querySelector("#article-machine-metadata");
 
   /* Close handlers */
   const closeBtn = el.querySelector(".article-viewer__close");
@@ -222,9 +285,11 @@ const buildOverlay = () => {
 
 const openArticle = async (path) => {
   if (!overlay) buildOverlay();
+  if (!manifestRequested) loadManifest();
 
   viewerBody.innerHTML = '<p style="text-align:center;color:#717171;">Loading…</p>';
   viewerTitle.textContent = "Loading…";
+  viewerMachine.textContent = "{}";
   overlay.classList.add("is-open");
   document.body.style.overflow = "hidden";
   document.body.classList.add("has-article-open");
@@ -233,23 +298,42 @@ const openArticle = async (path) => {
     const res = await fetch(path);
     if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
     const md = await res.text();
+    const { metadata, body } = parseFrontMatter(md);
 
     /* Derive title from first H1 or filename */
-    const h1Match = md.match(/^#\s+(.*)/m);
-    const title = h1Match
+    const h1Match = body.match(/^#\s+(.*)/m);
+    const fallbackTitle = h1Match
       ? h1Match[1]
-      : path
-          .split("/")
-          .pop()
-          .replace(/\.md$/, "")
-          .replace(/_/g, " ");
+      : path.split("/").pop().replace(/\.md$/, "").replace(/_/g, " ");
+    const manifestEntry = Array.isArray(docManifest)
+      ? docManifest.find((doc) => doc.path === path.replace(/^\.\.\//, ""))
+      : null;
+    const title = metadata.title || manifestEntry?.title || fallbackTitle;
 
     viewerTitle.textContent = title;
-    viewerBody.innerHTML = mdToHtml(md);
+    viewerBody.innerHTML = mdToHtml(body);
+    const machinePayload = {
+      title,
+      slug: metadata.slug || manifestEntry?.slug || path.split("/").pop().replace(/\.md$/, ""),
+      summary: metadata.summary || manifestEntry?.summary || "",
+      entity_type: metadata.entity_type || manifestEntry?.entity_type || "article",
+      topics: metadata.topics || manifestEntry?.topics || [],
+      claims: metadata.claims || manifestEntry?.claims || [],
+      source_links: metadata.source_links || manifestEntry?.source_links || [],
+      last_reviewed: metadata.last_reviewed || manifestEntry?.last_reviewed || "",
+      status: metadata.status || manifestEntry?.status || "active",
+      related_docs: metadata.related_docs || manifestEntry?.related_docs || [],
+      supports_claims: metadata.supports_claims || manifestEntry?.supports_claims || [],
+      supersedes: metadata.supersedes || manifestEntry?.supersedes || [],
+      doc_path: path,
+      canonical_url: manifestEntry?.canonical_url || toCanonicalArticleUrl(path),
+    };
+    viewerMachine.textContent = JSON.stringify(machinePayload);
     viewerBody.scrollTop = 0;
   } catch (err) {
     viewerBody.innerHTML = `<p style="color:#a32023;text-align:center;">Failed to load article.<br><small>${err.message}</small></p>`;
     viewerTitle.textContent = "Error";
+    viewerMachine.textContent = "{}";
   }
 };
 

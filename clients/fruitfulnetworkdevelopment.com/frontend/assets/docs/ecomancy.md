@@ -1,3 +1,17 @@
+---
+title: "Ecomancy"
+slug: "ecomancy"
+summary: "In English, feng shui is often described as Chinese geomancy —a tradition concerned with how landscape, built form, and spatial orientation relate to harmony and “flow.”[^fengshui wiki][^fengshui uw][^fengshui britannica"
+entity_type: "article"
+topics: []
+claims: []
+source_links: []
+last_reviewed: "2026-04-16"
+status: "active"
+related_docs: []
+supports_claims: []
+supersedes: []
+---
 # Ecomancy
 ## A design philosophy for working *with* complex ecological systems
 

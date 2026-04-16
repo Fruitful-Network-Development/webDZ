@@ -1,3 +1,17 @@
+---
+title: "Fiscal Sponsorship Programs vs Sponsorship Agreements"
+slug: "fiscal_sponsorship_programs_taxes"
+summary: "Purpose: A concise reference on (1) what a fiscal sponsorship program is (as operated by a 501(c)(3) charity), (2) what a sponsorship agreement is (as a contract), and (3) how donations should be classified and documente"
+entity_type: "article"
+topics: []
+claims: []
+source_links: []
+last_reviewed: "2026-04-16"
+status: "active"
+related_docs: []
+supports_claims: []
+supersedes: []
+---
 # Fiscal Sponsorship Programs vs Sponsorship Agreements
 > **Purpose:** A concise reference on (1) what a **fiscal sponsorship program** is (as operated by a **501(c)(3)** charity), (2) what a **sponsorship agreement** is (as a contract), and (3) how donations should be classified and documented so bookkeeping is straightforward at tax time.
 >

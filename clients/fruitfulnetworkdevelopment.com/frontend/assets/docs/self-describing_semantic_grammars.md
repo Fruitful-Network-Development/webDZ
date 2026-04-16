@@ -1,3 +1,17 @@
+---
+title: "Self-Describing Semantic Grammars"
+slug: "self-describing_semantic_grammars"
+summary: "A self describing semantic grammar is a representation framework in which a data stream carries enough structure , boundary rules , and semantic cues for an independent system to identify meaningful units (objects, field"
+entity_type: "article"
+topics: []
+claims: []
+source_links: []
+last_reviewed: "2026-04-16"
+status: "active"
+related_docs: []
+supports_claims: []
+supersedes: []
+---
 # Self-Describing Semantic Grammars
 
 A **self-describing semantic grammar** is a representation framework in which a data stream carries enough **structure**, **boundary rules**, and **semantic cues** for an independent system to identify meaningful units (objects, fields, groups) and interpret how those units relate—without relying on a separate, per-partner contract that predefines the full schema.

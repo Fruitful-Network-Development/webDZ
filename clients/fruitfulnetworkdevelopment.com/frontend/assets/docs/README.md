@@ -1,3 +1,17 @@
+---
+title: "Articles Directory — README"
+slug: "README"
+summary: "This directory contains reference style (Wikipedia like) articles used as “Read More” links across the Fruitful Network Development website."
+entity_type: "index"
+topics: []
+claims: []
+source_links: []
+last_reviewed: "2026-04-16"
+status: "active"
+related_docs: []
+supports_claims: []
+supersedes: []
+---
 # Articles Directory — README
 
 ## Purpose

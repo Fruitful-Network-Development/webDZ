@@ -1,3 +1,17 @@
+---
+title: "Current Local Agricultural Use Models (Northeast Ohio + Regional References)"
+slug: "modern_models_in_local_agriculture"
+summary: "This file is a business model scan of organizations and operating approaches that attempt to make participation in local agriculture more equitable (i.e., lower risk for producers, lower friction for buyers/consumers, an"
+entity_type: "article"
+topics: []
+claims: []
+source_links: []
+last_reviewed: "2026-04-16"
+status: "active"
+related_docs: []
+supports_claims: []
+supersedes: []
+---
 # Current Local Agricultural Use Models (Northeast Ohio + Regional References)
 
 This file is a **business-model scan** of organizations and operating approaches that attempt to make participation in local agriculture more **equitable** (i.e., lower risk for producers, lower friction for buyers/consumers, and more stable channels for value capture).

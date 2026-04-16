@@ -1,3 +1,17 @@
+---
+title: "Regenerative Farming Market Recapture"
+slug: "regenerative_farming_market_recapture"
+summary: "A model of local supply–demand transparency under physical adjacency"
+entity_type: "article"
+topics: []
+claims: []
+source_links: []
+last_reviewed: "2026-04-16"
+status: "active"
+related_docs: []
+supports_claims: []
+supersedes: []
+---
 # Regenerative Farming Market Recapture  
 *A model of local supply–demand transparency under physical adjacency*
 
