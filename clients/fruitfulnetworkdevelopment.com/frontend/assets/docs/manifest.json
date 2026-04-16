@@ -455,7 +455,47 @@
       }
     }
   },
+  "schema_identifier": "webdz.site_content.v3",
   "schema": "webdz.site_content.v3",
+  "machine_surfaces": {
+    "inpage": {
+      "root": "machine/inpage",
+      "blocks": [
+        {
+          "id": "fnd-org-schema",
+          "source": "home.organization.ld+json",
+          "injection_pattern": "script:application/ld+json",
+          "page": "/"
+        }
+      ]
+    },
+    "pages": {
+      "root": "machine/pages",
+      "endpoints": [
+        {
+          "rel": "dataset",
+          "href": "/machine/pages/fnd-pages.manifest.json",
+          "format": "application/json"
+        },
+        {
+          "rel": "machine-index",
+          "href": "/machine/pages/fnd-machine-index.json",
+          "format": "application/json"
+        },
+        {
+          "rel": "llm-context",
+          "href": "/llms.md",
+          "format": "text/markdown"
+        }
+      ]
+    },
+    "endpoint_maps": {
+      "machine_index": "/machine/pages/fnd-machine-index.json",
+      "page_manifest": "/machine/pages/fnd-pages.manifest.json",
+      "llm_context": "/llms.md",
+      "organization_schema_id": "fnd-org-schema"
+    }
+  },
   "collections": {
     "article_docs": {
       "type": "markdown_documents",
