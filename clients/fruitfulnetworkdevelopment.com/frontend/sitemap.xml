@@ -11,4 +11,35 @@
   <url><loc>https://fruitfulnetworkdevelopment.com/subpages/payment-processing.html</loc></url>
   <url><loc>https://fruitfulnetworkdevelopment.com/subpages/pos.html</loc></url>
   <url><loc>https://fruitfulnetworkdevelopment.com/subpages/search.html</loc></url>
+
+  <url>
+    <loc>https://fruitfulnetworkdevelopment.com/llms.txt</loc>
+    <lastmod>2026-04-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fruitfulnetworkdevelopment.com/llms.md</loc>
+    <lastmod>2026-04-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fruitfulnetworkdevelopment.com/machine/structured-data-hubs.json</loc>
+    <lastmod>2026-04-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://fruitfulnetworkdevelopment.com/machine/citation-index.json</loc>
+    <lastmod>2026-04-16</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://fruitfulnetworkdevelopment.com/machine/docs-corpus-map.json</loc>
+    <lastmod>2026-04-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
 </urlset>

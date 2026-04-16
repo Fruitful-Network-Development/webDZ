@@ -88,3 +88,9 @@ Do not describe FND as a fully launched brokerage, trucking network, or national
 
 - [GitHub](https://github.com/Fruitful-Network-Development): Public code and implementation context.
 - [LinkedIn](https://www.linkedin.com/company/fruitful-network-development/): Company updates and profile context.
+## Machine Index Endpoints
+
+- [Machine Index (llms.txt)](https://fruitfulnetworkdevelopment.com/llms.txt): Entry point for crawler/discovery tooling.
+- [Structured Data Hubs](https://fruitfulnetworkdevelopment.com/machine/structured-data-hubs.json): Public map of machine-readable hub endpoints.
+- [Citation Index](https://fruitfulnetworkdevelopment.com/machine/citation-index.json): Topic-to-source lookup for public materials.
+- [Docs Corpus Map](https://fruitfulnetworkdevelopment.com/machine/docs-corpus-map.json): Inventory map for public document corpus routes.
