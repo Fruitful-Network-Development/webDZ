@@ -162,4 +162,9 @@ def render_document(manifest: dict[str, object], _page_key: str, page: dict[str,
             "",
         ]
     )
-    return doc
+    return _normalize_generated_html(doc)
+
+
+def _normalize_generated_html(doc: str) -> str:
+    lines = [line.rstrip() for line in doc.splitlines()]
+    return "\n".join(lines).rstrip() + "\n"

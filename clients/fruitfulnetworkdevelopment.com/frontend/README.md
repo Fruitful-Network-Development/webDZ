@@ -56,3 +56,20 @@ Additional linkage checks:
 
 Validation failures stop the build and include exact manifest key paths (for example:
 `manifest.pages.home.content.hero.heading`) so missing fields can be fixed directly.
+
+## Migration PR checklist (manifest/schema work)
+
+Before opening or approving migration PRs, run:
+
+```bash
+python scripts/check_visible_dom_regression.py
+python scripts/check_machine_surface_diff.py
+```
+
+- [ ] visible DOM unchanged
+- [ ] machine endpoints expanded
+
+Schema upgrade enforcement:
+
+- `assets/docs/manifest-schema.lock.json` pins the accepted `schema_identifier`.
+- Any manifest schema bump must update the lock file in the same PR after both checks pass.

@@ -60,7 +60,7 @@ def render_page(html_path: Path, manifest: dict, page_path: str, cfg: dict) -> N
         "@context": "https://schema.org",
         "@graph": graph,
     }
-    jsonld = json.dumps(payload, indent=2)
+    jsonld = json.dumps(payload, indent=2, sort_keys=True)
     block = (
         "  <script type=\"application/ld+json\" data-structured-data=\"page\">\n"
         f"{jsonld}\n"

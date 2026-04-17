@@ -208,4 +208,29 @@ def load_manifest(manifest_path: Path) -> dict[str, object]:
         raise ManifestValidationError("Manifest root must be a JSON object.")
     validator = _ManifestValidator(manifest)
     validator.validate()
+    _validate_schema_upgrade_guard(manifest, manifest_path)
     return manifest
+
+
+def _validate_schema_upgrade_guard(manifest: dict[str, object], manifest_path: Path) -> None:
+    lock_path = manifest_path.with_name("manifest-schema.lock.json")
+    if not lock_path.exists():
+        raise ManifestValidationError(
+            "Schema lock missing: assets/docs/manifest-schema.lock.json must exist to gate schema upgrades."
+        )
+
+    lock_payload = json.loads(lock_path.read_text())
+    if not isinstance(lock_payload, dict):
+        raise ManifestValidationError("manifest-schema.lock.json must be a JSON object.")
+
+    locked_identifier = lock_payload.get("schema_identifier")
+    if not isinstance(locked_identifier, str) or not locked_identifier.strip():
+        raise ManifestValidationError("manifest-schema.lock.json.schema_identifier must be a non-empty string.")
+
+    current_identifier = manifest.get("schema_identifier")
+    if locked_identifier != current_identifier:
+        raise ManifestValidationError(
+            "Schema identifier changed without lock update.\n"
+            "Before accepting a schema upgrade: run scripts/check_visible_dom_regression.py and "
+            "scripts/check_machine_surface_diff.py, then update assets/docs/manifest-schema.lock.json."
+        )
