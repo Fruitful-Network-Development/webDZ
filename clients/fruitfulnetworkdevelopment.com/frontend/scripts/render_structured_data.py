@@ -80,6 +80,11 @@ def render_page(html_path: Path, manifest: dict, page_path: str, cfg: dict) -> N
     if cfg.get("includeReport"):
         graph.extend(manifest["docs"].get("reports", []))
 
+    payload = {
+        "@context": "https://schema.org",
+        "@graph": graph,
+    }
+    jsonld = json.dumps(payload, indent=2, sort_keys=True)
     payload = {"@context": "https://schema.org", "@graph": graph}
     jsonld = json.dumps(payload, indent=2)
     block = (

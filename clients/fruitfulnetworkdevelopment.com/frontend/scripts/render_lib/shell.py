@@ -225,6 +225,31 @@ def render_document(manifest: dict[str, object], _page_key: str, page: dict[str,
     script_tags = "\n".join(f'  <script src="{_escape(src)}" defer></script>' for src in scripts)
     inline_scripts = "\n".join(f"  <script>\n{script}\n  </script>" for script in page.get("inline_scripts", []))
 
+    doc = "\n".join(
+        [
+            "<!doctype html>",
+            '<html lang="en">',
+            render_head(page),
+            f"<body{body_attr_text}>",
+            f"  {generation_marker()}",
+            render_header(manifest, page),
+            f'  <main class="{_escape(page.get("main_class", "edition"))}">',
+            f"{main_html}",
+            "  </main>",
+            footer_html,
+            script_tags,
+            inline_scripts,
+            "</body>",
+            "</html>",
+            "",
+        ]
+    )
+    return _normalize_generated_html(doc)
+
+
+def _normalize_generated_html(doc: str) -> str:
+    lines = [line.rstrip() for line in doc.splitlines()]
+    return "\n".join(lines).rstrip() + "\n"
     lines = [
         "<!doctype html>",
         '<html lang="en">',
