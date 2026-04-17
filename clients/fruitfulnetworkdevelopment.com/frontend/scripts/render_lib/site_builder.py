@@ -4,6 +4,7 @@ import json
 from datetime import UTC, date, datetime
 from pathlib import Path
 
+from .article_machine_records import generate_machine_records
 from .content_loader import load_manifest
 from .shell import render_document
 
@@ -127,4 +128,7 @@ def build_site(frontend_root: Path, manifest_relative_path: str = "assets/docs/m
         output_path = frontend_root / page["file"]
         output_path.write_text(render_document(manifest, page_key, page, frontend_root))
         print(f"rendered {output_path.relative_to(frontend_root)}")
+
+    generate_machine_records(frontend_root, manifest)
+    print("rendered machine article and citation records")
     _write_machine_derivatives(frontend_root, manifest)

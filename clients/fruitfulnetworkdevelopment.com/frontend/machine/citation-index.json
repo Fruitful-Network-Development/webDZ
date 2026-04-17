@@ -20,6 +20,14 @@
       ]
     },
     {
+      "topic": "Machine reference explorer",
+      "url": "https://fruitfulnetworkdevelopment.com/machine/pages/references.html",
+      "type": "machine-page"
+    },
+    {
+      "topic": "Article machine index",
+      "url": "https://fruitfulnetworkdevelopment.com/machine/pages/article-index.json",
+      "type": "dataset"
       "id": "cite-fnd-002",
       "canonical_url": "https://fruitfulnetworkdevelopment.com/about.html",
       "publication": "Fruitful Network Development",
@@ -46,6 +54,9 @@
       ]
     },
     {
+      "topic": "Services and operating model",
+      "url": "https://fruitfulnetworkdevelopment.com/services.html",
+      "type": "page"
       "id": "cite-fnd-004",
       "canonical_url": "https://fruitfulnetworkdevelopment.com/research.html",
       "publication": "Fruitful Network Development",
