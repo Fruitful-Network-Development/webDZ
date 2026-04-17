@@ -3,19 +3,44 @@
   "updated": "2026-04-16",
   "hubs": [
     {
-      "id": "public-pages",
-      "description": "Primary public website pages and service descriptions.",
+      "id": "llms-index",
+      "type": "MachineReadableIndex",
+      "url": "https://fruitfulnetworkdevelopment.com/llms.txt"
+    },
+    {
+      "id": "llms-brief",
+      "type": "CreativeWork",
+      "url": "https://fruitfulnetworkdevelopment.com/llms.md"
+    },
+    {
+      "id": "citation-index",
+      "type": "Dataset",
+      "url": "https://fruitfulnetworkdevelopment.com/machine/citation-index.json"
+    },
+    {
+      "id": "docs-corpus-map",
+      "type": "Dataset",
+      "url": "https://fruitfulnetworkdevelopment.com/machine/docs-corpus-map.json"
+    },
+    {
+      "id": "citation-graph",
+      "type": "DataCatalog",
+      "url": "https://fruitfulnetworkdevelopment.com/assets/docs/LLM-optimization-report.citation-graph.json"
+    },
+    {
+      "id": "entity-profiles",
+      "type": "DataCatalog",
+      "url": "https://fruitfulnetworkdevelopment.com/assets/docs/LLM-optimization-report.entity-profiles.jsonld"
+    },
+    {
+      "id": "machine-brief",
+      "type": "CreativeWork",
+      "url": "https://fruitfulnetworkdevelopment.com/assets/docs/LLM-optimization-report.machine-brief.md"
+    },
+    {
+      "id": "sitemap",
+      "type": "SiteNavigationElement",
       "url": "https://fruitfulnetworkdevelopment.com/sitemap.xml"
-    },
-    {
-      "id": "articles-viewer",
-      "description": "Document-backed article viewer and machine-readable document query parameter entry point.",
-      "url": "https://fruitfulnetworkdevelopment.com/subpages/articles.html"
-    },
-    {
-      "id": "research-briefing",
-      "description": "Research and technical framing page for Mycite and interoperability work.",
-      "url": "https://fruitfulnetworkdevelopment.com/research.html"
     }
   ]
 }

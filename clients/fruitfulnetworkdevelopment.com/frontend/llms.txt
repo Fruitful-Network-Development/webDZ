@@ -4,3 +4,6 @@ canonical_company_brief: https://fruitfulnetworkdevelopment.com/llms.md
 structured_data_hubs: https://fruitfulnetworkdevelopment.com/machine/structured-data-hubs.json
 citation_index: https://fruitfulnetworkdevelopment.com/machine/citation-index.json
 docs_corpus_map: https://fruitfulnetworkdevelopment.com/machine/docs-corpus-map.json
+machine_brief: https://fruitfulnetworkdevelopment.com/assets/docs/LLM-optimization-report.machine-brief.md
+citation_graph: https://fruitfulnetworkdevelopment.com/assets/docs/LLM-optimization-report.citation-graph.json
+entity_profiles: https://fruitfulnetworkdevelopment.com/assets/docs/LLM-optimization-report.entity-profiles.jsonld

@@ -19,4 +19,7 @@
   <url><loc>https://fruitfulnetworkdevelopment.com/machine/structured-data-hubs.json</loc></url>
   <url><loc>https://fruitfulnetworkdevelopment.com/machine/citation-index.json</loc></url>
   <url><loc>https://fruitfulnetworkdevelopment.com/machine/docs-corpus-map.json</loc></url>
+  <url><loc>https://fruitfulnetworkdevelopment.com/assets/docs/LLM-optimization-report.machine-brief.md</loc></url>
+  <url><loc>https://fruitfulnetworkdevelopment.com/assets/docs/LLM-optimization-report.citation-graph.json</loc></url>
+  <url><loc>https://fruitfulnetworkdevelopment.com/assets/docs/LLM-optimization-report.entity-profiles.jsonld</loc></url>
 </urlset>
