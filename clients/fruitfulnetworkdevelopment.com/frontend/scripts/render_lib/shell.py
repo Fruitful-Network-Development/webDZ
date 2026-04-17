@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from pathlib import Path
+
 from .html_utils import generation_marker
 from .templates import render_template
 
@@ -125,6 +127,85 @@ def render_head(page: dict[str, object]) -> str:
     return "\n".join(lines)
 
 
+def _page_path_from_file(file_path: str) -> str:
+    normalized = file_path.strip("/")
+    return "/" if normalized == "index.html" else f"/{normalized}"
+
+
+def render_machine_inpage_blocks(
+    manifest: dict[str, object], page_key: str, page: dict[str, object], frontend_root: Path
+) -> str:
+    machine = manifest.get("machine") or manifest.get("machine_surfaces") or {}
+    if not isinstance(machine, dict):
+        return ""
+
+    inpage = machine.get("inpage", {})
+    if not isinstance(inpage, dict):
+        return ""
+
+    root = inpage.get("root")
+    blocks = inpage.get("blocks", [])
+    if not isinstance(root, str) or not isinstance(blocks, list):
+        return ""
+
+    page_path = _page_path_from_file(str(page.get("file", "")))
+    rendered_blocks: list[str] = []
+    for block in blocks:
+        if not isinstance(block, dict):
+            continue
+        block_page_key = block.get("page_key")
+        block_page_path = block.get("page")
+        if block_page_key not in {None, page_key} and block_page_path not in {None, page_path}:
+            continue
+        if block_page_key not in {None, page_key}:
+            continue
+        if block_page_key is None and block_page_path not in {None, page_path}:
+            continue
+
+        source = block.get("source")
+        if not isinstance(source, str):
+            continue
+        source_path = frontend_root / root / source
+        if not source_path.exists():
+            continue
+        payload = source_path.read_text().strip()
+
+        block_id = _escape(block.get("id", "machine-block"))
+        pattern = block.get("injection_pattern")
+        if pattern == "script:application/ld+json":
+            rendered_blocks.append(
+                "\n".join(
+                    [
+                        f'  <script type="application/ld+json" data-machine-block-id="{block_id}" data-machine-page-key="{_escape(page_key)}">',
+                        payload,
+                        "  </script>",
+                    ]
+                )
+            )
+        elif pattern == "script:application/json":
+            rendered_blocks.append(
+                "\n".join(
+                    [
+                        f'  <script type="application/json" data-machine-block-id="{block_id}" data-machine-page-key="{_escape(page_key)}">',
+                        payload,
+                        "  </script>",
+                    ]
+                )
+            )
+        elif pattern == "meta:container":
+            rendered_blocks.append(
+                "\n".join(
+                    [
+                        f'  <template data-machine-block-id="{block_id}" data-machine-page-key="{_escape(page_key)}" data-machine-content-type="application/json">',
+                        payload,
+                        "  </template>",
+                    ]
+                )
+            )
+
+    return "\n".join(rendered_blocks)
+
+
 def render_document(manifest: dict[str, object], _page_key: str, page: dict[str, object], _frontend_root) -> str:
     if page["template"] in {"verbatim_document", "verbatim_fragment"}:
         rendered = render_template(page)
@@ -139,6 +220,7 @@ def render_document(manifest: dict[str, object], _page_key: str, page: dict[str,
 
     main_html = render_template(page)
     footer_html = render_footer(manifest, page)
+    machine_inpage_blocks = render_machine_inpage_blocks(manifest, _page_key, page, _frontend_root)
     scripts = page.get("scripts", [])
     script_tags = "\n".join(f'  <script src="{_escape(src)}" defer></script>' for src in scripts)
     inline_scripts = "\n".join(f"  <script>\n{script}\n  </script>" for script in page.get("inline_scripts", []))
@@ -168,3 +250,26 @@ def render_document(manifest: dict[str, object], _page_key: str, page: dict[str,
 def _normalize_generated_html(doc: str) -> str:
     lines = [line.rstrip() for line in doc.splitlines()]
     return "\n".join(lines).rstrip() + "\n"
+    lines = [
+        "<!doctype html>",
+        '<html lang="en">',
+        render_head(page),
+        f"<body{body_attr_text}>",
+        f"  {generation_marker()}",
+        render_header(manifest, page),
+        f'  <main class="{_escape(page.get("main_class", "edition"))}">',
+        f"{main_html}",
+        "  </main>",
+    ]
+    if machine_inpage_blocks:
+        lines.append(machine_inpage_blocks)
+    if footer_html:
+        lines.append(footer_html)
+    if script_tags:
+        lines.append(script_tags)
+    if inline_scripts:
+        lines.append(inline_scripts)
+    lines.extend(["</body>", "</html>", ""])
+
+    doc = "\n".join(lines)
+    return doc

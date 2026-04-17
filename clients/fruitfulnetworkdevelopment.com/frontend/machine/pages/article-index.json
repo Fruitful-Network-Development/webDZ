@@ -1,0 +1,899 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-04-16",
+  "site": "https://fruitfulnetworkdevelopment.com",
+  "record_schema": {
+    "fields": [
+      "title",
+      "summary",
+      "claims",
+      "accolades",
+      "roadmap_items",
+      "entities",
+      "external_references",
+      "last_updated",
+      "related_service_pages",
+      "related_research_pages"
+    ]
+  },
+  "records": [
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "id": "fnd-article-README",
+      "slug": "README",
+      "path": "/assets/docs/README.md",
+      "title": "Articles Directory \u2014 README",
+      "summary": "This directory contains reference style (Wikipedia like) articles used as \u201cRead More\u201d links across the Fruitful Network Development website.",
+      "claims": [],
+      "accolades": [],
+      "roadmap_items": [],
+      "entities": [],
+      "external_references": [
+        {
+          "id": "ref-nifa-sbir-overview-2025",
+          "title": "Small Business Innovation Research Program (SBIR)",
+          "url": "https://www.nifa.usda.gov/grants/programs/small-business-innovation-research-program-sbir",
+          "publisher": "USDA NIFA",
+          "date_accessed": "2026-04-16"
+        }
+      ],
+      "last_updated": "2026-04-16",
+      "related_docs": [],
+      "related_service_pages": [
+        "/services.html",
+        "/subpages/payment-processing.html",
+        "/subpages/pos.html",
+        "/subpages/email-management.html"
+      ],
+      "related_research_pages": [
+        "/research.html",
+        "/subpages/articles.html"
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "id": "fnd-article-agronomic_mirco_structure",
+      "slug": "agronomic_mirco_structure",
+      "path": "/assets/docs/agronomic_mirco_structure.md",
+      "title": "Agronomic Micro-Structure: Cyclical Reinvestment, Local Infrastructure, and the Critical Point",
+      "summary": "This article describes a local agriculture micro structure : the recurring, small scale mechanisms that determine whether local supply can reliably meet local demand at competitive delivered prices.",
+      "claims": [],
+      "accolades": [],
+      "roadmap_items": [],
+      "entities": [],
+      "external_references": [],
+      "last_updated": "2026-04-16",
+      "related_docs": [],
+      "related_service_pages": [
+        "/services.html",
+        "/subpages/payment-processing.html",
+        "/subpages/pos.html",
+        "/subpages/email-management.html"
+      ],
+      "related_research_pages": [
+        "/research.html",
+        "/subpages/articles.html"
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "id": "fnd-article-cuyahoga_valley_countryside_initiative",
+      "slug": "cuyahoga_valley_countryside_initiative",
+      "path": "/assets/docs/cuyahoga_valley_countryside_initiative.md",
+      "title": "Cuyahoga Valley National Park \u2014 Countryside Initiative",
+      "summary": "The Countryside Initiative is a program in Cuyahoga Valley National Park (CVNP) designed to preserve agriculture as a living, working landscape rather than a static historic display. It began in 1999 and focuses on rehab",
+      "claims": [],
+      "accolades": [],
+      "roadmap_items": [],
+      "entities": [],
+      "external_references": [
+        {
+          "url": "https://www.nps.gov/cuva/learn/historyculture/countryside.htm"
+        },
+        {
+          "url": "https://www.nps.gov/cuva/learn/historyculture/farming-in-a-national-park.htm"
+        },
+        {
+          "url": "https://www.federalregister.gov/documents/2004/05/18/04-11165/record-of-decision-final-rural-landscape-management-program-environmental-impact-statement-cuyahoga"
+        },
+        {
+          "url": "https://landforgood.org/wp-content/uploads/Sample-Long-Term-Lease.pdf"
+        },
+        {
+          "url": "https://cvfm.org/"
+        },
+        {
+          "url": "https://www.nps.gov/cuva/learn/historyculture/cuyahoga-valley-farmers-markets.htm"
+        },
+        {
+          "url": "https://www.legacy.com/us/obituaries/beaconjournal/name/darwin-kelsey-obituary?id=22561571"
+        },
+        {
+          "url": "https://www.ideastream.org/news/after-founders-death-countryside-conservancy-of-cuyahoga-valley-national-park-moves-forward"
+        }
+      ],
+      "last_updated": "2026-04-16",
+      "related_docs": [],
+      "related_service_pages": [
+        "/services.html",
+        "/subpages/payment-processing.html",
+        "/subpages/pos.html",
+        "/subpages/email-management.html"
+      ],
+      "related_research_pages": [
+        "/research.html",
+        "/subpages/articles.html"
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "id": "fnd-article-ecomancy",
+      "slug": "ecomancy",
+      "path": "/assets/docs/ecomancy.md",
+      "title": "Ecomancy",
+      "summary": "In English, feng shui is often described as Chinese geomancy \u2014a tradition concerned with how landscape, built form, and spatial orientation relate to harmony and \u201cflow.\u201d[^fengshui wiki][^fengshui uw][^fengshui britannica",
+      "claims": [
+        "Prefer interventions that **synchronize with the environment\u2019s own dynamics** (infiltration patterns, successional growth, nutrient cycling, predator\u2013prey balance, disturbance\u2013recovery rhythms).",
+        "Avoid interventions that demand the ecosystem behave like a controlled factory process."
+      ],
+      "accolades": [],
+      "roadmap_items": [],
+      "entities": [],
+      "external_references": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Feng_shui"
+        },
+        {
+          "url": "https://depts.washington.edu/chinaciv/home/3fengshu.htm"
+        },
+        {
+          "url": "https://www.britannica.com/art/fengshui"
+        },
+        {
+          "url": "https://education.nationalgeographic.org/resource/feng-shui/"
+        },
+        {
+          "url": "https://www.britannica.com/topic/geomancy-method-of-divination"
+        },
+        {
+          "url": "https://www.fs.usda.gov/nac/practices/forest-farming.php"
+        },
+        {
+          "url": "https://www.chelseagreen.com/2024/designing-a-forest-garden-the-seven-story-garden/"
+        },
+        {
+          "url": "https://permacultureplants.com/functions/nitrogen-fixer/"
+        },
+        {
+          "url": "https://www.nps.gov/subjects/fire/indigenous-fire-practices-shape-our-land.htm"
+        },
+        {
+          "url": "https://research.fs.usda.gov/treesearch/58212"
+        },
+        {
+          "url": "https://www.polkswcd.com/wp-content/uploads/2025/06/tek_oaks.pdf"
+        },
+        {
+          "url": "https://www.sciencedirect.com/science/article/abs/pii/S0378112721008598"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Keyline_design"
+        },
+        {
+          "url": "https://agwaterstewards.org/practices/keyline_design/"
+        },
+        {
+          "url": "https://rexresearch1.com/IrrigationLibrary/WaterEveryFarmUsingKeylinePlan.pdf"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/H%C3%BCgelkultur"
+        },
+        {
+          "url": "https://www.almanac.com/what-hugelkultur-ultimate-raised-bed"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Straw_checkerboard"
+        },
+        {
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6211115/"
+        },
+        {
+          "url": "https://www.sciencedirect.com/science/article/abs/pii/S0140196303000661"
+        }
+      ],
+      "last_updated": "2026-04-16",
+      "related_docs": [],
+      "related_service_pages": [
+        "/services.html",
+        "/subpages/payment-processing.html",
+        "/subpages/pos.html",
+        "/subpages/email-management.html"
+      ],
+      "related_research_pages": [
+        "/research.html",
+        "/subpages/articles.html"
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "id": "fnd-article-fiscal_sponsorship_programs_taxes",
+      "slug": "fiscal_sponsorship_programs_taxes",
+      "path": "/assets/docs/fiscal_sponsorship_programs_taxes.md",
+      "title": "Fiscal Sponsorship Programs vs Sponsorship Agreements",
+      "summary": "Purpose: A concise reference on (1) what a fiscal sponsorship program is (as operated by a 501(c)(3) charity), (2) what a sponsorship agreement is (as a contract), and (3) how donations should be classified and documente",
+      "claims": [],
+      "accolades": [],
+      "roadmap_items": [],
+      "entities": [],
+      "external_references": [],
+      "last_updated": "2026-04-16",
+      "related_docs": [],
+      "related_service_pages": [
+        "/services.html",
+        "/subpages/payment-processing.html"
+      ],
+      "related_research_pages": [
+        "/research.html",
+        "/subpages/articles.html"
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "id": "fnd-article-food_system_value_dimentions",
+      "slug": "food_system_value_dimentions",
+      "path": "/assets/docs/food_system_value_dimentions.md",
+      "title": "Food System Value Dimensions",
+      "summary": "This article describes a recurring confusion in food systems analysis: a system can generate \u201cmore value\u201d while feeling less equitable to operate in , and a system can generate the same physical output while producing mo",
+      "claims": [
+        "long-distance logistics,",
+        "standardized grading and packaging,",
+        "predictable bulk demand,",
+        "centralized financing and contracting.",
+        "overproduction to hedge uncertainty,",
+        "spoilage and shrink as a cost of doing business,",
+        "redundancy (multiple touches, repacking, relabeling),",
+        "refrigeration and transport overhead,",
+        "time spent coordinating exceptions rather than planning.",
+        "win by being better at pushing loss downstream,",
+        "win by having enough scale to absorb loss,",
+        "win by writing contracts that shift risk to smaller parties."
+      ],
+      "accolades": [],
+      "roadmap_items": [],
+      "entities": [],
+      "external_references": [],
+      "last_updated": "2026-04-16",
+      "related_docs": [],
+      "related_service_pages": [
+        "/services.html",
+        "/subpages/payment-processing.html",
+        "/subpages/pos.html",
+        "/subpages/email-management.html"
+      ],
+      "related_research_pages": [
+        "/research.html",
+        "/subpages/articles.html"
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "id": "fnd-article-interoperability_in_socio-technical_networks",
+      "slug": "interoperability_in_socio-technical_networks",
+      "path": "/assets/docs/interoperability_in_socio-technical_networks.md",
+      "title": "Interoperability in Socio-Technical Networks",
+      "summary": "Interoperability is the ability of independently developed systems (software, organizations, devices, and their human operators) to exchange information and use it meaningfully without bespoke, case by case integration f",
+      "claims": [],
+      "accolades": [],
+      "roadmap_items": [],
+      "entities": [],
+      "external_references": [],
+      "last_updated": "2026-04-16",
+      "related_docs": [],
+      "related_service_pages": [
+        "/services.html",
+        "/subpages/payment-processing.html",
+        "/subpages/pos.html",
+        "/subpages/email-management.html"
+      ],
+      "related_research_pages": [
+        "/research.html",
+        "/subpages/articles.html"
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "id": "fnd-article-market-research-report",
+      "slug": "market-research-report",
+      "path": "/assets/docs/market-research-report.md",
+      "title": "USDA SBIR Topic 8.6 Market Evidence Pack for Perishable Produce",
+      "summary": "This Evidence Pack is tailored to a \ue200entity\ue202[\\\"organization\\\",\\\"USDA Small Business Innovation Research\\\",\\\"sbir program\\\"]\ue201 Phase I proposal (Topic 8.6) and is restricted to perishable, time sensitive produce (fresh vegetable",
+      "claims": [
+        "**Claim:** \u201cSmall/local farms produce most of our vegetables (or fresh produce).\u201d",
+        "**Claim:** \u201cSmall farms are more productive per acre than large farms (for fresh produce).\u201d",
+        "**Claim:** \u201cLocal food means within 50 miles.\u201d",
+        "**Claim:** \u201cReefer trucking costs are about $X per mile.\u201d",
+        "**Claim:** \u201cLocal sourcing cuts shipping cost by ~90%.\u201d",
+        "**Claim:** \u201cFood waste is 40% of food.\u201d",
+        "**Claim:** \u201cFresh produce has the highest waste rates.\u201d",
+        "**Claim:** \u201cAmerica\u2019s food is cheap only because we ignore hidden costs.\u201d"
+      ],
+      "accolades": [],
+      "roadmap_items": [],
+      "entities": [
+        {
+          "name": "USDA Small Business Innovation Research",
+          "entity_type": "organization"
+        },
+        {
+          "name": "U.S. Department of Agriculture",
+          "entity_type": "organization"
+        },
+        {
+          "name": "USDA National Agricultural Statistics Service",
+          "entity_type": "organization"
+        },
+        {
+          "name": "USDA Agricultural Marketing Service",
+          "entity_type": "organization"
+        },
+        {
+          "name": "USDA Economic Research Service",
+          "entity_type": "organization"
+        },
+        {
+          "name": "American Transportation Research Institute",
+          "entity_type": "organization"
+        },
+        {
+          "name": "The Rockefeller Foundation",
+          "entity_type": "organization"
+        },
+        {
+          "name": "Congressional Research Service",
+          "entity_type": "organization"
+        },
+        {
+          "name": "U.S. Census Bureau",
+          "entity_type": "organization"
+        },
+        {
+          "name": "Ohio",
+          "entity_type": "state"
+        },
+        {
+          "name": "Summit County",
+          "entity_type": "place"
+        }
+      ],
+      "external_references": [
+        {
+          "id": "ref-usda-ers-food-dollar-2025",
+          "title": "Food Dollar Series",
+          "url": "https://www.ers.usda.gov/data-products/food-dollar-series/",
+          "publisher": "USDA Economic Research Service",
+          "date_accessed": "2026-04-16"
+        },
+        {
+          "id": "ref-epa-wasted-food-scale-2025",
+          "title": "Wasted Food Scale",
+          "url": "https://www.epa.gov/sustainable-management-food/wasted-food-scale",
+          "publisher": "U.S. Environmental Protection Agency",
+          "date_accessed": "2026-04-16"
+        },
+        {
+          "id": "ref-fao-food-loss-index-2024",
+          "title": "Food Loss and Waste Database",
+          "url": "https://www.fao.org/platform-food-loss-waste/flw-data/en/",
+          "publisher": "Food and Agriculture Organization of the United Nations",
+          "date_accessed": "2026-04-16"
+        },
+        {
+          "id": "ref-ams-local-food-directories-2025",
+          "title": "Local Food Directories",
+          "url": "https://www.ams.usda.gov/services/local-regional/food-directories",
+          "publisher": "USDA Agricultural Marketing Service",
+          "date_accessed": "2026-04-16"
+        },
+        {
+          "url": "https://www.nass.usda.gov/Publications/AgCensus/2022/Online_Resources/Typology/typology_us.pdf"
+        },
+        {
+          "url": "https://www.ams.usda.gov/sites/default/files/media/RTQ2ndQuarter2024.pdf"
+        },
+        {
+          "url": "https://www.ers.usda.gov/data-products/food-availability-per-capita-data-system/loss-adjusted-food-availability-documentation"
+        },
+        {
+          "url": "https://www.ers.usda.gov/data-products/food-availability-per-capita-data-system/food-loss"
+        },
+        {
+          "url": "https://www.congress.gov/crs_external_products/R/PDF/R48213/R48213.2.pdf"
+        },
+        {
+          "url": "https://www.rockefellerfoundation.org/wp-content/uploads/2021/07/True-Cost-of-Food-Full-Report-Final.pdf"
+        }
+      ],
+      "last_updated": "2026-04-16",
+      "related_docs": [],
+      "related_service_pages": [
+        "/services.html",
+        "/subpages/pos.html"
+      ],
+      "related_research_pages": [
+        "/research.html",
+        "/subpages/articles.html?doc=market_transparency.md"
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "id": "fnd-article-market_transparency",
+      "slug": "market_transparency",
+      "path": "/assets/docs/market_transparency.md",
+      "title": "Market Transparency, Entropy, and Equitability",
+      "summary": "Market transparency is the degree to which participants can observe relevant state of a market in time to act on it: supply availability, demand intent, quality attributes, constraints (time, location, logistics), and th",
+      "claims": [],
+      "accolades": [],
+      "roadmap_items": [],
+      "entities": [],
+      "external_references": [
+        {
+          "id": "ref-ams-local-food-directories-2025",
+          "title": "Local Food Directories",
+          "url": "https://www.ams.usda.gov/services/local-regional/food-directories",
+          "publisher": "USDA Agricultural Marketing Service",
+          "date_accessed": "2026-04-16"
+        },
+        {
+          "id": "ref-cdfa-farm-to-school-procurement-2025",
+          "title": "Farm to School Procurement Guidance",
+          "url": "https://www.cdfa.ca.gov/farmtoschool/procurement.html",
+          "publisher": "California Department of Food and Agriculture",
+          "date_accessed": "2026-04-16"
+        },
+        {
+          "id": "ref-nga-local-food-economies-2024",
+          "title": "The Role of States in Strengthening Local and Regional Food Systems",
+          "url": "https://www.nga.org/publications/the-role-of-states-in-strengthening-local-and-regional-food-systems/",
+          "publisher": "National Governors Association",
+          "date_accessed": "2026-04-16"
+        }
+      ],
+      "last_updated": "2026-04-16",
+      "related_docs": [],
+      "related_service_pages": [
+        "/services.html",
+        "/subpages/pos.html"
+      ],
+      "related_research_pages": [
+        "/research.html",
+        "/subpages/articles.html?doc=market_transparency.md"
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "id": "fnd-article-modern_models_in_local_agriculture",
+      "slug": "modern_models_in_local_agriculture",
+      "path": "/assets/docs/modern_models_in_local_agriculture.md",
+      "title": "Current Local Agricultural Use Models (Northeast Ohio + Regional References)",
+      "summary": "This file is a business model scan of organizations and operating approaches that attempt to make participation in local agriculture more equitable (i.e., lower risk for producers, lower friction for buyers/consumers, an",
+      "claims": [],
+      "accolades": [],
+      "roadmap_items": [],
+      "entities": [],
+      "external_references": [
+        {
+          "id": "ref-ams-local-food-directories-2025",
+          "title": "Local Food Directories",
+          "url": "https://www.ams.usda.gov/services/local-regional/food-directories",
+          "publisher": "USDA Agricultural Marketing Service",
+          "date_accessed": "2026-04-16"
+        },
+        {
+          "id": "ref-nga-local-food-economies-2024",
+          "title": "The Role of States in Strengthening Local and Regional Food Systems",
+          "url": "https://www.nga.org/publications/the-role-of-states-in-strengthening-local-and-regional-food-systems/",
+          "publisher": "National Governors Association",
+          "date_accessed": "2026-04-16"
+        },
+        {
+          "url": "https://www.oberlinfoodhub.com/"
+        },
+        {
+          "url": "https://gffarms.com/products/"
+        },
+        {
+          "url": "https://gffarms.com/about-us/certifications/"
+        },
+        {
+          "url": "https://www.dairyfoods.com/articles/95390-amish-run-green-field-farms-combines-old-world-methods-with-innovation"
+        },
+        {
+          "url": "https://www.purplebrownfarmstore.com/"
+        },
+        {
+          "url": "https://www.purplebrownfarmstore.com/about"
+        },
+        {
+          "url": "https://explorepeninsula.org/member-directory/purplebrown-farm-store/"
+        },
+        {
+          "url": "https://harborgardens.org/about/"
+        },
+        {
+          "url": "https://harborgardens.org/the-general-store/"
+        },
+        {
+          "url": "https://www.ideastream.org/arts-culture/2023-11-10/harbor-gardens-in-ashtabula-connects-community-to-local-food"
+        },
+        {
+          "url": "https://yellowbirdfs.com/stutzman-farms-local-ohio"
+        },
+        {
+          "url": "https://yellowbirdfs.com/"
+        },
+        {
+          "url": "https://yellowbirdfs.com/how-it-works"
+        },
+        {
+          "url": "https://news.oeffa.org/2024/12/14/yellowbird-foodshed/"
+        },
+        {
+          "url": "https://spectrumnews1.com/news/2020/01/08/yellowbird-foodshed-connects-local-farmers-with-consumers.html"
+        },
+        {
+          "url": "https://www.isp3800.com/"
+        },
+        {
+          "url": "https://www.isp3800.com/logistics/"
+        },
+        {
+          "url": "https://www.isp3800.com/warehouse/"
+        },
+        {
+          "url": "https://kellermeats.com/"
+        },
+        {
+          "url": "https://kellermeats.com/custom-processing"
+        },
+        {
+          "url": "https://shagbarkmill.com/"
+        },
+        {
+          "url": "https://www.oeffa.org/userprofile.php?geg=1066"
+        },
+        {
+          "url": "https://acenetworks.org/facilities/nelsonville-food-farm-enterprise-center/"
+        },
+        {
+          "url": "https://www.wealthworks.org/success-stories/southeast-ohio-food/"
+        },
+        {
+          "url": "https://www.localrootswooster.com/about"
+        },
+        {
+          "url": "https://www.localrootswooster.com/"
+        },
+        {
+          "url": "https://freshforkmarket.com/"
+        },
+        {
+          "url": "https://ohiocityprovisions.com/"
+        },
+        {
+          "url": "https://thelandcle.org/stories/organic-growth-rust-belt-riders-expands-to-heinens-becomes-worker-owned-cooperative/"
+        },
+        {
+          "url": "https://www.rosbycompanies.com/index2.htm"
+        },
+        {
+          "url": "https://www.thefarmersrail.com/"
+        },
+        {
+          "url": "https://www.thefarmersrail.com/our-farm"
+        },
+        {
+          "url": "https://www.heinens.com/"
+        },
+        {
+          "url": "https://retail-merchandiser.com/news/buehlers-fresh-foods/"
+        },
+        {
+          "url": "https://mthopeauction.com/farmers-produce-auction/"
+        },
+        {
+          "url": "https://www.countylineproduceauction.com/"
+        },
+        {
+          "url": "https://www.nps.gov/cuva/learn/historyculture/countryside.htm"
+        },
+        {
+          "url": "https://www.nps.gov/cuva/learn/historyculture/farming-in-a-national-park.htm"
+        },
+        {
+          "url": "https://www.cuyahogavalleyfarmersmarket.org/"
+        }
+      ],
+      "last_updated": "2026-04-16",
+      "related_docs": [],
+      "related_service_pages": [
+        "/services.html",
+        "/subpages/payment-processing.html",
+        "/subpages/pos.html",
+        "/subpages/email-management.html"
+      ],
+      "related_research_pages": [
+        "/research.html",
+        "/subpages/articles.html"
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "id": "fnd-article-ne_ohio_greenhouse_industry",
+      "slug": "ne_ohio_greenhouse_industry",
+      "path": "/assets/docs/ne_ohio_greenhouse_industry.md",
+      "title": "Northeast Ohio Greenhouse Industry",
+      "summary": "In the late 19th and early 20th centuries, Greater Cleveland developed a dense cluster of commercial greenhouse operations and earned regional and national recognition as a \u201cgreenhouse capital.\u201d The industry\u2019s growth ref",
+      "claims": [],
+      "accolades": [],
+      "roadmap_items": [],
+      "entities": [],
+      "external_references": [
+        {
+          "url": "https://case.edu/ech/articles/r/ruetenik-martin"
+        },
+        {
+          "url": "https://clevelandhistorical.org/items/show/713"
+        }
+      ],
+      "last_updated": "2026-04-16",
+      "related_docs": [],
+      "related_service_pages": [
+        "/services.html",
+        "/subpages/payment-processing.html",
+        "/subpages/pos.html",
+        "/subpages/email-management.html"
+      ],
+      "related_research_pages": [
+        "/research.html",
+        "/subpages/articles.html"
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "id": "fnd-article-ne_ohio_historic_local_food_system",
+      "slug": "ne_ohio_historic_local_food_system",
+      "path": "/assets/docs/ne_ohio_historic_local_food_system.md",
+      "title": "Northeast Ohio Historic Local Food System Infrastructure",
+      "summary": "Historically, local and regional food systems in and around Northeast Ohio relied on shared physical and social \u201cinterfaces\u201d that made supply and demand legible:",
+      "claims": [],
+      "accolades": [],
+      "roadmap_items": [],
+      "entities": [],
+      "external_references": [
+        {
+          "url": "https://case.edu/ech/articles/n/northern-ohio-food-terminal"
+        },
+        {
+          "url": "https://case.edu/ech/articles/m/markets-and-market-houses"
+        },
+        {
+          "url": "https://ftp.dot.state.oh.us/pub/contracts/Cuy90RFP/Addendum008/ED-05%20Cold%20Storage%20Building%20-%20Historic%20Context.pdf"
+        },
+        {
+          "url": "https://stripdistrictterminal.com/about/history"
+        },
+        {
+          "url": "https://pittsburghmainline.weebly.com/train-nerds-blog/historic-pittsburgh-produce-terminal"
+        },
+        {
+          "url": "https://www.cleveland.com/dining/2022/08/at-83-legendary-cleveland-chef-parker-bosley-still-preaching-the-gospel-of-fresh-food-eating-local.html"
+        },
+        {
+          "url": "https://clevelandmagazine.com/food-drink/articles/parker-bosley-cleveland-local-food-advocate"
+        },
+        {
+          "url": "https://shagbarkmill.com/"
+        }
+      ],
+      "last_updated": "2026-04-16",
+      "related_docs": [],
+      "related_service_pages": [
+        "/services.html",
+        "/subpages/payment-processing.html",
+        "/subpages/pos.html",
+        "/subpages/email-management.html"
+      ],
+      "related_research_pages": [
+        "/research.html",
+        "/subpages/articles.html"
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "id": "fnd-article-opensource_competition",
+      "slug": "opensource_competition",
+      "path": "/assets/docs/opensource_competition.md",
+      "title": "Open\u2011source competition (Arduino model) and \u201corganize information first\u201d (Google model)",
+      "summary": "This article describes two related competitive patterns:",
+      "claims": [],
+      "accolades": [],
+      "roadmap_items": [],
+      "entities": [],
+      "external_references": [
+        {
+          "url": "https://www.arduino.cc/en/trademark"
+        },
+        {
+          "url": "https://www.arduino.cc/education/what-open-source-means-why-it-is-important"
+        },
+        {
+          "url": "https://opennext.eu/wp-content/uploads/OPENNEXT_RMC_V013.pdf"
+        },
+        {
+          "url": "https://www.google.com/intl/en_us/search/howsearchworks/our-approach/"
+        },
+        {
+          "url": "https://knowledge.wharton.upenn.edu/article/why-google-dominates-the-search-engine-market/"
+        },
+        {
+          "url": "https://www.promarket.org/2025/04/22/why-googles-dominance-in-search-persists-and-how-to-fix-it/"
+        },
+        {
+          "url": "https://medium.com/made-with-creative-commons/arduino-80b7cad7c006"
+        }
+      ],
+      "last_updated": "2026-04-16",
+      "related_docs": [],
+      "related_service_pages": [
+        "/services.html",
+        "/subpages/email-management.html"
+      ],
+      "related_research_pages": [
+        "/research.html",
+        "/subpages/articles.html"
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "id": "fnd-article-regenerative_farming",
+      "slug": "regenerative_farming",
+      "path": "/assets/docs/regenerative_farming.md",
+      "title": "Regenerative Farming",
+      "summary": "Purpose. This article provides a deep dive into regenerative agriculture with an emphasis on how the Savory Institute / Holistic Management tradition frames (1) ecological function, (2) management decisions under complex",
+      "claims": [],
+      "accolades": [],
+      "roadmap_items": [],
+      "entities": [],
+      "external_references": [
+        {
+          "id": "ref-usda-climate-smart-2025",
+          "title": "Climate-Smart Agriculture and Forestry",
+          "url": "https://www.usda.gov/climate-solutions/climate-smart-agriculture-and-forestry",
+          "publisher": "United States Department of Agriculture",
+          "date_accessed": "2026-04-16"
+        },
+        {
+          "id": "ref-fao-food-loss-index-2024",
+          "title": "Food Loss and Waste Database",
+          "url": "https://www.fao.org/platform-food-loss-waste/flw-data/en/",
+          "publisher": "Food and Agriculture Organization of the United Nations",
+          "date_accessed": "2026-04-16"
+        }
+      ],
+      "last_updated": "2026-04-16",
+      "related_docs": [],
+      "related_service_pages": [
+        "/services.html"
+      ],
+      "related_research_pages": [
+        "/research.html",
+        "/subpages/articles.html?doc=regenerative_farming.md"
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "id": "fnd-article-regenerative_farming_market_recapture",
+      "slug": "regenerative_farming_market_recapture",
+      "path": "/assets/docs/regenerative_farming_market_recapture.md",
+      "title": "Regenerative Farming Market Recapture",
+      "summary": "A model of local supply\u2013demand transparency under physical adjacency",
+      "claims": [],
+      "accolades": [],
+      "roadmap_items": [],
+      "entities": [],
+      "external_references": [
+        {
+          "id": "ref-usda-climate-smart-2025",
+          "title": "Climate-Smart Agriculture and Forestry",
+          "url": "https://www.usda.gov/climate-solutions/climate-smart-agriculture-and-forestry",
+          "publisher": "United States Department of Agriculture",
+          "date_accessed": "2026-04-16"
+        },
+        {
+          "id": "ref-nga-local-food-economies-2024",
+          "title": "The Role of States in Strengthening Local and Regional Food Systems",
+          "url": "https://www.nga.org/publications/the-role-of-states-in-strengthening-local-and-regional-food-systems/",
+          "publisher": "National Governors Association",
+          "date_accessed": "2026-04-16"
+        }
+      ],
+      "last_updated": "2026-04-16",
+      "related_docs": [],
+      "related_service_pages": [
+        "/services.html",
+        "/subpages/pos.html"
+      ],
+      "related_research_pages": [
+        "/research.html",
+        "/subpages/articles.html?doc=market_transparency.md"
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "id": "fnd-article-rubber_made_caution_tail",
+      "slug": "rubber_made_caution_tail",
+      "path": "/assets/docs/rubber_made_caution_tail.md",
+      "title": "Rubber Made Caution Tail",
+      "summary": "Here will be the article about the parrallel to rubber made that green houses are currently in.",
+      "claims": [],
+      "accolades": [],
+      "roadmap_items": [],
+      "entities": [],
+      "external_references": [],
+      "last_updated": "2026-04-16",
+      "related_docs": [],
+      "related_service_pages": [
+        "/services.html",
+        "/subpages/payment-processing.html",
+        "/subpages/pos.html",
+        "/subpages/email-management.html"
+      ],
+      "related_research_pages": [
+        "/research.html",
+        "/subpages/articles.html"
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "id": "fnd-article-self-describing_semantic_grammars",
+      "slug": "self-describing_semantic_grammars",
+      "path": "/assets/docs/self-describing_semantic_grammars.md",
+      "title": "Self-Describing Semantic Grammars",
+      "summary": "A self describing semantic grammar is a representation framework in which a data stream carries enough structure , boundary rules , and semantic cues for an independent system to identify meaningful units (objects, field",
+      "claims": [],
+      "accolades": [],
+      "roadmap_items": [],
+      "entities": [],
+      "external_references": [],
+      "last_updated": "2026-04-16",
+      "related_docs": [],
+      "related_service_pages": [
+        "/services.html",
+        "/subpages/payment-processing.html",
+        "/subpages/pos.html",
+        "/subpages/email-management.html"
+      ],
+      "related_research_pages": [
+        "/research.html",
+        "/subpages/articles.html"
+      ]
+    }
+  ]
+}

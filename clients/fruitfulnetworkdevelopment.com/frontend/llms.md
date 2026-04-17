@@ -96,3 +96,6 @@ Do not describe FND as a fully launched brokerage, trucking network, or national
 - [Structured Data Hubs](https://fruitfulnetworkdevelopment.com/machine/structured-data-hubs.json): Public map of machine-readable hub endpoints.
 - [Citation Index](https://fruitfulnetworkdevelopment.com/machine/citation-index.json): Topic-to-source lookup for public materials.
 - [Docs Corpus Map](https://fruitfulnetworkdevelopment.com/machine/docs-corpus-map.json): Inventory map for public document corpus routes.
+- [Machine Brief](https://fruitfulnetworkdevelopment.com/assets/docs/LLM-optimization-report.machine-brief.md): Concise canonical machine summary generated from repo-level docs source.
+- [Citation Graph](https://fruitfulnetworkdevelopment.com/assets/docs/LLM-optimization-report.citation-graph.json): Stable claim-to-citation graph with normalized source identifiers.
+- [Entity Profiles JSON-LD](https://fruitfulnetworkdevelopment.com/assets/docs/LLM-optimization-report.entity-profiles.jsonld): Structured organization/entity fragments aligned to the canonical report.

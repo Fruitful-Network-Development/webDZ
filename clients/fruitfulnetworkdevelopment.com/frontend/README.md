@@ -21,7 +21,7 @@ Required top-level keys:
 - `site`
 - `navigation`
 - `pages`
-- `machine_surfaces`
+- `machine`
 
 Required page fields:
 
@@ -36,23 +36,23 @@ Required page fields:
 
 Required machine-surface declarations:
 
-- `machine_surfaces.inpage.root`
-- `machine_surfaces.inpage.blocks[*].id`
-- `machine_surfaces.inpage.blocks[*].source`
-- `machine_surfaces.inpage.blocks[*].injection_pattern`
-- `machine_surfaces.inpage.blocks[*].page`
-- `machine_surfaces.pages.root`
-- `machine_surfaces.pages.endpoints[*].rel`
-- `machine_surfaces.pages.endpoints[*].href`
-- `machine_surfaces.pages.endpoints[*].format`
-- `machine_surfaces.endpoint_maps.machine_index`
-- `machine_surfaces.endpoint_maps.page_manifest`
-- `machine_surfaces.endpoint_maps.llm_context`
+- `machine.inpage.root`
+- `machine.inpage.blocks[*].id`
+- `machine.inpage.blocks[*].source`
+- `machine.inpage.blocks[*].injection_pattern`
+- `machine.inpage.blocks[*].page` (or `page_key`)
+- `machine.pages.root`
+- `machine.pages.endpoints[*].rel`
+- `machine.pages.endpoints[*].href`
+- `machine.pages.endpoints[*].format`
+- `machine.endpoint_maps.machine_index`
+- `machine.endpoint_maps.page_manifest`
+- `machine.endpoint_maps.llm_context`
 
 Additional linkage checks:
 
-- `endpoint_maps.machine_index` and `endpoint_maps.page_manifest` must point to an `href` listed in `machine_surfaces.pages.endpoints`.
-- `endpoint_maps.organization_schema_id` (if present) must match an in-page block id in `machine_surfaces.inpage.blocks`.
+- `endpoint_maps.machine_index` and `endpoint_maps.page_manifest` must point to an `href` listed in `machine.pages.endpoints`.
+- `endpoint_maps.organization_schema_id` (if present) must match an in-page block id in `machine.inpage.blocks`.
 
 Validation failures stop the build and include exact manifest key paths (for example:
 `manifest.pages.home.content.hero.heading`) so missing fields can be fixed directly.

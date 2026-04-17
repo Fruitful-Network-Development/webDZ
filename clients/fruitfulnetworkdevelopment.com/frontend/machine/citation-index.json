@@ -1,31 +1,111 @@
 {
   "site": "fruitfulnetworkdevelopment.com",
   "updated": "2026-04-16",
+  "source_priority": {
+    "strategy": "synchronized-mirror",
+    "canonical": "/docs/LLM-optimization-report.md",
+    "mirror": "/assets/docs/LLM-optimization-report.md"
+  },
   "citations": [
     {
-      "topic": "Canonical company brief",
-      "url": "https://fruitfulnetworkdevelopment.com/llms.md",
-      "type": "narrative"
+      "id": "cite-fnd-001",
+      "canonical_url": "https://fruitfulnetworkdevelopment.com/",
+      "publication": "Fruitful Network Development",
+      "published_at": null,
+      "accessed_at": "2026-04-16",
+      "tags": [
+        "organization",
+        "public-reference",
+        "overview"
+      ]
+    },
+    {
+      "topic": "Machine reference explorer",
+      "url": "https://fruitfulnetworkdevelopment.com/machine/pages/references.html",
+      "type": "machine-page"
+    },
+    {
+      "topic": "Article machine index",
+      "url": "https://fruitfulnetworkdevelopment.com/machine/pages/article-index.json",
+      "type": "dataset"
+      "id": "cite-fnd-002",
+      "canonical_url": "https://fruitfulnetworkdevelopment.com/about.html",
+      "publication": "Fruitful Network Development",
+      "published_at": null,
+      "accessed_at": "2026-04-16",
+      "tags": [
+        "organization",
+        "public-reference",
+        "company-profile",
+        "mission"
+      ]
+    },
+    {
+      "id": "cite-fnd-003",
+      "canonical_url": "https://fruitfulnetworkdevelopment.com/services.html",
+      "publication": "Fruitful Network Development",
+      "published_at": null,
+      "accessed_at": "2026-04-16",
+      "tags": [
+        "organization",
+        "public-reference",
+        "services",
+        "operating-model"
+      ]
     },
     {
       "topic": "Services and operating model",
       "url": "https://fruitfulnetworkdevelopment.com/services.html",
       "type": "page"
+      "id": "cite-fnd-004",
+      "canonical_url": "https://fruitfulnetworkdevelopment.com/research.html",
+      "publication": "Fruitful Network Development",
+      "published_at": null,
+      "accessed_at": "2026-04-16",
+      "tags": [
+        "organization",
+        "public-reference",
+        "research",
+        "interoperability"
+      ]
     },
     {
-      "topic": "Research thesis and technical framing",
-      "url": "https://fruitfulnetworkdevelopment.com/research.html",
-      "type": "page"
+      "id": "cite-fnd-005",
+      "canonical_url": "https://www.fruitfulnetworkdevelopment.com/subpages/articles.html?doc=opensource_competition.md",
+      "publication": "Fruitful Network Development",
+      "published_at": null,
+      "accessed_at": "2026-04-16",
+      "tags": [
+        "organization",
+        "public-reference",
+        "articles",
+        "context"
+      ]
     },
     {
-      "topic": "Company profile and mission",
-      "url": "https://fruitfulnetworkdevelopment.com/about.html",
-      "type": "page"
+      "id": "cite-fnd-006",
+      "canonical_url": "https://github.com/Fruitful-Network-Development",
+      "publication": "GitHub",
+      "published_at": null,
+      "accessed_at": "2026-04-16",
+      "tags": [
+        "organization",
+        "public-reference",
+        "code",
+        "implementation"
+      ]
     },
     {
-      "topic": "Public docs corpus",
-      "url": "https://fruitfulnetworkdevelopment.com/machine/docs-corpus-map.json",
-      "type": "index"
+      "id": "cite-fnd-007",
+      "canonical_url": "https://www.linkedin.com/company/fruitful-network-development",
+      "publication": "LinkedIn",
+      "published_at": null,
+      "accessed_at": "2026-04-16",
+      "tags": [
+        "organization",
+        "public-reference",
+        "public-profile"
+      ]
     }
   ]
 }

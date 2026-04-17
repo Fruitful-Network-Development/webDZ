@@ -18,7 +18,7 @@ REQUIRED_TOP_LEVEL_KEYS = (
     "site",
     "navigation",
     "pages",
-    "machine_surfaces",
+    "machine",
 )
 
 
@@ -76,9 +76,14 @@ class _ManifestValidator:
         if isinstance(pages, dict):
             self._validate_pages(pages)
 
+        machine = self.manifest.get("machine")
+        if isinstance(machine, dict):
+            self._validate_machine(machine, "manifest.machine")
+
+        # Backward compatibility for older manifest shape.
         machine_surfaces = self.manifest.get("machine_surfaces")
         if isinstance(machine_surfaces, dict):
-            self._validate_machine_surfaces(machine_surfaces)
+            self._validate_machine(machine_surfaces, "manifest.machine_surfaces")
 
         if self.errors:
             details = "\n".join(f"- {entry}" for entry in self.errors)
@@ -128,25 +133,25 @@ class _ManifestValidator:
             else:
                 self.add_error(f"{base_path}.template", f"unsupported template '{template_value}'")
 
-    def _validate_machine_surfaces(self, machine_surfaces: dict[str, Any]) -> None:
-        inpage = self.require_key(machine_surfaces, "inpage", "manifest.machine_surfaces")
-        pages = self.require_key(machine_surfaces, "pages", "manifest.machine_surfaces")
-        endpoint_maps = self.require_key(machine_surfaces, "endpoint_maps", "manifest.machine_surfaces")
+    def _validate_machine(self, machine_surfaces: dict[str, Any], root_path: str) -> None:
+        inpage = self.require_key(machine_surfaces, "inpage", root_path)
+        pages = self.require_key(machine_surfaces, "pages", root_path)
+        endpoint_maps = self.require_key(machine_surfaces, "endpoint_maps", root_path)
 
         inpage_ids: set[str] = set()
         page_hrefs: set[str] = set()
 
         if isinstance(inpage, dict):
-            root = self.require_key(inpage, "root", "manifest.machine_surfaces.inpage")
+            root = self.require_key(inpage, "root", f"{root_path}.inpage")
             if root is not None:
-                self.require_type(root, str, "manifest.machine_surfaces.inpage.root")
+                self.require_type(root, str, f"{root_path}.inpage.root")
 
-            blocks = self.require_key(inpage, "blocks", "manifest.machine_surfaces.inpage")
+            blocks = self.require_key(inpage, "blocks", f"{root_path}.inpage")
             if isinstance(blocks, list):
                 if not blocks:
-                    self.add_error("manifest.machine_surfaces.inpage.blocks", "must include at least one block")
+                    self.add_error(f"{root_path}.inpage.blocks", "must include at least one block")
                 for idx, block in enumerate(blocks):
-                    path = f"manifest.machine_surfaces.inpage.blocks[{idx}]"
+                    path = f"{root_path}.inpage.blocks[{idx}]"
                     if not self.require_type(block, dict, path):
                         continue
                     block_id = self.require_key(block, "id", path)
@@ -157,16 +162,16 @@ class _ManifestValidator:
                     self.require_key(block, "page", path)
 
         if isinstance(pages, dict):
-            root = self.require_key(pages, "root", "manifest.machine_surfaces.pages")
+            root = self.require_key(pages, "root", f"{root_path}.pages")
             if root is not None:
-                self.require_type(root, str, "manifest.machine_surfaces.pages.root")
+                self.require_type(root, str, f"{root_path}.pages.root")
 
-            endpoints = self.require_key(pages, "endpoints", "manifest.machine_surfaces.pages")
+            endpoints = self.require_key(pages, "endpoints", f"{root_path}.pages")
             if isinstance(endpoints, list):
                 if not endpoints:
-                    self.add_error("manifest.machine_surfaces.pages.endpoints", "must include at least one endpoint")
+                    self.add_error(f"{root_path}.pages.endpoints", "must include at least one endpoint")
                 for idx, endpoint in enumerate(endpoints):
-                    path = f"manifest.machine_surfaces.pages.endpoints[{idx}]"
+                    path = f"{root_path}.pages.endpoints[{idx}]"
                     if not self.require_type(endpoint, dict, path):
                         continue
                     self.require_key(endpoint, "rel", path)
@@ -178,26 +183,26 @@ class _ManifestValidator:
         required_endpoint_map_keys = ("machine_index", "page_manifest", "llm_context")
         if isinstance(endpoint_maps, dict):
             for key in required_endpoint_map_keys:
-                value = self.require_key(endpoint_maps, key, "manifest.machine_surfaces.endpoint_maps")
+                value = self.require_key(endpoint_maps, key, f"{root_path}.endpoint_maps")
                 if isinstance(value, str):
                     if key != "llm_context" and value not in page_hrefs:
                         self.add_error(
-                            f"manifest.machine_surfaces.endpoint_maps.{key}",
-                            "must reference an href listed in manifest.machine_surfaces.pages.endpoints",
+                            f"{root_path}.endpoint_maps.{key}",
+                            f"must reference an href listed in {root_path}.pages.endpoints",
                         )
                 elif value is not None:
-                    self.add_error(f"manifest.machine_surfaces.endpoint_maps.{key}", "must be a string")
+                    self.add_error(f"{root_path}.endpoint_maps.{key}", "must be a string")
 
             org_schema_id = endpoint_maps.get("organization_schema_id")
             if org_schema_id is not None and isinstance(org_schema_id, str):
                 if org_schema_id not in inpage_ids:
                     self.add_error(
-                        "manifest.machine_surfaces.endpoint_maps.organization_schema_id",
-                        "must match one of manifest.machine_surfaces.inpage.blocks[*].id",
+                        f"{root_path}.endpoint_maps.organization_schema_id",
+                        f"must match one of {root_path}.inpage.blocks[*].id",
                     )
             elif org_schema_id is not None:
                 self.add_error(
-                    "manifest.machine_surfaces.endpoint_maps.organization_schema_id",
+                    f"{root_path}.endpoint_maps.organization_schema_id",
                     "must be a string when provided",
                 )
 
