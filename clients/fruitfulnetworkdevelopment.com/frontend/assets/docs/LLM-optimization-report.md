@@ -1,6 +1,6 @@
 ---
 doc_id: fnd-llm-optimization-report
-version: 1.0.0
+version: 1.1.0
 last_updated: 2026-04-16
 source_type: canonical_llm_source
 manifest: ./llm-optimization-manifest.json
@@ -9,7 +9,7 @@ manifest: ./llm-optimization-manifest.json
 # LLM Optimization Report
 
 ## Document Metadata
-- **Version:** 1.0.0
+- **Version:** 1.1.0
 - **Last Updated:** 2026-04-16
 - **Owner:** Fruitful Network Development
 - **Primary Scope:** Machine-consumable organization profile and claims normalization

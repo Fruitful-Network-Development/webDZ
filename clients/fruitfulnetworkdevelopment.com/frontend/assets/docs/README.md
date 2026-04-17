@@ -128,6 +128,17 @@ Renderer/runtime pipelines decide delivery placement for each artifact:
 - in-page hidden machine blocks (`machine/inpage/*`) for non-visual embed patterns, or
 - standalone machine pages (`machine/pages/*`) for crawler/agent endpoints.
 
+
+## Canonical source priority (`docs/` vs `assets/docs/`)
+
+Machine-document generation uses a **synchronized mirror strategy**:
+
+1. **Canonical source of truth:** repository-level `docs/` (authoring + review source).
+2. **Frontend mirror:** `clients/fruitfulnetworkdevelopment.com/frontend/assets/docs/` (published machine endpoints).
+3. Build/update scripts read from `docs/` first and then overwrite/update the frontend mirror artifacts deterministically.
+
+This keeps editorial provenance in one location while preserving stable public URLs for crawlers and agents.
+
 ## LLM Optimization Source Bundle
 
 Canonical source and generated machine artifacts for LLM consumption live in this folder:

@@ -1,26 +1,32 @@
 {
   "site": "fruitfulnetworkdevelopment.com",
   "updated": "2026-04-16",
+  "source_priority": {
+    "strategy": "synchronized-mirror",
+    "canonical": "/docs/",
+    "mirror": "/assets/docs/"
+  },
   "corpus": [
     {
-      "section": "Core machine-readable brief",
-      "path": "/llms.md",
-      "format": "markdown"
+      "id": "canonical-docs",
+      "section": "Repository canonical machine docs",
+      "path": "/docs/",
+      "format": "markdown",
+      "role": "source_of_truth"
     },
     {
-      "section": "Research and public narrative docs",
+      "id": "frontend-doc-mirror",
+      "section": "Frontend mirrored docs for public serving",
       "path": "/assets/docs/",
-      "format": "markdown"
+      "format": "markdown+json",
+      "role": "synchronized_mirror"
     },
     {
-      "section": "Article rendering entry point",
-      "path": "/subpages/articles.html",
-      "format": "html"
-    },
-    {
-      "section": "Machine indexes",
+      "id": "machine-endpoints",
+      "section": "Machine index endpoints",
       "path": "/machine/",
-      "format": "json"
+      "format": "json",
+      "role": "discovery"
     }
   ]
 }
