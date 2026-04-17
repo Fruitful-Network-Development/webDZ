@@ -4,47 +4,50 @@
     "fnd": "https://fruitfulnetworkdevelopment.com/ns#",
     "version": "fnd:version",
     "lastUpdated": "fnd:lastUpdated",
-    "sourceVersion": "fnd:sourceVersion"
+    "sourcePath": "fnd:sourcePath"
   },
   "@graph": [
     {
       "@type": "Dataset",
       "@id": "https://fruitfulnetworkdevelopment.com/datasets/fnd-llm-optimization-report",
       "name": "FND LLM Optimization Report Entity Fragments",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "lastUpdated": "2026-04-16",
-      "sourceVersion": "1.0.0",
-      "isBasedOn": "https://fruitfulnetworkdevelopment.com/"
+      "sourcePath": "https://fruitfulnetworkdevelopment.com/docs/LLM-optimization-report.md",
+      "citation": [
+        "https://fruitfulnetworkdevelopment.com/",
+        "https://fruitfulnetworkdevelopment.com/about.html",
+        "https://fruitfulnetworkdevelopment.com/services.html",
+        "https://fruitfulnetworkdevelopment.com/research.html",
+        "https://www.fruitfulnetworkdevelopment.com/subpages/articles.html?doc=opensource_competition.md",
+        "https://github.com/Fruitful-Network-Development",
+        "https://www.linkedin.com/company/fruitful-network-development"
+      ]
     },
     {
       "@type": "Organization",
       "@id": "https://fruitfulnetworkdevelopment.com/#organization",
       "name": "Fruitful Network Development",
-      "url": "https://fruitfulnetworkdevelopment.com/",
       "areaServed": "Ohio, United States",
+      "founder": {
+        "@type": "Person",
+        "name": "Dylan Montgomery"
+      },
+      "description": "Practical infrastructure today with deeper coordination systems under active research and prototyping",
       "knowsAbout": [
         "Agricultural technology",
         "Local food system coordination",
         "Interoperability infrastructure"
       ],
-      "sameAs": [
-        "https://www.linkedin.com/company/fruitful-network-development/",
-        "https://github.com/Fruitful-Network-Development"
-      ],
-      "founder": {
-        "@type": "Person",
-        "name": "Dylan Montgomery"
-      }
-    },
-    {
-      "@type": "CreativeWork",
-      "@id": "https://fruitfulnetworkdevelopment.com/docs/LLM-optimization-report.machine-brief",
-      "name": "Concise Machine Brief",
-      "version": "1.0.0",
-      "lastUpdated": "2026-04-16",
-      "isPartOf": {
-        "@id": "https://fruitfulnetworkdevelopment.com/datasets/fnd-llm-optimization-report"
-      }
+      "citation": [
+        "https://fruitfulnetworkdevelopment.com/",
+        "https://fruitfulnetworkdevelopment.com/about.html",
+        "https://fruitfulnetworkdevelopment.com/services.html",
+        "https://fruitfulnetworkdevelopment.com/research.html",
+        "https://www.fruitfulnetworkdevelopment.com/subpages/articles.html?doc=opensource_competition.md",
+        "https://github.com/Fruitful-Network-Development",
+        "https://www.linkedin.com/company/fruitful-network-development"
+      ]
     }
   ]
 }

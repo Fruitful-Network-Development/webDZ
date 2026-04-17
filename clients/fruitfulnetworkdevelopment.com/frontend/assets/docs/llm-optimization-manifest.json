@@ -1,11 +1,11 @@
 {
   "manifest_id": "fnd-llm-optimization-manifest",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "last_updated": "2026-04-16",
   "source": {
-    "path": "clients/fruitfulnetworkdevelopment.com/frontend/assets/docs/LLM-optimization-report.md",
+    "path": "docs/LLM-optimization-report.md",
     "doc_id": "fnd-llm-optimization-report",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "last_updated": "2026-04-16"
   },
   "deterministic_extraction_map": {
@@ -57,19 +57,19 @@
     {
       "artifact_type": "concise_machine_brief",
       "path": "clients/fruitfulnetworkdevelopment.com/frontend/assets/docs/LLM-optimization-report.machine-brief.md",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "last_updated": "2026-04-16"
     },
     {
       "artifact_type": "citation_graph_json",
       "path": "clients/fruitfulnetworkdevelopment.com/frontend/assets/docs/LLM-optimization-report.citation-graph.json",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "last_updated": "2026-04-16"
     },
     {
       "artifact_type": "entity_profile_jsonld_fragments",
       "path": "clients/fruitfulnetworkdevelopment.com/frontend/assets/docs/LLM-optimization-report.entity-profiles.jsonld",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "last_updated": "2026-04-16"
     }
   ]
