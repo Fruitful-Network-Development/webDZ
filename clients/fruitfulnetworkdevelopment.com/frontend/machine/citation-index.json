@@ -8,9 +8,14 @@
       "type": "narrative"
     },
     {
-      "topic": "Services and operating model",
-      "url": "https://fruitfulnetworkdevelopment.com/services.html",
-      "type": "page"
+      "topic": "Machine reference explorer",
+      "url": "https://fruitfulnetworkdevelopment.com/machine/pages/references.html",
+      "type": "machine-page"
+    },
+    {
+      "topic": "Article machine index",
+      "url": "https://fruitfulnetworkdevelopment.com/machine/pages/article-index.json",
+      "type": "dataset"
     },
     {
       "topic": "Research thesis and technical framing",
@@ -18,14 +23,9 @@
       "type": "page"
     },
     {
-      "topic": "Company profile and mission",
-      "url": "https://fruitfulnetworkdevelopment.com/about.html",
+      "topic": "Services and operating model",
+      "url": "https://fruitfulnetworkdevelopment.com/services.html",
       "type": "page"
-    },
-    {
-      "topic": "Public docs corpus",
-      "url": "https://fruitfulnetworkdevelopment.com/machine/docs-corpus-map.json",
-      "type": "index"
     }
   ]
 }

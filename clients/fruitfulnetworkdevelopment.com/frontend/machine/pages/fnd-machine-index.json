@@ -4,14 +4,34 @@
   "site": "https://fruitfulnetworkdevelopment.com",
   "pages": [
     {
-      "rel": "llm-context",
-      "href": "/llms.md",
-      "format": "text/markdown"
+      "rel": "article-index",
+      "href": "/machine/pages/article-index.json",
+      "format": "application/json"
+    },
+    {
+      "rel": "citation-index",
+      "href": "/machine/citation-index.json",
+      "format": "application/json"
     },
     {
       "rel": "dataset",
       "href": "/machine/pages/fnd-pages.manifest.json",
       "format": "application/json"
+    },
+    {
+      "rel": "llm-context",
+      "href": "/llms.md",
+      "format": "text/markdown"
+    },
+    {
+      "rel": "machine-index",
+      "href": "/machine/pages/fnd-machine-index.json",
+      "format": "application/json"
+    },
+    {
+      "rel": "references",
+      "href": "/machine/pages/references.html",
+      "format": "text/html"
     }
   ]
 }
