@@ -1,119 +1,227 @@
 [
-    {
-      "name": "Daniel Greenfield",
-      "image": "assets/image/people/daniel_greenfield.png",
-      "email": "dgreenfi67@hotmail.com",
-      "bio": [
-        "Daniel Greenfield is a farmer and environmental educator who operates Greenfield Berry Farm as part of the farm program in Cuyahoga Valley National Park.",
-        "At Greenfield Berry Farm, he grows pick-your-own blueberries, aronia berries, and sunflowers, along with vegetables, tulips, pussy willows, and honey, and he regularly welcomes visitors for tours and educational experiences.",
-        "Daniel brings a background in education and a longstanding commitment to connecting people with the land through farming, stewardship, and hands-on learning."
-      ],
-      "socials": [
-        { "website": "greenfieldberryfarm.com" },
-        { "facebook": "facebook.com/p/Greenfield-Berry-Farm-100064617136997" }
-      ],
-      "tags": []
-    },
-    {
-      "name": "Elizabeth Blake",
-      "image": "assets/image/people/elizabeth_blake.png",
-      "email": "elizabeth.blake@gmail.com",
-      "bio": [
-        "Elizabeth Blake brings a background in applied ethics, public policy, and higher education.",
-        "Her work spans teaching, research, writing, and editorial leadership, with a focus on the ethical foundations of social life, public institutions, and community resilience.",
-        "On the Countryside board, she contributes thoughtful perspective on stewardship, sustainability, and the conditions that help local communities thrive."
-      ],
-      "socials": [
-        { "website": "elizabethbrake.com" }
-      ],
-      "tags": []
-    },
-    {
-      "name": "Jennifer Gray",
-      "image": "assets/icon/icon-profile.svg",
-      "email": "jenniferloragray@gmail.com",
-      "bio": [
-        "Jennifer Gray brings a legal background shaped by work in court and public-service settings.",
-        "Her experience in advocacy, analysis, and public institutions supports Countryside’s commitment to strong governance and mission-driven service."
-      ],
-      "socials": [],
-      "tags": []
-    },
-    {
-      "name": "Jennifer Till",
-      "image": "assets/image/people/jennifer_till.png",
-      "email": "till.20017@gmail.com",
-      "bio": [
-        "Jennifer Till is co-owner of Till Family Farms, a family farm known for all-natural goods including candles, soaps, jams, caramels, eggs, and chicken.",
-        "With a focus on quality, craftsmanship, and regenerative farm values, she helps connect local families to food and farm-made products rooted in care for the land and animals.",
-        "She also shares that work through local markets, helping strengthen the region’s connection to small-scale agriculture."
-      ],
-      "socials": [
-        { "website": "tillff.square.site" },
-        { "instagram": "tillfamilyfarms" }
-      ],
-      "tags": []
-    },
-    {
-      "name": "Kalyani Sapkal",
-      "image": "assets/image/people/kalyani_sapkal.png",
-      "email": "kalyanisapkal.r@gmail.com",
-      "bio": [
-        "Kalyani Sapkal is the founder of Kalyani Consulting, where she supports nonprofit organizations with fund development, grant strategy, and long-term planning.",
-        "Her work is especially rooted in food, water, and community-impact sectors, and she brings extensive experience helping mission-driven organizations grow their capacity.",
-        "At Countryside, she contributes strategic perspective on fundraising, partnerships, and the long-term health of community-based food systems."
-      ],
-      "socials": [
-        { "website": "kalyani-consulting.com" },
-        { "linkedin": "linkedin.com/in/kalyani-sapkal-fundraiser" }
-      ],
-      "tags": []
-    },
-    {
-      "name": "Marilyn Wotowiec",
-      "image": "assets/image/people/marilyn_wotowiec.png",
-      "email": "mjmw677@gmail.com",
-      "bio": [
-        "Marilyn Wotowiec is a dedicated Countryside volunteer and advocate who has supported the organization’s mission through board service and community leadership.",
-        "She brings a deep commitment to local food, land stewardship, and the relationships that sustain a strong regional farm community."
-      ],
-      "socials": [],
-      "tags": ["board_chair"]
-    },
-    {
-      "name": "Sara Steele",
-      "image": "assets/image/people/sara_steele.png",
-      "email": "saralizsteele@gmail.com",
-      "bio": [
-        "Sara Steele is an artist whose work reflects a strong connection to creative expression, place, and community.",
-        "Through painting, visual storytelling, and public-facing creative projects, she brings an arts-based perspective to Countryside’s work of cultivating vibrant local culture around food and land."
-      ],
-      "socials": [
-        { "instagram": "saralizsteele" }
-      ],
-      "tags": []
-    },
-    {
-      "name": "Susan Schmidt",
-      "image": "assets/icon/icon-profile.svg",
-      "email": "susanschmidt@rocketmail.com",
-      "bio": [
-        "Susan Schmidt operates Schmidt Family Farms in Medina County, where she raises certified organic produce and other farm products with a strong focus on stewardship and quality.",
-        "Her work reflects deep practical knowledge in small-scale agriculture, and she has long participated in local markets that connect growers directly with the community.",
-        "Through Schmidt Family Farms, she helps make organic food and farm goods more accessible across the region."
-      ],
-      "socials": [
-        { "facebook": "facebook.com/schmidtfamilyfarms.org" }
-      ],
-      "tags": []
-    },
-    {
-      "name": "Nathan Seals",
-      "image": "assets/icon/icon-profile.svg",
-      "email": "n8seals@gmail.com",
-      "bio": [
-      ],
-      "socials": [],
-      "tags": []
-    }
-  ]
+  {
+    "id": "daniel-greenfield",
+    "name": "Daniel Greenfield",
+    "image": "assets/image/people/daniel_greenfield.png",
+    "summary_bio": "Daniel Greenfield is a farmer and environmental educator who operates Greenfield Berry Farm as part of the farm program in Cuyahoga Valley National Park.",
+    "bio": [
+      "At Greenfield Berry Farm, he grows pick-your-own blueberries, aronia berries, and sunflowers, along with vegetables, tulips, pussy willows, and honey, and he regularly welcomes visitors for tours and educational experiences.",
+      "Daniel brings a background in education and a longstanding commitment to connecting people with the land through farming, stewardship, and hands-on learning."
+    ],
+    "email": "dgreenfi67@hotmail.com",
+    "secondary_email": null,
+    "phone": null,
+    "why_joined_the_board": null,
+    "year_joined_board": null,
+    "socials": [
+      {
+        "platform": "website",
+        "value": "greenfieldberryfarm.com"
+      },
+      {
+        "platform": "facebook",
+        "value": "facebook.com/p/Greenfield-Berry-Farm-100064617136997"
+      }
+    ],
+    "tags": []
+  },
+  {
+    "id": "elizabeth-blake",
+    "name": "Elizabeth Blake",
+    "image": "assets/image/people/elizabeth_blake.png",
+    "summary_bio": "Elizabeth Blake brings a background in applied ethics, public policy, and higher education.",
+    "bio": [
+      "Her work spans teaching, research, writing, and editorial leadership, with a focus on the ethical foundations of social life, public institutions, and community resilience.",
+      "On the Countryside board, she contributes thoughtful perspective on stewardship, sustainability, and the conditions that help local communities thrive."
+    ],
+    "email": "elizabeth.blake@gmail.com",
+    "secondary_email": null,
+    "phone": null,
+    "why_joined_the_board": null,
+    "year_joined_board": null,
+    "socials": [
+      {
+        "platform": "website",
+        "value": "elizabethbrake.com"
+      }
+    ],
+    "tags": []
+  },
+  {
+    "id": "jennifer-gray",
+    "name": "Jennifer Gray",
+    "image": "assets/image/people/jennifer_gray.jpeg",
+    "summary_bio": "Jennifer Gray is the founder of JLG Law, LLC and brings extensive federal, state, and local trial experience to the board.",
+    "bio": [
+      "Jennifer is the founder of JLG Law, LLC, a solo practice that primarily provides criminal defense to individuals engaged in the federal, state, and local courts in the Cleveland area. She brings considerable experience in litigating complex criminal matters at the state and federal level, including matters involving multiple federal, state, and local law enforcement agencies. Before opening her own practice, Jennifer joined Flannery | Georgalis, LLC, as Counsel in the Cleveland office. She previously spent 18 months as a federal law clerk in the inaugural chambers of the Honorable Magistrate Judge James E. Grimes, Jr., of the U.S. District Court for the Northern District of Ohio.",
+      "For the initial 12 years of her career, Jennifer was an Assistant District Attorney within the Special Victims, Investigations and Trial Divisions of the Bronx County District Attorney’s Office in New York, NY. She successfully prosecuted, investigated, and tried a wide array of high-profile criminal cases including homicides, sexual assaults, domestic violence matters, and numerous multiagency, long-term, and complex investigations. As a former Supervising Assistant District Attorney, Jennifer brings extensive experience in the assessment of cases, the anticipation of issues, the development of legal strategies for trials and hearings, and the written and oral motions practice in a fast-paced, high-volume, high-stakes environment.",
+      "During her time as a Bronx Assistant District Attorney working on Special Victims cases, Jennifer was trained as a forensic interviewer and has vast experience conducting and participating in forensic interviews, a skillset she now applies to clients and investigations in her private practice.",
+      "Education:\nBerklee College of Music (BM, Music Business and Management, 2004)\nStudy Abroad: Universidad de Salamanca (2004)\nBenjamin N. Cardozo School of Law (J.D., 2010)",
+      "Bar Admissions:\nOhio\nNew York",
+      "Professional Memberships:\nCleveland Metropolitan Bar Association\nFederal Bar Association, OHND Chapter\nWestshore Bar Association\nCleveland Law Library\nWilliam K. Thomas Inn of Court\nOhio Association of Criminal Defense Lawyers\nNational College of DUI Defense",
+      "Accolades/Awards/Certifications/Recognitions/Boards/Community Service:\nCSU LAW Thomas J. Gray, Sr. Endowed Scholarship, Board Representative (Family, 2024)\nNew York State Office of the Attorney General 35th Annual Crime Victims Candlelight Vigil, Performer (2021)\nOffice of the Bronx District Attorney (BXDA) Victim Advocates Unit, Sexual Assault Awareness Program, Performer and Panel Participant (2021)\nBXDA Litigation Training Unit, Faculty Member for Felony Trial, Misdemeanor Trial, and Orientation Training programs (2016-2021)\nBXDA Annual Staff Recognition Week, BXDA’s Got Talent Performer: (2011-2018)\nSpeakers & Community Events Programs, Bronx District Attorney’s representative (Community Board, 2012-2018)\nMAGLOCLEN Law Enforcement Network’s Violent Gang Conference Attendee and Participant (2017)\nNational Network to End Domestic Violence’s SafetyNet Technology Summit Attendee and Participant (2018)\nBronx School of Law & Finance, Speaker (2017)\nBXDA Community Affairs Unit Read-to-Me Program, Reader (2015-2016)\nBXDA Community Affairs Unit Tours Program, Educator/Guide (2015-2016)\nCareer Day at P.S. 24 in Queens, New York, Speaker: (2014-2016)\nNew York City Department of Education Mentoring Program, Mentor: (2010-2015)"
+    ],
+    "email": "Jennifer@jlgraylaw.com",
+    "secondary_email": "jenniferloragray@gmail.com",
+    "phone": "216-316-1830",
+    "why_joined_the_board": "I was—and continue to be—excited for the opportunity to maintain the continuity of this incredible cause alongside such a diverse and inspiring group of people. Countryside has, it seems to me, always brought together Northeast Ohio’s agricultural communities and I want to be a part of that going forward. I deeply appreciate our support of individuality even as we celebrate the collective.",
+    "year_joined_board": null,
+    "socials": [
+      {
+        "platform": "linkedin",
+        "value": "linkedin.com/in/jlgraylaw"
+      }
+    ],
+    "tags": []
+  },
+  {
+    "id": "jennifer-till",
+    "name": "Jennifer Till",
+    "image": "assets/image/people/jennifer_till.png",
+    "summary_bio": "Jennifer Till is co-owner of Till Family Farms, a family farm known for all-natural goods including candles, soaps, jams, caramels, eggs, and chicken.",
+    "bio": [
+      "With a focus on quality, craftsmanship, and regenerative farm values, she helps connect local families to food and farm-made products rooted in care for the land and animals.",
+      "She also shares that work through local markets, helping strengthen the region’s connection to small-scale agriculture."
+    ],
+    "email": "till.20017@gmail.com",
+    "secondary_email": null,
+    "phone": null,
+    "why_joined_the_board": null,
+    "year_joined_board": null,
+    "socials": [
+      {
+        "platform": "website",
+        "value": "tillff.square.site"
+      },
+      {
+        "platform": "instagram",
+        "value": "tillfamilyfarms"
+      }
+    ],
+    "tags": []
+  },
+  {
+    "id": "kalyani-sapkal",
+    "name": "Kalyani Sapkal",
+    "image": "assets/image/people/kalyani_sapkal.png",
+    "summary_bio": "Kalyani Sapkal is the founder of Kalyani Consulting, where she supports nonprofit organizations with fund development, grant strategy, and long-term planning.",
+    "bio": [
+      "Her work is especially rooted in food, water, and community-impact sectors, and she brings extensive experience helping mission-driven organizations grow their capacity.",
+      "At Countryside, she contributes strategic perspective on fundraising, partnerships, and the long-term health of community-based food systems."
+    ],
+    "email": "kalyanisapkal.r@gmail.com",
+    "secondary_email": null,
+    "phone": null,
+    "why_joined_the_board": null,
+    "year_joined_board": null,
+    "socials": [
+      {
+        "platform": "website",
+        "value": "kalyani-consulting.com"
+      },
+      {
+        "platform": "linkedin",
+        "value": "linkedin.com/in/kalyani-sapkal-fundraiser"
+      }
+    ],
+    "tags": []
+  },
+  {
+    "id": "marilyn-wotowiec",
+    "name": "Marilyn Wotowiec",
+    "image": "assets/image/people/marilyn_wotowiec.png",
+    "summary_bio": "Marilyn Wotowiec is a dedicated Countryside volunteer and advocate who has supported the organization’s mission through board service and community leadership.",
+    "bio": [
+      "She brings a deep commitment to local food, land stewardship, and the relationships that sustain a strong regional farm community."
+    ],
+    "email": "mjmw677@gmail.com",
+    "secondary_email": null,
+    "phone": null,
+    "why_joined_the_board": null,
+    "year_joined_board": null,
+    "socials": [],
+    "tags": [
+      "board_chair"
+    ]
+  },
+  {
+    "id": "sara-steele",
+    "name": "Sara Steele",
+    "image": "assets/image/people/sara_steele.png",
+    "summary_bio": "Sara Steele is an artist whose work reflects a strong connection to creative expression, place, and community.",
+    "bio": [
+      "Through painting, visual storytelling, and public-facing creative projects, she brings an arts-based perspective to Countryside’s work of cultivating vibrant local culture around food and land."
+    ],
+    "email": "saralizsteele@gmail.com",
+    "secondary_email": null,
+    "phone": null,
+    "why_joined_the_board": null,
+    "year_joined_board": null,
+    "socials": [
+      {
+        "platform": "instagram",
+        "value": "saralizsteele"
+      }
+    ],
+    "tags": []
+  },
+  {
+    "id": "susan-schmidt",
+    "name": "Susan Schmidt",
+    "image": "assets/image/people/susan_schmidt.jpg",
+    "summary_bio": "Susan Schmidt is the owner of Schmidt Family Farms LLC, a certified organic farm committed to healthy food, education, and healing experiences.",
+    "bio": [
+      "Owner of Schmidt Family Farms LLC. We are a small certified organic farm committed to being an island of light in our community since 2004. Providing healthy organic food and offering a variety of educational and healing experiences, we support peace, health, healing and abundance for our neighbors and the world.",
+      "Resonant Healing Practitioner.",
+      "Licensed Independent Chemical Dependency Counselor.",
+      "MS Counseling, University of Oregon."
+    ],
+    "email": "susanschmidt@rocketmail.com",
+    "secondary_email": null,
+    "phone": "330-239-2325",
+    "why_joined_the_board": "I said yes to support local farms and increase access to local healthy food, encourage people to know about growing food and have some fun outdoors.",
+    "year_joined_board": 2026,
+    "socials": [
+      {
+        "platform": "facebook",
+        "value": "facebook.com/schmidtfamilyfarms.org"
+      }
+    ],
+    "tags": []
+  },
+  {
+    "id": "nathan-seals",
+    "name": "Nathan Seals",
+    "image": "assets/icon/icon-profile.svg",
+    "summary_bio": null,
+    "bio": [],
+    "email": "n8seals@gmail.com",
+    "secondary_email": null,
+    "phone": null,
+    "why_joined_the_board": null,
+    "year_joined_board": null,
+    "socials": [],
+    "tags": []
+  },
+  {
+    "id": "matthew-mecurio",
+    "name": "Matthew Mecurio",
+    "image": "assets/image/people/matthew_mecurio.jpg",
+    "summary_bio": "Matthew Mecurio serves as President and CEO of Falls Catholic Credit Union and brings 25 years of credit union experience.",
+    "bio": [
+      "Currently serving as the President/CEO of FCCU, a Credit Union serving members living in Summit County, Ohio. A graduate of Ohio University, he has worked in the credit union industry for 25 years."
+    ],
+    "email": "mmecurio@fallsccu.com",
+    "secondary_email": null,
+    "phone": "614-203-7704",
+    "why_joined_the_board": "I was—and continue to be—excited for the opportunity to maintain the continuity of this incredible cause alongside such a diverse and inspiring group of people. Countryside has, it seems to me, always brought together Northeast Ohio’s agricultural communities and I want to be a part of that going forward. I deeply appreciate our support of individuality even as we celebrate the collective.",
+    "year_joined_board": null,
+    "socials": [
+      {
+        "platform": "linkedin",
+        "value": "linkedin.com/in/matthew-mecurio-13126a139"
+      }
+    ],
+    "tags": []
+  }
+]

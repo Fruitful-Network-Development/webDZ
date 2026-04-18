@@ -16,5 +16,7 @@ The manifest is the content source of truth.
 - `scripts/render_manifest.py` is the build entrypoint.
 - `scripts/render_lib/` contains reusable manifest loading, Markdown parsing, shell rendering, and template-family renderers.
 - `js/site-shell.js` is progressive enhancement only for the sticky header and mobile drawer.
+- `FND-DCM` reads this frontend through the shared hosted-manifest convention and keeps renderer-specific behavior in site-local templates rather than forcing one merged renderer.
+- The current `FND-DCM` scope is read-only manifest inspection and normalization.
 
 The public page body content is compiled into the HTML files, so the site still works when JavaScript is disabled.

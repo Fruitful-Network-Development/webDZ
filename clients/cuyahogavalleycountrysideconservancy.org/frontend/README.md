@@ -8,3 +8,9 @@ Workflow:
 - `assets/docs/board_profiles.json`, `assets/docs/happenings.json`, and `assets/docs/timeline.json` remain layered source datasets.
 - `assets/docs/fragments/*.html` hold manual static page bodies for pages that do not need collection-driven rendering.
 - `scripts/render_manifest.py` builds the final page HTML files without requiring client-side content fetches.
+
+Shared hosted-manifest conventions:
+- `FND-DCM` reads this frontend through `assets/docs/manifest.json` plus collection files resolved from the frontend root.
+- Manifest normalization is shared in MyCite V2, while this renderer remains client-specific.
+- `board_profiles.json` now uses the canonical board-profile shape with `summary_bio`, normalized contact fields, and normalized `socials`.
+- The public profile cards prefer `summary_bio` and keep longer details behind the profile-card expansion.

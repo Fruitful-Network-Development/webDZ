@@ -454,6 +454,11 @@ def social_pairs(profile: dict[str, object]) -> list[tuple[str, str]]:
     for row in profile.get("socials", []):
         if not isinstance(row, dict):
             continue
+        platform = row.get("platform")
+        value = row.get("value")
+        if platform and value:
+            items.append((str(platform).lower(), str(value).strip()))
+            continue
         for key, value in row.items():
             if value:
                 items.append((str(key).lower(), str(value).strip()))
@@ -478,6 +483,22 @@ def social_label(key: str, value: str) -> str:
     return labels.get(key, key.title())
 
 
+def board_contact_href(kind: str, value: str) -> str:
+    if kind == "email":
+        return "mailto:" + value
+    if kind == "phone":
+        digits = "".join(ch for ch in value if ch.isdigit() or ch == "+")
+        return "tel:" + digits
+    return value
+
+
+def board_contact_icon(kind: str) -> str:
+    return {
+        "email": "assets/icon/icon-mail.svg",
+        "phone": "assets/icon/icon-hardware.svg",
+    }.get(kind, "assets/icon/ui/icon-link.svg")
+
+
 def render_board_card(profile: dict[str, object], featured: bool = False) -> str:
     if not profile:
         return ""
@@ -491,19 +512,35 @@ def render_board_card(profile: dict[str, object], featured: bool = False) -> str
         else f'<figure class="board-card__portrait"><img class="board-card__photo" src="{escape(rel_asset(profile["image"]))}" alt="Portrait of {escape(profile.get("name", "Board member"))}" loading="lazy" decoding="async" /></figure>'
     )
     paragraphs = [paragraph for paragraph in profile.get("bio", []) if paragraph]
-    summary = paragraphs[0] if paragraphs else "Biography currently unavailable."
+    summary_bio = str(profile.get("summary_bio", "") or "").strip()
+    summary = summary_bio or (paragraphs[0] if paragraphs else "Biography currently unavailable.")
+    detail_lines = paragraphs if summary_bio else paragraphs[1:]
+    if profile.get("year_joined_board"):
+        detail_lines.append(f'Year joined board: {profile["year_joined_board"]}')
+    if profile.get("why_joined_the_board"):
+        detail_lines.append(f'Why joined the board: {profile["why_joined_the_board"]}')
     detail = (
         '<details class="board-card__details">'
         "<summary>Read full profile</summary>"
-        f'<div class="board-card__details-body">{"".join(f"<p>{escape(line)}</p>" for line in paragraphs[1:])}</div>'
+        f'<div class="board-card__details-body">{"".join(f"<p>{escape(line)}</p>" for line in detail_lines)}</div>'
         "</details>"
-        if len(paragraphs) > 1
+        if detail_lines
         else ""
     )
     meta_items = []
     if profile.get("email"):
         meta_items.append(
             f'<li><a href="mailto:{escape(profile["email"])}"><img src="assets/icon/icon-mail.svg" alt="" aria-hidden="true" /><span>Email</span></a></li>'
+        )
+    if profile.get("secondary_email"):
+        href = board_contact_href("email", str(profile["secondary_email"]))
+        meta_items.append(
+            f'<li><a href="{escape(href)}"><img src="{escape(board_contact_icon("email"))}" alt="" aria-hidden="true" /><span>Alt email</span></a></li>'
+        )
+    if profile.get("phone"):
+        href = board_contact_href("phone", str(profile["phone"]))
+        meta_items.append(
+            f'<li><a href="{escape(href)}"><img src="{escape(board_contact_icon("phone"))}" alt="" aria-hidden="true" /><span>Phone</span></a></li>'
         )
     for key, value in social_pairs(profile):
         href = social_href(key, value)
