@@ -499,6 +499,23 @@ def board_contact_icon(kind: str) -> str:
     }.get(kind, "assets/icon/ui/icon-link.svg")
 
 
+def include_field(profile: dict[str, object], field_name: str, default: bool = True) -> bool:
+    include_rules = profile.get("include", [])
+    if isinstance(include_rules, dict):
+        value = include_rules.get(field_name)
+        return default if value is None else bool(value)
+    for row in include_rules:
+        if isinstance(row, dict):
+            key = str(row.get("key", "")).strip()
+            if key == field_name:
+                return bool(row.get("value"))
+        elif isinstance(row, (list, tuple)) and len(row) == 2:
+            key = str(row[0]).strip()
+            if key == field_name:
+                return bool(row[1])
+    return default
+
+
 def render_board_card(profile: dict[str, object], featured: bool = False) -> str:
     if not profile:
         return ""
@@ -532,12 +549,12 @@ def render_board_card(profile: dict[str, object], featured: bool = False) -> str
         meta_items.append(
             f'<li><a href="mailto:{escape(profile["email"])}"><img src="assets/icon/icon-mail.svg" alt="" aria-hidden="true" /><span>Email</span></a></li>'
         )
-    if profile.get("secondary_email"):
+    if profile.get("secondary_email") and include_field(profile, "secondary_email"):
         href = board_contact_href("email", str(profile["secondary_email"]))
         meta_items.append(
             f'<li><a href="{escape(href)}"><img src="{escape(board_contact_icon("email"))}" alt="" aria-hidden="true" /><span>Alt email</span></a></li>'
         )
-    if profile.get("phone"):
+    if profile.get("phone") and include_field(profile, "phone"):
         href = board_contact_href("phone", str(profile["phone"]))
         meta_items.append(
             f'<li><a href="{escape(href)}"><img src="{escape(board_contact_icon("phone"))}" alt="" aria-hidden="true" /><span>Phone</span></a></li>'

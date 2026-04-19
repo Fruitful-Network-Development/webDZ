@@ -64,6 +64,16 @@
     "email": "Jennifer@jlgraylaw.com",
     "secondary_email": "jenniferloragray@gmail.com",
     "phone": "216-316-1830",
+    "include": [
+      {
+        "key": "secondary_email",
+        "value": false
+      },
+      {
+        "key": "phone",
+        "value": false
+      }
+    ],
     "why_joined_the_board": "I was—and continue to be—excited for the opportunity to maintain the continuity of this incredible cause alongside such a diverse and inspiring group of people. Countryside has, it seems to me, always brought together Northeast Ohio’s agricultural communities and I want to be a part of that going forward. I deeply appreciate our support of individuality even as we celebrate the collective.",
     "year_joined_board": null,
     "socials": [
@@ -179,6 +189,16 @@
     "email": "susanschmidt@rocketmail.com",
     "secondary_email": null,
     "phone": "330-239-2325",
+    "include": [
+      {
+        "key": "secondary_email",
+        "value": false
+      },
+      {
+        "key": "phone",
+        "value": false
+      }
+    ],
     "why_joined_the_board": "I said yes to support local farms and increase access to local healthy food, encourage people to know about growing food and have some fun outdoors.",
     "year_joined_board": 2026,
     "socials": [
@@ -214,6 +234,16 @@
     "email": "mmecurio@fallsccu.com",
     "secondary_email": null,
     "phone": "614-203-7704",
+    "include": [
+      {
+        "key": "secondary_email",
+        "value": false
+      },
+      {
+        "key": "phone",
+        "value": false
+      }
+    ],
     "why_joined_the_board": "I was—and continue to be—excited for the opportunity to maintain the continuity of this incredible cause alongside such a diverse and inspiring group of people. Countryside has, it seems to me, always brought together Northeast Ohio’s agricultural communities and I want to be a part of that going forward. I deeply appreciate our support of individuality even as we celebrate the collective.",
     "year_joined_board": null,
     "socials": [
