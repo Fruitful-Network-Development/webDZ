@@ -117,9 +117,36 @@ class _ManifestValidator:
                 self.require_key(page, "title", base_path)
                 content = self.require_key(page, "content", base_path)
                 if isinstance(content, dict):
-                    main_html = self.require_key(content, "main_html", f"{base_path}.content")
-                    if main_html is not None:
-                        self.require_type(main_html, str, f"{base_path}.content.main_html")
+                    has_main_html = False
+                    has_sections = False
+
+                    if "main_html" in content:
+                        main_html = self.require_key(content, "main_html", f"{base_path}.content")
+                        if main_html is not None:
+                            has_main_html = self.require_type(main_html, str, f"{base_path}.content.main_html")
+
+                    if "sections" in content:
+                        sections = self.require_key(content, "sections", f"{base_path}.content")
+                        if sections is not None and self.require_type(sections, list, f"{base_path}.content.sections"):
+                            has_sections = True
+                            for idx, section in enumerate(sections):
+                                section_path = f"{base_path}.content.sections[{idx}]"
+                                if not self.require_type(section, dict, section_path):
+                                    continue
+                                section_id = self.require_key(section, "id", section_path)
+                                if section_id is not None:
+                                    self.require_type(section_id, str, f"{section_path}.id")
+                                section_html = self.require_key(section, "html", section_path)
+                                if section_html is not None:
+                                    self.require_type(section_html, str, f"{section_path}.html")
+                                if "enabled" in section:
+                                    self.require_type(section["enabled"], bool, f"{section_path}.enabled")
+
+                    if not has_main_html and not has_sections:
+                        self.add_error(
+                            f"{base_path}.content",
+                            "must provide either content.main_html or content.sections for template rendering",
+                        )
                 head = self.require_key(page, "head", base_path)
                 if isinstance(head, dict):
                     stylesheets = self.require_key(head, "stylesheets", f"{base_path}.head")
