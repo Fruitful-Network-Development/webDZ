@@ -1,0 +1,368 @@
+{
+  "schema_identifier": "webdz.machine_pages_manifest.v1",
+  "generated_from": "assets/docs/manifest.json",
+  "generated_at": "2026-04-16T03:31:18+00:00",
+  "pages": [
+    {
+      "page_key": "index",
+      "page": "/",
+      "title": "Fruitful Network Development",
+      "machine_inpage_blocks": [
+        {
+          "id": "fnd-org-schema",
+          "source": "home.organization.ld+json",
+          "source_artifact": "machine/inpage/home.organization.ld+json",
+          "injection_pattern": "script:application/ld+json"
+        }
+      ],
+      "machine_page_links": [
+        {
+          "rel": "dataset",
+          "href": "/machine/pages/fnd-pages.manifest.json",
+          "format": "application/json",
+          "source_artifact": "machine/pages/fnd-pages.manifest.json",
+          "root": "machine/pages"
+        },
+        {
+          "rel": "machine-index",
+          "href": "/machine/pages/fnd-machine-index.json",
+          "format": "application/json",
+          "source_artifact": "machine/pages/fnd-machine-index.json",
+          "root": "machine/pages"
+        },
+        {
+          "rel": "llm-context",
+          "href": "/llms.md",
+          "format": "text/markdown",
+          "source_artifact": "llms.md",
+          "root": "machine/pages"
+        }
+      ]
+    },
+    {
+      "page_key": "services",
+      "page": "/services.html",
+      "title": "Services | Fruitful Network Development",
+      "machine_inpage_blocks": [],
+      "machine_page_links": [
+        {
+          "rel": "dataset",
+          "href": "/machine/pages/fnd-pages.manifest.json",
+          "format": "application/json",
+          "source_artifact": "machine/pages/fnd-pages.manifest.json",
+          "root": "machine/pages"
+        },
+        {
+          "rel": "machine-index",
+          "href": "/machine/pages/fnd-machine-index.json",
+          "format": "application/json",
+          "source_artifact": "machine/pages/fnd-machine-index.json",
+          "root": "machine/pages"
+        },
+        {
+          "rel": "llm-context",
+          "href": "/llms.md",
+          "format": "text/markdown",
+          "source_artifact": "llms.md",
+          "root": "machine/pages"
+        }
+      ]
+    },
+    {
+      "page_key": "research",
+      "page": "/research.html",
+      "title": "Research | Fruitful Network Development",
+      "machine_inpage_blocks": [],
+      "machine_page_links": [
+        {
+          "rel": "dataset",
+          "href": "/machine/pages/fnd-pages.manifest.json",
+          "format": "application/json",
+          "source_artifact": "machine/pages/fnd-pages.manifest.json",
+          "root": "machine/pages"
+        },
+        {
+          "rel": "machine-index",
+          "href": "/machine/pages/fnd-machine-index.json",
+          "format": "application/json",
+          "source_artifact": "machine/pages/fnd-machine-index.json",
+          "root": "machine/pages"
+        },
+        {
+          "rel": "llm-context",
+          "href": "/llms.md",
+          "format": "text/markdown",
+          "source_artifact": "llms.md",
+          "root": "machine/pages"
+        }
+      ]
+    },
+    {
+      "page_key": "about",
+      "page": "/about.html",
+      "title": "About | Fruitful Network Development",
+      "machine_inpage_blocks": [],
+      "machine_page_links": [
+        {
+          "rel": "dataset",
+          "href": "/machine/pages/fnd-pages.manifest.json",
+          "format": "application/json",
+          "source_artifact": "machine/pages/fnd-pages.manifest.json",
+          "root": "machine/pages"
+        },
+        {
+          "rel": "machine-index",
+          "href": "/machine/pages/fnd-machine-index.json",
+          "format": "application/json",
+          "source_artifact": "machine/pages/fnd-machine-index.json",
+          "root": "machine/pages"
+        },
+        {
+          "rel": "llm-context",
+          "href": "/llms.md",
+          "format": "text/markdown",
+          "source_artifact": "llms.md",
+          "root": "machine/pages"
+        }
+      ]
+    },
+    {
+      "page_key": "contact",
+      "page": "/contact.html",
+      "title": "Contact | Fruitful Network Development",
+      "machine_inpage_blocks": [],
+      "machine_page_links": [
+        {
+          "rel": "dataset",
+          "href": "/machine/pages/fnd-pages.manifest.json",
+          "format": "application/json",
+          "source_artifact": "machine/pages/fnd-pages.manifest.json",
+          "root": "machine/pages"
+        },
+        {
+          "rel": "machine-index",
+          "href": "/machine/pages/fnd-machine-index.json",
+          "format": "application/json",
+          "source_artifact": "machine/pages/fnd-machine-index.json",
+          "root": "machine/pages"
+        },
+        {
+          "rel": "llm-context",
+          "href": "/llms.md",
+          "format": "text/markdown",
+          "source_artifact": "llms.md",
+          "root": "machine/pages"
+        }
+      ]
+    },
+    {
+      "page_key": "subpages_articles",
+      "page": "/subpages/articles.html",
+      "title": "Articles | Fruitful Network Development",
+      "machine_inpage_blocks": [],
+      "machine_page_links": [
+        {
+          "rel": "dataset",
+          "href": "/machine/pages/fnd-pages.manifest.json",
+          "format": "application/json",
+          "source_artifact": "machine/pages/fnd-pages.manifest.json",
+          "root": "machine/pages"
+        },
+        {
+          "rel": "machine-index",
+          "href": "/machine/pages/fnd-machine-index.json",
+          "format": "application/json",
+          "source_artifact": "machine/pages/fnd-machine-index.json",
+          "root": "machine/pages"
+        },
+        {
+          "rel": "llm-context",
+          "href": "/llms.md",
+          "format": "text/markdown",
+          "source_artifact": "llms.md",
+          "root": "machine/pages"
+        }
+      ]
+    },
+    {
+      "page_key": "subpages_checkout",
+      "page": "/subpages/checkout.html",
+      "title": "Checkout | Fruitful Network Development",
+      "machine_inpage_blocks": [],
+      "machine_page_links": [
+        {
+          "rel": "dataset",
+          "href": "/machine/pages/fnd-pages.manifest.json",
+          "format": "application/json",
+          "source_artifact": "machine/pages/fnd-pages.manifest.json",
+          "root": "machine/pages"
+        },
+        {
+          "rel": "machine-index",
+          "href": "/machine/pages/fnd-machine-index.json",
+          "format": "application/json",
+          "source_artifact": "machine/pages/fnd-machine-index.json",
+          "root": "machine/pages"
+        },
+        {
+          "rel": "llm-context",
+          "href": "/llms.md",
+          "format": "text/markdown",
+          "source_artifact": "llms.md",
+          "root": "machine/pages"
+        }
+      ]
+    },
+    {
+      "page_key": "subpages_email-management",
+      "page": "/subpages/email-management.html",
+      "title": "Email Management | Fruitful Network Development",
+      "machine_inpage_blocks": [],
+      "machine_page_links": [
+        {
+          "rel": "dataset",
+          "href": "/machine/pages/fnd-pages.manifest.json",
+          "format": "application/json",
+          "source_artifact": "machine/pages/fnd-pages.manifest.json",
+          "root": "machine/pages"
+        },
+        {
+          "rel": "machine-index",
+          "href": "/machine/pages/fnd-machine-index.json",
+          "format": "application/json",
+          "source_artifact": "machine/pages/fnd-machine-index.json",
+          "root": "machine/pages"
+        },
+        {
+          "rel": "llm-context",
+          "href": "/llms.md",
+          "format": "text/markdown",
+          "source_artifact": "llms.md",
+          "root": "machine/pages"
+        }
+      ]
+    },
+    {
+      "page_key": "subpages_payment-processing",
+      "page": "/subpages/payment-processing.html",
+      "title": "Payment Processing | Fruitful Network Development",
+      "machine_inpage_blocks": [],
+      "machine_page_links": [
+        {
+          "rel": "dataset",
+          "href": "/machine/pages/fnd-pages.manifest.json",
+          "format": "application/json",
+          "source_artifact": "machine/pages/fnd-pages.manifest.json",
+          "root": "machine/pages"
+        },
+        {
+          "rel": "machine-index",
+          "href": "/machine/pages/fnd-machine-index.json",
+          "format": "application/json",
+          "source_artifact": "machine/pages/fnd-machine-index.json",
+          "root": "machine/pages"
+        },
+        {
+          "rel": "llm-context",
+          "href": "/llms.md",
+          "format": "text/markdown",
+          "source_artifact": "llms.md",
+          "root": "machine/pages"
+        }
+      ]
+    },
+    {
+      "page_key": "subpages_pos",
+      "page": "/subpages/pos.html",
+      "title": "POS and Payment Table | Fruitful Network Development",
+      "machine_inpage_blocks": [],
+      "machine_page_links": [
+        {
+          "rel": "dataset",
+          "href": "/machine/pages/fnd-pages.manifest.json",
+          "format": "application/json",
+          "source_artifact": "machine/pages/fnd-pages.manifest.json",
+          "root": "machine/pages"
+        },
+        {
+          "rel": "machine-index",
+          "href": "/machine/pages/fnd-machine-index.json",
+          "format": "application/json",
+          "source_artifact": "machine/pages/fnd-machine-index.json",
+          "root": "machine/pages"
+        },
+        {
+          "rel": "llm-context",
+          "href": "/llms.md",
+          "format": "text/markdown",
+          "source_artifact": "llms.md",
+          "root": "machine/pages"
+        }
+      ]
+    },
+    {
+      "page_key": "subpages_search",
+      "page": "/subpages/search.html",
+      "title": "Search | Fruitful Network Development",
+      "machine_inpage_blocks": [],
+      "machine_page_links": [
+        {
+          "rel": "dataset",
+          "href": "/machine/pages/fnd-pages.manifest.json",
+          "format": "application/json",
+          "source_artifact": "machine/pages/fnd-pages.manifest.json",
+          "root": "machine/pages"
+        },
+        {
+          "rel": "machine-index",
+          "href": "/machine/pages/fnd-machine-index.json",
+          "format": "application/json",
+          "source_artifact": "machine/pages/fnd-machine-index.json",
+          "root": "machine/pages"
+        },
+        {
+          "rel": "llm-context",
+          "href": "/llms.md",
+          "format": "text/markdown",
+          "source_artifact": "llms.md",
+          "root": "machine/pages"
+        }
+      ]
+    },
+    {
+      "page_key": "subpages_sidebar",
+      "page": "/subpages/sidebar.html",
+      "title": "",
+      "machine_inpage_blocks": [],
+      "machine_page_links": [
+        {
+          "rel": "dataset",
+          "href": "/machine/pages/fnd-pages.manifest.json",
+          "format": "application/json",
+          "source_artifact": "machine/pages/fnd-pages.manifest.json",
+          "root": "machine/pages"
+        },
+        {
+          "rel": "machine-index",
+          "href": "/machine/pages/fnd-machine-index.json",
+          "format": "application/json",
+          "source_artifact": "machine/pages/fnd-machine-index.json",
+          "root": "machine/pages"
+        },
+        {
+          "rel": "llm-context",
+          "href": "/llms.md",
+          "format": "text/markdown",
+          "source_artifact": "llms.md",
+          "root": "machine/pages"
+        }
+      ]
+    }
+  ],
+  "endpoint_maps": {
+    "machine_index": "/machine/pages/fnd-machine-index.json",
+    "page_manifest": "/machine/pages/fnd-pages.manifest.json",
+    "llm_context": "/llms.md",
+    "organization_schema_id": "fnd-org-schema"
+  }
+}

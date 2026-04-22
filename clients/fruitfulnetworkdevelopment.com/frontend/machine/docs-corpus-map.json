@@ -1,0 +1,32 @@
+{
+  "site": "fruitfulnetworkdevelopment.com",
+  "updated": "2026-04-16",
+  "source_priority": {
+    "strategy": "synchronized-mirror",
+    "canonical": "/docs/",
+    "mirror": "/assets/docs/"
+  },
+  "corpus": [
+    {
+      "id": "canonical-docs",
+      "section": "Repository canonical machine docs",
+      "path": "/docs/",
+      "format": "markdown",
+      "role": "source_of_truth"
+    },
+    {
+      "id": "frontend-doc-mirror",
+      "section": "Frontend mirrored docs for public serving",
+      "path": "/assets/docs/",
+      "format": "markdown+json",
+      "role": "synchronized_mirror"
+    },
+    {
+      "id": "machine-endpoints",
+      "section": "Machine index endpoints",
+      "path": "/machine/",
+      "format": "json",
+      "role": "discovery"
+    }
+  ]
+}

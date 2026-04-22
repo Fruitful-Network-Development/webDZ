@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Machine References | Fruitful Network Development</title>
+  <meta name="robots" content="index,follow" />
+  <link rel="stylesheet" href="../../main.css" />
+</head>
+<body>
+  <main class="edition">
+    <section class="editorial editorial--linear">
+      <h1>Machine Reference Index</h1>
+      <p>This page is for crawlers and agents. References are normalized and evidence-oriented.</p>
+      <ul>
+        <li><a href="/machine/pages/article-index.json">Article index JSON</a></li>
+        <li><a href="/machine/citation-index.json">Citation index JSON</a></li>
+        <li><a href="/machine/pages/fnd-machine-index.json">Machine endpoint index</a></li>
+      </ul>
+      <section id="machine-citations-reference-page" hidden aria-hidden="true" data-machine="citations"></section>
+    </section>
+  </main>
+
+  <script src="../../js/citation-governance.js" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      if (!window.FNDCitations) return;
+      try {
+        const payload = await window.FNDCitations.loadReferences();
+        window.FNDCitations.renderCitationMachineBlock(
+          document.getElementById('machine-citations-reference-page'),
+          {
+            page: '/machine/pages/references.html',
+            references: payload.sources || [],
+            evidence_policy: 'non-promotional, evidence-oriented references only'
+          }
+        );
+      } catch (err) {
+        // Machine route keeps human-facing output minimal.
+      }
+    });
+  </script>
+</body>
+</html>

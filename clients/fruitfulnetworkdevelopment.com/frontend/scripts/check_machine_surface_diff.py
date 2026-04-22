@@ -39,7 +39,19 @@ def validate_inpage_diff(manifest: dict[str, object], changed: set[str]) -> list
     if not changed_inpage:
         return failures
 
-    for block in manifest["machine_surfaces"]["inpage"]["blocks"]:
+    machine = manifest.get("machine")
+    if not isinstance(machine, dict):
+        machine = manifest.get("machine_surfaces", {})
+    if not isinstance(machine, dict):
+        return failures
+    inpage = machine.get("inpage", {})
+    if not isinstance(inpage, dict):
+        return failures
+    blocks = inpage.get("blocks", [])
+    if not isinstance(blocks, list):
+        return failures
+
+    for block in blocks:
         source_rel = f"{ROOT.relative_to(REPO_ROOT)}/machine/inpage/{block['source']}"
         if source_rel not in changed_inpage:
             continue
@@ -71,12 +83,23 @@ def validate_machine_page_diff(manifest: dict[str, object], changed: set[str]) -
     if not changed_pages:
         return failures
 
-    declared = {endpoint["href"] for endpoint in manifest["machine_surfaces"]["pages"]["endpoints"]}
+    machine = manifest.get("machine")
+    if not isinstance(machine, dict):
+        machine = manifest.get("machine_surfaces", {})
+    if not isinstance(machine, dict):
+        return failures
+    pages = machine.get("pages", {})
+    if not isinstance(pages, dict):
+        return failures
+    endpoints = pages.get("endpoints", [])
+    if not isinstance(endpoints, list):
+        return failures
+    declared = {endpoint.get("href") for endpoint in endpoints if isinstance(endpoint, dict) and endpoint.get("href")}
 
     for page_path in changed_pages:
         href = "/" + str(Path(page_path).relative_to(ROOT.relative_to(REPO_ROOT))).replace("\\", "/")
         if href not in declared:
-            failures.append(f"{page_path} changed but is not declared in manifest.machine_surfaces.pages.endpoints")
+            failures.append(f"{page_path} changed but is not declared in manifest.machine.pages.endpoints")
 
     return failures
 

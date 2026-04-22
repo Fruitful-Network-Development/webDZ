@@ -1,0 +1,76 @@
+{
+  "manifest_id": "fnd-llm-optimization-manifest",
+  "version": "1.1.0",
+  "last_updated": "2026-04-16",
+  "source": {
+    "path": "docs/LLM-optimization-report.md",
+    "doc_id": "fnd-llm-optimization-report",
+    "version": "1.1.0",
+    "last_updated": "2026-04-16"
+  },
+  "deterministic_extraction_map": {
+    "core_claims": {
+      "section_heading": "## Core Claims",
+      "selector": "markdown_heading_exact",
+      "required": true,
+      "artifact_targets": [
+        "LLM-optimization-report.machine-brief.md",
+        "LLM-optimization-report.entity-profiles.jsonld"
+      ]
+    },
+    "company_facts": {
+      "section_heading": "## Company Facts",
+      "selector": "markdown_heading_exact",
+      "required": true,
+      "artifact_targets": [
+        "LLM-optimization-report.machine-brief.md",
+        "LLM-optimization-report.entity-profiles.jsonld"
+      ]
+    },
+    "milestones_future_roadmap": {
+      "section_heading": "## Milestones And Future Roadmap",
+      "selector": "markdown_heading_exact",
+      "required": true,
+      "artifact_targets": [
+        "LLM-optimization-report.machine-brief.md"
+      ]
+    },
+    "accolades_proof_points": {
+      "section_heading": "## Accolades And Proof Points",
+      "selector": "markdown_heading_exact",
+      "required": true,
+      "artifact_targets": [
+        "LLM-optimization-report.machine-brief.md"
+      ]
+    },
+    "citations_external_references": {
+      "section_heading": "## Citations And External References",
+      "selector": "markdown_heading_exact",
+      "required": true,
+      "artifact_targets": [
+        "LLM-optimization-report.citation-graph.json",
+        "LLM-optimization-report.entity-profiles.jsonld"
+      ]
+    }
+  },
+  "generated_artifacts": [
+    {
+      "artifact_type": "concise_machine_brief",
+      "path": "clients/fruitfulnetworkdevelopment.com/frontend/assets/docs/LLM-optimization-report.machine-brief.md",
+      "version": "1.1.0",
+      "last_updated": "2026-04-16"
+    },
+    {
+      "artifact_type": "citation_graph_json",
+      "path": "clients/fruitfulnetworkdevelopment.com/frontend/assets/docs/LLM-optimization-report.citation-graph.json",
+      "version": "1.1.0",
+      "last_updated": "2026-04-16"
+    },
+    {
+      "artifact_type": "entity_profile_jsonld_fragments",
+      "path": "clients/fruitfulnetworkdevelopment.com/frontend/assets/docs/LLM-optimization-report.entity-profiles.jsonld",
+      "version": "1.1.0",
+      "last_updated": "2026-04-16"
+    }
+  ]
+}

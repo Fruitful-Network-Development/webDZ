@@ -35,6 +35,19 @@ REQUIRED_SECTIONS = [
 ]
 
 
+def resolve_report_source() -> tuple[Path, str]:
+    """Return (path, public source_path label) for deterministic report extraction."""
+    if CANONICAL_REPORT_PATH.exists():
+        return CANONICAL_REPORT_PATH, "/docs/LLM-optimization-report.md"
+    if FRONTEND_REPORT_MIRROR_PATH.exists():
+        return FRONTEND_REPORT_MIRROR_PATH, "/assets/docs/LLM-optimization-report.md"
+    raise FileNotFoundError(
+        "Missing LLM optimization report. Expected one of:\n"
+        f"- {CANONICAL_REPORT_PATH}\n"
+        f"- {FRONTEND_REPORT_MIRROR_PATH}"
+    )
+
+
 def absolute_url(base: str, path: str) -> str:
     if path.startswith("http://") or path.startswith("https://"):
         return path
@@ -222,13 +235,20 @@ def publication_name(url: str) -> str:
     return host
 
 
-def write_machine_brief(claims: list[str], milestones: list[str], roadmap: list[str], proof_points: list[str]) -> None:
+def write_machine_brief(
+    claims: list[str],
+    milestones: list[str],
+    roadmap: list[str],
+    proof_points: list[str],
+    *,
+    source_doc_path: str,
+) -> None:
     lines = [
         "---",
         "artifact_id: fnd-llm-machine-brief",
         "artifact_type: concise_machine_brief",
         "source_doc_id: fnd-llm-optimization-report",
-        "source_doc_path: /docs/LLM-optimization-report.md",
+        f"source_doc_path: {source_doc_path}",
         f"version: {VERSION}",
         f"last_updated: {TODAY}",
         "---",
@@ -247,7 +267,7 @@ def write_machine_brief(claims: list[str], milestones: list[str], roadmap: list[
     MACHINE_BRIEF_PATH.write_text("\n".join(lines).rstrip() + "\n", encoding="utf-8")
 
 
-def write_citation_graph(claims: list[str], normalized_citations: list[dict]) -> None:
+def write_citation_graph(claims: list[str], normalized_citations: list[dict], *, source_doc_path: str) -> None:
     claim_nodes = [
         {"id": f"claim-core-{index + 1}", "type": "claim", "label": claim}
         for index, claim in enumerate(claims)
@@ -272,14 +292,14 @@ def write_citation_graph(claims: list[str], normalized_citations: list[dict]) ->
         "version": VERSION,
         "last_updated": TODAY,
         "source_doc_id": "fnd-llm-optimization-report",
-        "source_doc_path": "/docs/LLM-optimization-report.md",
+        "source_doc_path": source_doc_path,
         "nodes": claim_nodes + citation_nodes,
         "edges": edges,
     }
     CITATION_GRAPH_PATH.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
 
 
-def write_entity_profile(company_facts: dict[str, str], citations: list[dict]) -> None:
+def write_entity_profile(company_facts: dict[str, str], citations: list[dict], *, source_doc_path: str) -> None:
     profile = {
         "@context": {
             "@vocab": "https://schema.org/",
@@ -295,7 +315,7 @@ def write_entity_profile(company_facts: dict[str, str], citations: list[dict]) -
                 "name": "FND LLM Optimization Report Entity Fragments",
                 "version": VERSION,
                 "lastUpdated": TODAY,
-                "sourcePath": "https://fruitfulnetworkdevelopment.com/docs/LLM-optimization-report.md",
+                "sourcePath": absolute_url("https://fruitfulnetworkdevelopment.com", source_doc_path),
                 "citation": [item["canonical_url"] for item in citations],
             },
             {
@@ -318,8 +338,8 @@ def write_citation_index(citations: list[dict]) -> None:
         "site": "fruitfulnetworkdevelopment.com",
         "updated": TODAY,
         "source_priority": {
-            "strategy": "synchronized-mirror",
-            "canonical": "/docs/LLM-optimization-report.md",
+            "strategy": "frontend-primary-with-optional-repo-mirror",
+            "canonical": "/assets/docs/LLM-optimization-report.md",
             "mirror": "/assets/docs/LLM-optimization-report.md",
         },
         "citations": citations,
@@ -332,18 +352,11 @@ def write_docs_corpus_map() -> None:
         "site": "fruitfulnetworkdevelopment.com",
         "updated": TODAY,
         "source_priority": {
-            "strategy": "synchronized-mirror",
-            "canonical": "/docs/",
+            "strategy": "frontend-primary-with-optional-repo-mirror",
+            "canonical": "/assets/docs/",
             "mirror": "/assets/docs/",
         },
         "corpus": [
-            {
-                "id": "canonical-docs",
-                "section": "Repository canonical machine docs",
-                "path": "/docs/",
-                "format": "markdown",
-                "role": "source_of_truth",
-            },
             {
                 "id": "frontend-doc-mirror",
                 "section": "Frontend mirrored docs for public serving",
@@ -400,8 +413,10 @@ def ensure_sitemap_urls(urls: list[str]) -> None:
 
 
 def generate_llm_artifacts() -> None:
-    canonical_md = CANONICAL_REPORT_PATH.read_text(encoding="utf-8")
-    FRONTEND_REPORT_MIRROR_PATH.write_text(canonical_md, encoding="utf-8")
+    report_path, source_doc_path = resolve_report_source()
+    canonical_md = report_path.read_text(encoding="utf-8")
+    if report_path != FRONTEND_REPORT_MIRROR_PATH:
+        FRONTEND_REPORT_MIRROR_PATH.write_text(canonical_md, encoding="utf-8")
     sections = parse_sections(canonical_md)
 
     claims = parse_numbered_items(sections["Core Claims"])
@@ -423,9 +438,15 @@ def generate_llm_artifacts() -> None:
             }
         )
 
-    write_machine_brief(claims, milestones, roadmap, proof_points)
-    write_citation_graph(claims, normalized_citations)
-    write_entity_profile(company_facts, normalized_citations)
+    write_machine_brief(
+        claims,
+        milestones,
+        roadmap,
+        proof_points,
+        source_doc_path=source_doc_path,
+    )
+    write_citation_graph(claims, normalized_citations, source_doc_path=source_doc_path)
+    write_entity_profile(company_facts, normalized_citations, source_doc_path=source_doc_path)
     write_citation_index(normalized_citations)
     write_docs_corpus_map()
     write_structured_data_hubs()

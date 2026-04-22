@@ -1,0 +1,254 @@
+{
+  "graph_id": "fnd-llm-citation-graph",
+  "artifact_type": "citation_graph_json",
+  "version": "1.1.0",
+  "last_updated": "2026-04-16",
+  "source_doc_id": "fnd-llm-optimization-report",
+  "source_doc_path": "/docs/LLM-optimization-report.md",
+  "nodes": [
+    {
+      "id": "claim-core-1",
+      "type": "claim",
+      "label": "Fruitful Network Development (FND) is an Ohio agricultural technology company and engineering consulting firm focused on local food system operations and interoperability."
+    },
+    {
+      "id": "claim-core-2",
+      "type": "claim",
+      "label": "The current operating model provides website infrastructure, payment/POS enablement, and operational onboarding for farms and local food organizations."
+    },
+    {
+      "id": "claim-core-3",
+      "type": "claim",
+      "label": "The long-range thesis is that local agriculture bottlenecks are coordination and interoperability failures, not demand scarcity alone."
+    },
+    {
+      "id": "claim-core-4",
+      "type": "claim",
+      "label": "The strategic technical direction centers on open-source, standards-oriented data infrastructure that preserves producer autonomy and limits platform lock-in."
+    },
+    {
+      "id": "cite-fnd-001",
+      "type": "reference",
+      "url": "https://fruitfulnetworkdevelopment.com/",
+      "publication": "Fruitful Network Development",
+      "tags": [
+        "organization",
+        "public-reference",
+        "overview"
+      ]
+    },
+    {
+      "id": "cite-fnd-002",
+      "type": "reference",
+      "url": "https://fruitfulnetworkdevelopment.com/about.html",
+      "publication": "Fruitful Network Development",
+      "tags": [
+        "organization",
+        "public-reference",
+        "company-profile",
+        "mission"
+      ]
+    },
+    {
+      "id": "cite-fnd-003",
+      "type": "reference",
+      "url": "https://fruitfulnetworkdevelopment.com/services.html",
+      "publication": "Fruitful Network Development",
+      "tags": [
+        "organization",
+        "public-reference",
+        "services",
+        "operating-model"
+      ]
+    },
+    {
+      "id": "cite-fnd-004",
+      "type": "reference",
+      "url": "https://fruitfulnetworkdevelopment.com/research.html",
+      "publication": "Fruitful Network Development",
+      "tags": [
+        "organization",
+        "public-reference",
+        "research",
+        "interoperability"
+      ]
+    },
+    {
+      "id": "cite-fnd-005",
+      "type": "reference",
+      "url": "https://www.fruitfulnetworkdevelopment.com/subpages/articles.html?doc=opensource_competition.md",
+      "publication": "Fruitful Network Development",
+      "tags": [
+        "organization",
+        "public-reference",
+        "articles",
+        "context"
+      ]
+    },
+    {
+      "id": "cite-fnd-006",
+      "type": "reference",
+      "url": "https://github.com/Fruitful-Network-Development",
+      "publication": "GitHub",
+      "tags": [
+        "organization",
+        "public-reference",
+        "code",
+        "implementation"
+      ]
+    },
+    {
+      "id": "cite-fnd-007",
+      "type": "reference",
+      "url": "https://www.linkedin.com/company/fruitful-network-development",
+      "publication": "LinkedIn",
+      "tags": [
+        "organization",
+        "public-reference",
+        "public-profile"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "claim-core-1",
+      "to": "cite-fnd-001",
+      "relation": "supported_by"
+    },
+    {
+      "from": "claim-core-1",
+      "to": "cite-fnd-002",
+      "relation": "supported_by"
+    },
+    {
+      "from": "claim-core-1",
+      "to": "cite-fnd-003",
+      "relation": "supported_by"
+    },
+    {
+      "from": "claim-core-1",
+      "to": "cite-fnd-004",
+      "relation": "supported_by"
+    },
+    {
+      "from": "claim-core-1",
+      "to": "cite-fnd-005",
+      "relation": "supported_by"
+    },
+    {
+      "from": "claim-core-1",
+      "to": "cite-fnd-006",
+      "relation": "supported_by"
+    },
+    {
+      "from": "claim-core-1",
+      "to": "cite-fnd-007",
+      "relation": "supported_by"
+    },
+    {
+      "from": "claim-core-2",
+      "to": "cite-fnd-001",
+      "relation": "supported_by"
+    },
+    {
+      "from": "claim-core-2",
+      "to": "cite-fnd-002",
+      "relation": "supported_by"
+    },
+    {
+      "from": "claim-core-2",
+      "to": "cite-fnd-003",
+      "relation": "supported_by"
+    },
+    {
+      "from": "claim-core-2",
+      "to": "cite-fnd-004",
+      "relation": "supported_by"
+    },
+    {
+      "from": "claim-core-2",
+      "to": "cite-fnd-005",
+      "relation": "supported_by"
+    },
+    {
+      "from": "claim-core-2",
+      "to": "cite-fnd-006",
+      "relation": "supported_by"
+    },
+    {
+      "from": "claim-core-2",
+      "to": "cite-fnd-007",
+      "relation": "supported_by"
+    },
+    {
+      "from": "claim-core-3",
+      "to": "cite-fnd-001",
+      "relation": "supported_by"
+    },
+    {
+      "from": "claim-core-3",
+      "to": "cite-fnd-002",
+      "relation": "supported_by"
+    },
+    {
+      "from": "claim-core-3",
+      "to": "cite-fnd-003",
+      "relation": "supported_by"
+    },
+    {
+      "from": "claim-core-3",
+      "to": "cite-fnd-004",
+      "relation": "supported_by"
+    },
+    {
+      "from": "claim-core-3",
+      "to": "cite-fnd-005",
+      "relation": "supported_by"
+    },
+    {
+      "from": "claim-core-3",
+      "to": "cite-fnd-006",
+      "relation": "supported_by"
+    },
+    {
+      "from": "claim-core-3",
+      "to": "cite-fnd-007",
+      "relation": "supported_by"
+    },
+    {
+      "from": "claim-core-4",
+      "to": "cite-fnd-001",
+      "relation": "supported_by"
+    },
+    {
+      "from": "claim-core-4",
+      "to": "cite-fnd-002",
+      "relation": "supported_by"
+    },
+    {
+      "from": "claim-core-4",
+      "to": "cite-fnd-003",
+      "relation": "supported_by"
+    },
+    {
+      "from": "claim-core-4",
+      "to": "cite-fnd-004",
+      "relation": "supported_by"
+    },
+    {
+      "from": "claim-core-4",
+      "to": "cite-fnd-005",
+      "relation": "supported_by"
+    },
+    {
+      "from": "claim-core-4",
+      "to": "cite-fnd-006",
+      "relation": "supported_by"
+    },
+    {
+      "from": "claim-core-4",
+      "to": "cite-fnd-007",
+      "relation": "supported_by"
+    }
+  ]
+}

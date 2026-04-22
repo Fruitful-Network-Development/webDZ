@@ -38,6 +38,16 @@ RESEARCH_PAGE_MAP = {
 }
 
 
+def _load_json_file(path: Path, *, default: dict[str, Any]) -> dict[str, Any]:
+    if not path.exists():
+        return dict(default)
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except Exception:
+        return dict(default)
+    return payload if isinstance(payload, dict) else dict(default)
+
+
 def _parse_scalar(raw_value: str) -> Any:
     value = raw_value.strip()
     if value.startswith('"') and value.endswith('"') and len(value) >= 2:
@@ -177,8 +187,8 @@ def generate_machine_records(frontend_root: Path, manifest: dict[str, Any]) -> N
     references_path = docs_root / "citations" / "references.json"
     article_refs_path = docs_root / "citations" / "article-references.json"
 
-    references_payload = json.loads(references_path.read_text(encoding="utf-8"))
-    article_refs_payload = json.loads(article_refs_path.read_text(encoding="utf-8"))
+    references_payload = _load_json_file(references_path, default={"sources": []})
+    article_refs_payload = _load_json_file(article_refs_path, default={"articles": {}})
 
     source_by_id = {item["id"]: item for item in references_payload.get("sources", [])}
     article_ref_ids: dict[str, list[str]] = article_refs_payload.get("articles", {})
@@ -367,7 +377,12 @@ def generate_machine_records(frontend_root: Path, manifest: dict[str, Any]) -> N
 
     endpoint_index_path = machine_pages_root / "fnd-machine-index.json"
     if endpoint_index_path.exists():
-        endpoint_index = json.loads(endpoint_index_path.read_text(encoding="utf-8"))
+        try:
+            endpoint_index = json.loads(endpoint_index_path.read_text(encoding="utf-8"))
+            if not isinstance(endpoint_index, dict):
+                endpoint_index = {"version": "1.0", "site": site_domain, "pages": []}
+        except Exception:
+            endpoint_index = {"version": "1.0", "site": site_domain, "pages": []}
     else:
         endpoint_index = {"version": "1.0", "site": site_domain, "pages": []}
 
