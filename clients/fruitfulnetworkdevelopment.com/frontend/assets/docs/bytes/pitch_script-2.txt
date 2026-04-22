@@ -1,0 +1,53 @@
+# 05/##/2025
+
+Pitch Script (~00:04:53)
+[Slide 1: Title Page] (~23 sec)
+Hi everyone, thank you for coming today.  I’m Dylan Montgomery, founder of Fruitful Network Development and creator of the Mycite Framework. For the past three years, I have been building the data software framework that FND is on a mission to use to bridge small business and community. The goal is simple: give small farms and food networks the tools to operate like the big guys; without losing their independence.
+[Slide 2: The Problem] (~31 sec)
+Most people want to buy local, but the system makes it hard.
+Small, sustainable local farms  heavily rely on hubs like CSAs and farmers markets, yet these organizers face logistical chaos.
+Managing supply from dozens of farms with no unified tools results in inefficiency, waste, and lost opportunity.
+As a result, these farms underperform their industrial counterparts per acre, and billions of dollars leak out of our local food system every year because of a fractured network that inhibits finding places to send that food.
+[Slide 3: Our Customers]  (~35 sec)
+Our customers are mission-driven hub operators; CSAs, co-ops, and farmers markets; who juggle dozens of suppliers and buyers by hand.
+Every order, invoice, and inventory update takes manual configuration and brings them to unpredictable markets that their competitors don’t need to overcome by relying on Big Agriculture.
+Meanwhile, consumers who want healthy, local and or sustainably grown food must visit multiple markets to then pay more in time, money, and convenience.
+The demand, the people, and the product are all here; it’s the coordination that’s broken.”
+[Slide 4: Vision for the Future]  (~32 sec)
+Imagine local networks running with the same smooth logistics and economies of scale as a single corporation.
+That’s the future we’re building.
+An open, modular framework anyone can build on, adapt, and trust; without having to have concern for how those separate spread out applications and websites work or communicate.
+They just do.
+We’re starting in agriculture, but the same approach has limitless potential and opportunity to transform any community-focused industry.
+A new path to self deterministic economies and a new positive outlook on the future.”
+[Slide 5: Our Solution] (~33 sec)
+FND uses this new Application Framework to be flexible and customizable.
+Think of it like digital Lego blocks.
+We work with clients to understand the nuance of their business and develop applications. Integrate what they have, and never pay for what they don’t.
+Here in this work flow map for the Agriculture Industry as a whole we can see the before and after implementations of the Mycite Framework.
+Whereas now, Big Agriculture is incentivized for use, despite the use of pesticides and harmful practices.  
+Hereafter, local producers and hubs optimize and make room for motivated companies or individuals to capitalize on niche market inefficiencies by having access to the network as a single resource.
+[Slide 6: Value Proposition] (~34 sec)
+With FND tools, operators can automate redundant logistics in any fashion they'd like; this leaves focus for growth and the unexpected.
+Additionally, users gain data-driven insights using past records to reveal areas of cost saving or to minimize waste with live inventory and expiration date tools.
+Operations are made better but they also have the potential to work into a connected network.
+Like the value of more people you know getting on instagram, except there’s a point before theirs a network.
+Finally, FND can build applications that automatically adapt with predefined event driven actions. Moreover, add functionality as the business grows.
+[Slide 7: Market Opportunity] (~28 sec)
+Family farms control most U.S. farmland, but if they could match the 25% greater output per-acre compared to industrial agriculture that’s caused by inefficient distribution of perishable crops an additional $70 billion in annual value could be realized.
+In Ohio alone, this could roughly reclaim an annual $800 million.
+Our revenue model is simple: we only get paid when our customers do better.
+Our  2 year goal is deployment the 12 NE Ohio counties to recapturing 28 million in estimated losses”
+[Slide 8: Competition] (~21 sec)
+Digital tools that we have found to be the current alternatives dont at all work to sustainably focused groceries stores and other HUBs.
+With Fixed, one-size-fits-all features, custom-development fees upwards of $20,000, and Limited third-party integrations.
+We’re building the only solution built for networks, owned by the people that use them , and fully extensible.
+[Slide 9: Go-to-Market & Traction] (~23 sec)
+Funding now helps through our pilot period to work with our first client business, that we plan to use as a pilot study to apply for USDA alignment grant with the help of Ohio Aerospace Institute, and bring on our early adopters more cushion and hosting options.
+We’re already in talks with the Purple Brown Farm Store in the Peninsula and Yellow bird Food Shed CSA in Mount Vernon Ohio to increase their revenue and jump start the process.
+[Slide 10: Closing & Call to Action] (~21 sec)
+We don’t want to own this system, we want to build it with the people who need it.
+Help us create resilient, community-driven food infrastructure right here in Ohio.
+If you believe there is value in resilient, sustainable communities, believe FND when it asserts that it’s possible  in the private sectors and support us in any way you’d like.
+Connect with us to learn more. Thank you.
+

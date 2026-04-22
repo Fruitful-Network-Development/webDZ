@@ -1,0 +1,5 @@
+How specifically will Claude's capabilities be used in your research? Please be as detailed as possible about the tasks Claude will perform and how this integrates with your research workflow (1-2 sentences, 300 words max)
+
+Claude will be integrated into the research workflow as a high-throughput assistant for literature synthesis, schema and ontology drafting, protocol and survey drafting, transformation of heterogeneous farm notes and spreadsheets into structured candidate mappings,
+ code scaffolding for parsers and validators, and iterative interpretation of pilot results against predefined hypotheses. In practice, I will use Claude to compare papers and extension materials, stress-test field definitions and edge cases, draft reproducible
+ data-cleaning and analysis routines, summarize interviews and pilot feedback, and keep the project’s software, data model, and evaluation criteria aligned as the study evolves.

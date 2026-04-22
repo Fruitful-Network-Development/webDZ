@@ -1,0 +1,5 @@
+Please list the key team members who will be using Claude for this research (name, title, and brief description of role in project) *
+
+Dylan Montgomery: Founder and Research Lead. Responsible for research design, data schema architecture, software development, pilot coordination, and analysis. Uses Claude for literature review support, ontology and schema iteration, code generation, data-cleaning
+ workflow development, and synthesis of pilot findings. Ricky Jia: Data Analytics Lead. Responsible for analytical methodology, data validation, exploratory and statistical analysis, metric design, and interpretation of pilot results. Uses Claude for data preprocessing
+ support, analysis workflow development, reproducible scripting, result summarization, and identification of trends, anomalies, and operational insights across pilot datasets.

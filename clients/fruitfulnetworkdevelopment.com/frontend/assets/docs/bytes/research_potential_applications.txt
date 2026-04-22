@@ -1,0 +1,4 @@
+Does your research have potential_applications beyond pure scientific discovery? If so, please describe any possible practical applications, societal benefits, or paths to scale your research (1-2 sentences, 200 words max)
+
+Yes. The same outputs can be deployed as low-cost operational infrastructure for farms, food hubs, nonprofit farm networks, and community institutions that need better supply visibility and lower administrative overhead. Practical benefits include reduced waste,
+ more stable local procurement, stronger regional food-system resilience, and a path to scale through open standards and deployable tools.
