@@ -1,4 +1,6 @@
 /* 1. RESET & VARIABLES */
+@import "shared-core.css";
+
 :root {
   /* film_vintage theme tokens */
   --c-parchment: #D6C89A;

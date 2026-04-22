@@ -1,6 +1,7 @@
 /* ======================================
    IMPORTS — Section-based modules
   ====================================== */
+@import "css/shared-core.css";
 @import "css/sections/header.css";
 @import "css/sections/hero.css";
 @import "css/sections/footer.css";

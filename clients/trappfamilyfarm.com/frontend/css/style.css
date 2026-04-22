@@ -1,4 +1,5 @@
 /* Trapp Family Farm – base + section imports */
+@import "shared-core.css";
 @import "sections/content-blocks.css";
 @import "sections/slideshow.css";
 @import "sections/hero.css";
