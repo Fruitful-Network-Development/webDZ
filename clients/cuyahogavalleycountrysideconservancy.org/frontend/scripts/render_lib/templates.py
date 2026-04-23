@@ -68,6 +68,11 @@ def render_archive_home(page: dict[str, object], manifest: dict[str, object], fr
         )
         for block in content["mission_blocks"]
     )
+    mission_section = (
+        f'<div class="home-hero__mission" aria-label="Mission and objective">{mission_blocks}</div>'
+        if mission_blocks
+        else ""
+    )
     donate_callout = (
         '<section class="home-donate-callout" aria-label="Donation link">'
         f'<p class="home-donate-callout__eyebrow">{escape(content["donate_callout"]["eyebrow"])}</p>'
@@ -84,7 +89,7 @@ def render_archive_home(page: dict[str, object], manifest: dict[str, object], fr
         f'<h1 class="headline-lg headline-lg--hero">{escape(content["headline"])}</h1>'
         '<div class="home-hero__stack">'
         f"{intro_panels}"
-        f'<div class="home-hero__mission" aria-label="Mission and objective">{mission_blocks}</div>'
+        f"{mission_section}"
         f"{donate_callout}"
         "</div>"
         "</div>"

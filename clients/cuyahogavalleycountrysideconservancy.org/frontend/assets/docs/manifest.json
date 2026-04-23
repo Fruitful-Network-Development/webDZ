@@ -16,9 +16,9 @@
     "shell": {
       "masthead_class": "masthead masthead--archive",
       "wordmark_class": "masthead__wordmark masthead__wordmark--with-icon masthead__wordmark--link",
-      "wordmark_text": "Countryside Conservancy",
+      "wordmark_text": "Cuyahoga Valley Countryside Conservancy",
       "wordmark_icon": "assets/icon/ui/icon-home.svg",
-      "subtitle": "An impact driven organization to support agriculture and stewardship"
+      "subtitle": ""
     }
   },
   "navigation": [
@@ -160,42 +160,37 @@
           "caption": "A working landscape"
         },
         "kicker": "Cuyahoga Valley Countryside Conservancy",
-        "headline": "Connecting people, food, and land in and beyond Cuyahoga Valley National Park",
+        "headline": "Connecting people to food in and beyond Cuyahoga Valley National Park",
         "intro_panels": [
           {
             "id": "home-who-we-are-heading",
             "note_html": "Who we are \u00b7 Meet the <a href=\"people.html\">board members</a> \u00b7 Visit the <a href=\"the_farms.html\">farms</a>",
-            "heading": "Who are we",
+            "heading": "Who we are",
             "body": [
               "The Cuyahoga Valley Countryside Conservancy (CVCC) is a small nonprofit serving the Cuyahoga Valley in Ohio (and beyond). We are a group of individuals dedicated to supporting area farms, promoting sustainable agriculture, educating the public about sustainable practices, and connecting our community with healthy, local food."
             ]
           },
           {
-            "id": "home-born-out-of-heading",
-            "note_html": "Born out of the initial past \u00b7 Continue on <a href=\"history.html\">History</a>",
-            "heading": "What the Countryside program was born out of",
+            "id": "home-what-we-do-heading",
+            "note_html": "What we do \u00b7 Continue on <a href=\"history.html\">History</a>",
+            "heading": "What We do",
             "body": [
               "Originally created to support the Countryside Initiative, Cuyahoga Valley National Parks' program to rehabilitate farmland within the park, the CVCC continues to support the Initiative farms and has begun expanding it's support to include other local farms, farmers, and farmers markets."
             ]
-          }
-        ],
-        "mission_blocks": [
+          },
           {
-            "heading": "Your Donations Will Be Used To:",
+            "id": "home-how-you-can-help-heading",
+            "note_html": "How you can help \u00b7 Support the mission",
+            "heading": "How you can help",
             "body": [
+              "Your donations will be used to:",
               "Support infrastructure projects for farms both within the National Park and surrounding areas.",
               "Provide grants to local farms and farmers emphasizing sustainable agriculture and education.",
               "Connect local people to healthy food and a supportive community."
             ]
-          },
-          {
-            "heading": "How You Can Help",
-            "body": [
-              "Contributions sustain preservation work, farmer training, and year-round public programming",
-              "Contribute through the archive support page"
-            ]
           }
         ],
+        "mission_blocks": [],
         "donate_callout": {
           "eyebrow": "Support the work",
           "body": "Help sustain preservation work, farmer training, and year-round public programming through the donation page.",

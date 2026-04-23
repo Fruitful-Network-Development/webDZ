@@ -14,12 +14,14 @@ def render_navigation(manifest: dict[str, object], current_file: str) -> str:
 
 def render_header(manifest: dict[str, object], current_file: str) -> str:
     shell = manifest["site"]["shell"]
+    subtitle = str(shell.get("subtitle", "")).strip()
     wordmark_icon = shell.get("wordmark_icon")
     icon_html = (
         f'<img class="masthead__wordmark-icon" src="{escape(rel_asset(wordmark_icon))}" width="24" height="24" alt="" aria-hidden="true" />'
         if wordmark_icon
         else ""
     )
+    subtitle_html = f'<p class="masthead__subtitle">{escape(subtitle)}</p>' if subtitle else ""
     return (
         f'<header class="{escape(shell.get("masthead_class", "masthead"))}">'
         '<div class="masthead__top">'
@@ -27,7 +29,7 @@ def render_header(manifest: dict[str, object], current_file: str) -> str:
         f"{icon_html}"
         f'{escape(shell["wordmark_text"])}'
         "</a>"
-        f'<p class="masthead__subtitle">{escape(shell["subtitle"])}</p>'
+        f"{subtitle_html}"
         "</div>"
         f'<nav class="masthead__nav" aria-label="Primary">{render_navigation(manifest, current_file)}</nav>'
         "</header>"
