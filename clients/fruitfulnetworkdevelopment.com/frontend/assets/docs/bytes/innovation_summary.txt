@@ -1,2 +1,0 @@
-Summarize your innovation in 2 to 3 sentences.
-Fruitful Network Development is building a lightweight data framework that allows agricultural individuals to operate their logistical data, automated as needed and entirely integrable with a greater network. Our system strengthens local food networks by making supply data visible and actionable across farms, markets, and stores; while users remain autonomous, profitable, and better connected to the communities they serve.

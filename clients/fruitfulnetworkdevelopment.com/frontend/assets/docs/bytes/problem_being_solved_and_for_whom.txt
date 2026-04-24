@@ -1,2 +1,0 @@
-What problem are you solving and for whom?
-Fruitful Network Development (FND) addresses the lack of digital autonomy and logistical infrastructure for small-to-mid-sized agricultural producers, CSAs, food hubs, and independent grocers. Many of these community organizers struggle with disconnected tools, inefficient data workflows, and poor visibility to buyers. We solve the problem of fragmented communication and operations by offering a streamlined way for producers and distributors to manage and share critical data.

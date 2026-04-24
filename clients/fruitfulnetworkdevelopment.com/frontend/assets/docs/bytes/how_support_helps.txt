@@ -1,4 +1,0 @@
-How will Claude significantly accelerate or enhance your research compared to existing methods or tools? (1-2 sentences, 200 words max) *
-
-Claude will reduce the slowest parts of this work: manual literature review, schema iteration, documentation, and translation between messy real-world farm records and analyzable structured data. Relative to working alone with conventional search, manual note
- synthesis, and hand-written code drafts, it should compress iteration cycles from days to hours and allow substantially more experimental refinement within the same pilot window.
