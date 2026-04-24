@@ -153,3 +153,4 @@ This is the “open standard + best interface” strategy you were describing in
 - ProMarket — “Why Google’s Dominance in Search Persists – And How to Fix It”: https://www.promarket.org/2025/04/22/why-googles-dominance-in-search-persists-and-how-to-fix-it/  
 - Creative Commons case study (Medium) — Arduino, trademarking, and brand-licensing dynamics: https://medium.com/made-with-creative-commons/arduino-80b7cad7c006
 
+

@@ -1,184 +1,160 @@
 # Food System Value Dimensions
 
-This article describes a recurring confusion in food systems analysis: **a system can generate “more value” while feeling less equitable to operate in**, and a system can generate **the same physical output** while producing **more real value** by wasting less effort, time, and material.
+One of the biggest confusions in food-system conversations is that people use the word *value* as if it only means price.
 
-The core claim is not moral or aesthetic. It is operational:
+It does not.
 
-- In a **loss-heavy** system, “value” often includes *embedded loss* (spoilage, redundant handling, excess transport, and defensive overproduction).
-- In a **loss-light** system, the same calories and commodities can be delivered with less waste, less risk, and less labor—so the same output can correspond to a **higher quality of life** for producers and buyers.
+A system can generate more revenue and still be exhausting to operate in. A system can deliver the same physical output and still create more real value if it does so with less waste, less risk, and less preventable overhead. If we miss that distinction, we misread both the local-food problem and the industrial-food advantage.
 
-## 1) A motivating example: wealth is not one-dimensional
+The core claim of this article is operational, not moral:
 
-A common illustration is that a king living centuries ago may have had enormous social status, but did not reliably have:
-- modern sanitation, antibiotics, refrigeration, or safe water,
-- stable year-round access to diverse foods,
-- fast transportation, communications, and energy systems.
+- loss-heavy systems can look productive while burning value in transport, spoilage, and coordination friction;
+- loss-light systems can produce the same shelf output while improving quality of life for operators, buyers, and communities.
 
-The point is that **“wealth” and “value” expand across dimensions** (technology, infrastructure, reliability, risk, access), not only across nominal purchasing power.
+## Value is multi-dimensional, not one number
 
-In food systems, a similar confusion appears when we treat:
-- *price* as a proxy for value,
-- *gross output* as a proxy for prosperity,
-- *high revenue* as evidence of equitable operation.
+A simple historical analogy helps. A king centuries ago could hold immense status and still lack sanitation, refrigeration, antibiotics, safe water, or reliable year-round food diversity. By modern standards, social rank did not automatically deliver what we now treat as baseline value.
 
-Each can be true in one dimension while false in another.
+Food systems work the same way. Price, throughput, and revenue each capture one dimension, but none are complete proxies for value.
 
-## 2) Two claims that can both be true
+In practice, at least three things can be true at once:
 
-### Claim A: “The system produces a lot”
-Industrial supply chains can deliver large volumes because they optimize around:
-- long-distance logistics,
-- standardized grading and packaging,
-- predictable bulk demand,
-- centralized financing and contracting.
+1. A system produces large volume.  
+2. The same system embeds large structural loss.  
+3. Participants inside that system can remain economically stressed even when consumer prices are high.
 
-### Claim B: “The system is trading losses”
-High throughput can coexist with persistent losses that are treated as unavoidable:
-- overproduction to hedge uncertainty,
-- spoilage and shrink as a cost of doing business,
-- redundancy (multiple touches, repacking, relabeling),
-- refrigeration and transport overhead,
-- time spent coordinating exceptions rather than planning.
+That is not contradiction. That is the structure.
 
-When these losses are structurally normal, competition often becomes a **game of loss management**:
-- win by being better at pushing loss downstream,
-- win by having enough scale to absorb loss,
-- win by writing contracts that shift risk to smaller parties.
+## Viability and value are not the same thing
 
-This is a *viability argument*: the system survives and expands because it outcompetes alternatives on the terms it set.
+I find it useful to separate two terms:
 
-## 3) Viability vs. value
+- **Viability:** can the system continue under its current rules?
+- **Value:** does the system produce durable net benefit across output, labor burden, risk exposure, waste, and resilience?
 
-A useful distinction:
+A system can be highly viable because it has scale, financing, contracts, and buyer leverage. It can still be weak on value dimensions that matter to everyday operators, especially if losses are simply transferred downstream to smaller participants.
 
-- **Viability**: a system’s ability to continue operating under its own rules (cashflow, contracts, capital access, market power, political tolerance).
-- **Value**: the net benefit the system produces across multiple dimensions (nutrition delivered, labor required, waste produced, risk exposure, resilience, and local circulation of spending).
+The opposite is also common: a system can hold strong potential value but fail viability because it cannot coordinate reliably, cannot signal availability to buyers, or cannot finance the transition period.
 
-A system can be highly viable while producing weak value along important dimensions (high waste, high fragility, low equity for operators).  
-Conversely, a system can produce strong value but fail viability because it cannot coordinate demand, cannot finance transitions, or cannot be discovered by buyers reliably.
+## Embedded loss is part of what prices are buying
 
-## 4) “Embedded loss” is part of what prices are paying for
+When people ask why food costs what it costs, they often assume they are paying mostly for the crop.
 
-Prices are not only paying for the crop. They are also paying for:
-- cold storage,
-- fuel and long-haul transport,
-- packaging, compliance, marketing,
-- shrink and spoilage (often treated as normal),
-- risk premiums and financing costs,
-- coordination overhead (time spent matching exceptions).
+They are not.
 
-This matters because it explains a confusing observation:
+They are also paying for cold-chain dependency, long-haul logistics, packaging and relabeling, shrink, financing lag, compliance overhead, and time spent resolving exceptions. In many channels, those costs are treated as normal rather than exceptional.
 
-> Higher prices do not necessarily mean a producer is thriving. Sometimes they mean the producer is surviving inside a loss-heavy operating envelope.
+That leads to a hard but necessary sentence:
 
-When losses decline (through better planning, shorter distances, fewer touches), **real value rises** even if nominal prices do not.
+> High prices do not necessarily mean a producer is thriving.  
+> Sometimes they mean the producer is surviving inside a loss-heavy operating envelope.
 
-## 5) Value dimensions that matter in food systems
+Once we see that clearly, another point becomes obvious: if losses fall, real value rises even before nominal prices move.
 
-Below are value dimensions that are frequently collapsed into one number (price) but behave differently.
+## The dimensions of food-system value
 
-### 5.1 Physical output (quantity)
-- pounds, cases, calories, servings delivered.
+If value is multi-dimensional, then we should evaluate it that way.
 
-### 5.2 Waste-adjusted output
-- output *minus* spoilage and shrink across the chain,
-- output *minus* redundant transport and handling losses.
+### 1) Physical output
 
-Two systems can deliver the same shelf output while one consumes far more labor, fuel, and time to do it.
+How much food is delivered (pounds, cases, servings, calories)?
 
-### 5.3 Labor-time and attention
-A major hidden cost is not “work” in the abstract, but:
-- fragmented attention (coordination by phone calls and exception handling),
-- administrative duplication across small entities,
-- reactive work replacing planned work.
+### 2) Waste-adjusted output
 
-Reducing this overhead is a direct value gain even if output stays constant.
+How much is delivered after spoilage, shrink, and redundant handling are accounted for?
 
-### 5.4 Risk and planning capacity
-Local farms often face a specific constraint: **you cannot safely grow what you cannot safely sell**.
-- When demand is uncertain, producers rationally underproduce or narrow product variety.
-- This is not a limitation of land capability; it is a limitation of planning confidence.
+Two systems can place the same volume on shelves while one consumes far more labor, energy, and time to do it.
 
-A system that improves planning confidence increases realized output without necessarily increasing acreage.
+### 3) Labor-time and attention burden
 
-### 5.5 Adjacency (distance) and logistics overhead
-Physical adjacency reduces:
-- transportation cost and time,
-- refrigeration dependence,
-- spoilage risk,
-- coordination complexity (fewer handoffs, fewer “unknown unknowns”).
+How much work is planned execution versus reactive coordination?
 
-Adjacency is not an ethical claim. It is a cost function.
+Fragmented attention, phone-based exception handling, and administrative duplication are hidden drains on value, especially for small operators.
 
-### 5.6 Variety as a risk-reduction tool
-Product variety is often treated as “nice to have,” but it can also be:
-- demand-risk buffering,
-- seasonality smoothing,
-- a way to reduce waste by offering substitutions when specific items fluctuate.
+### 4) Planning confidence and risk
 
-Variety has a scaling limit: it depends on local ecology, skills, and market density. But within that limit, variety can reduce the need for defensive overproduction.
+For many farms, the practical rule is simple: you cannot safely grow what you cannot safely sell.
 
-### 5.7 Resilience and failure tolerance
-A fragile system can be viable in normal times yet costly under shocks.
-Resilience is a value dimension because it reduces:
-- catastrophic losses,
-- emergency logistics premiums,
-- brittle dependencies.
+That means underproduction is often rational. Narrow crop plans are often rational. This is not mainly a land-capacity problem. It is a planning-confidence problem.
 
-## 6) Loss trading vs. loss reduction
+### 5) Adjacency and logistics overhead
 
-A loss-trading system assumes losses are permanent and competes inside that assumption.  
-A loss-reduction system treats losses as addressable through better matching and planning.
+Shorter distances generally reduce transport cost, refrigeration dependence, spoilage exposure, and handoff complexity. This is not an ideological claim. It is a cost-structure claim.
 
-One practical analogy is the difference between how people treat things they **own** versus things they effectively **rent** or treat as disposable:
-- when losses are “someone else’s problem,” waste increases;
-- when losses are directly borne, incentives shift toward careful stewardship.
+### 6) Variety as operational flexibility
 
-Food systems often mix both:
-- some actors bear waste directly,
-- others can pass it downstream.
+Variety is not just a branding dimension. Within practical limits, it can buffer demand uncertainty, absorb seasonal fluctuations, and reduce waste through substitution pathways.
 
-Reducing loss requires aligning incentives so that waste is visible, attributable, and expensive to create.
+### 7) Resilience
 
-## 7) Local agriculture as “latent value” under planning constraints
+A system can look efficient in normal periods and become extremely expensive under shocks. Resilience has value because it lowers failure severity and emergency overhead.
 
-Local production can have a structural advantage in adjacency, freshness, and reduced handling.  
-Yet it is frequently underutilized because:
-- demand signals are noisy or missing,
-- buyers cannot see reliable availability,
-- producers cannot justify diversified planting without confidence in sales.
+## Loss trading versus loss reduction
 
-This creates what can be described as **latent (unrealized) value**:
-- not hypothetical productivity in a lab,
-- but practical output that could exist if planning constraints were relaxed.
+Some systems compete by managing where loss lands. Others compete by reducing how much loss exists in the first place.
 
-When local supply and demand become more transparent (without requiring a centralized authority to dictate plans), farms can:
-- reduce the fear of “growing into a loss,”
-- diversify profitably,
-- invest in storage, equipment, and processing capacity,
-- stabilize supply, which stabilizes demand, which reinforces reinvestment.
+In a loss-trading system, advantage comes from scale, contractual leverage, and the ability to push risk onto weaker nodes.
 
-That feedback loop is the point: **reduced uncertainty enables reinvestment; reinvestment enables reliability; reliability improves the market’s willingness to buy locally.**
+In a loss-reduction system, advantage comes from better matching, better planning, and better timing.
 
-## 8) Why monocrop systems remain competitive
+Food systems usually contain both logics at once. The strategic question is which logic dominates, and who bears the consequences.
 
-In this framing, monocrop and centralized industrial models retain a clear competitive niche:
-- supplying regions that cannot grow a crop (climate/soil constraints),
-- supplying regions that cannot meet demand locally (density constraints),
-- supplying standardized bulk demand where shipping dominates.
+## Local agriculture and unrealized value
 
-Their advantage is not that they eliminate loss; it is that their scale and contracts can **absorb and distribute loss** effectively across large markets.
+This is where I think local agriculture is most often misunderstood.
 
-Local systems compete differently:
-- they win where adjacency and variety reduce overhead,
-- they win by reducing waste and redundant handling,
-- they win by converting latent value into realized value through planning confidence.
+The argument is not that local farms are magically better in every context. The argument is that local systems often hold **unrealized value** constrained by coordination failure:
 
-## 9) What this article does not cover
+- buyers cannot see reliable, structured availability;
+- producers cannot plan confidently against visible demand;
+- intermediaries cannot aggregate fragmented supply without costly overhead.
 
-To keep the topic isolated, this article does not attempt to fully define:
-- regenerative agriculture as a practice (covered elsewhere),
-- the detailed mechanics of “self-describing” information systems (covered elsewhere),
-- a full “entropy of supply and demand” theory (covered elsewhere).
+When that coordination gap closes, farms can move from defensive planning toward optimized planning. The important effect is not merely "more production." The important effect is **higher realization of existing capacity with lower waste risk**.
 
-The focus here is narrower: **value is multi-dimensional**, and reducing structural losses can make the same physical output translate into more equitable operation—because less human effort is being spent paying for preventable waste.
+This creates a feedback loop:
+
+1. Better coordination reduces overproduction risk.
+2. Lower risk enables reinvestment.
+3. Reinvestment improves reliability and consistency.
+4. Reliability attracts more repeat demand.
+5. Repeat demand reinforces planning confidence.
+
+That loop eventually plateaus under real constraints (distance, climate, variety limits, market density), but the plateau can still be materially better than current underutilization.
+
+## Where industrial models still win
+
+None of this removes the role of centralized, monocrop, or large-scale supply systems.
+
+They remain structurally strong for:
+
+- regions that cannot grow specific crops,
+- deficits that exceed local capacity,
+- long-distance standardization needs.
+
+Their strategic advantage is often not zero loss. It is the ability to absorb and distribute loss across very large networks.
+
+Local systems compete on a different edge:
+
+- adjacency,
+- reduced handoffs,
+- reduced waste exposure,
+- and improved value capture through coordination.
+
+## Final position
+
+For me, this comes down to one sentence: **the goal is not to romanticize local production; the goal is to stop mistaking preventable loss for unavoidable cost.**
+
+When value is measured across multiple dimensions, the conversation changes. We stop asking only, "How much did it cost?" and start asking, "What did this system consume in order to produce that price?"
+
+That is where unrealized value becomes visible. And once visible, it becomes actionable.
+
+---
+
+## References
+
+- Barham, J., Tropp, D., Enterline, K., Farbman, J., Fisk, J., & Kiraly, S. (2012). *Regional Food Hub Resource Guide*. U.S. Department of Agriculture, Agricultural Marketing Service.
+- Clark, J. K., & Inwood, S. M. (2016). Scaling-up regional fruit and vegetable distribution: Potential for adaptive change in the food system. *Agriculture and Human Values, 33*(3), 503-519.
+- Clark, J. K., Inwood, S. M., & Sharp, J. S. (2011). *Scaling-up Connections Between Regional Ohio Specialty Crop Producers and Local Markets: Distribution as the Missing Link*. The Ohio State University.
+- Low, S. A., Adalja, A., Beaulieu, E., et al. (2011). *Direct and Intermediated Marketing of Local Foods in the United States* (ERR-128). U.S. Department of Agriculture, Economic Research Service.
+- Martinez, S., Christensen, L., Tropp, D., et al. (2021). *Marketing Practices and Financial Performance of Local Food Producers* (EIB-225). U.S. Department of Agriculture, Economic Research Service.
+- Thomas, A. E., et al. (2024). Exploring barriers and facilitators to direct-to-retail sales channels: Farmers' perspectives on wholesaling produce to small food retailers in Charles County, Maryland. *Journal of Agriculture, Food Systems, and Community Development, 14*(1).
