@@ -1,0 +1,181 @@
+Understood. I see you’re looking for specific archive links that another agent can use to scrape raw text, images, HTML, and CSS from the old Spice Acres site. I’ll identify and provide suitable Wayback Machine URLs that point directly to the archived pages and resources, so you can use them for reconstruction. I’ll now prepare those links using the information already gathered.
+
+
+Here are the archived URLs from the Internet Archive’s Wayback Machine that an agent could use to scrape Spice Acres’ content (including raw text, images, HTML, and CSS). These snapshots were taken in 2017 and provide complete versions of the major pages:
+
+* Home page: `https://web.archive.org/web/20171010215912/http://spiceacres.com/`
+  – Contains the farm’s overview and links to other sections.
+
+* About page: `https://web.archive.org/web/20171012072945/http://spiceacres.com/about/`
+  – Explains the farm’s history and role in the Countryside Initiative.
+
+* Farm Share page: `https://web.archive.org/web/20171012072558/http://spiceacres.com/farm-share/`
+  – Details the 22‑week subscription program, contents, pricing, and membership perks.
+
+* What’s Growing page: `https://web.archive.org/web/20171012072816/http://spiceacres.com/whats-growing/`
+  – Describes the farm’s production focus (heirloom vegetables, flowers, eggs) and mentions free‑range hens and farm dogs.
+
+* Events page: `https://web.archive.org/web/20171012231546/http://spiceacres.com/events/`
+  – Lists private and family‑friendly events such as Pizza + a Movie nights, yoga in the fields, and u‑pick flower sessions.
+
+* Countryside Conservancy page: `https://web.archive.org/web/20171012072554/http://spiceacres.com/countryside-conservancy/`
+  – Summarizes the farm’s partnership with the Countryside Conservancy and its land‑use program.
+
+* Contact page: `https://web.archive.org/web/20171106153228/http://spiceacres.com/contact/`
+  – Provides contact emails, phone numbers, and addresses for the farm and its associated businesses.
+
+These links point directly to fully rendered HTML pages stored by the Internet Archive. An agent can navigate through these snapshots to download or extract the website’s assets (text, images, CSS) for reconstruction and redesign.
+
+
+sprice_kitchen
+
+https://web.archive.org/web/20190202200909/https://clevelandmagazine.com/in-the-cle/people/articles/most-interesting-people-2015-ben-bebenroth
+
+https://web.archive.org/web/20181208040838/https://clevelandmagazine.com/food-drink/articles/the-brunch-life
+
+https://web.archive.org/web/20181207082004/https://www.cleveland.com/dining/index.ssf/2014/07/spice_kitchen_chef_ben_bebenro_1.html
+
+https://web.archive.org/web/20190401093517/https://clevelandmagazine.com/things-to-do/outdoors/articles/best-restaurants-2013
+
+https://web.archive.org/web/20190401093513/https://www.ohiomagazine.com/food-drink/article/farm-fresh
+
+https://web.archive.org/web/20180823001534/http://growforthmag.com/category/farm/
+
+https://web.archive.org/web/20160703190446/http://www.nytimes.com/interactive/2016/06/29/travel/what-to-do-36-hours-cleveland.html?_r=0
+
+https://web.archive.org/web/20171011014617/https://www.thrillist.com/eat/cleveland/best-cleveland-restaurant-chef-josh-woo-2016
+
+https://web.archive.org/web/20171010185954/http://www.thisiscleveland.com/restaurants/cleveland-chefs/ben-bebenroth/
+
+https://web.archive.org/web/20170918115230/http://nymag.com/travel/weekend-escapes/cleveland/
+
+https://www.youtube.com/watch?v=t761k7EHK8I&themeRefresh=1
+
+https://www.cleveland.com/dining/index.ssf/2014/07/spice_kitchen_chef_ben_bebenro_1.html
+
+
+
+home_and_feture
+Growing sustainably in the Cuyahoga Valley National Park.
+Spice Acres is not only a 13-acre sustainable family farm nestled inside Cuyahoga Valley National Park, it’s also Spice Kitchen + Bar’s workshop for testing and tasting new culinary creations dreamed up by award-winning chef and farmer Ben Bebenroth and his team.
+
+
+Where can you buy our harvest?
+Spice Acres eggs, veggies, honey and flowers can be purchased through our weekly farm share subscription and also at our farm-side market stand. Beginning in June, the farm-side market stand will be open Thursday-Sunday from 9am to dusk.
+
+
+
+
+Host Your Event
+Spice Acres is available to rent for your next business or personal event. Our white barn and grounds are the best places for picture-perfect weddings and adventuresome team-building workshops. Limited availability.
+
+Stories from our Farm
+We put as much care in growing our food as we do preparing it in the kitchen. Learn more about sustainable growing techniques, family life on the farm, and pick up a recipe or two along the way
+
+Bring home our Farm
+Spice Acres eggs, veggies, honey and flowers can be purchased through our farm share membership and at our farm-side market stand. Beginning in June, the farm-side market stand will be open Thursday-Sunday from 9am to dusk.
+
+
+
+Giftcards page, powered by quick gifts:
+https://web.archive.org/web/20171027232724/http://onelink.quickgifts.com/merchant/spice/
+
+
+Farmshare:
+BRING OUR FARM TO YOUR TABLE.
+
+Sustainably farmed, nutrient dense produce harvested exclusively from our family farm in the Cuyahoga Valley National Park.
+
+Spice Acres makes it easy to take home fresh, local, and healthy food every week. The award-winning restaurant Spice Kitchen + Bar and its culinary team has put together a farm share that will be the highlight of your year. Get ready to enjoy just-picked produce from our fields featuring over 40 crops and dozens of varieties, fresh-cut flowers, wholesome breads and spreads, as well as recipes from the chefs at Spice Kitchen + Bar.
+
+Contents:
+
+    22 weeks of fresh produce, generally 4-5 different items/week
+    1 dozen eggs for 10 weeks
+    Spice Kitchen + Bar “breads and spreads” (freshly-baked bread w/seasonal schmear) for 12 weeks—eggs and bread will alternate every other week
+    Fresh-cut flowers for 12 weeks
+    A Thanksgiving box complete with produce, eggs, honey, and more as our grand finale
+
+SPRING – Colorful radishes, baby greens mix, spicy microgreens, crispy lettuce, Asian greens
+
+SUMMER – Long yellow pole beans, dark green to gold summer squash, sweet and spicy peppers, eggplant, garden variety of herbs, tomatoes, colorful beets, crunchy cucumbers, heirloom melons
+
+FALL – Savory winter squash, potatoes and onions, ginger, nutrient-dense cooking greens, garlic
+
+Duration: June 13th – November 14th (22 weeks), and a Thanksgiving box pick-up November 21st
+
+Cost: 
+
+    Pick-Up: $780. Pick-up at:
+
+Spice Acres
+9557 Riverview Road
+Brecksville, Ohio 44141
+
+Every Tuesday 4-8 pm + Wednesday 7am – 8 pm
+
+    Delivery: $990. Delivered to your doorstep every Wednesday by 5pm!
+
+Membership perks!
+
+    Make a difference— Support our family farm for the benefit of our environment, your community, and personal wellness.
+    Buy, cook, and eat with the seasons!
+    Half-price yoga taught in the fields or in our historic White Barn
+    A weekly newsletter of farm happenings and a recipe from Spice Kitchen + Bar’s award-winning chefs
+    10% discount on the White Barn rental for special events
+    Early ticket release for Spice Kitchen + Bar events and Plated Landscapes™
+
+Questions? Email our Farm Manager, Andrea Heim, at andrea@spiceacres.com.
+
+Spice Acres Happenings
+
+    U-Pick flower field events
+    On farm yoga classes
+    Self-serve road-side market stand featuring our produce, eggs and flowers
+    Spring time “Toasting of The Fields”
+    Special restaurant and catering events including Plated Landscapes™
+    Family friendly farm events
+
+
+
+Countryside:
+PARTNERS IN SUSTAINABLE AGRICULTURE.
+
+The Countryside Conservancy’s innovative land use program preserves the rural character of the Cuyahoga Valley by rehabilitating farms within the park, including ours.
+
+While there are no parcels currently available, the Countryside offers Saturday farmers markets and fun classes for famers and gardeners. Learn more about these programs and how you can participate or contribute by visiting their website.
+
+https://youtu.be/xrpS4GIDqX4?si=7zEYXhTbd_DWczLL
+
+Contact:
+The farm does not have a phone, but we check email often!
+Hello@SpiceAcres.com
+
+spice-kb-logo
+216.961.9637
+Reservations by phone or Yelp.
+Hello@SpiceKitchenAndBar.com
+
+spice-catering-logo
+For restaurant event inquiries, contact Spice Kitchen + Bar via phone or email.
+For off-site event inquiries, use our quick contact form.
+216.432.9090
+Hello@SpiceCaters.com
+
+spice-field-kitchen-logo
+For information on farm tours, classes and sponsorship programs contact us via email.
+Hello@SpiceFieldKitchen.com
+
+ 
+
+SPICE HEADQUARTERS
+5800 Detroit Avenue
+Cleveland, Ohio 44102
+
+Spice Kitchen + Bar and Spice Catering Co. are located at the “Spice Headquarters” building at West 58th & Detroit Avenue, directly across the street from the Happy Dog. We’re less than 10 minutes west of downtown Cleveland. Parking is available behind the building or along the street.
+
+SPICE ACRES
+9557 Riverview Road
+Brecksville, Ohio 44141
+
+Spice Acres is located 20 miles south of Cleveland in the Cuyahoga Valley National Park. Farm tours are available by request.
