@@ -84,11 +84,9 @@ def render_subsections(items: list[dict[str, object]]) -> str:
 def render_css_vars(manifest: dict[str, object]) -> str:
     shell = manifest["site"]["shell"]
     rules = [f"--hero-bg-image: url('{rel_asset(shell['assets']['hero_background'])}')"]
-    for prefix, items in [
-        ("nav", manifest["icons"]["navigation"]),
-        ("footer", manifest["icons"]["footer"]),
-        ("section", manifest["icons"]["sections"]),
-    ]:
-        for key, path in items.items():
-            rules.append(f"--icon-{prefix}-{key}: url('{rel_asset(path)}')")
+    for icon_key, icon in manifest["assets"]["icons"].items():
+        sep = icon_key.index("_")
+        prefix = icon_key[:sep]
+        suffix = icon_key[sep + 1:]
+        rules.append(f"--icon-{prefix}-{suffix}: url('{rel_asset(icon['src'])}')")
     return "; ".join(rules)

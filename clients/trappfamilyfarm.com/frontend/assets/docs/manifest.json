@@ -1,5 +1,5 @@
 {
-  "schema": "webdz.site_content.v3",
+  "schema": "webdz.site_content.v4",
   "site": {
     "name": "Trapp Family Farm",
     "homepage_href": "home.html",
@@ -18,29 +18,201 @@
       }
     }
   },
-  "icons": {
-    "favicon": "/favicon.svg",
-    "navigation": {
-      "crops": "/assets/icon/ui/icon-data.svg",
-      "animals": "/assets/icon/ui/icon-relationship.svg",
-      "homestead": "/assets/icon/ui/icon-home.svg",
-      "newsletters": "/assets/icon/ui/icon-inbox.svg",
-      "more_info": "/assets/icon/ui/icon-info.svg"
+  "assets": {
+    "shell": {
+      "favicon": "/favicon.svg",
+      "header_graphic": "/assets/graphics/graphic-header.avif",
+      "footer_graphic": "/assets/graphics/graphic-footer.avif",
+      "hero_background": "/assets/images/foliage.avif"
     },
-    "footer": {
-      "visit": "/assets/icon/icon-location.svg",
-      "stand_hours": "/assets/icon/ui/icon-time.svg",
-      "instagram": "/assets/icon/logos/logo-instagram.svg",
-      "mail": "/assets/icon/icon-mail.svg"
+    "images": {
+      "home_lead": {
+        "src": "/assets/images/Home_front_door_address.avif",
+        "alt": "Front door entrance with the farm address.",
+        "usage": ["home"]
+      },
+      "home_journey": {
+        "src": "/assets/images/crop.avif",
+        "alt": "Crops growing in the field at Trapp Family Farm.",
+        "usage": ["home"]
+      },
+      "home_drafthorses": {
+        "src": "/assets/images/compost.avif",
+        "alt": "Farm work powered by draft horses and compost hauling.",
+        "usage": ["home"]
+      },
+      "crops_intro": {
+        "src": "/assets/images/vegitables.avif",
+        "alt": "Seasonal vegetables growing on the farm.",
+        "usage": ["crops"]
+      },
+      "crops_compost": {
+        "src": "/assets/images/compost.avif",
+        "alt": "Compost prepared for soil-building work.",
+        "usage": ["crops"]
+      },
+      "crops_stand": {
+        "src": "/assets/images/stand.avif",
+        "alt": "The farm stand stocked for visitors.",
+        "usage": ["crops"]
+      },
+      "crops_turkey": {
+        "src": "/assets/images/turkey.avif",
+        "alt": "Farm-raised turkey and orchard plantings at the farm.",
+        "usage": ["crops"]
+      },
+      "animals_intro": {
+        "src": "/assets/images/animal_husbandry.avif",
+        "alt": "Animals and pasture at Trapp Family Farm.",
+        "usage": ["animals"]
+      },
+      "animals_eggs": {
+        "src": "/assets/images/eggs.avif",
+        "alt": "Fresh eggs from the laying flock.",
+        "usage": ["animals"]
+      },
+      "animals_free_range": {
+        "src": "/assets/images/free_range.avif",
+        "alt": "Laying hens grazing on pasture.",
+        "usage": ["animals"]
+      },
+      "animals_chicken_feed": {
+        "src": "/assets/images/chicken_feed.avif",
+        "alt": "Organic chicken feed prepared for the flock.",
+        "usage": ["animals"]
+      },
+      "animals_broilers": {
+        "src": "/assets/images/broilers.avif",
+        "alt": "Broiler chickens raised on pasture.",
+        "usage": ["animals"]
+      },
+      "animals_turkeys": {
+        "src": "/assets/images/turkeys_chicks.avif",
+        "alt": "Young turkey poults being raised for pasture.",
+        "usage": ["animals"]
+      },
+      "animals_sheep": {
+        "src": "/assets/images/sheep-grass.avif",
+        "alt": "Sheep grazing rotationally on pasture.",
+        "usage": ["animals"]
+      },
+      "animals_lamb": {
+        "src": "/assets/images/lamb_chops.avif",
+        "alt": "Grass-fed lamb prepared for the table.",
+        "usage": ["animals"]
+      },
+      "homestead_intro": {
+        "src": "/assets/images/for_your_homestead.avif",
+        "alt": "Homestead supplies and farm offerings.",
+        "usage": ["homestead"]
+      },
+      "homestead_hens": {
+        "src": "/assets/images/ready_to_lay_hens.avif",
+        "alt": "Ready-to-lay hens raised for homesteads.",
+        "usage": ["homestead"]
+      },
+      "homestead_transplants": {
+        "src": "/assets/images/sproutes.avif",
+        "alt": "Vegetable transplants started for spring planting.",
+        "usage": ["homestead"]
+      },
+      "info_cle_foodcast": {
+        "src": "/assets/images/logo/logo-CLE_Foodcast.avif",
+        "alt": "CLE Foodcast logo.",
+        "usage": ["info"]
+      },
+      "info_eat_better": {
+        "src": "/assets/images/logo/logo-eat_better_food_today.avif",
+        "alt": "Eat Better Food Today logo.",
+        "usage": ["info"]
+      },
+      "info_low_power": {
+        "src": "/assets/images/logo/logo-low_power_happy_hour.avif",
+        "alt": "Low Power Happy Hour logo.",
+        "usage": ["info"]
+      }
     },
-    "sections": {
-      "location": "/assets/icon/icon-location.svg",
-      "inventory": "/assets/icon/icon-inventory.svg",
-      "time": "/assets/icon/ui/icon-time.svg",
-      "tag": "/assets/icon/icon-tag.svg",
-      "mail": "/assets/icon/icon-mail.svg",
-      "relationship": "/assets/icon/ui/icon-relationship.svg",
-      "info": "/assets/icon/ui/icon-info.svg"
+    "icons": {
+      "nav_crops": {
+        "src": "/assets/icon/ui/icon-data.svg",
+        "label": "Crops",
+        "usage": ["nav"]
+      },
+      "nav_animals": {
+        "src": "/assets/icon/ui/icon-relationship.svg",
+        "label": "Animals",
+        "usage": ["nav"]
+      },
+      "nav_homestead": {
+        "src": "/assets/icon/ui/icon-home.svg",
+        "label": "Homestead",
+        "usage": ["nav"]
+      },
+      "nav_newsletters": {
+        "src": "/assets/icon/ui/icon-inbox.svg",
+        "label": "Newsletters",
+        "usage": ["nav"]
+      },
+      "nav_more_info": {
+        "src": "/assets/icon/ui/icon-info.svg",
+        "label": "More Info",
+        "usage": ["nav"]
+      },
+      "footer_visit": {
+        "src": "/assets/icon/icon-location.svg",
+        "label": "Visit",
+        "usage": ["footer"]
+      },
+      "footer_hours": {
+        "src": "/assets/icon/ui/icon-time.svg",
+        "label": "Hours",
+        "usage": ["footer"]
+      },
+      "footer_instagram": {
+        "src": "/assets/icon/logos/logo-instagram.svg",
+        "label": "Instagram",
+        "usage": ["footer"]
+      },
+      "footer_mail": {
+        "src": "/assets/icon/icon-mail.svg",
+        "label": "Email",
+        "usage": ["footer"]
+      },
+      "section_location": {
+        "src": "/assets/icon/icon-location.svg",
+        "label": "Location",
+        "usage": ["section"]
+      },
+      "section_inventory": {
+        "src": "/assets/icon/icon-inventory.svg",
+        "label": "Inventory",
+        "usage": ["section"]
+      },
+      "section_time": {
+        "src": "/assets/icon/ui/icon-time.svg",
+        "label": "Time",
+        "usage": ["section"]
+      },
+      "section_tag": {
+        "src": "/assets/icon/icon-tag.svg",
+        "label": "Tag",
+        "usage": ["section"]
+      },
+      "section_mail": {
+        "src": "/assets/icon/icon-mail.svg",
+        "label": "Mail",
+        "usage": ["section"]
+      },
+      "section_relationship": {
+        "src": "/assets/icon/ui/icon-relationship.svg",
+        "label": "Relationship",
+        "usage": ["section"]
+      },
+      "section_info": {
+        "src": "/assets/icon/ui/icon-info.svg",
+        "label": "Info",
+        "usage": ["section"]
+      }
     }
   },
   "navigation": [
@@ -516,7 +688,38 @@
       "description": "Farm newsletters.",
       "content": {
         "collection": "newsletters",
-        "entry_template": "full_markdown_entry"
+        "entry_template": "full_markdown_entry",
+        "signup": {
+          "heading": "Join our mailing list",
+          "form": {
+            "id": "tff-newsletter-form",
+            "class_name": "form-card",
+            "action": "/__fnd/newsletter/subscribe",
+            "method": "post",
+            "button_class": "button",
+            "button_label": "Subscribe",
+            "ack_label": "Thanks — you're on the list.",
+            "fields": [
+              {
+                "id": "tff-nl-name",
+                "name": "name",
+                "type": "text",
+                "autocomplete": "name",
+                "placeholder": "Your name",
+                "label_html": "Name (optional)"
+              },
+              {
+                "id": "tff-nl-email",
+                "name": "email",
+                "type": "email",
+                "autocomplete": "email",
+                "placeholder": "you@example.com",
+                "required": true,
+                "label_html": "Email"
+              }
+            ]
+          }
+        }
       }
     },
     "info": {

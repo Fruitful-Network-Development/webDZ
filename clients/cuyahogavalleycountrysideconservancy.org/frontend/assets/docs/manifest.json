@@ -1,5 +1,5 @@
 {
-  "schema": "webdz.site_content.v2",
+  "schema": "webdz.site_content.v4",
   "site": {
     "name": "Cuyahoga Valley Countryside Conservancy",
     "description": "An impact driven organization to support agriculture and stewardship",
@@ -19,6 +19,52 @@
       "wordmark_text": "Cuyahoga Valley Countryside Conservancy",
       "wordmark_icon": "assets/icon/ui/icon-home.svg",
       "subtitle": ""
+    }
+  },
+  "assets": {
+    "shell": {
+      "favicon": "favicon.png",
+      "favicon_type": "image/png",
+      "wordmark_icon": "assets/icon/ui/icon-home.svg"
+    },
+    "images": {
+      "home_hero": {
+        "src": "assets/image/long_farm_pano.avif",
+        "alt": "A working landscape in the Cuyahoga Valley: crop fields, hedgerows, and farmsteads under an open sky",
+        "usage": ["home"]
+      }
+    },
+    "icons": {
+      "wordmark_home": {
+        "src": "assets/icon/ui/icon-home.svg",
+        "label": "Home wordmark",
+        "usage": ["shell"]
+      },
+      "footer_mail": {
+        "src": "/assets/icon/icon-mail.svg",
+        "label": "Email",
+        "usage": ["footer"]
+      },
+      "footer_phone": {
+        "src": "/assets/icon/icon-hardware.svg",
+        "label": "Phone",
+        "usage": ["footer"]
+      },
+      "form_name": {
+        "src": "assets/icon/ui/icon-info.svg",
+        "label": "Name field",
+        "usage": ["form"]
+      },
+      "form_email": {
+        "src": "assets/icon/icon-mail.svg",
+        "label": "Email field",
+        "usage": ["form"]
+      },
+      "form_zip": {
+        "src": "assets/icon/icon-location.svg",
+        "label": "ZIP field",
+        "usage": ["form"]
+      }
     }
   },
   "navigation": [

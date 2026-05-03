@@ -10,6 +10,147 @@
       "search_icon": "/assets/icon/icon-search.svg"
     }
   },
+  "assets": {
+    "shell": {
+      "favicon": "favicon.svg",
+      "menu_icon": "/assets/icon/icon-menu.svg",
+      "search_icon": "/assets/icon/icon-search.svg"
+    },
+    "images": {
+      "home_og": {
+        "src": "https://fruitfulnetworkdevelopment.com/assets/imgs/image-historic-market.avif",
+        "alt": "Fruitful Network Development logo",
+        "usage": ["home", "og"]
+      },
+      "home_woodcut_tractor": {
+        "src": "./assets/graphics/woodcut/graphic-tractor.avif",
+        "alt": "Woodcut tractor graphic",
+        "usage": ["home"]
+      },
+      "home_woodcut_barn": {
+        "src": "./assets/graphics/woodcut/graphic-barn.avif",
+        "alt": "Woodcut barn graphic",
+        "usage": ["home"]
+      },
+      "services_woodcut_windmill": {
+        "src": "./assets/graphics/woodcut/graphic-windmill.avif",
+        "alt": "Woodcut windmill graphic",
+        "usage": ["services"]
+      },
+      "services_woodcut_grapes": {
+        "src": "./assets/graphics/woodcut/graphic-grapes.avif",
+        "alt": "Woodcut grapes graphic",
+        "usage": ["services"]
+      },
+      "services_woodcut_tree": {
+        "src": "./assets/graphics/woodcut/graphic-tree.avif",
+        "alt": "Woodcut tree graphic",
+        "usage": ["services"]
+      }
+    },
+    "icons": {
+      "footer_instagram": {
+        "src": "/assets/icon/logos/logo-instagram.svg",
+        "label": "Instagram",
+        "usage": ["footer"]
+      },
+      "footer_linkedin": {
+        "src": "/assets/icon/logos/logo-linkedin.svg",
+        "label": "LinkedIn",
+        "usage": ["footer"]
+      },
+      "footer_github": {
+        "src": "/assets/icon/logos/logo-github.svg",
+        "label": "GitHub",
+        "usage": ["footer"]
+      },
+      "process_connect": {
+        "src": "/assets/icon/icon-inbox.svg",
+        "label": "Connect",
+        "usage": ["page_body"]
+      },
+      "process_access": {
+        "src": "/assets/icon/icon-id.svg",
+        "label": "Access",
+        "usage": ["page_body"]
+      },
+      "process_onboard": {
+        "src": "/assets/icon/icon-project.svg",
+        "label": "Onboard",
+        "usage": ["page_body"]
+      },
+      "service_website": {
+        "src": "/assets/icon/icon-www.svg",
+        "label": "Website Hosting",
+        "usage": ["page_body"]
+      },
+      "service_domain": {
+        "src": "/assets/icon/icon-domain-local.svg",
+        "label": "Domain Management",
+        "usage": ["page_body"]
+      },
+      "service_mail": {
+        "src": "/assets/icon/icon-mail.svg",
+        "label": "Email Domain Management",
+        "usage": ["page_body"]
+      },
+      "service_billing": {
+        "src": "/assets/icon/icon-billing.svg",
+        "label": "Payment Processing",
+        "usage": ["page_body"]
+      },
+      "service_webpage": {
+        "src": "/assets/icon/icon-webpage.svg",
+        "label": "Website Design and Build",
+        "usage": ["page_body"]
+      },
+      "service_profile": {
+        "src": "/assets/icon/icon-profile.svg",
+        "label": "Customer Profiles",
+        "usage": ["page_body"]
+      },
+      "service_pos": {
+        "src": "/assets/icon/icon-pos.svg",
+        "label": "Point-of-Sale Setup",
+        "usage": ["page_body"]
+      },
+      "service_inventory": {
+        "src": "/assets/icon/icon-inventory.svg",
+        "label": "Inventory and Supply",
+        "usage": ["page_body"]
+      },
+      "service_receipt": {
+        "src": "/assets/icon/icon-receipt.svg",
+        "label": "Checkout and Invoicing",
+        "usage": ["page_body"]
+      },
+      "service_ticket": {
+        "src": "/assets/icon/icon-ticket.svg",
+        "label": "Free Consultation",
+        "usage": ["page_body"]
+      },
+      "service_contract": {
+        "src": "/assets/icon/icon-contract.svg",
+        "label": "Match Pricing",
+        "usage": ["page_body"]
+      },
+      "service_calendar": {
+        "src": "/assets/icon/icon-calendar.svg",
+        "label": "Incremental Rollout",
+        "usage": ["page_body"]
+      },
+      "service_ssl": {
+        "src": "/assets/icon/icon-ssl.svg",
+        "label": "No Vendor Lock-In",
+        "usage": ["page_body"]
+      },
+      "service_hardware": {
+        "src": "/assets/icon/icon-hardware.svg",
+        "label": "Hardware and IoT",
+        "usage": ["page_body"]
+      }
+    }
+  },
   "navigation": [
     {
       "href": "./index.html",
@@ -841,8 +982,8 @@
       }
     }
   },
-  "schema_identifier": "webdz.site_content.v3",
-  "schema": "webdz.site_content.v3",
+  "schema_identifier": "webdz.site_content.v4",
+  "schema": "webdz.site_content.v4",
   "machine": {
     "inpage": {
       "root": "machine/inpage",

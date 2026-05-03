@@ -1,5 +1,5 @@
 {
-  "schema_identifier": "webdz.site_content.v3",
+  "schema_identifier": "webdz.site_content.v4",
   "required_checks": [
     "python scripts/check_visible_dom_regression.py",
     "python scripts/check_machine_surface_diff.py"
